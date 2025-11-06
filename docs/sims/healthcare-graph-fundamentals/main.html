@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Graph Fundamentals</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-content">
+            <div>
+                <h1>Healthcare Graph Fundamentals</h1>
+                <p class="subtitle">Interactive Healthcare Graph Visualization</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search nodes...">
+                <button onclick="searchNodes()">Search</button>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-box">
+            <div class="filter-header">
+                <span style="font-weight: 600;">Filter by Node Type:</span>
+            </div>
+            <div id="filterCheckboxes" class="filter-checkboxes">
+                <!-- Dynamically generated checkboxes -->
+            </div>
+            <div class="filter-buttons">
+                <button onclick="selectAllFilters()" class="filter-btn">Select All</button>
+                <button onclick="unselectAllFilters()" class="filter-btn">Unselect All</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Canvas Container -->
+            <div class="canvas-container">
+                <div id="network"></div>
+
+                <!-- Legend Overlay -->
+                <div class="legend">
+                    <h3>Node Types</h3>
+                    <div id="legendContent">
+                        <!-- Dynamically generated legend items -->
+                    </div>
+                </div>
+
+                <!-- Callouts Overlay -->
+                <div class="callouts" id="callouts">
+                    <div class="callout-header">
+                        <span style="font-weight: 600;">💡 Learn About Graph Fundamentals</span>
+                        <button onclick="document.getElementById('callouts').style.display='none'" class="close-btn">OK</button>
+                    </div>
+                    <div class="callout-message">⚫ Each circle represents a <strong>node</strong>—an entity in the healthcare system</div>
+                    <div class="callout-message">➡️ Arrows show <strong>edges</strong>—relationships between entities</div>
+                    <div class="callout-message">🎨 Notice how nodes have different types (Patient, Provider, Diagnosis, etc.)</div>
+                    <div class="callout-message">📋 Each node can store its own unique properties without a rigid schema</div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Node Details</h3>
+                <div id="nodeDetails">
+                    <p style="color: #64748b; text-align: center; padding: 20px;">
+                        Click on a node to view its details
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Notes -->
+        <div class="educational-notes">
+            <h3>🎓 Educational Insights</h3>
+            <div class="note-item">⚫ <strong>Circle = Node (Entity):</strong> A node represents a distinct healthcare entity like a patient, provider, diagnosis, medication, or facility</div>
+            <div class="note-item">➡️ <strong>Arrow = Edge (Relationship):</strong> An edge connects two nodes and represents a relationship between them (e.g., VISITED_PROVIDER, HAS_CONDITION)</div>
+            <div class="note-item">🔗 <strong>Graph Fundamentals:</strong> This simple graph demonstrates the foundational building blocks (nodes and edges) used in graph databases to model complex healthcare systems</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

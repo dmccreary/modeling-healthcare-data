@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-content">
+            <div>
+                <h1>{{TITLE}}</h1>
+                <p class="subtitle">{{SUBTITLE}}</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search nodes...">
+                <button onclick="searchNodes()">Search</button>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-box">
+            <div class="filter-header">
+                <span style="font-weight: 600;">Filter by Node Type:</span>
+            </div>
+            <div id="filterCheckboxes" class="filter-checkboxes">
+                <!-- Dynamically generated checkboxes -->
+            </div>
+            <div class="filter-buttons">
+                <button onclick="selectAllFilters()" class="filter-btn">Select All</button>
+                <button onclick="unselectAllFilters()" class="filter-btn">Unselect All</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Canvas Container -->
+            <div class="canvas-container">
+                <div id="network"></div>
+
+                <!-- Legend Overlay -->
+                <div class="legend">
+                    <h3>Node Types</h3>
+                    <div id="legendContent">
+                        <!-- Dynamically generated legend items -->
+                    </div>
+                </div>
+
+                <!-- Callouts Overlay -->
+                <div class="callouts" id="callouts">
+                    <div class="callout-header">
+                        <span style="font-weight: 600;">💡 Learn About Graph Nodes</span>
+                        <button onclick="document.getElementById('callouts').style.display='none'" class="close-btn">OK</button>
+                    </div>
+                    {{CALLOUTS}}
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Node Details</h3>
+                <div id="nodeDetails">
+                    <p style="color: #64748b; text-align: center; padding: 20px;">
+                        Click on a node to view its details
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Notes -->
+        <div class="educational-notes">
+            <h3>🎓 Educational Insights</h3>
+            {{EDUCATIONAL_NOTES}}
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

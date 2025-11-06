@@ -65,8 +65,9 @@ Each node typically has a **type** (or label) that categorizes what kind of enti
 The power of graph databases emerges from treating these edges as first-class data structures rather than as implicit foreign key references. Each edge connects exactly two nodes: a source (or start) node and a target (or end) node.
 
 <details>
-    <summary>Basic Graph Structure Diagram</summary>
-    Type: diagram
+    <summary>Basic Healthcare Graph Model Diagram</summary>
+    
+    use the hc-graph-generator skill to create a new MicroSim using the following requirements
 
     Purpose: Illustrate the fundamental components of a graph—nodes and edges—using a simple healthcare scenario
 
@@ -97,7 +98,7 @@ The power of graph databases emerges from treating these edges as first-class da
     - Edges: Dark gray with arrowheads indicating direction
     - Background: White
 
-    Implementation: SVG or diagram tool (draw.io, Mermaid, or similar)
+    
 </details>
 
 ## Properties: Adding Information to Nodes and Edges

@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Sarah Chen",
+      "type": "Patient",
+      "properties": {
+        "name": "Sarah Chen",
+        "age": 58,
+        "mrn": "MRN-2024-789012",
+        "admission_date": "2024-10-15"
+      },
+      "shape": "circle",
+      "color": "#3b82f6",
+      "size": 40
+    },
+    {
+      "id": 2,
+      "label": "Dr. Martinez",
+      "type": "Provider",
+      "properties": {
+        "name": "Dr. Elena Martinez",
+        "specialty": "Endocrinology",
+        "npi": "NPI-1234567890",
+        "department": "Diabetes Care Center"
+      },
+      "shape": "circle",
+      "color": "#10b981",
+      "size": 40
+    },
+    {
+      "id": 3,
+      "label": "Type 2 Diabetes",
+      "type": "Diagnosis",
+      "properties": {
+        "name": "Type 2 Diabetes Mellitus",
+        "icd10_code": "E11.9",
+        "category": "Endocrine",
+        "severity": "Moderate"
+      },
+      "shape": "circle",
+      "color": "#f97316",
+      "size": 40
+    },
+    {
+      "id": 4,
+      "label": "Metformin",
+      "type": "Medication",
+      "properties": {
+        "name": "Metformin",
+        "generic_name": "Metformin Hydrochloride",
+        "dosage": "500mg",
+        "frequency": "Twice daily"
+      },
+      "shape": "circle",
+      "color": "#a855f7",
+      "size": 40
+    },
+    {
+      "id": 5,
+      "label": "City Hospital",
+      "type": "Facility",
+      "properties": {
+        "name": "City Hospital",
+        "type": "General Acute Care",
+        "address": "123 Healthcare Blvd",
+        "bed_capacity": 250
+      },
+      "shape": "circle",
+      "color": "#eab308",
+      "size": 40
+    }
+  ],
+  "edges": [
+    {
+      "id": 1,
+      "from": 1,
+      "to": 2,
+      "label": "VISITED_PROVIDER",
+      "arrows": "to",
+      "color": "#475569",
+      "width": 2
+    },
+    {
+      "id": 2,
+      "from": 2,
+      "to": 3,
+      "label": "DIAGNOSED_WITH",
+      "arrows": "to",
+      "color": "#475569",
+      "width": 2
+    },
+    {
+      "id": 3,
+      "from": 1,
+      "to": 3,
+      "label": "HAS_CONDITION",
+      "arrows": "to",
+      "color": "#475569",
+      "width": 2
+    },
+    {
+      "id": 4,
+      "from": 2,
+      "to": 4,
+      "label": "PRESCRIBED",
+      "arrows": "to",
+      "color": "#475569",
+      "width": 2
+    },
+    {
+      "id": 5,
+      "from": 1,
+      "to": 5,
+      "label": "ADMITTED_TO",
+      "arrows": "to",
+      "color": "#475569",
+      "width": 2
+    }
+  ]
+}
