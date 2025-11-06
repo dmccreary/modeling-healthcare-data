@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient-Centered Healthcare Coding Graph</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.js"></script>
+  <link href="https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+    }
+    #mynetwork {
+      width: 100vw;
+      height: 100vh;
+      border: 1px solid #ddd;
+      background: #fff;
+    }
+    .vis-tooltip {
+      font-size: 12px;
+      line-height: 1.3em;
+    }
+  </style>
+</head>
+<body>
+<div id="mynetwork"></div>
+
+<script>
+// -------------------------------
+// Node Data
+// -------------------------------
+const nodes = new vis.DataSet([
+  {
+    id: "patient",
+    label: "Patient",
+    shape: "ellipse",
+    color: { background: "#ffcc80", border: "#f57c00" },
+    font: { bold: true },
+    title: `
+<b>Vertex:</b> Patient<br/>
+<b>Properties:</b><br/>
+- patient_id: STRING<br/>
+- name: STRING<br/>
+- dob: DATE<br/>
+- sex: STRING<br/>
+- mrn: STRING (optional)
+    `
+  },
+  {
+    id: "encounter",
+    label: "Encounter",
+    shape: "box",
+    color: { background: "#e1f5fe", border: "#0288d1" },
+    title: `
+<b>Vertex:</b> Encounter<br/>
+<b>Properties:</b><br/>
+- encounter_id: STRING<br/>
+- encounter_type: STRING (inpatient/outpatient/ED)<br/>
+- start_time: DATETIME<br/>
+- end_time: DATETIME
+    `
+  },
+  {
+    id: "diagnosis",
+    label: "Diagnosis",
+    shape: "box",
+    color: { background: "#f3e5f5", border: "#6a1b9a" },
+    title: `
+<b>Vertex:</b> Diagnosis<br/>
+<b>Properties:</b><br/>
+- diagnosis_id: STRING<br/>
+- rank: STRING (primary/secondary)<br/>
+- onset_date: DATE
+    `
+  },
+  {
+    id: "icd_code",
+    label: "ICD Code",
+    shape: "database",
+    color: { background: "#ede7f6", border: "#5e35b1" },
+    title: `
+<b>Vertex:</b> ICD_Code<br/>
+<b>Properties:</b><br/>
+- code: STRING (e.g. "E11.9")<br/>
+- description: STRING<br/>
+- version: STRING (ICD-10-CM)
+    `
+  },
+  {
+    id: "procedure",
+    label: "Procedure",
+    shape: "box",
+    color: { background: "#fff9c4", border: "#fbc02d" },
+    title: `
+<b>Vertex:</b> Procedure<br/>
+<b>Properties:</b><br/>
+- procedure_id: STRING<br/>
+- performed_time: DATETIME
+    `
+  },
+  {
+    id: "cpt_code",
+    label: "CPT Code",
+    shape: "database",
+    color: { background: "#e0f2f1", border: "#00796b" },
+    title: `
+<b>Vertex:</b> CPT_Code<br/>
+<b>Properties:</b><br/>
+- code: STRING (e.g. "99213")<br/>
+- description: STRING
+    `
+  },
+  {
+    id: "hcpcs_code",
+    label: "HCPCS Code",
+    shape: "database",
+    color: { background: "#fbe9e7", border: "#d84315" },
+    title: `
+<b>Vertex:</b> HCPCS_Code<br/>
+<b>Properties:</b><br/>
+- code: STRING (e.g. "E0114")<br/>
+- description: STRING
+    `
+  },
+  {
+    id: "medication_order",
+    label: "Medication Order",
+    shape: "box",
+    color: { background: "#dcedc8", border: "#558b2f" },
+    title: `
+<b>Vertex:</b> Medication_Order<br/>
+<b>Properties:</b><br/>
+- med_order_id: STRING<br/>
+- dose: STRING<br/>
+- route: STRING<br/>
+- frequency: STRING
+    `
+  },
+  {
+    id: "ndc_code",
+    label: "NDC Drug Code",
+    shape: "database",
+    color: { background: "#fffde7", border: "#f9a825" },
+    title: `
+<b>Vertex:</b> NDC_Code<br/>
+<b>Properties:</b><br/>
+- ndc: STRING (e.g. "00093-3109-01")<br/>
+- drug_name: STRING<br/>
+- strength: STRING<br/>
+- form: STRING
+    `
+  },
+  {
+    id: "provider",
+    label: "Provider",
+    shape: "ellipse",
+    color: { background: "#ffecb3", border: "#ff9800" },
+    title: `
+<b>Vertex:</b> Provider<br/>
+<b>Properties:</b><br/>
+- provider_id: STRING<br/>
+- name: STRING<br/>
+- npi: STRING
+    `
+  },
+  {
+    id: "organization",
+    label: "Organization",
+    shape: "ellipse",
+    color: { background: "#c8e6c9", border: "#2e7d32" },
+    title: `
+<b>Vertex:</b> Organization<br/>
+<b>Properties:</b><br/>
+- org_id: STRING<br/>
+- name: STRING<br/>
+- type: STRING (hospital/clinic)
+    `
+  }
+]);
+
+// -------------------------------
+// Edge Data
+// -------------------------------
+const edges = new vis.DataSet([
+  // Patient -> Encounter
+  {
+    from: "patient",
+    to: "encounter",
+    label: "HAS_ENCOUNTER",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Encounter -> Diagnosis
+  {
+    from: "encounter",
+    to: "diagnosis",
+    label: "HAS_DIAGNOSIS",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Diagnosis -> ICD
+  {
+    from: "diagnosis",
+    to: "icd_code",
+    label: "USES_CODE",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Encounter -> Procedure
+  {
+    from: "encounter",
+    to: "procedure",
+    label: "HAS_PROCEDURE",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Procedure -> CPT
+  {
+    from: "procedure",
+    to: "cpt_code",
+    label: "USES_CODE",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Procedure -> HCPCS
+  {
+    from: "procedure",
+    to: "hcpcs_code",
+    label: "USES_CODE",
+    arrows: "to",
+    dashes: true,
+    font: { align: "middle", size: 10 }
+  },
+  // Encounter -> Medication Order
+  {
+    from: "encounter",
+    to: "medication_order",
+    label: "HAS_MEDICATION",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Medication Order -> NDC
+  {
+    from: "medication_order",
+    to: "ndc_code",
+    label: "USES_CODE",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Encounter -> Provider
+  {
+    from: "encounter",
+    to: "provider",
+    label: "SEEN_BY",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  },
+  // Encounter -> Organization
+  {
+    from: "encounter",
+    to: "organization",
+    label: "AT_ORG",
+    arrows: "to",
+    font: { align: "middle", size: 10 }
+  }
+]);
+
+// -------------------------------
+// Network options
+// -------------------------------
+const container = document.getElementById("mynetwork");
+const data = {
+  nodes: nodes,
+  edges: edges
+};
+
+const options = {
+  interaction: {
+    hover: true,
+    tooltipDelay: 150
+  },
+  physics: {
+    enabled: true,
+    stabilization: {
+      iterations: 400
+    }
+  },
+  layout: {
+    improvedLayout: true
+  },
+  nodes: {
+    borderWidth: 1,
+    shadow: false
+  },
+  edges: {
+    smooth: {
+      type: "continuous"
+    },
+    arrows: {
+      to: { enabled: true, scaleFactor: 0.8 }
+    },
+    color: {
+      color: "#888",
+      highlight: "#222"
+    }
+  }
+};
+
+const network = new vis.Network(container, data, options);
+
+// Center on patient initially
+network.once("stabilizationIterationsDone", function () {
+  network.focus("patient", {
+    scale: 1.2,
+    animation: { duration: 500, easingFunction: "easeInOutQuart" }
+  });
+});
+</script>
+
+</body>
+</html>
