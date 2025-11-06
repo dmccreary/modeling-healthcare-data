@@ -26,6 +26,9 @@ nav:
   - Prompts:
     - Introduction: prompts/index.md
     - Icon: prompts/icon.md
+    - 1 - Analyze Course Description: prompts/01-run-course-description-analyzer.md
+    - 2 - Learning Graph: prompts/02-learning-graph-generator.md
+    - 3 - Install Viewer: prompts/03-run-the-learning-graph-viewer-installer-skill.md
   - Glossary: glossary.md
   - References: references.md
   - Feedback: feedback.md

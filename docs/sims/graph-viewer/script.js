@@ -126,7 +126,8 @@ function generateLegend(groups) {
     checkbox.checked = true;
     checkbox.onchange = function() { toggleGroup(groupName); };
 
-    const label = document.createTextNode(' ' + groupName);
+    // TODO - Fixme - ge the label from the classifierName in the groups of the graph data
+    const label = document.createTextNode(' x' + groupName);
     checkboxCell.appendChild(checkbox);
     checkboxCell.appendChild(label);
 
