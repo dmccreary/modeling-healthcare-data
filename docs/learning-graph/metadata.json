@@ -1,0 +1,10 @@
+{
+  "title": "Modeling Healthcare Data with Graphs",
+  "description": "This course teaches students to model complex healthcare data from multiple perspectives including the patient, provider and payer. Students learn how graph databases excel at modeling interconnected clinical data, and explore graph algorithms, graph data science, embeddings and graph neural networks to enable value-based care systems and reduce healthcare costs.",
+  "creator": "Dan McCreary",
+  "date": "2025-11-06",
+  "version": "1.0",
+  "format": "Learning Graph JSON v1.0",
+  "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+  "license": "CC BY-NC-SA 4.0 DEED"
+}
