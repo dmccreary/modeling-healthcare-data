@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/sims/graph-viewer/">
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-care-pathway-dag/">
       
       
-        <link rel="prev" href="../view-hc-icons/">
+        <link rel="prev" href="../healthcare-graph-fundamentals/">
       
       
-        <link rel="next" href="../codes/">
+        <link rel="next" href="../../prompts/icon/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Graph Viewer - Modeling Healthcare Data with Graphs</title>
+        <title>Clinical Care Pathway DAG - Modeling Healthcare Data with Graphs</title>
       
     
     
@@ -63,11 +63,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Graph Viewer - Modeling Healthcare Data with Graphs" >
+        <meta  property="og:title"  content="Clinical Care Pathway DAG - Modeling Healthcare Data with Graphs" >
       
         <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/sims/graph-viewer/index.png" >
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/sims/clinical-care-pathway-dag/index.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -75,15 +75,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/sims/graph-viewer/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-care-pathway-dag/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Graph Viewer - Modeling Healthcare Data with Graphs" >
+        <meta  name="twitter:title"  content="Clinical Care Pathway DAG - Modeling Healthcare Data with Graphs" >
       
         <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/sims/graph-viewer/index.png" >
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/sims/clinical-care-pathway-dag/index.png" >
       
     
     
@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learning-graph-viewer" class="md-skip">
+        <a href="#clinical-care-pathway-dag" class="md-skip">
           Skip to content
         </a>
       
@@ -139,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Graph Viewer
+              Clinical Care Pathway DAG
             
           </span>
         </div>
@@ -543,32 +543,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Graph Viewer
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
         
   
   
@@ -579,104 +557,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Features
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Features">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#search" class="md-nav__link">
-    <span class="md-ellipsis">
-      Search
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#taxonomy-legend-with-checkboxes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Taxonomy Legend with Checkboxes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#graph-statistics" class="md-nav__link">
-    <span class="md-ellipsis">
-      Graph Statistics
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-graph-demo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Graph Demo
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage Tips
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#implementation-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Implementation Notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use Cases
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -732,10 +612,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../clinical-care-pathway-dag/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Clinical Care Pathway DAG
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -746,6 +648,164 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#care-stages-in-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Care Stages in Order
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dag-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#educational-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Educational Insights
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dag-properties-demonstrated" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG Properties Demonstrated
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DAG Properties Demonstrated">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-cycles" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Cycles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topological-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topological Ordering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Semantics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -974,6 +1034,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       Features
@@ -984,27 +1053,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#search" class="md-nav__link">
+  <a href="#node-types" class="md-nav__link">
     <span class="md-ellipsis">
-      Search
+      Node Types
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#taxonomy-legend-with-checkboxes" class="md-nav__link">
+  <a href="#care-stages-in-order" class="md-nav__link">
     <span class="md-ellipsis">
-      Taxonomy Legend with Checkboxes
+      Care Stages in Order
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#graph-statistics" class="md-nav__link">
+  <a href="#interactive-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Graph Statistics
+      Interactive Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dag-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG Visualization
     </span>
   </a>
   
@@ -1016,18 +1094,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-graph-demo" class="md-nav__link">
+  <a href="#educational-insights" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample Graph Demo
+      Educational Insights
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage-tips" class="md-nav__link">
+  <a href="#data-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage Tips
+      Data Structure
     </span>
   </a>
   
@@ -1043,9 +1121,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-cases" class="md-nav__link">
+  <a href="#dag-properties-demonstrated" class="md-nav__link">
     <span class="md-ellipsis">
-      Use Cases
+      DAG Properties Demonstrated
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DAG Properties Demonstrated">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-cycles" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Cycles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topological-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topological Ordering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Semantics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
     </span>
   </a>
   
@@ -1067,7 +1187,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/sims/graph-viewer/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/sims/clinical-care-pathway-dag/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1075,73 +1195,173 @@
   
 
 
-<h1 id="learning-graph-viewer">Learning Graph Viewer</h1>
-<p><a class="md-button md-button--primary" href="main.html">Run the Learning Graph Viewer</a></p>
-<p>This viewer reads a learning graph data from <a href="../../learning-graph/learning-graph.json">../../learning-graph/learning-graph.json</a>:</p>
-<ol>
-<li><strong>Search Functionality</strong> - Quick node lookup with autocomplete</li>
-<li><strong>Taxonomy Legend Controls</strong> - Filter nodes by category/taxonomy</li>
-</ol>
+<h1 id="clinical-care-pathway-dag">Clinical Care Pathway DAG</h1>
+<p><a class="md-button md-button--primary" href="main.html">View Clinical Care Pathway DAG Fullscreen</a></p>
+<p>A Directed Acyclic Graph (DAG) visualization demonstrating how a patient's clinical care journey progresses through distinct stages without cycles. This pathway shows the temporal progression from admission through discharge, emphasizing the acyclic nature of a single care encounter where patients move forward through stages without returning to the beginning.</p>
+<h2 id="overview">Overview</h2>
+<p>This interactive visualization teaches what a Directed Acyclic Graph (DAG) is and why it's important in healthcare workflows. A DAG is a graph with directed edges (arrows) that has no cycles—meaning you cannot start at one node and follow the arrows to return to that same node. In clinical care pathways, this property ensures that each stage progresses forward in time without reverting to previous states during a single encounter.</p>
+<p>The visualization demonstrates a typical patient care journey from admission through discharge, showing how healthcare workflows naturally form DAG structures where temporal progression is unidirectional.</p>
 <h2 id="features">Features</h2>
-<h3 id="search">Search</h3>
+<h3 id="node-types">Node Types</h3>
 <ul>
-<li>Type-ahead search for node names</li>
-<li>Displays matching results in a dropdown</li>
-<li>Shows node group/category in results</li>
-<li>Clicking a result focuses and highlights the node on the graph</li>
-<li>Only searches visible nodes (respects taxonomy filters)</li>
+<li><strong>CareStage</strong> (Light Blue, Box): Represents a distinct stage in the patient's care pathway</li>
+<li>Properties: stage, stage_number, duration_estimate, responsible_role, description</li>
 </ul>
-<h3 id="taxonomy-legend-with-checkboxes">Taxonomy Legend with Checkboxes</h3>
-<ul>
-<li>Sidebar legend with all node categories</li>
-<li>Toggle visibility of entire node groups</li>
-<li>Color-coded categories matching the graph</li>
-<li>"Check All" and "Uncheck All" buttons for bulk operations</li>
-<li>Collapsible sidebar to maximize graph viewing area</li>
-</ul>
-<h3 id="graph-statistics">Graph Statistics</h3>
-<p>Real-time statistics that update as you filter:
-- <strong>Nodes</strong>: Count of visible nodes
-- <strong>Edges</strong>: Count of visible edges (both endpoints must be visible)
-- <strong>Orphans</strong>: Nodes with no connections (this is an indication that the learning graph needs editing)</p>
-<h2 id="sample-graph-demo">Sample Graph Demo</h2>
-<p>The demo includes a Graph Theory learning graph with 10 taxonomy categories:</p>
-<ul>
-<li><strong>Foundation</strong> (Red) - Core concepts in red boxes that should be pinned to the left</li>
-<li><strong>Types</strong> (Orange) - Graph types</li>
-<li><strong>Representations</strong> (Gold) - Data structures</li>
-<li><strong>Algorithms</strong> (Green) - Basic algorithms</li>
-<li><strong>Paths</strong> (Blue) - Shortest path algorithms</li>
-<li><strong>Flow</strong> (Indigo) - Network flow algorithms</li>
-<li><strong>Advanced</strong> (Violet) - Advanced topics</li>
-<li><strong>Metrics</strong> (Gray) - Centrality measures</li>
-<li><strong>Spectral</strong> (Brown) - Spectral theory</li>
-<li><strong>ML &amp; Networks</strong> (Teal) - Machine learning</li>
-</ul>
-<h2 id="usage-tips">Usage Tips</h2>
+<h3 id="care-stages-in-order">Care Stages in Order</h3>
 <ol>
-<li><strong>Hide a category</strong> - Uncheck a category in the sidebar to hide all nodes in that group</li>
-<li><strong>Search within visible nodes</strong> - Use search to quickly find specific concepts among visible nodes</li>
-<li><strong>Focus on a topic</strong> - Uncheck all categories, then check only the ones you want to study</li>
-<li><strong>Collapse sidebar</strong> - Click the menu button (☰) to hide the sidebar and expand the graph view</li>
-<li><strong>Find orphans</strong> - Check the statistics to see if any nodes lack connections</li>
+<li><strong>Patient Admission</strong> - Initial registration and check-in (30 minutes)</li>
+<li><strong>Initial Assessment</strong> - Vital signs, medical history, chief complaint (45 minutes)</li>
+<li><strong>Diagnostic Testing</strong> - Laboratory tests, imaging, procedures (1-3 hours)</li>
+<li><strong>Test Results Review</strong> - Analyze results and determine diagnosis (30 minutes)</li>
+<li><strong>Treatment Planning</strong> - Develop treatment plan based on diagnosis (30 minutes)</li>
+<li><strong>Treatment Administration</strong> - Medications, procedures, interventions (Variable)</li>
+<li><strong>Monitoring &amp; Evaluation</strong> - Monitor patient response and adjust care (Variable)</li>
+<li><strong>Discharge Planning</strong> - Prepare patient for discharge with instructions (45 minutes)</li>
 </ol>
+<h3 id="interactive-features">Interactive Features</h3>
+<ul>
+<li><strong>Hover Tooltips</strong>: Hover over any node to see its type and properties in a tooltip</li>
+<li><strong>Click for Details</strong>: Click on a node to display full details in the right sidebar</li>
+<li><strong>Search</strong>: Use the search box to find nodes by name or property values</li>
+<li><strong>Filter by Type</strong>: Toggle checkboxes to show or hide specific node types</li>
+<li><strong>Select All/Unselect All</strong>: Bulk controls to quickly filter all node types</li>
+<li><strong>Hierarchical Layout</strong>: Automatic left-to-right layout showing temporal progression</li>
+</ul>
+<h3 id="dag-visualization">DAG Visualization</h3>
+<ul>
+<li><strong>Solid Arrows</strong>: Main pathway edges showing the primary care flow</li>
+<li><strong>Dotted Arrow</strong>: Optional retest path (Test Results Review → Diagnostic Testing) representing conditional workflow without creating a cycle back to admission</li>
+<li><strong>Direction</strong>: Left-to-right flow emphasizing temporal progression</li>
+<li><strong>No Cycles</strong>: Notice that you cannot follow the arrows to return to "Patient Admission" during the same encounter</li>
+</ul>
+<h2 id="educational-insights">Educational Insights</h2>
+<ul>
+<li>
+<p><strong>DAG Definition</strong>: A Directed Acyclic Graph is a graph with directed edges (arrows) that contains no cycles. In this visualization, you can start at any node and follow the arrows, but you will never return to your starting point. This property is crucial for modeling workflows that progress through time.</p>
+</li>
+<li>
+<p><strong>Healthcare Context</strong>: Clinical care pathways during a single encounter naturally form DAGs because patients progress forward through stages (admission → assessment → testing → treatment → discharge) without cycling back to the beginning. While a patient might need additional tests (dotted line), they don't return to admission during the same episode of care.</p>
+</li>
+<li>
+<p><strong>Temporal Semantics</strong>: The DAG structure encodes temporal progression—each stage occurs at a point in time, and the directed edges show the chronological order of events. This makes DAGs ideal for representing processes that unfold over time with clear dependencies between stages.</p>
+</li>
+</ul>
+<h2 id="data-structure">Data Structure</h2>
+<p>The visualization uses a JSON data structure with nodes and edges:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient Admission&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CareStage&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;stage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient Admission&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;stage_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;duration_estimate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;30 minutes&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;responsible_role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admissions Staff&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient registration and initial check-in&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;box&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#7dd3fc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;edges&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CHECK_IN&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;arrows&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;to&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#1e40af&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RETEST_IF_NEEDED&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;arrows&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;to&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#64748b&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;dashes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="implementation-notes">Implementation Notes</h2>
-<p>This viewer follows the standard vis.js architectural patterns:</p>
 <ul>
-<li>Uses <code>vis.DataSet</code> for nodes and edges</li>
-<li>Implements node <code>hidden</code> property for filtering</li>
-<li>Combines separate search and legend features</li>
-<li>Updates statistics dynamically based on visibility</li>
-<li>Maintains consistent styling across features</li>
+<li><strong>Library</strong>: vis-network JavaScript library</li>
+<li><strong>Layout</strong>: Hierarchical left-to-right layout to emphasize temporal flow</li>
+<li><strong>Icons</strong>: None (using colored rectangular boxes)</li>
+<li><strong>Data File</strong>: <code>clinical-care-pathway-dag-data.json</code></li>
+<li><strong>Edge Styles</strong>: Solid edges for main pathway, dashed edge for optional retest path</li>
 </ul>
-<h2 id="use-cases">Use Cases</h2>
-<ul>
-<li><strong>Course planning</strong> - Filter by topic area to design lesson sequences</li>
-<li><strong>Concept exploration</strong> - Search for specific concepts and see their dependencies</li>
-<li><strong>Gap analysis</strong> - Use orphan count to identify disconnected concepts</li>
-<li><strong>Progressive learning</strong> - Start with foundation concepts, gradually enable advanced topics</li>
-</ul>
+<h2 id="dag-properties-demonstrated">DAG Properties Demonstrated</h2>
+<h3 id="no-cycles">No Cycles</h3>
+<p>The defining property of a DAG is the absence of cycles. In this visualization:
+- You can start at "Patient Admission" and follow edges forward
+- You will never return to "Patient Admission" during the same encounter
+- The optional retest edge (dotted) goes from "Test Results Review" back to "Diagnostic Testing" but does NOT create a cycle to admission</p>
+<h3 id="topological-ordering">Topological Ordering</h3>
+<p>DAGs have at least one topological ordering—a linear arrangement of nodes where all edges point forward. In this pathway:
+1. Patient Admission (no incoming edges)
+2. Initial Assessment
+3. Diagnostic Testing
+4. Test Results Review
+5. Treatment Planning
+6. Treatment Administration
+7. Monitoring &amp; Evaluation
+8. Discharge Planning (no outgoing edges except back to testing)</p>
+<h3 id="temporal-semantics">Temporal Semantics</h3>
+<p>The DAG structure naturally represents temporal progression:
+- Nodes represent states at points in time
+- Edges represent transitions between states
+- The acyclic property ensures time moves forward</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>After understanding DAG structures in clinical care pathways:</p>
+<ol>
+<li><strong>Compare to Cyclic Graphs</strong>: Consider chronic care management where patients DO cycle through repeated assessments and treatments over multiple encounters</li>
+<li><strong>Explore Conditional Paths</strong>: Notice the dotted "RETEST_IF_NEEDED" edge—think about other conditional branches in clinical workflows</li>
+<li><strong>Identify Dependencies</strong>: Click on each stage to see duration estimates and responsible roles—consider how these stages depend on previous stages</li>
+<li><strong>Real-World Applications</strong>: Think about other healthcare workflows that form DAGs: medication ordering, surgical procedures, care transitions</li>
+<li><strong>Graph Algorithms</strong>: DAGs enable powerful algorithms like topological sort (scheduling), longest path (critical path analysis), and efficient traversal</li>
+</ol>
 
 
 
@@ -1180,7 +1400,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../view-hc-icons/" class="md-footer__link md-footer__link--prev" aria-label="Previous: View Healcare Icons">
+          <a href="../healthcare-graph-fundamentals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Healthcare Graph Fundamentals">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1190,20 +1410,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                View Healcare Icons
+                Healthcare Graph Fundamentals
               </div>
             </div>
           </a>
         
         
           
-          <a href="../codes/" class="md-footer__link md-footer__link--next" aria-label="Next: Codes">
+          <a href="../../prompts/icon/" class="md-footer__link md-footer__link--next" aria-label="Next: Icon">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Codes
+                Icon
               </div>
             </div>
             <div class="md-footer__button md-icon">

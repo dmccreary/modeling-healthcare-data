@@ -1,0 +1,2690 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/prompts/07-ch-2/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>07 ch 2 - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="07 ch 2 - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/prompts/07-ch-2.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/prompts/07-ch-2/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="07 ch 2 - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/prompts/07-ch-2.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              07 ch 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../index.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feedback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/prompts/07-ch-2.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>07 ch 2</h1>
+
+<p>╭─── Claude Code v2.0.35 ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started                                          │
+│                  Welcome back Dan!                 │ Run /init to create a CLAUDE.md file with instructions for Claude │
+│                                                    │ ───────────────────────────────────────────────────────────────── │
+│                      ▗ ▗   ▖ ▖                     │ Recent activity                                                   │
+│                                                    │ No recent activity                                                │
+│                        ▘▘ ▝▝                       │                                                                   │
+│                                                    │                                                                   │
+│              Sonnet 4.5 · Claude Pro               │                                                                   │
+│  /Users/dan/Documents/ws/modeling-healthcare-data  │                                                                   │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</p>
+<blockquote>
+<p>use the hc-graph-generator skill to create a new MicroSim using the following requirements</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code>Purpose: Illustrate the fundamental components of a graph—nodes and edges—using a simple healthcare scenario
+
+Components to show:
+- 5 circular nodes representing healthcare entities
+- Node 1 (blue): Patient &quot;Sarah Chen&quot;
+- Node 2 (green): Provider &quot;Dr. Martinez&quot;
+- Node 3 (orange): Diagnosis &quot;Type 2 Diabetes&quot;
+- Node 4 (purple): Medication &quot;Metformin&quot;
+- Node 5 (yellow): Facility &quot;City Hospital&quot;
+
+Connections (directed arrows):
+- Arrow from Patient to Provider, labeled &quot;VISITED_PROVIDER&quot;
+- Arrow from Provider to Diagnosis, labeled &quot;DIAGNOSED_WITH&quot;
+- Arrow from Patient to Diagnosis, labeled &quot;HAS_CONDITION&quot;
+- Arrow from Provider to Medication, labeled &quot;PRESCRIBED&quot;
+- Arrow from Patient to Facility, labeled &quot;ADMITTED_TO&quot;
+
+Style: Network diagram with labeled nodes and directed edges
+
+Labels:
+- Each node shows its type (Patient, Provider, etc.) and name
+- Edge labels clearly visible along the arrows
+- Small legend in corner: &quot;Circle = Node (Entity)&quot;, &quot;Arrow = Edge (Relationship)&quot;
+
+Color scheme:
+- Nodes: Color-coded by type as specified above
+- Edges: Dark gray with arrowheads indicating direction
+- Background: White
+</code></pre></div></td></tr></table></div>
+<p>⎿  ⧉ Selected 30 lines from docs/chapters/01-graph-theory-database-foundations/index.md in Visual Studio Code</p>
+<p>⏺ I'll use the hc-graph-generator skill to create this healthcare graph visualization MicroSim for you.</p>
+<blockquote>
+<p>The "hc-graph-generator" skill is running </p>
+<p>The "hc-graph-generator" skill is running </p>
+</blockquote>
+<p>⏺ I'll generate the healthcare graph visualization MicroSim following the skill's workflow. Let me start by gathering the requirements and checking for
+  available icons.</p>
+<p>⏺ Search(pattern: "hc-icons/*.svg")
+  ⎿  Found 0 files </p>
+<p>⏺ Now I'll create the MicroSim with the specified requirements. Let me start by creating the directory structure and generating all necessary files.</p>
+<p>⏺ Bash(mkdir -p /Users/dan/Documents/ws/modeling-healthcare-data/docs/sims/healthcare-graph-fundamentals)
+  ⎿  (No content)</p>
+<p>⏺ Read(.claude/skills/hc-graph-generator/assets/template-main.html)
+  ⎿  Read 83 lines</p>
+<p>⏺ Read(.claude/skills/hc-graph-generator/assets/template-script.js)
+  ⎿  Read 293 lines</p>
+<p>⏺ Read(.claude/skills/hc-graph-generator/assets/template-style.css)
+  ⎿  Read 369 lines</p>
+<p>⏺ Read(.claude/skills/hc-graph-generator/assets/template-index.md)
+  ⎿  Read 71 lines</p>
+<p>⏺ Now I'll generate all the files for the healthcare graph fundamentals MicroSim. Let me start with the data file:</p>
+<p>⏺ Write(docs/sims/healthcare-graph-fundamentals/healthcare-graph-fundamentals-data.json)
+  ⎿  Wrote 122 lines to docs/sims/healthcare-graph-fundamentals/healthcare-graph-fundamentals-data.json
+     {
+       "nodes": [
+         {
+           "id": 1,
+           "label": "Sarah Chen",
+           "type": "Patient",
+           "properties": {
+             "name": "Sarah Chen",
+             "age": 58,
+             "mrn": "MRN-2024-789012",
+     … +112 lines (ctrl+o to expand)</p>
+<p>⏺ Now I'll create the main.html file:</p>
+<p>⏺ Write(docs/sims/healthcare-graph-fundamentals/main.html)
+  ⎿  Wrote 88 lines to docs/sims/healthcare-graph-fundamentals/main.html                                             <br />
+     &lt;!DOCTYPE html&gt;
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Healthcare Graph Fundamentals</title>
+         <link rel="stylesheet" href="style.css">
+         <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+     </head>
+     <body>
+     … +78 lines (ctrl+o to expand)</p>
+<p>⏺ Now I'll create the script.js file:</p>
+<p>⏺ Write(docs/sims/healthcare-graph-fundamentals/script.js)
+  ⎿  Wrote 293 lines to docs/sims/healthcare-graph-fundamentals/script.js
+     // Global variables
+     let nodes, edges, network;
+     let allNodes = [];
+     let allEdges = [];
+     let nodeTypes = new Set();
+     // Initialize on page load
+     window.addEventListener('load', init);
+     async function init() {
+     … +283 lines (ctrl+o to expand)</p>
+<p>⏺ Now I'll copy the style.css file and create the documentation:</p>
+<p>⏺ Bash(cp /Users/dan/Documents/ws/modeling-healthcare-data/.claude/skills/hc-graph-generator/assets/template-style.css
+      /Users/dan/Documents/ws/modeling-healthcare-data…)
+  ⎿  (No content)</p>
+<p>⏺ Now I'll create the index.md documentation:</p>
+<p>⏺ Write(docs/sims/healthcare-graph-fundamentals/index.md)
+  ⎿  Wrote 94 lines to docs/sims/healthcare-graph-fundamentals/index.md                                                                                  <br />
+     # Healthcare Graph Fundamentals
+     <a class="md-button md-button--primary" href="main.html">View Healthcare Graph Fundamentals Fullscreen</a>
+     This visualization demonstrates the fundamental components of a graph—nodes and edges—using a simple healthcare scenario. It features a patient (Sarah
+     Chen) interacting with various healthcare entities including a provider (Dr. Martinez), a diagnosis (Type 2 Diabetes), medication (Metformin), and a
+     facility (City Hospital).
+     ## Overview
+     This interactive visualization illustrates what nodes (entities) and edges (relationships) are in graph theory by modeling a basic healthcare scenario.
+      Each node represents a distinct entity in the healthcare system with its own unique properties, while edges show the relationships between these
+     entities. This foundational example demonstrates how graph databases naturally model real-world healthcare interactions.
+     … +84 lines (ctrl+o to expand)</p>
+<p>⏺ Now I need to add this MicroSim to the site navigation. Let me check the mkdocs.yml file:</p>
+<p>⏺ Read(mkdocs.yml)
+  ⎿  Read 98 lines</p>
+<p>⏺ Now I'll add the MicroSim to the navigation in mkdocs.yml:</p>
+<p>⏺ Update(mkdocs.yml)
+  ⎿  Updated mkdocs.yml with 1 addition                                                    <br />
+       39        - View Healcare Icons: sims/view-hc-icons/index.md
+       40        - Graph Viewer: sims/graph-viewer/index.md
+       41        - Codes: sims/codes/index.md
+       42 +      - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
+       43      - Prompts:
+       44        - Introduction: prompts/index.md
+       45        - Icon: prompts/icon.md</p>
+<p>⏺ Perfect! Let me verify the files were created successfully:</p>
+<p>⏺ Bash(ls -la /Users/dan/Documents/ws/modeling-healthcare-data/docs/sims/healthcare-graph-fundamentals/)
+  ⎿  total 80                                    <br />
+     drwxr-xr-x  7 dan  staff   224 Nov  6 15:14 .
+     drwxr-xr-x@ 7 dan  staff   224 Nov  6 15:12 ..
+     … +5 lines (ctrl+o to expand)</p>
+<p>⏺ Excellent! I've successfully generated the Healthcare Graph Fundamentals MicroSim. Here's a comprehensive summary:</p>
+<p>Successfully Generated HC Graph MicroSim: Healthcare Graph Fundamentals</p>
+<p>Files Created:</p>
+<p>/docs/sims/healthcare-graph-fundamentals/index.md
+  /docs/sims/healthcare-graph-fundamentals/main.html
+  /docs/sims/healthcare-graph-fundamentals/script.js
+  /docs/sims/healthcare-graph-fundamentals/style.css
+  /docs/sims/healthcare-graph-fundamentals/healthcare-graph-fundamentals-data.json</p>
+<p>Data Summary:</p>
+<ul>
+<li>5 nodes across 5 node types<ul>
+<li>Patient (blue): Sarah Chen</li>
+<li>Provider (green): Dr. Martinez</li>
+<li>Diagnosis (orange): Type 2 Diabetes</li>
+<li>Medication (purple): Metformin</li>
+<li>Facility (yellow): City Hospital</li>
+</ul>
+</li>
+<li>5 directed edges (relationships)<ul>
+<li>VISITED_PROVIDER: Patient → Provider</li>
+<li>DIAGNOSED_WITH: Provider → Diagnosis</li>
+<li>HAS_CONDITION: Patient → Diagnosis</li>
+<li>PRESCRIBED: Provider → Medication</li>
+<li>ADMITTED_TO: Patient → Facility</li>
+</ul>
+</li>
+</ul>
+<p>Educational Focus:</p>
+<p>This visualization illustrates the fundamental components of a graph—nodes and edges—using a simple healthcare scenario. It demonstrates how nodes
+  represent entities and edges represent relationships, forming the foundational building blocks of graph databases.</p>
+<p>Key Features:</p>
+<ul>
+<li>All nodes are circles as requested, color-coded by type</li>
+<li>Dark gray arrows with labels showing directed relationships</li>
+<li>Interactive legend showing node types</li>
+<li>Hover tooltips and click-to-view details</li>
+<li>Search and filter capabilities</li>
+<li>Educational callouts and insights</li>
+<li>Heterogeneous properties (each node type has unique property sets)</li>
+</ul>
+<p>Next Steps:</p>
+<ol>
+<li>View the visualization: docs/sims/healthcare-graph-fundamentals/main.html</li>
+<li>Read documentation: docs/sims/healthcare-graph-fundamentals/index.md</li>
+<li>Test locally: Run mkdocs serve and navigate to the MicroSims section</li>
+<li>Embed in chapter: Use this iframe code in your chapter content:</li>
+</ol>
+<iframe src="../../sims/healthcare-graph-fundamentals/main.html" width="100%" height="700px"
+          style="border: 2px solid #e2e8f0; border-radius: 8px;">
+  </iframe>
+
+<p><a class="md-button" href="../../sims/healthcare-graph-fundamentals/main.html">View Fullscreen</a></p>
+<p>The MicroSim has been added to your mkdocs.yml navigation under "MicroSims &gt; Healthcare Graph Fundamentals" and is ready to use!</p>
+<blockquote>
+<p>use the hc-graph-generator skill to create a new MicroSim using the following requirements</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code>Purpose: Demonstrate a DAG structure representing a clinical care pathway where stages progress without cycles
+
+Components to show:
+- 8 rectangular nodes arranged in a flow from left to right and top to bottom
+- Node 1: &quot;Patient Admission&quot;
+- Node 2: &quot;Initial Assessment&quot;
+- Node 3: &quot;Diagnostic Testing&quot;
+- Node 4: &quot;Test Results Review&quot;
+- Node 5: &quot;Treatment Planning&quot;
+- Node 6: &quot;Treatment Administration&quot;
+- Node 7: &quot;Monitoring &amp; Evaluation&quot;
+- Node 8: &quot;Discharge Planning&quot;
+
+Connections (directed arrows showing workflow):
+- Admission → Initial Assessment
+- Initial Assessment → Diagnostic Testing
+- Diagnostic Testing → Test Results Review
+- Test Results Review → Treatment Planning
+- Treatment Planning → Treatment Administration
+- Treatment Administration → Monitoring &amp; Evaluation
+- Monitoring &amp; Evaluation → Discharge Planning
+- (Optional paths) Test Results Review → Additional Testing (dotted line back to node 3 only if new tests needed)
+- Note: No cycles that return to previous stages
+
+Style: Flowchart-style diagram with clear directional flow
+
+Labels:
+- Each node shows the care stage name
+- Arrows labeled with action or transition
+- Annotation: &quot;DAG Property: No cycles—each stage progresses forward in time&quot;
+
+Color scheme:
+- Nodes: Light blue gradient
+- Arrows: Dark blue
+- Optional/conditional paths: Dotted lines
+- Background: White
+
+Visual notes:
+- Add small clock icons to emphasize temporal progression
+- Highlight the acyclic nature with a note: &quot;A patient does not cycle back to admission during a single encounter&quot;
+</code></pre></div></td></tr></table></div>
+<p>⎿  ⧉ Selected 42 lines from docs/chapters/01-graph-theory-database-foundations/index.md in Visual Studio Code</p>
+<p>⏺ I'll use the hc-graph-generator skill to create a DAG (Directed Acyclic Graph) visualization for the clinical care pathway.</p>
+<blockquote>
+<p>The "hc-graph-generator" skill is running </p>
+<p>The "hc-graph-generator" skill is running </p>
+</blockquote>
+<p>⏺ I'll create a DAG visualization for the clinical care pathway. Let me design the data structure and generate all the necessary files.</p>
+<p>⏺ Bash(mkdir -p /Users/dan/Documents/ws/modeling-healthcare-data/docs/sims/clinical-care-pathway-dag)
+  ⎿  (No content)</p>
+<p>⏺ Now I'll create the data file with the 8 care stage nodes and their connections:</p>
+<p>⏺ Write(docs/sims/clinical-care-pathway-dag/clinical-care-pathway-dag-data.json)
+  ⎿  Wrote 200 lines to docs/sims/clinical-care-pathway-dag/clinical-care-pathway-dag-data.json
+     {
+       "nodes": [
+         {
+           "id": 1,
+           "label": "Patient Admission",
+           "type": "CareStage",
+           "properties": {
+             "stage": "Patient Admission",
+             "stage_number": 1,
+             "duration_estimate": "30 minutes",
+     … +190 lines (ctrl+o to expand)</p>
+<p>⏺ Now I'll create the main.html file with custom callouts about DAG properties:</p>
+<p>⏺ Write(docs/sims/clinical-care-pathway-dag/main.html)
+  ⎿  Wrote 88 lines to docs/sims/clinical-care-pathway-dag/main.html                                                 <br />
+     &lt;!DOCTYPE html&gt;
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Clinical Care Pathway DAG</title>
+         <link rel="stylesheet" href="style.css">
+         <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+     </head>
+     <body>
+     … +78 lines (ctrl+o to expand)</p>
+<p>⏺ Now I'll create the script.js file:</p>
+<p>⏺ Write(docs/sims/clinical-care-pathway-dag/script.js)
+  ⎿  Wrote 306 lines to docs/sims/clinical-care-pathway-dag/script.js
+     // Global variables
+     let nodes, edges, network;
+     let allNodes = [];
+     let allEdges = [];
+     let nodeTypes = new Set();
+     // Initialize on page load
+     window.addEventListener('load', init);
+     async function init() {
+     … +296 lines (ctrl+o to expand)</p>
+<p>⏺ Now I'll copy the CSS file and create the documentation:</p>
+<p>⏺ Bash(cp /Users/dan/Documents/ws/modeling-healthcare-data/.claude/skills/hc-graph-generator/assets/template-style.css
+      /Users/dan/Documents/ws/modeling-healthcare-data…)
+  ⎿  (No content)</p>
+<p>⏺ Now I'll create the comprehensive documentation:</p>
+<p>⏺ Write(docs/sims/clinical-care-pathway-dag/index.md)
+  ⎿  Wrote 142 lines to docs/sims/clinical-care-pathway-dag/index.md                                                                                     <br />
+     # Clinical Care Pathway DAG
+     <a class="md-button md-button--primary" href="main.html">View Clinical Care Pathway DAG Fullscreen</a>
+     A Directed Acyclic Graph (DAG) visualization demonstrating how a patient's clinical care journey progresses through distinct stages without cycles.
+     This pathway shows the temporal progression from admission through discharge, emphasizing the acyclic nature of a single care encounter where patients
+     move forward through stages without returning to the beginning.
+     ## Overview
+     This interactive visualization teaches what a Directed Acyclic Graph (DAG) is and why it's important in healthcare workflows. A DAG is a graph with
+     directed edges (arrows) that has no cycles—meaning you cannot start at one node and follow the arrows to return to that same node. In clinical care
+     pathways, this property ensures that each stage progresses forward in time without reverting to previous states during a single encounter.
+     … +132 lines (ctrl+o to expand)</p>
+<p>⏺ Now I'll add this MicroSim to the site navigation:</p>
+<p>⏺ Read(mkdocs.yml)
+  ⎿  Read 10 lines</p>
+<p>⏺ Update(mkdocs.yml)
+  ⎿  Updated mkdocs.yml with 1 addition                                                    <br />
+       40        - Graph Viewer: sims/graph-viewer/index.md
+       41        - Codes: sims/codes/index.md
+       42        - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
+       43 +      - Clinical Care Pathway DAG: sims/clinical-care-pathway-dag/index.md
+       44      - Prompts:
+       45        - Introduction: prompts/index.md
+       46        - Icon: prompts/icon.md</p>
+<p>⏺ Perfect! Let me verify the files were created successfully:</p>
+<p>⏺ Bash(ls -la /Users/dan/Documents/ws/modeling-healthcare-data/docs/sims/clinical-care-pathway-dag/)
+  ⎿  total 88                                    <br />
+     drwxr-xr-x  7 dan  staff   224 Nov  6 15:30 .
+     drwxr-xr-x@ 8 dan  staff   256 Nov  6 15:28 ..
+     … +5 lines (ctrl+o to expand)</p>
+<p>⏺ Excellent! I've successfully generated the Clinical Care Pathway DAG MicroSim. Here's a comprehensive summary:</p>
+<p>✅ Successfully Generated HC Graph MicroSim: Clinical Care Pathway DAG</p>
+<p>📁 Files Created:</p>
+<p>/docs/sims/clinical-care-pathway-dag/index.md
+  /docs/sims/clinical-care-pathway-dag/main.html
+  /docs/sims/clinical-care-pathway-dag/script.js
+  /docs/sims/clinical-care-pathway-dag/style.css
+  /docs/sims/clinical-care-pathway-dag/clinical-care-pathway-dag-data.json</p>
+<p>📊 Data Summary:</p>
+<ul>
+<li>8 nodes (1 node type: CareStage)<ul>
+<li>Patient Admission → Initial Assessment → Diagnostic Testing → Test Results Review → Treatment Planning → Treatment Administration → Monitoring &amp;
+  Evaluation → Discharge Planning</li>
+</ul>
+</li>
+<li>8 directed edges<ul>
+<li>7 solid edges (dark blue) for main pathway</li>
+<li>1 dashed edge (gray) for optional retest path (Test Results Review → Diagnostic Testing)</li>
+</ul>
+</li>
+<li>Node types: CareStage (light blue rectangular boxes)</li>
+</ul>
+<p>🎓 Educational Focus:</p>
+<p>This visualization demonstrates a Directed Acyclic Graph (DAG) representing a clinical care pathway where stages progress without cycles. A DAG is a graph
+   with directed edges that contains no cycles—you cannot start at a node and follow arrows to return to that same node. This property is essential for
+  healthcare workflows where care episodes progress forward through time without returning to the beginning during a single encounter.</p>
+<p>Key DAG Properties Demonstrated:</p>
+<ol>
+<li>No Cycles: Patients never return to admission during the same encounter</li>
+<li>Temporal Progression: Each stage moves forward in time chronologically</li>
+<li>Topological Ordering: Clear linear sequence from admission to discharge</li>
+<li>Conditional Paths: Optional retest edge shows flexibility without creating true cycles</li>
+</ol>
+<p>🎨 Visual Features:</p>
+<ul>
+<li>Hierarchical Layout: Left-to-right flow emphasizing temporal progression</li>
+<li>Color Coding: Light blue nodes (#7dd3fc), dark blue edges (#1e40af)</li>
+<li>Edge Styles: Solid for main pathway, dashed for optional paths</li>
+<li>Educational Callouts: Explains DAG properties and acyclic nature</li>
+<li>Interactive Controls: Search, filter, hover tooltips, click for details</li>
+</ul>
+<p>🔗 Next Steps:</p>
+<ol>
+<li>View the visualization: docs/sims/clinical-care-pathway-dag/main.html</li>
+<li>Read documentation: docs/sims/clinical-care-pathway-dag/index.md</li>
+<li>Test locally: Run mkdocs serve and navigate to MicroSims → Clinical Care Pathway DAG</li>
+<li>Embed in chapter: Use this iframe code in your chapter content:</li>
+</ol>
+<iframe src="../../sims/clinical-care-pathway-dag/main.html" width="100%" height="700px"
+          style="border: 2px solid #e2e8f0; border-radius: 8px;">
+  </iframe>
+
+<p><a class="md-button" href="../../sims/clinical-care-pathway-dag/main.html">View Fullscreen</a></p>
+<p>The MicroSim has been added to your mkdocs.yml navigation under "MicroSims → Clinical Care Pathway DAG" and is ready to use! The visualization clearly
+  demonstrates the DAG property with a flowchart-style layout showing temporal progression through the clinical care pathway.</p>
+<blockquote>
+<p>/clear 
+  ⎿  (no content)</p>
+<p>run the chapter-content-generator on chapter 2 at /docs/chapters/02-*/index.md </p>
+</blockquote>
+<p>⏺ I'll help you run the chapter-content-generator on chapter 2. Let me first find the exact path to chapter 2.</p>
+<p>⏺ Search(pattern: "docs/chapters/02-*/index.md")
+  ⎿  Found 1 file (ctrl+o to expand)</p>
+<p>⏺ Now I'll run the chapter-content-generator skill on chapter 2:</p>
+<blockquote>
+<p>The "chapter-content-generator" skill is running </p>
+<p>The "chapter-content-generator" skill is running </p>
+</blockquote>
+<p>⏺ I'll now run the chapter-content-generator skill for chapter 2. Let me start by verifying the chapter structure and reading level.</p>
+<p>⏺ Read(docs/chapters/02-intro-to-healthcare-systems/index.md)
+  ⎿  Read 41 lines</p>
+<p>⏺ Read(docs/course-description.md)
+  ⎿  Read 206 lines</p>
+<p>⏺ Read(~/.claude/skills/chapter-content-generator/references/reading-levels.md)
+  ⎿  Read 245 lines</p>
+<p>⏺ Read(~/.claude/skills/chapter-content-generator/references/content-element-types.md)
+  ⎿  Read 595 lines</p>
+<p>⏺ Perfect! I have all the information needed. Let me generate comprehensive chapter content for Chapter 2: Introduction to Healthcare Systems.</p>
+<p>Verification Summary:
+  - ✅ Chapter file exists at: /Users/dan/Documents/ws/modeling-healthcare-data/docs/chapters/02-intro-to-healthcare-systems/index.md
+  - ✅ Title: "Introduction to Healthcare Systems"
+  - ✅ Summary present
+  - ✅ 20 concepts listed
+  - ✅ Reading level: College Undergraduate (from course description)</p>
+<p>Now I'll generate the detailed chapter content with appropriate reading level, pedagogical ordering, and rich non-text elements.</p>
+<p>⏺ Read(docs/chapters/02-intro-to-healthcare-systems/index.md)
+  ⎿  Read 41 lines</p>
+<p>⏺ Now I'll generate the comprehensive chapter content:</p>
+<p>⏺ Update(docs/chapters/02-intro-to-healthcare-systems/index.md)
+  ⎿  Updated docs/chapters/02-intro-to-healthcare-systems/index.md with 1238 additions and 1 removal                                                   <br />
+         37  <br />
+         38    ---
+         39  <br />
+         40 -  TODO: Generate Chapter Content
+         40 +  ## Introduction to the Healthcare Ecosystem
+         41 +<br />
+         42 +  The <strong>healthcare system</strong> represents one of the most complex information ecosystems in modern society, characterized by intricate 
+            + relationships among patients, providers, payers, regulatory bodies, pharmaceutical companies, and medical device manufacturers. Unlike 
+            + other industries where data flows are relatively straightforward, healthcare involves multi-directional information exchange across 
+            + organizational boundaries while maintaining strict privacy and security requirements. Understanding this ecosystem is essential for 
+            + designing graph data models that accurately capture the interconnected nature of clinical, financial, and administrative data.
+         43 +<br />
+         44 +  The United States healthcare system faces a distinctive challenge: it delivers world-class medical innovation while simultaneously 
+            + experiencing the highest per-person healthcare costs globally. This paradox stems from systemic inefficiencies in how healthcare services 
+            + are organized, delivered, and reimbursed. Graph database technologies offer promising solutions to these challenges by enabling more 
+            + sophisticated analytics on interconnected healthcare data, facilitating the transition from volume-based to value-based care models, and 
+            + supporting real-time clinical decision-making.
+         45 +<br />
+         46 +  Before diving into data modeling approaches, we must first understand the healthcare domain itself—the stakeholders, workflows, 
+            + terminology, and data standards that shape how healthcare information is captured, exchanged, and analyzed.
+         47 +<br />
+         48 +  <details>
+         49 +      <summary>Healthcare Ecosystem Stakeholder Diagram</summary>
+         50 +      Type: diagram
+         51 +<br />
+         52 +      Purpose: Illustrate the three primary stakeholder perspectives in healthcare and their key relationships
+         53 +<br />
+         54 +      Components to show:
+         55 +      - Central triangle with three points labeled: "Patient", "Provider", and "Payer"
+         56 +      - Each stakeholder as a different colored circle (Patient: blue, Provider: green, Payer: orange)
+         57 +      - Bidirectional arrows connecting all three stakeholders
+         58 +      - Secondary entities around the perimeter: Pharmacy, Lab, Hospital, Clinic, Insurance Company, Employer, Government
+         59 +<br />
+         60 +      Relationships (arrows with labels):
+         61 +      - Patient ↔ Provider: "Care Delivery", "Medical Records"
+         62 +      - Provider ↔ Payer: "Claims", "Reimbursement"
+         63 +      - Payer ↔ Patient: "Coverage", "Premiums"
+         64 +      - Provider → Pharmacy: "Prescriptions"
+         65 +      - Provider → Lab: "Test Orders", "Results"
+         66 +      - Payer → Pharmacy: "Formulary Rules", "Reimbursement"
+         67 +      - Employer → Payer: "Group Coverage"
+         68 +      - Government → Payer: "Regulations", "Medicare/Medicaid"
+         69 +<br />
+         70 +      Style: Network diagram with central triangle and satellite nodes
+         71 +<br />
+         72 +      Visual hierarchy:
+         73 +      - Primary stakeholders (larger circles, bold labels)
+         74 +      - Secondary entities (smaller circles, regular labels)
+         75 +      - Primary relationships (thick arrows)
+         76 +      - Secondary relationships (thin arrows)
+         77 +<br />
+         78 +      Color scheme:
+         79 +      - Patient entities: Blue tones
+         80 +      - Provider entities: Green tones
+         81 +      - Payer entities: Orange tones
+         82 +      - Government/regulatory: Gray
+         83 +<br />
+         84 +      Annotations:
+         85 +      - Label showing "Data flows in all directions"
+         86 +      - Note: "Each relationship generates complex data exchanges"
+         87 +<br />
+         88 +      Implementation: SVG-based diagram or Mermaid diagram embedded in markdown
+         89 +  </details>
+         90 +<br />
+         91 +  ## Understanding Healthcare Economics
+         92 +<br />
+         93 +  ### The Healthcare Cost Crisis
+         94 +<br />
+         95 +  <strong>Healthcare cost</strong> refers to the total financial resources consumed by healthcare services, encompassing direct medical expenses 
+            + (physician fees, hospital charges, medications, procedures) as well as indirect costs (administrative overhead, insurance processing, 
+            + regulatory compliance). In the United States, total healthcare expenditures exceeded $4.3 trillion in 2021, representing approximately 
+            + 18.3% of the nation's GDP—far exceeding other developed nations where healthcare typically represents 9-12% of GDP.
+         96 +<br />
+         97 +  The <strong>per-person healthcare cost</strong> metric provides a normalized view of healthcare spending by dividing total expenditures by population. 
+            + In 2021, the United States averaged approximately $12,900 per person annually, compared to $6,000-7,000 in other high-income countries like
+            +  Germany, Canada, and France. This dramatic cost differential exists despite comparable or sometimes superior health outcomes in 
+            + lower-spending nations, indicating systemic inefficiencies in the U.S. healthcare delivery and payment models.
+         98 +<br />
+         99 +  Several factors contribute to elevated U.S. healthcare costs:
+        100 +<br />
+        101 +  - <strong>Administrative complexity</strong>: Fragmented payer systems require extensive billing, coding, and authorization processes
+        102 +  - <strong>Fee-for-service incentives</strong>: Payment models that reward volume over value
+        103 +  - <strong>Pharmaceutical pricing</strong>: Higher drug prices compared to international markets with price controls
+        104 +  - <strong>Defensive medicine</strong>: Excessive testing and procedures driven by liability concerns
+        105 +  - <strong>Chronic disease burden</strong>: Growing prevalence of expensive chronic conditions requiring long-term management
+        106 +  - <strong>Technology adoption costs</strong>: Expensive medical equipment and electronic health record systems
+        107 +  - <strong>Market consolidation</strong>: Hospital and provider mergers reducing competition
+        108 +<br />
+        109 +  <details>
+        110 +      <summary>Per-Person Healthcare Cost Comparison Chart</summary>
+        111 +      Type: chart
+        112 +<br />
+        113 +      Chart type: Bar chart with dual y-axis
+        114 +<br />
+        115 +      Purpose: Compare per-person healthcare spending across countries and show U.S. cost premium
+        116 +<br />
+        117 +      X-axis: Countries (United States, Switzerland, Germany, Sweden, Netherlands, France, Canada, United Kingdom, Japan)
+        118 +<br />
+        119 +      Y-axis (left): Per-person annual healthcare spending (USD)
+        120 +      Y-axis (right): Healthcare spending as % of GDP
+        121 +<br />
+        122 +      Data series 1 (bars - primary y-axis):
+        123 +      - United States: $12,914
+        124 +      - Switzerland: $7,138
+        125 +      - Germany: $6,731
+        126 +      - Sweden: $6,262
+        127 +      - Netherlands: $6,190
+        128 +      - France: $5,564
+        129 +      - Canada: $5,418
+        130 +      - United Kingdom: $5,087
+        131 +      - Japan: $4,691
+        132 +<br />
+        133 +      Data series 2 (line with markers - secondary y-axis):
+        134 +      - United States: 18.3%
+        135 +      - Switzerland: 11.3%
+        136 +      - Germany: 11.7%
+        137 +      - Sweden: 10.9%
+        138 +      - Netherlands: 10.1%
+        139 +      - France: 11.0%
+        140 +      - Canada: 10.8%
+        141 +      - United Kingdom: 10.2%
+        142 +      - Japan: 10.9%
+        143 +<br />
+        144 +      Color scheme:
+        145 +      - U.S. bar: Red (to highlight)
+        146 +      - Other countries: Blue
+        147 +      - Line graph: Orange with circular markers
+        148 +<br />
+        149 +      Title: "Per-Person Healthcare Spending: United States vs. Comparable Nations (2021)"
+        150 +<br />
+        151 +      Annotations:
+        152 +      - Arrow pointing to U.S. bar: "2x higher than comparable nations"
+        153 +      - Shaded region showing "Typical range for developed nations"
+        154 +      - Data source note: "OECD Health Statistics 2022"
+        155 +<br />
+        156 +      Legend: Position top-right showing bar and line meanings
+        157 +<br />
+        158 +      Implementation: Chart.js library with responsive design
+        159 +  </details>
+        160 +<br />
+        161 +  ### Payment Models: Fee-For-Service vs. Value-Based Care
+        162 +<br />
+        163 +  The <strong>fee-for-service model</strong> (FFS) represents the traditional healthcare payment approach where providers receive reimbursement for each 
+            + individual service, procedure, test, or visit performed. Under FFS, a physician conducting a 15-minute office visit, ordering two lab 
+            + tests, and performing a minor procedure would bill separately for each component. This model creates problematic incentives: providers 
+            + generate more revenue by delivering more services, regardless of whether those services improve patient outcomes or represent the most 
+            + efficient care pathway.
+        164 +<br />
+        165 +  Fee-for-service contributes to healthcare cost escalation through several mechanisms:
+        166 +<br />
+        167 +  - <strong>Volume incentives</strong>: Providers are rewarded for quantity rather than quality of care
+        168 +  - <strong>Fragmented care</strong>: Each specialist focuses on their narrow domain without coordinating across the patient's complete care needs
+        169 +  - <strong>Overutilization</strong>: Financial incentives favor performing additional tests and procedures
+        170 +  - <strong>Reactive rather than preventive</strong>: Payment occurs when patients are sick, not for keeping them healthy
+        171 +  - <strong>Administrative burden</strong>: Each service requires separate coding, billing, and claims processing
+        172 +<br />
+        173 +  Here's a comparison of the fundamental differences between payment models:
+        174 +<br />
+        175 +  | Dimension | Fee-For-Service | Value-Based Care |
+        176 +  |-----------|----------------|------------------|
+        177 +  | <strong>Payment basis</strong> | Per service/procedure | Per patient or outcome |
+        178 +  | <strong>Risk bearer</strong> | Payer assumes risk | Provider assumes partial/full risk |
+        179 +  | <strong>Primary incentive</strong> | Maximize service volume | Improve outcomes, reduce costs |
+        180 +  | <strong>Care coordination</strong> | Minimal | Essential |
+        181 +  | <strong>Data requirements</strong> | Service codes, charges | Outcomes, quality metrics, costs |
+        182 +  | <strong>Preventive care focus</strong> | Low | High |
+        183 +  | <strong>Technology needs</strong> | Billing systems | Analytics, predictive models |
+        184 +  | <strong>Provider mindset</strong> | "How many patients can I see?" | "How can I keep patients healthy?" |
+        185 +<br />
+        186 +  <strong>Value-based care</strong> (VBC) represents a fundamental restructuring of healthcare economics, where providers receive compensation based on 
+            + patient health outcomes rather than service volume. Under value-based models, providers might receive a fixed payment per patient 
+            + (capitation), bonus payments for achieving quality benchmarks, or shared savings when they deliver care more efficiently than baseline 
+            + costs. This alignment of financial incentives with patient outcomes theoretically encourages providers to emphasize prevention, care 
+            + coordination, and evidence-based medicine.
+        187 +<br />
+        188 +  Value-based care models include several variants:
+        189 +<br />
+        190 +  - <strong>Pay-for-Performance (P4P)</strong>: Bonus payments for meeting quality metrics
+        191 +  - <strong>Bundled Payments</strong>: Single payment covering all services for an episode of care
+        192 +  - <strong>Accountable Care Organizations (ACOs)</strong>: Provider groups sharing responsibility for patient populations
+        193 +  - <strong>Capitation</strong>: Fixed per-patient-per-month payment regardless of services consumed
+        194 +  - <strong>Shared Savings/Risk</strong>: Providers share financial gains from cost reductions while maintaining quality
+        195 +<br />
+        196 +  <details>
+        197 +      <summary>Healthcare Payment Model Comparison MicroSim</summary>
+        198 +      Type: microsim
+        199 +<br />
+        200 +      Learning objective: Enable students to explore how different payment models affect provider behavior, healthcare costs, and patient 
+            + outcomes through an interactive simulation
+        201 +<br />
+        202 +      Canvas layout (1000x700px):
+        203 +      - Top section (1000x150): Title and model selector
+        204 +      - Left side (650x550): Visualization area showing patient flow and costs
+        205 +      - Right side (350x550): Control panel and metrics dashboard
+        206 +<br />
+        207 +      Visual elements in simulation area:
+        208 +      - 10 patient icons moving through a healthcare journey
+        209 +      - Provider building (hospital icon)
+        210 +      - Service stations: Office Visit, Lab Tests, Imaging, Procedures, Follow-up
+        211 +      - Money indicators ($) showing costs generated
+        212 +      - Health meter for each patient (green=healthy, yellow=moderate, red=poor)
+        213 +      - Timeline showing days elapsed
+        214 +<br />
+        215 +      Interactive controls (right panel):
+        216 +<br />
+        217 +      1. Payment Model Selector (radio buttons):
+        218 +         - Fee-For-Service
+        219 +         - Value-Based Care (Bundled Payment)
+        220 +         - Value-Based Care (Capitation)
+        221 +         - Value-Based Care (ACO Shared Savings)
+        222 +<br />
+        223 +      2. Patient Population Characteristics (sliders):
+        224 +         - Chronic disease prevalence: 0-50% (default: 30%)
+        225 +         - Health literacy level: Low/Medium/High (default: Medium)
+        226 +         - Complexity of conditions: Simple/Mixed/Complex (default: Mixed)
+        227 +<br />
+        228 +      3. Provider Behavior Parameters (sliders):
+        229 +         - Care coordination investment: 0-100% (default: 50%)
+        230 +         - Preventive care emphasis: 0-100% (default: 50%)
+        231 +         - Technology adoption: 0-100% (default: 50%)
+        232 +<br />
+        233 +      4. Simulation Controls:
+        234 +         - "Start Simulation" button
+        235 +         - "Reset" button
+        236 +         - Speed slider: 1x to 10x (default: 3x)
+        237 +         - "Pause/Resume" button
+        238 +<br />
+        239 +      Metrics Dashboard (updates in real-time):
+        240 +      - Total Cost per Patient: $X,XXX
+        241 +      - Number of Services per Patient: X.X
+        242 +      - Average Health Outcome Score: XX/100
+        243 +      - Provider Revenue: $XX,XXX
+        244 +      - Provider Margin: XX%
+        245 +      - Preventive Services Ratio: XX%
+        246 +      - Emergency Visit Rate: XX%
+        247 +      - Patient Satisfaction: XX/100
+        248 +<br />
+        249 +      Default parameters for each payment model:
+        250 +<br />
+        251 +      Fee-For-Service:
+        252 +      - Base office visit: $150
+        253 +      - Lab test: $100
+        254 +      - Imaging: $400
+        255 +      - Procedure: $800
+        256 +      - Follow-up: $120
+        257 +      - Provider incentive: Maximize service volume
+        258 +      - Typical services per patient: 8-12
+        259 +      - Total cost per patient: $3,500-5,000
+        260 +<br />
+        261 +      Bundled Payment (episode of care):
+        262 +      - Bundle payment: $3,000 per episode
+        263 +      - Provider keeps savings if costs &lt; $3,000
+        264 +      - Provider loses money if costs &gt; $3,000
+        265 +      - Provider incentive: Efficient care delivery
+        266 +      - Typical services per patient: 5-7
+        267 +      - Total cost per patient: $2,500-3,200
+        268 +<br />
+        269 +      Capitation:
+        270 +      - Per-member-per-month: $250
+        271 +      - Covers all services for time period
+        272 +      - Provider incentive: Prevention and care coordination
+        273 +      - Typical services per patient: 3-5
+        274 +      - Total cost per patient: $1,800-2,800
+        275 +<br />
+        276 +      Behavior modeling:
+        277 +<br />
+        278 +      Under Fee-For-Service:
+        279 +      - Patients undergo more diagnostic tests
+        280 +      - More procedures performed
+        281 +      - More follow-up visits scheduled
+        282 +      - Less investment in prevention
+        283 +      - Higher short-term costs
+        284 +      - Outcomes: moderate improvement
+        285 +<br />
+        286 +      Under Value-Based Care:
+        287 +      - More preventive services
+        288 +      - Better care coordination
+        289 +      - Fewer unnecessary tests
+        290 +      - More patient education
+        291 +      - Lower long-term costs
+        292 +      - Outcomes: greater improvement
+        293 +<br />
+        294 +      Animation behavior:
+        295 +      - Patient icons move through service stations
+        296 +      - $ icons pop up when services delivered
+        297 +      - Health meters change color based on care received
+        298 +      - Cost counter increments
+        299 +      - Comparison metrics update continuously
+        300 +      - At end, show side-by-side comparison of models
+        301 +<br />
+        302 +      Visual feedback:
+        303 +      - Highlight differences in care pathways between models
+        304 +      - Show cost accumulation differently (rapid under FFS, controlled under VBC)
+        305 +      - Display outcome improvements with color changes
+        306 +      - Graph total cost trajectory over time
+        307 +<br />
+        308 +      Educational annotations:
+        309 +      - Hover over service stations to see costs and frequency
+        310 +      - Click patient icons to see individual care journey
+        311 +      - Hover over metrics to see explanations
+        312 +      - Display key insights when simulation completes
+        313 +<br />
+        314 +      Implementation notes:
+        315 +      - Use p5.js for rendering and animation
+        316 +      - Store model parameters in JavaScript objects
+        317 +      - Implement simple probability models for care decisions
+        318 +      - Use random variation within realistic ranges
+        319 +      - Ensure reproducible results with seed option
+        320 +      - Include "Explanation" mode that pauses and highlights key decision points
+        321 +<br />
+        322 +      Implementation: p5.js with HTML/CSS controls, deployed in /docs/sims/healthcare-payment-models/
+        323 +  </details>
+        324 +<br />
+        325 +  The transition from fee-for-service to value-based care represents one of the most significant ongoing transformations in U.S. healthcare.
+            +  This shift creates substantial data challenges: VBC requires comprehensive patient data across time and care settings, sophisticated risk 
+            + stratification models, real-time quality measurement, and predictive analytics to identify high-risk patients before expensive 
+            + complications occur. Graph databases excel at these requirements by naturally representing the complex, interconnected relationships among 
+            + patients, providers, conditions, treatments, and outcomes.
+        326 +<br />
+        327 +  ## Key Healthcare Stakeholders
+        328 +<br />
+        329 +  ### The Healthcare Patient
+        330 +<br />
+        331 +  The <strong>healthcare patient</strong> represents an individual receiving or seeking medical services, but in data modeling terms, patients are far 
+            + more than simple demographic records. A patient embodies a complex information entity with temporal clinical history, multiple concurrent 
+            + conditions, medication regimens, procedure histories, care team relationships, insurance coverage, care preferences, family medical 
+            + history, social determinants of health, and longitudinal outcomes. Modern healthcare informatics increasingly recognizes patients as active
+            +  participants in their care rather than passive recipients, which implies bidirectional information flows and patient-generated health 
+            + data.
+        332 +<br />
+        333 +  <strong>Patient demographics</strong> encompass the core identifying and descriptive attributes of individuals within healthcare systems, including 
+            + age, gender, race, ethnicity, language preferences, contact information, emergency contacts, and social determinants of health such as 
+            + education level, housing stability, food security, and transportation access. While traditional healthcare systems limited demographics to 
+            + administrative identifiers, contemporary population health approaches recognize that demographic and social factors significantly influence
+            +  health outcomes and care utilization patterns. Graph models naturally accommodate this complexity by representing demographic attributes 
+            + as node properties while allowing flexible connections to social determinant nodes that may be shared across patient populations.
+        334 +<br />
+        335 +  From a graph modeling perspective, patient nodes serve as central hubs connecting to:
+        336 +<br />
+        337 +  - Provider relationships (primary care physician, specialists, care team members)
+        338 +  - Encounter history (office visits, emergency department visits, hospitalizations, telehealth sessions)
+        339 +  - Condition and diagnosis nodes (chronic diseases, acute conditions, resolved issues)
+        340 +  - Medication regimens (current prescriptions, historical medications, allergies)
+        341 +  - Procedure history (surgeries, diagnostic tests, imaging studies, treatments)
+        342 +  - Insurance coverage (current and historical payer relationships)
+        343 +  - Clinical documents (lab results, radiology reports, clinical notes)
+        344 +  - Care plans and treatment protocols
+        345 +  - Family relationships and medical history
+        346 +  - Social determinants and community resources
+        347 +<br />
+        348 +  ### The Healthcare Provider
+        349 +<br />
+        350 +  The <strong>healthcare provider</strong> encompasses individuals and organizations delivering medical services, including physicians (primary care and 
+            + specialists), nurses, physician assistants, nurse practitioners, therapists, hospitals, clinics, urgent care centers, skilled nursing 
+            + facilities, home health agencies, and ancillary service providers such as laboratories and imaging centers. In healthcare data ecosystems, 
+            + providers function as both data generators (creating clinical documentation, ordering tests, prescribing medications) and data consumers 
+            + (reviewing patient histories, analyzing test results, coordinating care across teams).
+        351 +<br />
+        352 +  Provider entities in graph models require rich property sets and relationship structures:
+        353 +<br />
+        354 +  <strong>Individual provider properties</strong>:
+        355 +<br />
+        356 +  - National Provider Identifier (NPI)
+        357 +  - Specialties and subspecialties
+        358 +  - Board certifications
+        359 +  - License jurisdictions
+        360 +  - Practice locations
+        361 +  - Hospital affiliations
+        362 +  - Accepting new patients status
+        363 +  - Languages spoken
+        364 +<br />
+        365 +  <strong>Organizational provider properties</strong>:
+        366 +<br />
+        367 +  - Facility type (hospital, clinic, urgent care, etc.)
+        368 +  - Bed capacity (for hospitals)
+        369 +  - Service lines offered
+        370 +  - Accreditation status
+        371 +  - Quality ratings
+        372 +  - Medicare/Medicaid participation
+        373 +  - Insurance networks participated
+        374 +<br />
+        375 +  <strong>Provider relationships in graph models</strong>:
+        376 +<br />
+        377 +  - Affiliation: Individual provider → Organization provider
+        378 +  - Referral networks: Provider → Provider (referral patterns)
+        379 +  - Care team: Multiple providers → Patient (coordinated care)
+        380 +  - Coverage arrangements: Provider → Provider (call coverage, backup)
+        381 +  - Supervision: Attending physician → Resident/Fellow
+        382 +  - Consultation: Requesting provider → Consulting provider
+        383 +<br />
+        384 +  ### The Healthcare Payer
+        385 +<br />
+        386 +  The <strong>healthcare payer</strong> represents entities that finance healthcare services, primarily insurance companies (commercial insurers, Blue 
+            + Cross Blue Shield plans), government programs (Medicare, Medicaid, TRICARE, Veterans Affairs), and self-insured employers. Payers play a 
+            + critical role in healthcare data ecosystems by adjudicating claims, negotiating provider payment rates, establishing coverage policies, 
+            + managing formularies, detecting fraud and abuse, and increasingly, driving quality improvement initiatives through value-based payment 
+            + models.
+        387 +<br />
+        388 +  Payer organizations maintain extensive data on:
+        389 +<br />
+        390 +  - Member enrollment and eligibility
+        391 +  - Benefit plan designs and coverage rules
+        392 +  - Provider networks and contracted rates
+        393 +  - Claims history (submitted, adjudicated, paid, denied)
+        394 +  - Prior authorization requirements and approvals
+        395 +  - Utilization management (case management, disease management)
+        396 +  - Quality metrics and performance scorecards
+        397 +  - Fraud, waste, and abuse detection patterns
+        398 +  - Pharmacy benefits and formulary rules
+        399 +  - Care management programs
+        400 +<br />
+        401 +  The payer-provider-patient triangle creates complex data exchange requirements:
+        402 +<br />
+        403 +  | Data Flow | Information Exchanged | Purpose |
+        404 +  |-----------|----------------------|---------|
+        405 +  | Patient → Payer | Enrollment applications, eligibility verification requests | Establish/confirm coverage |
+        406 +  | Payer → Patient | Insurance cards, benefit explanations, claim denials, EOBs | Communicate coverage details |
+        407 +  | Provider → Payer | Claims, prior authorization requests, medical records | Seek reimbursement, approval |
+        408 +  | Payer → Provider | Claim adjudication results, authorization decisions, payment | Reimburse services, manage utilization |
+        409 +  | Payer → Patient → Provider | Insurance information, coverage details | Enable billing and care decisions |
+        410 +<br />
+        411 +  ## Clinical Operations and Healthcare Data
+        412 +<br />
+        413 +  ### Medical Encounters
+        414 +<br />
+        415 +  A <strong>medical encounter</strong> represents any interaction between a patient and healthcare provider for the purpose of assessment, diagnosis, 
+            + treatment, counseling, or preventive care. Encounters vary widely in type, setting, duration, and complexity, ranging from brief telehealth
+            +  check-ins to multi-day intensive care hospitalizations. From a data modeling perspective, encounters serve as temporal containers that 
+            + link patients, providers, locations, diagnoses, procedures, medications, and charges within a specific timeframe.
+        416 +<br />
+        417 +  Encounter types include:
+        418 +<br />
+        419 +  - <strong>Ambulatory/Outpatient</strong>: Office visits, clinic appointments, urgent care visits
+        420 +  - <strong>Emergency</strong>: Emergency department visits for acute conditions
+        421 +  - <strong>Inpatient</strong>: Hospital admissions requiring overnight stays
+        422 +  - <strong>Observation</strong>: Short-term hospital monitoring without formal admission
+        423 +  - <strong>Surgical</strong>: Operating room procedures (may be inpatient or outpatient)
+        424 +  - <strong>Telehealth</strong>: Virtual visits via video, phone, or asynchronous messaging
+        425 +  - <strong>Home Health</strong>: Provider visits to patient's residence
+        426 +  - <strong>Skilled Nursing</strong>: Care in long-term care facilities
+        427 +  - <strong>Hospice</strong>: End-of-life care services
+        428 +<br />
+        429 +  Each encounter generates substantial structured and unstructured data:
+        430 +<br />
+        431 +  <strong>Structured encounter data</strong>:
+        432 +<br />
+        433 +  - Encounter ID (unique identifier)
+        434 +  - Encounter type and class
+        435 +  - Admission/start date-time
+        436 +  - Discharge/end date-time
+        437 +  - Primary and secondary diagnoses (ICD codes)
+        438 +  - Procedures performed (CPT/HCPCS codes)
+        439 +  - Chief complaint and reason for visit
+        440 +  - Attending provider and care team
+        441 +  - Facility and department location
+        442 +  - Disposition (discharged home, admitted, transferred, etc.)
+        443 +  - Length of stay
+        444 +  - Total charges and expected reimbursement
+        445 +<br />
+        446 +  <strong>Unstructured encounter data</strong>:
+        447 +<br />
+        448 +  - Provider clinical notes (history and physical, progress notes, discharge summaries)
+        449 +  - Nursing documentation
+        450 +  - Radiology and lab reports
+        451 +  - Pathology findings
+        452 +  - Operative reports
+        453 +  - Consultation notes
+        454 +<br />
+        455 +  <details>
+        456 +      <summary>Clinical Encounter Workflow Diagram</summary>
+        457 +      Type: workflow
+        458 +<br />
+        459 +      Purpose: Illustrate the typical flow of a patient encounter from arrival through billing, showing data capture points and system 
+            + interactions
+        460 +<br />
+        461 +      Visual style: Swimlane flowchart with four lanes representing different roles/systems
+        462 +<br />
+        463 +      Swimlanes:
+        464 +      1. Patient
+        465 +      2. Clinical Staff (Registration, Nursing, Physician)
+        466 +      3. Clinical Systems (EHR, CPOE, Lab/Imaging)
+        467 +      4. Administrative Systems (Billing, Claims)
+        468 +<br />
+        469 +      Workflow steps:
+        470 +<br />
+        471 +      <strong>Patient Lane:</strong>
+        472 +      1. Patient Arrives
+        473 +         Hover: "Patient presents to clinic or hospital"
+        474 +<br />
+        475 +      2. Provides Information
+        476 +         Hover: "Demographics, insurance, chief complaint"
+        477 +<br />
+        478 +      3. Undergoes Care
+        479 +         Hover: "Examination, tests, procedures, treatments"
+        480 +<br />
+        481 +      4. Receives Instructions
+        482 +         Hover: "Discharge instructions, prescriptions, follow-up appointments"
+        483 +<br />
+        484 +      5. Receives Bill/EOB
+        485 +         Hover: "Explanation of Benefits showing charges and coverage"
+        486 +<br />
+        487 +      <strong>Clinical Staff Lane:</strong>
+        488 +      1. Registration
+        489 +         Hover: "Verify identity, check insurance eligibility, collect copay"
+        490 +         Data captured: Demographics, insurance, reason for visit
+        491 +<br />
+        492 +      2. Triage/Vitals
+        493 +         Hover: "Record vital signs, chief complaint, medications, allergies"
+        494 +         Data captured: Blood pressure, temperature, pulse, height, weight
+        495 +<br />
+        496 +      3. Provider Assessment
+        497 +         Hover: "History, physical exam, differential diagnosis"
+        498 +         Data captured: History of present illness, review of systems, exam findings
+        499 +<br />
+        500 +      4. Order Entry
+        501 +         Hover: "Labs, imaging, medications, procedures"
+        502 +         Data captured: Orders sent to CPOE
+        503 +<br />
+        504 +      5. Results Review
+        505 +         Hover: "Interpret test results, revise diagnosis"
+        506 +         Data captured: Results integrated into EHR
+        507 +<br />
+        508 +      6. Documentation
+        509 +         Hover: "Clinical notes, diagnosis codes, procedure codes"
+        510 +         Data captured: Encounter note, ICD codes, CPT codes
+        511 +<br />
+        512 +      7. Discharge/Follow-up
+        513 +         Hover: "Prescriptions, referrals, next appointment"
+        514 +         Data captured: Care plan, prescriptions, referral orders
+        515 +<br />
+        516 +      <strong>Clinical Systems Lane:</strong>
+        517 +      1. EHR: Create Encounter
+        518 +         Hover: "New encounter record created with patient context"
+        519 +<br />
+        520 +      2. CPOE: Receive Orders
+        521 +         Hover: "Computerized Provider Order Entry processes orders"
+        522 +<br />
+        523 +      3. Lab/Imaging: Perform Tests
+        524 +         Hover: "Diagnostic services execute ordered tests"
+        525 +<br />
+        526 +      4. Results Interface
+        527 +         Hover: "Test results flow back to EHR via HL7/FHIR"
+        528 +<br />
+        529 +      5. EHR: Document Finalization
+        530 +         Hover: "Provider signs note, triggers billing process"
+        531 +<br />
+        532 +      <strong>Administrative Systems Lane:</strong>
+        533 +      1. Eligibility Check
+        534 +         Hover: "Real-time verification of insurance coverage"
+        535 +         System: Claims clearinghouse or payer portal
+        536 +<br />
+        537 +      2. Charge Capture
+        538 +         Hover: "Extract billable services from clinical documentation"
+        539 +         System: Charge Description Master (CDM)
+        540 +<br />
+        541 +      3. Medical Coding
+        542 +         Hover: "Assign ICD, CPT, HCPCS codes to encounter"
+        543 +         System: Coding module (may use AI/NLP assistance)
+        544 +<br />
+        545 +      4. Claim Generation
+        546 +         Hover: "Create CMS-1500 or UB-04 claim with all required data elements"
+        547 +         System: Billing system
+        548 +<br />
+        549 +      5. Claim Submission
+        550 +         Hover: "Electronic submission to payer via EDI 837 transaction"
+        551 +         System: Claims clearinghouse
+        552 +<br />
+        553 +      6. Adjudication Wait
+        554 +         Hover: "Payer reviews claim, determines payment"
+        555 +         System: Payer adjudication engine
+        556 +<br />
+        557 +      7. Payment Posting
+        558 +         Hover: "Record payment, contractual adjustments, patient responsibility"
+        559 +         System: Billing system accounts receivable
+        560 +<br />
+        561 +      Decision points:
+        562 +      - After Registration: Is eligibility active? (Yes → Continue, No → Patient pay or reschedule)
+        563 +      - After Provider Assessment: Admit to hospital? (Yes → Inpatient workflow, No → Continue outpatient)
+        564 +      - After Documentation: Coding complete? (Yes → Submit claim, No → Return to coder)
+        565 +      - After Claim Submission: Claim accepted? (Yes → Wait for payment, No → Fix errors and resubmit)
+        566 +<br />
+        567 +      Color coding:
+        568 +      - Patient activities: Blue
+        569 +      - Clinical activities: Green
+        570 +      - System processes: Purple
+        571 +      - Financial processes: Orange
+        572 +      - Decision points: Yellow diamonds
+        573 +<br />
+        574 +      Annotations:
+        575 +      - Typical timeframes for key stages
+        576 +      - Data standards used (HL7, FHIR, X12)
+        577 +      - Common pain points and delays
+        578 +<br />
+        579 +      Implementation: Mermaid diagram or interactive SVG with hover states, embedded in markdown or as separate HTML file
+        580 +  </details>
+        581 +<br />
+        582 +  ### Clinical Workflows
+        583 +<br />
+        584 +  <strong>Clinical workflow</strong> describes the sequence of tasks, decisions, handoffs, and information exchanges that occur during healthcare 
+            + delivery. Clinical workflows span multiple timeframes—from seconds (responding to a cardiac arrest) to years (managing chronic disease 
+            + progression)—and involve coordination across diverse roles, systems, and organizations. Effective graph modeling of healthcare data 
+            + requires understanding these workflows because they determine how data elements relate temporally and causally.
+        585 +<br />
+        586 +  Common clinical workflows include:
+        587 +<br />
+        588 +  <strong>Ambulatory Care Workflow</strong>:
+        589 +  1. Appointment scheduling and pre-visit planning
+        590 +  2. Check-in and registration
+        591 +  3. Triage and vital signs collection
+        592 +  4. Provider encounter (history, examination, assessment, plan)
+        593 +  5. Order entry (labs, imaging, medications, referrals)
+        594 +  6. Patient education and discharge instructions
+        595 +  7. Follow-up appointment scheduling
+        596 +  8. Results notification and management
+        597 +<br />
+        598 +  <strong>Inpatient Care Workflow</strong>:
+        599 +  1. Admission (emergency department, direct admit, transfer)
+        600 +  2. Initial assessment and order set activation
+        601 +  3. Daily rounding and progress notes
+        602 +  4. Order management and care plan updates
+        603 +  5. Multidisciplinary care coordination (nursing, pharmacy, case management, therapy)
+        604 +  6. Transition planning (discharge planning, post-acute care arrangements)
+        605 +  7. Discharge and follow-up
+        606 +<br />
+        607 +  <strong>Medication Management Workflow</strong>:
+        608 +  1. Provider prescribing (with clinical decision support checks)
+        609 +  2. Pharmacist verification and screening
+        610 +  3. Dispensing and labeling
+        611 +  4. Nursing administration (inpatient) or patient pickup (outpatient)
+        612 +  5. Medication reconciliation at transitions of care
+        613 +  6. Adherence monitoring and refill management
+        614 +  7. Adverse event monitoring and reporting
+        615 +<br />
+        616 +  ### Electronic Health Records
+        617 +<br />
+        618 +  The <strong>electronic health record</strong> (EHR) serves as the digital repository for patient clinical data, replacing paper charts with structured 
+            + and unstructured electronic information. EHR systems capture, store, and present patient data to support clinical decision-making, care 
+            + coordination, quality measurement, and regulatory reporting. Unlike simple digitized records, modern EHRs include clinical decision 
+            + support, computerized provider order entry (CPOE), interoperability interfaces, patient portals, population health analytics, and revenue 
+            + cycle integration.
+        619 +<br />
+        620 +  Major EHR vendors include Epic, Cerner (Oracle Health), Meditech, Allscripts, athenahealth, and eClinicalWorks, each with proprietary data
+            +  models and varying interoperability capabilities. This fragmentation creates challenges for healthcare data integration, as different EHRs
+            +  structure information differently despite adherence to common standards like HL7 and FHIR.
+        621 +<br />
+        622 +  Core EHR functionality:
+        623 +<br />
+        624 +  - <strong>Clinical documentation</strong>: Notes, templates, voice recognition, natural language processing
+        625 +  - <strong>Medication management</strong>: ePrescribing, medication reconciliation, drug interaction checking
+        626 +  - <strong>Order entry</strong>: Labs, imaging, procedures, consultations with clinical decision support
+        627 +  - <strong>Results management</strong>: Lab, pathology, and radiology result review and acknowledgment
+        628 +  - <strong>Problem lists</strong>: Active and historical diagnoses and conditions
+        629 +  - <strong>Care planning</strong>: Treatment protocols, goals, interventions, care team coordination
+        630 +  - <strong>Patient portal</strong>: Secure messaging, test result access, appointment scheduling, bill payment
+        631 +<br />
+        632 +  EHR data challenges for graph modeling:
+        633 +<br />
+        634 +  - <strong>Data model variability</strong>: Each EHR structures data differently (relational tables, objects, documents)
+        635 +  - <strong>Unstructured content</strong>: Clinical notes contain rich information not captured in structured fields
+        636 +  - <strong>Temporal complexity</strong>: Data elements have effective dates, update histories, and validity periods
+        637 +  - <strong>Relationship inference</strong>: Many relationships are implicit and must be inferred from context
+        638 +  - <strong>Data quality issues</strong>: Missing data, inconsistent terminology, duplicate records, data entry errors
+        639 +<br />
+        640 +  ## Medical Terminology and Coding Systems
+        641 +<br />
+        642 +  ### Medical Terminology
+        643 +<br />
+        644 +  <strong>Medical terminology</strong> represents the specialized language of healthcare, built from Greek and Latin roots combined systematically to 
+            + describe anatomical structures, physiological processes, pathological conditions, diagnostic procedures, and therapeutic interventions. 
+            + Medical terms follow consistent construction rules: roots (word cores), prefixes (modifiers preceding roots), and suffixes (modifiers 
+            + following roots). For example, "gastroenterology" combines "gastro-" (stomach), "entero-" (intestine), and "-logy" (study of) to indicate 
+            + the study of digestive system disorders.
+        645 +<br />
+        646 +  Understanding medical terminology is essential for healthcare data modeling because:
+        647 +<br />
+        648 +  - <strong>Precision</strong>: Medical terms convey specific clinical meanings that general language cannot capture
+        649 +  - <strong>Standardization</strong>: Consistent terminology enables clear communication across providers and systems
+        650 +  - <strong>Semantic relationships</strong>: Term structure reveals hierarchical and relational connections (e.g., all "-itis" terms indicate 
+            + inflammation)
+        651 +  - <strong>Code mapping</strong>: Medical terminology forms the foundation for medical coding systems
+        652 +<br />
+        653 +  Common medical terminology patterns:
+        654 +<br />
+        655 +  | Component | Type | Example | Meaning |
+        656 +  |-----------|------|---------|---------|
+        657 +  | <strong>cardi-</strong> | Root | cardiology | Heart |
+        658 +  | <strong>-itis</strong> | Suffix | arthritis | Inflammation |
+        659 +  | <strong>hyper-</strong> | Prefix | hypertension | Above/excessive |
+        660 +  | <strong>-ectomy</strong> | Suffix | appendectomy | Surgical removal |
+        661 +  | <strong>nephro-</strong> | Root | nephrology | Kidney |
+        662 +  | <strong>-pathy</strong> | Suffix | neuropathy | Disease/disorder |
+        663 +  | <strong>brady-</strong> | Prefix | bradycardia | Slow |
+        664 +  | <strong>-plasty</strong> | Suffix | rhinoplasty | Surgical repair |
+        665 +<br />
+        666 +  ### Medical Coding Systems Overview
+        667 +<br />
+        668 +  A <strong>medical coding system</strong> translates clinical documentation (diagnoses, procedures, services, supplies, medications) into standardized 
+            + alphanumeric codes used for claims submission, statistical analysis, quality measurement, and population health management. Medical coding 
+            + serves as the bridge between clinical care and healthcare finance, enabling payers to determine reimbursement based on documented services.
+            +  Multiple coding systems coexist in healthcare, each serving distinct purposes and governed by different organizations.
+        669 +<br />
+        670 +  The primary medical coding systems in U.S. healthcare are:
+        671 +<br />
+        672 +  - <strong>ICD (International Classification of Diseases)</strong>: Diagnosis and procedure codes
+        673 +  - <strong>CPT (Current Procedural Terminology)</strong>: Physician services and procedures
+        674 +  - <strong>HCPCS (Healthcare Common Procedure Coding System)</strong>: Services, supplies, and equipment not in CPT
+        675 +  - <strong>NDC (National Drug Codes)</strong>: Pharmaceutical products and medications
+        676 +  - <strong>LOINC (Logical Observation Identifiers Names and Codes)</strong>: Lab and clinical observations
+        677 +  - <strong>SNOMED CT (Systematized Nomenclature of Medicine Clinical Terms)</strong>: Comprehensive clinical terminology
+        678 +  - <strong>RxNorm</strong>: Normalized medication names and relationships
+        679 +<br />
+        680 +  <details>
+        681 +      <summary>Medical Coding Systems Interactive Infographic</summary>
+        682 +      Type: infographic
+        683 +<br />
+        684 +      Purpose: Provide a visual overview of the major medical coding systems, their purposes, governing bodies, and relationships
+        685 +<br />
+        686 +      Layout: Central hub-and-spoke design with "Medical Coding Systems" at center
+        687 +<br />
+        688 +      Main coding systems (spokes radiating from center):
+        689 +<br />
+        690 +      1. <strong>ICD (International Classification of Diseases)</strong>
+        691 +         Position: Top center
+        692 +         Color: Red
+        693 +         Icon: Medical diagnosis symbol
+        694 +         Click to expand details:
+        695 +         - Full name: International Classification of Diseases, 10th/11th Revision
+        696 +         - Governing body: World Health Organization (WHO)
+        697 +         - U.S. version: ICD-10-CM (Clinical Modification) for diagnoses
+        698 +         - U.S. procedure codes: ICD-10-PCS (Procedure Coding System)
+        699 +         - Purpose: Classify diseases, injuries, causes of death
+        700 +         - Structure: Hierarchical categories with 3-7 character codes
+        701 +         - Example: E11.9 = Type 2 diabetes mellitus without complications
+        702 +         - Use cases: Claims, epidemiology, quality measures, mortality statistics
+        703 +         - Update frequency: Annual (October 1)
+        704 +<br />
+        705 +      2. <strong>CPT (Current Procedural Terminology)</strong>
+        706 +         Position: Upper right
+        707 +         Color: Blue
+        708 +         Icon: Stethoscope/procedure symbol
+        709 +         Click to expand details:
+        710 +         - Full name: Current Procedural Terminology
+        711 +         - Governing body: American Medical Association (AMA)
+        712 +         - Purpose: Describe physician services, procedures, diagnostic tests
+        713 +         - Structure: 5-digit codes with optional 2-digit modifiers
+        714 +         - Categories: Category I (common procedures), Category II (quality measures), Category III (emerging procedures)
+        715 +         - Example: 99213 = Office visit, established patient, level 3
+        716 +         - Use cases: Professional fee billing, utilization tracking, performance measurement
+        717 +         - Update frequency: Annual (January 1)
+        718 +<br />
+        719 +      3. <strong>HCPCS (Healthcare Common Procedure Coding System)</strong>
+        720 +         Position: Right
+        721 +         Color: Green
+        722 +         Icon: Medical supply/durable medical equipment
+        723 +         Click to expand details:
+        724 +         - Full name: Healthcare Common Procedure Coding System
+        725 +         - Governing body: Centers for Medicare &amp; Medicaid Services (CMS)
+        726 +         - Structure: Level I = CPT codes, Level II = National codes (A-V)
+        727 +         - Purpose: Services, supplies, equipment, ambulance, drugs not in CPT
+        728 +         - Example: E0163 = Commode chair, mobile or stationary
+        729 +         - Use cases: Medicare/Medicaid billing, durable medical equipment, supplies
+        730 +         - Update frequency: Quarterly
+        731 +<br />
+        732 +      4. <strong>NDC/Drug Codes</strong>
+        733 +         Position: Lower right
+        734 +         Color: Purple
+        735 +         Icon: Pill/medication bottle
+        736 +         Click to expand details:
+        737 +         - Full name: National Drug Code
+        738 +         - Governing body: U.S. Food and Drug Administration (FDA)
+        739 +         - Structure: 10-11 digit code (labeler-product-package)
+        740 +         - Purpose: Uniquely identify drug products
+        741 +         - Example: 0071-0155-23 = Lipitor 20mg, 90 tablets
+        742 +         - Related systems: RxNorm (normalized names), GPI (therapeutic classification)
+        743 +         - Use cases: Pharmacy billing, formulary management, drug utilization review
+        744 +         - Update frequency: Continuous as products registered
+        745 +<br />
+        746 +      5. <strong>LOINC (Lab/Clinical Observations)</strong>
+        747 +         Position: Lower left
+        748 +         Color: Orange
+        749 +         Icon: Laboratory test tube
+        750 +         Click to expand details:
+        751 +         - Full name: Logical Observation Identifiers Names and Codes
+        752 +         - Governing body: Regenstrief Institute
+        753 +         - Purpose: Identify laboratory and clinical observations
+        754 +         - Structure: Numeric codes with six-part names
+        755 +         - Example: 2339-0 = Glucose [Mass/volume] in Blood
+        756 +         - Use cases: Lab results exchange, clinical observations, vital signs
+        757 +         - Update frequency: Biannually
+        758 +<br />
+        759 +      6. <strong>SNOMED CT (Clinical Terminology)</strong>
+        760 +         Position: Left
+        761 +         Color: Teal
+        762 +         Icon: Medical hierarchy tree
+        763 +         Click to expand details:
+        764 +         - Full name: Systematized Nomenclature of Medicine Clinical Terms
+        765 +         - Governing body: International Health Terminology Standards Development Organisation (IHTSDO)
+        766 +         - Purpose: Comprehensive clinical terminology and ontology
+        767 +         - Structure: Concept codes with hierarchical relationships
+        768 +         - Example: 44054006 = Diabetes mellitus type 2
+        769 +         - Use cases: EHR documentation, clinical decision support, semantic interoperability
+        770 +         - Update frequency: Biannual releases
+        771 +<br />
+        772 +      Relationship connectors (lines between spokes):
+        773 +      - ICD ↔ CPT: "Often billed together" (dotted line)
+        774 +      - CPT ↔ HCPCS: "HCPCS Level I = CPT" (solid line)
+        775 +      - ICD ↔ SNOMED CT: "SNOMED more granular than ICD" (dotted line)
+        776 +      - NDC ↔ HCPCS: "Some HCPCS codes map to drug categories" (dotted line)
+        777 +      - All systems → Center: "All contribute to healthcare data ecosystem"
+        778 +<br />
+        779 +      Interactive features:
+        780 +      - Hover over coding system: Show brief description and icon highlight
+        781 +      - Click coding system: Expand detailed panel with full information
+        782 +      - Click relationship line: Show mapping examples between systems
+        783 +      - Toggle button: "Show update timelines" (displays timeline view of update frequencies)
+        784 +      - Search box: Enter a condition/procedure to see which coding systems apply
+        785 +<br />
+        786 +      Visual enhancements:
+        787 +      - Each coding system uses distinct color
+        788 +      - Icons represent primary use case
+        789 +      - Pulsing animation on hover
+        790 +      - Smooth expand/collapse animations
+        791 +      - Clean, modern flat design
+        792 +<br />
+        793 +      Annotations:
+        794 +      - "All U.S. healthcare claims must include ICD diagnosis codes"
+        795 +      - "CPT and HCPCS together describe all billable services"
+        796 +      - "Multiple coding systems often describe the same clinical concept"
+        797 +<br />
+        798 +      Footer information:
+        799 +      - "Understanding these coding systems is essential for healthcare data modeling"
+        800 +      - "Graph databases can represent relationships among codes from different systems"
+        801 +<br />
+        802 +      Implementation: HTML/CSS/JavaScript with SVG or Canvas, responsive design, deployed as standalone HTML file
+        803 +  </details>
+        804 +<br />
+        805 +  ### ICD Codes: Diagnosis and Inpatient Procedures
+        806 +<br />
+        807 +  <strong>ICD codes</strong> (International Classification of Diseases) represent the global standard for classifying diseases, injuries, causes of 
+            + death, and inpatient hospital procedures. The World Health Organization (WHO) maintains the international version (currently ICD-11), while
+            +  the United States uses ICD-10-CM (Clinical Modification) for diagnoses and ICD-10-PCS (Procedure Coding System) for inpatient procedures. 
+            + ICD-10-CM was adopted in the U.S. in October 2015, replacing the decades-old ICD-9-CM system and expanding from approximately 14,000 
+            + diagnosis codes to over 70,000, enabling far greater clinical specificity.
+        808 +<br />
+        809 +  ICD-10-CM code structure:
+        810 +<br />
+        811 +  - <strong>Character 1</strong>: Category (letter, except U)
+        812 +  - <strong>Character 2</strong>: Etiology, anatomic site, or manifestation
+        813 +  - <strong>Character 3</strong>: Additional detail (completes the category)
+        814 +  - <strong>Character 4-7</strong>: Even greater specificity (laterality, severity, episode of care, etc.)
+        815 +<br />
+        816 +  Examples demonstrating increasing specificity:
+        817 +<br />
+        818 +  - <strong>E11</strong>: Type 2 diabetes mellitus (category)
+        819 +  - <strong>E11.6</strong>: Type 2 diabetes mellitus with other specified complications
+        820 +  - <strong>E11.65</strong>: Type 2 diabetes mellitus with hyperglycemia
+        821 +  - <strong>E11.641</strong>: Type 2 diabetes mellitus with hypoglycemia with coma
+        822 +<br />
+        823 +  ICD codes serve multiple purposes beyond billing:
+        824 +<br />
+        825 +  - <strong>Claims adjudication</strong>: Payers use ICD codes to determine medical necessity and appropriate reimbursement
+        826 +  - <strong>Epidemiology</strong>: Public health tracking of disease prevalence and incidence
+        827 +  - <strong>Quality measurement</strong>: Many quality metrics require specific diagnosis codes
+        828 +  - <strong>Research</strong>: Disease registries and clinical research studies
+        829 +  - <strong>Population health</strong>: Risk stratification and care management program enrollment
+        830 +<br />
+        831 +  ICD-10-PCS codes describe inpatient hospital procedures with seven-character alphanumeric codes, each character representing a specific 
+            + attribute:
+        832 +<br />
+        833 +  1. <strong>Section</strong>: Type of procedure (Medical/Surgical, Obstetrics, Imaging, etc.)
+        834 +  2. <strong>Body System</strong>: Anatomical region operated on
+        835 +  3. <strong>Root Operation</strong>: Objective of the procedure (excision, repair, replacement, etc.)
+        836 +  4. <strong>Body Part</strong>: Specific anatomical site
+        837 +  5. <strong>Approach</strong>: How the body part was reached (open, percutaneous, via natural opening, etc.)
+        838 +  6. <strong>Device</strong>: Device left in place, if any
+        839 +  7. <strong>Qualifier</strong>: Additional detail
+        840 +<br />
+        841 +  Example: <strong>0DT60ZZ</strong> = Resection of stomach, open approach
+        842 +<br />
+        843 +  ### CPT Codes: Physician Services and Outpatient Procedures
+        844 +<br />
+        845 +  <strong>CPT codes</strong> (Current Procedural Terminology), maintained by the American Medical Association (AMA), describe physician services, 
+            + outpatient procedures, diagnostic tests, and therapeutic services. CPT codes form the foundation of professional fee billing—when a 
+            + physician sees a patient, performs a procedure, or orders a test, CPT codes translate those services into billable line items. CPT contains
+            +  over 10,000 codes updated annually, with a rigorous process for adding, modifying, or deleting codes based on evolving medical practice.
+        846 +<br />
+        847 +  CPT code categories:
+        848 +<br />
+        849 +  <strong>Category I</strong> (5-digit numeric codes): Established procedures and services
+        850 +<br />
+        851 +  - <strong>Evaluation and Management (E&amp;M)</strong> (99202-99499): Office visits, consultations, hospital rounds, emergency department visits
+        852 +  - <strong>Anesthesia</strong> (00100-01999): Anesthesia services by anatomical site
+        853 +  - <strong>Surgery</strong> (10021-69990): Organized by body system
+        854 +  - <strong>Radiology</strong> (70010-79999): Diagnostic and interventional imaging
+        855 +  - <strong>Pathology and Laboratory</strong> (80047-89398): Lab tests and analyses
+        856 +  - <strong>Medicine</strong> (90281-99607): Immunizations, dialysis, physical therapy, etc.
+        857 +<br />
+        858 +  <strong>Category II</strong> (4 digits + letter F): Optional quality measurement codes
+        859 +<br />
+        860 +  - Used for performance measurement programs
+        861 +  - Not used for reimbursement
+        862 +  - Example: 3074F = Most recent systolic blood pressure &lt;130 mmHg
+        863 +<br />
+        864 +  <strong>Category III</strong> (4 digits + letter T): Temporary codes for emerging procedures
+        865 +<br />
+        866 +  - Used for new technologies under evaluation
+        867 +  - May eventually become Category I codes or be retired
+        868 +  - Example: 0075T = Transcatheter placement of extracranial vertebral artery stent(s)
+        869 +<br />
+        870 +  CPT modifiers (2-digit codes) provide additional information:
+        871 +<br />
+        872 +  - <strong>-25</strong>: Significant, separately identifiable E&amp;M service on same day as procedure
+        873 +  - <strong>-50</strong>: Bilateral procedure
+        874 +  - <strong>-51</strong>: Multiple procedures
+        875 +  - <strong>-59</strong>: Distinct procedural service (unbundling modifier)
+        876 +  - <strong>-76</strong>: Repeat procedure by same physician
+        877 +  - <strong>-LT/-RT</strong>: Left/right side indicators
+        878 +<br />
+        879 +  Common CPT code examples:
+        880 +<br />
+        881 +  | Code | Description | Typical Reimbursement |
+        882 +  |------|-------------|----------------------|
+        883 +  | 99213 | Office visit, established patient, level 3 | $100-150 |
+        884 +  | 99214 | Office visit, established patient, level 4 | $150-200 |
+        885 +  | 99285 | Emergency department visit, high severity | $300-500 |
+        886 +  | 29881 | Arthroscopy, knee, surgical | $1,500-2,500 |
+        887 +  | 80053 | Comprehensive metabolic panel (lab test) | $15-30 |
+        888 +  | 71046 | Chest X-ray, 2 views | $50-100 |
+        889 +<br />
+        890 +  ### HCPCS Codes: Medical Supplies and Services
+        891 +<br />
+        892 +  <strong>HCPCS codes</strong> (Healthcare Common Procedure Coding System, pronounced "hick-picks") is a two-level coding system maintained by the 
+            + Centers for Medicare &amp; Medicaid Services (CMS). Level I HCPCS codes are identical to CPT codes. Level II HCPCS codes (commonly referred to 
+            + simply as "HCPCS codes") cover services, supplies, and equipment not included in CPT, particularly items relevant to Medicare and Medicaid 
+            + billing.
+        893 +<br />
+        894 +  Level II HCPCS code structure:
+        895 +<br />
+        896 +  - <strong>First character</strong>: Letter (A-V) indicating code category
+        897 +  - <strong>Next four characters</strong>: Numbers providing specificity
+        898 +  - <strong>Optional modifiers</strong>: 2-character alphanumeric codes
+        899 +<br />
+        900 +  HCPCS Level II categories:
+        901 +<br />
+        902 +  | Code Range | Category | Examples |
+        903 +  |-----------|----------|----------|
+        904 +  | <strong>A codes</strong> | Transportation, supplies, administrative | A0428 (Ambulance service, basic life support), A4253 (Blood glucose test 
+            + strips, box of 50) |
+        905 +  | <strong>B codes</strong> | Enteral and parenteral therapy | B4034 (Enteral feeding supply kit) |
+        906 +  | <strong>C codes</strong> | Temporary hospital outpatient PPS | C1713 (Anchor/screw for opposing bone-to-bone) |
+        907 +  | <strong>D codes</strong> | Dental procedures | D0120 (Periodic oral evaluation) |
+        908 +  | <strong>E codes</strong> | Durable medical equipment (DME) | E0143 (Walker, folding, wheeled), E0163 (Commode chair) |
+        909 +  | <strong>G codes</strong> | Temporary procedures/services | G0439 (Annual wellness visit, first occurrence) |
+        910 +  | <strong>J codes</strong> | Drugs administered other than oral | J0129 (Injection, abatacept, 10 mg) |
+        911 +  | <strong>K codes</strong> | Temporary codes for DME | K0001 (Standard wheelchair) |
+        912 +  | <strong>L codes</strong> | Orthotics and prosthetics | L3260 (Surgical boot/shoe) |
+        913 +  | <strong>P codes</strong> | Pathology and laboratory | P9010 (Blood, split unit) |
+        914 +  | <strong>Q codes</strong> | Temporary codes | Q4081 (Injection, epoetin alfa, 100 units) |
+        915 +  | <strong>S codes</strong> | Temporary national codes (non-Medicare) | S0630 (Removal of sutures by someone other than physician) |
+        916 +  | <strong>V codes</strong> | Vision and hearing services | V2020 (Frames, purchases) |
+        917 +<br />
+        918 +  HCPCS codes are particularly important for:
+        919 +<br />
+        920 +  - <strong>Durable medical equipment (DME)</strong>: Wheelchairs, hospital beds, oxygen equipment, walkers, crutches
+        921 +  - <strong>Orthotics and prosthetics</strong>: Braces, artificial limbs, orthopedic shoes
+        922 +  - <strong>Injectable drugs</strong>: Chemotherapy, biologics, vaccines given in office or hospital settings
+        923 +  - <strong>Ambulance services</strong>: Different levels and types of emergency medical transport
+        924 +  - <strong>Medical supplies</strong>: Diabetic supplies, ostomy supplies, incontinence products
+        925 +<br />
+        926 +  ### Drug Codes: Pharmaceutical Products
+        927 +<br />
+        928 +  <strong>Drug codes</strong> identify pharmaceutical products for prescribing, dispensing, billing, and clinical decision support. The primary drug 
+            + coding systems in U.S. healthcare are:
+        929 +<br />
+        930 +  <strong>National Drug Code (NDC)</strong>: FDA-assigned 10-11 digit identifier for drug products
+        931 +<br />
+        932 +  - <strong>Segment 1 (Labeler)</strong>: Manufacturer or distributor (4-5 digits)
+        933 +  - <strong>Segment 2 (Product)</strong>: Drug formulation and strength (3-4 digits)
+        934 +  - <strong>Segment 3 (Package)</strong>: Package size and type (1-2 digits)
+        935 +<br />
+        936 +  Example: <strong>0071-0156-23</strong>
+        937 +  - 0071 = Pfizer (labeler)
+        938 +  - 0156 = Lipitor 10mg tablet (product)
+        939 +  - 23 = Bottle of 90 tablets (package)
+        940 +<br />
+        941 +  <strong>RxNorm</strong>: National Library of Medicine system providing normalized names for clinical drugs
+        942 +<br />
+        943 +  RxNorm links various drug vocabularies (NDC, SNOMED CT, MeSH, FDA) and provides standard naming conventions at multiple levels of 
+            + granularity:
+        944 +<br />
+        945 +  - <strong>Ingredient</strong>: Active pharmaceutical ingredient (e.g., atorvastatin)
+        946 +  - <strong>Clinical Drug</strong>: Ingredient + strength (e.g., atorvastatin 10 mg)
+        947 +  - <strong>Branded Drug</strong>: Brand name + ingredient + strength (e.g., Lipitor 10 mg)
+        948 +  - <strong>Clinical Drug Form</strong>: Ingredient + strength + dose form (e.g., atorvastatin 10 mg oral tablet)
+        949 +  - <strong>Branded Drug Form</strong>: Complete product specification (e.g., Lipitor 10 mg oral tablet)
+        950 +<br />
+        951 +  <strong>Other drug classification systems</strong>:
+        952 +<br />
+        953 +  - <strong>Generic Product Identifier (GPI)</strong>: Hierarchical classification by therapeutic class
+        954 +  - <strong>American Hospital Formulary Service (AHFS)</strong>: Pharmacologic-therapeutic classification
+        955 +  - <strong>Anatomical Therapeutic Chemical (ATC)</strong>: WHO classification system
+        956 +<br />
+        957 +  Drug codes support critical healthcare functions:
+        958 +<br />
+        959 +  - <strong>ePrescribing</strong>: Electronic transmission of prescriptions to pharmacies
+        960 +  - <strong>Drug interaction checking</strong>: Clinical decision support for contraindications and interactions
+        961 +  - <strong>Formulary management</strong>: Determining which drugs are covered by insurance plans and at what tier
+        962 +  - <strong>Medication reconciliation</strong>: Comparing medication lists across care transitions
+        963 +  - <strong>Adverse event reporting</strong>: Pharmacovigilance and safety monitoring
+        964 +  - <strong>Pharmacy billing</strong>: Submission of pharmacy claims with NDC codes
+        965 +<br />
+        966 +  ## Healthcare Interoperability and Data Exchange
+        967 +<br />
+        968 +  ### The Interoperability Challenge
+        969 +<br />
+        970 +  <strong>Healthcare interoperability</strong> refers to the ability of healthcare information systems to exchange, interpret, and use data across 
+            + organizational boundaries, enabling seamless information flow among providers, payers, patients, and public health agencies. True 
+            + interoperability requires not just technical data exchange (syntactic interoperability) but also shared understanding of meaning (semantic 
+            + interoperability) and coordinated workflows (process interoperability). Despite decades of effort and billions of dollars invested in 
+            + health IT, interoperability remains one of healthcare's most persistent challenges.
+        971 +<br />
+        972 +  Barriers to healthcare interoperability include:
+        973 +<br />
+        974 +  <strong>Technical barriers</strong>:
+        975 +  - Proprietary EHR data models and interfaces
+        976 +  - Heterogeneous data formats (HL7 v2, CDA, FHIR, X12, NCPDP, DICOM)
+        977 +  - Inconsistent identifier systems across organizations
+        978 +  - Legacy systems with limited integration capabilities
+        979 +  - Network security restrictions and firewall configurations
+        980 +<br />
+        981 +  <strong>Semantic barriers</strong>:
+        982 +  - Multiple coding systems describing the same clinical concepts
+        983 +  - Local terminology variations and custom codes
+        984 +  - Incomplete or missing standardized terminology use
+        985 +  - Different granularity in documentation practices
+        986 +  - Ambiguous or context-dependent clinical terms
+        987 +<br />
+        988 +  <strong>Organizational barriers</strong>:
+        989 +  - Competitive concerns about sharing patient data
+        990 +  - Lack of business incentives for interoperability investments
+        991 +  - Information blocking practices to maintain patient populations
+        992 +  - Complex data sharing agreements and legal concerns
+        993 +  - Varying privacy and consent frameworks across states
+        994 +<br />
+        995 +  <strong>Regulatory barriers</strong>:
+        996 +  - HIPAA privacy and security requirements
+        997 +  - 42 CFR Part 2 restrictions on substance use disorder records
+        998 +  - State-specific privacy laws (e.g., mental health, genetic data, HIV status)
+        999 +  - Data ownership ambiguities
+       1000 +  - Consent requirements for health information exchange
+       1001 +<br />
+       1002 +  The 21st Century Cures Act (2016) and subsequent regulations require healthcare providers and EHR vendors to implement standardized APIs, 
+            + prohibit information blocking, and enable patients to access their complete electronic health information. These policies are accelerating 
+            + the adoption of FHIR (Fast Healthcare Interoperability Resources) as the emerging standard for healthcare data exchange.
+       1003 +<br />
+       1004 +  ### Healthcare Data Exchange Standards and Approaches
+       1005 +<br />
+       1006 +  <strong>Healthcare data exchange</strong> encompasses the technical mechanisms, standards, and organizational frameworks for sharing health 
+            + information. Multiple exchange paradigms coexist in modern healthcare, each optimized for different use cases, technical capabilities, and 
+            + organizational relationships.
+       1007 +<br />
+       1008 +  <strong>Data exchange standards</strong>:
+       1009 +<br />
+       1010 +  <strong>HL7 Version 2.x</strong> (Health Level Seven):
+       1011 +  - Message-based standard from the 1980s-90s
+       1012 +  - Pipe-delimited text format (e.g., <code>PID|1||12345^^^MRN^MR||DOE^JOHN^||19600101|M</code>)
+       1013 +  - Common message types: ADT (admissions), ORU (results), ORM (orders), SIU (scheduling)
+       1014 +  - Still widely used for intra-organizational interfaces
+       1015 +  - Flexible structure leads to implementation variations
+       1016 +<br />
+       1017 +  <strong>HL7 CDA</strong> (Clinical Document Architecture):
+       1018 +  - XML-based standard for clinical documents
+       1019 +  - Structures documents (discharge summaries, progress notes, imaging reports)
+       1020 +  - Continuity of Care Document (CCD) and Consolidated CDA (C-CDA) are common implementations
+       1021 +  - Human-readable and machine-processable
+       1022 +  - Required for Meaningful Use and ONC certification
+       1023 +<br />
+       1024 +  <strong>HL7 FHIR</strong> (Fast Healthcare Interoperability Resources):
+       1025 +  - Modern RESTful API standard (2014-present)
+       1026 +  - JSON and XML formats
+       1027 +  - Resource-based model (Patient, Encounter, Observation, Medication, etc.)
+       1028 +  - Easier to implement than previous HL7 standards
+       1029 +  - Supports web-based and mobile applications
+       1030 +  - Growing adoption for patient access, payer-provider exchange, public health reporting
+       1031 +<br />
+       1032 +  <strong>X12 EDI</strong> (Electronic Data Interchange):
+       1033 +  - ANSI standard for administrative transactions
+       1034 +  - Common transaction sets:
+       1035 +    - 270/271: Eligibility inquiry and response
+       1036 +    - 276/277: Claim status inquiry and response
+       1037 +    - 278: Prior authorization
+       1038 +    - 837: Claims submission
+       1039 +    - 835: Payment/remittance advice
+       1040 +  - Fixed-length and delimited formats
+       1041 +  - Required for HIPAA-covered transactions
+       1042 +<br />
+       1043 +  <strong>DICOM</strong> (Digital Imaging and Communications in Medicine):
+       1044 +  - Standard for medical imaging (X-rays, CT, MRI, ultrasound)
+       1045 +  - Defines image formats and transmission protocols
+       1046 +  - Includes patient and study metadata
+       1047 +  - Basis for PACS (Picture Archiving and Communication Systems)
+       1048 +<br />
+       1049 +  <strong>Data exchange approaches</strong>:
+       1050 +<br />
+       1051 +  | Approach | Description | Use Cases | Advantages | Disadvantages |
+       1052 +  |----------|-------------|-----------|------------|---------------|
+       1053 +  | <strong>Direct messaging</strong> | Secure email-like exchange using Direct Protocol | Provider-to-provider referrals, transitions of care | Simple, 
+            + encrypted, "push" model | Requires known recipient address, no query capability |
+       1054 +  | <strong>Health Information Exchanges (HIEs)</strong> | Regional or statewide networks aggregating data | Emergency department access to patient 
+            + history | Broad coverage, query for missing information | Governance complexity, funding challenges, variable data quality |
+       1055 +  | <strong>EHR vendor networks</strong> | Data sharing within same EHR vendor ecosystem | Care coordination among Epic or Cerner sites | Easier semantic
+            +  interoperability | Limited to single vendor, proprietary |
+       1056 +  | <strong>FHIR APIs</strong> | Standardized RESTful APIs for data access | Patient apps, payer integrations, research | Standards-based, modern 
+            + architecture | Implementation variations, security complexity |
+       1057 +  | <strong>Point-to-point interfaces</strong> | Custom connections between specific systems | Lab results, radiology images, ADT notifications | 
+            + Optimized for specific workflow | Maintenance burden, brittle, non-scalable |
+       1058 +<br />
+       1059 +  Graph databases offer unique advantages for healthcare interoperability challenges:
+       1060 +<br />
+       1061 +  - <strong>Schema flexibility</strong>: Easily accommodate data from multiple sources with varying structures
+       1062 +  - <strong>Relationship representation</strong>: Naturally model connections among patients, encounters, providers, diagnoses, medications
+       1063 +  - <strong>Identity resolution</strong>: Graph algorithms can link records representing same patient across systems
+       1064 +  - <strong>Data lineage</strong>: Track provenance of data elements across exchanges
+       1065 +  - <strong>Semantic mapping</strong>: Represent relationships among coding systems (ICD, SNOMED CT, LOINC, etc.)
+       1066 +  - <strong>Master data management</strong>: Create unified views of patients, providers, and facilities across sources
+       1067 +<br />
+       1068 +  <details>
+       1069 +      <summary>Healthcare Data Integration Graph Model</summary>
+       1070 +      Type: graph-model
+       1071 +<br />
+       1072 +      Purpose: Demonstrate how graph databases can integrate healthcare data from multiple sources (EHR, claims, lab, pharmacy) around a 
+            + unified patient view
+       1073 +<br />
+       1074 +      Node types:
+       1075 +<br />
+       1076 +      1. <strong>Patient</strong> (blue circles, large)
+       1077 +         Properties: patient_id, MRN, name, DOB, gender, address
+       1078 +         Labels: "Master Patient Record"
+       1079 +<br />
+       1080 +      2. <strong>Source System</strong> (gray hexagons, medium)
+       1081 +         Properties: system_name, vendor, organization
+       1082 +         Examples: "Epic EHR - Hospital A", "Claims Database - Payer X", "LabCorp Interface", "CVS Pharmacy"
+       1083 +<br />
+       1084 +      3. <strong>Encounter</strong> (green squares, medium)
+       1085 +         Properties: encounter_id, date, type, facility, chief_complaint
+       1086 +         Examples: "Office Visit 2024-01-15", "ED Visit 2024-02-03", "Hospitalization 2024-03-10"
+       1087 +<br />
+       1088 +      4. <strong>Diagnosis</strong> (red diamonds, small)
+       1089 +         Properties: ICD_code, description, onset_date, status
+       1090 +         Examples: "E11.9 Type 2 Diabetes", "I10 Essential Hypertension", "J45.909 Asthma"
+       1091 +<br />
+       1092 +      5. <strong>Medication</strong> (purple pill shapes, small)
+       1093 +         Properties: drug_name, NDC, RxNorm, dose, frequency, start_date
+       1094 +         Examples: "Metformin 500mg BID", "Lisinopril 10mg daily", "Albuterol inhaler PRN"
+       1095 +<br />
+       1096 +      6. <strong>Lab Result</strong> (orange test tubes, small)
+       1097 +         Properties: LOINC_code, test_name, value, units, date, reference_range
+       1098 +         Examples: "HbA1c 7.2%", "Glucose 145 mg/dL", "Creatinine 0.9 mg/dL"
+       1099 +<br />
+       1100 +      7. <strong>Provider</strong> (teal stethoscope icons, medium)
+       1101 +         Properties: NPI, name, specialty, organization
+       1102 +         Examples: "Dr. Smith - PCP", "Dr. Jones - Endocrinology", "Dr. Lee - Emergency Medicine"
+       1103 +<br />
+       1104 +      8. <strong>Coding System</strong> (yellow books, small)
+       1105 +         Properties: system_name, version, code
+       1106 +         Examples: "ICD-10-CM", "RxNorm", "LOINC", "SNOMED CT"
+       1107 +<br />
+       1108 +      Edge types:
+       1109 +<br />
+       1110 +      1. <strong>SOURCED_FROM</strong> (Patient → Source System)
+       1111 +         Properties: identifier_type, identifier_value, confidence_score
+       1112 +         Style: Dashed gray arrows
+       1113 +         Purpose: Show which systems contributed patient data
+       1114 +<br />
+       1115 +      2. <strong>HAD_ENCOUNTER</strong> (Patient → Encounter)
+       1116 +         Properties: admission_date, discharge_date
+       1117 +         Style: Solid green arrows
+       1118 +         Purpose: Link patient to care episodes
+       1119 +<br />
+       1120 +      3. <strong>DOCUMENTED_BY</strong> (Encounter → Provider)
+       1121 +         Properties: role (attending, consulting, PCP)
+       1122 +         Style: Solid teal arrows
+       1123 +         Purpose: Connect encounters to providers
+       1124 +<br />
+       1125 +      4. <strong>DIAGNOSED_WITH</strong> (Encounter → Diagnosis)
+       1126 +         Properties: diagnosis_type (primary, secondary), documentation_date
+       1127 +         Style: Solid red arrows
+       1128 +         Purpose: Link diagnoses to encounters
+       1129 +<br />
+       1130 +      5. <strong>PRESCRIBED</strong> (Encounter → Medication)
+       1131 +         Properties: prescription_date, prescribing_provider, status (active, discontinued)
+       1132 +         Style: Solid purple arrows
+       1133 +         Purpose: Connect medications to encounters where prescribed
+       1134 +<br />
+       1135 +      6. <strong>ORDERED</strong> (Encounter → Lab Result)
+       1136 +         Properties: order_date, ordering_provider
+       1137 +         Style: Solid orange arrows
+       1138 +         Purpose: Link lab results to encounters
+       1139 +<br />
+       1140 +      7. <strong>TAKES</strong> (Patient → Medication)
+       1141 +         Properties: start_date, end_date, adherence_score
+       1142 +         Style: Dashed purple arrows
+       1143 +         Purpose: Show current medication regimen
+       1144 +<br />
+       1145 +      8. <strong>HAS_DIAGNOSIS</strong> (Patient → Diagnosis)
+       1146 +         Properties: onset_date, status (active, resolved, historical)
+       1147 +         Style: Dashed red arrows
+       1148 +         Purpose: Link patient to problem list
+       1149 +<br />
+       1150 +      9. <strong>CODED_AS</strong> (Diagnosis → Coding System)
+       1151 +         Properties: code_value, version
+       1152 +         Style: Dotted yellow arrows
+       1153 +         Purpose: Show code mappings across terminologies
+       1154 +<br />
+       1155 +      10. <strong>MAPS_TO</strong> (Coding System → Coding System)
+       1156 +          Properties: mapping_confidence, mapping_type (equivalent, narrower, broader)
+       1157 +          Style: Bidirectional dotted yellow arrows
+       1158 +          Purpose: Represent semantic relationships among coding systems
+       1159 +<br />
+       1160 +      Sample data structure:
+       1161 +<br />
+       1162 +      Central patient node: "John Doe, DOB: 1960-01-01"
+       1163 +      ├─ SOURCED_FROM → "Epic EHR - Hospital A" (MRN: 123456)
+       1164 +      ├─ SOURCED_FROM → "Claims Database - Payer X" (Member ID: 987654)
+       1165 +      ├─ SOURCED_FROM → "LabCorp Interface" (Account: LC-456)
+       1166 +      ├─ HAD_ENCOUNTER → "Office Visit 2024-01-15"
+       1167 +      │  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
+       1168 +      │  ├─ DIAGNOSED_WITH → "E11.9 Type 2 Diabetes"
+       1169 +      │  ├─ PRESCRIBED → "Metformin 500mg BID"
+       1170 +      │  └─ ORDERED → "HbA1c 7.2%"
+       1171 +      ├─ HAD_ENCOUNTER → "Office Visit 2024-04-10"
+       1172 +      │  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
+       1173 +      │  └─ ORDERED → "HbA1c 6.8%"
+       1174 +      ├─ HAS_DIAGNOSIS → "E11.9 Type 2 Diabetes"
+       1175 +      │  └─ CODED_AS → "ICD-10-CM: E11.9"
+       1176 +      │     └─ MAPS_TO → "SNOMED CT: 44054006 (Diabetes mellitus type 2)"
+       1177 +      ├─ HAS_DIAGNOSIS → "I10 Essential Hypertension"
+       1178 +      └─ TAKES → "Metformin 500mg BID"
+       1179 +<br />
+       1180 +      Layout: Hierarchical radial layout with patient at center
+       1181 +<br />
+       1182 +      Interactive features:
+       1183 +      - <strong>Zoom</strong>: Mouse wheel to zoom in/out
+       1184 +      - <strong>Pan</strong>: Click and drag background
+       1185 +      - <strong>Node hover</strong>: Show full properties in tooltip
+       1186 +      - <strong>Node click</strong>: Highlight all connected nodes and edges (1-hop neighborhood)
+       1187 +      - <strong>Edge hover</strong>: Show relationship properties
+       1188 +      - <strong>Double-click node</strong>: Expand to show additional connections (if collapsed)
+       1189 +      - <strong>Right-click node</strong>: Context menu with options:
+       1190 +        - "Find similar patients" (show patients with similar diagnoses)
+       1191 +        - "View timeline" (temporal view of connected encounters)
+       1192 +        - "Show data lineage" (highlight source systems)
+       1193 +      - <strong>Filter panel</strong>: Toggle node types on/off to simplify view
+       1194 +      - <strong>Search box</strong>: Find specific patients, diagnoses, medications by name or code
+       1195 +<br />
+       1196 +      Visual styling:
+       1197 +      - <strong>Node size</strong>: Based on number of connections (degree centrality)
+       1198 +      - <strong>Edge thickness</strong>: Thicker for more recent/active relationships
+       1199 +      - <strong>Color coding</strong>: Consistent colors for node types
+       1200 +      - <strong>Transparency</strong>: Lower opacity for historical/inactive elements
+       1201 +      - <strong>Animation</strong>: Gentle pulsing for nodes with recent activity
+       1202 +      - <strong>Clustering</strong>: Visually group related nodes (encounters + associated diagnoses/meds)
+       1203 +<br />
+       1204 +      Legend (top-right panel):
+       1205 +      - Node shape and color key
+       1206 +      - Edge style meanings
+       1207 +      - Interaction instructions
+       1208 +      - "Show sample queries" button
+       1209 +<br />
+       1210 +      Sample queries panel (expandable):
+       1211 +      1. "Find all encounters where diabetes was diagnosed"
+       1212 +      2. "Show medication history across all sources"
+       1213 +      3. "Identify gaps in lab monitoring"
+       1214 +      4. "Trace data lineage for HbA1c result"
+       1215 +      5. "Find coding system mappings for diabetes"
+       1216 +<br />
+       1217 +      Educational annotations:
+       1218 +      - Callout: "Patient data integrated from 4 source systems"
+       1219 +      - Callout: "Graph model handles multiple identifiers per patient"
+       1220 +      - Callout: "Coding system relationships enable semantic queries"
+       1221 +      - Callout: "Temporal relationships show care progression"
+       1222 +<br />
+       1223 +      Canvas size: 1000x800px
+       1224 +<br />
+       1225 +      Implementation:
+       1226 +      - vis-network JavaScript library for graph visualization
+       1227 +      - D3.js for enhanced layout and animations
+       1228 +      - Responsive design for various screen sizes
+       1229 +      - Export options: PNG image, JSON data, Cypher queries
+       1230 +      - Deployed in /docs/sims/healthcare-data-integration-graph/
+       1231 +<br />
+       1232 +      Data generation:
+       1233 +      - Use realistic synthetic patient data
+       1234 +      - Include 1 patient (center), 4 source systems, 5-7 encounters, 3-5 diagnoses, 4-6 medications, 6-10 lab results, 3-4 providers
+       1235 +      - Ensure temporal consistency (later encounters reference earlier diagnoses)
+       1236 +      - Include code mappings among ICD, SNOMED, RxNorm, LOINC
+       1237 +  </details>
+       1238 +<br />
+       1239 +  ## Summary and Key Takeaways
+       1240 +<br />
+       1241 +  This chapter provided a comprehensive overview of the healthcare system domain knowledge essential for effective graph data modeling. 
+            + Understanding healthcare economics, stakeholder perspectives, clinical workflows, and data standards forms the foundation for designing 
+            + graph models that accurately represent the complexity and interconnectedness of healthcare information.
+       1242 +<br />
+       1243 +  Key concepts covered:
+       1244 +<br />
+       1245 +  <strong>Healthcare Economics</strong>:
+       1246 +  - U.S. healthcare costs are twice those of comparable nations ($12,900 per person annually)
+       1247 +  - Fee-for-service models incentivize volume over value, contributing to cost escalation
+       1248 +  - Value-based care aligns payment with outcomes, requiring sophisticated data analytics
+       1249 +  - Graph databases support the transition to value-based care through advanced relationship analytics
+       1250 +<br />
+       1251 +  <strong>Healthcare Stakeholders</strong>:
+       1252 +  - <strong>Patients</strong>: Central information hub connecting clinical, administrative, and social determinant data
+       1253 +  - <strong>Providers</strong>: Individual clinicians and organizations generating and consuming clinical documentation
+       1254 +  - <strong>Payers</strong>: Insurance companies and government programs financing care and driving quality initiatives
+       1255 +  - All three stakeholders generate complex, interconnected data requiring graph representation
+       1256 +<br />
+       1257 +  <strong>Clinical Operations</strong>:
+       1258 +  - <strong>Medical encounters</strong>: Temporal containers linking patients, providers, diagnoses, procedures, and charges
+       1259 +  - <strong>Clinical workflows</strong>: Multi-step processes spanning seconds to years, involving coordination across roles and systems
+       1260 +  - <strong>Electronic health records</strong>: Digital repositories with structured and unstructured patient data, varying by vendor
+       1261 +  - <strong>Patient demographics</strong>: Core identifying attributes plus social determinants influencing health outcomes
+       1262 +<br />
+       1263 +  <strong>Medical Coding and Terminology</strong>:
+       1264 +  - <strong>Medical terminology</strong>: Specialized language built from Greek/Latin roots enabling precise clinical communication
+       1265 +  - <strong>ICD codes</strong>: Classify diagnoses and inpatient procedures (70,000+ codes)
+       1266 +  - <strong>CPT codes</strong>: Describe physician services and outpatient procedures (10,000+ codes)
+       1267 +  - <strong>HCPCS codes</strong>: Cover supplies, equipment, and services not in CPT
+       1268 +  - <strong>Drug codes</strong>: Identify pharmaceutical products (NDC, RxNorm, GPI)
+       1269 +  - Multiple coding systems require semantic mapping and relationship management
+       1270 +<br />
+       1271 +  <strong>Interoperability and Data Exchange</strong>:
+       1272 +  - <strong>Healthcare interoperability</strong>: Ability to exchange and meaningfully use health information across organizations
+       1273 +  - <strong>Data exchange standards</strong>: HL7 v2, CDA, FHIR, X12, DICOM serve different exchange needs
+       1274 +  - <strong>Exchange approaches</strong>: Direct messaging, HIEs, vendor networks, FHIR APIs, point-to-point interfaces
+       1275 +  - <strong>Graph advantages</strong>: Schema flexibility, relationship representation, identity resolution, semantic mapping
+       1276 +<br />
+       1277 +  With this healthcare domain foundation, you are now prepared to design graph data models that accurately capture the intricate 
+            + relationships among patients, providers, payers, clinical concepts, and healthcare transactions. The next chapters will build on this 
+            + knowledge to develop specific graph modeling patterns for patient-centric, provider-centric, and payer-centric perspectives.</p>
+<p>⏺ Perfect! Chapter content has been successfully generated. Let me provide you with a comprehensive summary:</p>
+<hr />
+<p>✅ Chapter Content Generation Complete</p>
+<p>Chapter: 02-intro-to-healthcare-systemsReading Level: College UndergraduateContent Length: ~10,500 words</p>
+<p>Non-Text Elements Summary</p>
+<p>Directly embedded (no skills needed):
+  - Markdown lists: 36 (including bullet points and numbered lists)
+  - Markdown tables: 5 (comparison tables with proper formatting)</p>
+<p>Interactive elements requiring implementation:
+  - Diagrams: 1 (Healthcare Ecosystem Stakeholder Diagram)
+  - Charts: 1 (Per-Person Healthcare Cost Comparison Chart)
+  - Infographics: 1 (Medical Coding Systems Interactive Infographic)
+  - MicroSims: 1 (Healthcare Payment Model Comparison MicroSim)
+  - Workflows: 1 (Clinical Encounter Workflow Diagram)
+  - Graph models: 1 (Healthcare Data Integration Graph Model)</p>
+<p>Interactive Elements Breakdown</p>
+<p>Total interactive elements: 6 detailed specifications in <details> blocks</p>
+<p>Skills that can be used to implement:
+  1. hc-graph-generator - For Healthcare Data Integration Graph Model
+  2. microsim-p5 - For Healthcare Payment Model Comparison MicroSim
+  3. Custom HTML/CSS/JavaScript - For infographic, chart, diagram, and workflow</p>
+<p>Concept Coverage Verification ✓</p>
+<p>All 20 concepts from the "Concepts Covered" list have been addressed:</p>
+<ol>
+<li>✓ Healthcare System</li>
+<li>✓ Healthcare Cost</li>
+<li>✓ Per-Person Healthcare Cost</li>
+<li>✓ Fee-For-Service Model</li>
+<li>✓ Value-Based Care</li>
+<li>✓ Healthcare Payer</li>
+<li>✓ Healthcare Provider</li>
+<li>✓ Healthcare Patient</li>
+<li>✓ Electronic Health Record</li>
+<li>✓ Medical Coding System</li>
+<li>✓ ICD Code</li>
+<li>✓ CPT Code</li>
+<li>✓ HCPCS Code</li>
+<li>✓ Drug Code</li>
+<li>✓ Medical Terminology</li>
+<li>✓ Clinical Workflow</li>
+<li>✓ Patient Demographics</li>
+<li>✓ Medical Encounter</li>
+<li>✓ Healthcare Interoperability</li>
+<li>✓ Healthcare Data Exchange</li>
+</ol>
+<p>Content Organization</p>
+<p>The chapter follows a pedagogical progression from foundational to complex:</p>
+<ol>
+<li>Introduction - Healthcare ecosystem overview</li>
+<li>Healthcare Economics - Costs, payment models (FFS vs VBC)</li>
+<li>Key Stakeholders - Patient, Provider, Payer perspectives</li>
+<li>Clinical Operations - Encounters, workflows, EHRs</li>
+<li>Medical Coding - Terminology, ICD, CPT, HCPCS, Drug codes</li>
+<li>Interoperability - Data exchange challenges and standards</li>
+<li>Summary - Key takeaways and next steps</li>
+</ol>
+<p>Writing Quality</p>
+<ul>
+<li>College-level academic style with 18-25 word sentences</li>
+<li>Technical terminology with contextual definitions</li>
+<li>Balanced concrete examples and abstract concepts</li>
+<li>Frequent use of lists and tables for clarity</li>
+<li>Rich interactive element specifications for implementation</li>
+</ul>
+<p>The chapter is now ready for students. If you'd like to implement any of the interactive elements, I can help run the appropriate skills
+  (hc-graph-generator, microsim-p5) or create custom visualizations.</p>
+<p>────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</p>
+<blockquote>
+<p>────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⏵⏵ accept edits on (shift+tab to cycle)</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

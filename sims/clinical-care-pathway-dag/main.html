@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Care Pathway DAG</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-content">
+            <div>
+                <h1>Clinical Care Pathway DAG</h1>
+                <p class="subtitle">Directed Acyclic Graph Visualization</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search nodes...">
+                <button onclick="searchNodes()">Search</button>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-box">
+            <div class="filter-header">
+                <span style="font-weight: 600;">Filter by Node Type:</span>
+            </div>
+            <div id="filterCheckboxes" class="filter-checkboxes">
+                <!-- Dynamically generated checkboxes -->
+            </div>
+            <div class="filter-buttons">
+                <button onclick="selectAllFilters()" class="filter-btn">Select All</button>
+                <button onclick="unselectAllFilters()" class="filter-btn">Unselect All</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Canvas Container -->
+            <div class="canvas-container">
+                <div id="network"></div>
+
+                <!-- Legend Overlay -->
+                <div class="legend">
+                    <h3>Node Types</h3>
+                    <div id="legendContent">
+                        <!-- Dynamically generated legend items -->
+                    </div>
+                </div>
+
+                <!-- Callouts Overlay -->
+                <div class="callouts" id="callouts">
+                    <div class="callout-header">
+                        <span style="font-weight: 600;">💡 Learn About DAGs</span>
+                        <button onclick="document.getElementById('callouts').style.display='none'" class="close-btn">OK</button>
+                    </div>
+                    <div class="callout-message">📍 Each box represents a stage in the patient's care journey</div>
+                    <div class="callout-message">➡️ Arrows show progression—notice how we never cycle back to the beginning</div>
+                    <div class="callout-message">⏱️ This is a <strong>DAG (Directed Acyclic Graph)</strong>—no loops or cycles</div>
+                    <div class="callout-message">🔄 The dotted line shows an optional retest but doesn't create a full cycle back to admission</div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Node Details</h3>
+                <div id="nodeDetails">
+                    <p style="color: #64748b; text-align: center; padding: 20px;">
+                        Click on a node to view its details
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Notes -->
+        <div class="educational-notes">
+            <h3>🎓 Educational Insights</h3>
+            <div class="note-item">📌 <strong>DAG Property:</strong> Notice there are no cycles—a patient does not return to admission during a single encounter. This ensures each stage progresses forward in time.</div>
+            <div class="note-item">⏰ <strong>Temporal Progression:</strong> Each stage represents a point in time, moving forward chronologically. The pathway models real-world clinical workflows where care episodes have a clear beginning and end.</div>
+            <div class="note-item">🎯 <strong>Healthcare Context:</strong> DAGs model workflows where states progress without reverting to earlier stages in the same episode of care. The optional retest edge (dotted) shows conditional paths without creating true cycles.</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
