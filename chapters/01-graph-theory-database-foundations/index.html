@@ -1,0 +1,2681 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/01-graph-theory-database-foundations/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../02-intro-to-healthcare-systems/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Chapter 1 - Graph Theory and Database Foundations - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Chapter 1 - Graph Theory and Database Foundations - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/01-graph-theory-database-foundations/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/01-graph-theory-database-foundations/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Chapter 1 - Graph Theory and Database Foundations - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/01-graph-theory-database-foundations/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#graph-theory-and-database-foundations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 1 - Graph Theory and Database Foundations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 - Graph Theory and Database Foundations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 - Graph Theory and Database Foundations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-graph-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Graph Theory?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is Graph Theory?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-building-blocks-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Building Blocks: Nodes and Edges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-adding-information-to-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties: Adding Information to Nodes and Edges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties: Adding Information to Nodes and Edges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directed-graphs-and-graph-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directed Graphs and Graph Direction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directed Graphs and Graph Direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directed-acyclic-graphs-dags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directed Acyclic Graphs (DAGs)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-labeled-property-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Labeled Property Graph Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-traversal-and-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Traversal and Paths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Traversal and Paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-traversal-patterns-in-healthcare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Traversal Patterns in Healthcare
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Queries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-performance-advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Performance Advantages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-databases-vs-relational-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Databases vs Relational Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Databases vs Relational Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-relational-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Relational Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-graph-database-paradigm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Graph Database Paradigm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Each Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-models-and-database-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Models and Database Schemas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Models and Database Schemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#healthcare-data-modeling-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Healthcare Data Modeling Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-labeling-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Labeling Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-type-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Type Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-healthcare-graph-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Healthcare Graph Schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-intro-to-healthcare-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 - Introduction to Healthcare Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 - Graph Query Languages and Technologies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-patient-centric-data-modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 - Patient-Centric Data Modeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-provider-operations-networks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 - Provider Operations and Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-payer-perspective-insurance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 - Payer Perspective and Insurance Claims
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-financial-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 - Healthcare Financial Analytics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-fraud-detection-compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 - Fraud Detection and Compliance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-graph-algorithms-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 9 - Graph Algorithms and Analytics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-ai-machine-learning-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 10 - AI and Machine Learning Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-security-privacy-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 11 - Security, Privacy, and Data Governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-capstone-real-world-applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 12 - Capstone Projects and Real-World Applications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feedback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-graph-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Graph Theory?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is Graph Theory?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-building-blocks-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Building Blocks: Nodes and Edges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-adding-information-to-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties: Adding Information to Nodes and Edges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties: Adding Information to Nodes and Edges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directed-graphs-and-graph-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directed Graphs and Graph Direction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directed Graphs and Graph Direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directed-acyclic-graphs-dags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directed Acyclic Graphs (DAGs)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-labeled-property-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Labeled Property Graph Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-traversal-and-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Traversal and Paths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Traversal and Paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-traversal-patterns-in-healthcare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Traversal Patterns in Healthcare
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Queries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-performance-advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Performance Advantages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-databases-vs-relational-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Databases vs Relational Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Databases vs Relational Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-relational-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Relational Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-graph-database-paradigm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Graph Database Paradigm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Each Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-models-and-database-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Models and Database Schemas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Models and Database Schemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#healthcare-data-modeling-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Healthcare Data Modeling Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-labeling-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Labeling Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-type-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Type Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-healthcare-graph-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Healthcare Graph Schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/chapters/01-graph-theory-database-foundations/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="graph-theory-and-database-foundations">Graph Theory and Database Foundations</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces fundamental graph theory concepts including nodes, edges, labeled property graphs, directed acyclic graphs, and graph traversal. You will learn the basic building blocks of graph databases and understand how they differ from traditional relational databases. By the end of this chapter, you will have a solid foundation in graph data structures and database schema design that will be essential for modeling healthcare data.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<ol>
+<li>Graph Theory Basics</li>
+<li>Node</li>
+<li>Edge</li>
+<li>Graph Database</li>
+<li>Labeled Property Graph</li>
+<li>Node Property</li>
+<li>Edge Property</li>
+<li>Directed Graph</li>
+<li>Directed Acyclic Graph</li>
+<li>Graph Traversal</li>
+<li>Graph Path</li>
+<li>Graph Query</li>
+<li>Relational Database</li>
+<li>Database Schema</li>
+<li>Data Model</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter assumes only the prerequisites listed in the <a href="../../course-description/">course description</a>.</p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Healthcare data is inherently interconnected—patients receive care from providers, undergo procedures, receive prescriptions, and accumulate complex medical histories over time. Traditional relational databases, with their rigid table structures and expensive JOIN operations, struggle to efficiently model these intricate relationships. Graph databases offer a fundamentally different approach, treating relationships as first-class entities and enabling natural representation of complex healthcare networks. This chapter introduces the foundational concepts of graph theory and graph databases, establishing the theoretical and practical groundwork necessary for modeling healthcare data effectively.</p>
+<h2 id="what-is-graph-theory">What is Graph Theory?</h2>
+<p><strong>Graph theory</strong> is a branch of mathematics that studies structures made up of objects and the connections between them. In graph theory, these objects are called <strong>nodes</strong> (also known as vertices), and the connections between them are called <strong>edges</strong> (also known as links or relationships). While graph theory originated in the 18th century with Leonhard Euler's famous Seven Bridges of Königsberg problem, its applications have expanded dramatically in the digital age, particularly in domains requiring complex relationship modeling.</p>
+<p>In the context of healthcare data management, graph theory provides the mathematical foundation for representing clinical entities and their interconnections. Consider a simple example: a patient visiting a healthcare provider. This scenario involves at least two entities (the patient and the provider) connected by a relationship (the encounter or visit). As healthcare scenarios become more complex—involving multiple providers, medications, diagnoses, procedures, and care plans—the graph structure becomes an increasingly natural and powerful way to model the domain.</p>
+<h3 id="the-building-blocks-nodes-and-edges">The Building Blocks: Nodes and Edges</h3>
+<p><strong>Nodes</strong> represent discrete entities or objects in your domain. In healthcare applications, nodes commonly represent:</p>
+<ul>
+<li>Patients</li>
+<li>Healthcare providers (physicians, nurses, specialists)</li>
+<li>Medical facilities (hospitals, clinics, urgent care centers)</li>
+<li>Diagnoses and conditions</li>
+<li>Medications and prescriptions</li>
+<li>Medical procedures</li>
+<li>Laboratory tests and results</li>
+<li>Insurance claims</li>
+</ul>
+<p>Each node typically has a <strong>type</strong> (or label) that categorizes what kind of entity it represents. For instance, you might have nodes with labels like <code>Patient</code>, <code>Provider</code>, <code>Medication</code>, or <code>Diagnosis</code>. This labeling system enables efficient querying and helps organize the semantic structure of your data model.</p>
+<p><strong>Edges</strong> represent the relationships or connections between nodes. In healthcare graphs, edges capture critical information about how entities interact:</p>
+<ul>
+<li>A patient <strong>HAS_DIAGNOSIS</strong> relationship connecting a patient to a specific disease</li>
+<li>A provider <strong>PRESCRIBED</strong> relationship linking a doctor to a medication order</li>
+<li>A medication <strong>TREATS</strong> relationship indicating which conditions a drug addresses</li>
+<li>A patient <strong>VISITED</strong> relationship documenting an encounter at a facility</li>
+</ul>
+<p>The power of graph databases emerges from treating these edges as first-class data structures rather than as implicit foreign key references. Each edge connects exactly two nodes: a source (or start) node and a target (or end) node.</p>
+<details>
+    <summary>Basic Graph Structure Diagram</summary>
+    Type: diagram
+
+    Purpose: Illustrate the fundamental components of a graph—nodes and edges—using a simple healthcare scenario
+
+    Components to show:
+    - 5 circular nodes representing healthcare entities
+    - Node 1 (blue): Patient "Sarah Chen"
+    - Node 2 (green): Provider "Dr. Martinez"
+    - Node 3 (orange): Diagnosis "Type 2 Diabetes"
+    - Node 4 (purple): Medication "Metformin"
+    - Node 5 (yellow): Facility "City Hospital"
+
+    Connections (directed arrows):
+    - Arrow from Patient to Provider, labeled "VISITED_PROVIDER"
+    - Arrow from Provider to Diagnosis, labeled "DIAGNOSED_WITH"
+    - Arrow from Patient to Diagnosis, labeled "HAS_CONDITION"
+    - Arrow from Provider to Medication, labeled "PRESCRIBED"
+    - Arrow from Patient to Facility, labeled "ADMITTED_TO"
+
+    Style: Network diagram with labeled nodes and directed edges
+
+    Labels:
+    - Each node shows its type (Patient, Provider, etc.) and name
+    - Edge labels clearly visible along the arrows
+    - Small legend in corner: "Circle = Node (Entity)", "Arrow = Edge (Relationship)"
+
+    Color scheme:
+    - Nodes: Color-coded by type as specified above
+    - Edges: Dark gray with arrowheads indicating direction
+    - Background: White
+
+    Implementation: SVG or diagram tool (draw.io, Mermaid, or similar)
+</details>
+
+<h2 id="properties-adding-information-to-nodes-and-edges">Properties: Adding Information to Nodes and Edges</h2>
+<p>While nodes and edges provide the structural skeleton of a graph, <strong>properties</strong> add the descriptive details that make the data useful for real-world applications. Properties are key-value pairs attached to nodes or edges, similar to columns in relational database tables but with far greater flexibility.</p>
+<h3 id="node-properties">Node Properties</h3>
+<p><strong>Node properties</strong> store attributes describing the entity represented by a node. The schema-flexible nature of graph databases means that not every node of the same type needs to have identical properties, though in practice, nodes of the same label typically share a common set of core properties.</p>
+<p>For a <code>Patient</code> node in a healthcare graph, typical properties might include:</p>
+<ul>
+<li><code>patientId</code>: Unique identifier (e.g., "P-458392")</li>
+<li><code>firstName</code>: "Sarah"</li>
+<li><code>lastName</code>: "Chen"</li>
+<li><code>dateOfBirth</code>: "1978-04-15"</li>
+<li><code>gender</code>: "Female"</li>
+<li><code>bloodType</code>: "A+"</li>
+<li><code>primaryLanguage</code>: "English"</li>
+<li><code>insuranceProvider</code>: "Blue Cross"</li>
+<li><code>policyNumber</code>: "BC-7829384"</li>
+</ul>
+<p>Similarly, a <code>Medication</code> node might have properties such as <code>drugName</code>, <code>genericName</code>, <code>dosageForm</code>, <code>strengthMg</code>, <code>manufacturer</code>, and <code>ndcCode</code> (National Drug Code).</p>
+<h3 id="edge-properties">Edge Properties</h3>
+<p><strong>Edge properties</strong> store information about the relationship itself, capturing contextual details about how and when entities are connected. This capability distinguishes graph databases from simple network diagrams—the relationships carry data, not just structural information.</p>
+<p>For a <code>PRESCRIBED</code> edge connecting a <code>Provider</code> node to a <code>Medication</code> node, useful properties might include:</p>
+<ul>
+<li><code>prescriptionId</code>: "RX-2024-893451"</li>
+<li><code>prescriptionDate</code>: "2024-02-15"</li>
+<li><code>dosage</code>: "500mg twice daily"</li>
+<li><code>durationDays</code>: 90</li>
+<li><code>refillsAllowed</code>: 3</li>
+<li><code>pharmacyInstructions</code>: "Take with food"</li>
+<li><code>reasonForPrescription</code>: "Type 2 Diabetes management"</li>
+</ul>
+<p>This edge-property capability enables sophisticated analysis. For instance, you could query for all patients taking a specific medication at a particular dosage, identify prescribing patterns among providers, or track medication adherence over time—all by traversing edges and examining their properties.</p>
+<p>Here's a comparison of how properties are distributed across nodes and edges:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Node Properties</th>
+<th>Edge Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>What they describe</strong></td>
+<td>Attributes of entities</td>
+<td>Attributes of relationships</td>
+</tr>
+<tr>
+<td><strong>Healthcare examples</strong></td>
+<td>Patient demographics, diagnosis codes, medication names</td>
+<td>Prescription dates, encounter durations, test results</td>
+</tr>
+<tr>
+<td><strong>Typical data types</strong></td>
+<td>Strings, numbers, dates, booleans, arrays</td>
+<td>Strings, numbers, dates, durations, quantities</td>
+</tr>
+<tr>
+<td><strong>Schema flexibility</strong></td>
+<td>Optional; nodes of same type can have different properties</td>
+<td>Optional; edges of same type can have different properties</td>
+</tr>
+<tr>
+<td><strong>Query usage</strong></td>
+<td>Filter nodes by attributes</td>
+<td>Filter relationships by context</td>
+</tr>
+</tbody>
+</table>
+<h2 id="directed-graphs-and-graph-direction">Directed Graphs and Graph Direction</h2>
+<p>Up to this point, we've been discussing <strong>directed graphs</strong>—graphs where each edge has a specific direction, flowing from a source node to a target node. The directionality of edges is semantically meaningful in most real-world applications, including healthcare.</p>
+<p>Consider the difference between these two statements:</p>
+<ol>
+<li>A patient <strong>HAS_DIAGNOSIS</strong> of Type 2 Diabetes</li>
+<li>Type 2 Diabetes <strong>HAS_DIAGNOSIS</strong> of a patient</li>
+</ol>
+<p>Only the first statement makes semantic sense. The direction of the relationship matters. In graph databases, we explicitly model this directionality by designating one node as the source (or start) and another as the target (or end) of each edge.</p>
+<p>Directionality enables precise relationship semantics:</p>
+<ul>
+<li><code>Patient</code> --<strong>VISITED</strong>--&gt; <code>Provider</code> (the patient visited the provider, not vice versa)</li>
+<li><code>Provider</code> --<strong>WORKS_AT</strong>--&gt; <code>Hospital</code> (the provider is employed by the hospital)</li>
+<li><code>Medication</code> --<strong>TREATS</strong>--&gt; <code>Condition</code> (the drug treats the disease)</li>
+<li><code>Procedure</code> --<strong>REQUIRES</strong>--&gt; <code>Equipment</code> (the procedure needs specific equipment)</li>
+</ul>
+<p>Some relationships might seem naturally bidirectional, such as family relationships or colleague relationships. However, even in these cases, graph databases typically model relationships as directed, sometimes creating two edges (one in each direction) when true bidirectionality is semantically required.</p>
+<h3 id="directed-acyclic-graphs-dags">Directed Acyclic Graphs (DAGs)</h3>
+<p>A special category of directed graphs, called <strong>Directed Acyclic Graphs</strong> or <strong>DAGs</strong>, prohibits cycles—you cannot follow a path of edges that eventually returns to the starting node. DAGs appear frequently in healthcare data modeling for hierarchical or temporal relationships where cycles would be semantically invalid.</p>
+<p>Common healthcare applications of DAGs include:</p>
+<ul>
+<li><strong>Clinical workflow progression</strong>: A patient moves through stages of care (admission → triage → examination → diagnosis → treatment → discharge) without cycling back to earlier stages within a single encounter</li>
+<li><strong>Medical terminology hierarchies</strong>: ICD-10 diagnosis codes form a hierarchical classification where child codes inherit from parent categories</li>
+<li><strong>Care plan dependencies</strong>: Certain procedures must be completed before others can begin (lab work → results review → treatment decision → procedure scheduling)</li>
+<li><strong>Organizational structures</strong>: Hospital departmental hierarchies flow from executive leadership down through departments without circular reporting relationships</li>
+</ul>
+<details>
+    <summary>Directed Acyclic Graph Example: Care Pathway</summary>
+    Type: diagram
+
+    Purpose: Demonstrate a DAG structure representing a clinical care pathway where stages progress without cycles
+
+    Components to show:
+    - 8 rectangular nodes arranged in a flow from left to right and top to bottom
+    - Node 1: "Patient Admission"
+    - Node 2: "Initial Assessment"
+    - Node 3: "Diagnostic Testing"
+    - Node 4: "Test Results Review"
+    - Node 5: "Treatment Planning"
+    - Node 6: "Treatment Administration"
+    - Node 7: "Monitoring & Evaluation"
+    - Node 8: "Discharge Planning"
+
+    Connections (directed arrows showing workflow):
+    - Admission → Initial Assessment
+    - Initial Assessment → Diagnostic Testing
+    - Diagnostic Testing → Test Results Review
+    - Test Results Review → Treatment Planning
+    - Treatment Planning → Treatment Administration
+    - Treatment Administration → Monitoring & Evaluation
+    - Monitoring & Evaluation → Discharge Planning
+    - (Optional paths) Test Results Review → Additional Testing (dotted line back to node 3 only if new tests needed)
+    - Note: No cycles that return to previous stages
+
+    Style: Flowchart-style diagram with clear directional flow
+
+    Labels:
+    - Each node shows the care stage name
+    - Arrows labeled with action or transition
+    - Annotation: "DAG Property: No cycles—each stage progresses forward in time"
+
+    Color scheme:
+    - Nodes: Light blue gradient
+    - Arrows: Dark blue
+    - Optional/conditional paths: Dotted lines
+    - Background: White
+
+    Visual notes:
+    - Add small clock icons to emphasize temporal progression
+    - Highlight the acyclic nature with a note: "A patient does not cycle back to admission during a single encounter"
+
+    Implementation: Flowchart diagram tool (Mermaid, draw.io, or Graphviz)
+</details>
+
+<h2 id="the-labeled-property-graph-model">The Labeled Property Graph Model</h2>
+<p>The <strong>labeled property graph</strong> (LPG) model is the most widely adopted graph database paradigm, implemented by popular systems including Neo4j, Amazon Neptune, and Azure Cosmos DB. The LPG model combines all the concepts we've discussed—nodes, edges, properties, and labels—into a cohesive, flexible data model particularly well-suited for complex domains like healthcare.</p>
+<p>Key characteristics of the labeled property graph model include:</p>
+<ul>
+<li><strong>Nodes have labels</strong>: Each node can have one or more labels (e.g., a node might be labeled both <code>Person</code> and <code>Patient</code>)</li>
+<li><strong>Nodes have properties</strong>: Arbitrary key-value pairs describe node attributes</li>
+<li><strong>Edges have types</strong>: Each edge has exactly one relationship type (e.g., <code>PRESCRIBED</code>, <code>DIAGNOSED_WITH</code>)</li>
+<li><strong>Edges have properties</strong>: Relationships can carry contextual information</li>
+<li><strong>Edges are directed</strong>: Every edge connects a source node to a target node</li>
+<li><strong>Schema flexibility</strong>: No rigid schema is enforced; the graph can evolve organically as requirements change</li>
+</ul>
+<p>This flexibility is particularly valuable in healthcare, where data models must accommodate:</p>
+<ul>
+<li>Evolving medical knowledge and terminology</li>
+<li>Integration of data from disparate source systems with different schemas</li>
+<li>Patient-specific variations in care paths and medical history</li>
+<li>Regulatory requirements that change over time</li>
+</ul>
+<p>Let's examine a concrete example of a labeled property graph representing a patient's diabetes management:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>(Patient {patientId: &quot;P-458392&quot;, name: &quot;Sarah Chen&quot;, age: 46, bloodType: &quot;A+&quot;})
+  -[:HAS_CONDITION {diagnosisDate: &quot;2023-03-15&quot;, severity: &quot;moderate&quot;}]-&gt;
+(Diagnosis {icd10: &quot;E11.9&quot;, name: &quot;Type 2 Diabetes&quot;, category: &quot;Endocrine&quot;})
+
+(Provider {providerId: &quot;DR-1892&quot;, name: &quot;Dr. Martinez&quot;, specialty: &quot;Endocrinology&quot;})
+  -[:PRESCRIBED {prescriptionDate: &quot;2023-03-15&quot;, dosage: &quot;500mg twice daily&quot;, duration: 90}]-&gt;
+(Medication {ndcCode: &quot;12345-678-90&quot;, genericName: &quot;Metformin&quot;, brandName: &quot;Glucophage&quot;})
+  -[:TREATS]-&gt;
+(Diagnosis {icd10: &quot;E11.9&quot;, name: &quot;Type 2 Diabetes&quot;})
+
+(Patient {patientId: &quot;P-458392&quot;})
+  -[:VISITED {encounterDate: &quot;2023-03-15&quot;, encounterType: &quot;office visit&quot;}]-&gt;
+(Provider {providerId: &quot;DR-1892&quot;})
+</code></pre></div></td></tr></table></div>
+<p>This representation captures entities (patients, providers, diagnoses, medications), their attributes (patient demographics, medication codes), relationships (prescriptions, diagnoses, visits), and relationship context (dates, dosages, encounter types) in a natural, interconnected structure.</p>
+<details>
+    <summary>Healthcare Labeled Property Graph Visualization</summary>
+    Type: graph-model
+
+    Purpose: Visualize a labeled property graph representing a patient's healthcare journey with multiple interconnected entities
+
+    Node types:
+    1. Patient (light blue circles)
+       - Properties: patientId, name, dateOfBirth, bloodType, gender
+       - Example: {patientId: "P-458392", name: "Sarah Chen", dateOfBirth: "1978-04-15", bloodType: "A+", gender: "Female"}
+
+    2. Provider (green squares)
+       - Properties: providerId, name, specialty, licenseNumber
+       - Example: {providerId: "DR-1892", name: "Dr. Martinez", specialty: "Endocrinology"}
+
+    3. Diagnosis (red hexagons)
+       - Properties: icd10Code, diagnosisName, category
+       - Example: {icd10Code: "E11.9", diagnosisName: "Type 2 Diabetes", category: "Endocrine"}
+
+    4. Medication (orange rounded rectangles)
+       - Properties: ndcCode, genericName, brandName, class
+       - Example: {ndcCode: "12345-678-90", genericName: "Metformin", brandName: "Glucophage", class: "Biguanide"}
+
+    5. Facility (purple diamonds)
+       - Properties: facilityId, facilityName, facilityType, address
+       - Example: {facilityId: "F-2201", facilityName: "City Hospital", facilityType: "Hospital"}
+
+    6. Procedure (yellow rounded rectangles)
+       - Properties: cptCode, procedureName, category
+       - Example: {cptCode: "99213", procedureName: "Office Visit Level 3", category: "Evaluation"}
+
+    Edge types:
+    1. HAS_CONDITION (solid red arrow)
+       - Properties: diagnosisDate, severity, status
+       - Connects: Patient → Diagnosis
+
+    2. PRESCRIBED (solid blue arrow)
+       - Properties: prescriptionDate, dosage, durationDays, refillsAllowed
+       - Connects: Provider → Medication
+
+    3. TAKES_MEDICATION (dashed blue arrow)
+       - Properties: startDate, adherenceRate
+       - Connects: Patient → Medication
+
+    4. TREATS (dotted green arrow)
+       - Properties: efficacyRating
+       - Connects: Medication → Diagnosis
+
+    5. VISITED (solid green arrow)
+       - Properties: encounterDate, encounterType, duration
+       - Connects: Patient → Provider OR Patient → Facility
+
+    6. WORKS_AT (solid purple arrow)
+       - Properties: startDate, employmentType
+       - Connects: Provider → Facility
+
+    7. UNDERWENT (solid orange arrow)
+       - Properties: procedureDate, performedBy
+       - Connects: Patient → Procedure
+
+    Sample data structure:
+    Central patient node (Sarah Chen) with connections to:
+    - Provider node (Dr. Martinez) via VISITED edge
+    - Diagnosis node (Type 2 Diabetes) via HAS_CONDITION edge
+    - Medication node (Metformin) via TAKES_MEDICATION edge
+    - Facility node (City Hospital) via VISITED edge
+    - Procedure node (Office Visit) via UNDERWENT edge
+
+    Additional connections:
+    - Dr. Martinez PRESCRIBED Metformin
+    - Dr. Martinez WORKS_AT City Hospital
+    - Metformin TREATS Type 2 Diabetes
+
+    Layout: Force-directed with patient node in center
+
+    Interactive features:
+    - Hover over node: Display properties in tooltip
+    - Click node: Highlight all directly connected nodes and edges
+    - Double-click node: Expand to show additional connections (e.g., show all medications for a patient)
+    - Hover over edge: Display edge type and properties
+    - Right-click node: Show context menu with "Show all relationships" option
+    - Zoom: Mouse wheel (zoom in/out)
+    - Pan: Click and drag canvas background
+    - Filter controls: Toggle node types on/off (e.g., hide Facilities, show only Patients and Medications)
+
+    Visual styling:
+    - Node size: Proportional to number of connections (degree centrality)
+    - Node border: Thicker border for nodes with >5 connections
+    - Edge thickness: Uniform for clarity
+    - Edge color: Matches edge type (as specified above)
+    - Selected node: Yellow glow effect
+    - Connected nodes when selected: Light gray highlight
+
+    Legend (top-right corner):
+    - Node shapes and colors with labels (Patient, Provider, Diagnosis, etc.)
+    - Edge line styles (solid, dashed, dotted) with meanings
+    - Edge colors and their relationship types
+    - Interactive instructions: "Hover to inspect, Click to highlight, Double-click to expand"
+
+    Implementation: vis-network JavaScript library
+    Canvas size: 900x700px
+    Physics: Enabled with spring stiffness for natural clustering
+</details>
+
+<h2 id="graph-traversal-and-paths">Graph Traversal and Paths</h2>
+<p>One of the defining advantages of graph databases is their ability to efficiently <strong>traverse</strong> the graph—following edges from node to node to discover patterns, calculate dependencies, or answer complex relationship queries. <strong>Graph traversal</strong> refers to the process of visiting nodes and edges in some systematic order, often to find specific information or compute aggregate results.</p>
+<p>A <strong>graph path</strong> is a sequence of nodes connected by edges. For example, in our healthcare graph:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Patient &quot;Sarah Chen&quot;
+  → VISITED → Dr. Martinez
+  → WORKS_AT → City Hospital
+</code></pre></div></td></tr></table></div>
+<p>This path tells a story: Sarah Chen visited Dr. Martinez, who works at City Hospital. We can express path length in terms of "hops"—the number of edges traversed. The path above is a 2-hop path (two edges).</p>
+<p>Graph databases excel at multi-hop traversal queries that would be prohibitively expensive in relational databases. Consider these healthcare scenarios:</p>
+<p><strong>1-hop query</strong>: "Find all medications prescribed to Sarah Chen"
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>(Patient {name: &quot;Sarah Chen&quot;}) -[:TAKES_MEDICATION]-&gt; (Medication)
+</code></pre></div></td></tr></table></div></p>
+<p><strong>2-hop query</strong>: "Find all providers who have prescribed medications that Sarah Chen currently takes"
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>(Patient {name: &quot;Sarah Chen&quot;}) -[:TAKES_MEDICATION]-&gt; (Medication) &lt;-[:PRESCRIBED]- (Provider)
+</code></pre></div></td></tr></table></div></p>
+<p><strong>3-hop query</strong>: "Find all patients who take the same medication and see the same provider as Sarah Chen"
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>(Patient {name: &quot;Sarah Chen&quot;}) -[:TAKES_MEDICATION]-&gt; (Medication) &lt;-[:TAKES_MEDICATION]- (OtherPatient)
+(OtherPatient) -[:VISITED]-&gt; (Provider) &lt;-[:VISITED]- (Patient {name: &quot;Sarah Chen&quot;})
+</code></pre></div></td></tr></table></div></p>
+<p>As queries grow more complex, involving 4, 5, or even 10+ hops, graph databases maintain near-constant performance due to <strong>index-free adjacency</strong>—a storage architecture where each node directly references its connected neighbors without requiring index lookups. In contrast, relational databases require expensive JOIN operations that compound with each additional hop, leading to exponential performance degradation.</p>
+<h3 id="common-traversal-patterns-in-healthcare">Common Traversal Patterns in Healthcare</h3>
+<p>Several traversal patterns appear repeatedly in healthcare graph applications:</p>
+<ul>
+<li><strong>Blast radius analysis</strong>: "If this medication is recalled, which patients are affected?"</li>
+<li><strong>Care pathway tracking</strong>: "What is the typical progression of treatments for patients with this diagnosis?"</li>
+<li><strong>Provider network analysis</strong>: "Which specialists do primary care providers most frequently refer patients to?"</li>
+<li><strong>Medication interaction detection</strong>: "Do any of this patient's current medications interact with the newly prescribed drug?"</li>
+<li><strong>Root cause analysis</strong>: "What upstream factors contributed to this adverse event?"</li>
+</ul>
+<details>
+    <summary>Graph Traversal Visualization MicroSim</summary>
+    Type: microsim
+
+    Learning objective: Enable students to interactively explore how graph traversal algorithms navigate a healthcare graph, comparing different traversal strategies and understanding path discovery
+
+    Canvas layout (1000x700px):
+    - Left side (700x700): Drawing area showing a healthcare graph network
+    - Right side (300x700): Control panel and information display
+
+    Visual elements in graph area:
+    - 12 nodes representing different healthcare entities:
+      - 1 central Patient node (large light blue circle): "Patient: Alex"
+      - 3 Provider nodes (green squares): "Dr. Smith", "Dr. Lee", "Dr. Patel"
+      - 3 Medication nodes (orange rounded rectangles): "Med A", "Med B", "Med C"
+      - 2 Diagnosis nodes (red hexagons): "Condition X", "Condition Y"
+      - 2 Facility nodes (purple diamonds): "Hospital A", "Clinic B"
+      - 1 Procedure node (yellow rectangle): "Procedure Z"
+
+    - Edges connecting nodes with labeled relationships:
+      - Patient --VISITED--> Dr. Smith
+      - Patient --HAS_CONDITION--> Condition X
+      - Patient --TAKES_MEDICATION--> Med A
+      - Dr. Smith --PRESCRIBED--> Med A
+      - Dr. Smith --WORKS_AT--> Hospital A
+      - Med A --TREATS--> Condition X
+      - Patient --VISITED--> Dr. Lee
+      - Dr. Lee --PRESCRIBED--> Med B
+      - Med B --TREATS--> Condition Y
+      - Patient --UNDERWENT--> Procedure Z
+      - Dr. Patel --PERFORMED--> Procedure Z
+      - Dr. Patel --WORKS_AT--> Clinic B
+
+    Node states (color-coded):
+    - Unvisited: Original color (gray border)
+    - Current node: Bright yellow with thick border
+    - Visited: Light green with green border
+    - In path: Orange with thick orange border
+
+    Interactive controls (right panel):
+    1. Dropdown menu: "Select Start Node"
+       - Options: Patient node (default), or any other node
+
+    2. Dropdown menu: "Select Traversal Algorithm"
+       - Options:
+         - Depth-First Search (DFS)
+         - Breadth-First Search (BFS)
+         - Shortest Path (to target node)
+
+    3. Dropdown menu (conditionally shown): "Select Target Node"
+       - Shown only if "Shortest Path" is selected
+       - Options: List of all nodes except start node
+
+    4. Slider: "Animation Speed"
+       - Range: 100ms (fast) to 2000ms (slow) per step
+       - Default: 500ms
+       - Label shows current speed: "Speed: 500ms per step"
+
+    5. Button: "Start Traversal" (green)
+       - Begins animated traversal
+       - Disables during traversal
+
+    6. Button: "Pause/Resume" (yellow)
+       - Toggles pause state during traversal
+       - Enabled only when traversal is running
+
+    7. Button: "Reset" (red)
+       - Clears visualization and returns all nodes to unvisited state
+       - Clears info display
+
+    8. Text display area: "Traversal Info"
+       - Shows current step number: "Step: 5/12"
+       - Shows current node: "Current: Dr. Smith (Provider)"
+       - Shows traversal order: "Order: Patient → Med A → Condition X → Dr. Smith → Hospital A..."
+       - Shows path length (for shortest path): "Path length: 3 hops"
+
+    Default parameters:
+    - Start node: Patient node
+    - Algorithm: Depth-First Search (DFS)
+    - Animation speed: 500ms per step
+
+    Behavior and logic:
+    - When "Start Traversal" clicked:
+      1. Initialize chosen algorithm with start node
+      2. Begin step-by-step animation showing:
+         - Current node highlighted in yellow
+         - Previously visited nodes in green
+         - Edges being traversed highlighted briefly
+         - Info panel updated with current state
+      3. For DFS: Explore deeply along each branch before backtracking
+      4. For BFS: Explore all neighbors at current depth before moving to next depth
+      5. For Shortest Path: Use Dijkstra's algorithm to find optimal path, then animate the path
+
+    - Node visit animation:
+      - Change current node to yellow
+      - Wait for animation delay
+      - Change to visited green
+      - Move to next node
+
+    - Edge traversal animation:
+      - Highlight edge being traversed with thick bright blue line
+      - Show direction with animated arrow movement
+      - Fade back to normal after traversal
+
+    - Path highlighting (for Shortest Path mode):
+      - Once path found, highlight all nodes and edges in path with orange
+      - Display total path length in hops
+
+    - Pause/Resume:
+      - Maintains current state
+      - Resumes from exact point where paused
+
+    - Reset:
+      - All nodes return to original colors
+      - All edges return to normal
+      - Info panel clears
+      - Traversal order list clears
+
+    Educational annotations:
+    - Small info icon next to each algorithm option
+    - Hover over info icon shows tooltip:
+      - DFS: "Explores as far as possible along each branch before backtracking. Good for exhaustive search."
+      - BFS: "Explores all neighbors at current depth before moving deeper. Guarantees shortest path."
+      - Shortest Path: "Finds the minimum number of hops between two nodes using Dijkstra's algorithm."
+
+    Implementation notes:
+    - Use p5.js for rendering and animation
+    - Store graph as adjacency list in JavaScript object
+    - Implement DFS using stack (recursive or iterative)
+    - Implement BFS using queue
+    - Implement shortest path using Dijkstra's algorithm with priority queue
+    - Use p5.js frameCount and millis() for animation timing
+    - Create Node and Edge classes for easy state management
+    - Use lerp() for smooth edge highlighting animations
+
+    Implementation: p5.js with custom graph data structure
+</details>
+
+<h2 id="graph-queries">Graph Queries</h2>
+<p>While traversal describes the mechanics of following edges, <strong>graph queries</strong> are the high-level language constructs that express what information you want to retrieve or what patterns you want to find. Modern graph databases provide declarative query languages—most notably <strong>Cypher</strong> (Neo4j), <strong>Gremlin</strong> (Apache TinkerPop standard), and the emerging <strong>GQL</strong> (Graph Query Language) standard.</p>
+<p>These query languages combine the expressive power of pattern matching with the familiar syntax elements borrowed from SQL. Let's examine some Cypher examples to understand how graph queries work:</p>
+<p><strong>Example 1: Find all medications a specific patient takes</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sarah Chen&quot;</span><span class="p">})</span><span class="o">-[</span><span class="p">:</span><span class="n">TAKES_MEDICATION</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Medication</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">genericName</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">dosage</span>
+</code></pre></div></td></tr></table></div></p>
+<p>This query uses <strong>pattern matching</strong>: it looks for a pattern where a Patient node (labeled <code>Patient</code> with a <code>name</code> property of "Sarah Chen") has a <code>TAKES_MEDICATION</code> relationship pointing to a Medication node.</p>
+<p><strong>Example 2: Find patients who share the same diagnosis and provider</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">HAS_CONDITION</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Diagnosis</span><span class="p">)</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">HAS_CONDITION</span><span class="o">]-</span><span class="p">(</span><span class="n">p2</span><span class="p">:</span><span class="n">Patient</span><span class="p">),</span>
+<span class="w">      </span><span class="p">(</span><span class="n">p1</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">VISITED</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">provider</span><span class="p">:</span><span class="n">Provider</span><span class="p">)</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">VISITED</span><span class="o">]-</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="p">&lt;&gt;</span><span class="w"> </span><span class="n">p2</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Patient1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Patient2</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">diagnosisName</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SharedProvider</span>
+</code></pre></div></td></tr></table></div></p>
+<p>This more complex query finds pairs of patients who share both a diagnosis and a provider, filtering out self-matches with the <code>WHERE</code> clause.</p>
+<p><strong>Example 3: Calculate the average number of medications per patient</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">TAKES_MEDICATION</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Medication</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">COUNT</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">MedicationCount</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">MedicationCount</span><span class="w"> </span><span class="k">DESC</span>
+</code></pre></div></td></tr></table></div></p>
+<p>Graph query languages typically support aggregation functions (COUNT, AVG, SUM, MAX, MIN), ordering, filtering, and many other operations familiar from SQL, but with the added power of relationship traversal and pattern matching.</p>
+<h3 id="query-performance-advantages">Query Performance Advantages</h3>
+<p>Graph databases achieve their performance advantages through architectural choices fundamentally different from relational systems:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Relational Database</th>
+<th>Graph Database</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Relationship representation</strong></td>
+<td>Foreign keys in tables</td>
+<td>Direct pointer references</td>
+</tr>
+<tr>
+<td><strong>Multi-hop query mechanism</strong></td>
+<td>Multiple JOIN operations</td>
+<td>Direct edge traversal</td>
+</tr>
+<tr>
+<td><strong>Performance scaling</strong></td>
+<td>Degrades exponentially with hops</td>
+<td>Near-constant regardless of hops</td>
+</tr>
+<tr>
+<td><strong>Index usage</strong></td>
+<td>Index lookup required for each JOIN</td>
+<td>Index-free adjacency</td>
+</tr>
+<tr>
+<td><strong>Query time for 3-hop query</strong></td>
+<td>Seconds to minutes (depends on data size)</td>
+<td>Milliseconds</td>
+</tr>
+</tbody>
+</table>
+<details>
+    <summary>Query Performance Comparison Chart: RDBMS vs Graph Database</summary>
+    Type: chart
+
+    Chart type: Line chart with logarithmic Y-axis
+
+    Purpose: Demonstrate the exponential performance degradation of relational database JOIN queries compared to the constant-time traversal performance of graph databases as relationship depth increases
+
+    X-axis: "Number of Relationship Hops" (1, 2, 3, 4, 5, 6)
+    Y-axis: "Query Response Time (milliseconds)" - Logarithmic scale from 1ms to 100,000ms
+
+    Data series:
+    1. RDBMS with JOINs (red line with square markers):
+       - 1 hop: 15ms
+       - 2 hops: 180ms
+       - 3 hops: 3,200ms
+       - 4 hops: 52,000ms
+       - 5 hops: 850,000ms (14+ minutes, often times out)
+       - 6 hops: Data point not shown (query timeout)
+
+    2. Graph Database (green line with circle markers):
+       - 1 hop: 3ms
+       - 2 hops: 5ms
+       - 3 hops: 8ms
+       - 4 hops: 11ms
+       - 5 hops: 14ms
+       - 6 hops: 17ms
+
+    Title: "Multi-Hop Query Performance: Relational vs Graph Database"
+    Subtitle: "Healthcare Dependency Analysis (100,000 patient records)"
+
+    Legend:
+    - Position: Top-right
+    - Entries: "RDBMS (JOIN operations)", "Graph DB (Index-free adjacency)"
+
+    Annotations:
+    - Arrow pointing to RDBMS line at 4 hops: "Queries often timeout beyond 4 hops"
+    - Arrow pointing to graph DB line: "Near-constant performance"
+    - Text box at bottom: "Graph databases maintain O(1) traversal time regardless of relationship depth"
+
+    Grid:
+    - Horizontal grid lines at each power of 10 on Y-axis
+    - Vertical grid lines at each hop on X-axis
+
+    Colors:
+    - RDBMS line: Red (#DC3545)
+    - Graph DB line: Green (#28A745)
+    - Background: White
+    - Grid: Light gray (#E0E0E0)
+
+    Styling:
+    - Line thickness: 3px
+    - Marker size: 8px
+    - Font: Sans-serif, 12pt for labels, 14pt for title
+
+    Implementation: Chart.js JavaScript library with logarithmic Y-axis scale
+    Canvas size: 800x500px
+</details>
+
+<h2 id="graph-databases-vs-relational-databases">Graph Databases vs Relational Databases</h2>
+<p>To fully appreciate when and why to use graph databases for healthcare applications, it's essential to understand the fundamental architectural and philosophical differences between graph and relational database systems.</p>
+<h3 id="the-relational-model">The Relational Model</h3>
+<p><strong>Relational databases</strong> organize data into tables (relations) with rows (records) and columns (attributes). Relationships between entities are represented implicitly through foreign keys—a column in one table that references the primary key of another table. To query related data, relational systems perform JOIN operations that combine rows from multiple tables based on matching foreign key values.</p>
+<p>For simple relationships or small datasets, this approach works well. However, as relationships become more complex and queries span multiple levels of indirection, performance degrades significantly. Each JOIN operation requires scanning index structures and matching keys, and these costs compound multiplicatively as query complexity increases.</p>
+<p>Consider modeling a patient's complete care network in a relational database: you might have tables for Patients, Providers, Medications, Diagnoses, Facilities, Procedures, Insurance Plans, and Claims. Answering the question "Show me the complete care network for this patient" would require JOINing across all these tables, filtering for the relevant patient ID, and assembling the results—a computationally expensive operation.</p>
+<h3 id="the-graph-database-paradigm">The Graph Database Paradigm</h3>
+<p><strong>Graph databases</strong> take a fundamentally different approach: relationships are first-class citizens, stored as direct pointer references between nodes. This architectural choice, called <strong>index-free adjacency</strong>, means that traversing from one node to a connected node is a constant-time operation (O(1))—you simply follow the pointer. No index lookup, no scanning, no matching.</p>
+<p>This design paradigm shift yields dramatic performance improvements for relationship-intensive queries. The same "complete care network" query in a graph database becomes a simple traversal operation: start at the patient node and follow all connected edges outward, regardless of how many types of relationships are involved.</p>
+<p>Here's a comparison of key characteristics:</p>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th>Relational Database</th>
+<th>Graph Database</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data model</strong></td>
+<td>Tables with rows and columns</td>
+<td>Nodes and edges with properties</td>
+</tr>
+<tr>
+<td><strong>Schema</strong></td>
+<td>Rigid schema enforced</td>
+<td>Flexible, schema-optional</td>
+</tr>
+<tr>
+<td><strong>Relationships</strong></td>
+<td>Foreign keys (implicit)</td>
+<td>Edges with types (explicit)</td>
+</tr>
+<tr>
+<td><strong>Relationship queries</strong></td>
+<td>JOIN operations</td>
+<td>Direct traversal</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Transactional data, reporting</td>
+<td>Highly connected data, relationship analysis</td>
+</tr>
+<tr>
+<td><strong>Query complexity scaling</strong></td>
+<td>Degrades with relationship depth</td>
+<td>Near-constant performance</td>
+</tr>
+<tr>
+<td><strong>Typical use cases</strong></td>
+<td>Financial transactions, inventory management</td>
+<td>Social networks, recommendation engines, dependency analysis</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-to-use-each-approach">When to Use Each Approach</h3>
+<p>Both relational and graph databases have appropriate use cases. The choice depends on the nature of your data and the queries you need to perform:</p>
+<p><strong>Use a relational database when:</strong></p>
+<ul>
+<li>Data is primarily tabular with few relationships</li>
+<li>Relationships are simple and rarely exceed 2-3 levels deep</li>
+<li>Schema is stable and unlikely to change</li>
+<li>Primary operations are CRUD (Create, Read, Update, Delete) on individual records</li>
+<li>Strong ACID guarantees are critical for financial or transactional data</li>
+<li>SQL expertise and tooling are abundant in your organization</li>
+</ul>
+<p><strong>Use a graph database when:</strong></p>
+<ul>
+<li>Data is highly interconnected with many relationship types</li>
+<li>Queries frequently traverse multiple relationship hops (3+)</li>
+<li>Relationship properties are as important as node properties</li>
+<li>Schema needs to evolve rapidly as requirements change</li>
+<li>Discovering patterns and paths through connections is a primary use case</li>
+<li>Real-time relationship analysis is required (e.g., fraud detection, recommendation engines)</li>
+</ul>
+<p>For healthcare applications, graph databases are particularly well-suited because:</p>
+<ul>
+<li>Patient data is inherently interconnected (providers, medications, diagnoses, procedures, facilities, insurance)</li>
+<li>Clinical decision support requires traversing complex relationships (drug interactions, care pathways, comorbidity analysis)</li>
+<li>Healthcare schemas must evolve to accommodate new medical knowledge, regulatory requirements, and data source integrations</li>
+<li>Real-time queries are essential for point-of-care applications</li>
+<li>Relationship context (dates, dosages, outcomes) is as critical as entity attributes</li>
+</ul>
+<p>Many organizations adopt a <strong>polyglot persistence</strong> strategy, using both relational databases for transactional systems (billing, scheduling) and graph databases for analytical and relationship-intensive applications (care coordination, population health, fraud detection).</p>
+<h2 id="data-models-and-database-schemas">Data Models and Database Schemas</h2>
+<p>With foundational graph concepts established, we now turn to the practical work of <strong>data modeling</strong>—the process of designing how your domain's entities and relationships will be represented in the database. A <strong>data model</strong> is the conceptual blueprint defining what types of nodes and edges exist, what properties they have, and how they connect. The <strong>database schema</strong> is the concrete implementation of that model in a specific database system.</p>
+<h3 id="healthcare-data-modeling-considerations">Healthcare Data Modeling Considerations</h3>
+<p>Designing an effective healthcare graph data model requires balancing several competing concerns:</p>
+<p><strong>1. Semantic clarity</strong>: Node labels and edge types should clearly convey meaning to both developers and healthcare domain experts.</p>
+<p><strong>2. Query performance</strong>: The model should support efficient execution of your most common and critical queries.</p>
+<p><strong>3. Flexibility</strong>: Healthcare data models must accommodate new entity types, relationship types, and properties as medical knowledge advances and regulations change.</p>
+<p><strong>4. Regulatory compliance</strong>: Models must support HIPAA requirements for audit trails, access control, and data provenance.</p>
+<p><strong>5. Integration</strong>: The model must accommodate data from diverse source systems (EHRs, claims systems, lab systems, pharmacy systems) with varying schemas and data quality levels.</p>
+<p><strong>6. Scalability</strong>: As patient populations grow and longitudinal histories accumulate, the model must maintain performance.</p>
+<h3 id="node-labeling-strategies">Node Labeling Strategies</h3>
+<p>When defining node types (labels) for a healthcare graph, several approaches are common:</p>
+<p><strong>Entity-centric labeling</strong>: Create separate labels for each major entity type
+- Examples: <code>Patient</code>, <code>Provider</code>, <code>Medication</code>, <code>Diagnosis</code>, <code>Facility</code>, <code>Procedure</code>, <code>Claim</code>
+- Advantage: Clear semantic meaning, easy to understand
+- Disadvantage: Can proliferate labels for similar concepts</p>
+<p><strong>Role-based labeling</strong>: Label nodes by their role in clinical workflows
+- Examples: <code>Person</code>, <code>ClinicalEvent</code>, <code>Resource</code>, <code>Document</code>
+- Advantage: Reduces label proliferation
+- Disadvantage: Less semantic clarity</p>
+<p><strong>Hybrid approach</strong>: Use multiple labels per node to capture both entity type and roles
+- Example: A node might have labels <code>Person</code>, <code>Patient</code>, and <code>InsurancePolicyHolder</code>
+- Advantage: Flexible and expressive
+- Disadvantage: Can lead to confusion about which label to use for queries</p>
+<p>For most healthcare applications, an <strong>entity-centric approach with occasional multiple labels</strong> provides the best balance of clarity and flexibility.</p>
+<h3 id="edge-type-design">Edge Type Design</h3>
+<p>Relationship types (edge types) should be:</p>
+<ul>
+<li><strong>Verb phrases</strong>: Name edges as actions or relationships (e.g., <code>PRESCRIBED</code>, <code>DIAGNOSED_WITH</code>, <code>WORKS_AT</code>, <code>TREATS</code>)</li>
+<li><strong>Semantically meaningful</strong>: The edge type alone should convey the nature of the relationship</li>
+<li><strong>Consistently directional</strong>: Establish conventions for edge direction (e.g., always point from actor to object: <code>Provider</code> -[:PRESCRIBED]-&gt; <code>Medication</code>)</li>
+<li><strong>Granular enough</strong>: Different relationship semantics should have different edge types (<code>PRESCRIBED</code> vs <code>TOOK</code> vs <code>ADMINISTERED</code>)</li>
+</ul>
+<h3 id="sample-healthcare-graph-schema">Sample Healthcare Graph Schema</h3>
+<p>Here's a simplified but realistic schema for a healthcare graph database:</p>
+<p><strong>Node Labels:</strong>
+- <code>Patient</code>: Individual receiving care
+- <code>Provider</code>: Healthcare professional (physician, nurse, specialist)
+- <code>Facility</code>: Physical location (hospital, clinic, urgent care)
+- <code>Diagnosis</code>: Medical condition or disease
+- <code>Medication</code>: Pharmaceutical drug
+- <code>Procedure</code>: Medical procedure or intervention
+- <code>Claim</code>: Insurance claim
+- <code>Plan</code>: Insurance plan or policy</p>
+<p><strong>Edge Types:</strong>
+- <code>Patient</code> -[:HAS_CONDITION]-&gt; <code>Diagnosis</code>
+- <code>Provider</code> -[:DIAGNOSED]-&gt; <code>Diagnosis</code>
+- <code>Provider</code> -[:PRESCRIBED]-&gt; <code>Medication</code>
+- <code>Patient</code> -[:TAKES_MEDICATION]-&gt; <code>Medication</code>
+- <code>Medication</code> -[:TREATS]-&gt; <code>Diagnosis</code>
+- <code>Patient</code> -[:UNDERWENT]-&gt; <code>Procedure</code>
+- <code>Provider</code> -[:PERFORMED]-&gt; <code>Procedure</code>
+- <code>Provider</code> -[:WORKS_AT]-&gt; <code>Facility</code>
+- <code>Patient</code> -[:VISITED]-&gt; <code>Facility</code>
+- <code>Claim</code> -[:FOR_PATIENT]-&gt; <code>Patient</code>
+- <code>Claim</code> -[:SUBMITTED_BY]-&gt; <code>Provider</code>
+- <code>Claim</code> -[:COVERED_BY]-&gt; <code>Plan</code></p>
+<p>This schema enables queries such as:</p>
+<ul>
+<li>"Show all medications treating a specific condition"</li>
+<li>"Find all providers who have performed a specific procedure at a given facility"</li>
+<li>"Identify patients taking multiple medications that treat the same condition"</li>
+<li>"Calculate the average claim amount for procedures performed at different facilities"</li>
+</ul>
+<details>
+    <summary>Healthcare Data Model Implementation Workflow</summary>
+    Type: workflow
+
+    Purpose: Illustrate the step-by-step process of implementing a healthcare graph data model from conceptual design through deployment
+
+    Visual style: Flowchart with BPMN-style notation (rectangles for tasks, diamonds for decisions, rounded rectangles for events)
+
+    Swimlanes (vertical divisions):
+    - Business/Clinical Stakeholders
+    - Data Architects
+    - Development Team
+    - Database Administrators
+    - Compliance/Security Team
+
+    Steps:
+
+    1. **Start Event** (rounded rectangle, green): "Healthcare Data Modeling Project Initiated"
+       Swimlane: Business/Clinical Stakeholders
+       Hover text: "Project sponsor identifies need for graph database to support clinical decision support and care coordination"
+
+    2. **Task** (rectangle, light blue): "Identify Key Entities and Relationships"
+       Swimlane: Business/Clinical Stakeholders
+       Hover text: "Clinical SMEs identify critical entities (patients, providers, medications, diagnoses) and their relationships"
+
+    3. **Task** (rectangle, light blue): "Define Node Labels and Properties"
+       Swimlane: Data Architects
+       Hover text: "Data architects translate business entities into node labels (Patient, Provider, Medication) with appropriate properties"
+
+    4. **Task** (rectangle, light blue): "Define Edge Types and Properties"
+       Swimlane: Data Architects
+       Hover text: "Define relationship types (PRESCRIBED, DIAGNOSED_WITH, TREATS) with contextual properties (dates, quantities)"
+
+    5. **Decision Diamond** (yellow): "Schema Supports Key Queries?"
+       Swimlane: Data Architects
+       Hover text: "Validate that the schema can efficiently answer priority use cases like drug interaction checks and care pathway analysis"
+       - If NO → Return to Step 3
+       - If YES → Continue to Step 6
+
+    6. **Task** (rectangle, light blue): "Implement Data Model in Graph Database"
+       Swimlane: Development Team
+       Hover text: "Create database schema, constraints, and indexes in Neo4j or chosen graph database platform"
+
+    7. **Task** (rectangle, light blue): "Develop ETL Pipelines"
+       Swimlane: Development Team
+       Hover text: "Build data ingestion pipelines to populate graph from EHR, claims, and pharmacy source systems"
+
+    8. **Task** (rectangle, light blue): "Conduct Security Review"
+       Swimlane: Compliance/Security Team
+       Hover text: "Verify HIPAA compliance, access controls, audit logging, and encryption requirements are met"
+
+    9. **Decision Diamond** (yellow): "Security Compliant?"
+       Swimlane: Compliance/Security Team
+       Hover text: "Ensure all HIPAA and organizational security policies are satisfied"
+       - If NO → Return to Step 6
+       - If YES → Continue to Step 10
+
+    10. **Task** (rectangle, light blue): "Load Test Data"
+        Swimlane: Development Team
+        Hover text: "Populate database with representative test data for performance and functional testing"
+
+    11. **Task** (rectangle, light blue): "Execute Performance Testing"
+        Swimlane: Database Administrators
+        Hover text: "Run benchmark queries to validate response times meet SLA requirements for clinical applications"
+
+    12. **Decision Diamond** (yellow): "Performance Acceptable?"
+        Swimlane: Database Administrators
+        Hover text: "Verify multi-hop traversal queries execute in <100ms for real-time clinical decision support"
+        - If NO → Optimize indexes/schema → Return to Step 6
+        - If YES → Continue to Step 13
+
+    13. **Task** (rectangle, light blue): "Deploy to Production"
+        Swimlane: Database Administrators
+        Hover text: "Deploy graph database to production environment with monitoring and backup configurations"
+
+    14. **Task** (rectangle, light blue): "Establish Monitoring and Maintenance"
+        Swimlane: Database Administrators
+        Hover text: "Configure query performance monitoring, alerting, and regular maintenance schedules"
+
+    15. **End Event** (rounded rectangle, green): "Healthcare Graph Database Operational"
+        Swimlane: Database Administrators
+        Hover text: "Graph database is live and supporting clinical applications"
+
+    Color coding:
+    - Start/End events: Green
+    - Task rectangles: Light blue
+    - Decision diamonds: Yellow
+    - Rework/iteration paths: Dotted orange arrows
+    - Primary flow: Solid black arrows
+
+    Annotations:
+    - Add time estimates for each phase (e.g., "2-3 weeks" under Step 2)
+    - Include note: "Iterate as needed—data models evolve with requirements"
+
+    Implementation: BPMN diagram tool (Camunda Modeler, draw.io with BPMN shapes, or similar)
+    Canvas size: 1200x800px
+</details>
+
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways</h2>
+<p>This chapter has introduced the foundational concepts necessary for understanding and working with graph databases in healthcare contexts. Let's recap the key ideas:</p>
+<p><strong>Graph fundamentals:</strong>
+- Graphs consist of <strong>nodes</strong> (entities) and <strong>edges</strong> (relationships)
+- Both nodes and edges can have <strong>properties</strong> (key-value pairs storing attributes)
+- Edges are <strong>directed</strong>, flowing from a source node to a target node
+- <strong>Directed Acyclic Graphs (DAGs)</strong> prohibit cycles and are useful for hierarchical and temporal relationships</p>
+<p><strong>Labeled Property Graph model:</strong>
+- Nodes have <strong>labels</strong> indicating their type
+- Edges have <strong>types</strong> naming the relationship
+- The LPG model is the dominant graph database paradigm, offering flexibility and expressiveness ideal for complex domains like healthcare</p>
+<p><strong>Graph operations:</strong>
+- <strong>Graph traversal</strong> is the process of following edges to discover patterns
+- <strong>Graph paths</strong> are sequences of nodes connected by edges
+- Graph databases achieve constant-time traversal through <strong>index-free adjacency</strong>
+- <strong>Graph queries</strong> use declarative languages (Cypher, Gremlin, GQL) for pattern matching</p>
+<p><strong>Comparative advantages:</strong>
+- Graph databases excel at relationship-intensive queries involving multiple hops
+- Relational databases perform better for simple tabular data and transactional workloads
+- Healthcare applications benefit significantly from graph databases due to the highly interconnected nature of clinical data</p>
+<p><strong>Data modeling:</strong>
+- Effective healthcare graph schemas balance semantic clarity, query performance, flexibility, and regulatory compliance
+- Node labels represent entity types (Patient, Provider, Medication)
+- Edge types represent relationships (PRESCRIBED, DIAGNOSED_WITH, TREATS)
+- Schema design should support your most critical use cases while remaining adaptable to future requirements</p>
+<p>With these fundamentals established, you are now prepared to explore specific healthcare data modeling patterns, query techniques, and advanced graph database features in subsequent chapters. The concepts introduced here—nodes, edges, properties, traversal, and schema design—will serve as the building blocks for all the sophisticated healthcare applications we'll examine throughout this course.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-intro-to-healthcare-systems/" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 2 - Introduction to Healthcare Systems">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Chapter 2 - Introduction to Healthcare Systems
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

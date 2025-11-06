@@ -37,6 +37,58 @@
          <lastmod>2025-11-06</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/01-graph-theory-database-foundations/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/02-intro-to-healthcare-systems/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/03-graph-query-languages/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/04-patient-centric-data-modeling/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/05-provider-operations-networks/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/06-payer-perspective-insurance/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/07-healthcare-financial-analytics/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/08-fraud-detection-compliance/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/09-graph-algorithms-analytics/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/10-ai-machine-learning-integration/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/11-security-privacy-governance/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/12-capstone-real-world-applications/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/</loc>
          <lastmod>2025-11-06</lastmod>
     </url>
@@ -73,6 +125,14 @@
          <lastmod>2025-11-06</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/04-run-book-chapter-generator/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/05-run-chapter-content-generator-1/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/icon/</loc>
          <lastmod>2025-11-06</lastmod>
     </url>
@@ -86,6 +146,10 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/graph-viewer/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/view-hc-icons/</loc>
          <lastmod>2025-11-06</lastmod>
     </url>
 </urlset>
