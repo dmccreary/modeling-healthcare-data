@@ -1,5 +1,5 @@
-site_name: "Modeling Healthcare Data"
-site_description: 'A an undergraduate textbook on modeling healthcare data using graphs.'
+site_name: "Modeling Healthcare Data with Graphs"
+site_description: 'An undergraduate textbook on modeling healthcare data using graphs.'
 site_author: 'Dan McCreary'
 repo_name: 'GitHub Repo'
 site_url: 'https://dmccreary.github.io/modeling-healthcare-data/'
@@ -9,6 +9,13 @@ edit_uri: 'blob/master/docs'
 nav:
   - Home: index.md
   - About: about.md
+
+  - MicroSims:
+    - Introduction: sims/index.md
+    - Codes: sims/codes/index.md
+  - Prompts:
+    - Introduction: prompts/index.md
+    - Icon: prompts/icon.md
   - Glossary: glossary.md
   - References: references.md
   - Feedback: feedback.md
@@ -23,7 +30,7 @@ theme:
   extra_css:
     - styles/custom.css
   logo: img/logo.png
-  # favicon: img/my-icon.png
+  favicon: img/favicon.ico
   palette:
     primary: 'blue'
     accent: 'orange'
