@@ -40,6 +40,7 @@ nav:
     - Graph Viewer: sims/graph-viewer/index.md
     - Codes: sims/codes/index.md
     - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
+    - Clinical Care Pathway DAG: sims/clinical-care-pathway-dag/index.md
   - Prompts:
     - Introduction: prompts/index.md
     - Icon: prompts/icon.md

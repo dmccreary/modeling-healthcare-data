@@ -64,6 +64,8 @@ Each node typically has a **type** (or label) that categorizes what kind of enti
 
 The power of graph databases emerges from treating these edges as first-class data structures rather than as implicit foreign key references. Each edge connects exactly two nodes: a source (or start) node and a target (or end) node.
 
+<iframe src="../../sims/healthcare-graph-fundamentals/main.html" height="700px" scrolling="no"></iframe>
+[Run Fullscreen](../../sims/healthcare-graph-fundamentals/main.html)
 <details>
     <summary>Basic Healthcare Graph Model Diagram</summary>
     
@@ -182,7 +184,7 @@ Common healthcare applications of DAGs include:
 
 <details>
     <summary>Directed Acyclic Graph Example: Care Pathway</summary>
-    Type: diagram
+    use the hc-graph-generator skill to create a new MicroSim using the following requirements
 
     Purpose: Demonstrate a DAG structure representing a clinical care pathway where stages progress without cycles
 

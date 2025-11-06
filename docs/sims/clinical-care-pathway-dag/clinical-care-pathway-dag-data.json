@@ -1,0 +1,199 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Patient Admission",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Patient Admission",
+        "stage_number": 1,
+        "duration_estimate": "30 minutes",
+        "responsible_role": "Admissions Staff",
+        "description": "Patient registration and initial check-in"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 2,
+      "label": "Initial Assessment",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Initial Assessment",
+        "stage_number": 2,
+        "duration_estimate": "45 minutes",
+        "responsible_role": "Nurse/Physician",
+        "description": "Vital signs, medical history, chief complaint"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 3,
+      "label": "Diagnostic Testing",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Diagnostic Testing",
+        "stage_number": 3,
+        "duration_estimate": "1-3 hours",
+        "responsible_role": "Lab/Radiology",
+        "description": "Laboratory tests, imaging studies, procedures"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 4,
+      "label": "Test Results Review",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Test Results Review",
+        "stage_number": 4,
+        "duration_estimate": "30 minutes",
+        "responsible_role": "Physician",
+        "description": "Analyze test results and determine diagnosis"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 5,
+      "label": "Treatment Planning",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Treatment Planning",
+        "stage_number": 5,
+        "duration_estimate": "30 minutes",
+        "responsible_role": "Physician/Care Team",
+        "description": "Develop treatment plan based on diagnosis"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 6,
+      "label": "Treatment Administration",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Treatment Administration",
+        "stage_number": 6,
+        "duration_estimate": "Variable",
+        "responsible_role": "Nurse/Physician",
+        "description": "Administer medications, procedures, interventions"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 7,
+      "label": "Monitoring & Evaluation",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Monitoring & Evaluation",
+        "stage_number": 7,
+        "duration_estimate": "Variable",
+        "responsible_role": "Nurse/Physician",
+        "description": "Monitor patient response and adjust care as needed"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 8,
+      "label": "Discharge Planning",
+      "type": "CareStage",
+      "properties": {
+        "stage": "Discharge Planning",
+        "stage_number": 8,
+        "duration_estimate": "45 minutes",
+        "responsible_role": "Care Team",
+        "description": "Prepare patient for discharge with instructions"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 40
+    }
+  ],
+  "edges": [
+    {
+      "id": 1,
+      "from": 1,
+      "to": 2,
+      "label": "CHECK_IN",
+      "arrows": "to",
+      "color": "#1e40af",
+      "width": 2
+    },
+    {
+      "id": 2,
+      "from": 2,
+      "to": 3,
+      "label": "ORDER_TESTS",
+      "arrows": "to",
+      "color": "#1e40af",
+      "width": 2
+    },
+    {
+      "id": 3,
+      "from": 3,
+      "to": 4,
+      "label": "COMPLETE_TESTS",
+      "arrows": "to",
+      "color": "#1e40af",
+      "width": 2
+    },
+    {
+      "id": 4,
+      "from": 4,
+      "to": 5,
+      "label": "CONFIRM_DIAGNOSIS",
+      "arrows": "to",
+      "color": "#1e40af",
+      "width": 2
+    },
+    {
+      "id": 5,
+      "from": 5,
+      "to": 6,
+      "label": "BEGIN_TREATMENT",
+      "arrows": "to",
+      "color": "#1e40af",
+      "width": 2
+    },
+    {
+      "id": 6,
+      "from": 6,
+      "to": 7,
+      "label": "OBSERVE_RESPONSE",
+      "arrows": "to",
+      "color": "#1e40af",
+      "width": 2
+    },
+    {
+      "id": 7,
+      "from": 7,
+      "to": 8,
+      "label": "PREPARE_DISCHARGE",
+      "arrows": "to",
+      "color": "#1e40af",
+      "width": 2
+    },
+    {
+      "id": 8,
+      "from": 4,
+      "to": 3,
+      "label": "RETEST_IF_NEEDED",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2,
+      "dashes": true
+    }
+  ]
+}
