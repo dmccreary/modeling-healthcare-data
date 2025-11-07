@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Encounter Workflow</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Swimlane alignment and styling - inline to override any caching */
+        .mermaid {
+            align-items: flex-start !important;
+        }
+
+        /* Make swimlane (subgraph) names are larger */
+        .mermaid span.nodeLabel,
+        .mermaid .cluster-label,
+        .mermaid .cluster text,
+        .mermaid g.cluster > text,
+        .mermaid g.cluster > g > text {
+            font-size: 30px !important;
+            font-weight: 700 !important;
+        }
+
+        /* Position swimlane labels above the content */
+        .mermaid g.cluster > text {
+            dominant-baseline: auto !important;
+        }
+
+        /* Move cluster label backgrounds to not overlap with text */
+        .mermaid g.cluster rect {
+            y: 30 !important;
+        }
+
+        /* Align all swimlanes to top */
+        .mermaid svg g.cluster {
+            alignment-baseline: hanging !important;
+        }
+    </style>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
         mermaid.initialize({
@@ -15,6 +46,23 @@
                 htmlLabels: true,
                 curve: 'basis'
             }
+        });
+
+        // After Mermaid renders, adjust cluster label positions
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const clusters = document.querySelectorAll('.mermaid g.cluster');
+                clusters.forEach(cluster => {
+                    const rect = cluster.querySelector('rect');
+                    const text = cluster.querySelector('text');
+                    if (rect && text) {
+                        const rectY = parseFloat(rect.getAttribute('y') || 0);
+                        // Position text ABOVE the rectangle box (negative offset)
+                        text.setAttribute('y', rectY - 15);
+                        text.setAttribute('text-anchor', 'start');
+                    }
+                });
+            }, 500);
         });
     </script>
 </head>
