@@ -66,7 +66,7 @@ main {
 .mermaid {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 400px;
 }
 
@@ -78,7 +78,24 @@ main {
 
 .mermaid .node text,
 .mermaid .edgeLabel text {
-    font-size: 16px !important;
+    font-size: 24px !important;
+}
+
+/* Swimlane (subgraph) alignment - align all at the top */
+.mermaid .clusters rect {
+    vertical-align: top !important;
+}
+
+.mermaid g.cluster {
+    vertical-align: top !important;
+}
+
+/* Make swimlane names larger 30pt */
+.mermaid .cluster-label text,
+.mermaid .clusterLabel text,
+.mermaid g.cluster > text {
+    font-size: 30px !important;
+    font-weight: 700 !important;
 }
 
 .description {
