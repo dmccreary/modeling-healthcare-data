@@ -453,6 +453,8 @@ Each encounter generates substantial structured and unstructured data:
 - Operative reports
 - Consultation notes
 
+<iframe src="../../sims/encounter-workflow/main.html" width="100%" height="800px"></iframe>
+[View Encounter Workflow Fullscreen](../../sims/encounter-workflow/main.html)
 <details>
     <summary>Clinical Encounter Workflow Diagram</summary>
     Use the mermaid-generator skill to create the following MicroSim

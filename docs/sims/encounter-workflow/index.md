@@ -6,7 +6,7 @@ This interactive diagram illustrates the complete journey of a patient encounter
 
 ## Interactive Diagram
 
-<iframe src="main.html" width="100%" height="800px" style="border:1px solid #ddd;"></iframe>
+<iframe src="main.html" width="100%" height="800px"></iframe>
 
 [View the Diagram Fullscreen](main.html)
 
