@@ -47,7 +47,8 @@ Before diving into data modeling approaches, we must first understand the health
 
 <details>
     <summary>Healthcare Ecosystem Stakeholder Diagram</summary>
-    Type: diagram
+    
+    Use the hc-graph-generator skill to create the following MicroSim called 'hc-stakeholders'
 
     Purpose: Illustrate the three primary stakeholder perspectives in healthcare and their key relationships
 
@@ -106,9 +107,9 @@ Several factors contribute to elevated U.S. healthcare costs:
 - **Technology adoption costs**: Expensive medical equipment and electronic health record systems
 - **Market consolidation**: Hospital and provider mergers reducing competition
 
-<details>
+<details markdown="1">
     <summary>Per-Person Healthcare Cost Comparison Chart</summary>
-    Type: chart
+    Use the chart-generator skill to create the following chart
 
     Chart type: Bar chart with dual y-axis
 
@@ -454,7 +455,9 @@ Each encounter generates substantial structured and unstructured data:
 
 <details>
     <summary>Clinical Encounter Workflow Diagram</summary>
-    Type: workflow
+    Use the mermaid-generator skill to create the following MicroSim
+
+    Name: encounter-workflow
 
     Purpose: Illustrate the typical flow of a patient encounter from arrival through billing, showing data capture points and system interactions
 

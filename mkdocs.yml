@@ -41,13 +41,17 @@ nav:
     - Codes: sims/codes/index.md
     - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
     - Clinical Care Pathway DAG: sims/clinical-care-pathway-dag/index.md
+    - Patient Encounter Workflow: sims/encounter-workflow/index.md
   - Prompts:
     - Introduction: prompts/index.md
     - Icon: prompts/icon.md
-    - 1 - Analyze Course Description: prompts/01-run-course-description-analyzer.md
-    - 2 - Learning Graph: prompts/02-learning-graph-generator.md
-    - 3 - Install Viewer: prompts/03-run-the-learning-graph-viewer-installer-skill.md
-    - 4 - Run Book Chapter Generator:  prompts/04-run-book-chapter-generator.md
+    - Step 1 - Analyze Course Description: prompts/01-run-course-description-analyzer.md
+    - Step 2 - Learning Graph: prompts/02-learning-graph-generator.md
+    - Step 3 - Install Viewer: prompts/03-run-the-learning-graph-viewer-installer-skill.md
+    - Step 4 - Run Book Chapter Generator:  prompts/04-run-book-chapter-generator.md
+    - Ch 1: prompts/05-run-chapter-content-generator-1.md
+    - Ch 2: prompts/07-ch-2.md
+    - Ch 3: prompts/08-ch-3.md
   - Glossary: glossary.md
   - References: references.md
   - Feedback: feedback.md
