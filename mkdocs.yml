@@ -33,7 +33,10 @@ nav:
     - Quality Metrics: learning-graph/quality-metrics.md
     - Concept Taxonomy: learning-graph/concept-taxonomy.md
     - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
-
+    - Glossary Quality: learning-graph/glossary-quality-report.md
+    - FAQ Coverage: learning-graph/faq-coverage-gaps.md
+    - FAQ Quality: learning-graph/faq-quality-report.md
+  
   - MicroSims:
     - Introduction: sims/index.md
     - View Healcare Icons: sims/view-hc-icons/index.md
@@ -59,6 +62,11 @@ nav:
     - Ch 10: prompts/11-ch-10.md
     - Ch 11: prompts/06-run-hc-graph-generator-skill.md
 
+             - prompts/12-ch-11.md
+             - prompts/13-ch-12.md
+             - prompts/19-run-glossary-generator-skill.md
+             - prompts/20-faq.md
+  - FAQ: faq.md
   - Glossary: glossary.md
   - References: references.md
   - Feedback: feedback.md
