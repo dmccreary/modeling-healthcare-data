@@ -52,7 +52,7 @@ The relationship between AI and ML can be understood through a simple hierarchy:
 - **Deep Learning** is a subset of ML using neural networks with multiple layers
 - **Specialized Applications** like natural language processing and computer vision apply these techniques to specific domains
 
-<details>
+<details markdown="1">
     <summary>AI and ML Taxonomy in Healthcare</summary>
     Type: venn diagram
 
@@ -85,7 +85,7 @@ The relationship between AI and ML can be understood through a simple hierarchy:
 
     Color scheme: Blue gradient from light (outer AI) to dark (inner DL), with healthcare applications in green
 
-    Implementation: SVG diagram or similar vector graphics
+    Implementation: p5.js Venn Diagram MicroSim Generator
 </details>
 
 ## Large Language Models in Healthcare
@@ -120,7 +120,7 @@ In this representation, "Cardiac Arrest" and "Heart Attack" are mathematically c
 
 **Vector Stores** are specialized databases optimized for storing and searching these high-dimensional embeddings. Unlike traditional databases that match exact values or ranges, vector stores perform similarity searches using distance metrics such as cosine similarity or Euclidean distance. When a physician queries "patient experiencing chest pain and shortness of breath," the system converts this query into an embedding and finds the most similar clinical guidelines, research papers, or case studies—even if they use different terminology.
 
-<details>
+<details markdown="1">
     <summary>Vector Embedding Similarity Visualization MicroSim</summary>
     Type: microsim
 
@@ -200,7 +200,7 @@ For example, a keyword search for "MI treatment protocols" might miss documents 
 
 The RAG workflow operates through a multi-stage process that balances efficiency with accuracy. When a clinician asks a question, the system first converts that question into a vector embedding and retrieves the most relevant documents from a vector store containing clinical guidelines, research papers, and patient-specific data. These retrieved documents provide factual grounding—the "context" that the LLM needs to generate an accurate, specific answer rather than relying solely on patterns learned during training.
 
-<details>
+<details markdown="1">
     <summary>RAG Architecture for Clinical Decision Support</summary>
     Type: diagram
 
@@ -287,7 +287,7 @@ Knowledge graphs consist of entities (nodes) and relationships (edges) that form
 - **Causal chain analysis**: Identify multi-step pathways from symptoms to root causes
 - **Treatment path discovery**: Find alternative medication routes when first-line treatments are contraindicated
 
-<details>
+<details markdown="1">
     <summary>Medical Knowledge Graph Example</summary>
     Type: graph-model
 
@@ -406,7 +406,7 @@ Consider a clinical scenario where these technologies work together. A physician
 
 This workflow leverages the precision of graph queries for safety checks (contraindications, allergies) while using LLM capabilities for understanding the question and generating a helpful, contextualized response.
 
-<details>
+<details markdown="1">
     <summary>Comparison: Graph DB vs LLM vs Integrated System</summary>
     Type: chart
 
@@ -487,7 +487,7 @@ The architecture of a graph-based clinical decision support system includes:
 - **ML risk models**: Predictive models for deterioration, readmission, or adverse events
 - **LLM interface**: Natural language explanations of recommendations
 
-<details>
+<details markdown="1">
     <summary>Clinical Decision Support Workflow</summary>
     Type: workflow
 
@@ -585,7 +585,7 @@ Consider a discovery scenario: a healthcare system wants to understand why certa
 
 This approach might discover that patients with certain combinations of comorbidities, living in specific environments (e.g., high altitude), and following particular medication sequences have better outcomes—insights that would be difficult to identify through traditional statistical methods.
 
-<details>
+<details markdown="1">
     <summary>Clinical Discovery Pipeline Timeline</summary>
     Type: timeline
 
@@ -696,7 +696,7 @@ Common predictive analytics applications in healthcare include:
 - **Length of stay prediction**: Anticipate resource needs and optimize bed management
 - **Adverse drug event prediction**: Identify patients at high risk for medication-related complications
 
-<details>
+<details markdown="1">
     <summary>Predictive Model Performance: Traditional vs Graph-Based</summary>
     Type: chart
 
@@ -796,7 +796,7 @@ Applications of risk stratification include:
 - **Resource allocation**: Distribute limited resources (home health visits, specialist consultations, social services) to patients most likely to benefit
 - **Population health management**: Segment populations for tailored wellness programs, preventive screening campaigns, or chronic disease management
 
-<details>
+<details markdown="1">
     <summary>Risk Stratification Pyramid with Intervention Strategies</summary>
     Type: infographic
 

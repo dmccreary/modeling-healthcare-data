@@ -64,7 +64,7 @@ The following table identifies common categories of protected health information
 
 HIPAA violations can result in significant penalties ranging from $100 to $50,000 per violation, with annual maximums reaching $1.5 million per violation category. Beyond financial penalties, organizations face reputational damage, loss of patient trust, and potential criminal charges for willful neglect or intentional misuse of PHI. Healthcare graph databases must implement technical controls that enforce HIPAA requirements at the data model, query, and application layers.
 
-<details>
+<details markdown="1">
     <summary>HIPAA Compliance Workflow for Graph Database Operations</summary>
     Type: workflow
 
@@ -169,7 +169,7 @@ Key data privacy principles for healthcare graph systems include:
 
 Data security implements the technical controls that enforce privacy policies. For graph databases, this includes encryption at rest and in transit, network security controls, vulnerability management, and secure backup procedures. Healthcare organizations typically implement multiple security layers, following the principle of defense-in-depth where compromise of any single control does not result in data exposure.
 
-<details>
+<details markdown="1">
     <summary>Healthcare Data Protection Layers Diagram</summary>
     Type: diagram
 
@@ -269,7 +269,7 @@ Common authentication methods used in healthcare systems:
 
 Authorization in healthcare graph systems operates at multiple levels to implement the HIPAA minimum necessary standard. A physician might be authorized to view full medical histories for their patients but only demographic information for other patients in their facility. Graph database access control must evaluate not only which nodes a user can access, but also which relationships can be traversed and what properties can be viewed.
 
-<details>
+<details markdown="1">
     <summary>Authentication vs Authorization Comparison Infographic</summary>
     Type: infographic
 
@@ -382,7 +382,7 @@ Key components of RBAC implementation in healthcare graphs:
 
 Graph databases can model RBAC structures directly as nodes and relationships, creating a security graph alongside the clinical data graph. Role nodes connect to Permission nodes through HAS_PERMISSION relationships, while User nodes connect to Role nodes through ASSIGNED_TO relationships. This approach enables graph queries to efficiently determine user permissions and supports complex scenarios like temporary role delegation or context-dependent access.
 
-<details>
+<details markdown="1">
     <summary>Healthcare RBAC Graph Data Model</summary>
     Type: graph-model
 
@@ -692,7 +692,7 @@ Essential elements of healthcare graph database audit trails:
 
 Audit trail implementations must protect against tampering while remaining performant enough to not degrade healthcare application responsiveness. Write-once storage or blockchain-based audit logs prevent retroactive modification of access records. Audit data is typically stored separately from clinical data, with its own backup and retention policies. HIPAA requires audit log retention for at least six years, with some state regulations mandating longer retention periods.
 
-<details>
+<details markdown="1">
     <summary>Audit Trail Analysis MicroSim</summary>
     Type: microsim
 
@@ -958,7 +958,7 @@ Common de-identification approaches for healthcare graphs:
 
 Pseudonymization provides an alternative to full de-identification by replacing identifiers with consistent pseudonyms that can be reversed only with access to a secure mapping table. A patient's medical record number might be replaced with a randomly generated study ID, allowing longitudinal analysis while protecting identity. Cryptographic pseudonymization using keyed hash functions (HMAC) ensures pseudonyms remain consistent across datasets while preventing reversal without the secret key.
 
-<details>
+<details markdown="1">
     <summary>De-Identification Techniques Comparison Table</summary>
     Type: markdown-table
 
@@ -1002,7 +1002,7 @@ Key metadata categories for healthcare graph databases:
 
 Data lineage tracks the flow and transformation of data from source systems through integration pipelines into the healthcare graph and downstream to analytics and reporting. Understanding lineage enables impact analysis when source systems change, supports troubleshooting of data quality issues by tracing back to origin, and demonstrates regulatory compliance by documenting data handling. Graph databases naturally model lineage as a graph structure parallel to the clinical data graph.
 
-<details>
+<details markdown="1">
     <summary>Healthcare Data Lineage Graph Visualization</summary>
     Type: graph-model
 
@@ -1437,7 +1437,7 @@ Healthcare data quality dimensions measured and monitored:
 
 Master Data Management (MDM) establishes authoritative, reliable sources for key business entities shared across the healthcare organization. Patient master data management (often called Enterprise Master Patient Index or EMPI) resolves patient identities across multiple source systems, preventing duplicate patient records that lead to fragmented medical histories and care coordination failures. Provider MDM maintains authoritative provider data including credentials, specialties, network participation, and location information.
 
-<details>
+<details markdown="1">
     <summary>Data Quality Dashboard Chart</summary>
     Type: chart
 
@@ -1812,7 +1812,7 @@ Requirements for explainable healthcare graph systems:
 
 Graph databases support explainability through their native ability to capture not just recommendations but the reasoning graphs that generated them. A diabetes medication recommendation can be stored alongside a subgraph showing the patient's HbA1c trend nodes, current medication nodes, contraindication relationship checks, guideline rule nodes, and cost preference settings that collectively produced the specific recommendation. This reasoning graph becomes both an audit trail and an explanation artifact.
 
-<details>
+<details markdown="1">
     <summary>Explainable AI Recommendation Workflow</summary>
     Type: workflow
 

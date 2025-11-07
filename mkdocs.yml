@@ -42,6 +42,7 @@ nav:
     - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
     - Clinical Care Pathway DAG: sims/clinical-care-pathway-dag/index.md
     - Patient Encounter Workflow: sims/encounter-workflow/index.md
+  
   - Prompts:
     - Introduction: prompts/index.md
     - Icon: prompts/icon.md
@@ -52,6 +53,11 @@ nav:
     - Ch 1: prompts/05-run-chapter-content-generator-1.md
     - Ch 2: prompts/07-ch-2.md
     - Ch 3: prompts/08-ch-3.md
+    - Ch 4: prompts/09-ch-4.md
+    - Ch 5: prompts/10-ch-5.md
+    - Ch 10: prompts/11-ch-10.md
+    - Ch 11: prompts/06-run-hc-graph-generator-skill.md
+
   - Glossary: glossary.md
   - References: references.md
   - Feedback: feedback.md
