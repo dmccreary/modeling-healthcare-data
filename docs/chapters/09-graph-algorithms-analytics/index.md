@@ -114,7 +114,7 @@ LIMIT 1
 
 Beyond single-source shortest path, **all-pairs shortest path** algorithms compute the shortest paths between every pair of nodes in the graph, enabling comprehensive network analysis. The Floyd-Warshall algorithm solves all-pairs shortest path in O(V³) time, which is practical for moderate-sized networks (thousands of nodes) but becomes prohibitive for very large graphs. Healthcare applications include analyzing the overall efficiency of referral networks, identifying bottlenecks in care delivery, and computing comprehensive distance matrices for patient-provider matching.
 
-<details>
+<details markdown="1">
     <summary>Care Pathway Shortest Path Interactive MicroSim</summary>
     Type: microsim
 
@@ -341,7 +341,7 @@ The following list summarizes key centrality measures and their interpretations:
 - **Harmonic Centrality:** Sum of inverse distances; variant of closeness that handles disconnected graphs
 - **Katz Centrality:** Walks of all lengths weighted by attenuation factor; generalizes eigenvector centrality
 
-<details>
+<details markdown="1">
     <summary>Provider Network Centrality Analysis Dashboard</summary>
     Type: chart
 
@@ -557,7 +557,7 @@ The following compares local clustering with global network structure:
 - Interpretation: Overall tendency toward community formation
 - Healthcare example: Provider network overall has strong care teams (high clustering) vs. fragmented care delivery (low clustering)
 
-<details>
+<details markdown="1">
     <summary>Network Community Detection Interactive Graph Model</summary>
     Type: graph-model
 

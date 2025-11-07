@@ -45,7 +45,7 @@ The United States healthcare system faces a distinctive challenge: it delivers w
 
 Before diving into data modeling approaches, we must first understand the healthcare domain itself—the stakeholders, workflows, terminology, and data standards that shape how healthcare information is captured, exchanged, and analyzed.
 
-<details>
+<details markdown="1">
     <summary>Healthcare Ecosystem Stakeholder Diagram</summary>
     
     Use the hc-graph-generator skill to create the following MicroSim called 'hc-stakeholders'
@@ -194,7 +194,7 @@ Value-based care models include several variants:
 - **Capitation**: Fixed per-patient-per-month payment regardless of services consumed
 - **Shared Savings/Risk**: Providers share financial gains from cost reductions while maintaining quality
 
-<details>
+<details markdown="1">
     <summary>Healthcare Payment Model Comparison MicroSim</summary>
     Type: microsim
 
@@ -455,7 +455,7 @@ Each encounter generates substantial structured and unstructured data:
 
 <iframe src="../../sims/encounter-workflow/main.html" width="100%" height="800px"></iframe>
 [View Encounter Workflow Fullscreen](../../sims/encounter-workflow/main.html)
-<details>
+<details markdown="1">
     <summary>Clinical Encounter Workflow Diagram</summary>
     Use the mermaid-generator skill to create the following MicroSim
 
@@ -682,7 +682,7 @@ The primary medical coding systems in U.S. healthcare are:
 - **SNOMED CT (Systematized Nomenclature of Medicine Clinical Terms)**: Comprehensive clinical terminology
 - **RxNorm**: Normalized medication names and relationships
 
-<details>
+<details markdown="1">
     <summary>Medical Coding Systems Interactive Infographic</summary>
     Type: infographic
 
@@ -1070,7 +1070,7 @@ Graph databases offer unique advantages for healthcare interoperability challeng
 - **Semantic mapping**: Represent relationships among coding systems (ICD, SNOMED CT, LOINC, etc.)
 - **Master data management**: Create unified views of patients, providers, and facilities across sources
 
-<details>
+<details markdown="1">
     <summary>Healthcare Data Integration Graph Model</summary>
     Type: graph-model
 

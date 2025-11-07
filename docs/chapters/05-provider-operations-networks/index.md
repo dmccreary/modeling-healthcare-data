@@ -122,7 +122,7 @@ Graph models of emergency department operations capture:
 - **Disposition**: Admitted to hospital, transferred to another facility, discharged home
 - **Referral relationships**: Follow-up care coordination with primary care or specialists
 
-<details>
+<details markdown="1">
     <summary>Healthcare Delivery Network Graph Model</summary>
     Type: graph-model
 
@@ -282,7 +282,7 @@ Traditional primary care teams typically include:
 
 Graph models of care teams capture both standing team structures (a primary care clinic's established team composition) and dynamic patient-specific teams (the set of providers actively involved in a cancer patient's treatment). Relationships between providers on teams include role-based connections, communication patterns, shared patients, and collaborative care protocols.
 
-<details>
+<details markdown="1">
     <summary>Multidisciplinary Care Team Graph Model</summary>
     Type: graph-model
 
@@ -450,7 +450,7 @@ Capacity metrics include:
 
 Graph models support capacity analysis by connecting providers to schedules, appointments, and facilities, enabling queries that calculate capacity utilization, identify bottlenecks, and forecast demand. For example, a graph query can identify specialists with low utilization who could accommodate referrals that are currently experiencing long wait times with high-volume specialists.
 
-<details>
+<details markdown="1">
     <summary>Provider Capacity Utilization Dashboard Chart</summary>
     Type: chart
 
@@ -614,7 +614,7 @@ Graph models integrate performance data with provider nodes, enabling comparativ
 | Patient Experience | Communication rating, care coordination score, recommend provider | CAHPS surveys, online reviews | Match patients to highly-rated providers, investigate low-scoring patterns |
 | Efficiency | Cost per diabetes patient, imaging utilization rate, generic prescribing rate | Claims analytics, pharmacy data | Reward efficient providers, identify outliers for education |
 
-<details>
+<details markdown="1">
     <summary>Provider Performance Comparison MicroSim</summary>
     Type: microsim
 
@@ -774,7 +774,7 @@ Protocol types include:
 
 In graph models, protocols are represented as structured workflows connecting conditions or presentations to ordered sequences of assessments, interventions, and decision points. Protocol adherence can be measured by comparing actual care paths (traced through graph relationships) to protocol-specified paths, enabling quality measurement and identification of practice variation.
 
-<details>
+<details markdown="1">
     <summary>Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department</summary>
     Type: workflow
 
@@ -951,7 +951,7 @@ Referral patterns create rich network structures in graph databases, revealing c
 - Which specialists receive referrals from the broadest network of referring providers (network reach)?
 - Are there inappropriate referral patterns (e.g., referrals to specialists outside the network when in-network alternatives exist)?
 
-<details>
+<details markdown="1">
     <summary>Provider Referral Network Analysis MicroSim</summary>
     Type: microsim
 

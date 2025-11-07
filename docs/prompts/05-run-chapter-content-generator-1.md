@@ -107,7 +107,7 @@
         65 +  The power of graph databases emerges from treating these edges as first-class data structures rather than as implicit foreign key 
            + references. Each edge connects exactly two nodes: a source (or start) node and a target (or end) node.
         66 +  
-        67 +  <details>
+        67 +  <details markdown="1">
         68 +      <summary>Basic Graph Structure Diagram</summary>
         69 +      Type: diagram
         70 +  
@@ -243,7 +243,7 @@
        180 +  - **Organizational structures**: Hospital departmental hierarchies flow from executive leadership down through departments without circular
            +  reporting relationships
        181 +  
-       182 +  <details>
+       182 +  <details markdown="1">
        183 +      <summary>Directed Acyclic Graph Example: Care Pathway</summary>
        184 +      Type: diagram
        185 +  
@@ -335,7 +335,7 @@
            + codes), relationships (prescriptions, diagnoses, visits), and relationship context (dates, dosages, encounter types) in a natural, 
            + interconnected structure.
        269 +  
-       270 +  <details>
+       270 +  <details markdown="1">
        271 +      <summary>Healthcare Labeled Property Graph Visualization</summary>
        272 +      Type: graph-model
        273 +  
@@ -490,7 +490,7 @@
        415 +  - **Medication interaction detection**: "Do any of this patient's current medications interact with the newly prescribed drug?"
        416 +  - **Root cause analysis**: "What upstream factors contributed to this adverse event?"
        417 +  
-       418 +  <details>
+       418 +  <details markdown="1">
        419 +      <summary>Graph Traversal Visualization MicroSim</summary>
        420 +      Type: microsim
        421 +  
@@ -680,7 +680,7 @@
        598 +  | **Index usage** | Index lookup required for each JOIN | Index-free adjacency |
        599 +  | **Query time for 3-hop query** | Seconds to minutes (depends on data size) | Milliseconds |
        600 +  
-       601 +  <details>
+       601 +  <details markdown="1">
        602 +      <summary>Query Performance Comparison Chart: RDBMS vs Graph Database</summary>
        603 +      Type: chart
        604 +  
@@ -909,7 +909,7 @@
        804 +  - "Identify patients taking multiple medications that treat the same condition"
        805 +  - "Calculate the average claim amount for procedures performed at different facilities"
        806 +  
-       807 +  <details>
+       807 +  <details markdown="1">
        808 +      <summary>Healthcare Data Model Implementation Workflow</summary>
        809 +      Type: workflow
        810 +  

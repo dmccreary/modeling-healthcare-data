@@ -45,7 +45,7 @@ Pattern matching consists of three core elements:
 
 Consider a healthcare scenario where you need to find all patients who were prescribed a specific medication after being diagnosed with diabetes. In a relational database, this would require joining patient, diagnosis, and prescription tables with complex date filtering. In a graph query language, you describe the pattern directly: a Patient node connected to a Diagnosis node (with disease="Diabetes") which connects to a Prescription node (with medication="Metformin"), with temporal constraints on the relationship timestamps.
 
-<details>
+<details markdown="1">
     <summary>Healthcare Graph Pattern Examples</summary>
     Type: diagram
 
@@ -116,7 +116,7 @@ RETURN p.patient_id, m1.name, m2.name, p.primary_provider
 
 This query identifies patients (`p`) who take two different medications (`m1` and `m2`) that have a `CONFLICTS_WITH` relationship, a critical safety check that would require complex self-joins in SQL.
 
-<details>
+<details markdown="1">
     <summary>Cypher Query Components Interactive Infographic</summary>
     Type: infographic
 
@@ -205,7 +205,7 @@ The following table compares key features across graph query languages:
 
 GQL's standardization effort aims to prevent fragmentation in the graph database market, similar to how SQL standardization enabled database portability in the relational era. Healthcare organizations adopting GQL can expect greater flexibility in choosing graph database vendors without rewriting application queries.
 
-<details>
+<details markdown="1">
     <summary>Evolution of Graph Query Languages Timeline</summary>
     Type: timeline
 
@@ -297,7 +297,7 @@ CREATE QUERY patient_risk_score(VERTEX<Patient> input_patient) {
 
 The `@risk_score` accumulator maintains state across the traversal, aggregating severity weights from treatments and incorporating comparative data from similar patients—a pattern that would require multiple query rounds or complex subqueries in purely declarative languages.
 
-<details>
+<details markdown="1">
     <summary>GSQL Accumulator Pattern MicroSim</summary>
     Type: microsim
 
@@ -403,7 +403,7 @@ RETURN [node IN nodes(path) | node.treatment_name] AS recommended_pathway,
 
 This query identifies the shortest treatment pathway from diagnosis to controlled outcome, calculating total cost and duration by aggregating relationship properties along the path.
 
-<details>
+<details markdown="1">
     <summary>Care Pathway Comparison Chart</summary>
     Type: chart
 
@@ -497,7 +497,7 @@ The `OPTIONAL MATCH` clauses ensure that all relationship types are checked even
 
 For healthcare analytics platforms, subgraph extraction enables comprehensive patient 360° views that would require dozens of SQL joins and complex application logic to assemble. By retrieving the entire clinical neighborhood in one query, graph databases dramatically simplify application architecture while improving query performance.
 
-<details>
+<details markdown="1">
     <summary>Patient Clinical Context Subgraph Visualization</summary>
     Type: graph-model
 
@@ -662,7 +662,7 @@ LIMIT 20
 
 Providers with high total_degree scores serve as network hubs, making them key stakeholders for care coordination initiatives or potential bottlenecks if capacity constrained.
 
-<details>
+<details markdown="1">
     <summary>Medication Effectiveness Comparison MicroSim</summary>
     Type: microsim
 
@@ -810,7 +810,7 @@ RETURN count(p)
 
 For a database with 10 million diagnosis nodes, an indexed query executes in milliseconds while an unindexed query might require seconds or minutes of full node scanning.
 
-<details>
+<details markdown="1">
     <summary>Query Performance Impact of Indexing</summary>
     Type: chart
 
@@ -944,7 +944,7 @@ WHERE provider.specialty = 'Cardiology'
 RETURN path
 ```
 
-<details>
+<details markdown="1">
     <summary>Query Optimization Workflow Diagram</summary>
     Type: workflow
 

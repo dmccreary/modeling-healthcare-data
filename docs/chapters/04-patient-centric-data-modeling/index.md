@@ -73,7 +73,7 @@ The **Patient ID** presents one of the most challenging aspects of healthcare da
 
 Graph databases provide elegant solutions to the patient identification problem through their native support for multiple relationships and flexible schema. Rather than forcing a single canonical identifier, we can model multiple identifier types as nodes connected to the patient record, each with properties indicating the issuing system, identifier type, and validity period.
 
-<details>
+<details markdown="1">
     <summary>Patient Identifier Graph Model</summary>
     Type: graph-model
 
@@ -197,7 +197,7 @@ The relationship between patients, symptoms, and diseases creates a complex many
 - A single symptom may indicate multiple possible diseases (chest pain → cardiac disease, GERD, anxiety, musculoskeletal injury)
 - Symptom combinations provide stronger diagnostic signals than individual symptoms
 
-<details>
+<details markdown="1">
     <summary>Symptom-Disease Diagnostic Network</summary>
     Type: graph-model
 
@@ -367,7 +367,7 @@ Types of drug interactions modeled in graph databases:
 - **Synergistic interactions**: Combined effect exceeds sum of individual effects
 - **Contraindications**: Drug should not be used with specific conditions or other drugs
 
-<details>
+<details markdown="1">
     <summary>Medication Safety Network Interactive Infographic</summary>
     Type: infographic
 
@@ -493,7 +493,7 @@ Common vital sign measurements:
 - **Weight**: Kilograms or pounds
 - **BMI**: Calculated from height and weight
 
-<details>
+<details markdown="1">
     <summary>Vital Signs Trend Visualization MicroSim</summary>
     Type: microsim
 
@@ -602,7 +602,7 @@ Key timeline query patterns include:
 - **Switching patterns**: When and why do providers change treatment approaches?
 - **Outcome correlation**: Do faster treatment initiation times produce better outcomes?
 
-<details>
+<details markdown="1">
     <summary>Patient Treatment Timeline Workflow Diagram</summary>
     Type: workflow
 
@@ -720,7 +720,7 @@ Graph analytics can identify common journey patterns, such as:
 - High-risk transition points where patients are likely to be lost to follow-up
 - Facilities or providers with better outcomes for specific patient populations
 
-<details>
+<details markdown="1">
     <summary>Patient Journey Map Interactive Visualization</summary>
     Type: microsim
 
@@ -905,7 +905,7 @@ Graph databases enable outcome analytics that answer questions like:
 - What patient characteristics predict better or worse outcomes?
 - Do patients with better care coordination achieve better outcomes?
 
-<details>
+<details markdown="1">
     <summary>Patient Outcome Metrics Dashboard Chart</summary>
     Type: chart
 

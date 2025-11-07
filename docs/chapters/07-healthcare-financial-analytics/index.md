@@ -62,7 +62,7 @@ The following table illustrates the structure and relationships in a typical cha
 | CDM-40023 | Operating Room Time - General | 0360 | - | Surgery | $125.00 | Per Minute | 2024-01-01 |
 | CDM-50145 | Lab - Complete Blood Count | 0300 | 85025 | Laboratory | $45.00 | Per Test | 2024-01-01 |
 
-<details>
+<details markdown="1">
     <summary>Charge Master and Billing Code Graph Model</summary>
     Type: graph-model
 
@@ -226,7 +226,7 @@ The complete revenue cycle includes the following major phases:
 
 **Collections and patient financial services:** Managing patient responsibility balances, offering payment plans, pursuing collections on delinquent accounts, and providing financial assistance when appropriate. Graph models of patient payment histories inform collection strategies and financial assistance eligibility.
 
-<details>
+<details markdown="1">
     <summary>Healthcare Revenue Cycle Workflow with Graph Analytics</summary>
     Type: workflow
 
@@ -491,7 +491,7 @@ The following list summarizes key cost categories in healthcare financial analys
 - **General overhead:** Facility costs, utilities, information technology, administration, compliance, marketing
 - **Capital costs:** Depreciation of buildings and equipment, interest on debt, equipment leases
 
-<details>
+<details markdown="1">
     <summary>Service Line Profitability Analysis Interactive MicroSim</summary>
     Type: microsim
 
@@ -702,7 +702,7 @@ Common provider compensation models include:
 
 Graph modeling of provider compensation enables sophisticated analysis connecting providers, patients, services, diagnoses, quality metrics, and financial outcomes to ensure compensation models align with organizational objectives while remaining competitive in the physician recruitment market.
 
-<details>
+<details markdown="1">
     <summary>Provider Compensation Comparison Chart</summary>
     Type: chart
 
@@ -805,7 +805,7 @@ Key considerations for capitation contracting include:
 
 Graph databases excel at risk adjustment calculations and capitation analytics by connecting patients, diagnoses, procedures, pharmacy claims, and financial data to calculate risk scores, track utilization patterns, and identify high-risk patients requiring proactive care management.
 
-<details>
+<details markdown="1">
     <summary>Risk Adjustment and Capitation Calculator MicroSim</summary>
     Type: microsim
 

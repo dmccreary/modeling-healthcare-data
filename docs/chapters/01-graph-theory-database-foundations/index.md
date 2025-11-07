@@ -66,7 +66,7 @@ The power of graph databases emerges from treating these edges as first-class da
 
 <iframe src="../../sims/healthcare-graph-fundamentals/main.html" height="700px" scrolling="no"></iframe>
 [Run Fullscreen](../../sims/healthcare-graph-fundamentals/main.html)
-<details>
+<details markdown="1">
     <summary>Basic Healthcare Graph Model Diagram</summary>
     
     use the hc-graph-generator skill to create a new MicroSim using the following requirements
@@ -182,7 +182,7 @@ Common healthcare applications of DAGs include:
 - **Care plan dependencies**: Certain procedures must be completed before others can begin (lab work → results review → treatment decision → procedure scheduling)
 - **Organizational structures**: Hospital departmental hierarchies flow from executive leadership down through departments without circular reporting relationships
 
-<details>
+<details markdown="1">
     <summary>Directed Acyclic Graph Example: Care Pathway</summary>
     use the hc-graph-generator skill to create a new MicroSim using the following requirements
 
@@ -270,7 +270,7 @@ Let's examine a concrete example of a labeled property graph representing a pati
 
 This representation captures entities (patients, providers, diagnoses, medications), their attributes (patient demographics, medication codes), relationships (prescriptions, diagnoses, visits), and relationship context (dates, dosages, encounter types) in a natural, interconnected structure.
 
-<details>
+<details markdown="1">
     <summary>Healthcare Labeled Property Graph Visualization</summary>
     Type: graph-model
 
@@ -418,7 +418,7 @@ Several traversal patterns appear repeatedly in healthcare graph applications:
 - **Medication interaction detection**: "Do any of this patient's current medications interact with the newly prescribed drug?"
 - **Root cause analysis**: "What upstream factors contributed to this adverse event?"
 
-<details>
+<details markdown="1">
     <summary>Graph Traversal Visualization MicroSim</summary>
     Type: microsim
 
@@ -601,7 +601,7 @@ Graph databases achieve their performance advantages through architectural choic
 | **Index usage** | Index lookup required for each JOIN | Index-free adjacency |
 | **Query time for 3-hop query** | Seconds to minutes (depends on data size) | Milliseconds |
 
-<details>
+<details markdown="1">
     <summary>Query Performance Comparison Chart: RDBMS vs Graph Database</summary>
     Type: chart
 
@@ -807,7 +807,7 @@ This schema enables queries such as:
 - "Identify patients taking multiple medications that treat the same condition"
 - "Calculate the average claim amount for procedures performed at different facilities"
 
-<details>
+<details markdown="1">
     <summary>Healthcare Data Model Implementation Workflow</summary>
     Type: workflow
 

@@ -85,7 +85,7 @@ The following list summarizes additional common fraud schemes:
 - **Home health fraud:** Billing for services to patients not homebound, falsifying care plans, billing for skilled nursing when providing only custodial care
 - **Lab/imaging fraud:** Performing unnecessary tests, billing for tests not ordered, waiving copays to induce utilization
 
-<details>
+<details markdown="1">
     <summary>Healthcare Fraud Scheme Network Visualization</summary>
     Type: graph-model
 
@@ -280,7 +280,7 @@ Key graph algorithms used for fraud detection include:
 - **Similarity scoring:** Compares provider billing patterns to peer groups to identify statistical outliers
 - **Temporal pattern analysis:** Examines how relationships and patterns evolve over time to detect emerging fraud schemes
 
-<details>
+<details markdown="1">
     <summary>Graph-Based Fraud Detection Algorithm Workflow</summary>
     Type: workflow
 
@@ -511,7 +511,7 @@ Graph-based detection of behavioral health fraud leverages several key indicator
 - **Geographic anomalies:** Identifying patients traveling long distances for treatment when closer options exist, suggesting recruitment
 - **Rapid readmissions:** Tracking patients who cycle repeatedly through multiple facilities in short timeframes
 
-<details>
+<details markdown="1">
     <summary>Behavioral Health Fraud Network Interactive MicroSim</summary>
     Type: microsim
 
@@ -742,7 +742,7 @@ Graph algorithms particularly effective for detecting provider network fraud inc
 - **Link prediction:** Identifies likely but undisclosed relationships between providers
 - **Motif detection:** Finds recurring subgraph patterns characteristic of fraud schemes (e.g., circular referral patterns, star patterns with one central node receiving all referrals)
 
-<details>
+<details markdown="1">
     <summary>Provider Network Fraud Detection Dashboard</summary>
     Type: chart
 

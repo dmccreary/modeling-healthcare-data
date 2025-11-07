@@ -61,7 +61,7 @@ The following table compares common benefit plan types in the United States heal
 | POS (Point of Service) | Moderate | Yes, referrals for specialists | Yes, at higher cost | Moderate | Hybrid model combining HMO and PPO features |
 | HDHP (High Deductible Health Plan) | Varies | Varies | Varies | Low | High deductible paired with HSA eligibility |
 
-<details>
+<details markdown="1">
     <summary>Insurance Policy and Benefit Plan Graph Model</summary>
     Type: graph-model
 
@@ -162,7 +162,7 @@ Modern health insurance involves cost-sharing between the payer and the member, 
 
 The **out-of-pocket maximum** is the annual limit on total member spending for covered services, including deductibles, copayments, and coinsurance (but excluding premiums). Once a member reaches this maximum, the insurance pays 100% of covered expenses for the remainder of the plan year. This critical consumer protection prevents catastrophic financial burden from serious illness or injury.
 
-<details>
+<details markdown="1">
     <summary>Cost-Sharing Calculation Interactive MicroSim</summary>
     Type: microsim
 
@@ -247,7 +247,7 @@ Key steps in claim processing include:
 
 **Claim adjudication** is the process of evaluating a claim against policy benefits, coverage rules, and payment policies to determine whether and how much the payer will reimburse. Adjudication engines apply complex rule sets that consider benefit plan terms, provider contracts, medical policies, and regulatory requirements. The output of adjudication includes the **allowed amount** (the maximum the payer will consider for payment based on provider contracts and fee schedules) and the portion to be paid by insurance versus the member's responsibility.
 
-<details>
+<details markdown="1">
     <summary>Claims Lifecycle Workflow with Graph Database Integration</summary>
     Type: workflow
 
@@ -430,7 +430,7 @@ Graph databases enable powerful denial analytics by allowing analysts to travers
 
 A **claim dispute** (also called an appeal) is a formal challenge by the provider or member requesting reconsideration of a claim denial or underpayment. Most payer contracts and regulations require multi-level appeal processes, starting with informal reconsideration and escalating to formal external review if necessary. Tracking dispute outcomes and resolution times is critical for payer operations and regulatory compliance.
 
-<details>
+<details markdown="1">
     <summary>Denial Reasons Analysis Chart</summary>
     Type: chart
 
@@ -524,7 +524,7 @@ Graph databases enable sophisticated utilization analytics by connecting prior a
 - Members with multiple concurrent authorizations suggesting care coordination opportunities
 - Providers with unusual authorization patterns compared to peers
 
-<details>
+<details markdown="1">
     <summary>Prior Authorization Decision Tree Interactive MicroSim</summary>
     Type: microsim
 
@@ -659,7 +659,7 @@ Common formulary tier structures include:
 
 Graph modeling of pharmacy benefits enables powerful analytics around medication utilization patterns, adherence rates, therapeutic alternatives, and drug-drug or drug-disease interactions by connecting members, prescriptions, prescribers, pharmacies, and diagnoses in a unified network.
 
-<details>
+<details markdown="1">
     <summary>Formulary Management and Step Therapy Graph Model</summary>
     Type: graph-model
 
