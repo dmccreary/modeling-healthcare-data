@@ -42,6 +42,7 @@ nav:
     - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
     - Clinical Care Pathway DAG: sims/clinical-care-pathway-dag/index.md
     - Patient Encounter Workflow: sims/encounter-workflow/index.md
+    - AI ML Venn Diagram: sims/ai-ml-taxonomy/index.md
   
   - Prompts:
     - Introduction: prompts/index.md

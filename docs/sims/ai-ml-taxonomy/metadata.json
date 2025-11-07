@@ -1,0 +1,32 @@
+{
+  "title": "AI and ML Taxonomy in Healthcare",
+  "description": "Interactive Venn diagram illustrating the hierarchical relationship between Artificial Intelligence, Machine Learning, and Deep Learning in healthcare contexts. Shows nested subsets where Deep Learning is contained within Machine Learning, which is contained within Artificial Intelligence.",
+  "subject": "Healthcare Data Science",
+  "creator": "Claude AI with Venn Diagram Generator Skill",
+  "date": "2025-11-07",
+  "type": "Interactive Venn Diagram",
+  "format": "text/html",
+  "language": "en-US",
+  "coverage": "Introductory",
+  "rights": "Educational Use",
+  "audience": "Undergraduate",
+  "diagram_type": "venn",
+  "set_count": "3",
+  "intersection_count": "3",
+  "concepts": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Deep Learning",
+    "Healthcare AI Applications",
+    "Technology Taxonomy",
+    "Subset Relationships",
+    "Neural Networks",
+    "Clinical Decision Support",
+    "Medical Imaging",
+    "Natural Language Processing"
+  ],
+  "bloom_taxonomy": "Understand",
+  "version": "1.0",
+  "library": "venn.js 0.2.20",
+  "dependencies": ["d3.js 7.9.0"]
+}
