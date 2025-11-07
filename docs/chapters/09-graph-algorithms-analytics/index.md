@@ -31,8 +31,6 @@ This chapter builds on concepts from:
 - [Chapter 01: Graph Theory and Database Foundations](../01-graph-theory-database-foundations/index.md)
 - [Chapter 03: Graph Query Languages and Technologies](../03-graph-query-languages/index.md)
 
----
-
 ## Introduction
 
 Graph algorithms represent the computational methods that traverse, analyze, and extract insights from graph-structured data, transforming raw connections into actionable intelligence. In healthcare, where relationships between patients, providers, medications, diagnoses, and procedures create intricate networks of causality and correlation, graph algorithms enable discovery of patterns invisible to traditional analytics approaches. Unlike statistical methods that treat observations as independent data points, graph algorithms explicitly model and leverage the relationships between entities, recognizing that understanding the connections is often more valuable than understanding isolated attributes.
