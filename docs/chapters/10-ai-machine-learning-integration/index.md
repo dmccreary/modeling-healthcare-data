@@ -52,40 +52,32 @@ The relationship between AI and ML can be understood through a simple hierarchy:
 - **Deep Learning** is a subset of ML using neural networks with multiple layers
 - **Specialized Applications** like natural language processing and computer vision apply these techniques to specific domains
 
+<iframe src="../../sims/ai-ml-taxonomy/main.html" width="100%" height="600px"></iframe>
+
+[View the AI/ML/DL Venn Diagram Fullscreen](../../sims/ai-ml-taxonomy/main.html)
+
 <details markdown="1">
     <summary>AI and ML Taxonomy in Healthcare</summary>
-    Type: venn diagram
+    **Type:** simple venn diagram with three concentric circles
 
-    Purpose: Illustrate the hierarchical relationship between AI, ML, deep learning, and healthcare-specific applications
+    Purpose: Illustrate the hierarchical nested relationship between AI, ML, deep learning
 
     Components to show:
-    - Outer circle: Artificial Intelligence (largest)
-    - Middle circle: Machine Learning (nested within AI)
+    - Outer circle: AI (largest)
+    - Middle circle: ML (nested within AI)
     - Inner circle: Deep Learning (nested within ML)
-    - Spokes radiating outward showing specific applications
 
-    Applications to label:
-    - Natural Language Processing (for clinical notes)
-    - Computer Vision (for medical imaging)
-    - Predictive Analytics (for patient outcomes)
-    - Recommendation Systems (for treatment plans)
-    - Knowledge Graphs (for clinical reasoning)
+    **On Hover Text**:
+    
+    Show the following definitions on hover:
 
-    Connections:
-    - Arrows showing which AI category enables each application
-    - Dotted lines indicating when multiple approaches combine
+   - AI: "Systems that simulate human intelligence, reasoning, and decision-making"
+   - ML: "Algorithms that learn patterns from data without explicit programming"
+   - Deep Learning: "Neural networks with multiple layers that learn complex representations"
 
-    Style: Concentric circles with labeled spokes
+    Color scheme: Blue gradient from light (outer AI) to dark (inner DL)
 
-    Labels:
-    - "AI: Systems that simulate human intelligence"
-    - "ML: Learning from data without explicit programming"
-    - "DL: Neural networks with multiple layers"
-    - Healthcare application labels on spokes
-
-    Color scheme: Blue gradient from light (outer AI) to dark (inner DL), with healthcare applications in green
-
-    Implementation: p5.js Venn Diagram MicroSim Generator
+    Implementation: venn-diagram-generator skill that uses the venn.js library
 </details>
 
 ## Large Language Models in Healthcare
