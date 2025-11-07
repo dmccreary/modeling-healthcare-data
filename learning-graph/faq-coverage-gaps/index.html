@@ -1,0 +1,2246 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/learning-graph/faq-coverage-gaps/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>FAQ Coverage Gaps Report - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="FAQ Coverage Gaps Report - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/learning-graph/faq-coverage-gaps.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/learning-graph/faq-coverage-gaps/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="FAQ Coverage Gaps Report - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/learning-graph/faq-coverage-gaps.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#faq-coverage-gaps-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ Coverage Gaps Report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-overview-by-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Overview by Section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-priority-gaps-13-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Priority Gaps (13 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High Priority Gaps (13 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patient-centric-concepts-3-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patient-Centric Concepts (3 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patient-Centric Concepts (3 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-immunization-concept-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Immunization (Concept #60)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vital-signs-concept-63" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Vital Signs (Concept #63)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-quality-of-life-metric-concept-70" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Quality of Life Metric (Concept #70)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-perspective-concepts-4-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Perspective Concepts (4 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Perspective Concepts (4 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-medical-license-concept-83" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Medical License (Concept #83)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-provider-capacity-concept-86" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Provider Capacity (Concept #86)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-clinical-protocol-concept-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Clinical Protocol (Concept #95)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-best-practice-concept-93" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Best Practice (Concept #93)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payer-perspective-concepts-4-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payer Perspective Concepts (4 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Payer Perspective Concepts (4 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#8-prior-authorization-concept-111" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Prior Authorization (Concept #111)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-pharmacy-benefit-manager-concept-110" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Pharmacy Benefit Manager (Concept #110)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-allowed-amount-concept-114" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Allowed Amount (Concept #114)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-medical-necessity-concept-113" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Medical Necessity (Concept #113)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-governance-concepts-2-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Governance Concepts (2 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Governance Concepts (2 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#12-data-provenance-concept-188" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Data Provenance (Concept #188)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-master-data-management-concept-192" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Master Data Management (Concept #192)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-priority-gaps-23-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium Priority Gaps (23 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Medium Priority Gaps (23 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patient-centric-concepts-5-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patient-Centric Concepts (5 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patient-Centric Concepts (5 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#14-patient-outcome-concept-69" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Patient Outcome (Concept #69)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-chronic-disease-management-concept-67" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Chronic Disease Management (Concept #67)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-preventive-care-concept-68" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Preventive Care (Concept #68)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-treatment-timeline-concept-65" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Treatment Timeline (Concept #65)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-care-plan-concept-64" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. Care Plan (Concept #64)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-perspective-concepts-7-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Perspective Concepts (7 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Perspective Concepts (7 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#19-hospital-department-concept-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. Hospital Department (Concept #88)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-provider-rating-concept-85" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. Provider Rating (Concept #85)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-board-certification-concept-84" class="md-nav__link">
+    <span class="md-ellipsis">
+      21. Board Certification (Concept #84)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-provider-specialization-concept-90" class="md-nav__link">
+    <span class="md-ellipsis">
+      22. Provider Specialization (Concept #90)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-multidisciplinary-team-concept-91" class="md-nav__link">
+    <span class="md-ellipsis">
+      23. Multidisciplinary Team (Concept #91)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-clinical-guideline-concept-92" class="md-nav__link">
+    <span class="md-ellipsis">
+      24. Clinical Guideline (Concept #92)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-evidence-based-medicine-concept-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      25. Evidence-Based Medicine (Concept #94)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payer-perspective-concepts-8-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payer Perspective Concepts (8 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Payer Perspective Concepts (8 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#26-claim-denial-concept-99" class="md-nav__link">
+    <span class="md-ellipsis">
+      26. Claim Denial (Concept #99)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-claim-dispute-concept-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      27. Claim Dispute (Concept #100)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-utilization-review-concept-112" class="md-nav__link">
+    <span class="md-ellipsis">
+      28. Utilization Review (Concept #112)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-premium-concept-107" class="md-nav__link">
+    <span class="md-ellipsis">
+      29. Premium (Concept #107)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-coverage-concept-102" class="md-nav__link">
+    <span class="md-ellipsis">
+      30. Coverage (Concept #102)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-formulary-concept-108" class="md-nav__link">
+    <span class="md-ellipsis">
+      31. Formulary (Concept #108)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-deductible-concept-105" class="md-nav__link">
+    <span class="md-ellipsis">
+      32. Deductible (Concept #105)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-out-of-pocket-maximum-concept-106" class="md-nav__link">
+    <span class="md-ellipsis">
+      33. Out-Of-Pocket Maximum (Concept #106)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financialoperational-concepts-6-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financial/Operational Concepts (6 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Financial/Operational Concepts (6 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#34-charge-master-concept-119" class="md-nav__link">
+    <span class="md-ellipsis">
+      34. Charge Master (Concept #119)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-revenue-cycle-concept-117" class="md-nav__link">
+    <span class="md-ellipsis">
+      35. Revenue Cycle (Concept #117)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-operating-margin-concept-123" class="md-nav__link">
+    <span class="md-ellipsis">
+      36. Operating Margin (Concept #123)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-payer-mix-concept-124" class="md-nav__link">
+    <span class="md-ellipsis">
+      37. Payer Mix (Concept #124)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-contract-negotiation-concept-125" class="md-nav__link">
+    <span class="md-ellipsis">
+      38. Contract Negotiation (Concept #125)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-risk-adjustment-concept-128" class="md-nav__link">
+    <span class="md-ellipsis">
+      39. Risk Adjustment (Concept #128)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-governance-concepts-3-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Governance Concepts (3 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Governance Concepts (3 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#40-data-stewardship-concept-193" class="md-nav__link">
+    <span class="md-ellipsis">
+      40. Data Stewardship (Concept #193)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-metadata-management-concept-186" class="md-nav__link">
+    <span class="md-ellipsis">
+      41. Metadata Management (Concept #186)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-data-traceability-concept-190" class="md-nav__link">
+    <span class="md-ellipsis">
+      42. Data Traceability (Concept #190)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraudwasteabuse-concepts-1-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fraud/Waste/Abuse Concepts (1 concept)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fraud/Waste/Abuse Concepts (1 concept)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#43-behavioral-health-fraud-concept-143" class="md-nav__link">
+    <span class="md-ellipsis">
+      43. Behavioral Health Fraud (Concept #143)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capstoneadvanced-concepts-2-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capstone/Advanced Concepts (2 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capstone/Advanced Concepts (2 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#44-graph-career-path-concept-198" class="md-nav__link">
+    <span class="md-ellipsis">
+      44. Graph Career Path (Concept #198)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-real-world-implementation-concept-197" class="md-nav__link">
+    <span class="md-ellipsis">
+      45. Real-World Implementation (Concept #197)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-priority-gaps-19-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low Priority Gaps (19 concepts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Low Priority Gaps (19 concepts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patient-centric-covered-indirectly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patient-Centric (Covered Indirectly)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-perspective-covered-indirectly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Perspective (Covered Indirectly)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payer-perspective-covered-indirectly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payer Perspective (Covered Indirectly)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financialoperational-covered-indirectly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financial/Operational (Covered Indirectly)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraudwasteabuse-specialized-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fraud/Waste/Abuse (Specialized Topics)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-governance-adequately-covered-through-related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Governance (Adequately Covered Through Related Topics)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-specialized-or-redundant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other (Specialized or Redundant)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-additions-priority-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Additions Priority Matrix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Additions Priority Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#immediate-add-to-next-faq-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immediate (Add to next FAQ update)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#short-term-add-within-semester" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Term (Add within semester)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-term-future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Long Term (Future enhancements)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coverage Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-critical-gaps-week-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Critical Gaps (Week 1-2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-payer-provider-enhancement-month-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Payer &amp; Provider Enhancement (Month 1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-comprehensive-coverage-month-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Comprehensive Coverage (Month 2-3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-maintenance-ongoing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 4: Maintenance (Ongoing)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-dependency-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concept Dependency Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Dependency Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-dependency-concepts-foundational-must-cover-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-Dependency Concepts (Foundational - Must Cover First)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-dependency-concepts-build-on-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium-Dependency Concepts (Build on Foundation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-dependency-concepts-advanced-can-add-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low-Dependency Concepts (Advanced - Can Add Later)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-journey-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Journey Mapping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Journey Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beginner-users-weeks-1-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beginner Users (Weeks 1-4)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intermediate-users-weeks-5-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intermediate Users (Weeks 5-8)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-users-weeks-9-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Users (Weeks 9-12)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/learning-graph/faq-coverage-gaps.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="faq-coverage-gaps-report">FAQ Coverage Gaps Report</h1>
+<p><strong>Generated:</strong> 2025-11-07</p>
+<p>This report identifies concepts from the learning graph (200 total concepts) that are not directly covered by FAQ questions. Coverage analysis helps prioritize future FAQ enhancements and identifies knowledge gaps.</p>
+<h2 id="executive-summary">Executive Summary</h2>
+<ul>
+<li><strong>Total Concepts:</strong> 200</li>
+<li><strong>Covered Concepts:</strong> 145 (73%)</li>
+<li><strong>Uncovered Concepts:</strong> 55 (27%)</li>
+<li><strong>High Priority Gaps:</strong> 13 concepts</li>
+<li><strong>Medium Priority Gaps:</strong> 23 concepts</li>
+<li><strong>Low Priority Gaps:</strong> 19 concepts</li>
+</ul>
+<h2 id="coverage-overview-by-section">Coverage Overview by Section</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Total</th>
+<th>Covered</th>
+<th>Gap</th>
+<th>Coverage %</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation Concepts (1-15)</td>
+<td>15</td>
+<td>15</td>
+<td>0</td>
+<td>100%</td>
+<td>✓ Complete</td>
+</tr>
+<tr>
+<td>Healthcare Domain (16-35)</td>
+<td>20</td>
+<td>18</td>
+<td>2</td>
+<td>90%</td>
+<td>✓ Strong</td>
+</tr>
+<tr>
+<td>Query Languages (36-45)</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>100%</td>
+<td>✓ Complete</td>
+</tr>
+<tr>
+<td>Patient-Centric (46-70)</td>
+<td>25</td>
+<td>17</td>
+<td>8</td>
+<td>68%</td>
+<td>→ Moderate</td>
+</tr>
+<tr>
+<td>Provider Perspective (71-95)</td>
+<td>25</td>
+<td>14</td>
+<td>11</td>
+<td>56%</td>
+<td>→ Moderate</td>
+</tr>
+<tr>
+<td>Payer Perspective (96-115)</td>
+<td>20</td>
+<td>8</td>
+<td>12</td>
+<td>40%</td>
+<td>↓ Weak</td>
+</tr>
+<tr>
+<td>Financial/Operational (116-130)</td>
+<td>15</td>
+<td>9</td>
+<td>6</td>
+<td>60%</td>
+<td>→ Moderate</td>
+</tr>
+<tr>
+<td>Fraud/Waste/Abuse (131-145)</td>
+<td>15</td>
+<td>12</td>
+<td>3</td>
+<td>80%</td>
+<td>✓ Strong</td>
+</tr>
+<tr>
+<td>Graph Analytics (146-160)</td>
+<td>15</td>
+<td>14</td>
+<td>1</td>
+<td>93%</td>
+<td>✓ Strong</td>
+</tr>
+<tr>
+<td>AI/ML (161-175)</td>
+<td>15</td>
+<td>13</td>
+<td>2</td>
+<td>87%</td>
+<td>✓ Strong</td>
+</tr>
+<tr>
+<td>Security/Compliance (176-185)</td>
+<td>10</td>
+<td>8</td>
+<td>2</td>
+<td>80%</td>
+<td>✓ Strong</td>
+</tr>
+<tr>
+<td>Data Governance (186-195)</td>
+<td>10</td>
+<td>5</td>
+<td>5</td>
+<td>50%</td>
+<td>→ Moderate</td>
+</tr>
+<tr>
+<td>Capstone/Advanced (196-200)</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>40%</td>
+<td>↓ Weak</td>
+</tr>
+</tbody>
+</table>
+<h2 id="high-priority-gaps-13-concepts">High Priority Gaps (13 concepts)</h2>
+<p>These concepts have high centrality in the learning graph (many dependencies) or represent critical healthcare knowledge that should be covered in the FAQ.</p>
+<h3 id="patient-centric-concepts-3-concepts">Patient-Centric Concepts (3 concepts)</h3>
+<h4 id="1-immunization-concept-60">1. <strong>Immunization</strong> (Concept #60)</h4>
+<ul>
+<li><strong>Centrality:</strong> Medium (7 dependencies)</li>
+<li><strong>Category:</strong> Core clinical data</li>
+<li><strong>Why Important:</strong> Preventive care tracking, public health requirements, vaccine schedules</li>
+<li><strong>Suggested Question:</strong> "How should I model immunization records and vaccine schedules in a graph database?"</li>
+<li><strong>Content Notes:</strong> Include vaccination types, dates, administered by, lot numbers, adverse reactions</li>
+</ul>
+<h4 id="2-vital-signs-concept-63">2. <strong>Vital Signs</strong> (Concept #63)</h4>
+<ul>
+<li><strong>Centrality:</strong> High (12 dependencies)</li>
+<li><strong>Category:</strong> Core clinical data</li>
+<li><strong>Why Important:</strong> Fundamental clinical measurements, monitored at every encounter</li>
+<li><strong>Suggested Question:</strong> "How do I model vital signs (blood pressure, temperature, heart rate) in healthcare graphs?"</li>
+<li><strong>Content Notes:</strong> Time-series data, normal ranges, trending, alert thresholds</li>
+</ul>
+<h4 id="3-quality-of-life-metric-concept-70">3. <strong>Quality of Life Metric</strong> (Concept #70)</h4>
+<ul>
+<li><strong>Centrality:</strong> Medium (6 dependencies)</li>
+<li><strong>Category:</strong> Patient outcomes</li>
+<li><strong>Why Important:</strong> Value-based care outcomes, patient-reported measures</li>
+<li><strong>Suggested Question:</strong> "What are quality of life metrics and how should they be modeled in graphs?"</li>
+<li><strong>Content Notes:</strong> PRO (patient-reported outcomes), PROMIS scores, functional assessments</li>
+</ul>
+<h3 id="provider-perspective-concepts-4-concepts">Provider Perspective Concepts (4 concepts)</h3>
+<h4 id="4-medical-license-concept-83">4. <strong>Medical License</strong> (Concept #83)</h4>
+<ul>
+<li><strong>Centrality:</strong> Medium (8 dependencies)</li>
+<li><strong>Category:</strong> Provider credentials</li>
+<li><strong>Why Important:</strong> Regulatory compliance, credentialing, network participation</li>
+<li><strong>Suggested Question:</strong> "How do I track medical licenses and provider credentials in a graph database?"</li>
+<li><strong>Content Notes:</strong> License numbers, states, expiration dates, disciplinary actions, verification</li>
+</ul>
+<h4 id="5-provider-capacity-concept-86">5. <strong>Provider Capacity</strong> (Concept #86)</h4>
+<ul>
+<li><strong>Centrality:</strong> Medium (7 dependencies)</li>
+<li><strong>Category:</strong> Resource planning</li>
+<li><strong>Why Important:</strong> Scheduling, access to care, network adequacy</li>
+<li><strong>Suggested Question:</strong> "How should I model provider capacity and availability in graphs?"</li>
+<li><strong>Content Notes:</strong> Panel size, appointment slots, new patient acceptance, wait times</li>
+</ul>
+<h4 id="6-clinical-protocol-concept-95">6. <strong>Clinical Protocol</strong> (Concept #95)</h4>
+<ul>
+<li><strong>Centrality:</strong> High (10 dependencies)</li>
+<li><strong>Category:</strong> Care standardization</li>
+<li><strong>Why Important:</strong> Evidence-based care, quality improvement, clinical decision support</li>
+<li><strong>Suggested Question:</strong> "How do I model clinical protocols and care pathways in graph databases?"</li>
+<li><strong>Content Notes:</strong> Protocol steps, decision points, contraindications, outcome measures</li>
+</ul>
+<h4 id="7-best-practice-concept-93">7. <strong>Best Practice</strong> (Concept #93)</h4>
+<ul>
+<li><strong>Centrality:</strong> Medium (8 dependencies)</li>
+<li><strong>Category:</strong> Quality standards</li>
+<li><strong>Why Important:</strong> Clinical excellence, benchmarking, quality improvement</li>
+<li><strong>Suggested Question:</strong> "How are clinical best practices represented and queried in healthcare graphs?"</li>
+<li><strong>Content Notes:</strong> Evidence-based guidelines, performance benchmarks, quality indicators</li>
+</ul>
+<h3 id="payer-perspective-concepts-4-concepts">Payer Perspective Concepts (4 concepts)</h3>
+<h4 id="8-prior-authorization-concept-111">8. <strong>Prior Authorization</strong> (Concept #111)</h4>
+<ul>
+<li><strong>Centrality:</strong> Very High (15 dependencies)</li>
+<li><strong>Category:</strong> Utilization management</li>
+<li><strong>Why Important:</strong> Common healthcare pain point, administrative burden, coverage determination</li>
+<li><strong>Suggested Question:</strong> "What is prior authorization and how should it be modeled in graphs?"</li>
+<li><strong>Content Notes:</strong> Authorization requests, approval workflows, denial appeals, required documentation</li>
+</ul>
+<h4 id="9-pharmacy-benefit-manager-concept-110">9. <strong>Pharmacy Benefit Manager</strong> (Concept #110)</h4>
+<ul>
+<li><strong>Centrality:</strong> High (11 dependencies)</li>
+<li><strong>Category:</strong> Medication management</li>
+<li><strong>Why Important:</strong> Drug coverage, formularies, cost management, rebates</li>
+<li><strong>Suggested Question:</strong> "What is a pharmacy benefit manager (PBM) and how do they fit into healthcare graphs?"</li>
+<li><strong>Content Notes:</strong> Formulary rules, drug pricing, preferred pharmacies, rebate processing</li>
+</ul>
+<h4 id="10-allowed-amount-concept-114">10. <strong>Allowed Amount</strong> (Concept #114)</h4>
+<ul>
+<li><strong>Centrality:</strong> High (10 dependencies)</li>
+<li><strong>Category:</strong> Claims processing</li>
+<li><strong>Why Important:</strong> Reimbursement determination, pricing transparency, cost estimation</li>
+<li><strong>Suggested Question:</strong> "What is the allowed amount in insurance claims and how is it calculated?"</li>
+<li><strong>Content Notes:</strong> Contracted rates, fee schedules, out-of-network pricing, patient responsibility</li>
+</ul>
+<h4 id="11-medical-necessity-concept-113">11. <strong>Medical Necessity</strong> (Concept #113)</h4>
+<ul>
+<li><strong>Centrality:</strong> Very High (14 dependencies)</li>
+<li><strong>Category:</strong> Coverage determination</li>
+<li><strong>Why Important:</strong> Claims approval, denial basis, appeals foundation</li>
+<li><strong>Suggested Question:</strong> "How is medical necessity determined and modeled in healthcare graphs?"</li>
+<li><strong>Content Notes:</strong> Coverage criteria, clinical guidelines, documentation requirements, peer review</li>
+</ul>
+<h3 id="data-governance-concepts-2-concepts">Data Governance Concepts (2 concepts)</h3>
+<h4 id="12-data-provenance-concept-188">12. <strong>Data Provenance</strong> (Concept #188)</h4>
+<ul>
+<li><strong>Centrality:</strong> High (9 dependencies)</li>
+<li><strong>Category:</strong> Regulatory compliance</li>
+<li><strong>Why Important:</strong> Audit trails, data lineage, regulatory compliance, trustworthiness</li>
+<li><strong>Suggested Question:</strong> "What is data provenance and why is it critical for healthcare graphs?"</li>
+<li><strong>Content Notes:</strong> Source systems, transformation history, data quality indicators, verification</li>
+</ul>
+<h4 id="13-master-data-management-concept-192">13. <strong>Master Data Management</strong> (Concept #192)</h4>
+<ul>
+<li><strong>Centrality:</strong> Very High (13 dependencies)</li>
+<li><strong>Category:</strong> Data integration</li>
+<li><strong>Why Important:</strong> Identity resolution, duplicate elimination, single source of truth</li>
+<li><strong>Suggested Question:</strong> "How do I implement master data management (MDM) for patients and providers in graphs?"</li>
+<li><strong>Content Notes:</strong> Golden records, probabilistic matching, data stewardship, governance</li>
+</ul>
+<h2 id="medium-priority-gaps-23-concepts">Medium Priority Gaps (23 concepts)</h2>
+<p>These concepts are moderately important for comprehensive understanding but may be covered indirectly in current FAQ answers or are less critical for initial learning.</p>
+<h3 id="patient-centric-concepts-5-concepts">Patient-Centric Concepts (5 concepts)</h3>
+<h4 id="14-patient-outcome-concept-69">14. <strong>Patient Outcome</strong> (Concept #69)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Mentioned in value-based care and population health questions but not dedicated coverage</li>
+<li><strong>Suggested Question:</strong> "How do I model and track patient outcomes in graph databases?"</li>
+</ul>
+<h4 id="15-chronic-disease-management-concept-67">15. <strong>Chronic Disease Management</strong> (Concept #67)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Touched on in care plan and population health contexts</li>
+<li><strong>Suggested Question:</strong> "What graph patterns support chronic disease management programs?"</li>
+</ul>
+<h4 id="16-preventive-care-concept-68">16. <strong>Preventive Care</strong> (Concept #68)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Mentioned in value-based care context</li>
+<li><strong>Suggested Question:</strong> "How do graphs help identify and track preventive care gaps?"</li>
+</ul>
+<h4 id="17-treatment-timeline-concept-65">17. <strong>Treatment Timeline</strong> (Concept #65)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Covered in temporal modeling and path queries but not specifically</li>
+<li><strong>Suggested Question:</strong> "How do I create treatment timeline visualizations from graph data?"</li>
+</ul>
+<h4 id="18-care-plan-concept-64">18. <strong>Care Plan</strong> (Concept #64)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Referenced in clinical decision support</li>
+<li><strong>Suggested Question:</strong> "How should comprehensive care plans be modeled in graphs?"</li>
+</ul>
+<h3 id="provider-perspective-concepts-7-concepts">Provider Perspective Concepts (7 concepts)</h3>
+<h4 id="19-hospital-department-concept-88">19. <strong>Hospital Department</strong> (Concept #88)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do I model hospital departments and their relationships?"</li>
+</ul>
+<h4 id="20-provider-rating-concept-85">20. <strong>Provider Rating</strong> (Concept #85)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How are provider quality ratings calculated and stored in graphs?"</li>
+</ul>
+<h4 id="21-board-certification-concept-84">21. <strong>Board Certification</strong> (Concept #84)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do I track board certifications and subspecialties?"</li>
+</ul>
+<h4 id="22-provider-specialization-concept-90">22. <strong>Provider Specialization</strong> (Concept #90)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Mentioned throughout provider examples but not dedicated coverage</li>
+<li><strong>Suggested Question:</strong> "How do specialty and subspecialty relationships work in provider graphs?"</li>
+</ul>
+<h4 id="23-multidisciplinary-team-concept-91">23. <strong>Multidisciplinary Team</strong> (Concept #91)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do I model care teams and multidisciplinary collaboration?"</li>
+</ul>
+<h4 id="24-clinical-guideline-concept-92">24. <strong>Clinical Guideline</strong> (Concept #92)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Referenced in clinical decision support</li>
+<li><strong>Suggested Question:</strong> "How are clinical guidelines implemented in graph-based decision support?"</li>
+</ul>
+<h4 id="25-evidence-based-medicine-concept-94">25. <strong>Evidence-Based Medicine</strong> (Concept #94)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do graphs support evidence-based medicine workflows?"</li>
+</ul>
+<h3 id="payer-perspective-concepts-8-concepts">Payer Perspective Concepts (8 concepts)</h3>
+<h4 id="26-claim-denial-concept-99">26. <strong>Claim Denial</strong> (Concept #99)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do I analyze claim denial patterns using graph queries?"</li>
+</ul>
+<h4 id="27-claim-dispute-concept-100">27. <strong>Claim Dispute</strong> (Concept #100)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How are claim appeals and disputes tracked in graphs?"</li>
+</ul>
+<h4 id="28-utilization-review-concept-112">28. <strong>Utilization Review</strong> (Concept #112)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "What is utilization review and how do graphs support UM workflows?"</li>
+</ul>
+<h4 id="29-premium-concept-107">29. <strong>Premium</strong> (Concept #107)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do premium calculations and member costs fit into payer graphs?"</li>
+</ul>
+<h4 id="30-coverage-concept-102">30. <strong>Coverage</strong> (Concept #102)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Mentioned in payer context but not dedicated coverage</li>
+<li><strong>Suggested Question:</strong> "How do I model insurance coverage rules and benefits?"</li>
+</ul>
+<h4 id="31-formulary-concept-108">31. <strong>Formulary</strong> (Concept #108)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Mentioned in medication context</li>
+<li><strong>Suggested Question:</strong> "How are insurance formularies structured in graph databases?"</li>
+</ul>
+<h4 id="32-deductible-concept-105">32. <strong>Deductible</strong> (Concept #105)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do I track deductibles and out-of-pocket costs in graphs?"</li>
+</ul>
+<h4 id="33-out-of-pocket-maximum-concept-106">33. <strong>Out-Of-Pocket Maximum</strong> (Concept #106)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How are patient cost-sharing limits modeled and calculated?"</li>
+</ul>
+<h3 id="financialoperational-concepts-6-concepts">Financial/Operational Concepts (6 concepts)</h3>
+<h4 id="34-charge-master-concept-119">34. <strong>Charge Master</strong> (Concept #119)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "What is a charge master and how should it be modeled in graphs?"</li>
+</ul>
+<h4 id="35-revenue-cycle-concept-117">35. <strong>Revenue Cycle</strong> (Concept #117)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do graphs optimize healthcare revenue cycle workflows?"</li>
+</ul>
+<h4 id="36-operating-margin-concept-123">36. <strong>Operating Margin</strong> (Concept #123)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How do I calculate provider financial performance using graph analytics?"</li>
+</ul>
+<h4 id="37-payer-mix-concept-124">37. <strong>Payer Mix</strong> (Concept #124)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "What is payer mix analysis and how do graphs support it?"</li>
+</ul>
+<h4 id="38-contract-negotiation-concept-125">38. <strong>Contract Negotiation</strong> (Concept #125)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How are provider-payer contracts modeled in graphs?"</li>
+</ul>
+<h4 id="39-risk-adjustment-concept-128">39. <strong>Risk Adjustment</strong> (Concept #128)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Mentioned in value-based care context</li>
+<li><strong>Suggested Question:</strong> "How do risk adjustment scores work in graph-based population health?"</li>
+</ul>
+<h3 id="data-governance-concepts-3-concepts">Data Governance Concepts (3 concepts)</h3>
+<h4 id="40-data-stewardship-concept-193">40. <strong>Data Stewardship</strong> (Concept #193)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "What are data stewardship roles in healthcare graph governance?"</li>
+</ul>
+<h4 id="41-metadata-management-concept-186">41. <strong>Metadata Management</strong> (Concept #186)</h4>
+<ul>
+<li><strong>Coverage Note:</strong> Touched on in data governance discussion</li>
+<li><strong>Suggested Question:</strong> "How do I implement metadata management for healthcare graphs?"</li>
+</ul>
+<h4 id="42-data-traceability-concept-190">42. <strong>Data Traceability</strong> (Concept #190)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "How does graph structure enhance data traceability?"</li>
+</ul>
+<h3 id="fraudwasteabuse-concepts-1-concept">Fraud/Waste/Abuse Concepts (1 concept)</h3>
+<h4 id="43-behavioral-health-fraud-concept-143">43. <strong>Behavioral Health Fraud</strong> (Concept #143)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "What are specific fraud patterns in behavioral health billing?"</li>
+</ul>
+<h3 id="capstoneadvanced-concepts-2-concepts">Capstone/Advanced Concepts (2 concepts)</h3>
+<h4 id="44-graph-career-path-concept-198">44. <strong>Graph Career Path</strong> (Concept #198)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "What career opportunities exist for graph database expertise in healthcare?"</li>
+</ul>
+<h4 id="45-real-world-implementation-concept-197">45. <strong>Real-World Implementation</strong> (Concept #197)</h4>
+<ul>
+<li><strong>Suggested Question:</strong> "What are key considerations for deploying healthcare graphs in production?"</li>
+</ul>
+<h2 id="low-priority-gaps-19-concepts">Low Priority Gaps (19 concepts)</h2>
+<p>These concepts are mentioned within other FAQ answers, represent specialized topics, or are adequately covered through related questions.</p>
+<h3 id="patient-centric-covered-indirectly">Patient-Centric (Covered Indirectly)</h3>
+<ol>
+<li><strong>Allergy</strong> - Covered in missing data and OPTIONAL MATCH examples</li>
+<li><strong>Adverse Event</strong> - Mentioned in medication interaction context</li>
+<li><strong>Dosage</strong> - Covered extensively in medication modeling</li>
+<li><strong>Drug Interaction</strong> - Dedicated coverage in medication patterns</li>
+<li><strong>Lab Test</strong> - Covered in temporal modeling and patient context examples</li>
+<li><strong>Lab Result</strong> - Extensively used in examples throughout</li>
+</ol>
+<h3 id="provider-perspective-covered-indirectly">Provider Perspective (Covered Indirectly)</h3>
+<ol>
+<li><strong>Appointment</strong> - Mentioned in scheduling and encounter examples</li>
+<li><strong>Provider Schedule</strong> - Referenced in capacity and workflow discussions</li>
+<li><strong>Care Team</strong> - Covered in multidisciplinary care examples</li>
+<li><strong>Provider Performance</strong> - Referenced in quality metrics and analytics</li>
+</ol>
+<h3 id="payer-perspective-covered-indirectly">Payer Perspective (Covered Indirectly)</h3>
+<ol>
+<li><strong>Copayment</strong> - Mentioned in insurance basics</li>
+<li><strong>Benefit Plan</strong> - Referenced in payer perspective</li>
+<li><strong>Insurance Policy</strong> - Covered in payer modeling examples</li>
+<li><strong>Formulary Rule</strong> - Mentioned in PBM context</li>
+</ol>
+<h3 id="financialoperational-covered-indirectly">Financial/Operational (Covered Indirectly)</h3>
+<ol>
+<li><strong>Provider Compensation</strong> - Touched on in value-based care</li>
+<li><strong>Capitation</strong> - Mentioned in value-based care models</li>
+</ol>
+<h3 id="fraudwasteabuse-specialized-topics">Fraud/Waste/Abuse (Specialized Topics)</h3>
+<ol>
+<li><strong>DME Fraud</strong> - Example in fraud detection question</li>
+<li><strong>Provider Network Fraud</strong> - Core of fraud detection coverage</li>
+</ol>
+<h3 id="data-governance-adequately-covered-through-related-topics">Data Governance (Adequately Covered Through Related Topics)</h3>
+<ol>
+<li><strong>Transparency</strong> - Covered in explainability and governance</li>
+<li><strong>Explainability</strong> - Dedicated coverage in AI/ML and governance</li>
+<li><strong>Data Quality</strong> - Covered in missing data handling</li>
+<li><strong>Data Privacy</strong> - Covered in HIPAA compliance</li>
+<li><strong>Data Security</strong> - Dedicated security coverage</li>
+</ol>
+<h3 id="other-specialized-or-redundant">Other (Specialized or Redundant)</h3>
+<ol>
+<li><strong>Referral Network Analysis</strong> - Covered in provider network questions</li>
+<li><strong>Similarity Measure</strong> - Covered in graph algorithm examples</li>
+</ol>
+<h2 id="recommended-additions-priority-matrix">Recommended Additions Priority Matrix</h2>
+<h3 id="immediate-add-to-next-faq-update">Immediate (Add to next FAQ update)</h3>
+<p><strong>High Impact, High Demand:</strong>
+1. Prior Authorization (very common pain point)
+2. Vital Signs (fundamental clinical data)
+3. Medical License (compliance requirement)
+4. Pharmacy Benefit Manager (medication cost management)
+5. Master Data Management (critical for data integration)</p>
+<p><strong>Quick Wins (Easy to add, fill important gaps):</strong>
+6. Immunization (preventive care)
+7. Provider Capacity (resource planning)
+8. Allowed Amount (cost transparency)
+9. Data Provenance (audit compliance)
+10. Medical Necessity (coverage determination)</p>
+<h3 id="short-term-add-within-semester">Short Term (Add within semester)</h3>
+<p><strong>Moderate Effort, Good Value:</strong>
+11. Clinical Protocol (decision support)
+12. Quality of Life Metrics (outcomes)
+13. Best Practice (quality standards)
+14. Claim Denial (revenue cycle)
+15. Hospital Department (organizational modeling)
+16. Provider Rating (quality)
+17. Care Plan (comprehensive treatment)
+18. Patient Outcome (tracking results)
+19. Utilization Review (care management)
+20. Chronic Disease Management (population health)</p>
+<h3 id="long-term-future-enhancements">Long Term (Future enhancements)</h3>
+<p><strong>Lower Priority or Covered Indirectly:</strong>
+- Remaining payer perspective concepts (deductible, premium, formulary)
+- Specialized financial concepts (charge master, operating margin)
+- Governance details (metadata, data stewardship)
+- Career guidance (graph career path)
+- Specialized fraud topics (behavioral health fraud, DME fraud specifics)</p>
+<h2 id="coverage-strategy">Coverage Strategy</h2>
+<h3 id="phase-1-critical-gaps-week-1-2">Phase 1: Critical Gaps (Week 1-2)</h3>
+<p>Add 10 high-priority questions covering concepts 1-13</p>
+<p><strong>Estimated Impact:</strong> Raises coverage from 73% to 78%
+<strong>Focus:</strong> Patient data, provider credentials, payer essentials, governance</p>
+<h3 id="phase-2-payer-provider-enhancement-month-1">Phase 2: Payer &amp; Provider Enhancement (Month 1)</h3>
+<p>Add 12 medium-priority questions focusing on underrepresented sections</p>
+<p><strong>Estimated Impact:</strong> Raises payer coverage from 40% to 60%, provider from 56% to 72%
+<strong>Overall Coverage Target:</strong> 83%</p>
+<h3 id="phase-3-comprehensive-coverage-month-2-3">Phase 3: Comprehensive Coverage (Month 2-3)</h3>
+<p>Add remaining medium-priority questions</p>
+<p><strong>Estimated Impact:</strong> Overall coverage target: 90%+
+<strong>Focus:</strong> Filling remaining gaps across all categories</p>
+<h3 id="phase-4-maintenance-ongoing">Phase 4: Maintenance (Ongoing)</h3>
+<ul>
+<li>Monitor user questions and add to FAQ</li>
+<li>Update existing answers with new examples</li>
+<li>Incorporate feedback from instructors and students</li>
+<li>Refresh examples as technologies evolve</li>
+</ul>
+<h2 id="concept-dependency-analysis">Concept Dependency Analysis</h2>
+<h3 id="high-dependency-concepts-foundational-must-cover-first">High-Dependency Concepts (Foundational - Must Cover First)</h3>
+<p>Already covered (✓):
+- Graph Database, Node, Edge, Labeled Property Graph
+- Patient, Provider, Payer
+- Cypher, Graph Query, Pattern Matching</p>
+<h3 id="medium-dependency-concepts-build-on-foundation">Medium-Dependency Concepts (Build on Foundation)</h3>
+<p>Gaps to address:
+- <strong>Prior Authorization</strong> (depends on Coverage, Medical Necessity)
+- <strong>Master Data Management</strong> (depends on Data Quality, Patient ID)
+- <strong>Vital Signs</strong> (depends on Medical Encounter, Patient Record)
+- <strong>Clinical Protocol</strong> (depends on Evidence-Based Medicine, Clinical Guideline)</p>
+<h3 id="low-dependency-concepts-advanced-can-add-later">Low-Dependency Concepts (Advanced - Can Add Later)</h3>
+<ul>
+<li>Specialized fraud types</li>
+<li>Advanced financial analytics</li>
+<li>Detailed governance processes</li>
+</ul>
+<h2 id="user-journey-mapping">User Journey Mapping</h2>
+<h3 id="beginner-users-weeks-1-4">Beginner Users (Weeks 1-4)</h3>
+<p><strong>Current Coverage:</strong> Excellent (100% of beginner concepts covered)
+<strong>Gaps:</strong> None critical
+<strong>Recommendation:</strong> Maintain current Getting Started and Core Concepts sections</p>
+<h3 id="intermediate-users-weeks-5-8">Intermediate Users (Weeks 5-8)</h3>
+<p><strong>Current Coverage:</strong> Good (75% of intermediate concepts)
+<strong>Gaps:</strong> Clinical workflow details (protocols, care plans), payer operations
+<strong>Recommendation:</strong> Add Phase 1 questions to support practical application</p>
+<h3 id="advanced-users-weeks-9-12">Advanced Users (Weeks 9-12)</h3>
+<p><strong>Current Coverage:</strong> Strong (80% of advanced concepts)
+<strong>Gaps:</strong> Specialized implementation details, production deployment
+<strong>Recommendation:</strong> Add Phase 2-3 questions for comprehensive mastery</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The FAQ coverage gaps analysis identifies 55 uncovered concepts across 13 high-priority, 23 medium-priority, and 19 low-priority categories. The <strong>recommended strategy</strong> is to add 10-13 high-priority questions immediately, focusing on patient data fundamentals, provider credentials, payer essentials, and data governance. This targeted enhancement will raise overall coverage from 73% to approximately 80% while addressing the most critical knowledge gaps.</p>
+<p><strong>Payer Perspective</strong> represents the largest gap (40% coverage) and should be prioritized in Phase 2 enhancements to provide balanced coverage across all healthcare stakeholder viewpoints.</p>
+<p>The FAQ's current 73% coverage is <strong>strong for core learning objectives</strong>, with perfect coverage of foundational concepts and query languages. The identified gaps primarily affect specialized workflows and advanced applications rather than fundamental understanding.</p>
+<hr />
+<p><strong>Next Steps:</strong>
+1. Prioritize 10 high-priority gap questions for immediate addition
+2. Draft answers following existing quality standards (150-word average, examples, source links)
+3. Update chatbot training JSON with new questions
+4. Refresh quality report after additions
+5. Monitor user feedback to validate gap prioritization</p>
+<p><strong>Report Generated:</strong> 2025-11-07</p>
+<p>🤖 Generated with <a href="https://claude.com/claude-code">Claude Code</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>
