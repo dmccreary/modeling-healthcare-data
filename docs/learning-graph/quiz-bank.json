@@ -1,0 +1,226 @@
+{
+  "textbook_title": "Modeling Healthcare Data with Graphs",
+  "generated_date": "2025-11-07",
+  "total_chapters": 12,
+  "total_questions": 120,
+  "format_version": "1.0",
+  "description": "Comprehensive quiz bank for healthcare graph modeling textbook with Bloom's taxonomy alignment",
+  "statistics": {
+    "bloom_distribution": {
+      "Remember": 26,
+      "Understand": 34,
+      "Apply": 35,
+      "Analyze": 19,
+      "Evaluate": 4,
+      "Create": 2
+    },
+    "answer_distribution": {
+      "A": 24,
+      "B": 41,
+      "C": 28,
+      "D": 27
+    },
+    "difficulty_distribution": {
+      "easy": 28,
+      "medium": 68,
+      "hard": 24
+    },
+    "concept_coverage": {
+      "total_concepts": 170,
+      "tested_concepts": 138,
+      "coverage_percentage": 81
+    }
+  },
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_title": "Graph Theory and Database Foundations",
+      "quiz_file": "docs/chapters/01-graph-theory-database-foundations/quiz.md",
+      "metadata_file": "docs/learning-graph/quizzes/ch01-quiz-metadata.json",
+      "question_count": 10,
+      "concepts_covered": 15,
+      "concepts_tested": 11,
+      "bloom_levels": {
+        "Remember": 3,
+        "Understand": 4,
+        "Apply": 2,
+        "Analyze": 1
+      }
+    },
+    {
+      "chapter_number": 2,
+      "chapter_title": "Introduction to Healthcare Systems",
+      "quiz_file": "docs/chapters/02-intro-to-healthcare-systems/quiz.md",
+      "metadata_file": "docs/learning-graph/quizzes/ch02-quiz-metadata.json",
+      "question_count": 10,
+      "concepts_covered": 20,
+      "concepts_tested": 13,
+      "bloom_levels": {
+        "Remember": 4,
+        "Understand": 3,
+        "Apply": 1,
+        "Analyze": 2
+      }
+    },
+    {
+      "chapter_number": 3,
+      "chapter_title": "Graph Query Languages and Technologies",
+      "quiz_file": "docs/chapters/03-graph-query-languages/quiz.md",
+      "metadata_file": "docs/learning-graph/quizzes/ch03-quiz-metadata.json",
+      "question_count": 10,
+      "concepts_covered": 10,
+      "concepts_tested": 10,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 3,
+        "Apply": 4,
+        "Analyze": 1
+      }
+    },
+    {
+      "chapter_number": 4,
+      "chapter_title": "Patient-Centric Data Modeling",
+      "quiz_file": "docs/chapters/04-patient-centric-data-modeling/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 15,
+      "concepts_tested": 12,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 3,
+        "Apply": 3,
+        "Analyze": 2
+      }
+    },
+    {
+      "chapter_number": 5,
+      "chapter_title": "Provider Operations and Networks",
+      "quiz_file": "docs/chapters/05-provider-operations-networks/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 12,
+      "concepts_tested": 10,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 3,
+        "Apply": 3,
+        "Analyze": 2
+      }
+    },
+    {
+      "chapter_number": 6,
+      "chapter_title": "Payer Perspective and Insurance Claims",
+      "quiz_file": "docs/chapters/06-payer-perspective-insurance/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 14,
+      "concepts_tested": 11,
+      "bloom_levels": {
+        "Remember": 3,
+        "Understand": 3,
+        "Apply": 2,
+        "Analyze": 2
+      }
+    },
+    {
+      "chapter_number": 7,
+      "chapter_title": "Healthcare Financial Analytics",
+      "quiz_file": "docs/chapters/07-healthcare-financial-analytics/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 11,
+      "concepts_tested": 10,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 3,
+        "Apply": 3,
+        "Analyze": 2
+      }
+    },
+    {
+      "chapter_number": 8,
+      "chapter_title": "Fraud Detection and Compliance",
+      "quiz_file": "docs/chapters/08-fraud-detection-compliance/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 13,
+      "concepts_tested": 11,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 2,
+        "Apply": 3,
+        "Analyze": 3
+      }
+    },
+    {
+      "chapter_number": 9,
+      "chapter_title": "Graph Algorithms and Analytics",
+      "quiz_file": "docs/chapters/09-graph-algorithms-analytics/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 16,
+      "concepts_tested": 13,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 3,
+        "Apply": 3,
+        "Analyze": 2
+      }
+    },
+    {
+      "chapter_number": 10,
+      "chapter_title": "AI and Machine Learning Integration",
+      "quiz_file": "docs/chapters/10-ai-machine-learning-integration/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 14,
+      "concepts_tested": 12,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 2,
+        "Apply": 3,
+        "Analyze": 2,
+        "Evaluate": 1
+      }
+    },
+    {
+      "chapter_number": 11,
+      "chapter_title": "Security, Privacy, and Data Governance",
+      "quiz_file": "docs/chapters/11-security-privacy-governance/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 18,
+      "concepts_tested": 14,
+      "bloom_levels": {
+        "Remember": 2,
+        "Understand": 3,
+        "Apply": 2,
+        "Analyze": 2,
+        "Evaluate": 1
+      }
+    },
+    {
+      "chapter_number": 12,
+      "chapter_title": "Capstone Projects and Real-World Applications",
+      "quiz_file": "docs/chapters/12-capstone-real-world-applications/quiz.md",
+      "question_count": 10,
+      "concepts_covered": 12,
+      "concepts_tested": 11,
+      "bloom_levels": {
+        "Remember": 1,
+        "Understand": 2,
+        "Apply": 3,
+        "Analyze": 2,
+        "Evaluate": 1,
+        "Create": 1
+      }
+    }
+  ],
+  "usage_notes": {
+    "quiz_format": "mkdocs-material question admonitions with upper-alpha styling",
+    "answer_format": "Multiple choice with 4 options (A, B, C, D)",
+    "explanation_format": "Comprehensive explanations with concept labels and chapter references",
+    "integration": "Designed for LMS export, chatbot integration, and adaptive testing",
+    "metadata": "Individual chapter metadata available in docs/learning-graph/quizzes/"
+  },
+  "quality_assurance": {
+    "total_quality_score": 84,
+    "bloom_alignment_score": 25,
+    "answer_balance_score": 12,
+    "concept_coverage_score": 16,
+    "question_quality_score": 29,
+    "explanation_quality_score": 30
+  }
+}

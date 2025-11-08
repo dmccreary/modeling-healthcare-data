@@ -13,18 +13,42 @@ nav:
 
   - Chapters:
     - Overview: chapters/index.md
-    - Chapter 1 - Graph Theory and Database Foundations: chapters/01-graph-theory-database-foundations/index.md
-    - Chapter 2 - Introduction to Healthcare Systems: chapters/02-intro-to-healthcare-systems/index.md
-    - Chapter 3 - Graph Query Languages and Technologies: chapters/03-graph-query-languages/index.md
-    - Chapter 4 - Patient-Centric Data Modeling: chapters/04-patient-centric-data-modeling/index.md
-    - Chapter 5 - Provider Operations and Networks: chapters/05-provider-operations-networks/index.md
-    - Chapter 6 - Payer Perspective and Insurance Claims: chapters/06-payer-perspective-insurance/index.md
-    - Chapter 7 - Healthcare Financial Analytics: chapters/07-healthcare-financial-analytics/index.md
-    - Chapter 8 - Fraud Detection and Compliance: chapters/08-fraud-detection-compliance/index.md
-    - Chapter 9 - Graph Algorithms and Analytics: chapters/09-graph-algorithms-analytics/index.md
-    - Chapter 10 - AI and Machine Learning Integration: chapters/10-ai-machine-learning-integration/index.md
-    - Chapter 11 - Security, Privacy, and Data Governance: chapters/11-security-privacy-governance/index.md
-    - Chapter 12 - Capstone Projects and Real-World Applications: chapters/12-capstone-real-world-applications/index.md
+    - Chapter 1 - Graph Theory and Database Foundations:
+      - Content: chapters/01-graph-theory-database-foundations/index.md
+      - Quiz: chapters/01-graph-theory-database-foundations/quiz.md
+    - Chapter 2 - Introduction to Healthcare Systems:
+      - Content: chapters/02-intro-to-healthcare-systems/index.md
+      - Quiz: chapters/02-intro-to-healthcare-systems/quiz.md
+    - Chapter 3 - Graph Query Languages and Technologies:
+      - Content: chapters/03-graph-query-languages/index.md
+      - Quiz: chapters/03-graph-query-languages/quiz.md
+    - Chapter 4 - Patient-Centric Data Modeling:
+      - Content: chapters/04-patient-centric-data-modeling/index.md
+      - Quiz: chapters/04-patient-centric-data-modeling/quiz.md
+    - Chapter 5 - Provider Operations and Networks:
+      - Content: chapters/05-provider-operations-networks/index.md
+      - Quiz: chapters/05-provider-operations-networks/quiz.md
+    - Chapter 6 - Payer Perspective and Insurance Claims:
+      - Content: chapters/06-payer-perspective-insurance/index.md
+      - Quiz: chapters/06-payer-perspective-insurance/quiz.md
+    - Chapter 7 - Healthcare Financial Analytics:
+      - Content: chapters/07-healthcare-financial-analytics/index.md
+      - Quiz: chapters/07-healthcare-financial-analytics/quiz.md
+    - Chapter 8 - Fraud Detection and Compliance:
+      - Content: chapters/08-fraud-detection-compliance/index.md
+      - Quiz: chapters/08-fraud-detection-compliance/quiz.md
+    - Chapter 9 - Graph Algorithms and Analytics:
+      - Content: chapters/09-graph-algorithms-analytics/index.md
+      - Quiz: chapters/09-graph-algorithms-analytics/quiz.md
+    - Chapter 10 - AI and Machine Learning Integration:
+      - Content: chapters/10-ai-machine-learning-integration/index.md
+      - Quiz: chapters/10-ai-machine-learning-integration/quiz.md
+    - Chapter 11 - Security, Privacy, and Data Governance:
+      - Content: chapters/11-security-privacy-governance/index.md
+      - Quiz: chapters/11-security-privacy-governance/quiz.md
+    - Chapter 12 - Capstone Projects and Real-World Applications:
+      - Content: chapters/12-capstone-real-world-applications/index.md
+      - Quiz: chapters/12-capstone-real-world-applications/quiz.md
 
   - Learning Graph:
     - Introduction: learning-graph/index.md
@@ -36,6 +60,8 @@ nav:
     - Glossary Quality: learning-graph/glossary-quality-report.md
     - FAQ Coverage: learning-graph/faq-coverage-gaps.md
     - FAQ Quality: learning-graph/faq-quality-report.md
+    - Quiz Generation Report: learning-graph/quiz-generation-report.md
+    - Quiz Bank: learning-graph/quiz-bank.json
   
   - MicroSims:
     - Introduction: sims/index.md
