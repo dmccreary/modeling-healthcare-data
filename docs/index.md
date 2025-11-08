@@ -6,7 +6,9 @@ og:image: img/cover.png
 hide:
     toc
 ---
-
+<style>
+.md-content__inner h1 {display: none !important;}
+</style>
 # Welcome
 ![](./img/cover.png)
 
