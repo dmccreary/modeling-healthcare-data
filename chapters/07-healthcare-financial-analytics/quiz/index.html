@@ -1,0 +1,1824 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/07-healthcare-financial-analytics/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../08-fraud-detection-compliance/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Quiz - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/07-healthcare-financial-analytics/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/07-healthcare-financial-analytics/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/07-healthcare-financial-analytics/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-7-quiz-healthcare-financial-analytics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../01-graph-theory-database-foundations/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 - Graph Theory and Database Foundations
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../02-intro-to-healthcare-systems/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 - Introduction to Healthcare Systems
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../03-graph-query-languages/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 - Graph Query Languages and Technologies
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../04-patient-centric-data-modeling/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 - Patient-Centric Data Modeling
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../05-provider-operations-networks/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 - Provider Operations and Networks
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../06-payer-perspective-insurance/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 - Payer Perspective and Insurance Claims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 - Healthcare Financial Analytics
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            Chapter 7 - Healthcare Financial Analytics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quiz
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../08-fraud-detection-compliance/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 - Fraud Detection and Compliance
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../09-graph-algorithms-analytics/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 9 - Graph Algorithms and Analytics
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../10-ai-machine-learning-integration/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 10 - AI and Machine Learning Integration
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../11-security-privacy-governance/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 11 - Security, Privacy, and Data Governance
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../12-capstone-real-world-applications/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapter 12 - Capstone Projects and Real-World Applications
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../prompts/index.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feedback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/chapters/07-healthcare-financial-analytics/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="chapter-7-quiz-healthcare-financial-analytics">Chapter 7 Quiz: Healthcare Financial Analytics</h1>
+<p>Test your understanding of financial analytics and revenue cycle management concepts.</p>
+<div class="upper-alpha">
+<ol>
+<li>
+<p>What is the primary benefit of using graph databases for revenue cycle management analytics?</p>
+<ol>
+<li>To automate billing code selection</li>
+<li>To trace the complete financial journey from encounter to payment with all relationships</li>
+<li>To eliminate claim denials</li>
+<li>To calculate physician salaries</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - To trace the complete financial journey from encounter to payment with all relationships</p>
+<p>Graph databases enable comprehensive revenue cycle analytics by modeling the complete financial journey as a connected path: Encounter → Charge → Claim → Claim Line Item → Adjudication → Payment → Revenue. This end-to-end visibility allows analyzing where revenue leakage occurs, identifying bottlenecks in the billing cycle, tracking days in accounts receivable, and understanding the financial impact of clinical decisions. The graph structure preserves all relationships between clinical events, billing activities, payer actions, and payment outcomes, enabling root cause analysis of financial performance issues. Traditional data warehouses struggle to maintain these complex interconnections without extensive join operations.</p>
+<p><strong>See:</strong> <a href="../">Revenue Cycle Graph Modeling</a></p>
+</details>
+</li>
+<li>
+<p>In a financial analytics graph, which relationship would connect an Encounter node to a Charge node?</p>
+<ol>
+<li>RESULTED_IN</li>
+<li>GENERATED_CHARGE</li>
+<li>PAID_BY</li>
+<li>AUTHORIZED</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - GENERATED_CHARGE</p>
+<p>The GENERATED_CHARGE relationship connects an Encounter (the clinical event) to the Charge (the financial representation of services rendered). This relationship captures the crucial link between clinical care delivery and financial billing, including properties such as charge creation date, charge amount, billing provider, and charge status. This relationship is foundational for revenue cycle analytics because it enables tracing from clinical activities to their financial outcomes. RESULTED_IN is too generic, PAID_BY connects payments to claims, and AUTHORIZED connects authorization requests to services rather than encounters to charges.</p>
+<p><strong>See:</strong> <a href="../">Encounter-to-Charge Modeling</a></p>
+</details>
+</li>
+<li>
+<p>What metric would be MOST useful for identifying revenue cycle inefficiencies using graph analysis?</p>
+<ol>
+<li>Total annual revenue</li>
+<li>Average time from encounter to payment traversing the revenue cycle graph</li>
+<li>Number of billing staff</li>
+<li>Physician productivity scores</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - Average time from encounter to payment traversing the revenue cycle graph</p>
+<p>Average time from encounter to payment, calculated by traversing the revenue cycle graph from Encounter through Charge, Claim submission, adjudication, and Payment nodes, directly measures revenue cycle efficiency. By analyzing timestamps on nodes and relationships along this path, the graph can identify where delays occur: slow charge capture, claim submission backlogs, payer processing delays, or payment posting issues. This metric can be segmented by payer, service type, provider, or department to pinpoint specific inefficiencies. Graph traversal provides the end-to-end visibility needed to measure and improve this critical financial metric.</p>
+<p><strong>See:</strong> <a href="../">Revenue Cycle Metrics</a></p>
+</details>
+</li>
+<li>
+<p>How would graph pattern matching help identify upcoding or unbundling billing practices?</p>
+<ol>
+<li>By counting total claim submissions</li>
+<li>By finding patterns where related procedures are billed separately when bundled codes exist</li>
+<li>By calculating average reimbursement rates</li>
+<li>By listing all CPT codes used</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - By finding patterns where related procedures are billed separately when bundled codes exist</p>
+<p>Graph pattern matching can detect potential upcoding or unbundling by identifying claims that include multiple procedure codes that should have been billed as a single bundled code. The graph can encode bundling rules as patterns, then query for Claim nodes that violate these rules by having separate INCLUDES_PROCEDURE relationships to procedures that have a SHOULD_BE_BUNDLED_AS relationship to a comprehensive code. For example, finding claims with separate charges for anesthesia, facility, and surgical procedure when a package code exists. This pattern-based compliance checking is more sophisticated than simple code counting and can adapt to complex bundling rules that vary by payer and clinical context.</p>
+<p><strong>See:</strong> <a href="../">Billing Compliance Analytics</a></p>
+</details>
+</li>
+<li>
+<p>In modeling contractual allowances and payer mix, what is the best approach?</p>
+<ol>
+<li>Store all contract terms as properties on payer nodes</li>
+<li>Create Contract nodes with specific terms linked to payers, procedures, and time periods</li>
+<li>Hard-code reimbursement rates in application logic</li>
+<li>Use a separate spreadsheet for contract management</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - Create Contract nodes with specific terms linked to payers, procedures, and time periods</p>
+<p>Modeling contracts as separate nodes provides the flexibility to represent complex, time-bound agreements between healthcare organizations and payers. Contract nodes connect to Payer nodes via HAS_CONTRACT relationships and to Service or Procedure nodes through REIMBURSES relationships that include properties for reimbursement rates, effective dates, and contractual terms. This approach enables queries like "what is the reimbursement rate for procedure X under payer Y's contract during Q3 2024?" and supports variance analysis comparing actual payments to contractual expectations. Separate contract nodes accommodate contract amendments, renegotiations, and multiple concurrent contracts with the same payer for different service lines.</p>
+<p><strong>See:</strong> <a href="../">Contract Modeling</a></p>
+</details>
+</li>
+<li>
+<p>Which graph traversal would calculate net revenue for an encounter considering charges, adjustments, and payments?</p>
+<ol>
+<li>Simple count of all charges</li>
+<li>Traversal from Encounter → Charges → sum(charge.amount)</li>
+<li>Traversal from Encounter → Charges → Claims → Payments, calculating sum(payment.amount) - sum(adjustment.amount)</li>
+<li>Listing all procedures performed</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: C</strong> - Traversal from Encounter → Charges → Claims → Payments, calculating sum(payment.amount) - sum(adjustment.amount)</p>
+<p>Calculating net revenue requires traversing the complete financial path from Encounter through Charges (which generate Claims) to Payments and Adjustments. The calculation must account for: initial charge amounts, contractual adjustments (reductions per payer contracts), patient responsibility, actual payments received, and any write-offs or bad debt. Graph traversal enables this multi-step calculation: <code>MATCH (e:Encounter)-[:GENERATED_CHARGE]-&gt;(c:Charge)-[:INCLUDED_IN]-&gt;(claim:Claim)-[:RESULTED_IN]-&gt;(p:Payment)</code> with aggregations summing positive (payments) and negative (adjustments, write-offs) financial transactions. This provides true net revenue realization rather than gross charges.</p>
+<p><strong>See:</strong> <a href="../">Revenue Recognition</a></p>
+</details>
+</li>
+<li>
+<p>Analyze this use case: A hospital wants to understand the profitability of different patient care pathways. How would graph modeling support this analysis?</p>
+<ol>
+<li>By storing profit margins as patient properties</li>
+<li>By traversing from Diagnosis through Treatment Pathway to all associated costs and revenues</li>
+<li>By counting total patient admissions</li>
+<li>By listing hospital departments</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - By traversing from Diagnosis through Treatment Pathway to all associated costs and revenues</p>
+<p>Graph modeling enables pathway profitability analysis by representing treatment pathways as sequences of clinical and financial events. The graph can traverse from a Diagnosis node through the pathway of Encounters, Procedures, Lab Tests, Medications, and Imaging Studies, accumulating costs associated with each step while also following the parallel path through Charges, Claims, and Payments to calculate revenue. This creates a comprehensive view of pathway economics: <code>MATCH (d:Diagnosis)&lt;-[:FOR_DIAGNOSIS]-(pathway:Pathway)-[:INCLUDES]-&gt;(step)-[:INCURRED_COST]-&gt;(cost)</code> compared against <code>(step)-[:GENERATED_CHARGE]-&gt;(charge)-[:RESULTED_IN]-&gt;(payment)</code>. The graph maintains the clinical context while enabling financial analysis.</p>
+<p><strong>See:</strong> <a href="../">Pathway Economics</a></p>
+</details>
+</li>
+<li>
+<p>What property would be essential on a DENIED relationship between a Claim and a Payer to support denial management analytics?</p>
+<ol>
+<li>Payer customer service phone number</li>
+<li>Denial reason code, denial date, and appeal potential flag</li>
+<li>Claim submission software version</li>
+<li>Patient demographics</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - Denial reason code, denial date, and appeal potential flag</p>
+<p>Denial reason codes, denial dates, and appeal potential indicators are essential for denial management analytics. Denial reason codes enable categorization and trending of why claims are rejected (missing authorization, incorrect coding, medical necessity, etc.), which drives targeted improvement efforts. Denial dates establish timelines for appeal deadlines and measure payer adjudication speed. Appeal potential flags (based on reason code analysis and success history) help prioritize which denials to appeal versus write off. These properties enable queries like "show me all denials this month by reason category with high appeal success rates" to optimize denial management resources.</p>
+<p><strong>See:</strong> <a href="../">Denial Analytics</a></p>
+</details>
+</li>
+<li>
+<p>How can graph analysis identify opportunities to improve patient collections?</p>
+<ol>
+<li>By counting total patient balances</li>
+<li>By traversing from high-balance patients to their encounter patterns, insurance coverage, and payment history to predict collection success</li>
+<li>By listing patient names alphabetically</li>
+<li>By calculating average insurance reimbursement</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - By traversing from high-balance patients to their encounter patterns, insurance coverage, and payment history to predict collection success</p>
+<p>Graph analysis optimizes patient collections by analyzing the complete patient financial picture through multi-dimensional traversal. The graph explores: Patient → HAS_BALANCE → Outstanding Balance nodes, Patient → HAS_POLICY → Insurance Coverage to assess primary/secondary insurance, Patient → PAYMENT_HISTORY → Past Payments to identify payment patterns and propensity to pay, Patient → HAD_ENCOUNTER → Recent Services to understand ongoing care relationships. This comprehensive view enables predictive scoring: patients with high balances, inadequate insurance, history of non-payment, and no ongoing care relationship require different collection approaches than established patients with insurance coverage and payment history. The graph provides context for intelligent collection strategies.</p>
+<p><strong>See:</strong> <a href="../">Patient Collections Analytics</a></p>
+</details>
+</li>
+<li>
+<p>Evaluate this modeling decision: Representing cost accounting data (supplies, labor, overhead) separately versus integrating it with the clinical encounter graph. What is the advantage of integration?</p>
+<ol>
+<li>Integration reduces database size</li>
+<li>Integration enables profitability analysis at the encounter and procedure level with full clinical context</li>
+<li>Separation is always preferable for financial data</li>
+<li>Integration eliminates the need for accounting software</li>
+</ol>
+<details class="question">
+<summary>Show Answer</summary>
+<p><strong>Answer: B</strong> - Integration enables profitability analysis at the encounter and procedure level with full clinical context</p>
+<p>Integrating cost accounting data with the clinical graph enables sophisticated profitability analysis that maintains clinical context. By connecting cost nodes for supplies, labor (provider time), equipment, and overhead to the specific Encounter, Procedure, or Service nodes that consumed those resources, the graph can answer questions like "what is the actual cost versus reimbursement for knee replacement surgeries?" This requires traversing: Procedure → CONSUMED_RESOURCE → Supply, Lab, Medication nodes with cost properties, compared against Procedure → GENERATED_CHARGE → Revenue path. The integrated model reveals which clinical pathways, providers, or patient types are profitable versus loss-generating, informing strategic service line decisions. Separate cost systems lack the clinical granularity for these insights.</p>
+<p><strong>See:</strong> <a href="../">Activity-Based Costing in Graphs</a></p>
+</details>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../08-fraud-detection-compliance/" class="md-footer__link md-footer__link--next" aria-label="Next: Content">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

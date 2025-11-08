@@ -1,0 +1,150 @@
+{
+  "chapter": "Chapter 1: Graph Theory and Database Foundations",
+  "chapter_file": "docs/chapters/01-graph-theory-database-foundations/index.md",
+  "quiz_file": "docs/chapters/01-graph-theory-database-foundations/quiz.md",
+  "generated_date": "2025-11-07",
+  "total_questions": 10,
+  "content_readiness_score": 95,
+  "overall_quality_score": 88,
+  "questions": [
+    {
+      "id": "ch1-q001",
+      "number": 1,
+      "question_text": "What is a node in graph theory?",
+      "correct_answer": "B",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concept_tested": "Node",
+      "source_link": "index.md#the-building-blocks-nodes-and-edges",
+      "distractor_quality": 0.90,
+      "explanation_word_count": 65
+    },
+    {
+      "id": "ch1-q002",
+      "number": 2,
+      "question_text": "Which statement best describes the relationship between graph databases and relational databases for healthcare data?",
+      "correct_answer": "B",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concept_tested": "Graph Database, Relational Database",
+      "source_link": "index.md#introduction",
+      "distractor_quality": 0.85,
+      "explanation_word_count": 78
+    },
+    {
+      "id": "ch1-q003",
+      "number": 3,
+      "question_text": "What is a Labeled Property Graph?",
+      "correct_answer": "C",
+      "bloom_level": "Remember",
+      "difficulty": "medium",
+      "concept_tested": "Labeled Property Graph",
+      "source_link": "index.md#properties-adding-information-to-nodes-and-edges",
+      "distractor_quality": 0.88,
+      "explanation_word_count": 72
+    },
+    {
+      "id": "ch1-q004",
+      "number": 4,
+      "question_text": "In a healthcare graph, which would be the most appropriate use of edge properties?",
+      "correct_answer": "D",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concept_tested": "Edge Property",
+      "source_link": "index.md#edge-properties",
+      "distractor_quality": 0.87,
+      "explanation_word_count": 68
+    },
+    {
+      "id": "ch1-q005",
+      "number": 5,
+      "question_text": "What distinguishes a directed graph from other graph types?",
+      "correct_answer": "A",
+      "bloom_level": "Understand",
+      "difficulty": "easy",
+      "concept_tested": "Directed Graph",
+      "source_link": "index.md#directed-graphs-and-graph-direction",
+      "distractor_quality": 0.86,
+      "explanation_word_count": 75
+    },
+    {
+      "id": "ch1-q006",
+      "number": 6,
+      "question_text": "Why are Directed Acyclic Graphs (DAGs) particularly useful for modeling clinical workflows?",
+      "correct_answer": "C",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concept_tested": "Directed Acyclic Graph",
+      "source_link": "index.md#directed-acyclic-graphs-dags",
+      "distractor_quality": 0.89,
+      "explanation_word_count": 71
+    },
+    {
+      "id": "ch1-q007",
+      "number": 7,
+      "question_text": "Given a scenario where you need to find all medications prescribed to patients with diabetes, which graph operation would you primarily use?",
+      "correct_answer": "A",
+      "bloom_level": "Apply",
+      "difficulty": "medium",
+      "concept_tested": "Graph Traversal",
+      "source_link": "index.md#graph-traversal",
+      "distractor_quality": 0.84,
+      "explanation_word_count": 74
+    },
+    {
+      "id": "ch1-q008",
+      "number": 8,
+      "question_text": "Which of the following is a valid node property for a Patient node?",
+      "correct_answer": "D",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concept_tested": "Node Property",
+      "source_link": "index.md#node-properties",
+      "distractor_quality": 0.82,
+      "explanation_word_count": 58
+    },
+    {
+      "id": "ch1-q009",
+      "number": 9,
+      "question_text": "How does the flexibility of graph database schemas benefit healthcare data modeling compared to rigid relational schemas?",
+      "correct_answer": "D",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concept_tested": "Database Schema, Graph Database",
+      "source_link": "index.md#properties-adding-information-to-nodes-and-edges",
+      "distractor_quality": 0.86,
+      "explanation_word_count": 81
+    },
+    {
+      "id": "ch1-q010",
+      "number": 10,
+      "question_text": "Analyze the following scenario: A hospital wants to model patient referrals between specialists. Dr. Martinez refers patients to Dr. Kim, who refers some patients to Dr. Patel, who occasionally refers back to Dr. Martinez. What graph characteristic does this scenario demonstrate?",
+      "correct_answer": "D",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concept_tested": "Directed Acyclic Graph, Directed Graph",
+      "source_link": "index.md#directed-acyclic-graphs-dags",
+      "distractor_quality": 0.90,
+      "explanation_word_count": 77
+    }
+  ],
+  "answer_distribution": {
+    "A": 2,
+    "B": 2,
+    "C": 3,
+    "D": 3
+  },
+  "bloom_distribution": {
+    "Remember": 3,
+    "Understand": 4,
+    "Apply": 2,
+    "Analyze": 1,
+    "Evaluate": 0,
+    "Create": 0
+  },
+  "concept_coverage": {
+    "total_concepts": 15,
+    "tested_concepts": 11,
+    "coverage_percentage": 73
+  }
+}
