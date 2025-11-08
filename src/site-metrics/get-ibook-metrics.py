@@ -43,8 +43,8 @@ def analyze_chapters(docs_dir: Path) -> Dict[str, any]:
             # Count level 2 headers (## ) as sections
             sections = len(re.findall(r'^##\s+[^#]', content, re.MULTILINE))
 
-            # Count <details> tags
-            details = len(re.findall(r'<details>', content, re.IGNORECASE))
+            # Count <details> tags (with or without attributes)
+            details = len(re.findall(r'<details[^>]*>', content, re.IGNORECASE))
 
             # Get chapter title (first # header)
             title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
