@@ -233,10 +233,22 @@ This document contains 200 concepts for the course "Modeling Healthcare Data wit
 194. Explainability
 195. Transparency
 
-## Capstone and Advanced (196-200)
+## Capstone Projects (196-200)
 
 196. Capstone Project
 197. Project Presentation
 198. Graph Career Path
 199. Healthcare Analytics Platform
 200. Real-World Implementation
+
+## Advanced Topics (201-)
+201. Distributed Graphs
+202. Enterprise Graphs
+203. TigerGraph
+204. GSQL
+205. Map Reduce
+206. Accumulators
+207. Benchmarking Distributed Graphs
+208. Patient Similarity
+209. Provider Search
+210. Behavioral Health

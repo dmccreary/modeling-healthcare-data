@@ -4,33 +4,33 @@ Welcome to the Frequently Asked Questions for "Modeling Healthcare Data with Gra
 
 ## Getting Started
 
-## What is this course about?
+### What is this course about?
 
 This course teaches you how to model complex healthcare data using graph databases and graph data science techniques. You'll learn to represent patients, providers, payers, diagnoses, medications, and their intricate relationships in ways that enable superior analytics compared to traditional relational databases. The course covers graph theory fundamentals, healthcare domain knowledge, query languages (Cypher, GQL, GSQL), and practical applications including fraud detection, clinical decision support, and value-based care analytics. By the end, you'll be able to design and implement graph-based solutions that address real-world healthcare challenges like reducing costs, improving patient outcomes, and detecting fraud.
 
-## Who is this course for?
+### Who is this course for?
 
 This course is designed for college undergraduate students with knowledge of databases who want to specialize in healthcare informatics, data science, or health IT. It's ideal for students pursuing degrees in computer science, health informatics, data analytics, or healthcare administration who want to gain practical skills in an emerging technology area. Healthcare IT professionals looking to upskill in graph database technologies will also find this course valuable. While the course assumes basic database knowledge, all healthcare domain concepts are explained from the ground up, making it accessible to anyone with technical aptitude and interest in healthcare applications.
 
-## What will I learn in this course?
+### What will I learn in this course?
 
 You will learn to model patient-provider-payer relationships using labeled property graphs, write efficient graph queries to extract insights from complex clinical data, apply graph algorithms for fraud detection and community detection, integrate graph databases with AI and LLMs for clinical decision support, implement security controls compliant with HIPAA regulations, and design analytics platforms supporting the transition from fee-for-service to value-based care. The course emphasizes hands-on skills through a capstone project where you'll build a complete graph application addressing a real healthcare challenge. You'll gain proficiency in Neo4j Cypher queries, understand when to use graph vs relational databases, and learn to present technical solutions to both technical and clinical stakeholders.
 
-## What do I need to know before starting this course?
+### What do I need to know before starting this course?
 
 The primary prerequisite is knowledge of databases, including understanding of tables, rows, columns, primary/foreign keys, and basic SQL queries. Familiarity with data modeling concepts like entities, relationships, and normalization is helpful. No prior healthcare knowledge is required—all medical terminology, coding systems (ICD, CPT, HCPCS), and clinical workflows are explained thoroughly. Programming experience is beneficial but not strictly required, as the course focuses on declarative query languages. A curiosity about healthcare systems and willingness to learn domain-specific terminology will help you succeed. Access to a computer for hands-on exercises with Neo4j (available as free community edition) is expected.
 
-## How is this course structured?
+### How is this course structured?
 
 The course progresses through 12 chapters organized in four main sections. Chapters 1-3 cover foundational concepts: graph theory, database fundamentals, healthcare systems overview, and graph query languages. Chapters 4-6 explore stakeholder perspectives: patient-centric modeling, provider operations and networks, and payer/insurance data modeling. Chapters 7-10 address advanced analytics: financial analysis, fraud detection, graph algorithms, and AI/machine learning integration. Chapters 11-12 cover governance, security, and real-world implementation through a capstone project. Each chapter includes conceptual explanations, practical examples using healthcare scenarios, interactive MicroSims for visualization, and exercises reinforcing key concepts. The course emphasizes learning by doing, with progressive skill-building toward the final capstone project.
 
-## How much time should I dedicate to this course?
+### How much time should I dedicate to this course?
 
 A typical student should plan for 12-15 hours per week over a 12-week semester, totaling approximately 150-180 hours. This includes reading chapters (2-3 hours per week), working through interactive exercises and MicroSims (3-4 hours per week), completing hands-on graph database exercises (4-5 hours per week), and developing your capstone project (3-4 hours per week, increasing toward the end). The capstone project typically requires an additional 20-30 hours in the final weeks of the course. Students with strong database backgrounds may progress faster through early chapters, while those new to healthcare concepts may need additional time to absorb medical terminology and coding systems. The self-paced nature allows you to adjust based on your background and learning pace.
 
-## What software or tools do I need?
+### What software or tools do I need?
 
-You'll primarily use Neo4j Community Edition (free, open-source graph database) which runs on Windows, Mac, or Linux. Neo4j Desktop provides an integrated development environment for creating databases, writing Cypher queries, and visualizing graph data. For the capstone project, you may optionally explore other graph databases like TigerGraph (GSQL) or cloud platforms like Amazon Neptune or Azure Cosmos DB for Graph. A modern web browser is required for interactive MicroSims and visualizations. Basic text editors or IDEs (VS Code, IntelliJ, PyCharm) are useful for organizing project code. No expensive commercial software licenses are required—all essential tools have free community or student editions. Some optional advanced features may require cloud credits, which many providers offer free for students.
+You'll primarily use Neo4j Community Edition (free, open-source graph database) which runs on Windows, Mac, or Linux. Neo4j Desktop provides an integrated development environment for creating databases, writing Cypher queries, and visualizing graph data. For the capstone project, you may optionally explore other graph databases like TigerGraph (GSQL), MemGraph or Amazon Neptune. A modern web browser is required for interactive MicroSims and visualizations. Basic text editors or IDEs such as VS Code or Cursor are useful for organizing project code. No expensive commercial software licenses are required—all essential tools have free community or student editions. Some optional advanced features may require cloud credits, which many providers offer free for students.
 
 ## Can I use AI tools to help me learn?
 
