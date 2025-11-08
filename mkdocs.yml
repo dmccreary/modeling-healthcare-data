@@ -47,6 +47,8 @@ nav:
     - Patient Encounter Workflow: sims/encounter-workflow/index.md
     - AI ML Venn Diagram: sims/ai-ml-taxonomy/index.md
   
+  - Stories:
+    - Ideas: stories/index.md
   - Prompts:
     - Introduction: prompts/index.md
     - Icon: prompts/icon.md
