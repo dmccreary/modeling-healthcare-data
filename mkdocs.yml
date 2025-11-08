@@ -65,6 +65,7 @@ nav:
     - Ch 13: prompts/13-ch-12.md
     - Run Glossary Generator Skill: prompts/19-run-glossary-generator-skill.md
     - Run FAQs Generator: prompts/20-faq.md
+  - Book Metrics: book-metrics.md
   - FAQ: faq.md
   - Glossary: glossary.md
   - References: references.md
