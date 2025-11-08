@@ -61,11 +61,10 @@ nav:
     - Ch 5: prompts/10-ch-5.md
     - Ch 10: prompts/11-ch-10.md
     - Ch 11: prompts/06-run-hc-graph-generator-skill.md
-
-             - prompts/12-ch-11.md
-             - prompts/13-ch-12.md
-             - prompts/19-run-glossary-generator-skill.md
-             - prompts/20-faq.md
+    - Ch 12: prompts/12-ch-11.md
+    - Ch 13: prompts/13-ch-12.md
+    - Run Glossary Generator Skill: prompts/19-run-glossary-generator-skill.md
+    - Run FAQs Generator: prompts/20-faq.md
   - FAQ: faq.md
   - Glossary: glossary.md
   - References: references.md
