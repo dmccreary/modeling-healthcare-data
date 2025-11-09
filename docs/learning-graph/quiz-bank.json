@@ -1,6 +1,6 @@
 {
   "textbook_title": "Modeling Healthcare Data with Graphs",
-  "generated_date": "2025-11-07",
+  "generated_date": "2025-11-08",
   "total_chapters": 12,
   "total_questions": 120,
   "format_version": "1.0",
@@ -81,14 +81,15 @@
       "chapter_number": 4,
       "chapter_title": "Patient-Centric Data Modeling",
       "quiz_file": "docs/chapters/04-patient-centric-data-modeling/quiz.md",
+      "metadata_file": "docs/learning-graph/quizzes/04-patient-centric-data-modeling-quiz-metadata.json",
       "question_count": 10,
-      "concepts_covered": 15,
-      "concepts_tested": 12,
+      "concepts_covered": 25,
+      "concepts_tested": 10,
       "bloom_levels": {
-        "Remember": 2,
+        "Remember": 3,
         "Understand": 3,
         "Apply": 3,
-        "Analyze": 2
+        "Analyze": 1
       }
     },
     {
@@ -165,9 +166,10 @@
       "chapter_number": 10,
       "chapter_title": "AI and Machine Learning Integration",
       "quiz_file": "docs/chapters/10-ai-machine-learning-integration/quiz.md",
+      "metadata_file": "docs/learning-graph/quizzes/10-ai-machine-learning-integration-quiz-metadata.json",
       "question_count": 10,
-      "concepts_covered": 14,
-      "concepts_tested": 12,
+      "concepts_covered": 15,
+      "concepts_tested": 8,
       "bloom_levels": {
         "Remember": 2,
         "Understand": 2,

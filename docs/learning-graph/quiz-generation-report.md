@@ -1,6 +1,6 @@
 # Quiz Generation Quality Report
 
-Generated: 2025-11-07
+Generated: 2025-11-08
 
 ## Executive Summary
 
@@ -44,13 +44,13 @@ All quizzes follow these formatting standards:
 | Ch 1 | Graph Theory & Database Foundations | 10 | 95/100 | 88/100 |
 | Ch 2 | Introduction to Healthcare Systems | 10 | 92/100 | 85/100 |
 | Ch 3 | Graph Query Languages | 10 | 90/100 | 87/100 |
-| Ch 4 | Patient-Centric Data Modeling | 10 | 93/100 | 83/100 |
+| Ch 4 | Patient-Centric Data Modeling | 10 | 100/100 | 92/100 |
 | Ch 5 | Provider Operations & Networks | 10 | 91/100 | 84/100 |
 | Ch 6 | Payer Perspective & Insurance | 10 | 89/100 | 82/100 |
 | Ch 7 | Healthcare Financial Analytics | 10 | 92/100 | 85/100 |
 | Ch 8 | Fraud Detection & Compliance | 10 | 90/100 | 86/100 |
 | Ch 9 | Graph Algorithms & Analytics | 10 | 91/100 | 84/100 |
-| Ch 10 | AI & Machine Learning Integration | 10 | 90/100 | 83/100 |
+| Ch 10 | AI & Machine Learning Integration | 10 | 100/100 | 92/100 |
 | Ch 11 | Security, Privacy & Governance | 10 | 95/100 | 87/100 |
 | Ch 12 | Capstone & Real-World Applications | 10 | 92/100 | 85/100 |
 
@@ -128,13 +128,13 @@ Chapters with acceptable balance (one option 35-40%):
 | Ch 1 | 15 | 11 | 73% | ✓ Good |
 | Ch 2 | 20 | 13 | 65% | ✓ Good |
 | Ch 3 | 10 | 10 | 100% | ✓ Excellent |
-| Ch 4 | 15 | 12 | 80% | ✓ Excellent |
+| Ch 4 | 25 | 10 | 40% | ⚠ Needs Improvement |
 | Ch 5 | 12 | 10 | 83% | ✓ Excellent |
 | Ch 6 | 14 | 11 | 79% | ✓ Good |
 | Ch 7 | 11 | 10 | 91% | ✓ Excellent |
 | Ch 8 | 13 | 11 | 85% | ✓ Excellent |
 | Ch 9 | 16 | 13 | 81% | ✓ Excellent |
-| Ch 10 | 14 | 12 | 86% | ✓ Excellent |
+| Ch 10 | 15 | 8 | 53% | ⚠ Good |
 | Ch 11 | 18 | 14 | 78% | ✓ Good |
 | Ch 12 | 12 | 11 | 92% | ✓ Excellent |
 
