@@ -1,7 +1,6 @@
 
-▗ ▗   ▖ ▖  Claude Code v2.0.35
-           Sonnet 4.5 · Claude Pro
-  ▘▘ ▝▝    /Users/danmccreary/Documents/ws/modeling-healthcare-data
+Claude Code v2.0.35
+Sonnet 4.5 · Claude Pro
 
 > run the quiz-generator skill 
 

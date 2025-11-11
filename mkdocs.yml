@@ -62,6 +62,8 @@ nav:
     - FAQ Quality: learning-graph/faq-quality-report.md
     - Quiz Generation Report: learning-graph/quiz-generation-report.md
     - Quiz Bank: learning-graph/quiz-bank.json
+    - Additional Concepts: learning-graph/additional-concepts.md
+
   
   - MicroSims:
     - Introduction: sims/index.md
@@ -73,6 +75,8 @@ nav:
     - Patient Encounter Workflow: sims/encounter-workflow/index.md
     - AI ML Venn Diagram: sims/ai-ml-taxonomy/index.md
     - LLM vs. KG: sims/yin-yang-llm-kg/index.md
+    - Query Performance Comparison: sims/query-performance-comparison/index.md
+
   - Stories:
     - Ideas: stories/index.md
 
@@ -95,7 +99,11 @@ nav:
     - Run Glossary Generator Skill: prompts/19-run-glossary-generator-skill.md
     - Run FAQs Generator: prompts/20-faq.md
     - Graphic Novel Ideas: prompts/30-graphic-novel-ideas.md
-
+    - Ch 14: prompts/14-ch-13.md
+    - FAQ: prompts/40-faq.md
+    - Quiz: prompts/40-quiz.md
+    - Quiz ch 10: prompts/41-ch-10-quiz.md
+    - Quiz ch 4: prompts/41-ch-4-quiz.md
   - Book Metrics: book-metrics.md
   - FAQ: faq.md
   - Glossary: glossary.md

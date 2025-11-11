@@ -8,19 +8,15 @@
 
 ## Course Overview
 
+The annual per-person cost for healthcare in the United States is the highest in the world by a significant margin. Modern graph databases offer powerful ways to lower these costs by providing superior analytics that enable healthcare organizations to transition from expensive fee-for-service systems to value-based care models.
 
-The annual per-person cost for healthcare in the US is the most expensive in the world by a large margin.  Modern graph databases offer ways to lower these costs by providing superior analytics to enable moving from expensive pay-per-services systems to a value-based care systems.
+This course teaches students to model complex healthcare data from multiple perspectives, including the patient, provider, and payer viewpoints. We begin with a review of the many challenges of modeling complex interconnected clinical data. We discuss why tabular relational structures are poorly suited for clinical data and how graph databases excel at this task. We introduce key concepts including graph algorithms, graph data science, embeddings, and graph neural networks.
 
-This course teaches students to model complex healthcare data from multiple perspectives including the patient, provider and payer.
-We begin with a review of the many challenges of modeling complex interconnected clinical data.  We discuss why tabular data is not a good fit for clinical data and how graph database excel at this task.  We introduce the concepts of graph algorithms, graph data science, embeddings and graph-neural networks.
+The course starts with a patient-centric graph data model that places the patient record at the center of our graph, including modeling patient attributes such as demographics, diseases, conditions, prescriptions, diagnoses, treatments, symptoms, procedures, providers, and care plans. We then expand to include the provider perspective, which encompasses modeling individual providers, hospitals, clinics, schedules, claims, costs, revenue, and profitability. Next, we examine the payer perspective, which includes claims processing, fraud detection, waste and abuse prevention, provider networks, policies, coverage, disputes, population analytics, and profitability analysis.
 
-We begin with a patient-centric graph data model that puts the patient record at the center of our graph including modeling patient attributes such as demographics, diseases, conditions, prescriptions, diagnosis, treatments, symptoms, procedures, providers and care plans.  We then branch out to include the provider perspective which include modeling individual providers, hospitals, clinics, schedules, claims, costs, revenue and profitability.  Next we take a look at the payer perspective which includes claims, fraud, waste, abuse, provider networks, policies, coverage, disputes, population analytics and profitability.
+The core of our course examines how graph databases support analytics, clinical rules engines, recommendation systems, and data quality initiatives within healthcare. We take a close look at vector stores used in conjunction with AI and large language models (LLMs).
 
-The core of our course looks at how graph databases are use to support analytics, clinical rules, recommendation systems and data quality within healthcare.  We take a close look at the use of vector stores used in conjunction with AI and LLMs.
-
-Next we focus on the types of analytics used by each of our perspectives and discuss both operational reporting, KPIs and real-time clinical discovery applications that benefit from the use of graph databases.  Finally we conclude with advanced topics such as security, HIPAA, RBAC, metadata, data governance, linage, traceability, explainability and the use of machine learning and LLMs to create precise care path recommendations that combine quality with expandability.
-
-The annual per-person cost for healthcare in the US is the most expensive in the world by a large margin.
+We then focus on the types of analytics used by each stakeholder perspective and discuss operational reporting, key performance indicators (KPIs), and real-time clinical discovery applications that benefit from graph databases. Finally, we conclude with advanced topics including security, HIPAA compliance, role-based access control (RBAC), metadata management, data governance, lineage tracking, traceability, explainability, and the use of machine learning and LLMs to create precise care path recommendations that combine quality with explainability.
 
 ## Main Topics Covered
 
@@ -111,7 +107,7 @@ The annual per-person cost for healthcare in the US is the most expensive in the
 - Behavioral Health Fraud
 - Metadata
 - Data governance
-- Linage
+- Lineage
 - Traceability
 - Explainability
 - Projects
@@ -144,13 +140,12 @@ After completing this course, students will be able to:
 - List the major data entities in healthcare (patients, providers, payers, claims, treatments, encounters).
 - Recall common graph query languages (Cypher, GSQL, GQL) and their basic syntax.
 
-
 ### Understand
 
 *Constructing meaning from instructional messages, including oral, written, and graphic communication.*
 
 - Explain why relational databases struggle to model complex, interconnected healthcare data.
-- Describe how graph databases enable more effective modeling of patient--provider--payer relationships.
+- Describe how graph databases enable more effective modeling of patient-provider-payer relationships.
 - Summarize how graph algorithms can support clinical decision support and fraud detection.
 - Interpret how metadata, lineage, and traceability improve healthcare data governance.
 - Discuss how AI and LLMs can be integrated with vector stores and graph data for advanced analytics.
@@ -175,7 +170,6 @@ After completing this course, students will be able to:
 - Evaluate trade-offs between different graph modeling strategies for scalability, query speed, and explainability.
 - Assess how data quality and completeness impact graph analytics outcomes.
 
-
 ### Evaluate
 
 *Making judgments based on criteria and standards through checking and critiquing.*
@@ -190,7 +184,7 @@ After completing this course, students will be able to:
 
 *Putting elements together to form a coherent or functional whole; reorganizing elements into a new pattern or structure.*
 
--  Design and implement a comprehensive healthcare graph schema integrating patient, provider, and payer data.
+- Design and implement a comprehensive healthcare graph schema integrating patient, provider, and payer data.
 - Build a prototype graph application for one of the following:
     - **Fraud detection** using claims graph analytics
     - **Clinical decision support** using rule-based reasoning and embeddings
@@ -198,9 +192,8 @@ After completing this course, students will be able to:
     - **Patient journey visualization** using time-sequenced graph queries
 
 - Develop a **capstone project** that combines graph modeling, analytics, and AI integration to address a real healthcare challenge (e.g., improving care quality, reducing costs, or enhancing interoperability).
-
 - Present the capstone project results, demonstrating data lineage, explainability, and measurable impact.
 
 ## Use of AI
 
-Use of AI in this course is strongly encouraged.  We will provide a library of skills that can be used to increase the quality of your capstone projects.
+Use of AI in this course is strongly encouraged. We will provide a library of skills that can be used to increase the quality of your capstone projects.

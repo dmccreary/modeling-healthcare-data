@@ -64,8 +64,11 @@ Each node typically has a **type** (or label) that categorizes what kind of enti
 
 The power of graph databases emerges from treating these edges as first-class data structures rather than as implicit foreign key references. Each edge connects exactly two nodes: a source (or start) node and a target (or end) node.
 
+#### Diagram: Basic Healthcare Graph Model Diagram
+
 <iframe src="../../sims/healthcare-graph-fundamentals/main.html" height="700px" scrolling="no"></iframe>
 [Run Fullscreen](../../sims/healthcare-graph-fundamentals/main.html)
+
 <details markdown="1">
     <summary>Basic Healthcare Graph Model Diagram</summary>
     
@@ -182,6 +185,8 @@ Common healthcare applications of DAGs include:
 - **Care plan dependencies**: Certain procedures must be completed before others can begin (lab work → results review → treatment decision → procedure scheduling)
 - **Organizational structures**: Hospital departmental hierarchies flow from executive leadership down through departments without circular reporting relationships
 
+#### Diagram: Directed Acyclic Graph Example: Care Pathway
+
 <details markdown="1">
     <summary>Directed Acyclic Graph Example: Care Pathway</summary>
     use the hc-graph-generator skill to create a new MicroSim using the following requirements
@@ -269,6 +274,8 @@ Let's examine a concrete example of a labeled property graph representing a pati
 ```
 
 This representation captures entities (patients, providers, diagnoses, medications), their attributes (patient demographics, medication codes), relationships (prescriptions, diagnoses, visits), and relationship context (dates, dosages, encounter types) in a natural, interconnected structure.
+
+#### Diagram: Healthcare Labeled Property Graph Visualization
 
 <details markdown="1">
     <summary>Healthcare Labeled Property Graph Visualization</summary>
@@ -417,6 +424,8 @@ Several traversal patterns appear repeatedly in healthcare graph applications:
 - **Provider network analysis**: "Which specialists do primary care providers most frequently refer patients to?"
 - **Medication interaction detection**: "Do any of this patient's current medications interact with the newly prescribed drug?"
 - **Root cause analysis**: "What upstream factors contributed to this adverse event?"
+
+#### Diagram: Graph Traversal Visualization MicroSim
 
 <details markdown="1">
     <summary>Graph Traversal Visualization MicroSim</summary>
@@ -600,6 +609,8 @@ Graph databases achieve their performance advantages through architectural choic
 | **Performance scaling** | Degrades exponentially with hops | Near-constant regardless of hops |
 | **Index usage** | Index lookup required for each JOIN | Index-free adjacency |
 | **Query time for 3-hop query** | Seconds to minutes (depends on data size) | Milliseconds |
+
+#### Diagram: Query Performance Comparison Chart: RDBMS vs Graph Database
 
 <details markdown="1">
     <summary>Query Performance Comparison Chart: RDBMS vs Graph Database</summary>
@@ -806,6 +817,8 @@ This schema enables queries such as:
 - "Find all providers who have performed a specific procedure at a given facility"
 - "Identify patients taking multiple medications that treat the same condition"
 - "Calculate the average claim amount for procedures performed at different facilities"
+
+#### Diagram: Healthcare Data Model Implementation Workflow
 
 <details markdown="1">
     <summary>Healthcare Data Model Implementation Workflow</summary>
