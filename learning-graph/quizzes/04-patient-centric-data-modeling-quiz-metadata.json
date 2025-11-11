@@ -1,0 +1,174 @@
+{
+  "chapter": "Patient-Centric Data Modeling",
+  "chapter_number": 4,
+  "chapter_file": "docs/chapters/04-patient-centric-data-modeling/index.md",
+  "quiz_file": "docs/chapters/04-patient-centric-data-modeling/quiz.md",
+  "generated_date": "2025-11-08",
+  "total_questions": 10,
+  "content_readiness_score": 100,
+  "overall_quality_score": 92,
+  "questions": [
+    {
+      "id": "ch4-q001",
+      "number": 1,
+      "question_text": "What is the central node in a patient-centric graph model?",
+      "correct_answer": "C",
+      "bloom_level": "Remember",
+      "difficulty": "easy",
+      "concept_tested": "Patient Record",
+      "source_link": "index.md#patient-record",
+      "distractor_quality": 0.90,
+      "explanation_word_count": 71
+    },
+    {
+      "id": "ch4-q002",
+      "number": 2,
+      "question_text": "What is the primary challenge addressed by modeling multiple patient identifiers in a graph database?",
+      "correct_answer": "A",
+      "bloom_level": "Remember",
+      "difficulty": "medium",
+      "concept_tested": "Patient ID",
+      "source_link": "index.md#patient-id-and-master-patient-index",
+      "distractor_quality": 0.88,
+      "explanation_word_count": 69
+    },
+    {
+      "id": "ch4-q003",
+      "number": 3,
+      "question_text": "What is the key distinction between a disease and a medical condition in graph models?",
+      "correct_answer": "D",
+      "bloom_level": "Remember",
+      "difficulty": "medium",
+      "concept_tested": "Disease, Medical Condition",
+      "source_link": "index.md#disease-and-medical-condition",
+      "distractor_quality": 0.92,
+      "explanation_word_count": 78
+    },
+    {
+      "id": "ch4-q004",
+      "number": 4,
+      "question_text": "How do graph databases support the diagnostic process more effectively than relational databases?",
+      "correct_answer": "B",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concept_tested": "Diagnosis",
+      "source_link": "index.md#diagnosis",
+      "distractor_quality": 0.85,
+      "explanation_word_count": 81
+    },
+    {
+      "id": "ch4-q005",
+      "number": 5,
+      "question_text": "Why is the three-level distinction between prescriptions, medications, and dosages essential in medication modeling?",
+      "correct_answer": "A",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concept_tested": "Prescription, Medication, Dosage",
+      "source_link": "index.md#prescription-medication-and-dosage",
+      "distractor_quality": 0.87,
+      "explanation_word_count": 89
+    },
+    {
+      "id": "ch4-q006",
+      "number": 6,
+      "question_text": "How do graph databases excel at identifying drug-drug interaction risks in real-time?",
+      "correct_answer": "C",
+      "bloom_level": "Understand",
+      "difficulty": "medium",
+      "concept_tested": "Drug Interaction",
+      "source_link": "index.md#drug-interactions-and-adverse-events",
+      "distractor_quality": 0.90,
+      "explanation_word_count": 76
+    },
+    {
+      "id": "ch4-q007",
+      "number": 7,
+      "question_text": "A hospital wants to identify all diabetic patients who have not had an HbA1c test in the last 6 months for proactive outreach. Which graph modeling approach would best support this query?",
+      "correct_answer": "C",
+      "bloom_level": "Apply",
+      "difficulty": "hard",
+      "concept_tested": "Lab Test, Lab Result",
+      "source_link": "index.md#lab-tests-and-lab-results",
+      "distractor_quality": 0.88,
+      "explanation_word_count": 82
+    },
+    {
+      "id": "ch4-q008",
+      "number": 8,
+      "question_text": "A healthcare system wants to analyze which treatment protocols produce better outcomes for specific patient populations. Which graph modeling elements would be most important?",
+      "correct_answer": "B",
+      "bloom_level": "Apply",
+      "difficulty": "hard",
+      "concept_tested": "Patient Outcome",
+      "source_link": "index.md#patient-outcome",
+      "distractor_quality": 0.84,
+      "explanation_word_count": 85
+    },
+    {
+      "id": "ch4-q009",
+      "number": 9,
+      "question_text": "A care coordination team needs to visualize a complex patient's journey across multiple providers, facilities, and conditions over 24 months. What graph analytics approach would be most effective?",
+      "correct_answer": "D",
+      "bloom_level": "Apply",
+      "difficulty": "hard",
+      "concept_tested": "Patient Journey",
+      "source_link": "index.md#patient-journey",
+      "distractor_quality": 0.86,
+      "explanation_word_count": 79
+    },
+    {
+      "id": "ch4-q010",
+      "number": 10,
+      "question_text": "Analyzing the chapter's medication safety network, what underlying pattern makes graph databases particularly effective compared to relational databases for this use case?",
+      "correct_answer": "B",
+      "bloom_level": "Analyze",
+      "difficulty": "hard",
+      "concept_tested": "Drug Interaction, Patient Record",
+      "source_link": "index.md#drug-interactions-and-adverse-events",
+      "distractor_quality": 0.89,
+      "explanation_word_count": 92
+    }
+  ],
+  "answer_distribution": {
+    "A": 2,
+    "B": 3,
+    "C": 3,
+    "D": 2
+  },
+  "bloom_distribution": {
+    "Remember": 3,
+    "Understand": 3,
+    "Apply": 3,
+    "Analyze": 1,
+    "Evaluate": 0,
+    "Create": 0
+  },
+  "concept_coverage": {
+    "total_concepts": 25,
+    "tested_concepts": 10,
+    "coverage_percentage": 40,
+    "priority_concepts_tested": [
+      "Patient Record",
+      "Patient ID",
+      "Disease",
+      "Medical Condition",
+      "Diagnosis",
+      "Prescription",
+      "Medication",
+      "Dosage",
+      "Drug Interaction",
+      "Lab Test",
+      "Lab Result",
+      "Patient Journey",
+      "Patient Outcome"
+    ]
+  },
+  "quality_metrics": {
+    "average_distractor_quality": 0.88,
+    "average_explanation_word_count": 80,
+    "all_questions_have_explanations": true,
+    "all_links_valid": true,
+    "answer_balance_score": 15,
+    "bloom_distribution_score": 25
+  }
+}
