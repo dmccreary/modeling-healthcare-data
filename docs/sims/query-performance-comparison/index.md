@@ -6,7 +6,11 @@ This interactive Chart.js visualization demonstrates the dramatic performance di
 
 <iframe src="main.html" width="100%" height="550" scrolling="no"></iframe>
 
-[View Fullscreen](main.html){:target="_blank"}
+[View Fullscreen](main.html){ .md-button .md-button--primary }
+
+```html
+<iframe src="main.html" width="100%" height="550" scrolling="no"></iframe>
+```
 
 ## Overview
 

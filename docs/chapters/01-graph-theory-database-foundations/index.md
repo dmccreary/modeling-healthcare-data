@@ -611,6 +611,9 @@ Graph databases achieve their performance advantages through architectural choic
 | **Query time for 3-hop query** | Seconds to minutes (depends on data size) | Milliseconds |
 
 #### Diagram: Query Performance Comparison Chart: RDBMS vs Graph Database
+<iframe src="../../sims/query-performance-comparison/main.html" width="100%" height="550" scrolling="no"></iframe>
+
+[Run the Query Performance Comparison MicroSim Fullscreen](../../sims/query-performance-comparison/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
     <summary>Query Performance Comparison Chart: RDBMS vs Graph Database</summary>
