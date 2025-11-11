@@ -1,4 +1,13 @@
-# How We Built This Site
+# How We Built This Textbook
+
+The outline of this textbook was created by Dan McCreary.
+Dan spent over 10 years working in the healthcare industry for
+organizations ranging from small specialty clinics up to the largest healthcare company in the US.  After a course description was
+created with hundreds of topics enumerated a knowledge
+graph was generated.  This knowledge graph was then
+edited by hand to form the proper concept dependency graph network.
+From there, a collection of Claude Code Skills were executed
+to generate content.  This content was reviewed and edited for accuracy.
 
 This page describes how we built this website and some of 
 the rationale behind why we made various design choices.
@@ -10,15 +19,16 @@ animations and simulations.  The language of AI
 is Python.  So we wanted to create a site that could
 be easily understood by Python developers.
 
-## Mkdocs vs. Docusaurus
+## Mkdocs
 
 There are two main tools used by Python developers
 to write documentation: [Mkdocs](http://mkdocs.org)
 and [Docusaurus](https://docusaurus.io/).  Mkdocs
-is easier to use and more popular than Docusaurus.
+is easier to use and more popular than Docusaurus by a factor of 10.
 Docusaurus is also optimized for single-page applications.
-Mkdocs also has an extensive library of themes and plugins.
-None of us are experts in JavaScript or React.
+Mkdocs also has an extensive library of themes and plugins
+which are ideal for publishing course material.
+Since I was not an experts in JavaScript or React, mkdocs was a natural choice. 
 Based on our [ChatGPT Analysis of the Tradeoffs](https://chat.openai.com/share/c7fea52c-3ef2-4837-a70a-fc9bdb919d9a)
 we chose mkdocs for this site management.
 

@@ -1140,3 +1140,11 @@ Healthcare applications benefit from graph queries through:
 - **Provider network analysis** calculating centrality and connectivity metrics
 
 As healthcare organizations increasingly adopt graph databases for their complex data challenges, mastering graph query languages becomes essential for data engineers, analysts, and developers building next-generation clinical systems. The declarative nature and performance characteristics of graph queries enable analytics that would be impractical or impossible using traditional relational approaches, ultimately supporting better patient outcomes through data-driven insights.
+
+## References
+
+1. [Cypher Query Language Reference](https://neo4j.com/docs/cypher-manual/current/) - 2024 - Neo4j Documentation - Comprehensive official documentation for Cypher declarative graph query language covering pattern matching, filtering, aggregation, and advanced querying techniques used throughout Neo4j graph database applications.
+
+2. [openCypher Project](https://opencypher.org/) - 2024 - openCypher Implementers Group - Open-source specification and resources for the Cypher graph query language enabling cross-platform graph query standardization and implementation across multiple graph database systems.
+
+3. [Apache TinkerPop Documentation](https://tinkerpop.apache.org/docs/current/reference/) - 2024 - Apache Software Foundation - Official reference for Apache TinkerPop graph computing framework including Gremlin query language used with various graph databases for traversal-based queries and graph analytics.

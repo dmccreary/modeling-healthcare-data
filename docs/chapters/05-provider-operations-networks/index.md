@@ -1161,3 +1161,11 @@ Graph modeling provides distinctive advantages for provider operations:
 - **Care coordination**: Multi-hop queries trace patient pathways across providers, facilities, and specialties to identify coordination failures and transition risks
 
 As healthcare transitions from volume-based to value-based payment models, provider operations increasingly focus on care coordination, quality measurement, and network optimization—all domains where graph databases provide substantial analytical advantages over traditional approaches. Provider-centric graph models serve as the foundation for population health management, accountable care organizations, care team optimization, and evidence-based clinical decision support systems that are transforming healthcare delivery.
+
+## References
+
+1. [National Provider Identifier (NPI) Registry](https://npiregistry.cms.hhs.gov/) - 2024 - Centers for Medicare & Medicaid Services - Official CMS database for healthcare provider identification numbers essential for modeling provider networks, credentialing, and billing relationships in graph-based healthcare systems.
+
+2. [HEDIS Measures](https://www.ncqa.org/hedis/) - 2024 - National Committee for Quality Assurance - Comprehensive quality measurement framework used by health plans to evaluate provider performance across clinical quality, access, and patient experience dimensions relevant to value-based care models.
+
+3. [Accountable Care Organizations Overview](https://www.cms.gov/medicare/payment/fee-for-service-providers/aco) - 2024 - Centers for Medicare & Medicaid Services - Official CMS resource explaining ACO structures, shared savings programs, and care coordination requirements that drive provider network optimization using graph analytics.

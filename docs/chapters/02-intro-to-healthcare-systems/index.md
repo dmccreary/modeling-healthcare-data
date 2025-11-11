@@ -1280,3 +1280,11 @@ Key concepts covered:
 - **Graph advantages**: Schema flexibility, relationship representation, identity resolution, semantic mapping
 
 With this healthcare domain foundation, you are now prepared to design graph data models that accurately capture the intricate relationships among patients, providers, payers, clinical concepts, and healthcare transactions. The next chapters will build on this knowledge to develop specific graph modeling patterns for patient-centric, provider-centric, and payer-centric perspectives.
+
+## References
+
+1. [FHIR Overview](https://www.hl7.org/fhir/overview.html) - 2024 - HL7 International - Official Fast Healthcare Interoperability Resources (FHIR) specification describing modern healthcare data exchange standards including RESTful APIs and resource-based data models essential for understanding healthcare interoperability.
+
+2. [ICD-10-CM Official Guidelines](https://www.cdc.gov/nchs/icd/icd-10-cm.htm) - 2024 - Centers for Disease Control and Prevention - Comprehensive resource for the International Classification of Diseases, 10th Revision, Clinical Modification coding system used throughout U.S. healthcare for diagnosis classification and billing.
+
+3. [Healthcare Payment Systems Overview](https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment) - 2024 - Centers for Medicare & Medicaid Services - Official CMS documentation explaining Medicare fee-for-service payment systems, DRGs, and reimbursement methodologies that form the foundation of U.S. healthcare economics.

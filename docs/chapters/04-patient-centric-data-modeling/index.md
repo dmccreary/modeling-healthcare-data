@@ -1017,3 +1017,11 @@ The graph modeling approach provides several critical advantages for patient-cen
 - **Care coordination**: Multi-hop queries efficiently trace dependencies between patients, conditions, treatments, and care team members
 
 As healthcare organizations increasingly adopt value-based care models that prioritize patient outcomes over service volume, patient-centric data models become essential infrastructure. Graph databases provide the technical foundation for care coordination platforms, population health management systems, clinical decision support tools, and personalized medicine applications that place the patient at the center of healthcare data and analytics.
+
+## References
+
+1. [Electronic Health Records Overview](https://www.healthit.gov/topic/health-it-basics/electronic-health-records) - 2024 - Office of the National Coordinator for Health IT - Federal resource explaining EHR systems, meaningful use requirements, and patient-centered data models that form the foundation of modern healthcare information technology.
+
+2. [SNOMED CT Browser](https://browser.ihtsdotools.org/) - 2024 - SNOMED International - Official browser for Systematized Nomenclature of Medicine Clinical Terms providing comprehensive clinical terminology essential for patient diagnosis modeling and semantic interoperability in healthcare systems.
+
+3. [RxNorm Overview](https://www.nlm.nih.gov/research/umls/rxnorm/overview.html) - 2024 - National Library of Medicine - Comprehensive resource describing RxNorm normalized naming system for medications enabling consistent prescription data modeling and medication reconciliation across healthcare organizations.

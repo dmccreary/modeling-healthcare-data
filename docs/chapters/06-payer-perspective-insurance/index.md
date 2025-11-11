@@ -876,3 +876,11 @@ Key concepts covered in this chapter include:
 As healthcare moves increasingly toward value-based payment models, the ability to analyze complex relationships between clinical outcomes, costs, utilization patterns, and quality metrics becomes even more critical. Graph databases provide the architectural foundation needed to support these advanced analytics while maintaining the real-time performance required for operational systems.
 
 In the next chapter, we will explore how payers use graph analytics for financial modeling, including profitability analysis, risk adjustment, and predictive modeling for future utilization and costs.
+
+## References
+
+1. [Medicare Claims Processing Manual](https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/Downloads/clm104c01.pdf) - 2024 - Centers for Medicare & Medicaid Services - Official CMS manual detailing claims adjudication processes, billing codes, and reimbursement methodologies essential for modeling payer operations in graph databases.
+
+2. [Healthcare Common Procedure Coding System (HCPCS)](https://www.cms.gov/medicare/coding-billing/hcpcs-release-code-sets) - 2024 - Centers for Medicare & Medicaid Services - Comprehensive procedure coding system used for billing and claims processing providing the standardized vocabulary needed for graph-based insurance claims modeling.
+
+3. [Pharmacy Benefit Management Overview](https://www.pbmi.com/What-is-a-PBM.html) - 2024 - Pharmacy Benefit Management Institute - Industry resource explaining PBM operations, formulary management, and drug utilization review processes critical for modeling pharmacy benefits in healthcare graph systems.

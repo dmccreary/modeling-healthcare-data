@@ -938,3 +938,11 @@ This chapter has introduced the foundational concepts necessary for understandin
 - Schema design should support your most critical use cases while remaining adaptable to future requirements
 
 With these fundamentals established, you are now prepared to explore specific healthcare data modeling patterns, query techniques, and advanced graph database features in subsequent chapters. The concepts introduced here—nodes, edges, properties, traversal, and schema design—will serve as the building blocks for all the sophisticated healthcare applications we'll examine throughout this course.
+
+## References
+
+1. [Graph Database Concepts](https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/) - 2024 - Neo4j Documentation - Comprehensive introduction to Neo4j's labeled property graph model, covering nodes, relationships, labels, properties, and schema elements with practical Cypher examples relevant to understanding graph database fundamentals.
+
+2. [Graph Theory](https://link.springer.com/book/10.1007/978-3-662-53622-3) - 2017 - Springer Graduate Texts in Mathematics - Reinhard Diestel's authoritative textbook on graph theory providing rigorous mathematical foundations for nodes, edges, paths, and graph algorithms essential for understanding database implementations.
+
+3. [Directed Acyclic Graph - Wikipedia](https://en.wikipedia.org/wiki/Directed_acyclic_graph) - 2024 - Wikipedia - Detailed explanation of DAG structures, topological sorting, and applications in computer science including data pipelines and version control systems relevant to healthcare data workflows.

@@ -955,3 +955,11 @@ Key concepts covered in this chapter include:
 As healthcare organizations accumulate ever-larger datasets capturing detailed patient journeys, provider interactions, and treatment outcomes, the ability to apply sophisticated graph algorithms becomes increasingly critical for extracting actionable insights. These algorithms transform raw connectivity into strategic intelligence, supporting clinical decision-making, operational optimization, population health management, and biomedical research.
 
 In the next chapter, we will explore how graph databases integrate with artificial intelligence and machine learning systems, combining graph analytics with predictive models to enable precision medicine, clinical decision support, and intelligent healthcare applications.
+
+## References
+
+1. [Neo4j Graph Data Science Library](https://neo4j.com/docs/graph-data-science/current/) - 2024 - Neo4j Documentation - Comprehensive documentation for Neo4j's graph algorithms library covering pathfinding, centrality, community detection, and similarity algorithms essential for healthcare network analysis.
+
+2. [Network Science by Albert-László Barabási](http://networksciencebook.com/) - 2016 - Cambridge University Press - Foundational textbook on network science explaining graph algorithms, scale-free networks, and community structures with applications relevant to healthcare social networks and disease spread modeling.
+
+3. [Graph Algorithms: Practical Examples in Apache Spark and Neo4j](https://neo4j.com/graph-algorithms-book/) - 2019 - O'Reilly Media - Practical guide to implementing graph algorithms including PageRank, community detection, and pathfinding with healthcare use cases and performance optimization strategies.

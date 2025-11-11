@@ -973,3 +973,11 @@ Key concepts covered in this chapter include:
 As healthcare fraud schemes become increasingly sophisticated, with organized crime syndicates applying advanced techniques to evade detection, the ability to perform real-time network analysis across the entire healthcare ecosystem becomes critical. Graph databases provide the architectural foundation needed to detect these complex schemes while minimizing false positives that burden legitimate providers with unnecessary investigations.
 
 In the next chapter, we will explore how graph algorithms and graph data science enable advanced analytics for healthcare, including path-finding for care coordination, centrality analysis for provider network optimization, and community detection for population health management.
+
+## References
+
+1. [National Health Care Anti-Fraud Association Resources](https://www.nhcaa.org/tools-insights/) - 2024 - NHCAA - Industry organization providing fraud detection best practices, case studies, and analytical frameworks essential for understanding healthcare fraud patterns and investigation methodologies.
+
+2. [OIG Fraud Alerts and Bulletins](https://oig.hhs.gov/compliance/alerts/) - 2024 - Office of Inspector General - Official government alerts on emerging fraud schemes, compliance risks, and enforcement priorities critical for modeling fraud detection rules in graph-based healthcare systems.
+
+3. [False Claims Act Overview](https://www.justice.gov/civil/false-claims-act) - 2024 - U.S. Department of Justice - Comprehensive legal framework for healthcare fraud prosecution providing context for compliance requirements and fraud detection priorities in healthcare analytics systems.

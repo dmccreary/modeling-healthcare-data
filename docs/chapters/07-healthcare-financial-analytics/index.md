@@ -1077,3 +1077,11 @@ Key concepts covered in this chapter include:
 As healthcare continues its transformation from volume-based to value-based payment, the ability to analyze complex relationships between clinical quality, patient outcomes, utilization patterns, and financial performance becomes increasingly critical. Graph databases provide the architectural foundation needed to support this transformation while maintaining the real-time performance and analytical flexibility required for operational and strategic decision-making.
 
 In the next chapter, we will explore how graph analytics supports fraud detection and compliance monitoring, using network analysis algorithms to identify suspicious patterns in claims data, provider relationships, and billing behaviors.
+
+## References
+
+1. [Healthcare Cost and Utilization Project (HCUP)](https://www.hcup-us.ahrq.gov/) - 2024 - Agency for Healthcare Research and Quality - Comprehensive healthcare statistics database providing cost, utilization, and quality benchmarks essential for financial analytics and comparative performance analysis in healthcare systems.
+
+2. [Risk Adjustment Overview](https://www.cms.gov/medicare/payment/medicare-advantage-rates-statistics/risk-adjustment) - 2024 - Centers for Medicare & Medicaid Services - Official CMS documentation explaining risk adjustment methodologies, HCC coding, and payment models critical for understanding healthcare financial analytics and predictive cost modeling.
+
+3. [Value-Based Programs](https://www.cms.gov/medicare/quality/value-based-programs) - 2024 - Centers for Medicare & Medicaid Services - Comprehensive resource on CMS value-based payment programs including Hospital Value-Based Purchasing and Merit-based Incentive Payment System driving financial performance analytics in healthcare.
