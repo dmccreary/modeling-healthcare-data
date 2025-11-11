@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-we-built-this-site" class="md-skip">
+        <a href="#how-we-built-this-textbook" class="md-skip">
           Skip to content
         </a>
       
@@ -830,9 +830,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mkdocs-vs-docusaurus" class="md-nav__link">
+  <a href="#mkdocs" class="md-nav__link">
     <span class="md-ellipsis">
-      Mkdocs vs. Docusaurus
+      Mkdocs
     </span>
   </a>
   
@@ -1037,9 +1037,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mkdocs-vs-docusaurus" class="md-nav__link">
+  <a href="#mkdocs" class="md-nav__link">
     <span class="md-ellipsis">
-      Mkdocs vs. Docusaurus
+      Mkdocs
     </span>
   </a>
   
@@ -1180,7 +1180,15 @@
   
 
 
-<h1 id="how-we-built-this-site">How We Built This Site</h1>
+<h1 id="how-we-built-this-textbook">How We Built This Textbook</h1>
+<p>The outline of this textbook was created by Dan McCreary.
+Dan spent over 10 years working in the healthcare industry for
+organizations ranging from small specialty clinics up to the largest healthcare company in the US.  After a course description was
+created with hundreds of topics enumerated a knowledge
+graph was generated.  This knowledge graph was then
+edited by hand to form the proper concept dependency graph network.
+From there, a collection of Claude Code Skills were executed
+to generate content.  This content was reviewed and edited for accuracy.</p>
 <p>This page describes how we built this website and some of 
 the rationale behind why we made various design choices.</p>
 <h2 id="python">Python</h2>
@@ -1188,14 +1196,15 @@ the rationale behind why we made various design choices.</p>
 animations and simulations.  The language of AI
 is Python.  So we wanted to create a site that could
 be easily understood by Python developers.</p>
-<h2 id="mkdocs-vs-docusaurus">Mkdocs vs. Docusaurus</h2>
+<h2 id="mkdocs">Mkdocs</h2>
 <p>There are two main tools used by Python developers
 to write documentation: <a href="http://mkdocs.org">Mkdocs</a>
 and <a href="https://docusaurus.io/">Docusaurus</a>.  Mkdocs
-is easier to use and more popular than Docusaurus.
+is easier to use and more popular than Docusaurus by a factor of 10.
 Docusaurus is also optimized for single-page applications.
-Mkdocs also has an extensive library of themes and plugins.
-None of us are experts in JavaScript or React.
+Mkdocs also has an extensive library of themes and plugins
+which are ideal for publishing course material.
+Since I was not an experts in JavaScript or React, mkdocs was a natural choice. 
 Based on our <a href="https://chat.openai.com/share/c7fea52c-3ef2-4837-a70a-fc9bdb919d9a">ChatGPT Analysis of the Tradeoffs</a>
 we chose mkdocs for this site management.</p>
 <h2 id="github-and-github-pages">GitHub and GitHub Pages</h2>
