@@ -15,11 +15,11 @@ Visit the interactive textbook at: [https://dmccreary.github.io/modeling-healthc
 
 ## Overview
 
-This is an interactive, AI-generated intelligent textbook on modeling healthcare data using graph databases, designed for college undergraduate students with database knowledge. Built using MkDocs with the Material theme, it incorporates learning graphs, concept dependencies, interactive MicroSims (p5.js simulations), and AI-assisted content generation.
+This is an interactive, intelligent textbook on modeling healthcare data using graph databases, designed for college undergraduate students with database knowledge. The textbook was designed by Dan McCreary who has taught a prior version of this course to over 3,000 developers at a Fortune 50 healthcare company. Built using the powerful Python-centric MkDocs build tools with the Material theme, it incorporates learning graphs, concept dependencies, interactive MicroSims (p5.js simulations), and AI-assisted content generation.
 
 The annual per-person cost for healthcare in the US is the most expensive in the world by a large margin. Modern graph databases offer ways to lower these costs by providing superior analytics to enable moving from expensive pay-per-service systems to value-based care systems. This course teaches students to model complex healthcare data from multiple perspectives: patient, provider, and payer.
 
-The textbook follows Bloom's Taxonomy (2001 revision) for learning outcomes and uses concept dependency graphs to ensure proper prerequisite sequencing. Students learn to leverage graph algorithms, graph data science, embeddings, and graph neural networks for clinical decision support, fraud detection, and healthcare analytics. All content is generated and curated using Claude AI skills, making it a Level 2+ intelligent textbook with interactive elements.
+The textbook leverages Bloom's Taxonomy (2001 revision) for learning outcomes and uses concept dependency graphs to ensure proper prerequisite sequencing. Students learn to leverage graph algorithms, graph data science, embeddings, and graph neural networks for healthcare analytics from multiple perspectives: patient, provider, payer, and public health. Much of the content has been reviewed with the most advanced AI tools, making it a Level 2+ intelligent textbook with interactive elements.
 
 Whether you're a student learning healthcare informatics for the first time or an educator looking for structured course materials on graph databases in healthcare, this textbook provides comprehensive coverage with hands-on interactive elements that make complex concepts accessible and engaging.
 
