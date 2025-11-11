@@ -12,10 +12,9 @@ hide:
 # Welcome
 ![](./img/cover.png)
 
-Welcome to our website for the course on Healthcare Data Modeling with Graphs.
+Welcome to the **Modeling Healthcare Data with Graphs** course.
 
-Please let us know what you think.  
-Feel free to use the [discussions](https://github.com/dmccreary/modeling-healthcare-data/discussions/1) feature of GitHub to give us ways to improve the textbook.
+Please let us know what you think. Use [discussions](https://github.com/dmccreary/modeling-healthcare-data/discussions/1) to help us improve the textbook.
 
 We look forward to your feedback!
 
