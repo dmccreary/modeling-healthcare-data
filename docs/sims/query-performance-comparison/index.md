@@ -4,7 +4,7 @@ This interactive Chart.js visualization demonstrates the dramatic performance di
 
 ## Interactive Chart
 
-<iframe src="main.html" width="100%" height="700" frameborder="0"></iframe>
+<iframe src="main.html" width="100%" height="550" scrolling="no"></iframe>
 
 [View Fullscreen](main.html){:target="_blank"}
 

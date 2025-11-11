@@ -14,7 +14,9 @@ hide:
 
 Welcome to our website for the course on Healthcare Data Modeling with Graphs.
 
-Please let us know what you think using the issues feature of GitHub.  We look
-forward to your feedback!
+Please let us know what you think.  
+Feel free to use the [discussions](https://github.com/dmccreary/modeling-healthcare-data/discussions/1) feature of GitHub to give us ways to improve the textbook.
+
+We look forward to your feedback!
 
 [Dan McCreary](https://www.linkedin.com/in/danmccreary/)

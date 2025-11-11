@@ -67,7 +67,7 @@ nav:
   
   - MicroSims:
     - Introduction: sims/index.md
-    - View Healcare Icons: sims/view-hc-icons/index.md
+    - View Healthcare Icons: sims/view-hc-icons/index.md
     - Graph Viewer: sims/graph-viewer/index.md
     - Codes: sims/codes/index.md
     - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
