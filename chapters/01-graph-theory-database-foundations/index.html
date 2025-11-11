@@ -1100,6 +1100,8 @@
       
         
       
+        
+      
     
     
     
@@ -1147,6 +1149,8 @@
       
         
           
+        
+      
         
       
         
@@ -1258,6 +1262,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1586,6 +1600,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="The Building Blocks: Nodes and Edges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-basic-healthcare-graph-model-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Basic Healthcare Graph Model Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1643,6 +1672,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Directed Acyclic Graphs (DAGs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-directed-acyclic-graph-example-care-pathway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Directed Acyclic Graph Example: Care Pathway
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1656,6 +1700,21 @@
       The Labeled Property Graph Model
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="The Labeled Property Graph Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-labeled-property-graph-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Labeled Property Graph Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1675,6 +1734,21 @@
       Common Traversal Patterns in Healthcare
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Common Traversal Patterns in Healthcare">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-graph-traversal-visualization-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Graph Traversal Visualization MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1699,6 +1773,21 @@
       Query Performance Advantages
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Query Performance Advantages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-performance-comparison-chart-rdbms-vs-graph-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Performance Comparison Chart: RDBMS vs Graph Database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1792,6 +1881,21 @@
       Sample Healthcare Graph Schema
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Sample Healthcare Graph Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-model-implementation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Model Implementation Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1893,6 +1997,7 @@
 <li>A patient <strong>VISITED</strong> relationship documenting an encounter at a facility</li>
 </ul>
 <p>The power of graph databases emerges from treating these edges as first-class data structures rather than as implicit foreign key references. Each edge connects exactly two nodes: a source (or start) node and a target (or end) node.</p>
+<h4 id="diagram-basic-healthcare-graph-model-diagram">Diagram: Basic Healthcare Graph Model Diagram</h4>
 <iframe src="../../sims/healthcare-graph-fundamentals/main.html" height="700px" scrolling="no"></iframe>
 <p><a href="../../sims/healthcare-graph-fundamentals/main.html">Run Fullscreen</a></p>
 <details>
@@ -2053,6 +2158,7 @@ Color scheme:
 <li><strong>Care plan dependencies</strong>: Certain procedures must be completed before others can begin (lab work → results review → treatment decision → procedure scheduling)</li>
 <li><strong>Organizational structures</strong>: Hospital departmental hierarchies flow from executive leadership down through departments without circular reporting relationships</li>
 </ul>
+<h4 id="diagram-directed-acyclic-graph-example-care-pathway">Diagram: Directed Acyclic Graph Example: Care Pathway</h4>
 <details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2191,6 +2297,7 @@ Implementation: Flowchart diagram tool (Mermaid, draw.io, or Graphviz)
 (Provider {providerId: &quot;DR-1892&quot;})
 </code></pre></div></td></tr></table></div>
 <p>This representation captures entities (patients, providers, diagnoses, medications), their attributes (patient demographics, medication codes), relationships (prescriptions, diagnoses, visits), and relationship context (dates, dosages, encounter types) in a natural, interconnected structure.</p>
+<h4 id="diagram-healthcare-labeled-property-graph-visualization">Diagram: Healthcare Labeled Property Graph Visualization</h4>
 <details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
@@ -2427,6 +2534,7 @@ Physics: Enabled with spring stiffness for natural clustering
 <li><strong>Medication interaction detection</strong>: "Do any of this patient's current medications interact with the newly prescribed drug?"</li>
 <li><strong>Root cause analysis</strong>: "What upstream factors contributed to this adverse event?"</li>
 </ul>
+<h4 id="diagram-graph-traversal-visualization-microsim">Diagram: Graph Traversal Visualization MicroSim</h4>
 <details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
@@ -2764,6 +2872,7 @@ Implementation: p5.js with custom graph data structure
 </tr>
 </tbody>
 </table>
+<h4 id="diagram-query-performance-comparison-chart-rdbms-vs-graph-database">Diagram: Query Performance Comparison Chart: RDBMS vs Graph Database</h4>
 <details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3027,6 +3136,7 @@ Canvas size: 800x500px
 <li>"Identify patients taking multiple medications that treat the same condition"</li>
 <li>"Calculate the average claim amount for procedures performed at different facilities"</li>
 </ul>
+<h4 id="diagram-healthcare-data-model-implementation-workflow">Diagram: Healthcare Data Model Implementation Workflow</h4>
 <details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
