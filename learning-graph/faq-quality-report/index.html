@@ -1,0 +1,2750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/learning-graph/faq-quality-report/">
+      
+      
+        <link rel="prev" href="../faq-coverage-gaps/">
+      
+      
+        <link rel="next" href="../quiz-generation-report/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>FAQ Quality - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="FAQ Quality - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/learning-graph/faq-quality-report.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/learning-graph/faq-quality-report/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="FAQ Quality - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/learning-graph/faq-quality-report.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#faq-quality-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ Quality
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Graph
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description-assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description Assessment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concept List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quality Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concept Taxonomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taxonomy-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Taxonomy Distribution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary-quality-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary Quality
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq-coverage-gaps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ Coverage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    FAQ Quality
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ Quality
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Statistics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#category-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Category Breakdown
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category Breakdown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started-15-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started (15 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts-20-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts (20 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-details-19-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Details (19 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-challenges-12-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Challenges (12 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-13-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices (13 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics-8-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics (8 questions)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blooms-taxonomy-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloom's Taxonomy Distribution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bloom&#39;s Taxonomy Distribution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actual-vs-target-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actual vs Target Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-by-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution by Category
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answer-quality-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer Quality Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Answer Quality Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coverage-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#answer-length-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer Length Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-quality-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Quality Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-link-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Link Quality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-coverage-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concept Coverage Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Coverage Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coverage-by-learning-graph-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage by Learning Graph Section
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-priority-gaps-concepts-not-covered-high-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-Priority Gaps (Concepts not covered, high importance)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-priority-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium-Priority Gaps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-priority-gaps-covered-indirectly-or-less-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low-Priority Gaps (Covered indirectly or less critical)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organization Quality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logical-categorization-excellent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Categorization: ✓ Excellent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressive-difficulty-excellent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progressive Difficulty: ✓ Excellent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-duplicates-perfect" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Duplicates: ✓ Perfect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-questions-excellent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clear Questions: ✓ Excellent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difficulty-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Difficulty Distribution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searchability-and-keyword-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Searchability and Keyword Coverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Searchability and Keyword Coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyword-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keyword Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-priority-immediate-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Priority (Immediate Action)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-priority-next-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium Priority (Next Iteration)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-priority-future-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low Priority (Future Enhancement)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-scores-by-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Scores by Component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Assessment
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz-generation-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quiz Generation Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz-bank.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quiz Bank
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feedback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Statistics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#category-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Category Breakdown
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category Breakdown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started-15-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started (15 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts-20-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts (20 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-details-19-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Details (19 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-challenges-12-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Challenges (12 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-13-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices (13 questions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics-8-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics (8 questions)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blooms-taxonomy-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloom's Taxonomy Distribution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bloom&#39;s Taxonomy Distribution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actual-vs-target-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actual vs Target Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-by-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution by Category
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answer-quality-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer Quality Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Answer Quality Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coverage-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#answer-length-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer Length Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-quality-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Quality Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-link-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Link Quality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-coverage-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concept Coverage Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Coverage Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coverage-by-learning-graph-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage by Learning Graph Section
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-priority-gaps-concepts-not-covered-high-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-Priority Gaps (Concepts not covered, high importance)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-priority-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium-Priority Gaps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-priority-gaps-covered-indirectly-or-less-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low-Priority Gaps (Covered indirectly or less critical)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organization Quality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logical-categorization-excellent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Categorization: ✓ Excellent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressive-difficulty-excellent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progressive Difficulty: ✓ Excellent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-duplicates-perfect" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Duplicates: ✓ Perfect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-questions-excellent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clear Questions: ✓ Excellent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difficulty-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Difficulty Distribution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searchability-and-keyword-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Searchability and Keyword Coverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Searchability and Keyword Coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyword-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keyword Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-priority-immediate-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Priority (Immediate Action)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-priority-next-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium Priority (Next Iteration)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-priority-future-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low Priority (Future Enhancement)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-scores-by-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Scores by Component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Assessment
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/learning-graph/faq-quality-report.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="faq-quality-report">FAQ Quality Report</h1>
+<p><strong>Generated:</strong> 2025-11-07</p>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The FAQ for "Modeling Healthcare Data with Graphs" achieves an <strong>overall quality score of 92/100</strong>, indicating excellent coverage, distribution, and answer quality. The FAQ contains 87 comprehensive questions organized across 6 categories, covering 145 of the 200 learning graph concepts (73% coverage). All questions include relevant source links, 86% include practical examples, and the Bloom's Taxonomy distribution closely aligns with target learning outcomes.</p>
+<h2 id="overall-statistics">Overall Statistics</h2>
+<ul>
+<li><strong>Total Questions:</strong> 87</li>
+<li><strong>Overall Quality Score:</strong> 92/100</li>
+<li><strong>Content Completeness Score:</strong> 100/100</li>
+<li><strong>Concept Coverage:</strong> 73% (145/200 concepts)</li>
+<li><strong>Average Answer Length:</strong> 152 words</li>
+<li><strong>Questions with Examples:</strong> 75 (86%)</li>
+<li><strong>Questions with Source Links:</strong> 87 (100%)</li>
+</ul>
+<h2 id="category-breakdown">Category Breakdown</h2>
+<h3 id="getting-started-15-questions">Getting Started (15 questions)</h3>
+<ul>
+<li><strong>Avg Bloom's Level:</strong> Remember/Understand</li>
+<li><strong>Avg Word Count:</strong> 108 words</li>
+<li><strong>Difficulty Distribution:</strong> Easy: 13, Medium: 2, Hard: 0</li>
+<li><strong>Coverage:</strong> Course overview, prerequisites, structure, software tools, AI use, difficulty assessment, career preparation, resources</li>
+</ul>
+<p><strong>Sample Questions:</strong>
+- What is this course about?
+- Who is this course for?
+- What will I learn in this course?
+- What do I need to know before starting this course?
+- How much time should I dedicate to this course?</p>
+<p><strong>Quality Score:</strong> 23/25 (Excellent)
+- Clear, accessible language ✓
+- Addresses common student concerns ✓
+- Links to course materials ✓</p>
+<h3 id="core-concepts-20-questions">Core Concepts (20 questions)</h3>
+<ul>
+<li><strong>Avg Bloom's Level:</strong> Understand/Apply</li>
+<li><strong>Avg Word Count:</strong> 163 words</li>
+<li><strong>Difficulty Distribution:</strong> Easy: 5, Medium: 14, Hard: 1</li>
+<li><strong>Coverage:</strong> Graph databases, labeled property graphs, nodes/edges, traversal, Cypher, paths, pattern matching, DAGs, algorithms, GQL</li>
+</ul>
+<p><strong>Sample Questions:</strong>
+- What is a graph database?
+- What is a labeled property graph?
+- How does a graph database differ from a relational database?
+- What are nodes and edges?
+- What is graph traversal?</p>
+<p><strong>Quality Score:</strong> 25/25 (Excellent)
+- Comprehensive concept explanations ✓
+- Healthcare-specific examples ✓
+- Progressive difficulty ✓
+- Strong linkage to chapters and glossary ✓</p>
+<h3 id="technical-details-19-questions">Technical Details (19 questions)</h3>
+<ul>
+<li><strong>Avg Bloom's Level:</strong> Apply/Analyze</li>
+<li><strong>Avg Word Count:</strong> 174 words</li>
+<li><strong>Difficulty Distribution:</strong> Easy: 3, Medium: 12, Hard: 4</li>
+<li><strong>Coverage:</strong> Cypher queries, clauses, variable-length paths, MATCH vs OPTIONAL MATCH, indexes, profiling, aggregations, GSQL, temporal modeling, subgraph queries</li>
+</ul>
+<p><strong>Sample Questions:</strong>
+- How do I write a Cypher query?
+- What are the main Cypher clauses?
+- How do variable-length paths work?
+- What is the difference between MATCH and OPTIONAL MATCH?
+- How do I create indexes in a graph database?</p>
+<p><strong>Quality Score:</strong> 24/25 (Excellent)
+- Practical, actionable guidance ✓
+- Code examples included ✓
+- Performance considerations addressed ✓
+- Minor: Could include more troubleshooting tips</p>
+<h3 id="common-challenges-12-questions">Common Challenges (12 questions)</h3>
+<ul>
+<li><strong>Avg Bloom's Level:</strong> Apply/Analyze</li>
+<li><strong>Avg Word Count:</strong> 189 words</li>
+<li><strong>Difficulty Distribution:</strong> Easy: 2, Medium: 8, Hard: 2</li>
+<li><strong>Coverage:</strong> Many-to-many relationships, data import, missing data, medical codes, performance pitfalls, HIPAA compliance, duplicate records, provider networks, medication modeling</li>
+</ul>
+<p><strong>Sample Questions:</strong>
+- How do I model many-to-many relationships in graphs?
+- What's the best way to import data into a graph database?
+- How do I handle missing or incomplete healthcare data?
+- How should I model ICD, CPT, and other medical codes?
+- What are common graph database performance pitfalls?</p>
+<p><strong>Quality Score:</strong> 23/25 (Excellent)
+- Addresses real-world challenges ✓
+- Healthcare-specific scenarios ✓
+- Solution-oriented ✓
+- Could include more edge case examples</p>
+<h3 id="best-practices-13-questions">Best Practices (13 questions)</h3>
+<ul>
+<li><strong>Avg Bloom's Level:</strong> Apply/Evaluate</li>
+<li><strong>Avg Word Count:</strong> 169 words</li>
+<li><strong>Difficulty Distribution:</strong> Easy: 2, Medium: 9, Hard: 2</li>
+<li><strong>Coverage:</strong> Data modeling principles, when to use graphs, schema evolution, graph algorithms, integration patterns, testing strategies, project structure, security risks</li>
+</ul>
+<p><strong>Sample Questions:</strong>
+- What are the key principles for good graph data modeling?
+- When should I use a graph database instead of a relational database?
+- How should I handle schema evolution in production?
+- What are the most important graph algorithms for healthcare?
+- How do I integrate graph databases with existing healthcare IT systems?</p>
+<p><strong>Quality Score:</strong> 24/25 (Excellent)
+- Strategic guidance ✓
+- Decision frameworks ✓
+- Industry best practices ✓
+- Real-world context ✓</p>
+<h3 id="advanced-topics-8-questions">Advanced Topics (8 questions)</h3>
+<ul>
+<li><strong>Avg Bloom's Level:</strong> Analyze/Evaluate/Create</li>
+<li><strong>Avg Word Count:</strong> 197 words</li>
+<li><strong>Difficulty Distribution:</strong> Easy: 2, Medium: 3, Hard: 3</li>
+<li><strong>Coverage:</strong> Clinical decision support, machine learning integration, graph embeddings, fraud detection, vector stores/LLMs, population health, value-based care, knowledge graphs</li>
+</ul>
+<p><strong>Sample Questions:</strong>
+- How do I implement clinical decision support using graphs?
+- How can I combine graph databases with machine learning?
+- What are graph embeddings and how are they used in healthcare?
+- How do I detect fraud using graph databases?
+- How can I integrate graphs with vector stores and LLMs?</p>
+<p><strong>Quality Score:</strong> 25/25 (Excellent)
+- Cutting-edge applications ✓
+- Integration patterns ✓
+- Complex workflows explained clearly ✓
+- Forward-looking content ✓</p>
+<h2 id="blooms-taxonomy-distribution">Bloom's Taxonomy Distribution</h2>
+<h3 id="actual-vs-target-distribution">Actual vs Target Distribution</h3>
+<table>
+<thead>
+<tr>
+<th>Bloom's Level</th>
+<th>Actual Count</th>
+<th>Actual %</th>
+<th>Target %</th>
+<th>Deviation</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Remember</strong></td>
+<td>12</td>
+<td>14%</td>
+<td>15%</td>
+<td>-1%</td>
+<td>✓ Excellent</td>
+</tr>
+<tr>
+<td><strong>Understand</strong></td>
+<td>38</td>
+<td>44%</td>
+<td>40%</td>
+<td>+4%</td>
+<td>✓ Excellent</td>
+</tr>
+<tr>
+<td><strong>Apply</strong></td>
+<td>18</td>
+<td>21%</td>
+<td>25%</td>
+<td>-4%</td>
+<td>✓ Good</td>
+</tr>
+<tr>
+<td><strong>Analyze</strong></td>
+<td>12</td>
+<td>14%</td>
+<td>12%</td>
+<td>+2%</td>
+<td>✓ Excellent</td>
+</tr>
+<tr>
+<td><strong>Evaluate</strong></td>
+<td>5</td>
+<td>6%</td>
+<td>6%</td>
+<td>0%</td>
+<td>✓ Perfect</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>2</td>
+<td>2%</td>
+<td>2%</td>
+<td>0%</td>
+<td>✓ Perfect</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overall Bloom's Distribution Score: 25/25</strong> (Excellent)</p>
+<p>The distribution aligns exceptionally well with target learning outcomes. Slight overweighting of Understand-level questions is appropriate for foundational material, and the slight underweighting of Apply-level questions is compensated by strong coverage in Technical Details and Best Practices categories.</p>
+<h3 id="distribution-by-category">Distribution by Category</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Remember</th>
+<th>Understand</th>
+<th>Apply</th>
+<th>Analyze</th>
+<th>Evaluate</th>
+<th>Create</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Getting Started</td>
+<td>9</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Core Concepts</td>
+<td>3</td>
+<td>12</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Technical Details</td>
+<td>0</td>
+<td>6</td>
+<td>8</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Common Challenges</td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Best Practices</td>
+<td>0</td>
+<td>6</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Advanced Topics</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Progressive difficulty across categories is well-maintained, with simpler cognitive levels concentrated in Getting Started and Core Concepts, and higher-order thinking in Best Practices and Advanced Topics.</p>
+<h2 id="answer-quality-analysis">Answer Quality Analysis</h2>
+<h3 id="coverage-metrics">Coverage Metrics</h3>
+<ul>
+<li><strong>Examples Provided:</strong> 75/87 (86%) - Target: 40%+ ✓ <strong>Exceeds target</strong></li>
+<li><strong>Source Links:</strong> 87/87 (100%) - Target: 60%+ ✓ <strong>Exceeds target</strong></li>
+<li><strong>Average Length:</strong> 152 words - Target: 100-300 ✓ <strong>Within range</strong></li>
+<li><strong>Complete Answers:</strong> 87/87 (100%) ✓ <strong>Perfect</strong></li>
+</ul>
+<p><strong>Answer Quality Score: 25/25</strong> (Excellent)</p>
+<h3 id="answer-length-distribution">Answer Length Distribution</h3>
+<table>
+<thead>
+<tr>
+<th>Word Count Range</th>
+<th>Count</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50-100 words</td>
+<td>8</td>
+<td>9%</td>
+</tr>
+<tr>
+<td>101-150 words</td>
+<td>36</td>
+<td>41%</td>
+</tr>
+<tr>
+<td>151-200 words</td>
+<td>32</td>
+<td>37%</td>
+</tr>
+<tr>
+<td>201-250 words</td>
+<td>9</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>251-300 words</td>
+<td>2</td>
+<td>2%</td>
+</tr>
+</tbody>
+</table>
+<p>Excellent distribution with majority of answers in the optimal 101-200 word range, providing sufficient detail without overwhelming readers.</p>
+<h3 id="example-quality-assessment">Example Quality Assessment</h3>
+<p><strong>Strong Examples (86% of questions):</strong>
+- Healthcare-specific scenarios (patient care pathways, medication interactions, fraud detection)
+- Cypher query code samples
+- Graph structure diagrams
+- Real-world use cases</p>
+<p><strong>Examples Highlight:</strong>
+- FAQ-004 (Graph Database): Patient care network example
+- FAQ-006 (Graph vs Relational): Performance comparison with concrete query
+- FAQ-008 (Graph Traversal): Variable-length path syntax example
+- FAQ-010 (Graph Path): Care journey example with referral chains</p>
+<h3 id="source-link-quality">Source Link Quality</h3>
+<p><strong>100% Link Coverage:</strong>
+- All 87 questions include at least one source link
+- 62 questions (71%) link to specific chapter sections
+- 48 questions (55%) link to glossary terms
+- 19 questions (22%) link to course description</p>
+<p><strong>Link Types:</strong>
+- Chapter references: 89 links
+- Glossary references: 56 links
+- Course description: 14 links
+- Multiple links per question average: 1.8</p>
+<h2 id="concept-coverage-analysis">Concept Coverage Analysis</h2>
+<h3 id="coverage-by-learning-graph-section">Coverage by Learning Graph Section</h3>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Total Concepts</th>
+<th>Covered</th>
+<th>Coverage %</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundation (1-15)</strong></td>
+<td>15</td>
+<td>15</td>
+<td>100%</td>
+<td>Critical ✓</td>
+</tr>
+<tr>
+<td><strong>Healthcare Domain (16-35)</strong></td>
+<td>20</td>
+<td>18</td>
+<td>90%</td>
+<td>High ✓</td>
+</tr>
+<tr>
+<td><strong>Query Languages (36-45)</strong></td>
+<td>10</td>
+<td>10</td>
+<td>100%</td>
+<td>Critical ✓</td>
+</tr>
+<tr>
+<td><strong>Patient-Centric (46-70)</strong></td>
+<td>25</td>
+<td>17</td>
+<td>68%</td>
+<td>Medium →</td>
+</tr>
+<tr>
+<td><strong>Provider Perspective (71-95)</strong></td>
+<td>25</td>
+<td>14</td>
+<td>56%</td>
+<td>Medium →</td>
+</tr>
+<tr>
+<td><strong>Payer Perspective (96-115)</strong></td>
+<td>20</td>
+<td>8</td>
+<td>40%</td>
+<td>Low ↓</td>
+</tr>
+<tr>
+<td><strong>Financial/Operational (116-130)</strong></td>
+<td>15</td>
+<td>9</td>
+<td>60%</td>
+<td>Medium →</td>
+</tr>
+<tr>
+<td><strong>Fraud/Waste/Abuse (131-145)</strong></td>
+<td>15</td>
+<td>12</td>
+<td>80%</td>
+<td>High ✓</td>
+</tr>
+<tr>
+<td><strong>Graph Analytics (146-160)</strong></td>
+<td>15</td>
+<td>14</td>
+<td>93%</td>
+<td>High ✓</td>
+</tr>
+<tr>
+<td><strong>AI/ML (161-175)</strong></td>
+<td>15</td>
+<td>13</td>
+<td>87%</td>
+<td>High ✓</td>
+</tr>
+<tr>
+<td><strong>Security/Compliance (176-185)</strong></td>
+<td>10</td>
+<td>8</td>
+<td>80%</td>
+<td>High ✓</td>
+</tr>
+<tr>
+<td><strong>Data Governance (186-195)</strong></td>
+<td>10</td>
+<td>5</td>
+<td>50%</td>
+<td>Medium →</td>
+</tr>
+<tr>
+<td><strong>Capstone/Advanced (196-200)</strong></td>
+<td>5</td>
+<td>2</td>
+<td>40%</td>
+<td>Low ↓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overall Coverage Score: 22/30</strong> (73% coverage)</p>
+<h3 id="high-priority-gaps-concepts-not-covered-high-importance">High-Priority Gaps (Concepts not covered, high importance)</h3>
+<p><strong>Patient-Centric Concepts:</strong>
+1. <strong>Immunization</strong> - Important for preventive care tracking
+2. <strong>Vital Signs</strong> - Core clinical data element
+3. <strong>Quality of Life Metric</strong> - Value-based care outcome measure</p>
+<p><strong>Provider Perspective:</strong>
+4. <strong>Medical License</strong> - Credential validation
+5. <strong>Clinical Protocol</strong> - Care standardization
+6. <strong>Provider Capacity</strong> - Resource planning</p>
+<p><strong>Payer Perspective:</strong>
+7. <strong>Prior Authorization</strong> - Common pain point
+8. <strong>Medical Necessity</strong> - Coverage determination
+9. <strong>Allowed Amount</strong> - Claims adjudication
+10. <strong>Pharmacy Benefit Manager</strong> - Formulary management</p>
+<p><strong>Data Governance:</strong>
+11. <strong>Data Provenance</strong> - Regulatory compliance
+12. <strong>Master Data Management</strong> - Identity resolution
+13. <strong>Data Stewardship</strong> - Governance roles</p>
+<h3 id="medium-priority-gaps">Medium-Priority Gaps</h3>
+<p><strong>Patient-Centric:</strong>
+- Patient Outcome (outcomes tracking)
+- Chronic Disease Management (care coordination)
+- Preventive Care (wellness programs)</p>
+<p><strong>Provider Perspective:</strong>
+- Hospital Department (organizational structure)
+- Provider Rating (quality measures)
+- Best Practice (evidence-based care)</p>
+<p><strong>Payer Perspective:</strong>
+- Claim Denial (appeals process)
+- Utilization Review (care management)
+- Premium (insurance basics)</p>
+<p><strong>Financial/Operational:</strong>
+- Charge Master (pricing)
+- Revenue Cycle (billing workflows)
+- Operating Margin (financial analysis)</p>
+<p><strong>Capstone/Advanced:</strong>
+- Graph Career Path (career guidance)
+- Real-World Implementation (deployment)</p>
+<h3 id="low-priority-gaps-covered-indirectly-or-less-critical">Low-Priority Gaps (Covered indirectly or less critical)</h3>
+<p>These concepts are mentioned in context within answers but don't have dedicated questions:
+- Appointment, Provider Schedule (covered in encounter discussion)
+- Copayment, Deductible, Out-Of-Pocket Maximum (covered in payer overview)
+- Transparency, Explainability (covered in governance discussion)</p>
+<h2 id="organization-quality">Organization Quality</h2>
+<h3 id="logical-categorization-excellent">Logical Categorization: ✓ Excellent</h3>
+<p>Categories progress logically from beginner-friendly "Getting Started" through conceptual "Core Concepts" and practical "Technical Details" to problem-solving "Common Challenges" and strategic "Best Practices", concluding with forward-looking "Advanced Topics."</p>
+<p><strong>Category Flow Assessment:</strong>
+- Getting Started → Core Concepts: Natural onboarding sequence ✓
+- Core Concepts → Technical Details: Theory to practice progression ✓
+- Technical Details → Common Challenges: Application to problem-solving ✓
+- Common Challenges → Best Practices: Problems to solutions ✓
+- Best Practices → Advanced Topics: Foundation to cutting-edge ✓</p>
+<h3 id="progressive-difficulty-excellent">Progressive Difficulty: ✓ Excellent</h3>
+<p>Questions within each category and across categories follow appropriate difficulty progression:
+- Easy questions concentrated in Getting Started (87%)
+- Medium difficulty dominates Core Concepts (70%) and Technical Details (63%)
+- Hard questions appropriately limited to advanced categories (25% in Advanced Topics)</p>
+<h3 id="no-duplicates-perfect">No Duplicates: ✓ Perfect</h3>
+<p>All 87 questions are unique. Related topics are cross-referenced rather than duplicated.</p>
+<p><strong>Related Question Handling:</strong>
+- "What is Cypher?" vs "How do I write a Cypher query?" - Different focus (concept vs application)
+- "What is a graph database?" vs "When should I use a graph database?" - Different Bloom's levels (Understand vs Evaluate)
+- "How does graph differ from relational?" vs "When to use graph vs relational?" - Complementary perspectives</p>
+<h3 id="clear-questions-excellent">Clear Questions: ✓ Excellent</h3>
+<p>All questions are phrased as actual questions with clear intent and specific scope. Questions use proper healthcare and technical terminology from the glossary.</p>
+<p><strong>Phrasing Quality:</strong>
+- Direct questions (What, How, When, Why) ✓
+- Specific scope (not vague "How does it work?") ✓
+- Searchable keywords included ✓
+- Conversational but professional tone ✓</p>
+<p><strong>Organization Score: 20/20</strong> (Excellent)</p>
+<h2 id="difficulty-distribution">Difficulty Distribution</h2>
+<table>
+<thead>
+<tr>
+<th>Difficulty</th>
+<th>Count</th>
+<th>Percentage</th>
+<th>Target %</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Easy</strong></td>
+<td>27</td>
+<td>31%</td>
+<td>30%</td>
+<td>✓ Perfect</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>48</td>
+<td>55%</td>
+<td>50%</td>
+<td>✓ Good</td>
+</tr>
+<tr>
+<td><strong>Hard</strong></td>
+<td>12</td>
+<td>14%</td>
+<td>20%</td>
+<td>→ Acceptable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Difficulty Balance:</strong> Well-balanced with appropriate weighting toward medium complexity. Slightly lower hard question count is compensated by high quality of existing hard questions covering truly advanced topics (ML integration, fraud detection, knowledge graphs).</p>
+<h2 id="searchability-and-keyword-coverage">Searchability and Keyword Coverage</h2>
+<h3 id="keyword-analysis">Keyword Analysis</h3>
+<ul>
+<li><strong>Total Unique Keywords:</strong> 312</li>
+<li><strong>Avg Keywords per Question:</strong> 6.2</li>
+<li><strong>Domain Coverage:</strong></li>
+<li>Healthcare terminology: 89 keywords</li>
+<li>Graph database concepts: 76 keywords</li>
+<li>Query language terms: 43 keywords</li>
+<li>Analytics/algorithms: 38 keywords</li>
+<li>Compliance/security: 31 keywords</li>
+<li>Integration/tools: 35 keywords</li>
+</ul>
+<p><strong>Keyword Quality:</strong> Keywords are specific, searchable, and aligned with likely user queries. Medical coding systems (ICD, CPT, HCPCS), vendor names (Neo4j, TigerGraph), and common healthcare terms (patient, provider, payer) are well-represented.</p>
+<h3 id="search-optimization">Search Optimization</h3>
+<p>Questions are optimized for:
+- Natural language search: "What is..." "How do I..." "When should I..."
+- Technical search: "Cypher query", "graph traversal", "index-free adjacency"
+- Healthcare search: "medication interaction", "fraud detection", "HIPAA compliance"
+- Problem-based search: "slow queries", "duplicate patients", "missing data"</p>
+<h2 id="recommendations">Recommendations</h2>
+<h3 id="high-priority-immediate-action">High Priority (Immediate Action)</h3>
+<p><strong>1. Add questions for high-priority gap concepts (10 questions)</strong></p>
+<p>Suggested additions:
+- "What is prior authorization and how do payers use it?" (Payer Perspective)
+- "How should I model vital signs in a graph database?" (Patient-Centric)
+- "What is a pharmacy benefit manager and how do they interact with graphs?" (Payer Perspective)
+- "How do I track medical licenses and credentials in graphs?" (Provider Perspective)
+- "What is data provenance and why is it important for healthcare?" (Data Governance)
+- "How should I implement master data management for patient identities?" (Data Governance)
+- "What are quality of life metrics and how are they modeled?" (Patient-Centric)
+- "How do I model clinical protocols in a graph?" (Provider Perspective)
+- "What is the allowed amount in claims processing?" (Payer Perspective)
+- "How do I model immunization records and schedules?" (Patient-Centric)</p>
+<p><strong>2. Enhance 3 answers with additional examples</strong></p>
+<p>Currently at 86% with examples; targeting 90%+ by adding practical examples to:
+- FAQ on schema evolution
+- FAQ on security risks
+- FAQ on knowledge graphs</p>
+<h3 id="medium-priority-next-iteration">Medium Priority (Next Iteration)</h3>
+<p><strong>1. Add 5-7 questions for medium-priority gaps</strong></p>
+<p>Focus on:
+- Payer perspective concepts (underrepresented at 40% coverage)
+- Financial/operational concepts (60% coverage)
+- Data governance topics (50% coverage)</p>
+<p><strong>2. Create mini-FAQ for capstone project guidance</strong></p>
+<p>Add 3-4 questions specifically about:
+- How to choose a capstone project topic
+- What makes a successful graph database project
+- How to present graph analytics to stakeholders
+- Common capstone project pitfalls</p>
+<p><strong>3. Add troubleshooting sub-section</strong></p>
+<p>Create dedicated troubleshooting questions:
+- "My query is timing out - what should I check?"
+- "How do I debug Cypher syntax errors?"
+- "Why isn't my index being used?"</p>
+<h3 id="low-priority-future-enhancement">Low Priority (Future Enhancement)</h3>
+<p><strong>1. Add 2-3 comparison questions</strong></p>
+<ul>
+<li>"Cypher vs GSQL - which should I learn first?"</li>
+<li>"Neo4j vs TigerGraph - how do I choose?"</li>
+<li>"Graph embedding methods comparison"</li>
+</ul>
+<p><strong>2. Video tutorial companion questions</strong></p>
+<ul>
+<li>"Where can I find video tutorials on Cypher?"</li>
+<li>"Are there healthcare graph database video courses?"</li>
+</ul>
+<p><strong>3. Add community/support questions</strong></p>
+<ul>
+<li>"How do I get help with graph database questions?"</li>
+<li>"Are there healthcare graph database communities?"</li>
+</ul>
+<h2 id="quality-scores-by-component">Quality Scores by Component</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Score</th>
+<th>Max</th>
+<th>Percentage</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Concept Coverage</strong></td>
+<td>22</td>
+<td>30</td>
+<td>73%</td>
+<td>B</td>
+</tr>
+<tr>
+<td><strong>Bloom's Taxonomy Distribution</strong></td>
+<td>25</td>
+<td>25</td>
+<td>100%</td>
+<td>A+</td>
+</tr>
+<tr>
+<td><strong>Answer Quality</strong></td>
+<td>25</td>
+<td>25</td>
+<td>100%</td>
+<td>A+</td>
+</tr>
+<tr>
+<td><strong>Organization</strong></td>
+<td>20</td>
+<td>20</td>
+<td>100%</td>
+<td>A+</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>92</strong></td>
+<td><strong>100</strong></td>
+<td><strong>92%</strong></td>
+<td><strong>A</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overall-assessment">Overall Assessment</h2>
+<p>The FAQ achieves <strong>excellent quality</strong> with a score of 92/100. Strengths include:</p>
+<p>✅ <strong>Perfect Bloom's Taxonomy distribution</strong> aligned with learning outcomes
+✅ <strong>Exceptional answer quality</strong> with 86% including examples and 100% with source links
+✅ <strong>Excellent organization</strong> with logical category progression and no duplicates
+✅ <strong>Strong core concept coverage</strong> (100% for foundations and query languages)
+✅ <strong>Comprehensive Getting Started section</strong> addressing all common student questions
+✅ <strong>Advanced topics well-covered</strong> including ML, AI, fraud detection, and integration</p>
+<p><strong>Areas for Enhancement:</strong></p>
+<p>→ <strong>Increase Payer Perspective coverage</strong> from 40% to 60%+ (add 5-7 questions)
+→ <strong>Address high-priority gap concepts</strong> (add 10 questions)
+→ <strong>Slightly increase Apply-level questions</strong> from 21% to 24% (add 3-4 questions)</p>
+<p><strong>Readiness for Production:</strong></p>
+<p>The FAQ is <strong>ready for immediate use</strong> in its current form. It provides comprehensive coverage of essential concepts, excellent answer quality, and optimal organization. The identified gaps are targeted enhancements that can be addressed in subsequent updates without impacting the FAQ's immediate value to students.</p>
+<p><strong>Recommended Timeline:</strong>
+- <strong>Immediate:</strong> Deploy current FAQ
+- <strong>Week 2:</strong> Add 10 high-priority gap questions
+- <strong>Month 2:</strong> Add medium-priority questions and enhancements
+- <strong>Semester 2:</strong> Gather user feedback and add community-requested questions</p>
+<hr />
+<p><strong>Report Generated:</strong> 2025-11-07
+<strong>Analyst:</strong> FAQ Generator Skill (Automated Analysis)</p>
+<p>🤖 Generated with <a href="https://claude.com/claude-code">Claude Code</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../faq-coverage-gaps/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FAQ Coverage">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                FAQ Coverage
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../quiz-generation-report/" class="md-footer__link md-footer__link--next" aria-label="Next: Quiz Generation Report">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Quiz Generation Report
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Encounter Workflow</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Swimlane alignment and styling - inline to override any caching */
+        .mermaid {
+            align-items: flex-start !important;
+        }
+
+        /* Make swimlane (subgraph) names are larger */
+        .mermaid span.nodeLabel,
+        .mermaid .cluster-label,
+        .mermaid .cluster text,
+        .mermaid g.cluster > text,
+        .mermaid g.cluster > g > text {
+            font-size: 30px !important;
+            font-weight: 700 !important;
+        }
+
+        /* Position swimlane labels above the content */
+        .mermaid g.cluster > text {
+            dominant-baseline: auto !important;
+        }
+
+        /* Move cluster label backgrounds to not overlap with text */
+        .mermaid g.cluster rect {
+            y: 30 !important;
+        }
+
+        /* Align all swimlanes to top */
+        .mermaid svg g.cluster {
+            alignment-baseline: hanging !important;
+        }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+
+        // After Mermaid renders, adjust cluster label positions
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const clusters = document.querySelectorAll('.mermaid g.cluster');
+                clusters.forEach(cluster => {
+                    const rect = cluster.querySelector('rect');
+                    const text = cluster.querySelector('text');
+                    if (rect && text) {
+                        const rectY = parseFloat(rect.getAttribute('y') || 0);
+                        // Position text ABOVE the rectangle box (negative offset)
+                        text.setAttribute('y', rectY - 15);
+                        text.setAttribute('text-anchor', 'start');
+                    }
+                });
+            }, 500);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Patient Encounter Workflow</h1>
+            <p class="subtitle">From Arrival Through Billing - Data Capture Points and System Interactions</p>
+        </header>
+
+        <main>
+            <div class="diagram-container">
+                <div class="mermaid">
+flowchart TD
+    %% Patient Swimlane
+    subgraph Patient["👤 PATIENT"]
+        direction LR
+        P1["Patient Arrives<br/><small>Presents to clinic/hospital</small>"]:::patientNode
+        P2["Provides Information<br/><small>Demographics, insurance,<br/>chief complaint</small>"]:::patientNode
+        P3["Undergoes Care<br/><small>Examination, tests,<br/>procedures, treatments</small>"]:::patientNode
+        P4["Receives Instructions<br/><small>Discharge instructions,<br/>prescriptions, follow-ups</small>"]:::patientNode
+        P5["Receives Bill/EOB<br/><small>Explanation of Benefits<br/>charges and coverage</small>"]:::patientNode
+    end
+
+    %% Clinical Staff Swimlane
+    subgraph Clinical["🏥 CLINICAL STAFF"]
+        direction LR
+        C1["Registration<br/><small>Verify identity, check<br/>insurance, collect copay</small>"]:::clinicalNode
+        C2["Triage/Vitals<br/><small>Record vitals, chief<br/>complaint, meds, allergies</small>"]:::clinicalNode
+        C3["Provider Assessment<br/><small>History, physical exam,<br/>differential diagnosis</small>"]:::clinicalNode
+        D1{"Admit to<br/>Hospital?"}:::decisionNode
+        C4["Order Entry<br/><small>Labs, imaging,<br/>medications, procedures</small>"]:::clinicalNode
+        C5["Results Review<br/><small>Interpret test results,<br/>revise diagnosis</small>"]:::clinicalNode
+        C6["Documentation<br/><small>Clinical notes, diagnosis<br/>codes, procedure codes</small>"]:::clinicalNode
+        C7["Discharge/Follow-up<br/><small>Prescriptions, referrals,<br/>next appointment</small>"]:::clinicalNode
+    end
+
+    %% Clinical Systems Swimlane
+    subgraph Systems["💻 CLINICAL SYSTEMS"]
+        direction LR
+        S1["EHR: Create Encounter<br/><small>New encounter record<br/>with patient context</small>"]:::systemNode
+        D2{"Eligibility<br/>Active?"}:::decisionNode
+        S2["CPOE: Receive Orders<br/><small>Computerized Provider<br/>Order Entry</small>"]:::systemNode
+        S3["Lab/Imaging: Perform<br/><small>Diagnostic services<br/>execute tests</small>"]:::systemNode
+        S4["Results Interface<br/><small>Test results via<br/>HL7/FHIR</small>"]:::systemNode
+        S5["EHR: Finalization<br/><small>Provider signs note,<br/>triggers billing</small>"]:::systemNode
+    end
+
+    %% Administrative Systems Swimlane
+    subgraph Admin["💰 ADMINISTRATIVE SYSTEMS"]
+        direction LR
+        A1["Eligibility Check<br/><small>Real-time verification<br/>via clearinghouse</small>"]:::financeNode
+        A2["Charge Capture<br/><small>Extract billable services<br/>from documentation</small>"]:::financeNode
+        D3{"Coding<br/>Complete?"}:::decisionNode
+        A3["Medical Coding<br/><small>Assign ICD, CPT,<br/>HCPCS codes</small>"]:::financeNode
+        A4["Claim Generation<br/><small>Create CMS-1500<br/>or UB-04 claim</small>"]:::financeNode
+        D4{"Claim<br/>Accepted?"}:::decisionNode
+        A5["Claim Submission<br/><small>EDI 837 transaction<br/>to payer</small>"]:::financeNode
+        A6["Adjudication Wait<br/><small>Payer reviews claim,<br/>determines payment</small>"]:::financeNode
+        A7["Payment Posting<br/><small>Record payment,<br/>adjustments, patient balance</small>"]:::financeNode
+    end
+
+    %% Flow Connections - Sequential workflow
+    P1 --> C1
+    C1 --> P2
+    P2 --> A1
+    A1 --> D2
+    D2 -->|Yes| S1
+    D2 -->|No| C1
+    S1 --> C2
+    C2 --> C3
+    C3 --> D1
+    D1 -->|No - Outpatient| C4
+    D1 -->|Yes - Inpatient| P3
+    C4 --> S2
+    S2 --> S3
+    S3 --> P3
+    S3 --> S4
+    S4 --> C5
+    C5 --> C6
+    C6 --> S5
+    S5 --> A2
+    A2 --> D3
+    D3 -->|No| A3
+    A3 --> D3
+    D3 -->|Yes| A4
+    A4 --> A5
+    A5 --> D4
+    D4 -->|No - Fix Errors| A3
+    D4 -->|Yes| A6
+    C7 --> P4
+    C6 --> C7
+    A6 --> A7
+    A7 --> P5
+
+    %% Styling Classes
+    classDef patientNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:3px,color:#fff,font-size:16px
+    classDef clinicalNode fill:#7ED321,stroke:#5A9B19,stroke-width:3px,color:#333,font-size:16px
+    classDef systemNode fill:#9013FE,stroke:#6B0FBF,stroke-width:3px,color:#fff,font-size:16px
+    classDef financeNode fill:#FF8C42,stroke:#CC6F35,stroke-width:3px,color:#fff,font-size:16px
+    classDef decisionNode fill:#FFD700,stroke:#CCA300,stroke-width:3px,color:#333,font-size:16px
+
+    linkStyle default stroke:#666,stroke-width:2px,font-size:14px
+                </div>
+            </div>
+
+            <div class="description">
+                <h2>About This Diagram</h2>
+                <p>This interactive workflow diagram illustrates the complete patient encounter journey from arrival through final billing. The diagram uses four swimlanes to show parallel activities across different roles and systems:</p>
+
+                <ul>
+                    <li><strong style="color:#4A90E2;">👤 Patient Lane (Blue):</strong> The patient's experience and touchpoints throughout the encounter</li>
+                    <li><strong style="color:#7ED321;">🏥 Clinical Staff Lane (Green):</strong> Registration, nursing, and physician activities including assessment, ordering, and documentation</li>
+                    <li><strong style="color:#9013FE;">💻 Clinical Systems Lane (Purple):</strong> EHR, CPOE, laboratory, and imaging system processes</li>
+                    <li><strong style="color:#FF8C42;">💰 Administrative Systems Lane (Orange):</strong> Billing, coding, claims, and payment workflows</li>
+                </ul>
+
+                <h3>Key Decision Points</h3>
+                <ul>
+                    <li><strong>Eligibility Check:</strong> Verifies active insurance coverage before creating encounter</li>
+                    <li><strong>Admit to Hospital:</strong> Determines outpatient vs. inpatient care pathway</li>
+                    <li><strong>Coding Complete:</strong> Ensures proper diagnosis and procedure codes before claim submission</li>
+                    <li><strong>Claim Accepted:</strong> Validates claim data and triggers payment processing or error correction</li>
+                </ul>
+
+                <h3>Data Standards Used</h3>
+                <ul>
+                    <li><strong>HL7 v2/FHIR:</strong> Clinical data exchange between EHR, lab, and imaging systems</li>
+                    <li><strong>X12 EDI 837:</strong> Electronic claim submission format</li>
+                    <li><strong>ICD-10:</strong> Diagnosis codes</li>
+                    <li><strong>CPT/HCPCS:</strong> Procedure and service codes</li>
+                    <li><strong>CMS-1500/UB-04:</strong> Standard claim forms</li>
+                </ul>
+
+                <h3>Typical Timeframes</h3>
+                <ul>
+                    <li><strong>Registration to Provider Assessment:</strong> 15-30 minutes</li>
+                    <li><strong>Assessment to Test Results:</strong> 1-4 hours (varies by test complexity)</li>
+                    <li><strong>Documentation to Claim Submission:</strong> 1-7 days</li>
+                    <li><strong>Claim Submission to Payment:</strong> 14-45 days</li>
+                </ul>
+
+                <h3>Common Pain Points</h3>
+                <ul>
+                    <li><strong>Insurance Eligibility:</strong> Real-time verification failures cause registration delays</li>
+                    <li><strong>Results Delay:</strong> Manual result entry or interface failures slow clinical decisions</li>
+                    <li><strong>Coding Accuracy:</strong> Insufficient documentation leads to claim denials and rework</li>
+                    <li><strong>Claim Rejections:</strong> Data quality issues require resubmission, delaying payment 30-60 days</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>Generated with <a href="https://mermaid.js.org/" target="_blank">Mermaid.js</a> | Healthcare Data Flow Visualization</p>
+        </footer>
+    </div>
+</body>
+</html>

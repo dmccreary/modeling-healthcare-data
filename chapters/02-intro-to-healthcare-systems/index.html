@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/02-intro-to-healthcare-systems/">
       
       
-        <link rel="prev" href="../01-graph-theory-database-foundations/">
+        <link rel="prev" href="../01-graph-theory-database-foundations/quiz/">
       
       
-        <link rel="next" href="../03-graph-query-languages/">
+        <link rel="next" href="quiz/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Chapter 2 - Introduction to Healthcare Systems - Modeling Healthcare Data with Graphs</title>
+        <title>Content - Modeling Healthcare Data with Graphs</title>
       
     
     
@@ -63,7 +63,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Chapter 2 - Introduction to Healthcare Systems - Modeling Healthcare Data with Graphs" >
+        <meta  property="og:title"  content="Content - Modeling Healthcare Data with Graphs" >
       
         <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
       
@@ -79,7 +79,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Chapter 2 - Introduction to Healthcare Systems - Modeling Healthcare Data with Graphs" >
+        <meta  name="twitter:title"  content="Content - Modeling Healthcare Data with Graphs" >
       
         <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
       
@@ -139,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter 2 - Introduction to Healthcare Systems
+              Content
             
           </span>
         </div>
@@ -404,9 +404,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../01-graph-theory-database-foundations/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../01-graph-theory-database-foundations/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -415,7 +438,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -429,16 +458,31 @@
   
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+    
+    
       
         
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
           
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
   
   
   <span class="md-ellipsis">
@@ -447,307 +491,22 @@
   </span>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-  
-  
-  <span class="md-ellipsis">
-    Chapter 2 - Introduction to Healthcare Systems
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduction-to-the-healthcare-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction to the Healthcare Ecosystem
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#understanding-healthcare-economics" class="md-nav__link">
-    <span class="md-ellipsis">
-      Understanding Healthcare Economics
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Understanding Healthcare Economics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-healthcare-cost-crisis" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Healthcare Cost Crisis
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#payment-models-fee-for-service-vs-value-based-care" class="md-nav__link">
-    <span class="md-ellipsis">
-      Payment Models: Fee-For-Service vs. Value-Based Care
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-healthcare-stakeholders" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Healthcare Stakeholders
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Key Healthcare Stakeholders">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-healthcare-patient" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Healthcare Patient
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-healthcare-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Healthcare Provider
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-healthcare-payer" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Healthcare Payer
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clinical-operations-and-healthcare-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clinical Operations and Healthcare Data
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Clinical Operations and Healthcare Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#medical-encounters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Medical Encounters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clinical-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clinical Workflows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#electronic-health-records" class="md-nav__link">
-    <span class="md-ellipsis">
-      Electronic Health Records
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#medical-terminology-and-coding-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Medical Terminology and Coding Systems
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Medical Terminology and Coding Systems">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#medical-terminology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Medical Terminology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#medical-coding-systems-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Medical Coding Systems Overview
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icd-codes-diagnosis-and-inpatient-procedures" class="md-nav__link">
-    <span class="md-ellipsis">
-      ICD Codes: Diagnosis and Inpatient Procedures
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cpt-codes-physician-services-and-outpatient-procedures" class="md-nav__link">
-    <span class="md-ellipsis">
-      CPT Codes: Physician Services and Outpatient Procedures
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hcpcs-codes-medical-supplies-and-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      HCPCS Codes: Medical Supplies and Services
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drug-codes-pharmaceutical-products" class="md-nav__link">
-    <span class="md-ellipsis">
-      Drug Codes: Pharmaceutical Products
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#healthcare-interoperability-and-data-exchange" class="md-nav__link">
-    <span class="md-ellipsis">
-      Healthcare Interoperability and Data Exchange
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Healthcare Interoperability and Data Exchange">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-interoperability-challenge" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Interoperability Challenge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#healthcare-data-exchange-standards-and-approaches" class="md-nav__link">
-    <span class="md-ellipsis">
-      Healthcare Data Exchange Standards and Approaches
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-and-key-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary and Key Takeaways
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Chapter 2 - Introduction to Healthcare Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
             
               
@@ -757,8 +516,62 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-graph-query-languages/" class="md-nav__link">
+      <a href="quiz/" class="md-nav__link">
         
+  
+  
+  <span class="md-ellipsis">
+    Quiz
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../03-graph-query-languages/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -767,7 +580,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -779,9 +598,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../04-patient-centric-data-modeling/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../04-patient-centric-data-modeling/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -790,7 +632,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -802,9 +650,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../05-provider-operations-networks/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../05-provider-operations-networks/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -813,7 +684,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -825,9 +702,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../06-payer-perspective-insurance/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../06-payer-perspective-insurance/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -836,7 +736,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -848,9 +754,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../07-healthcare-financial-analytics/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../07-healthcare-financial-analytics/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -859,7 +788,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -871,9 +806,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../08-fraud-detection-compliance/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../08-fraud-detection-compliance/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -882,7 +840,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -894,9 +858,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../09-graph-algorithms-analytics/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../09-graph-algorithms-analytics/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -905,7 +892,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -917,9 +910,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../10-ai-machine-learning-integration/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../10-ai-machine-learning-integration/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -928,7 +944,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -940,9 +962,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../11-security-privacy-governance/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../11-security-privacy-governance/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -951,7 +996,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -963,9 +1014,32 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../12-capstone-real-world-applications/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../12-capstone-real-world-applications/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -974,7 +1048,13 @@
   </span>
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -998,6 +1078,18 @@
       
         
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1069,6 +1161,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1115,6 +1215,89 @@
     
       
         
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1158,6 +1341,50 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1584,6 +1811,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1646,48 +1882,89 @@
 <p>The United States healthcare system faces a distinctive challenge: it delivers world-class medical innovation while simultaneously experiencing the highest per-person healthcare costs globally. This paradox stems from systemic inefficiencies in how healthcare services are organized, delivered, and reimbursed. Graph database technologies offer promising solutions to these challenges by enabling more sophisticated analytics on interconnected healthcare data, facilitating the transition from volume-based to value-based care models, and supporting real-time clinical decision-making.</p>
 <p>Before diving into data modeling approaches, we must first understand the healthcare domain itself—the stakeholders, workflows, terminology, and data standards that shape how healthcare information is captured, exchanged, and analyzed.</p>
 <details>
-    <summary>Healthcare Ecosystem Stakeholder Diagram</summary>
-    Type: diagram
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Healthcare Ecosystem Stakeholder Diagram&lt;/summary&gt;
 
-    Purpose: Illustrate the three primary stakeholder perspectives in healthcare and their key relationships
+Use the hc-graph-generator skill to create the following MicroSim called &#39;hc-stakeholders&#39;
 
-    Components to show:
-    - Central triangle with three points labeled: "Patient", "Provider", and "Payer"
-    - Each stakeholder as a different colored circle (Patient: blue, Provider: green, Payer: orange)
-    - Bidirectional arrows connecting all three stakeholders
-    - Secondary entities around the perimeter: Pharmacy, Lab, Hospital, Clinic, Insurance Company, Employer, Government
+Purpose: Illustrate the three primary stakeholder perspectives in healthcare and their key relationships
 
-    Relationships (arrows with labels):
-    - Patient ↔ Provider: "Care Delivery", "Medical Records"
-    - Provider ↔ Payer: "Claims", "Reimbursement"
-    - Payer ↔ Patient: "Coverage", "Premiums"
-    - Provider → Pharmacy: "Prescriptions"
-    - Provider → Lab: "Test Orders", "Results"
-    - Payer → Pharmacy: "Formulary Rules", "Reimbursement"
-    - Employer → Payer: "Group Coverage"
-    - Government → Payer: "Regulations", "Medicare/Medicaid"
+Components to show:
+- Central triangle with three points labeled: &quot;Patient&quot;, &quot;Provider&quot;, and &quot;Payer&quot;
+- Each stakeholder as a different colored circle (Patient: blue, Provider: green, Payer: orange)
+- Bidirectional arrows connecting all three stakeholders
+- Secondary entities around the perimeter: Pharmacy, Lab, Hospital, Clinic, Insurance Company, Employer, Government
 
-    Style: Network diagram with central triangle and satellite nodes
+Relationships (arrows with labels):
+- Patient ↔ Provider: &quot;Care Delivery&quot;, &quot;Medical Records&quot;
+- Provider ↔ Payer: &quot;Claims&quot;, &quot;Reimbursement&quot;
+- Payer ↔ Patient: &quot;Coverage&quot;, &quot;Premiums&quot;
+- Provider → Pharmacy: &quot;Prescriptions&quot;
+- Provider → Lab: &quot;Test Orders&quot;, &quot;Results&quot;
+- Payer → Pharmacy: &quot;Formulary Rules&quot;, &quot;Reimbursement&quot;
+- Employer → Payer: &quot;Group Coverage&quot;
+- Government → Payer: &quot;Regulations&quot;, &quot;Medicare/Medicaid&quot;
 
-    Visual hierarchy:
-    - Primary stakeholders (larger circles, bold labels)
-    - Secondary entities (smaller circles, regular labels)
-    - Primary relationships (thick arrows)
-    - Secondary relationships (thin arrows)
+Style: Network diagram with central triangle and satellite nodes
 
-    Color scheme:
-    - Patient entities: Blue tones
-    - Provider entities: Green tones
-    - Payer entities: Orange tones
-    - Government/regulatory: Gray
+Visual hierarchy:
+- Primary stakeholders (larger circles, bold labels)
+- Secondary entities (smaller circles, regular labels)
+- Primary relationships (thick arrows)
+- Secondary relationships (thin arrows)
 
-    Annotations:
-    - Label showing "Data flows in all directions"
-    - Note: "Each relationship generates complex data exchanges"
+Color scheme:
+- Patient entities: Blue tones
+- Provider entities: Green tones
+- Payer entities: Orange tones
+- Government/regulatory: Gray
 
-    Implementation: SVG-based diagram or Mermaid diagram embedded in markdown
+Annotations:
+- Label showing &quot;Data flows in all directions&quot;
+- Note: &quot;Each relationship generates complex data exchanges&quot;
+
+Implementation: SVG-based diagram or Mermaid diagram embedded in markdown
+</code></pre></div></td></tr></table></div>
 </details>
-
 <h2 id="understanding-healthcare-economics">Understanding Healthcare Economics</h2>
 <h3 id="the-healthcare-cost-crisis">The Healthcare Cost Crisis</h3>
 <p><strong>Healthcare cost</strong> refers to the total financial resources consumed by healthcare services, encompassing direct medical expenses (physician fees, hospital charges, medications, procedures) as well as indirect costs (administrative overhead, insurance processing, regulatory compliance). In the United States, total healthcare expenditures exceeded $4.3 trillion in 2021, representing approximately 18.3% of the nation's GDP—far exceeding other developed nations where healthcare typically represents 9-12% of GDP.</p>
@@ -1703,57 +1980,105 @@
 <li><strong>Market consolidation</strong>: Hospital and provider mergers reducing competition</li>
 </ul>
 <details>
-    <summary>Per-Person Healthcare Cost Comparison Chart</summary>
-    Type: chart
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Per-Person Healthcare Cost Comparison Chart&lt;/summary&gt;
+Use the chart-generator skill to create the following chart
 
-    Chart type: Bar chart with dual y-axis
+Chart type: Bar chart with dual y-axis
 
-    Purpose: Compare per-person healthcare spending across countries and show U.S. cost premium
+Purpose: Compare per-person healthcare spending across countries and show U.S. cost premium
 
-    X-axis: Countries (United States, Switzerland, Germany, Sweden, Netherlands, France, Canada, United Kingdom, Japan)
+X-axis: Countries (United States, Switzerland, Germany, Sweden, Netherlands, France, Canada, United Kingdom, Japan)
 
-    Y-axis (left): Per-person annual healthcare spending (USD)
-    Y-axis (right): Healthcare spending as % of GDP
+Y-axis (left): Per-person annual healthcare spending (USD)
+Y-axis (right): Healthcare spending as % of GDP
 
-    Data series 1 (bars - primary y-axis):
-    - United States: $12,914
-    - Switzerland: $7,138
-    - Germany: $6,731
-    - Sweden: $6,262
-    - Netherlands: $6,190
-    - France: $5,564
-    - Canada: $5,418
-    - United Kingdom: $5,087
-    - Japan: $4,691
+Data series 1 (bars - primary y-axis):
+- United States: $12,914
+- Switzerland: $7,138
+- Germany: $6,731
+- Sweden: $6,262
+- Netherlands: $6,190
+- France: $5,564
+- Canada: $5,418
+- United Kingdom: $5,087
+- Japan: $4,691
 
-    Data series 2 (line with markers - secondary y-axis):
-    - United States: 18.3%
-    - Switzerland: 11.3%
-    - Germany: 11.7%
-    - Sweden: 10.9%
-    - Netherlands: 10.1%
-    - France: 11.0%
-    - Canada: 10.8%
-    - United Kingdom: 10.2%
-    - Japan: 10.9%
+Data series 2 (line with markers - secondary y-axis):
+- United States: 18.3%
+- Switzerland: 11.3%
+- Germany: 11.7%
+- Sweden: 10.9%
+- Netherlands: 10.1%
+- France: 11.0%
+- Canada: 10.8%
+- United Kingdom: 10.2%
+- Japan: 10.9%
 
-    Color scheme:
-    - U.S. bar: Red (to highlight)
-    - Other countries: Blue
-    - Line graph: Orange with circular markers
+Color scheme:
+- U.S. bar: Red (to highlight)
+- Other countries: Blue
+- Line graph: Orange with circular markers
 
-    Title: "Per-Person Healthcare Spending: United States vs. Comparable Nations (2021)"
+Title: &quot;Per-Person Healthcare Spending: United States vs. Comparable Nations (2021)&quot;
 
-    Annotations:
-    - Arrow pointing to U.S. bar: "2x higher than comparable nations"
-    - Shaded region showing "Typical range for developed nations"
-    - Data source note: "OECD Health Statistics 2022"
+Annotations:
+- Arrow pointing to U.S. bar: &quot;2x higher than comparable nations&quot;
+- Shaded region showing &quot;Typical range for developed nations&quot;
+- Data source note: &quot;OECD Health Statistics 2022&quot;
 
-    Legend: Position top-right showing bar and line meanings
+Legend: Position top-right showing bar and line meanings
 
-    Implementation: Chart.js library with responsive design
+Implementation: Chart.js library with responsive design
+</code></pre></div></td></tr></table></div>
 </details>
-
 <h3 id="payment-models-fee-for-service-vs-value-based-care">Payment Models: Fee-For-Service vs. Value-Based Care</h3>
 <p>The <strong>fee-for-service model</strong> (FFS) represents the traditional healthcare payment approach where providers receive reimbursement for each individual service, procedure, test, or visit performed. Under FFS, a physician conducting a 15-minute office visit, ordering two lab tests, and performing a minor procedure would bill separately for each component. This model creates problematic incentives: providers generate more revenue by delivering more services, regardless of whether those services improve patient outcomes or represent the most efficient care pathway.</p>
 <p>Fee-for-service contributes to healthcare cost escalation through several mechanisms:</p>
@@ -1826,134 +2151,259 @@
 <li><strong>Shared Savings/Risk</strong>: Providers share financial gains from cost reductions while maintaining quality</li>
 </ul>
 <details>
-    <summary>Healthcare Payment Model Comparison MicroSim</summary>
-    Type: microsim
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Healthcare Payment Model Comparison MicroSim&lt;/summary&gt;
+Type: microsim
 
-    Learning objective: Enable students to explore how different payment models affect provider behavior, healthcare costs, and patient outcomes through an interactive simulation
+Learning objective: Enable students to explore how different payment models affect provider behavior, healthcare costs, and patient outcomes through an interactive simulation
 
-    Canvas layout (1000x700px):
-    - Top section (1000x150): Title and model selector
-    - Left side (650x550): Visualization area showing patient flow and costs
-    - Right side (350x550): Control panel and metrics dashboard
+Canvas layout (1000x700px):
+- Top section (1000x150): Title and model selector
+- Left side (650x550): Visualization area showing patient flow and costs
+- Right side (350x550): Control panel and metrics dashboard
 
-    Visual elements in simulation area:
-    - 10 patient icons moving through a healthcare journey
-    - Provider building (hospital icon)
-    - Service stations: Office Visit, Lab Tests, Imaging, Procedures, Follow-up
-    - Money indicators ($) showing costs generated
-    - Health meter for each patient (green=healthy, yellow=moderate, red=poor)
-    - Timeline showing days elapsed
+Visual elements in simulation area:
+- 10 patient icons moving through a healthcare journey
+- Provider building (hospital icon)
+- Service stations: Office Visit, Lab Tests, Imaging, Procedures, Follow-up
+- Money indicators ($) showing costs generated
+- Health meter for each patient (green=healthy, yellow=moderate, red=poor)
+- Timeline showing days elapsed
 
-    Interactive controls (right panel):
+Interactive controls (right panel):
 
-    1. Payment Model Selector (radio buttons):
-       - Fee-For-Service
-       - Value-Based Care (Bundled Payment)
-       - Value-Based Care (Capitation)
-       - Value-Based Care (ACO Shared Savings)
+1. Payment Model Selector (radio buttons):
+   - Fee-For-Service
+   - Value-Based Care (Bundled Payment)
+   - Value-Based Care (Capitation)
+   - Value-Based Care (ACO Shared Savings)
 
-    2. Patient Population Characteristics (sliders):
-       - Chronic disease prevalence: 0-50% (default: 30%)
-       - Health literacy level: Low/Medium/High (default: Medium)
-       - Complexity of conditions: Simple/Mixed/Complex (default: Mixed)
+2. Patient Population Characteristics (sliders):
+   - Chronic disease prevalence: 0-50% (default: 30%)
+   - Health literacy level: Low/Medium/High (default: Medium)
+   - Complexity of conditions: Simple/Mixed/Complex (default: Mixed)
 
-    3. Provider Behavior Parameters (sliders):
-       - Care coordination investment: 0-100% (default: 50%)
-       - Preventive care emphasis: 0-100% (default: 50%)
-       - Technology adoption: 0-100% (default: 50%)
+3. Provider Behavior Parameters (sliders):
+   - Care coordination investment: 0-100% (default: 50%)
+   - Preventive care emphasis: 0-100% (default: 50%)
+   - Technology adoption: 0-100% (default: 50%)
 
-    4. Simulation Controls:
-       - "Start Simulation" button
-       - "Reset" button
-       - Speed slider: 1x to 10x (default: 3x)
-       - "Pause/Resume" button
+4. Simulation Controls:
+   - &quot;Start Simulation&quot; button
+   - &quot;Reset&quot; button
+   - Speed slider: 1x to 10x (default: 3x)
+   - &quot;Pause/Resume&quot; button
 
-    Metrics Dashboard (updates in real-time):
-    - Total Cost per Patient: $X,XXX
-    - Number of Services per Patient: X.X
-    - Average Health Outcome Score: XX/100
-    - Provider Revenue: $XX,XXX
-    - Provider Margin: XX%
-    - Preventive Services Ratio: XX%
-    - Emergency Visit Rate: XX%
-    - Patient Satisfaction: XX/100
+Metrics Dashboard (updates in real-time):
+- Total Cost per Patient: $X,XXX
+- Number of Services per Patient: X.X
+- Average Health Outcome Score: XX/100
+- Provider Revenue: $XX,XXX
+- Provider Margin: XX%
+- Preventive Services Ratio: XX%
+- Emergency Visit Rate: XX%
+- Patient Satisfaction: XX/100
 
-    Default parameters for each payment model:
+Default parameters for each payment model:
 
-    Fee-For-Service:
-    - Base office visit: $150
-    - Lab test: $100
-    - Imaging: $400
-    - Procedure: $800
-    - Follow-up: $120
-    - Provider incentive: Maximize service volume
-    - Typical services per patient: 8-12
-    - Total cost per patient: $3,500-5,000
+Fee-For-Service:
+- Base office visit: $150
+- Lab test: $100
+- Imaging: $400
+- Procedure: $800
+- Follow-up: $120
+- Provider incentive: Maximize service volume
+- Typical services per patient: 8-12
+- Total cost per patient: $3,500-5,000
 
-    Bundled Payment (episode of care):
-    - Bundle payment: $3,000 per episode
-    - Provider keeps savings if costs < $3,000
-    - Provider loses money if costs > $3,000
-    - Provider incentive: Efficient care delivery
-    - Typical services per patient: 5-7
-    - Total cost per patient: $2,500-3,200
+Bundled Payment (episode of care):
+- Bundle payment: $3,000 per episode
+- Provider keeps savings if costs &lt; $3,000
+- Provider loses money if costs &gt; $3,000
+- Provider incentive: Efficient care delivery
+- Typical services per patient: 5-7
+- Total cost per patient: $2,500-3,200
 
-    Capitation:
-    - Per-member-per-month: $250
-    - Covers all services for time period
-    - Provider incentive: Prevention and care coordination
-    - Typical services per patient: 3-5
-    - Total cost per patient: $1,800-2,800
+Capitation:
+- Per-member-per-month: $250
+- Covers all services for time period
+- Provider incentive: Prevention and care coordination
+- Typical services per patient: 3-5
+- Total cost per patient: $1,800-2,800
 
-    Behavior modeling:
+Behavior modeling:
 
-    Under Fee-For-Service:
-    - Patients undergo more diagnostic tests
-    - More procedures performed
-    - More follow-up visits scheduled
-    - Less investment in prevention
-    - Higher short-term costs
-    - Outcomes: moderate improvement
+Under Fee-For-Service:
+- Patients undergo more diagnostic tests
+- More procedures performed
+- More follow-up visits scheduled
+- Less investment in prevention
+- Higher short-term costs
+- Outcomes: moderate improvement
 
-    Under Value-Based Care:
-    - More preventive services
-    - Better care coordination
-    - Fewer unnecessary tests
-    - More patient education
-    - Lower long-term costs
-    - Outcomes: greater improvement
+Under Value-Based Care:
+- More preventive services
+- Better care coordination
+- Fewer unnecessary tests
+- More patient education
+- Lower long-term costs
+- Outcomes: greater improvement
 
-    Animation behavior:
-    - Patient icons move through service stations
-    - $ icons pop up when services delivered
-    - Health meters change color based on care received
-    - Cost counter increments
-    - Comparison metrics update continuously
-    - At end, show side-by-side comparison of models
+Animation behavior:
+- Patient icons move through service stations
+- $ icons pop up when services delivered
+- Health meters change color based on care received
+- Cost counter increments
+- Comparison metrics update continuously
+- At end, show side-by-side comparison of models
 
-    Visual feedback:
-    - Highlight differences in care pathways between models
-    - Show cost accumulation differently (rapid under FFS, controlled under VBC)
-    - Display outcome improvements with color changes
-    - Graph total cost trajectory over time
+Visual feedback:
+- Highlight differences in care pathways between models
+- Show cost accumulation differently (rapid under FFS, controlled under VBC)
+- Display outcome improvements with color changes
+- Graph total cost trajectory over time
 
-    Educational annotations:
-    - Hover over service stations to see costs and frequency
-    - Click patient icons to see individual care journey
-    - Hover over metrics to see explanations
-    - Display key insights when simulation completes
+Educational annotations:
+- Hover over service stations to see costs and frequency
+- Click patient icons to see individual care journey
+- Hover over metrics to see explanations
+- Display key insights when simulation completes
 
-    Implementation notes:
-    - Use p5.js for rendering and animation
-    - Store model parameters in JavaScript objects
-    - Implement simple probability models for care decisions
-    - Use random variation within realistic ranges
-    - Ensure reproducible results with seed option
-    - Include "Explanation" mode that pauses and highlights key decision points
+Implementation notes:
+- Use p5.js for rendering and animation
+- Store model parameters in JavaScript objects
+- Implement simple probability models for care decisions
+- Use random variation within realistic ranges
+- Ensure reproducible results with seed option
+- Include &quot;Explanation&quot; mode that pauses and highlights key decision points
 
-    Implementation: p5.js with HTML/CSS controls, deployed in /docs/sims/healthcare-payment-models/
+Implementation: p5.js with HTML/CSS controls, deployed in /docs/sims/healthcare-payment-models/
+</code></pre></div></td></tr></table></div>
 </details>
-
 <p>The transition from fee-for-service to value-based care represents one of the most significant ongoing transformations in U.S. healthcare. This shift creates substantial data challenges: VBC requires comprehensive patient data across time and care settings, sophisticated risk stratification models, real-time quality measurement, and predictive analytics to identify high-risk patients before expensive complications occur. Graph databases excel at these requirements by naturally representing the complex, interconnected relationships among patients, providers, conditions, treatments, and outcomes.</p>
 <h2 id="key-healthcare-stakeholders">Key Healthcare Stakeholders</h2>
 <h3 id="the-healthcare-patient">The Healthcare Patient</h3>
@@ -2097,133 +2547,262 @@
 <li>Operative reports</li>
 <li>Consultation notes</li>
 </ul>
+<iframe src="../../sims/encounter-workflow/main.html" width="100%" height="800px"></iframe>
+<p><a href="../../sims/encounter-workflow/main.html">View Encounter Workflow Fullscreen</a></p>
 <details>
-    <summary>Clinical Encounter Workflow Diagram</summary>
-    Type: workflow
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Clinical Encounter Workflow Diagram&lt;/summary&gt;
+Use the mermaid-generator skill to create the following MicroSim
 
-    Purpose: Illustrate the typical flow of a patient encounter from arrival through billing, showing data capture points and system interactions
+Name: encounter-workflow
 
-    Visual style: Swimlane flowchart with four lanes representing different roles/systems
+Purpose: Illustrate the typical flow of a patient encounter from arrival through billing, showing data capture points and system interactions
 
-    Swimlanes:
-    1. Patient
-    2. Clinical Staff (Registration, Nursing, Physician)
-    3. Clinical Systems (EHR, CPOE, Lab/Imaging)
-    4. Administrative Systems (Billing, Claims)
+Visual style: Swimlane flowchart with four lanes representing different roles/systems
 
-    Workflow steps:
+Swimlanes:
+1. Patient
+2. Clinical Staff (Registration, Nursing, Physician)
+3. Clinical Systems (EHR, CPOE, Lab/Imaging)
+4. Administrative Systems (Billing, Claims)
 
-    **Patient Lane:**
-    1. Patient Arrives
-       Hover: "Patient presents to clinic or hospital"
+Workflow steps:
 
-    2. Provides Information
-       Hover: "Demographics, insurance, chief complaint"
+**Patient Lane:**
+1. Patient Arrives
+   Hover: &quot;Patient presents to clinic or hospital&quot;
 
-    3. Undergoes Care
-       Hover: "Examination, tests, procedures, treatments"
+2. Provides Information
+   Hover: &quot;Demographics, insurance, chief complaint&quot;
 
-    4. Receives Instructions
-       Hover: "Discharge instructions, prescriptions, follow-up appointments"
+3. Undergoes Care
+   Hover: &quot;Examination, tests, procedures, treatments&quot;
 
-    5. Receives Bill/EOB
-       Hover: "Explanation of Benefits showing charges and coverage"
+4. Receives Instructions
+   Hover: &quot;Discharge instructions, prescriptions, follow-up appointments&quot;
 
-    **Clinical Staff Lane:**
-    1. Registration
-       Hover: "Verify identity, check insurance eligibility, collect copay"
-       Data captured: Demographics, insurance, reason for visit
+5. Receives Bill/EOB
+   Hover: &quot;Explanation of Benefits showing charges and coverage&quot;
 
-    2. Triage/Vitals
-       Hover: "Record vital signs, chief complaint, medications, allergies"
-       Data captured: Blood pressure, temperature, pulse, height, weight
+**Clinical Staff Lane:**
+1. Registration
+   Hover: &quot;Verify identity, check insurance eligibility, collect copay&quot;
+   Data captured: Demographics, insurance, reason for visit
 
-    3. Provider Assessment
-       Hover: "History, physical exam, differential diagnosis"
-       Data captured: History of present illness, review of systems, exam findings
+2. Triage/Vitals
+   Hover: &quot;Record vital signs, chief complaint, medications, allergies&quot;
+   Data captured: Blood pressure, temperature, pulse, height, weight
 
-    4. Order Entry
-       Hover: "Labs, imaging, medications, procedures"
-       Data captured: Orders sent to CPOE
+3. Provider Assessment
+   Hover: &quot;History, physical exam, differential diagnosis&quot;
+   Data captured: History of present illness, review of systems, exam findings
 
-    5. Results Review
-       Hover: "Interpret test results, revise diagnosis"
-       Data captured: Results integrated into EHR
+4. Order Entry
+   Hover: &quot;Labs, imaging, medications, procedures&quot;
+   Data captured: Orders sent to CPOE
 
-    6. Documentation
-       Hover: "Clinical notes, diagnosis codes, procedure codes"
-       Data captured: Encounter note, ICD codes, CPT codes
+5. Results Review
+   Hover: &quot;Interpret test results, revise diagnosis&quot;
+   Data captured: Results integrated into EHR
 
-    7. Discharge/Follow-up
-       Hover: "Prescriptions, referrals, next appointment"
-       Data captured: Care plan, prescriptions, referral orders
+6. Documentation
+   Hover: &quot;Clinical notes, diagnosis codes, procedure codes&quot;
+   Data captured: Encounter note, ICD codes, CPT codes
 
-    **Clinical Systems Lane:**
-    1. EHR: Create Encounter
-       Hover: "New encounter record created with patient context"
+7. Discharge/Follow-up
+   Hover: &quot;Prescriptions, referrals, next appointment&quot;
+   Data captured: Care plan, prescriptions, referral orders
 
-    2. CPOE: Receive Orders
-       Hover: "Computerized Provider Order Entry processes orders"
+**Clinical Systems Lane:**
+1. EHR: Create Encounter
+   Hover: &quot;New encounter record created with patient context&quot;
 
-    3. Lab/Imaging: Perform Tests
-       Hover: "Diagnostic services execute ordered tests"
+2. CPOE: Receive Orders
+   Hover: &quot;Computerized Provider Order Entry processes orders&quot;
 
-    4. Results Interface
-       Hover: "Test results flow back to EHR via HL7/FHIR"
+3. Lab/Imaging: Perform Tests
+   Hover: &quot;Diagnostic services execute ordered tests&quot;
 
-    5. EHR: Document Finalization
-       Hover: "Provider signs note, triggers billing process"
+4. Results Interface
+   Hover: &quot;Test results flow back to EHR via HL7/FHIR&quot;
 
-    **Administrative Systems Lane:**
-    1. Eligibility Check
-       Hover: "Real-time verification of insurance coverage"
-       System: Claims clearinghouse or payer portal
+5. EHR: Document Finalization
+   Hover: &quot;Provider signs note, triggers billing process&quot;
 
-    2. Charge Capture
-       Hover: "Extract billable services from clinical documentation"
-       System: Charge Description Master (CDM)
+**Administrative Systems Lane:**
+1. Eligibility Check
+   Hover: &quot;Real-time verification of insurance coverage&quot;
+   System: Claims clearinghouse or payer portal
 
-    3. Medical Coding
-       Hover: "Assign ICD, CPT, HCPCS codes to encounter"
-       System: Coding module (may use AI/NLP assistance)
+2. Charge Capture
+   Hover: &quot;Extract billable services from clinical documentation&quot;
+   System: Charge Description Master (CDM)
 
-    4. Claim Generation
-       Hover: "Create CMS-1500 or UB-04 claim with all required data elements"
-       System: Billing system
+3. Medical Coding
+   Hover: &quot;Assign ICD, CPT, HCPCS codes to encounter&quot;
+   System: Coding module (may use AI/NLP assistance)
 
-    5. Claim Submission
-       Hover: "Electronic submission to payer via EDI 837 transaction"
-       System: Claims clearinghouse
+4. Claim Generation
+   Hover: &quot;Create CMS-1500 or UB-04 claim with all required data elements&quot;
+   System: Billing system
 
-    6. Adjudication Wait
-       Hover: "Payer reviews claim, determines payment"
-       System: Payer adjudication engine
+5. Claim Submission
+   Hover: &quot;Electronic submission to payer via EDI 837 transaction&quot;
+   System: Claims clearinghouse
 
-    7. Payment Posting
-       Hover: "Record payment, contractual adjustments, patient responsibility"
-       System: Billing system accounts receivable
+6. Adjudication Wait
+   Hover: &quot;Payer reviews claim, determines payment&quot;
+   System: Payer adjudication engine
 
-    Decision points:
-    - After Registration: Is eligibility active? (Yes → Continue, No → Patient pay or reschedule)
-    - After Provider Assessment: Admit to hospital? (Yes → Inpatient workflow, No → Continue outpatient)
-    - After Documentation: Coding complete? (Yes → Submit claim, No → Return to coder)
-    - After Claim Submission: Claim accepted? (Yes → Wait for payment, No → Fix errors and resubmit)
+7. Payment Posting
+   Hover: &quot;Record payment, contractual adjustments, patient responsibility&quot;
+   System: Billing system accounts receivable
 
-    Color coding:
-    - Patient activities: Blue
-    - Clinical activities: Green
-    - System processes: Purple
-    - Financial processes: Orange
-    - Decision points: Yellow diamonds
+Decision points:
+- After Registration: Is eligibility active? (Yes → Continue, No → Patient pay or reschedule)
+- After Provider Assessment: Admit to hospital? (Yes → Inpatient workflow, No → Continue outpatient)
+- After Documentation: Coding complete? (Yes → Submit claim, No → Return to coder)
+- After Claim Submission: Claim accepted? (Yes → Wait for payment, No → Fix errors and resubmit)
 
-    Annotations:
-    - Typical timeframes for key stages
-    - Data standards used (HL7, FHIR, X12)
-    - Common pain points and delays
+Color coding:
+- Patient activities: Blue
+- Clinical activities: Green
+- System processes: Purple
+- Financial processes: Orange
+- Decision points: Yellow diamonds
 
-    Implementation: Mermaid diagram or interactive SVG with hover states, embedded in markdown or as separate HTML file
+Annotations:
+- Typical timeframes for key stages
+- Data standards used (HL7, FHIR, X12)
+- Common pain points and delays
+
+Implementation: Mermaid diagram or interactive SVG with hover states, embedded in markdown or as separate HTML file
+</code></pre></div></td></tr></table></div>
 </details>
-
 <h3 id="clinical-workflows">Clinical Workflows</h3>
 <p><strong>Clinical workflow</strong> describes the sequence of tasks, decisions, handoffs, and information exchanges that occur during healthcare delivery. Clinical workflows span multiple timeframes—from seconds (responding to a cardiac arrest) to years (managing chronic disease progression)—and involve coordination across diverse roles, systems, and organizations. Effective graph modeling of healthcare data requires understanding these workflows because they determine how data elements relate temporally and causally.</p>
 <p>Common clinical workflows include:</p>
@@ -2357,130 +2936,251 @@
 <li><strong>RxNorm</strong>: Normalized medication names and relationships</li>
 </ul>
 <details>
-    <summary>Medical Coding Systems Interactive Infographic</summary>
-    Type: infographic
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Medical Coding Systems Interactive Infographic&lt;/summary&gt;
+Type: infographic
 
-    Purpose: Provide a visual overview of the major medical coding systems, their purposes, governing bodies, and relationships
+Purpose: Provide a visual overview of the major medical coding systems, their purposes, governing bodies, and relationships
 
-    Layout: Central hub-and-spoke design with "Medical Coding Systems" at center
+Layout: Central hub-and-spoke design with &quot;Medical Coding Systems&quot; at center
 
-    Main coding systems (spokes radiating from center):
+Main coding systems (spokes radiating from center):
 
-    1. **ICD (International Classification of Diseases)**
-       Position: Top center
-       Color: Red
-       Icon: Medical diagnosis symbol
-       Click to expand details:
-       - Full name: International Classification of Diseases, 10th/11th Revision
-       - Governing body: World Health Organization (WHO)
-       - U.S. version: ICD-10-CM (Clinical Modification) for diagnoses
-       - U.S. procedure codes: ICD-10-PCS (Procedure Coding System)
-       - Purpose: Classify diseases, injuries, causes of death
-       - Structure: Hierarchical categories with 3-7 character codes
-       - Example: E11.9 = Type 2 diabetes mellitus without complications
-       - Use cases: Claims, epidemiology, quality measures, mortality statistics
-       - Update frequency: Annual (October 1)
+1. **ICD (International Classification of Diseases)**
+   Position: Top center
+   Color: Red
+   Icon: Medical diagnosis symbol
+   Click to expand details:
+   - Full name: International Classification of Diseases, 10th/11th Revision
+   - Governing body: World Health Organization (WHO)
+   - U.S. version: ICD-10-CM (Clinical Modification) for diagnoses
+   - U.S. procedure codes: ICD-10-PCS (Procedure Coding System)
+   - Purpose: Classify diseases, injuries, causes of death
+   - Structure: Hierarchical categories with 3-7 character codes
+   - Example: E11.9 = Type 2 diabetes mellitus without complications
+   - Use cases: Claims, epidemiology, quality measures, mortality statistics
+   - Update frequency: Annual (October 1)
 
-    2. **CPT (Current Procedural Terminology)**
-       Position: Upper right
-       Color: Blue
-       Icon: Stethoscope/procedure symbol
-       Click to expand details:
-       - Full name: Current Procedural Terminology
-       - Governing body: American Medical Association (AMA)
-       - Purpose: Describe physician services, procedures, diagnostic tests
-       - Structure: 5-digit codes with optional 2-digit modifiers
-       - Categories: Category I (common procedures), Category II (quality measures), Category III (emerging procedures)
-       - Example: 99213 = Office visit, established patient, level 3
-       - Use cases: Professional fee billing, utilization tracking, performance measurement
-       - Update frequency: Annual (January 1)
+2. **CPT (Current Procedural Terminology)**
+   Position: Upper right
+   Color: Blue
+   Icon: Stethoscope/procedure symbol
+   Click to expand details:
+   - Full name: Current Procedural Terminology
+   - Governing body: American Medical Association (AMA)
+   - Purpose: Describe physician services, procedures, diagnostic tests
+   - Structure: 5-digit codes with optional 2-digit modifiers
+   - Categories: Category I (common procedures), Category II (quality measures), Category III (emerging procedures)
+   - Example: 99213 = Office visit, established patient, level 3
+   - Use cases: Professional fee billing, utilization tracking, performance measurement
+   - Update frequency: Annual (January 1)
 
-    3. **HCPCS (Healthcare Common Procedure Coding System)**
-       Position: Right
-       Color: Green
-       Icon: Medical supply/durable medical equipment
-       Click to expand details:
-       - Full name: Healthcare Common Procedure Coding System
-       - Governing body: Centers for Medicare & Medicaid Services (CMS)
-       - Structure: Level I = CPT codes, Level II = National codes (A-V)
-       - Purpose: Services, supplies, equipment, ambulance, drugs not in CPT
-       - Example: E0163 = Commode chair, mobile or stationary
-       - Use cases: Medicare/Medicaid billing, durable medical equipment, supplies
-       - Update frequency: Quarterly
+3. **HCPCS (Healthcare Common Procedure Coding System)**
+   Position: Right
+   Color: Green
+   Icon: Medical supply/durable medical equipment
+   Click to expand details:
+   - Full name: Healthcare Common Procedure Coding System
+   - Governing body: Centers for Medicare &amp; Medicaid Services (CMS)
+   - Structure: Level I = CPT codes, Level II = National codes (A-V)
+   - Purpose: Services, supplies, equipment, ambulance, drugs not in CPT
+   - Example: E0163 = Commode chair, mobile or stationary
+   - Use cases: Medicare/Medicaid billing, durable medical equipment, supplies
+   - Update frequency: Quarterly
 
-    4. **NDC/Drug Codes**
-       Position: Lower right
-       Color: Purple
-       Icon: Pill/medication bottle
-       Click to expand details:
-       - Full name: National Drug Code
-       - Governing body: U.S. Food and Drug Administration (FDA)
-       - Structure: 10-11 digit code (labeler-product-package)
-       - Purpose: Uniquely identify drug products
-       - Example: 0071-0155-23 = Lipitor 20mg, 90 tablets
-       - Related systems: RxNorm (normalized names), GPI (therapeutic classification)
-       - Use cases: Pharmacy billing, formulary management, drug utilization review
-       - Update frequency: Continuous as products registered
+4. **NDC/Drug Codes**
+   Position: Lower right
+   Color: Purple
+   Icon: Pill/medication bottle
+   Click to expand details:
+   - Full name: National Drug Code
+   - Governing body: U.S. Food and Drug Administration (FDA)
+   - Structure: 10-11 digit code (labeler-product-package)
+   - Purpose: Uniquely identify drug products
+   - Example: 0071-0155-23 = Lipitor 20mg, 90 tablets
+   - Related systems: RxNorm (normalized names), GPI (therapeutic classification)
+   - Use cases: Pharmacy billing, formulary management, drug utilization review
+   - Update frequency: Continuous as products registered
 
-    5. **LOINC (Lab/Clinical Observations)**
-       Position: Lower left
-       Color: Orange
-       Icon: Laboratory test tube
-       Click to expand details:
-       - Full name: Logical Observation Identifiers Names and Codes
-       - Governing body: Regenstrief Institute
-       - Purpose: Identify laboratory and clinical observations
-       - Structure: Numeric codes with six-part names
-       - Example: 2339-0 = Glucose [Mass/volume] in Blood
-       - Use cases: Lab results exchange, clinical observations, vital signs
-       - Update frequency: Biannually
+5. **LOINC (Lab/Clinical Observations)**
+   Position: Lower left
+   Color: Orange
+   Icon: Laboratory test tube
+   Click to expand details:
+   - Full name: Logical Observation Identifiers Names and Codes
+   - Governing body: Regenstrief Institute
+   - Purpose: Identify laboratory and clinical observations
+   - Structure: Numeric codes with six-part names
+   - Example: 2339-0 = Glucose [Mass/volume] in Blood
+   - Use cases: Lab results exchange, clinical observations, vital signs
+   - Update frequency: Biannually
 
-    6. **SNOMED CT (Clinical Terminology)**
-       Position: Left
-       Color: Teal
-       Icon: Medical hierarchy tree
-       Click to expand details:
-       - Full name: Systematized Nomenclature of Medicine Clinical Terms
-       - Governing body: International Health Terminology Standards Development Organisation (IHTSDO)
-       - Purpose: Comprehensive clinical terminology and ontology
-       - Structure: Concept codes with hierarchical relationships
-       - Example: 44054006 = Diabetes mellitus type 2
-       - Use cases: EHR documentation, clinical decision support, semantic interoperability
-       - Update frequency: Biannual releases
+6. **SNOMED CT (Clinical Terminology)**
+   Position: Left
+   Color: Teal
+   Icon: Medical hierarchy tree
+   Click to expand details:
+   - Full name: Systematized Nomenclature of Medicine Clinical Terms
+   - Governing body: International Health Terminology Standards Development Organisation (IHTSDO)
+   - Purpose: Comprehensive clinical terminology and ontology
+   - Structure: Concept codes with hierarchical relationships
+   - Example: 44054006 = Diabetes mellitus type 2
+   - Use cases: EHR documentation, clinical decision support, semantic interoperability
+   - Update frequency: Biannual releases
 
-    Relationship connectors (lines between spokes):
-    - ICD ↔ CPT: "Often billed together" (dotted line)
-    - CPT ↔ HCPCS: "HCPCS Level I = CPT" (solid line)
-    - ICD ↔ SNOMED CT: "SNOMED more granular than ICD" (dotted line)
-    - NDC ↔ HCPCS: "Some HCPCS codes map to drug categories" (dotted line)
-    - All systems → Center: "All contribute to healthcare data ecosystem"
+Relationship connectors (lines between spokes):
+- ICD ↔ CPT: &quot;Often billed together&quot; (dotted line)
+- CPT ↔ HCPCS: &quot;HCPCS Level I = CPT&quot; (solid line)
+- ICD ↔ SNOMED CT: &quot;SNOMED more granular than ICD&quot; (dotted line)
+- NDC ↔ HCPCS: &quot;Some HCPCS codes map to drug categories&quot; (dotted line)
+- All systems → Center: &quot;All contribute to healthcare data ecosystem&quot;
 
-    Interactive features:
-    - Hover over coding system: Show brief description and icon highlight
-    - Click coding system: Expand detailed panel with full information
-    - Click relationship line: Show mapping examples between systems
-    - Toggle button: "Show update timelines" (displays timeline view of update frequencies)
-    - Search box: Enter a condition/procedure to see which coding systems apply
+Interactive features:
+- Hover over coding system: Show brief description and icon highlight
+- Click coding system: Expand detailed panel with full information
+- Click relationship line: Show mapping examples between systems
+- Toggle button: &quot;Show update timelines&quot; (displays timeline view of update frequencies)
+- Search box: Enter a condition/procedure to see which coding systems apply
 
-    Visual enhancements:
-    - Each coding system uses distinct color
-    - Icons represent primary use case
-    - Pulsing animation on hover
-    - Smooth expand/collapse animations
-    - Clean, modern flat design
+Visual enhancements:
+- Each coding system uses distinct color
+- Icons represent primary use case
+- Pulsing animation on hover
+- Smooth expand/collapse animations
+- Clean, modern flat design
 
-    Annotations:
-    - "All U.S. healthcare claims must include ICD diagnosis codes"
-    - "CPT and HCPCS together describe all billable services"
-    - "Multiple coding systems often describe the same clinical concept"
+Annotations:
+- &quot;All U.S. healthcare claims must include ICD diagnosis codes&quot;
+- &quot;CPT and HCPCS together describe all billable services&quot;
+- &quot;Multiple coding systems often describe the same clinical concept&quot;
 
-    Footer information:
-    - "Understanding these coding systems is essential for healthcare data modeling"
-    - "Graph databases can represent relationships among codes from different systems"
+Footer information:
+- &quot;Understanding these coding systems is essential for healthcare data modeling&quot;
+- &quot;Graph databases can represent relationships among codes from different systems&quot;
 
-    Implementation: HTML/CSS/JavaScript with SVG or Canvas, responsive design, deployed as standalone HTML file
+Implementation: HTML/CSS/JavaScript with SVG or Canvas, responsive design, deployed as standalone HTML file
+</code></pre></div></td></tr></table></div>
 </details>
-
 <h3 id="icd-codes-diagnosis-and-inpatient-procedures">ICD Codes: Diagnosis and Inpatient Procedures</h3>
 <p><strong>ICD codes</strong> (International Classification of Diseases) represent the global standard for classifying diseases, injuries, causes of death, and inpatient hospital procedures. The World Health Organization (WHO) maintains the international version (currently ICD-11), while the United States uses ICD-10-CM (Clinical Modification) for diagnoses and ICD-10-PCS (Procedure Coding System) for inpatient procedures. ICD-10-CM was adopted in the U.S. in October 2015, replacing the decades-old ICD-9-CM system and expanding from approximately 14,000 diagnosis codes to over 70,000, enabling far greater clinical specificity.</p>
 <p>ICD-10-CM code structure:</p>
@@ -2845,176 +3545,343 @@
 <li><strong>Master data management</strong>: Create unified views of patients, providers, and facilities across sources</li>
 </ul>
 <details>
-    <summary>Healthcare Data Integration Graph Model</summary>
-    Type: graph-model
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Healthcare Data Integration Graph Model&lt;/summary&gt;
+Type: graph-model
 
-    Purpose: Demonstrate how graph databases can integrate healthcare data from multiple sources (EHR, claims, lab, pharmacy) around a unified patient view
+Purpose: Demonstrate how graph databases can integrate healthcare data from multiple sources (EHR, claims, lab, pharmacy) around a unified patient view
 
-    Node types:
+Node types:
 
-    1. **Patient** (blue circles, large)
-       Properties: patient_id, MRN, name, DOB, gender, address
-       Labels: "Master Patient Record"
+1. **Patient** (blue circles, large)
+   Properties: patient_id, MRN, name, DOB, gender, address
+   Labels: &quot;Master Patient Record&quot;
 
-    2. **Source System** (gray hexagons, medium)
-       Properties: system_name, vendor, organization
-       Examples: "Epic EHR - Hospital A", "Claims Database - Payer X", "LabCorp Interface", "CVS Pharmacy"
+2. **Source System** (gray hexagons, medium)
+   Properties: system_name, vendor, organization
+   Examples: &quot;Epic EHR - Hospital A&quot;, &quot;Claims Database - Payer X&quot;, &quot;LabCorp Interface&quot;, &quot;CVS Pharmacy&quot;
 
-    3. **Encounter** (green squares, medium)
-       Properties: encounter_id, date, type, facility, chief_complaint
-       Examples: "Office Visit 2024-01-15", "ED Visit 2024-02-03", "Hospitalization 2024-03-10"
+3. **Encounter** (green squares, medium)
+   Properties: encounter_id, date, type, facility, chief_complaint
+   Examples: &quot;Office Visit 2024-01-15&quot;, &quot;ED Visit 2024-02-03&quot;, &quot;Hospitalization 2024-03-10&quot;
 
-    4. **Diagnosis** (red diamonds, small)
-       Properties: ICD_code, description, onset_date, status
-       Examples: "E11.9 Type 2 Diabetes", "I10 Essential Hypertension", "J45.909 Asthma"
+4. **Diagnosis** (red diamonds, small)
+   Properties: ICD_code, description, onset_date, status
+   Examples: &quot;E11.9 Type 2 Diabetes&quot;, &quot;I10 Essential Hypertension&quot;, &quot;J45.909 Asthma&quot;
 
-    5. **Medication** (purple pill shapes, small)
-       Properties: drug_name, NDC, RxNorm, dose, frequency, start_date
-       Examples: "Metformin 500mg BID", "Lisinopril 10mg daily", "Albuterol inhaler PRN"
+5. **Medication** (purple pill shapes, small)
+   Properties: drug_name, NDC, RxNorm, dose, frequency, start_date
+   Examples: &quot;Metformin 500mg BID&quot;, &quot;Lisinopril 10mg daily&quot;, &quot;Albuterol inhaler PRN&quot;
 
-    6. **Lab Result** (orange test tubes, small)
-       Properties: LOINC_code, test_name, value, units, date, reference_range
-       Examples: "HbA1c 7.2%", "Glucose 145 mg/dL", "Creatinine 0.9 mg/dL"
+6. **Lab Result** (orange test tubes, small)
+   Properties: LOINC_code, test_name, value, units, date, reference_range
+   Examples: &quot;HbA1c 7.2%&quot;, &quot;Glucose 145 mg/dL&quot;, &quot;Creatinine 0.9 mg/dL&quot;
 
-    7. **Provider** (teal stethoscope icons, medium)
-       Properties: NPI, name, specialty, organization
-       Examples: "Dr. Smith - PCP", "Dr. Jones - Endocrinology", "Dr. Lee - Emergency Medicine"
+7. **Provider** (teal stethoscope icons, medium)
+   Properties: NPI, name, specialty, organization
+   Examples: &quot;Dr. Smith - PCP&quot;, &quot;Dr. Jones - Endocrinology&quot;, &quot;Dr. Lee - Emergency Medicine&quot;
 
-    8. **Coding System** (yellow books, small)
-       Properties: system_name, version, code
-       Examples: "ICD-10-CM", "RxNorm", "LOINC", "SNOMED CT"
+8. **Coding System** (yellow books, small)
+   Properties: system_name, version, code
+   Examples: &quot;ICD-10-CM&quot;, &quot;RxNorm&quot;, &quot;LOINC&quot;, &quot;SNOMED CT&quot;
 
-    Edge types:
+Edge types:
 
-    1. **SOURCED_FROM** (Patient → Source System)
-       Properties: identifier_type, identifier_value, confidence_score
-       Style: Dashed gray arrows
-       Purpose: Show which systems contributed patient data
+1. **SOURCED_FROM** (Patient → Source System)
+   Properties: identifier_type, identifier_value, confidence_score
+   Style: Dashed gray arrows
+   Purpose: Show which systems contributed patient data
 
-    2. **HAD_ENCOUNTER** (Patient → Encounter)
-       Properties: admission_date, discharge_date
-       Style: Solid green arrows
-       Purpose: Link patient to care episodes
+2. **HAD_ENCOUNTER** (Patient → Encounter)
+   Properties: admission_date, discharge_date
+   Style: Solid green arrows
+   Purpose: Link patient to care episodes
 
-    3. **DOCUMENTED_BY** (Encounter → Provider)
-       Properties: role (attending, consulting, PCP)
-       Style: Solid teal arrows
-       Purpose: Connect encounters to providers
+3. **DOCUMENTED_BY** (Encounter → Provider)
+   Properties: role (attending, consulting, PCP)
+   Style: Solid teal arrows
+   Purpose: Connect encounters to providers
 
-    4. **DIAGNOSED_WITH** (Encounter → Diagnosis)
-       Properties: diagnosis_type (primary, secondary), documentation_date
-       Style: Solid red arrows
-       Purpose: Link diagnoses to encounters
+4. **DIAGNOSED_WITH** (Encounter → Diagnosis)
+   Properties: diagnosis_type (primary, secondary), documentation_date
+   Style: Solid red arrows
+   Purpose: Link diagnoses to encounters
 
-    5. **PRESCRIBED** (Encounter → Medication)
-       Properties: prescription_date, prescribing_provider, status (active, discontinued)
-       Style: Solid purple arrows
-       Purpose: Connect medications to encounters where prescribed
+5. **PRESCRIBED** (Encounter → Medication)
+   Properties: prescription_date, prescribing_provider, status (active, discontinued)
+   Style: Solid purple arrows
+   Purpose: Connect medications to encounters where prescribed
 
-    6. **ORDERED** (Encounter → Lab Result)
-       Properties: order_date, ordering_provider
-       Style: Solid orange arrows
-       Purpose: Link lab results to encounters
+6. **ORDERED** (Encounter → Lab Result)
+   Properties: order_date, ordering_provider
+   Style: Solid orange arrows
+   Purpose: Link lab results to encounters
 
-    7. **TAKES** (Patient → Medication)
-       Properties: start_date, end_date, adherence_score
-       Style: Dashed purple arrows
-       Purpose: Show current medication regimen
+7. **TAKES** (Patient → Medication)
+   Properties: start_date, end_date, adherence_score
+   Style: Dashed purple arrows
+   Purpose: Show current medication regimen
 
-    8. **HAS_DIAGNOSIS** (Patient → Diagnosis)
-       Properties: onset_date, status (active, resolved, historical)
-       Style: Dashed red arrows
-       Purpose: Link patient to problem list
+8. **HAS_DIAGNOSIS** (Patient → Diagnosis)
+   Properties: onset_date, status (active, resolved, historical)
+   Style: Dashed red arrows
+   Purpose: Link patient to problem list
 
-    9. **CODED_AS** (Diagnosis → Coding System)
-       Properties: code_value, version
-       Style: Dotted yellow arrows
-       Purpose: Show code mappings across terminologies
+9. **CODED_AS** (Diagnosis → Coding System)
+   Properties: code_value, version
+   Style: Dotted yellow arrows
+   Purpose: Show code mappings across terminologies
 
-    10. **MAPS_TO** (Coding System → Coding System)
-        Properties: mapping_confidence, mapping_type (equivalent, narrower, broader)
-        Style: Bidirectional dotted yellow arrows
-        Purpose: Represent semantic relationships among coding systems
+10. **MAPS_TO** (Coding System → Coding System)
+    Properties: mapping_confidence, mapping_type (equivalent, narrower, broader)
+    Style: Bidirectional dotted yellow arrows
+    Purpose: Represent semantic relationships among coding systems
 
-    Sample data structure:
+Sample data structure:
 
-    Central patient node: "John Doe, DOB: 1960-01-01"
-    ├─ SOURCED_FROM → "Epic EHR - Hospital A" (MRN: 123456)
-    ├─ SOURCED_FROM → "Claims Database - Payer X" (Member ID: 987654)
-    ├─ SOURCED_FROM → "LabCorp Interface" (Account: LC-456)
-    ├─ HAD_ENCOUNTER → "Office Visit 2024-01-15"
-    │  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
-    │  ├─ DIAGNOSED_WITH → "E11.9 Type 2 Diabetes"
-    │  ├─ PRESCRIBED → "Metformin 500mg BID"
-    │  └─ ORDERED → "HbA1c 7.2%"
-    ├─ HAD_ENCOUNTER → "Office Visit 2024-04-10"
-    │  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
-    │  └─ ORDERED → "HbA1c 6.8%"
-    ├─ HAS_DIAGNOSIS → "E11.9 Type 2 Diabetes"
-    │  └─ CODED_AS → "ICD-10-CM: E11.9"
-    │     └─ MAPS_TO → "SNOMED CT: 44054006 (Diabetes mellitus type 2)"
-    ├─ HAS_DIAGNOSIS → "I10 Essential Hypertension"
-    └─ TAKES → "Metformin 500mg BID"
+Central patient node: &quot;John Doe, DOB: 1960-01-01&quot;
+├─ SOURCED_FROM → &quot;Epic EHR - Hospital A&quot; (MRN: 123456)
+├─ SOURCED_FROM → &quot;Claims Database - Payer X&quot; (Member ID: 987654)
+├─ SOURCED_FROM → &quot;LabCorp Interface&quot; (Account: LC-456)
+├─ HAD_ENCOUNTER → &quot;Office Visit 2024-01-15&quot;
+│  ├─ DOCUMENTED_BY → &quot;Dr. Smith - PCP&quot;
+│  ├─ DIAGNOSED_WITH → &quot;E11.9 Type 2 Diabetes&quot;
+│  ├─ PRESCRIBED → &quot;Metformin 500mg BID&quot;
+│  └─ ORDERED → &quot;HbA1c 7.2%&quot;
+├─ HAD_ENCOUNTER → &quot;Office Visit 2024-04-10&quot;
+│  ├─ DOCUMENTED_BY → &quot;Dr. Smith - PCP&quot;
+│  └─ ORDERED → &quot;HbA1c 6.8%&quot;
+├─ HAS_DIAGNOSIS → &quot;E11.9 Type 2 Diabetes&quot;
+│  └─ CODED_AS → &quot;ICD-10-CM: E11.9&quot;
+│     └─ MAPS_TO → &quot;SNOMED CT: 44054006 (Diabetes mellitus type 2)&quot;
+├─ HAS_DIAGNOSIS → &quot;I10 Essential Hypertension&quot;
+└─ TAKES → &quot;Metformin 500mg BID&quot;
 
-    Layout: Hierarchical radial layout with patient at center
+Layout: Hierarchical radial layout with patient at center
 
-    Interactive features:
-    - **Zoom**: Mouse wheel to zoom in/out
-    - **Pan**: Click and drag background
-    - **Node hover**: Show full properties in tooltip
-    - **Node click**: Highlight all connected nodes and edges (1-hop neighborhood)
-    - **Edge hover**: Show relationship properties
-    - **Double-click node**: Expand to show additional connections (if collapsed)
-    - **Right-click node**: Context menu with options:
-      - "Find similar patients" (show patients with similar diagnoses)
-      - "View timeline" (temporal view of connected encounters)
-      - "Show data lineage" (highlight source systems)
-    - **Filter panel**: Toggle node types on/off to simplify view
-    - **Search box**: Find specific patients, diagnoses, medications by name or code
+Interactive features:
+- **Zoom**: Mouse wheel to zoom in/out
+- **Pan**: Click and drag background
+- **Node hover**: Show full properties in tooltip
+- **Node click**: Highlight all connected nodes and edges (1-hop neighborhood)
+- **Edge hover**: Show relationship properties
+- **Double-click node**: Expand to show additional connections (if collapsed)
+- **Right-click node**: Context menu with options:
+  - &quot;Find similar patients&quot; (show patients with similar diagnoses)
+  - &quot;View timeline&quot; (temporal view of connected encounters)
+  - &quot;Show data lineage&quot; (highlight source systems)
+- **Filter panel**: Toggle node types on/off to simplify view
+- **Search box**: Find specific patients, diagnoses, medications by name or code
 
-    Visual styling:
-    - **Node size**: Based on number of connections (degree centrality)
-    - **Edge thickness**: Thicker for more recent/active relationships
-    - **Color coding**: Consistent colors for node types
-    - **Transparency**: Lower opacity for historical/inactive elements
-    - **Animation**: Gentle pulsing for nodes with recent activity
-    - **Clustering**: Visually group related nodes (encounters + associated diagnoses/meds)
+Visual styling:
+- **Node size**: Based on number of connections (degree centrality)
+- **Edge thickness**: Thicker for more recent/active relationships
+- **Color coding**: Consistent colors for node types
+- **Transparency**: Lower opacity for historical/inactive elements
+- **Animation**: Gentle pulsing for nodes with recent activity
+- **Clustering**: Visually group related nodes (encounters + associated diagnoses/meds)
 
-    Legend (top-right panel):
-    - Node shape and color key
-    - Edge style meanings
-    - Interaction instructions
-    - "Show sample queries" button
+Legend (top-right panel):
+- Node shape and color key
+- Edge style meanings
+- Interaction instructions
+- &quot;Show sample queries&quot; button
 
-    Sample queries panel (expandable):
-    1. "Find all encounters where diabetes was diagnosed"
-    2. "Show medication history across all sources"
-    3. "Identify gaps in lab monitoring"
-    4. "Trace data lineage for HbA1c result"
-    5. "Find coding system mappings for diabetes"
+Sample queries panel (expandable):
+1. &quot;Find all encounters where diabetes was diagnosed&quot;
+2. &quot;Show medication history across all sources&quot;
+3. &quot;Identify gaps in lab monitoring&quot;
+4. &quot;Trace data lineage for HbA1c result&quot;
+5. &quot;Find coding system mappings for diabetes&quot;
 
-    Educational annotations:
-    - Callout: "Patient data integrated from 4 source systems"
-    - Callout: "Graph model handles multiple identifiers per patient"
-    - Callout: "Coding system relationships enable semantic queries"
-    - Callout: "Temporal relationships show care progression"
+Educational annotations:
+- Callout: &quot;Patient data integrated from 4 source systems&quot;
+- Callout: &quot;Graph model handles multiple identifiers per patient&quot;
+- Callout: &quot;Coding system relationships enable semantic queries&quot;
+- Callout: &quot;Temporal relationships show care progression&quot;
 
-    Canvas size: 1000x800px
+Canvas size: 1000x800px
 
-    Implementation:
-    - vis-network JavaScript library for graph visualization
-    - D3.js for enhanced layout and animations
-    - Responsive design for various screen sizes
-    - Export options: PNG image, JSON data, Cypher queries
-    - Deployed in /docs/sims/healthcare-data-integration-graph/
+Implementation:
+- vis-network JavaScript library for graph visualization
+- D3.js for enhanced layout and animations
+- Responsive design for various screen sizes
+- Export options: PNG image, JSON data, Cypher queries
+- Deployed in /docs/sims/healthcare-data-integration-graph/
 
-    Data generation:
-    - Use realistic synthetic patient data
-    - Include 1 patient (center), 4 source systems, 5-7 encounters, 3-5 diagnoses, 4-6 medications, 6-10 lab results, 3-4 providers
-    - Ensure temporal consistency (later encounters reference earlier diagnoses)
-    - Include code mappings among ICD, SNOMED, RxNorm, LOINC
+Data generation:
+- Use realistic synthetic patient data
+- Include 1 patient (center), 4 source systems, 5-7 encounters, 3-5 diagnoses, 4-6 medications, 6-10 lab results, 3-4 providers
+- Ensure temporal consistency (later encounters reference earlier diagnoses)
+- Include code mappings among ICD, SNOMED, RxNorm, LOINC
+</code></pre></div></td></tr></table></div>
 </details>
-
 <h2 id="summary-and-key-takeaways">Summary and Key Takeaways</h2>
 <p>This chapter provided a comprehensive overview of the healthcare system domain knowledge essential for effective graph data modeling. Understanding healthcare economics, stakeholder perspectives, clinical workflows, and data standards forms the foundation for designing graph models that accurately represent the complexity and interconnectedness of healthcare information.</p>
 <p>Key concepts covered:</p>
@@ -3046,6 +3913,18 @@
 - <strong>Exchange approaches</strong>: Direct messaging, HIEs, vendor networks, FHIR APIs, point-to-point interfaces
 - <strong>Graph advantages</strong>: Schema flexibility, relationship representation, identity resolution, semantic mapping</p>
 <p>With this healthcare domain foundation, you are now prepared to design graph data models that accurately capture the intricate relationships among patients, providers, payers, clinical concepts, and healthcare transactions. The next chapters will build on this knowledge to develop specific graph modeling patterns for patient-centric, provider-centric, and payer-centric perspectives.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>
+<p><a href="https://www.hl7.org/fhir/overview.html">FHIR Overview</a> - 2024 - HL7 International - Official Fast Healthcare Interoperability Resources (FHIR) specification describing modern healthcare data exchange standards including RESTful APIs and resource-based data models essential for understanding healthcare interoperability.</p>
+</li>
+<li>
+<p><a href="https://www.cdc.gov/nchs/icd/icd-10-cm.htm">ICD-10-CM Official Guidelines</a> - 2024 - Centers for Disease Control and Prevention - Comprehensive resource for the International Classification of Diseases, 10th Revision, Clinical Modification coding system used throughout U.S. healthcare for diagnosis classification and billing.</p>
+</li>
+<li>
+<p><a href="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment">Healthcare Payment Systems Overview</a> - 2024 - Centers for Medicare &amp; Medicaid Services - Official CMS documentation explaining Medicare fee-for-service payment systems, DRGs, and reimbursement methodologies that form the foundation of U.S. healthcare economics.</p>
+</li>
+</ol>
 
 
 
@@ -3084,7 +3963,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../01-graph-theory-database-foundations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 1 - Graph Theory and Database Foundations">
+          <a href="../01-graph-theory-database-foundations/quiz/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quiz">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3094,20 +3973,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Chapter 1 - Graph Theory and Database Foundations
+                Quiz
               </div>
             </div>
           </a>
         
         
           
-          <a href="../03-graph-query-languages/" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 3 - Graph Query Languages and Technologies">
+          <a href="quiz/" class="md-footer__link md-footer__link--next" aria-label="Next: Quiz">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Chapter 3 - Graph Query Languages and Technologies
+                Quiz
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Hop Query Performance: Relational vs Graph Database</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Multi-Hop Query Performance: Relational vs Graph</h1>
+            <p class="subtitle">Healthcare Dependency Analysis (100,000 patient records)</p>
+        </header>
+
+        <div class="chart-container">
+            <canvas id="performanceChart"></canvas>
+        </div>
+
+        <div class="controls">
+            <label class="control-label">Y-Axis Scale:</label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="scaleType" value="linear" checked>
+                    <span>Linear</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="scaleType" value="logarithmic">
+                    <span>Logarithmic</span>
+                </label>
+            </div>
+        </div>
+
+        <!--
+        <div class="analysis">
+            <h2>Key Insights</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <h3>RDBMS Performance</h3>
+                    <p>Relational databases experience exponential performance degradation with JOIN operations. Beyond 4 relationship hops, queries often timeout or become impractical for real-time applications.</p>
+                </div>
+                <div class="insight-card">
+                    <h3>Graph Database Performance</h3>
+                    <p>Graph databases maintain near-constant query performance through index-free adjacency, making deep relationship traversals practical even at 6+ hops.</p>
+                </div>
+                <div class="insight-card">
+                    <h3>Performance Ratio</h3>
+                    <p>At 5 hops, graph databases are approximately <strong>60,000x faster</strong> than traditional relational databases for relationship traversal queries.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <p><strong>Note:</strong> Graph databases maintain O(1) traversal time regardless of relationship depth, making them ideal for healthcare data models with complex interdependencies.</p>
+        </div>
+        -->
+    </div>
+
+    <script>
+        // Data configuration
+        const data = {
+            labels: ['1 hop', '2 hops', '3 hops', '4 hops', '5 hops', '6 hops'],
+            datasets: [
+                {
+                    label: 'RDBMS (JOIN operations)',
+                    data: [15, 180, 3200, 52000, 850000, null],
+                    borderColor: '#DC3545',
+                    backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                    borderWidth: 3,
+                    pointRadius: 8,
+                    pointStyle: 'rect',
+                    pointBackgroundColor: '#DC3545',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.1,
+                    spanGaps: false
+                },
+                {
+                    label: 'Graph DB (Index-free adjacency)',
+                    data: [3, 5, 8, 11, 14, 17],
+                    borderColor: '#28A745',
+                    backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                    borderWidth: 3,
+                    pointRadius: 8,
+                    pointStyle: 'circle',
+                    pointBackgroundColor: '#28A745',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.1
+                }
+            ]
+        };
+
+        // Chart configuration
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1.6,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    title: {
+                        display: false
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        align: 'end',
+                        labels: {
+                            font: {
+                                size: 12,
+                                family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                            },
+                            padding: 15,
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            boxWidth: 12,
+                            boxHeight: 12
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        padding: 12,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 13
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    if (context.parsed.y >= 60000) {
+                                        label += (context.parsed.y / 60000).toFixed(1) + ' minutes';
+                                    } else if (context.parsed.y >= 1000) {
+                                        label += (context.parsed.y / 1000).toFixed(1) + ' seconds';
+                                    } else {
+                                        label += context.parsed.y + ' ms';
+                                    }
+                                } else {
+                                    label += 'Query timeout';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    annotation: {
+                        annotations: {
+                            line1: {
+                                type: 'line',
+                                yMin: 1000,
+                                yMax: 1000,
+                                borderColor: 'rgba(255, 159, 64, 0.3)',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                label: {
+                                    display: true,
+                                    content: '1 second',
+                                    position: 'start',
+                                    backgroundColor: 'rgba(255, 159, 64, 0.8)',
+                                    color: 'white',
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            },
+                            label1: {
+                                type: 'label',
+                                xValue: 3.5,
+                                yValue: 100000,
+                                backgroundColor: 'rgba(220, 53, 69, 0.9)',
+                                content: ['Queries often', 'timeout beyond 4 hops'],
+                                font: {
+                                    size: 11,
+                                    weight: 'bold'
+                                },
+                                color: 'white',
+                                padding: 8,
+                                borderRadius: 4
+                            },
+                            label2: {
+                                type: 'label',
+                                xValue: 4,
+                                yValue: 10,
+                                backgroundColor: 'rgba(40, 167, 69, 0.9)',
+                                content: ['Near-constant', 'performance'],
+                                font: {
+                                    size: 11,
+                                    weight: 'bold'
+                                },
+                                color: 'white',
+                                padding: 8,
+                                borderRadius: 4
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Number of Relationship Hops',
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                            },
+                            padding: { top: 10 }
+                        },
+                        grid: {
+                            display: true,
+                            color: '#E0E0E0',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        title: {
+                            display: true,
+                            text: 'Query Response Time (milliseconds)',
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                            },
+                            padding: { bottom: 10 }
+                        },
+                        min: 0,
+                        max: 900000,
+                        grid: {
+                            display: true,
+                            color: '#E0E0E0',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            font: {
+                                size: 12
+                            },
+                            callback: function(value) {
+                                if (value >= 60000) {
+                                    return (value / 60000).toFixed(0) + ' min';
+                                } else if (value >= 1000) {
+                                    return (value / 1000).toFixed(0) + 's';
+                                }
+                                return value + 'ms';
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Create the chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, config);
+
+        // Function to update Y-axis scale
+        function updateYAxisScale(scaleType) {
+            performanceChart.options.scales.y.type = scaleType;
+
+            if (scaleType === 'linear') {
+                // For linear scale, set explicit min/max and adjust ticks
+                performanceChart.options.scales.y.min = 0;
+                performanceChart.options.scales.y.max = 900000;
+                performanceChart.options.scales.y.ticks.callback = function(value) {
+                    if (value >= 60000) {
+                        return (value / 60000).toFixed(0) + ' min';
+                    } else if (value >= 1000) {
+                        return (value / 1000).toFixed(0) + 's';
+                    }
+                    return value + 'ms';
+                };
+            } else {
+                // For logarithmic scale, restore original settings
+                performanceChart.options.scales.y.min = 1;
+                performanceChart.options.scales.y.max = 1000000;
+                performanceChart.options.scales.y.ticks.callback = function(value) {
+                    // Show powers of 10
+                    if (value === 1 || value === 10 || value === 100 ||
+                        value === 1000 || value === 10000 || value === 100000 ||
+                        value === 1000000) {
+                        if (value >= 1000) {
+                            return (value / 1000) + 's';
+                        }
+                        return value + 'ms';
+                    }
+                    return null;
+                };
+            }
+
+            performanceChart.update();
+        }
+
+        // Add event listeners to radio buttons
+        document.querySelectorAll('input[name="scaleType"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                updateYAxisScale(e.target.value);
+            });
+        });
+
+        // Animation on load
+        window.addEventListener('load', () => {
+            performanceChart.update('show');
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Modeling Healthcare Data with Graphs",
+    "title": "Learning Graph for Modeling Healthcare Data with Graphs",
     "description": "This course teaches students to model complex healthcare data from multiple perspectives including the patient, provider and payer. Students learn how graph databases excel at modeling interconnected clinical data, and explore graph algorithms, graph data science, embeddings and graph neural networks to enable value-based care systems and reduce healthcare costs.",
     "creator": "Dan McCreary",
     "date": "2025-11-06",
@@ -10,7 +10,13 @@
     "license": "CC BY-NC-SA 4.0 DEED"
   },
   "groups": {
-    "GOV": {
+    "FOUND": {
+      "classifierName": "Foundation Concepts",
+      "color": "red",
+      "font": {
+        "color": "white"
+      }
+    },"GOV": {
       "classifierName": "Data Governance",
       "color": "navy",
       "font": {
@@ -80,13 +86,7 @@
         "color": "white"
       }
     },
-    "FOUND": {
-      "classifierName": "Foundation Concepts",
-      "color": "red",
-      "font": {
-        "color": "white"
-      }
-    },
+    
     "CAP": {
       "classifierName": "Capstone & Career",
       "color": "gray",
