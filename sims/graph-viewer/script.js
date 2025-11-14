@@ -89,33 +89,24 @@ function uncheckAllGroups() {
 function getColorName(color) {
   const colorNames = {
     'red': 'Red',
-    'darkred': 'Dark Red',
     'orange': 'Orange',
     'gold': 'Gold',
     'green': 'Green',
     'blue': 'Blue',
-    'navy': 'Navy',
     'indigo': 'Indigo',
     'violet': 'Violet',
     'gray': 'Gray',
-    'grey': 'Gray',
     'brown': 'Brown',
-    'teal': 'Teal',
-    'purple': 'Purple',
-    'deeppink': 'Deep Pink',
-    'lightgreen': 'Light Green',
-    'cyan': 'Cyan'
+    'teal': 'Teal'
   };
-  const normalizedColor = (color || '').toLowerCase();
-  return colorNames[normalizedColor] || color;
+  return colorNames[color.toLowerCase()] || color;
 }
 
 // Helper function to determine if text should be white or black
 function getTextColorForBackground(backgroundColor) {
   // Colors that need white text
-  const darkColors = ['red', 'darkred', 'green', 'blue', 'navy', 'indigo', 'violet', 'gray', 'grey', 'brown', 'teal', 'purple'];
-  const normalizedColor = (backgroundColor || '').toLowerCase();
-  return darkColors.includes(normalizedColor) ? 'white' : 'black';
+  const darkColors = ['red', 'green', 'blue', 'indigo', 'violet', 'gray', 'brown'];
+  return darkColors.includes(backgroundColor.toLowerCase()) ? 'white' : 'black';
 }
 
 // Function to generate legend table from groups data
@@ -214,21 +205,10 @@ function initializeNetwork(graphData) {
       forceAtlas2Based: {
         springLength: 100
       }
-    },
-    interaction: {
-      navigationButtons: true,
-      keyboard: true
     }
   };
 
   network = new vis.Network(container, data, options);
-
-  // Set initial zoom to 120% (1.2x)
-  network.once('stabilizationIterationsDone', function() {
-    network.moveTo({
-      scale: .6
-    });
-  });
 
   // Initialize search functionality
   initializeSearch();
