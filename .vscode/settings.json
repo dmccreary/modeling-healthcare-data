@@ -2,13 +2,10 @@
     "cSpell.words": [
         "betweenness",
         "copayments",
+        "evenodd",
         "explainability",
-        "GSQL",
-        "HCPCS",
-        "pathfinding",
-        "Pharma",
-        "upcoding",
-        "venntooltip",
-        "Warshall"
+        "FHIR",
+        "formularies",
+        "HCPCS"
     ]
 }
