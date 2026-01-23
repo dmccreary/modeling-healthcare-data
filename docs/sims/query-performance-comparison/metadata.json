@@ -1,0 +1,47 @@
+{
+  "title": "Query Performance Comparison: RDBMS vs Graph Database",
+  "description": "This interactive Chart.js visualization demonstrates the dramatic performance differences between relational databases using JOIN operations and graph databases using index-free adjacency for multi-hop relationship queries in healthcare data systems.",
+  "subject": "Mathematics",
+  "topic": "Query Performance Comparison: RDBMS vs Graph Database",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "chart.js",
+  "url": "https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-comparison/",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-comparison/",
+  "_source": {
+    "repo": "modeling-healthcare-data",
+    "sim": "query-performance-comparison",
+    "github_url": "https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/query-performance-comparison",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Computer Science",
+    "Chemistry",
+    "Biology",
+    "Engineering",
+    "Economics"
+  ],
+  "visualizationType": [
+    "animation",
+    "simulation",
+    "chart",
+    "graph",
+    "interactive-demo",
+    "network",
+    "timeline",
+    "map"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Clinical Care Pathway DAG",
+  "description": "[View Clinical Care Pathway DAG Fullscreen](main.html){ .md-button .md-button--primary }",
+  "subject": "Mathematics",
+  "topic": "Clinical Care Pathway DAG",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "vis-network",
+  "url": "https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-care-pathway-dag/",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-care-pathway-dag/",
+  "_source": {
+    "repo": "modeling-healthcare-data",
+    "sim": "clinical-care-pathway-dag",
+    "github_url": "https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/clinical-care-pathway-dag",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Physics",
+    "Computer Science",
+    "Chemistry",
+    "Statistics",
+    "Engineering"
+  ],
+  "visualizationType": [
+    "animation",
+    "simulation",
+    "chart",
+    "graph",
+    "interactive-demo",
+    "network",
+    "timeline",
+    "map"
+  ]
+}
