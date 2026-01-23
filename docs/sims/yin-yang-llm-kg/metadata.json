@@ -1,7 +1,13 @@
 {
   "title": "Yin-Yang: LLM vs Knowledge Graph",
   "creator": "Dan McCreary",
-  "subject": ["Computer Science", "Artificial Intelligence", "Data Management", "Knowledge Graphs", "Large Language Models"],
+  "subject": [
+    "Computer Science",
+    "Artificial Intelligence",
+    "Data Management",
+    "Knowledge Graphs",
+    "Large Language Models"
+  ],
   "description": "An interactive visualization using the Yin-Yang symbol to illustrate the complementary characteristics of Large Language Models and Enterprise Knowledge Graphs.",
   "date": "2025-11-07",
   "type": "Interactive Simulation",
@@ -9,7 +15,11 @@
   "language": "en",
   "rights": "CC BY 4.0",
   "educational": {
-    "gradeLevel": ["Undergraduate", "Graduate", "Professional"],
+    "gradeLevel": [
+      "Undergraduate",
+      "Graduate",
+      "Professional"
+    ],
     "subjectArea": "Computer Science",
     "topic": "AI and Data Management Technologies",
     "learningObjectives": [
@@ -19,7 +29,11 @@
       "Analyze how these technologies can work together in enterprise applications",
       "Evaluate the strengths and limitations of each approach"
     ],
-    "bloomsTaxonomyLevels": ["Understand", "Analyze", "Evaluate"],
+    "bloomsTaxonomyLevels": [
+      "Understand",
+      "Analyze",
+      "Evaluate"
+    ],
     "duration": "15-20 minutes",
     "prerequisites": [
       "Basic understanding of databases and data structures",
@@ -31,8 +45,13 @@
     "framework": "p5.js",
     "canvasDimensions": "400x450",
     "responsive": "Width-responsive",
-    "dependencies": ["p5.js CDN v1.11.10"],
-    "accessibility": ["Screen reader support via describe() function", "High contrast text"]
+    "dependencies": [
+      "p5.js CDN v1.11.10"
+    ],
+    "accessibility": [
+      "Screen reader support via describe() function",
+      "High contrast text"
+    ]
   },
   "userInterface": {
     "controls": [],
@@ -76,5 +95,25 @@
     "Graph Database Technologies",
     "Vector Databases",
     "Hybrid AI Systems"
+  ],
+  "visualizationType": [
+    "graph",
+    "interactive-demo",
+    "network",
+    "simulation"
+  ],
+  "learningObjectives": [
+    "Understand how yin-yang: llm vs knowledge graph algorithms work",
+    "Visualize yin-yang: llm vs knowledge graph data structures and operations",
+    "Analyze the efficiency and behavior of yin-yang: llm vs knowledge graph",
+    "Experiment with parameters to observe their effects on yin-yang: llm vs knowledge graph"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Understand",
+    "Apply",
+    "Analyze",
+    "Evaluate",
+    "Create"
   ]
 }

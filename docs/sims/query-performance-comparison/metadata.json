@@ -43,5 +43,11 @@
     "network",
     "timeline",
     "map"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of query performance comparison: rdbms vs graph database",
+    "Apply query performance comparison: rdbms vs graph database to solve problems",
+    "Visualize and interpret query performance comparison: rdbms vs graph database relationships",
+    "Experiment with parameters to observe their effects on query performance comparison: rdbms vs graph database"
   ]
 }

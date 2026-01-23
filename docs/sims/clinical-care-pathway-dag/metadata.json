@@ -43,5 +43,11 @@
     "network",
     "timeline",
     "map"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of clinical care pathway dag",
+    "Apply clinical care pathway dag to solve problems",
+    "Visualize and interpret clinical care pathway dag relationships",
+    "Experiment with parameters to observe their effects on clinical care pathway dag"
   ]
 }
