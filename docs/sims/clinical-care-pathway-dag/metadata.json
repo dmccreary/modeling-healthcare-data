@@ -49,5 +49,29 @@
     "Apply clinical care pathway dag to solve problems",
     "Visualize and interpret clinical care pathway dag relationships",
     "Experiment with parameters to observe their effects on clinical care pathway dag"
-  ]
+  ],
+  "pedagogical": {
+    "pattern": "demonstration",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "classify",
+      "compare",
+      "explain",
+      "interpret",
+      "summarize"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "corrective",
+      "explanatory",
+      "immediate"
+    ],
+    "interactionStyle": "respond"
+  }
 }
