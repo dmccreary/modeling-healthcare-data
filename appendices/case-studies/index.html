@@ -1,0 +1,1688 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/appendices/case-studies/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Case Studies - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Case Studies - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/appendices/case-studies.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/appendices/case-studies/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Case Studies - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/appendices/case-studies.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#case-studies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Case Studies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stories
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Appendices
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feedback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#startup-companies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Startup Companies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chatgpt-said-gpt-52-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      ChatGPT Said - GPT-5.2 Thinking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insilico-medicine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insilico Medicine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Insilico Medicine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documented-evidence-they-use-a-knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documented evidence they use a knowledge graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-graphs-create-competitive-advantage" class="md-nav__link">
+    <span class="md-ellipsis">
+      How graphs create competitive advantage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#causaly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Causaly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Causaly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documented-evidence-they-use-a-knowledge-graph_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documented evidence they use a knowledge graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-graphs-create-competitive-advantage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      How graphs create competitive advantage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchsci" class="md-nav__link">
+    <span class="md-ellipsis">
+      BenchSci
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BenchSci">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documented-evidence-they-use-a-knowledge-graph-and-graph-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documented evidence they use a knowledge graph and graph database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-graphs-create-competitive-advantage_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How graphs create competitive advantage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mendel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mendel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mendel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documented-evidence-they-use-a-knowledge-graph-hypergraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documented evidence they use a knowledge graph (hypergraph)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-graphs-create-competitive-advantage_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      How graphs create competitive advantage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kahun" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kahun
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kahun">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documented-evidence-they-use-a-knowledge-graph_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documented evidence they use a knowledge graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-graphs-create-competitive-advantage_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      How graphs create competitive advantage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xaira-therapeutics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xaira Therapeutics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xaira Therapeutics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-i-could-verify-publicly" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I could verify publicly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-i-cannot-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I cannot claim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#most-likely-graph-advantage-clearly-marked-as-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Most likely graph advantage (clearly marked as inference)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openevidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenEvidence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenEvidence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-i-could-verify-publicly_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I could verify publicly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-i-cannot-claim_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I cannot claim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-want-this-one-in-the-graph-proven-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      If you want this one in the “graph proven” set
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#molecular-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      Molecular Health
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Molecular Health">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-i-could-verify-publicly_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I could verify publicly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-i-cannot-claim_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I cannot claim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#komodo-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      Komodo Health
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Komodo Health">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-i-could-verify-publicly_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I could verify publicly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-i-cannot-claim_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I cannot claim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-graph-tech-could-matter-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where graph tech could matter (inference)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concertai" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConcertAI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConcertAI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-i-could-verify-publicly_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I could verify publicly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-that-does-and-does-not-prove" class="md-nav__link">
+    <span class="md-ellipsis">
+      What that does and does not prove
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plausible-competitive-advantage-partly-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plausible competitive advantage (partly inference)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abridge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Abridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-i-could-verify-publicly_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I could verify publicly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-i-cannot-claim_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I cannot claim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-shaped-advantage-that-is-common-in-this-space-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph-shaped advantage that is common in this space (inference)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fathom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fathom
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fathom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-i-could-verify-publicly_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I could verify publicly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-i-cannot-claim_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      What I cannot claim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-graph-tech-could-be-a-differentiator-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where graph tech could be a differentiator (inference)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-means-for-your-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      What this means for your infographic
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/appendices/case-studies.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="case-studies">Case Studies</h1>
+<h2 id="startup-companies">Startup Companies</h2>
+<p><img alt="" src="../startup-companies-infographic.png" /></p>
+<h2 id="chatgpt-said-gpt-52-thinking">ChatGPT Said - GPT-5.2 Thinking</h2>
+<p>Below is a company-by-company breakdown from your infographic, focused on <strong>how graph technology (knowledge graphs / graph-native models / hypergraphs) creates competitive advantage</strong>.</p>
+<p>Important note</p>
+<p>For several companies in the graphic, I could <strong>not</strong> find public, technical documentation that they use a knowledge graph (as opposed to “linked data” in a warehouse). For those, I’m explicit about what is and isn’t evidenced.</p>
+<hr />
+<h2 id="insilico-medicine">Insilico Medicine</h2>
+<h3 id="documented-evidence-they-use-a-knowledge-graph">Documented evidence they use a knowledge graph</h3>
+<p>Insilico’s PandaOmics documentation describes a <strong>knowledge graph</strong> as an “enormous network linking Genes, Diseases, Chemicals, and Biological Processes,” with relationships supported by references to original publications. (<a href="https://insilico.com/pandaomics/help/knowledge_graph?utm_source=chatgpt.com" title="Knowledge Graph | PandaOmics">insilico.com</a>)</p>
+<h3 id="how-graphs-create-competitive-advantage">How graphs create competitive advantage</h3>
+<ul>
+<li>
+<p>Evidence-backed target discovery at scale
+  Their KG acts as an “evidence backbone” that connects omics signals to known biology (gene–disease–process–compound), letting scientists move from “differential expression” to “mechanistic plausibility” faster than purely embedding-based literature search.</p>
+</li>
+<li>
+<p>Explainability and provenance (why a target)
+  Because edges are tied to publications, the system can show <em>why</em> a gene is relevant, not just that it co-occurs in text. That’s a major advantage in drug discovery where decisions must be defended scientifically.</p>
+</li>
+<li>
+<p>Faster iteration on hypotheses
+  A graph structure supports traversal-style questions (upstream/downstream biology, related pathways, known modulators) that are cumbersome in purely tabular feature stores.</p>
+</li>
+</ul>
+<hr />
+<h2 id="causaly">Causaly</h2>
+<h3 id="documented-evidence-they-use-a-knowledge-graph_1">Documented evidence they use a knowledge graph</h3>
+<p>Causaly explicitly presents a “high-precision biomedical knowledge graph,” and a dedicated KG page describing it. (<a href="https://www.causaly.com/ai-platform/knowledge-graph?utm_source=chatgpt.com" title="Knowledge Graph">causaly.com</a>)</p>
+<h3 id="how-graphs-create-competitive-advantage_1">How graphs create competitive advantage</h3>
+<ul>
+<li>
+<p>Causal, directional relationships (not just co-occurrence)
+  Their positioning emphasizes differentiating causality vs co-occurrence and “directional relationships,” which is exactly where KG semantics outperform generic RAG over papers. (<a href="https://www.causaly.com/ai-platform/knowledge-graph?utm_source=chatgpt.com" title="Knowledge Graph">causaly.com</a>)</p>
+</li>
+<li>
+<p>Competitive intelligence and “pipeline graph” views
+  A KG enables linking targets → mechanisms → companies → trials → outcomes, supporting early “go/no-go” decisions and reducing redundant research.</p>
+</li>
+<li>
+<p>Verifiability
+  A KG can keep every claim anchored to an extracted evidence object (paper section, figure, supplemental table), reducing hallucination risk in scientific workflows.</p>
+</li>
+</ul>
+<hr />
+<h2 id="benchsci">BenchSci</h2>
+<h3 id="documented-evidence-they-use-a-knowledge-graph-and-graph-database">Documented evidence they use a knowledge graph and graph database</h3>
+<p>BenchSci publicly states their platform core is a <strong>Biological Evidence Knowledge Graph (BEKG)</strong> with hundreds of millions of entities and relationships. (<a href="https://www.benchsci.com/?utm_source=chatgpt.com" title="BenchSci: Reimagining Research">BenchSci</a>)
+Neo4j also published a customer story describing BenchSci using <strong>Neo4j</strong> to build a graph-native model. (<a href="https://neo4j.com/customer-stories/benchsci/?utm_source=chatgpt.com" title="BenchSci Decodes Disease Biology with ...">Neo4j Graph Intelligence Platform</a>)</p>
+<h3 id="how-graphs-create-competitive-advantage_2">How graphs create competitive advantage</h3>
+<ul>
+<li>
+<p>Evidence-first biomedical reasoning
+  Their BEKG is positioned as an “evidence backbone,” linking claims directly to traceable experimental sources, which improves trust and reduces “LLM hallucination” risk in R&amp;D. (<a href="https://www.benchsci.com/?utm_source=chatgpt.com" title="BenchSci: Reimagining Research">BenchSci</a>)</p>
+</li>
+<li>
+<p>Multimodal extraction at scale
+  BenchSci describes extracting information not only from text but also figures/supplemental files (then structuring into graph form). The KG becomes the normalized substrate for search and reasoning.</p>
+</li>
+<li>
+<p>Graph-native querying for de-risking discovery
+  Graph traversal naturally supports questions like “show all evidence paths linking target X to phenotype Y under model Z,” which is hard to do reliably with keyword search alone.</p>
+</li>
+</ul>
+<hr />
+<h2 id="mendel">Mendel</h2>
+<h3 id="documented-evidence-they-use-a-knowledge-graph-hypergraph">Documented evidence they use a knowledge graph (hypergraph)</h3>
+<p>Google Cloud’s writeup states Mendel “leverages a clinical hypergraph,” described as a multi-dimensional knowledge graph used to represent medical information and relationships. (<a href="https://cloud.google.com/transform/gen-ai-medical-records-solutions-llms-mendel?utm_source=chatgpt.com" title="Can gen AI bring order to medical records? This startup is ...">Google Cloud</a>)</p>
+<h3 id="how-graphs-create-competitive-advantage_3">How graphs create competitive advantage</h3>
+<ul>
+<li>
+<p>Cohort building and trial matching via relationship structure
+  A clinical hypergraph supports multi-entity, multi-hop constraints (patient–condition–lab–medication–timeline), enabling faster “find me patients like this” and “trial eligibility” workflows than SQL alone.</p>
+</li>
+<li>
+<p>Consistency and explainability of extracted phenotypes
+  Using a curated representation layer (hypergraph) helps enforce stable semantics across messy EHR sources, reducing brittleness in downstream AI outputs.</p>
+</li>
+<li>
+<p>Better “clinical logic” alignment
+  Graph representations can encode clinical abstractions (problem lists, temporal relations, care episodes), enabling clinician-like reasoning without hardcoding everything as rules.</p>
+</li>
+</ul>
+<hr />
+<h2 id="kahun">Kahun</h2>
+<h3 id="documented-evidence-they-use-a-knowledge-graph_2">Documented evidence they use a knowledge graph</h3>
+<p>EU CORDIS reporting states Kahun’s AI “uses the knowledge graph to generate a differential diagnosis.” (<a href="https://cordis.europa.eu/article/id/442686-taking-smart-diagnostic-support-tools-to-the-next-level?utm_source=chatgpt.com" title="Taking smart diagnostic support tools to the next level - CORDIS">CORDIS</a>)
+A CORDIS project page also states Kahun’s engine “generates and infers from a huge knowledge graph” linking diseases, findings, complications, risk factors, etc. (<a href="https://cordis.europa.eu/project/id/961253/reporting?utm_source=chatgpt.com" title="Kahun - an interactive medical knowledge base, for ... - CORDIS">CORDIS</a>)
+Their investor deck claims they are “powered by the only evidence-based knowledge graph for healthcare.” (Marketing claim, but still an explicit KG assertion.) (<a href="https://www.goldfarb.com/pdf2/Kahun%20Investor%20Deck-%20March%202024.pdf?utm_source=chatgpt.com" title="Kahun Investor Deck- March 2024">Goldfarb Gross Seligman</a>)</p>
+<h3 id="how-graphs-create-competitive-advantage_4">How graphs create competitive advantage</h3>
+<ul>
+<li>
+<p>Differential diagnosis as graph inference
+  Symptom/finding → disease edges (with risk factors, complications, tests) let Kahun compute candidate diagnoses and next-best questions/tests through graph traversal/inference rather than generic text completion.</p>
+</li>
+<li>
+<p>Evidence grounding in clinical workflows
+  Knowledge-graph-backed reasoning is easier to audit than opaque end-to-end models, a key advantage for decision support where accountability matters.</p>
+</li>
+<li>
+<p>Fast updates as medical knowledge changes
+  Updating the graph (entities/edges/weights) can update clinical outputs without retraining large models.</p>
+</li>
+</ul>
+<hr />
+<h2 id="xaira-therapeutics">Xaira Therapeutics</h2>
+<h3 id="what-i-could-verify-publicly">What I could verify publicly</h3>
+<p>Xaira’s public website describes AI-driven drug discovery but does <strong>not</strong> publicly document a knowledge-graph architecture. (<a href="https://www.xaira.com/?utm_source=chatgpt.com" title="Xaira Therapeutics">xaira.com</a>)</p>
+<h3 id="what-i-cannot-claim">What I cannot claim</h3>
+<p>I do not have a primary, public technical source stating Xaira uses knowledge graphs specifically (as opposed to general AI/ML). So I can’t describe their KG implementation as “documented.”</p>
+<h3 id="most-likely-graph-advantage-clearly-marked-as-inference">Most likely graph advantage (clearly marked as inference)</h3>
+<p>If Xaira is operating like many frontier AI-bio platforms, a KG would typically unify: targets, pathways, disease models, patient stratification, assays, and trial evidence into a single mechanistic substrate. That would enable multi-hop biological reasoning and provenance tracking. (Inference; not confirmed by a public technical reference.)</p>
+<hr />
+<h2 id="openevidence">OpenEvidence</h2>
+<h3 id="what-i-could-verify-publicly_1">What I could verify publicly</h3>
+<p>OpenEvidence publicly describes a physician-facing evidence platform with large content partnerships and usage claims. (<a href="https://www.openevidence.com/about?utm_source=chatgpt.com" title="About">openevidence.com</a>)</p>
+<h3 id="what-i-cannot-claim_1">What I cannot claim</h3>
+<p>I did not find a public, technical statement that OpenEvidence uses a <strong>knowledge graph</strong> internally. So I cannot credibly describe “how their KG works” as documented.</p>
+<h3 id="if-you-want-this-one-in-the-graph-proven-set">If you want this one in the “graph proven” set</h3>
+<p>We’d need a source like: product docs, an engineering blog, a paper, or a talk explicitly describing a KG/ontology layer.</p>
+<hr />
+<h2 id="molecular-health">Molecular Health</h2>
+<h3 id="what-i-could-verify-publicly_2">What I could verify publicly</h3>
+<p>In the browsing I just ran, I did not find a clear primary source asserting Molecular Health uses a knowledge graph.</p>
+<h3 id="what-i-cannot-claim_2">What I cannot claim</h3>
+<p>No documented KG evidence found in this pass, so I can’t responsibly describe their graph implementation.</p>
+<hr />
+<h2 id="komodo-health">Komodo Health</h2>
+<h3 id="what-i-could-verify-publicly_3">What I could verify publicly</h3>
+<p>Komodo publicly describes a “Healthcare Map” and patient journey analytics, but I did not find a primary technical source stating they use a <strong>knowledge graph/graph database</strong> rather than an integrated longitudinal dataset in a warehouse/lakehouse. (<a href="https://www.komodohealth.com/?utm_source=chatgpt.com" title="Komodo Health: Comprehensive Patient Journey Data">Komodo Health</a>)</p>
+<h3 id="what-i-cannot-claim_3">What I cannot claim</h3>
+<p>I cannot claim Komodo uses graph technology (Neo4j/TigerGraph/KG) based on the sources above.</p>
+<h3 id="where-graph-tech-could-matter-inference">Where graph tech could matter (inference)</h3>
+<p>Patient journey analytics is a natural fit for graphs (patient → provider → encounter → dx → rx → outcome), enabling fast cohort exploration and network analytics. But that’s a modeling argument, not proof.</p>
+<hr />
+<h2 id="concertai">ConcertAI</h2>
+<h3 id="what-i-could-verify-publicly_4">What I could verify publicly</h3>
+<p>I found a HIMSS/HealthcareITNews video summary quoting ConcertAI leadership discussing anticipating regulatory AI logic “using knowledge graphs.” (<a href="https://www.healthcareitnews.com/video/tips-submissions-federal-agency-ai-models?utm_source=chatgpt.com" title="Tips for submissions to federal agency AI models">Healthcare IT News</a>)</p>
+<h3 id="what-that-does-and-does-not-prove">What that does and does not prove</h3>
+<ul>
+<li>It does show <strong>ConcertAI leadership explicitly talks about knowledge graphs</strong> in their context.</li>
+<li>It does <strong>not</strong> fully prove that ConcertAI’s commercial platform is built on a KG (it could be thought leadership, partial components, or specific products).</li>
+</ul>
+<h3 id="plausible-competitive-advantage-partly-inference">Plausible competitive advantage (partly inference)</h3>
+<p>If ConcertAI operationalizes KGs for regulatory and clinical trial workflows, the advantage would be:</p>
+<ul>
+<li>Evidence traceability for submissions (claim → evidence → dataset lineage)</li>
+<li>Semantic interoperability across EHR/claims/genomics vocabularies</li>
+<li>Multi-hop trial design queries (population → biomarkers → therapy lines → outcomes)</li>
+</ul>
+<p>But: I’d want a more direct product/architecture reference to call this “definite.”</p>
+<hr />
+<h2 id="abridge">Abridge</h2>
+<h3 id="what-i-could-verify-publicly_5">What I could verify publicly</h3>
+<p>Abridge’s public pages emphasize ambient clinical documentation and outcomes, but I did not find a primary technical reference that they use knowledge graphs. (<a href="https://www.abridge.com/?utm_source=chatgpt.com" title="Abridge: Generative AI for Clinical Conversations">abridge.com</a>)</p>
+<h3 id="what-i-cannot-claim_4">What I cannot claim</h3>
+<p>No documented KG evidence found here, so I can’t describe KG-based advantage as fact.</p>
+<h3 id="graph-shaped-advantage-that-is-common-in-this-space-inference">Graph-shaped advantage that is common in this space (inference)</h3>
+<p>Many clinical documentation systems benefit from an ontology/KG layer for:</p>
+<ul>
+<li>concept normalization (SNOMED/ICD/RxNorm)</li>
+<li>linking problems ↔ meds ↔ labs ↔ plan elements</li>
+<li>grounding “contextual reasoning” across encounters</li>
+</ul>
+<p>But again, inference.</p>
+<hr />
+<h2 id="fathom">Fathom</h2>
+<h3 id="what-i-could-verify-publicly_6">What I could verify publicly</h3>
+<p>Fathom publicly describes autonomous medical coding AI, but I did not find a primary technical source that they use a knowledge graph/graph database. (<a href="https://fathomhealth.com/?utm_source=chatgpt.com" title="Fathom - Medical coding automation powered by AI">fathomhealth.com</a>)</p>
+<h3 id="what-i-cannot-claim_5">What I cannot claim</h3>
+<p>No documented KG evidence found, so I can’t claim graph tech is core.</p>
+<h3 id="where-graph-tech-could-be-a-differentiator-inference">Where graph tech could be a differentiator (inference)</h3>
+<p>In coding, graphs can represent constraints like:</p>
+<ul>
+<li>procedure ↔ diagnosis compatibility</li>
+<li>code co-occurrence patterns across providers/facilities</li>
+<li>denial/fraud networks across entities</li>
+</ul>
+<p>But this is not confirmed for Fathom from public sources.</p>
+<hr />
+<h2 id="what-this-means-for-your-infographic">What this means for your infographic</h2>
+<p>Right now, based on documented technical evidence in sources I located:</p>
+<p>Definite knowledge graph users (strong evidence)</p>
+<ul>
+<li>Insilico Medicine (<a href="https://insilico.com/pandaomics/help/knowledge_graph?utm_source=chatgpt.com" title="Knowledge Graph | PandaOmics">insilico.com</a>)</li>
+<li>Causaly (<a href="https://www.causaly.com/ai-platform/knowledge-graph?utm_source=chatgpt.com" title="Knowledge Graph">causaly.com</a>)</li>
+<li>BenchSci (<a href="https://www.benchsci.com/?utm_source=chatgpt.com" title="BenchSci: Reimagining Research">BenchSci</a>)</li>
+<li>Mendel (<a href="https://cloud.google.com/transform/gen-ai-medical-records-solutions-llms-mendel?utm_source=chatgpt.com" title="Can gen AI bring order to medical records? This startup is ...">Google Cloud</a>)</li>
+<li>Kahun (<a href="https://cordis.europa.eu/article/id/442686-taking-smart-diagnostic-support-tools-to-the-next-level?utm_source=chatgpt.com" title="Taking smart diagnostic support tools to the next level - CORDIS">CORDIS</a>)</li>
+</ul>
+<p>Mentioned/uncertain from public sources found in this pass</p>
+<ul>
+<li>ConcertAI (KGs discussed, product implementation not proven here) (<a href="https://www.healthcareitnews.com/video/tips-submissions-federal-agency-ai-models?utm_source=chatgpt.com" title="Tips for submissions to federal agency AI models">Healthcare IT News</a>)</li>
+<li>Xaira, OpenEvidence, Molecular Health, Komodo, Abridge, Fathom (no solid public KG proof found in this pass) (<a href="https://www.xaira.com/?utm_source=chatgpt.com" title="Xaira Therapeutics">xaira.com</a>)</li>
+</ul>
+<hr />
+<p>If you want, I can do the next step in a way that will make your “graph-proven healthcare landscape map” bulletproof:</p>
+<ul>
+<li>For each “uncertain” company, I’ll either find a primary reference that explicitly states KG/graph DB usage, or I’ll recommend removing it from the “concrete evidence” infographic and replacing it with companies that do publish KG proofs (for example: <strong>Corti (if KG-backed triage knowledge), Sophron (biomed KG), BenevolentAI-style firms, etc.</strong> depending on what’s verifiable today).</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>
