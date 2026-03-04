@@ -45,6 +45,14 @@
          <lastmod>2026-03-04</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/additional-content/fhir-four-level-model/</loc>
+         <lastmod>2026-03-04</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/additional-content/neo-4j-knowledge-builder/</loc>
+         <lastmod>2026-03-04</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/appendices/</loc>
          <lastmod>2026-03-04</lastmod>
     </url>
@@ -234,6 +242,10 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/10-ch-5/</loc>
+         <lastmod>2026-03-04</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/10-fhir-knowledge-representation/</loc>
          <lastmod>2026-03-04</lastmod>
     </url>
     <url>

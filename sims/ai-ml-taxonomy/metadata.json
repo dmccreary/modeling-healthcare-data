@@ -28,5 +28,50 @@
   "bloom_taxonomy": "Understand",
   "version": "1.0",
   "library": "venn.js 0.2.20",
-  "dependencies": ["d3.js 7.9.0"]
+  "dependencies": [
+    "d3.js 7.9.0"
+  ],
+  "visualizationType": [
+    "data-visualization",
+    "diagram",
+    "interactive-demo",
+    "network",
+    "simulation"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of ai and ml taxonomy in healthcare",
+    "Explore ai and ml taxonomy in healthcare through interactive visualization",
+    "Apply knowledge of ai and ml taxonomy in healthcare to solve problems",
+    "Test understanding of ai and ml taxonomy in healthcare through interactive exercises"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Understand",
+    "Apply",
+    "Evaluate",
+    "Create"
+  ],
+  "pedagogical": {
+    "pattern": "demonstration",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "classify",
+      "explain",
+      "summarize",
+      "apply",
+      "calculate"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "immediate",
+      "explanatory"
+    ],
+    "interactionStyle": "respond"
+  }
 }
