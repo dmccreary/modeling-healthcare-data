@@ -11,19 +11,16 @@ quality_score: 0
 
 # Denial Reasons Analysis Chart
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="513" width="100%" scrolling="no"></iframe>
 
 [Run the Denial Reasons Analysis Chart MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This dual-axis chart breaks down 170,000 Q4 2024 claim denials by reason. The blue bars show how many claims were denied for each reason, while the orange line shows total dollars denied — revealing that the highest-volume reasons are not always the highest-dollar ones (Medical Necessity is third in volume but second in dollars). Hovering also reveals each reason's appeal overturn rate, pointing to where process improvement and automation pay off most (Coding Errors: high volume and a 65% overturn rate).
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any category to see the exact claim count, denied dollars, and appeal overturn rate. Use the "Sort by volume" and "Sort by $ impact" buttons to re-rank the categories and compare where the most claims versus the most money are denied, and click a legend entry to hide either series.
 
 ## Iframe Embed Code
 
