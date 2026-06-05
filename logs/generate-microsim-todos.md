@@ -123,26 +123,24 @@ individually to `main`.
 - Library counts to build: vis-timeline 2, Mermaid 11, Chart.js 15, p5.js 40, vis-network 19.
   (The single Venn.js spec was the already-built `ai-ml-taxonomy`.)
 
-## Completed (committed to main)
+## Completed (committed to main) — 13 of 87
 
-| # | sim-id | library | iframe h |
-|---|--------|---------|---------:|
-| 1 | clinical-discovery-pipeline-timeline | vis-timeline | 642 |
-| 2 | evolution-graph-query-languages-timeline | vis-timeline | 542 |
-| 3 | clinical-decision-support-workflow | Mermaid | 1262 |
-| 4 | graph-rbac-workflow-diagram | Mermaid | 1089 |
-| 5 | healthcare-data-model-implementation-workflow | Mermaid | 1560 |
-| 6 | healthcare-revenue-cycle-workflow-graph-analytics | Mermaid | 1880 |
+**vis-timeline: 2/2 done**
+- clinical-discovery-pipeline-timeline, evolution-graph-query-languages-timeline
 
-**vis-timeline: 2/2 done.** Mermaid: 4/11 done.
+**Mermaid: 11/11 done** (all use the 64% diagram + 36% hover-panel pattern)
+- clinical-decision-support-workflow, graph-rbac-workflow-diagram,
+  healthcare-data-model-implementation-workflow, healthcare-revenue-cycle-workflow-graph-analytics,
+  claims-lifecycle-workflow-graph-database-integration, clinical-protocol-workflow-chest-pain-evaluation,
+  explainable-ai-recommendation-workflow, graph-based-fraud-detection-algorithm-workflow,
+  hipaa-compliance-workflow-graph-database-operations, patient-treatment-timeline-workflow-diagram,
+  query-optimization-workflow-diagram
 
-## Remaining
+## Remaining — 74
 
-- **Mermaid (7):** claims-lifecycle-workflow-graph-database-integration,
-  clinical-protocol-workflow-chest-pain-evaluation, explainable-ai-recommendation-workflow,
-  graph-based-fraud-detection-algorithm-workflow, hipaa-compliance-workflow-graph-database-operations,
-  patient-treatment-timeline-workflow-diagram, query-optimization-workflow-diagram.
-- **Chart.js (15), p5.js (40), vis-network (19):** not yet started.
+- **Chart.js (15):** in progress next.
+- **p5.js (40):** not yet started.
+- **vis-network (19):** not yet started.
 
 ## Technical notes / reusable tooling (for resumption)
 
