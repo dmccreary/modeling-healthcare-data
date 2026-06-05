@@ -11,19 +11,16 @@ quality_score: 0
 
 # Provider Compensation Comparison Chart
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="494" width="100%" scrolling="no"></iframe>
 
 [Run the Provider Compensation Comparison Chart MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This dual-axis chart compares five primary-care physician compensation models on annual compensation (dark bars, left axis, in thousands) and productivity (light bars, right axis, in wRVUs), based on 500 PCPs across 50 health systems. The wRVU model pays the most and drives the most productivity but scores lower on quality, while Salary+Bonus offers the best balance and Capitation the highest quality but lowest satisfaction — details available on hover.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any model to see its compensation and productivity plus the supporting metrics in the tooltip: quality score, physician satisfaction, patient panel size, and three-year turnover. Compare the bar heights against the two axes to see how pay and productivity track together, and how they diverge from quality and satisfaction.
 
 ## Iframe Embed Code
 
