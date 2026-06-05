@@ -11,19 +11,16 @@ quality_score: 0
 
 # Claims Lifecycle Workflow with Graph Database Integration
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="1716" width="100%" scrolling="no"></iframe>
 
 [Run the Claims Lifecycle Workflow with Graph Database Integration MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This flowchart follows a healthcare claim from submission through adjudication to payment, showing where graph-database traversals (green) sharpen each decision. Eligibility, network and coverage, prior authorization, and year-to-date accumulations are all answered by graph queries, and every gate that fails routes the claim to a single denied outcome with a specific reason. The clean path ends by writing the paid claim back into the graph for analytics.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any step to read what it does; green steps are graph-database operations. Follow the right-hand "happy path" down through the adjudication gates to payment, and trace the left-hand edges to see how an invalid format, ineligible member, non-covered service, missing prior authorization, or failed edit each ends in denial.
 
 ## Iframe Embed Code
 
