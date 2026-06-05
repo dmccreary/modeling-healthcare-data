@@ -1,91 +1,20 @@
-# Learning Graph
+# Learning Graph for Modeling Healthcare Data with Graphs
 
-## Introduction
+This section contains the learning graph for this intelligent textbook. A learning
+graph is a graph of the concepts used in this textbook. Each concept is represented
+by a node in a network graph. Concepts are connected by directed edges that indicate
+which concepts each node depends on before that concept can be understood by the
+student.
 
-Welcome to the learning graph for **Modeling Healthcare Data with Graphs**. This section contains comprehensive documentation of the learning graph that underpins this intelligent textbook.
+A learning graph is the foundational data structure for intelligent textbooks that
+can recommend learning paths. It is like a roadmap of concepts that helps students
+arrive at their learning goals.
 
-A learning graph is a directed acyclic graph (DAG) that maps out the conceptual dependencies and relationships between topics in a course. It serves as the foundation for personalized learning pathways and adaptive content delivery.
-
-## What is a Learning Graph?
-
-A learning graph is:
-
-- **A conceptual roadmap**: Shows the relationships between 200 core concepts in healthcare graph modeling
-- **A dependency graph**: Identifies prerequisite knowledge needed before learning each concept
-- **A learning pathway guide**: Enables students to navigate the course based on their current knowledge and goals
-- **A pedagogical tool**: Helps instructors understand the structure and flow of the curriculum
-
-## Learning Graph Components
-
-### 1. Course Description Assessment
-[View the assessment →](course-description-assessment.md)
-
-Comprehensive quality analysis of the course description that scored **100/100**, confirming readiness for learning graph generation with sufficient breadth and depth to support 200+ concepts.
-
-### 2. Concept Enumeration
-[View the 200 concepts →](concept-list.md)
-
-Complete list of 200 concepts organized into 13 categories covering graph theory, healthcare domain knowledge, analytics, AI/ML, security, and practical applications.
-
-### 3. Dependency Graph (CSV)
-[Download learning-graph.csv](learning-graph.csv)
-
-The core dependency graph in CSV format containing:
-
-- 200 concepts with unique IDs
-- 299 dependency relationships
-- Taxonomy classifications
-- DAG structure (no circular dependencies)
-
-### 4. Learning Graph (JSON)
-[Download learning-graph.json](learning-graph.json)
-
-Complete learning graph in vis-network.js JSON format including:
-
-- Metadata (title, description, creator, license)
-- Groups (13 taxonomy categories with color coding)
-- Nodes (200 concepts)
-- Edges (299 directed dependency relationships)
-
-### 5. Concept Taxonomy
-[View taxonomy definitions →](concept-taxonomy.md)
-
-13 taxonomic categories organizing concepts into logical groupings:
-
-- Foundation Concepts (FOUND)
-- Graph Technologies (GTECH)
-- Healthcare Domain (HCARE)
-- Patient Data (PAT)
-- Provider Operations (PROV)
-- Payer & Insurance (PAYER)
-- Financial & Business (FIN)
-- Fraud & Compliance (FRAUD)
-- Graph Analytics (ANAL)
-- AI & Machine Learning (AI)
-- Security & Privacy (SEC)
-- Data Governance (GOV)
-- Capstone & Career (CAP)
-
-### 6. Quality Metrics
-[View quality analysis →](quality-metrics.md)
-
-Comprehensive quality validation report with a score of **90/100 (Excellent)**:
-
-- ✓ Valid DAG structure (no cycles)
-- ✓ No self-dependencies
-- 4 foundational concepts (2.0%)
-- Average 1.50 dependencies per concept
-- Maximum dependency chain length: 11
-
-### 7. Taxonomy Distribution
-[View distribution report →](taxonomy-distribution.md)
-
-Analysis of concept distribution across categories:
-
-- Well-balanced distribution
-- Largest category: Patient Data & Provider Operations (25 concepts each, 12.5%)
-- Smallest category: Capstone & Career (5 concepts, 2.5%)
-- All categories within acceptable ranges
+At the left of the learning graph are the prerequisite or foundational concepts. They
+have no outbound edges — they only have inbound edges from other concepts that depend
+on understanding these foundational prerequisites. At the far right are the most
+advanced concepts in the course. To master these concepts you must understand all of
+the concepts that they point to.
 
 ## Learning Graph Statistics
 
@@ -96,6 +25,102 @@ Analysis of concept distribution across categories:
 - **Average Dependencies per Concept**: 1.50
 - **Maximum Dependency Chain**: 11 levels
 - **Quality Score**: 90/100 (Excellent)
+
+## Source Documents and Data Files
+
+### Course Description
+
+We use the [Course Description](../course-description.md) as the source document for
+the concepts that are included in this course. The course description uses the 2001
+Bloom taxonomy to order its learning objectives.
+
+### List of Concepts
+
+We use generative AI to convert the course description into a
+[Concept List](./concept-list.md). Each concept is a short Title Case label, with most
+labels under 32 characters long. The 200 concepts span graph theory, healthcare domain
+knowledge, analytics, AI/ML, security, and practical applications.
+
+### Concept Dependency List
+
+We next use generative AI to create a Directed Acyclic Graph (DAG). DAGs do not have
+cycles in which concepts depend on themselves. We provide the DAG in two formats: a
+[CSV file](./learning-graph.csv) and a [JSON file](./learning-graph.json) that uses the
+vis-network JavaScript library format. The vis-network format uses `nodes`, `edges`, and
+`metadata` elements, with edges containing `from` and `to` properties. This makes it
+easy to view and edit the learning graph using an editor built with the vis-network
+tools.
+
+## Analysis & Documentation
+
+### Course Description Quality Assessment
+
+This report rates the overall quality of the course description for the purpose of
+generating a learning graph.
+
+- Course description fields and content depth analysis
+- Validates that the course description has sufficient depth to generate 200 concepts
+- Compares the course description against similar courses
+- Identifies content gaps and strengths
+- Suggests areas of improvement
+
+The course description scored **100/100**, confirming readiness for learning graph
+generation.
+
+[View the Course Description Quality Assessment](./course-description-assessment.md)
+
+### Learning Graph Quality Validation
+
+This report gives an overall assessment of the quality of the learning graph. It uses
+graph algorithms to look for specific quality patterns in the graph.
+
+- Graph structure validation — all concepts are connected
+- DAG validation (no cycles detected)
+- No self-dependencies detected
+- Foundational concepts: 4 entry points (Graph Theory Basics, Relational Database,
+  Healthcare System, Artificial Intelligence)
+- Indegree distribution analysis (most depended-upon concept: Healthcare Provider)
+- Longest dependency chains (maximum chain length: 11)
+
+The learning graph scored **90/100 (Excellent)**.
+
+[View the Learning Graph Quality Validation](./quality-metrics.md)
+
+### Concept Taxonomy
+
+In order to see patterns in the learning graph, it is useful to assign colors to each
+concept based on the concept type. We use generative AI to create about a dozen
+categories for our concepts and then place each concept into a single primary
+classifier.
+
+- A concept classifier taxonomy with 13 categories
+- Category organization — foundational elements first, capstone project ideas last
+- Balanced categories, all well under the 30% threshold
+- Clear 3-5 letter abbreviations for use in the CSV file
+
+The 13 categories are: Foundation Concepts (FOUND), Graph Technologies (GTECH),
+Healthcare Domain (HCARE), Patient Data (PAT), Provider Operations (PROV), Payer &
+Insurance (PAYER), Financial & Business (FIN), Fraud & Compliance (FRAUD), Graph
+Analytics (ANAL), AI & Machine Learning (AI), Security & Privacy (SEC), Data Governance
+(GOV), and Capstone & Career (CAP).
+
+[View the Concept Taxonomy](./concept-taxonomy.md)
+
+### Taxonomy Distribution
+
+This report shows how many concepts fit into each category of the taxonomy. Our goal is
+a somewhat balanced taxonomy where each category holds an equal number of concepts. We
+also don't want any category to contain over 30% of our concepts.
+
+- Statistical breakdown
+- Detailed concept listing by category
+- Visual distribution table
+- Balance verification
+
+The largest categories (Patient Data and Provider Operations) each hold 25 concepts
+(12.5%), well within the acceptable range.
+
+[View the Taxonomy Distribution Report](./taxonomy-distribution.md)
 
 ## Key Features
 
@@ -153,23 +178,17 @@ The learning graph follows established educational principles:
 - Create personalized recommendations based on concept relationships
 - Integrate with learning management systems
 
-## Next Steps
-
-After exploring the learning graph, you can:
-
-1. **Install the Learning Graph Viewer**: Interactive visualization tool for exploring concept relationships
-2. **Generate Chapter Structure**: Use the learning graph to create optimal chapter organization
-3. **Create Glossary**: Generate definitions for all 200 concepts
-4. **Build Quizzes**: Develop assessments aligned with concept taxonomy
-
 ## Technical Details
 
 - **Format**: Learning Graph JSON v1.0
 - **Schema**: [learning-graph-schema.json](https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json)
+- **Creator**: Dan McCreary
 - **License**: CC BY-NC-SA 4.0 DEED
 - **Version**: 1.0
 - **Generated**: November 6, 2025
+- **Last Updated**: June 5, 2026
 
 ---
 
-For questions or feedback about the learning graph, please refer to the [course description](../course-description.md) or contact the course creator.
+For questions or feedback about the learning graph, please refer to the
+[course description](../course-description.md) or contact the course creator.
