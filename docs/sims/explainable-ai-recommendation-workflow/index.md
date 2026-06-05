@@ -11,19 +11,16 @@ quality_score: 0
 
 # Explainable AI Recommendation Workflow
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="991" width="100%" scrolling="no"></iframe>
 
 [Run the Explainable AI Recommendation Workflow MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This flowchart shows how a graph-based clinical decision support system produces an explainable medication recommendation. Two input streams — the patient's subgraph (blue) and the clinical knowledge graph (green) — converge in an inference engine (orange) that applies decision rules and scores options. When confidence is high, the system builds an explanation graph and generates both clinician and patient explanations (cream), displays the recommendation with its reasoning in the EHR, and logs the access (purple). The clinician's accept/reject decision feeds back to improve future recommendations.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any step to read what it does; the colors mark the five layers (patient data, clinical knowledge, inference, explanation, presentation). Follow the two input columns down to where they merge, then the "Yes" path through the explanation and presentation steps to the clinician's decision — note how a low-confidence case is instead flagged for human review.
 
 ## Iframe Embed Code
 
