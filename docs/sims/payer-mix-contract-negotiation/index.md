@@ -11,19 +11,16 @@ quality_score: 0
 
 # Payer Mix and Contract Negotiation MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="643" width="100%" scrolling="no"></iframe>
 
 [Run the Payer Mix and Contract Negotiation MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This interactive calculator shows how a hospital's payer mix and contracted reimbursement rates jointly determine net revenue at a fixed service volume. Each payer contributes net revenue equal to its share of total charges times its contracted rate (as a percent of charges). The bar chart contrasts gross charges with net revenue per payer — the gap is the contractual discount — and the table traces the full calculation from share to charges to net, with the total compared against the baseline scenario.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Drag a payer's "Volume share" slider to shift the mix (shares auto-normalize to 100%) or its "Contracted rate" slider to model a rate change, and edit total annual charges to scale the whole book. Watch the net-revenue total and the delta-versus-baseline update instantly — raising the Commercial rate a few points or shifting volume from Medicaid to Commercial both increase net revenue, showing why mix and rate are negotiation levers of comparable power. Use "Reset to baseline" to return to the starting scenario.
 
 ## Iframe Embed Code
 
