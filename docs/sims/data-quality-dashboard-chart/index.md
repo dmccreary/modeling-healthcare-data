@@ -11,19 +11,16 @@ quality_score: 0
 
 # Data Quality Dashboard Chart
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="770" width="100%" scrolling="no"></iframe>
 
 [Run the Data Quality Dashboard Chart MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This four-panel dashboard monitors data quality for a healthcare graph database. The top-left scorecard rates seven quality dimensions against the 90% threshold and 95% target (with Consistency and Relationship Quality flagged below threshold); the top-right chart compares completeness of required versus optional properties by entity type; the bottom-left tracks four dimensions over the last 90 days, showing a relationship-quality dip after a new ETL deployment and its recovery after a fix; and the bottom-right ranks the top data-quality issues by the number of affected records on a log scale.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any bar, point, or line to see exact values. Use the scorecard colors (green excellent, yellow acceptable, orange warning, red critical) to spot which dimensions need attention, read the trend lines to see whether quality is improving or declining, and scan the issues chart to see where remediation effort would touch the most records.
 
 ## Iframe Embed Code
 
