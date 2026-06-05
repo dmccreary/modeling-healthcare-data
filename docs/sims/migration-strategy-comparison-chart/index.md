@@ -11,19 +11,16 @@ quality_score: 0
 
 # Migration Strategy Comparison Chart
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="548" width="100%" scrolling="no"></iframe>
 
 [Run the Migration Strategy Comparison Chart MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This radar chart compares five strategies for migrating a healthcare system to a graph database across six trade-off dimensions: risk, timeline, consistency, operational disruption, cost, and rollback ease (each scored 0-10). The shapes make the trade-offs visible at a glance — Greenfield Replacement spikes on risk and disruption with poor rollback, while Event Sourcing maximizes consistency and rollback at the cost of a longer timeline.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any vertex to read a strategy's exact score on that dimension. Click a strategy in the legend to show or hide it, making it easy to compare two strategies head-to-head — for example, contrast the Strangler Pattern's low disruption against Greenfield Replacement's high disruption.
 
 ## Iframe Embed Code
 
