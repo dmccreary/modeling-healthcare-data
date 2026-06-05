@@ -11,19 +11,16 @@ quality_score: 0
 
 # Per-Person Healthcare Cost Comparison Chart
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="494" width="100%" scrolling="no"></iframe>
 
 [Run the Per-Person Healthcare Cost Comparison Chart MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This dual-axis chart compares annual per-person healthcare spending across nine developed nations (2021 OECD data). The bars show spending in US dollars — with the United States highlighted in red at $12,914, roughly double the comparable-nation average — while the orange line shows spending as a share of GDP, where the U.S. (18.3%) again stands far above its peers (around 10-12%).
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any country to see its exact per-person spending and share of GDP. Compare the red U.S. bar against the cluster of blue comparison nations, and read the orange line against the right axis to see that the U.S. is an outlier on both an absolute and a relative basis.
 
 ## Iframe Embed Code
 
