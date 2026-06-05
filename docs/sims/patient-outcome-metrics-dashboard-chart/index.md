@@ -11,19 +11,16 @@ quality_score: 0
 
 # Patient Outcome Metrics Dashboard Chart
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="496" width="100%" scrolling="no"></iframe>
 
 [Run the Patient Outcome Metrics Dashboard Chart MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This grouped bar chart compares six 12-month diabetes outcome measures between traditional care and graph-enhanced care coordination, risk-adjusted across roughly 1,000-1,200 patients per arm. Graph-enhanced care — which uses real-time graph queries to find care gaps, flag high-risk patients, and coordinate multi-provider teams — improves every quality measure (retinopathy screening rises from 38% to 79%) and cuts ER visits by 46% and hospital admissions by 50%.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any pair of bars to see the exact values; the tooltip notes that the last two measures (ER visits and admissions per 100 patients) are ones where lower is better. Compare the light and dark bars within each measure to see the size of the improvement from graph-enhanced coordination.
 
 ## Iframe Embed Code
 
