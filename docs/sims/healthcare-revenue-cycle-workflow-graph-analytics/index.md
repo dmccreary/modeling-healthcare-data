@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Revenue Cycle Workflow with Graph Analytics
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="1880" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Revenue Cycle Workflow with Graph Analytics MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This flowchart condenses the hospital revenue cycle from patient scheduling through payment reconciliation, with the steps powered by graph-database queries shown in green. Real-time eligibility checks, medical-necessity validation, denial-pattern detection, and payment-variance analysis all run as graph traversals, reducing revenue leakage and accelerating cash flow. Decision gates route claims through scrubbing rework, denial management, and patient collections.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any step to see what happens there; the green steps are the graph-database queries that optimize the cycle. Trace the "No" branches to follow a dirty claim back to coding, a denied claim into denial management, and a non-correctable denial into patient collections, while the "Yes" path runs straight through to payment and reconciliation.
 
 ## Iframe Embed Code
 
