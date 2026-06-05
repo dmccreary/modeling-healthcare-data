@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Data Model Implementation Workflow
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="1560" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Data Model Implementation Workflow MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This BPMN-style flowchart walks through implementing a healthcare graph data model end to end — from identifying clinical entities and relationships, through defining node labels, properties, and edge types, to security review, performance testing, and production deployment. Three decision gates create rework loops: a schema that cannot answer priority queries returns to property design, a failed security review returns to implementation, and slow multi-hop traversals trigger index and schema optimization. Each step is owned by a different team — clinical SMEs, data architects, developers, DBAs, and compliance.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any step to read what the activity involves and which team owns it. Follow the green start and end events and the blue task rectangles down the main path, and trace the three yellow decision diamonds to see the "No" rework loops that send the project back for revision before it can advance.
 
 ## Iframe Embed Code
 
