@@ -11,19 +11,16 @@ quality_score: 0
 
 # Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="731" width="100%" scrolling="no"></iframe>
 
 [Run the Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This flowchart models an emergency-department chest-pain protocol as a graph of decision points. A 12-lead ECG first separates STEMI (the red critical pathway straight to the cath lab) from everything else, which is then risk-stratified by HEART score into low (green), moderate (yellow), and high (orange) pathways. A troponin result splits patients into acute coronary syndrome versus non-cardiac causes before disposition and follow-up. Because the protocol is a graph, the system can attach timestamp properties and detect deviations in real time.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any step to see the clinical detail, time targets, and rationale. Follow the STEMI branch for the time-critical pathway, and the HEART-score branch to compare how low-, moderate-, and high-risk patients are worked up, then watch the troponin decision and disposition converge.
 
 ## Iframe Embed Code
 
