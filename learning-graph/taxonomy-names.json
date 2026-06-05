@@ -1,0 +1,15 @@
+{
+  "FOUND": "Foundation Concepts",
+  "GTECH": "Graph Technologies",
+  "HCARE": "Healthcare Domain",
+  "PAT": "Patient Data",
+  "PROV": "Provider Operations",
+  "PAYER": "Payer & Insurance",
+  "FIN": "Financial & Business",
+  "FRAUD": "Fraud & Compliance",
+  "ANAL": "Graph Analytics",
+  "AI": "AI & Machine Learning",
+  "SEC": "Security & Privacy",
+  "GOV": "Data Governance",
+  "CAP": "Capstone & Career"
+}

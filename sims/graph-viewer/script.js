@@ -82,18 +82,36 @@ function getColorName(color) {
     'orange': 'Orange',
     'gold': 'Gold',
     'green': 'Green',
+    'darkgreen': 'Dark Green',
+    'limegreen': 'Lime Green',
+    'olivedrab': 'Olive Drab',
     'blue': 'Blue',
     'navy': 'Navy',
+    'steelblue': 'Steel Blue',
+    'dodgerblue': 'Dodger Blue',
+    'lightskyblue': 'Light Sky Blue',
+    'darkslateblue': 'Dark Slate Blue',
     'indigo': 'Indigo',
     'violet': 'Violet',
+    'mediumpurple': 'Medium Purple',
+    'darkorchid': 'Dark Orchid',
     'gray': 'Gray',
     'grey': 'Gray',
+    'dimgray': 'Dim Gray',
     'brown': 'Brown',
+    'saddlebrown': 'Saddle Brown',
+    'peru': 'Peru',
     'teal': 'Teal',
     'purple': 'Purple',
+    'crimson': 'Crimson',
+    'tomato': 'Tomato',
+    'coral': 'Coral',
+    'hotpink': 'Hot Pink',
     'deeppink': 'Deep Pink',
     'lightgreen': 'Light Green',
-    'cyan': 'Cyan'
+    'cyan': 'Cyan',
+    'khaki': 'Khaki',
+    'darkgoldenrod': 'Dark Goldenrod'
   };
   const normalizedColor = (color || '').toLowerCase();
   return colorNames[normalizedColor] || color;
@@ -102,7 +120,12 @@ function getColorName(color) {
 // Helper function to determine if text should be white or black
 function getTextColorForBackground(backgroundColor) {
   // Colors that need white text
-  const darkColors = ['red', 'darkred', 'green', 'blue', 'navy', 'indigo', 'violet', 'gray', 'grey', 'brown', 'teal', 'purple'];
+  const darkColors = [
+    'red', 'darkred', 'crimson', 'green', 'darkgreen', 'olivedrab', 'blue', 'navy',
+    'steelblue', 'dodgerblue', 'darkslateblue', 'indigo', 'violet', 'mediumpurple',
+    'darkorchid', 'gray', 'grey', 'dimgray', 'brown', 'saddlebrown', 'teal', 'purple',
+    'tomato', 'deeppink', 'darkgoldenrod'
+  ];
   const normalizedColor = (backgroundColor || '').toLowerCase();
   return darkColors.includes(normalizedColor) ? 'white' : 'black';
 }
@@ -133,7 +156,11 @@ function generateLegend(groups) {
     const colorCell = document.createElement('td');
     colorCell.className = 'color-indicator';
     const bgColor = groupStyle.color;
-    const textColor = getTextColorForBackground(bgColor);
+    // Prefer the font color computed in learning-graph.json (same value the nodes
+    // use) so the legend and graph stay in sync; fall back to the heuristic.
+    const textColor = (groupStyle.font && groupStyle.font.color)
+      ? groupStyle.font.color
+      : getTextColorForBackground(bgColor);
     colorCell.style.backgroundColor = bgColor;
     colorCell.style.color = textColor;
     colorCell.textContent = getColorName(bgColor);
