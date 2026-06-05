@@ -11,19 +11,16 @@ quality_score: 0
 
 # Predictive Model Performance: Traditional vs Graph-Based
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="504" width="100%" scrolling="no"></iframe>
 
 [Run the Predictive Model Performance: Traditional vs Graph-Based MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This line chart compares how three model families predict 30-day hospital readmission as the training dataset grows from 100 to 1,000,000 patient records (log scale). Traditional Logistic Regression and Random Forest improve quickly but plateau (around 0.78 and 0.83 AUROC), while the Graph Neural Network keeps climbing past 0.93 because it can exploit relational context. A dashed line marks random-chance performance (0.50).
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any point to see the model, its AUROC, and the 95% confidence interval at that training size. Compare the three curves to see where the graph-based model overtakes the traditional methods and how its advantage widens with more data, especially beyond a typical single-hospital dataset (~10,000 patients).
 
 ## Iframe Embed Code
 
