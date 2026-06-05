@@ -11,19 +11,16 @@ quality_score: 0
 
 # Care Pathway Comparison Chart
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="469" width="100%" scrolling="no"></iframe>
 
 [Run the Care Pathway Comparison Chart MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This horizontal grouped bar chart compares five Type 2 Diabetes treatment pathways — discovered by running path queries over 15,000 patient journeys in a graph database — on three composite scores: patient outcomes, cost efficiency (higher means lower cost), and time efficiency (higher means faster to control). The shortest pathway, Metformin to Lifestyle to Controlled, scores highest on all three and is flagged as the optimal pathway.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any bar to see the exact score for that pathway and metric. Compare the three colored bars within each pathway to weigh outcome quality against cost and speed, and scan down the chart to see how the longer, insulin-heavy pathways trade off lower cost-efficiency and slower time-to-control.
 
 ## Iframe Embed Code
 
