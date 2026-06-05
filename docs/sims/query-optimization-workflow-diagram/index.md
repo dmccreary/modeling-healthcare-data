@@ -11,19 +11,16 @@ quality_score: 0
 
 # Query Optimization Workflow Diagram
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="507" width="100%" scrolling="no"></iframe>
 
 [Run the Query Optimization Workflow Diagram MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This decision tree walks through systematically optimizing a slow healthcare graph query. After profiling, it checks the usual culprits in order — missing indexes, full label scans, unbounded variable-length traversals, oversized result sets, and heavy aggregations — and applies a targeted fix for each, looping back to re-PROFILE so the effect is measured before moving on. Schema changes are the last resort.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any step to see what to check and the Cypher fix to apply, with example syntax. Follow the "No" answers straight down the spine of checks, and each "Yes" answer out to a green fix that loops back to re-profile, until the query meets its performance target.
 
 ## Iframe Embed Code
 

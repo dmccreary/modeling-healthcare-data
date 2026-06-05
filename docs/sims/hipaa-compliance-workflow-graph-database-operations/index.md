@@ -11,19 +11,16 @@ quality_score: 0
 
 # HIPAA Compliance Workflow for Graph Database Operations
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="1171" width="100%" scrolling="no"></iframe>
 
 [Run the HIPAA Compliance Workflow for Graph Database Operations MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This flowchart shows the compliance checkpoints every PHI access must pass in a healthcare graph database. A request is authenticated (MFA required), then authorized against the user's role and a legitimate need-to-know; only then does a row-level-security graph query run, with its results trimmed to the HIPAA minimum-necessary standard, watermarked, and written to an immutable audit trail before display, with an enforced session timeout. A failure at either gate ends in a logged denial.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any step to see the specific HIPAA control it enforces. Follow the two yellow decision diamonds to see how invalid authentication or insufficient permissions both route to a denied, logged outcome, and the "Valid"/"Yes" path through row-level security, minimum-necessary filtering, and audit logging to the completed task.
 
 ## Iframe Embed Code
 

@@ -11,19 +11,16 @@ quality_score: 0
 
 # Patient Treatment Timeline Workflow Diagram
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="613" width="100%" scrolling="no"></iframe>
 
 [Run the Patient Treatment Timeline Workflow Diagram MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This timeline traces a 12-month Type 2 Diabetes treatment journey — from symptom onset and diagnosis, through medication starts and intensifications, to reaching the HbA1c goal. Each timepoint is colored by phase, and the hover detail shows the patient's status, labs, treatment changes, and the exact graph query that records the event. Because every diagnosis, prescription, and lab result carries a date property, a single graph traversal can reconstruct the entire journey.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any month to read the clinical detail and the Cypher pattern that stores it in the graph. Follow the chain from Month 0 to Month 12 to see how the patient moves through diagnosis (blue), initial treatment (orange), dose adjustments (yellow), stabilization (green), and goal achievement (dark green).
 
 ## Iframe Embed Code
 
