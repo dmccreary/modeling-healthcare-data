@@ -74,16 +74,105 @@ nav:
 
   
   - MicroSims:
-    - Introduction: sims/index.md
-    - View Healthcare Icons: sims/view-hc-icons/index.md
-    - Graph Viewer: sims/graph-viewer/index.md
-    - Codes: sims/codes/index.md
-    - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
+    - List of MicroSims: sims/index.md
+    - AI and ML Taxonomy in Healthcare: sims/ai-ml-taxonomy/index.md
+    - Anomaly Score Threshold Explorer MicroSim: sims/anomaly-score-threshold-explorer/index.md
+    - Appointment Scheduling and No-Show Simulator MicroSim: sims/appointment-no-show-simulator/index.md
+    - Audit Trail Analysis MicroSim: sims/audit-trail-analysis-microsim/index.md
+    - Authentication vs Authorization Comparison Infographic: sims/authentication-authorization-comparison-infographic/index.md
+    - Bayesian Diagnostic Reasoning MicroSim: sims/bayesian-diagnostic-reasoning/index.md
+    - Behavioral Health Fraud Network Interactive MicroSim: sims/behavioral-health-fraud-network-microsim/index.md
+    - Capstone Project Architecture Template: sims/capstone-project-architecture-template/index.md
+    - Care Pathway Comparison Chart: sims/care-pathway-comparison-chart/index.md
+    - Care Pathway Shortest Path Interactive MicroSim: sims/care-pathway-shortest-path-microsim/index.md
+    - Centrality Measures Comparison MicroSim: sims/centrality-measures-comparison/index.md
+    - Charge Master and Billing Code Graph Model: sims/charge-master-billing-code-graph-model/index.md
+    - Claims Lifecycle Workflow with Graph Database Integration: sims/claims-lifecycle-workflow-graph-database-integration/index.md
     - Clinical Care Pathway DAG: sims/clinical-care-pathway-dag/index.md
+    - Clinical Decision Support Workflow: sims/clinical-decision-support-workflow/index.md
+    - Clinical Discovery Pipeline Timeline: sims/clinical-discovery-pipeline-timeline/index.md
+    - Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department: sims/clinical-protocol-workflow-chest-pain-evaluation/index.md
+    - Codes: sims/codes/index.md
+    - Comparison: Graph DB vs LLM vs Integrated System: sims/comparison-graph-db-llm-integrated-system/index.md
+    - Cost-Sharing Calculation Interactive MicroSim: sims/cost-sharing-calculation-microsim/index.md
+    - Cycle Detection and Pattern Explorer MicroSim: sims/cycle-detection-pattern-explorer/index.md
+    - Cypher Query Components Interactive Infographic: sims/cypher-query-components-infographic/index.md
+    - Data Integration Flow Interactive Infographic: sims/data-integration-flow-infographic/index.md
+    - Data Quality Dashboard Chart: sims/data-quality-dashboard-chart/index.md
+    - Data Quality Impact Analysis MicroSim: sims/data-quality-impact-analysis-microsim/index.md
+    - De-Identification Techniques Comparison Table: sims/de-identification-techniques-comparison-table/index.md
+    - Denial Reasons Analysis Chart: sims/denial-reasons-analysis-chart/index.md
+    - Directed Acyclic Graph Example: Care Pathway: sims/directed-acyclic-graph-care-pathway/index.md
+    - DME Fraud Pattern Detector MicroSim: sims/dme-fraud-pattern-detector/index.md
+    - Evolution of Graph Query Languages Timeline: sims/evolution-graph-query-languages-timeline/index.md
+    - Explainable AI Recommendation Workflow: sims/explainable-ai-recommendation-workflow/index.md
+    - Formulary Management and Step Therapy Graph Model: sims/formulary-management-step-therapy-graph-model/index.md
+    - Graph RBAC Workflow Diagram: sims/graph-rbac-workflow-diagram/index.md
+    - Graph Traversal Visualization MicroSim: sims/graph-traversal-visualization-microsim/index.md
+    - Graph-Based Fraud Detection Algorithm Workflow: sims/graph-based-fraud-detection-algorithm-workflow/index.md
+    - GSQL Accumulator Pattern MicroSim: sims/gsql-accumulator-pattern-microsim/index.md
+    - Healthcare Analytics Platform Architecture Diagram: sims/healthcare-analytics-platform-architecture-diagram/index.md
+    - Healthcare Data Integration Graph Model: sims/healthcare-data-integration-graph-model/index.md
+    - Healthcare Data Lineage Graph Visualization: sims/healthcare-data-lineage-graph-visualization/index.md
+    - Healthcare Data Model Implementation Workflow: sims/healthcare-data-model-implementation-workflow/index.md
+    - Healthcare Data Protection Layers Diagram: sims/healthcare-data-protection-layers-diagram/index.md
+    - Healthcare Delivery Network Graph Model: sims/healthcare-delivery-network-graph-model/index.md
+    - Healthcare Ecosystem Stakeholder Diagram: sims/healthcare-ecosystem-stakeholder-diagram/index.md
+    - Healthcare Fraud Scheme Network Visualization: sims/healthcare-fraud-scheme-network-visualization/index.md
+    - Healthcare Graph Database Job Roles and Skills Map: sims/healthcare-graph-database-job-roles-skills/index.md
+    - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
+    - Healthcare Graph Pattern Examples: sims/healthcare-graph-pattern-examples/index.md
+    - Healthcare Labeled Property Graph Visualization: sims/healthcare-labeled-property-graph-visualization/index.md
+    - Healthcare Payment Model Comparison MicroSim: sims/healthcare-payment-model-comparison-microsim/index.md
+    - Healthcare RBAC Graph Data Model: sims/healthcare-rbac-graph-data-model/index.md
+    - Healthcare Revenue Cycle Workflow with Graph Analytics: sims/healthcare-revenue-cycle-workflow-graph-analytics/index.md
+    - HIPAA Compliance Workflow for Graph Database Operations: sims/hipaa-compliance-workflow-graph-database-operations/index.md
+    - Insurance Policy and Benefit Plan Graph Model: sims/insurance-policy-benefit-plan-graph-model/index.md
+    - Learning Graph Viewer: sims/graph-viewer/index.md
+    - Link Prediction Scoring MicroSim: sims/link-prediction-scoring/index.md
+    - Medical Code System Classifier MicroSim: sims/medical-code-classifier/index.md
+    - Medical Coding Systems Interactive Infographic: sims/medical-coding-systems-infographic/index.md
+    - Medical Knowledge Graph Example: sims/medical-knowledge-graph/index.md
+    - Medication Effectiveness Comparison MicroSim: sims/medication-effectiveness-comparison-microsim/index.md
+    - Medication Safety Network Interactive Infographic: sims/medication-safety-network-infographic/index.md
+    - Migration Strategy Comparison Chart: sims/migration-strategy-comparison-chart/index.md
+    - Multidisciplinary Care Team Graph Model: sims/multidisciplinary-care-team-graph-model/index.md
+    - Network Community Detection Interactive Graph Model: sims/network-community-detection-graph-model/index.md
+    - Node Embedding Explorer MicroSim: sims/node-embedding-explorer/index.md
+    - Patient Clinical Context Subgraph Visualization: sims/patient-clinical-context-subgraph-visualization/index.md
     - Patient Encounter Workflow: sims/encounter-workflow/index.md
-    - AI ML Venn Diagram: sims/ai-ml-taxonomy/index.md
-    - LLM vs. KG: sims/yin-yang-llm-kg/index.md
-    - Query Performance Comparison: sims/query-performance-comparison/index.md
+    - Patient Identifier Graph Model: sims/patient-identifier-graph-model/index.md
+    - Patient Journey Map Interactive Visualization: sims/patient-journey-map-visualization/index.md
+    - Patient Outcome Metrics Dashboard Chart: sims/patient-outcome-metrics-dashboard-chart/index.md
+    - Patient Treatment Timeline Workflow Diagram: sims/patient-treatment-timeline-workflow-diagram/index.md
+    - Payer Mix and Contract Negotiation MicroSim: sims/payer-mix-contract-negotiation/index.md
+    - Per-Person Healthcare Cost Comparison Chart: sims/per-person-healthcare-cost-comparison-chart/index.md
+    - Predictive Model Performance: Traditional vs Graph-Based: sims/predictive-model-performance-traditional-graph-based/index.md
+    - Presentation Effectiveness Rubric: sims/presentation-effectiveness-rubric/index.md
+    - Preventive Care Gap Closure MicroSim: sims/preventive-care-gap-closure/index.md
+    - Prior Authorization Decision Tree Interactive MicroSim: sims/prior-authorization-decision-tree-microsim/index.md
+    - Project Complexity Comparison Table: sims/project-complexity-comparison-table/index.md
+    - Provider Capacity Utilization Dashboard Chart: sims/provider-capacity-utilization-dashboard-chart/index.md
+    - Provider Compensation Comparison Chart: sims/provider-compensation-comparison-chart/index.md
+    - Provider Network Centrality Analysis Dashboard: sims/provider-network-centrality-analysis-dashboard/index.md
+    - Provider Network Fraud Detection Dashboard: sims/provider-network-fraud-detection-dashboard/index.md
+    - Provider Performance Comparison MicroSim: sims/provider-performance-comparison-microsim/index.md
+    - Provider Referral Network Analysis MicroSim: sims/provider-referral-network-analysis-microsim/index.md
+    - Query Optimization Workflow Diagram: sims/query-optimization-workflow-diagram/index.md
+    - Query Performance Comparison: RDBMS vs Graph Database: sims/query-performance-comparison/index.md
+    - Query Performance Impact of Indexing: sims/query-performance-impact-indexing/index.md
+    - RAG Architecture for Clinical Decision Support: sims/rag-architecture-clinical-decision-support/index.md
+    - Risk Adjustment and Capitation Calculator MicroSim: sims/risk-adjustment-capitation-calculator-microsim/index.md
+    - Risk Stratification Pyramid with Intervention Strategies: sims/risk-stratification-pyramid-intervention-strategies/index.md
+    - Service Line Profitability Analysis Interactive MicroSim: sims/service-line-profitability-analysis-microsim/index.md
+    - Symptom-Disease Diagnostic Network: sims/symptom-disease-diagnostic-network/index.md
+    - Value-Based Payment Shared-Savings MicroSim: sims/value-based-payment-shared-savings/index.md
+    - Vector Embedding Similarity Visualization MicroSim: sims/vector-embedding-similarity-visualization-microsim/index.md
+    - View Healthcare Icons: sims/view-hc-icons/index.md
+    - Vital Signs Trend Visualization MicroSim: sims/vital-signs-trend-visualization-microsim/index.md
+    - Yin-Yang LLM vs Knowledge Graph: sims/yin-yang-llm-kg/index.md
+
+
 
 
   - Prompts:

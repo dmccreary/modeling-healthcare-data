@@ -123,24 +123,42 @@ individually to `main`.
 - Library counts to build: vis-timeline 2, Mermaid 11, Chart.js 15, p5.js 40, vis-network 19.
   (The single Venn.js spec was the already-built `ai-ml-taxonomy`.)
 
-## Completed (committed to main) — 13 of 87
+## Completed (committed to main) — 28 of 87
 
-**vis-timeline: 2/2 done**
-- clinical-discovery-pipeline-timeline, evolution-graph-query-languages-timeline
+**vis-timeline: 2/2 done** · **Mermaid: 11/11 done** · **Chart.js: 15/15 done**
 
-**Mermaid: 11/11 done** (all use the 64% diagram + 36% hover-panel pattern)
-- clinical-decision-support-workflow, graph-rbac-workflow-diagram,
-  healthcare-data-model-implementation-workflow, healthcare-revenue-cycle-workflow-graph-analytics,
-  claims-lifecycle-workflow-graph-database-integration, clinical-protocol-workflow-chest-pain-evaluation,
-  explainable-ai-recommendation-workflow, graph-based-fraud-detection-algorithm-workflow,
-  hipaa-compliance-workflow-graph-database-operations, patient-treatment-timeline-workflow-diagram,
-  query-optimization-workflow-diagram
+Each sim was built through the full pipeline (implement .js → measure/fix iframe
+height → screenshot → Claude Vision layout review → enrich index.md → validate
+100/A → individual git commit). `mkdocs.yml` nav regenerated (96 MicroSim entries).
 
-## Remaining — 74
+- Chart.js sims: care-pathway-comparison-chart, comparison-graph-db-llm-integrated-system,
+  data-quality-dashboard-chart (2x2), denial-reasons-analysis-chart, migration-strategy-comparison-chart,
+  patient-outcome-metrics-dashboard-chart, payer-mix-contract-negotiation (interactive calculator),
+  per-person-healthcare-cost-comparison-chart, predictive-model-performance-traditional-graph-based,
+  project-complexity-comparison-table, provider-capacity-utilization-dashboard-chart,
+  provider-compensation-comparison-chart, provider-network-centrality-analysis-dashboard (interactive),
+  provider-network-fraud-detection-dashboard (2x2), query-performance-impact-indexing.
+  Pattern: titled `<canvas>` in a fixed-height `.cc-chartbox`, `responsive:true` +
+  `maintainAspectRatio:false`, tooltips always on, log scales / dual axes / radar as
+  the data needs. Heights are stable (~470-560 single, ~750-860 for 2x2 dashboards).
 
-- **Chart.js (15):** in progress next.
-- **p5.js (40):** not yet started.
-- **vis-network (19):** not yet started.
+## Remaining — 59
+
+- **p5.js (40):** not yet started. Read `references/p5-guide.md`. Remember
+  `updateCanvasSize()` first in `setup()`, parent canvas to `document.querySelector('main')`,
+  use p5 built-in DOM controls, no `textFont('Segoe UI')`. Many are "Apply/Evaluate/Create"
+  interactives (calculators, classifiers, explorers) — see learning_objective in each TODO.
+- **vis-network (19):** not yet started. Read `references/vis-network-guide.md`. These are
+  graph data-model / network visualizations; use the measure→set-CANVAS_HEIGHT→capture loop
+  (`/tmp/cal.sh`) like Mermaid since rendered height varies.
+
+### Pending follow-up (NOT done, touches user's uncommitted chapter edits)
+
+Chapter `index.md` files in `docs/chapters/*/` have pre-existing uncommitted edits
+(the spec blocks). The new sims are built and in the nav but their `<iframe>` embeds
+have **not** been inserted into the chapter pages. To wire them in, run (and review,
+since it co-mingles with the user's WIP):
+`python3 $UTILS/add-iframes-to-chapter.py --all --project-dir . --fix-heights --fix-paths`
 
 ## Technical notes / reusable tooling (for resumption)
 
