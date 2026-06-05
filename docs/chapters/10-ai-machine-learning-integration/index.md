@@ -52,32 +52,37 @@ The relationship between AI and ML can be understood through a simple hierarchy:
 - **Deep Learning** is a subset of ML using neural networks with multiple layers
 - **Specialized Applications** like natural language processing and computer vision apply these techniques to specific domains
 
+#### Diagram: AI and ML Taxonomy in Healthcare
+
 <iframe src="../../sims/ai-ml-taxonomy/main.html" width="100%" height="600px"></iframe>
 
 [View the AI/ML/DL Venn Diagram Fullscreen](../../sims/ai-ml-taxonomy/main.html)
 
 <details markdown="1">
-    <summary>AI and ML Taxonomy in Healthcare</summary>
-    **Type:** simple venn diagram with three concentric circles
+<summary>AI and ML Taxonomy in Healthcare</summary>
+Type: diagram
+**sim-id:** ai-ml-taxonomy-healthcare<br/>
+**Library:** Venn.js<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the hierarchical nested relationship between AI, ML, deep learning
+Purpose: Illustrate the hierarchical nested relationship between AI, ML, deep learning
 
-    Components to show:
-    - Outer circle: AI (largest)
-    - Middle circle: ML (nested within AI)
-    - Inner circle: Deep Learning (nested within ML)
+Components to show:
+- Outer circle: AI (largest)
+- Middle circle: ML (nested within AI)
+- Inner circle: Deep Learning (nested within ML)
 
-    **On Hover Text**:
-    
-    Show the following definitions on hover:
+**On Hover Text**:
 
-   - AI: "Systems that simulate human intelligence, reasoning, and decision-making"
-   - ML: "Algorithms that learn patterns from data without explicit programming"
-   - Deep Learning: "Neural networks with multiple layers that learn complex representations"
+Show the following definitions on hover:
 
-    Color scheme: Blue gradient from light (outer AI) to dark (inner DL)
+- AI: "Systems that simulate human intelligence, reasoning, and decision-making"
+- ML: "Algorithms that learn patterns from data without explicit programming"
+- Deep Learning: "Neural networks with multiple layers that learn complex representations"
 
-    Implementation: venn-diagram-generator skill that uses the venn.js library
+Color scheme: Blue gradient from light (outer AI) to dark (inner DL)
+
+Implementation: venn-diagram-generator skill that uses the venn.js library
 </details>
 
 ## Large Language Models in Healthcare
@@ -112,54 +117,59 @@ In this representation, "Cardiac Arrest" and "Heart Attack" are mathematically c
 
 **Vector Stores** are specialized databases optimized for storing and searching these high-dimensional embeddings. Unlike traditional databases that match exact values or ranges, vector stores perform similarity searches using distance metrics such as cosine similarity or Euclidean distance. When a physician queries "patient experiencing chest pain and shortness of breath," the system converts this query into an embedding and finds the most similar clinical guidelines, research papers, or case studies—even if they use different terminology.
 
+#### Diagram: Vector Embedding Similarity Visualization MicroSim
+
 <details markdown="1">
-    <summary>Vector Embedding Similarity Visualization MicroSim</summary>
-    Type: microsim
+<summary>Vector Embedding Similarity Visualization MicroSim</summary>
+Type: microsim
+**sim-id:** vector-embedding-similarity-visualization-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Demonstrate how medical concepts are positioned in vector space based on semantic similarity, and how similarity search works
+Learning objective: Demonstrate how medical concepts are positioned in vector space based on semantic similarity, and how similarity search works
 
-    Canvas layout (1000x600px):
-    - Left side (700x600): Drawing area showing 2D projection of vector space
-    - Right side (300x600): Control panel
+Canvas layout (1000x600px):
+- Left side (700x600): Drawing area showing 2D projection of vector space
+- Right side (300x600): Control panel
 
-    Visual elements:
-    - Medical concepts as colored circles in 2D space (t-SNE projection of embeddings)
-    - Concept clusters: cardiovascular (red), respiratory (blue), neurological (green), metabolic (yellow)
-    - Sample concepts plotted: "myocardial infarction", "stroke", "diabetes", "asthma", "COPD", "hypertension", "migraine", "cardiac arrest", etc. (20 total)
-    - Search query shown as a star icon
-    - Lines connecting query to nearest neighbors
-    - Distance circles showing similarity radius
+Visual elements:
+- Medical concepts as colored circles in 2D space (t-SNE projection of embeddings)
+- Concept clusters: cardiovascular (red), respiratory (blue), neurological (green), metabolic (yellow)
+- Sample concepts plotted: "myocardial infarction", "stroke", "diabetes", "asthma", "COPD", "hypertension", "migraine", "cardiac arrest", etc. (20 total)
+- Search query shown as a star icon
+- Lines connecting query to nearest neighbors
+- Distance circles showing similarity radius
 
-    Interactive controls:
-    - Dropdown: Select search query from list of clinical scenarios
-      * "Chest pain and dyspnea"
-      * "Severe headache with vision changes"
-      * "High blood sugar and frequent urination"
-      * "Difficulty breathing and wheezing"
-    - Slider: Number of nearest neighbors to find (1-10, default 5)
-    - Slider: Similarity threshold (0.5-1.0, default 0.75)
-    - Button: "Search"
-    - Display panel: List of nearest concepts with similarity scores
+Interactive controls:
+- Dropdown: Select search query from list of clinical scenarios
+  * "Chest pain and dyspnea"
+  * "Severe headache with vision changes"
+  * "High blood sugar and frequent urination"
+  * "Difficulty breathing and wheezing"
+- Slider: Number of nearest neighbors to find (1-10, default 5)
+- Slider: Similarity threshold (0.5-1.0, default 0.75)
+- Button: "Search"
+- Display panel: List of nearest concepts with similarity scores
 
-    Default parameters:
-    - Query: "Chest pain and dyspnea"
-    - Neighbors: 5
-    - Threshold: 0.75
+Default parameters:
+- Query: "Chest pain and dyspnea"
+- Neighbors: 5
+- Threshold: 0.75
 
-    Behavior:
-    - When "Search" clicked, place query star in vector space
-    - Draw lines to K nearest neighbors
-    - Highlight matching concepts in yellow
-    - Display similarity scores (0-1) next to each match
-    - Show distance circles at threshold boundary
-    - Animate the search process (query appears, then lines draw out)
+Behavior:
+- When "Search" clicked, place query star in vector space
+- Draw lines to K nearest neighbors
+- Highlight matching concepts in yellow
+- Display similarity scores (0-1) next to each match
+- Show distance circles at threshold boundary
+- Animate the search process (query appears, then lines draw out)
 
-    Implementation notes:
-    - Use p5.js for rendering
-    - Pre-compute 2D positions using t-SNE dimensionality reduction
-    - Calculate cosine similarity: dot product divided by magnitude product
-    - Use color coding to show concept categories
-    - Display similarity as percentage in results panel
+Implementation notes:
+- Use p5.js for rendering
+- Pre-compute 2D positions using t-SNE dimensionality reduction
+- Calculate cosine similarity: dot product divided by magnitude product
+- Use color coding to show concept categories
+- Display similarity as percentage in results panel
 </details>
 
 ## Semantic Search for Clinical Knowledge
@@ -192,70 +202,75 @@ For example, a keyword search for "MI treatment protocols" might miss documents 
 
 The RAG workflow operates through a multi-stage process that balances efficiency with accuracy. When a clinician asks a question, the system first converts that question into a vector embedding and retrieves the most relevant documents from a vector store containing clinical guidelines, research papers, and patient-specific data. These retrieved documents provide factual grounding—the "context" that the LLM needs to generate an accurate, specific answer rather than relying solely on patterns learned during training.
 
+#### Diagram: RAG Architecture for Clinical Decision Support
+
 <details markdown="1">
-    <summary>RAG Architecture for Clinical Decision Support</summary>
-    Type: diagram
+<summary>RAG Architecture for Clinical Decision Support</summary>
+Type: diagram
+**sim-id:** rag-architecture-clinical-decision-support<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the complete RAG workflow from clinical query to generated response with source attribution
+Purpose: Illustrate the complete RAG workflow from clinical query to generated response with source attribution
 
-    Components to show (left to right flow):
-    1. Clinician Query (speech bubble)
-       - Example: "What are evidence-based treatments for this patient's resistant hypertension?"
+Components to show (left to right flow):
+1. Clinician Query (speech bubble)
+   - Example: "What are evidence-based treatments for this patient's resistant hypertension?"
 
-    2. Query Embedding (transformation icon)
-       - Shows text → vector conversion
+2. Query Embedding (transformation icon)
+   - Shows text → vector conversion
 
-    3. Vector Store (database cylinder icon)
-       - Contains embeddings of:
-         * Clinical guidelines (NICE, AHA, etc.)
-         * Recent research papers
-         * Patient's medical history
-         * Drug interaction databases
-         * Local hospital protocols
+3. Vector Store (database cylinder icon)
+   - Contains embeddings of:
+     * Clinical guidelines (NICE, AHA, etc.)
+     * Recent research papers
+     * Patient's medical history
+     * Drug interaction databases
+     * Local hospital protocols
 
-    4. Similarity Search (magnifying glass icon)
-       - Retrieves top-K most relevant documents
-       - Shows similarity scores
+4. Similarity Search (magnifying glass icon)
+   - Retrieves top-K most relevant documents
+   - Shows similarity scores
 
-    5. Context Assembly (document stack icon)
-       - Combines retrieved documents
-       - Shows snippet: "Patient history: hypertension uncontrolled on ACE inhibitor..."
+5. Context Assembly (document stack icon)
+   - Combines retrieved documents
+   - Shows snippet: "Patient history: hypertension uncontrolled on ACE inhibitor..."
 
-    6. LLM Processing (brain/neural network icon)
-       - Combines query + context
-       - Generates response
+6. LLM Processing (brain/neural network icon)
+   - Combines query + context
+   - Generates response
 
-    7. Response with Citations (document with footnotes)
-       - Evidence-based recommendation
-       - Source attributions numbered
+7. Response with Citations (document with footnotes)
+   - Evidence-based recommendation
+   - Source attributions numbered
 
-    8. Feedback Loop (curved arrow back to vector store)
-       - Clinician feedback improves future retrievals
+8. Feedback Loop (curved arrow back to vector store)
+   - Clinician feedback improves future retrievals
 
-    Connections:
-    - Numbered arrows (1→2→3→4→5→6→7) showing data flow
-    - Dotted line from 7→3 showing feedback
+Connections:
+- Numbered arrows (1→2→3→4→5→6→7) showing data flow
+- Dotted line from 7→3 showing feedback
 
-    Style: Horizontal flowchart with icons and text labels
+Style: Horizontal flowchart with icons and text labels
 
-    Labels:
-    - Each component labeled with technical term and example
-    - Arrows labeled with data type being passed
-    - "Retrieval" phase (steps 2-5) in blue box
-    - "Generation" phase (steps 6-7) in green box
+Labels:
+- Each component labeled with technical term and example
+- Arrows labeled with data type being passed
+- "Retrieval" phase (steps 2-5) in blue box
+- "Generation" phase (steps 6-7) in green box
 
-    Color scheme:
-    - Blue: Retrieval components
-    - Green: Generation components
-    - Orange: User interaction points
-    - Gray: Data stores
+Color scheme:
+- Blue: Retrieval components
+- Green: Generation components
+- Orange: User interaction points
+- Gray: Data stores
 
-    Annotations:
-    - "Reduces hallucination" near context assembly
-    - "Provides source attribution" near response
-    - "Keeps knowledge current" near vector store
+Annotations:
+- "Reduces hallucination" near context assembly
+- "Provides source attribution" near response
+- "Keeps knowledge current" near vector store
 
-    Implementation: Flowchart using SVG or diagramming library
+Implementation: Flowchart using SVG or diagramming library
 </details>
 
 The key advantages of RAG for healthcare applications include:
@@ -279,100 +294,105 @@ Knowledge graphs consist of entities (nodes) and relationships (edges) that form
 - **Causal chain analysis**: Identify multi-step pathways from symptoms to root causes
 - **Treatment path discovery**: Find alternative medication routes when first-line treatments are contraindicated
 
+#### Diagram: Medical Knowledge Graph Example
+
 <details markdown="1">
-    <summary>Medical Knowledge Graph Example</summary>
-    Type: graph-model
+<summary>Medical Knowledge Graph Example</summary>
+Type: graph-model
+**sim-id:** medical-knowledge-graph<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate how clinical entities and relationships form a queryable knowledge structure
+Purpose: Illustrate how clinical entities and relationships form a queryable knowledge structure
 
-    Node types:
-    1. Disease (red circles)
-       - Properties: name, ICD_code, severity_range
-       - Examples: "Type 2 Diabetes", "Hypertension", "Chronic Kidney Disease"
+Node types:
+1. Disease (red circles)
+   - Properties: name, ICD_code, severity_range
+   - Examples: "Type 2 Diabetes", "Hypertension", "Chronic Kidney Disease"
 
-    2. Medication (blue rounded rectangles)
-       - Properties: name, drug_code, generic_name, class
-       - Examples: "Metformin", "Lisinopril", "Amlodipine"
+2. Medication (blue rounded rectangles)
+   - Properties: name, drug_code, generic_name, class
+   - Examples: "Metformin", "Lisinopril", "Amlodipine"
 
-    3. Symptom (yellow triangles)
-       - Properties: name, severity_scale
-       - Examples: "Polyuria", "Polydipsia", "Elevated BP"
+3. Symptom (yellow triangles)
+   - Properties: name, severity_scale
+   - Examples: "Polyuria", "Polydipsia", "Elevated BP"
 
-    4. Lab Test (green hexagons)
-       - Properties: name, normal_range, units
-       - Examples: "HbA1c", "Creatinine", "Blood Pressure"
+4. Lab Test (green hexagons)
+   - Properties: name, normal_range, units
+   - Examples: "HbA1c", "Creatinine", "Blood Pressure"
 
-    5. Patient Condition (orange circles with dashed border)
-       - Properties: name, severity
-       - Examples: "Severe Renal Impairment", "Pregnancy"
+5. Patient Condition (orange circles with dashed border)
+   - Properties: name, severity
+   - Examples: "Severe Renal Impairment", "Pregnancy"
 
-    Edge types:
-    1. TREATS (solid green arrows)
-       - Properties: efficacy_level, evidence_grade
-       - Direction: Medication → Disease
+Edge types:
+1. TREATS (solid green arrows)
+   - Properties: efficacy_level, evidence_grade
+   - Direction: Medication → Disease
 
-    2. CAUSES (solid red arrows)
-       - Properties: frequency, mechanism
-       - Direction: Disease → Symptom
+2. CAUSES (solid red arrows)
+   - Properties: frequency, mechanism
+   - Direction: Disease → Symptom
 
-    3. MEASURES (dotted blue arrows)
-       - Properties: sensitivity, specificity
-       - Direction: Lab Test → Disease
+3. MEASURES (dotted blue arrows)
+   - Properties: sensitivity, specificity
+   - Direction: Lab Test → Disease
 
-    4. CONTRAINDICATED_IN (dashed red arrows with X)
-       - Properties: severity, alternative_options
-       - Direction: Medication → Patient Condition
+4. CONTRAINDICATED_IN (dashed red arrows with X)
+   - Properties: severity, alternative_options
+   - Direction: Medication → Patient Condition
 
-    5. INTERACTS_WITH (purple bidirectional arrows)
-       - Properties: interaction_type, severity
-       - Direction: Medication ↔ Medication
+5. INTERACTS_WITH (purple bidirectional arrows)
+   - Properties: interaction_type, severity
+   - Direction: Medication ↔ Medication
 
-    Sample data:
-    - Type 2 Diabetes (Disease)
-      ├─ TREATS ← Metformin (Medication)
-      │  └─ CONTRAINDICATED_IN → Severe Renal Impairment (Condition)
-      ├─ CAUSES → Polyuria (Symptom)
-      ├─ CAUSES → Polydipsia (Symptom)
-      └─ MEASURES ← HbA1c (Lab Test)
+Sample data:
+- Type 2 Diabetes (Disease)
+  ├─ TREATS ← Metformin (Medication)
+  │  └─ CONTRAINDICATED_IN → Severe Renal Impairment (Condition)
+  ├─ CAUSES → Polyuria (Symptom)
+  ├─ CAUSES → Polydipsia (Symptom)
+  └─ MEASURES ← HbA1c (Lab Test)
 
-    - Hypertension (Disease)
-      ├─ TREATS ← Lisinopril (Medication)
-      │  └─ INTERACTS_WITH ↔ Aliskiren (Medication)
-      ├─ TREATS ← Amlodipine (Medication)
-      └─ MEASURES ← Blood Pressure (Lab Test)
+- Hypertension (Disease)
+  ├─ TREATS ← Lisinopril (Medication)
+  │  └─ INTERACTS_WITH ↔ Aliskiren (Medication)
+  ├─ TREATS ← Amlodipine (Medication)
+  └─ MEASURES ← Blood Pressure (Lab Test)
 
-    - Chronic Kidney Disease (Disease)
-      └─ MEASURES ← Creatinine (Lab Test)
+- Chronic Kidney Disease (Disease)
+  └─ MEASURES ← Creatinine (Lab Test)
 
-    Layout: Force-directed with disease nodes as central anchors
+Layout: Force-directed with disease nodes as central anchors
 
-    Interactive features:
-    - Hover node: Display properties tooltip
-    - Click disease node: Highlight all treatment paths
-    - Click medication node: Show contraindications and interactions
-    - Double-click: Expand to show additional connected concepts
-    - Right-click: Show example queries using this node
-    - Path highlighting: Click two nodes to show shortest path
-    - Filter controls: Toggle node/edge types on/off
+Interactive features:
+- Hover node: Display properties tooltip
+- Click disease node: Highlight all treatment paths
+- Click medication node: Show contraindications and interactions
+- Double-click: Expand to show additional connected concepts
+- Right-click: Show example queries using this node
+- Path highlighting: Click two nodes to show shortest path
+- Filter controls: Toggle node/edge types on/off
 
-    Visual styling:
-    - Node size proportional to number of connections
-    - Edge thickness represents relationship strength/frequency
-    - Contraindication edges highlighted in bold red
-    - Critical interactions pulsate gently
+Visual styling:
+- Node size proportional to number of connections
+- Edge thickness represents relationship strength/frequency
+- Contraindication edges highlighted in bold red
+- Critical interactions pulsate gently
 
-    Legend:
-    - Node shapes and colors with meanings
-    - Edge styles and their clinical significance
-    - Interaction severity levels (minor, moderate, severe)
+Legend:
+- Node shapes and colors with meanings
+- Edge styles and their clinical significance
+- Interaction severity levels (minor, moderate, severe)
 
-    Query examples shown:
-    - "Find all medications treating diabetes"
-    - "Check contraindications for patient with renal impairment"
-    - "Identify drug-drug interactions for current medications"
+Query examples shown:
+- "Find all medications treating diabetes"
+- "Check contraindications for patient with renal impairment"
+- "Identify drug-drug interactions for current medications"
 
-    Implementation: vis-network JavaScript library
-    Canvas size: 1000x700px
+Implementation: vis-network JavaScript library
+Canvas size: 1000x700px
 </details>
 
 The integration of knowledge graphs with other AI technologies creates powerful capabilities. Embeddings can be computed for graph nodes, enabling hybrid search that combines semantic similarity with relationship traversal. This approach supports questions like "Find medications similar to Metformin that don't have renal contraindications"—a query requiring both semantic understanding and relational reasoning.
@@ -398,71 +418,76 @@ Consider a clinical scenario where these technologies work together. A physician
 
 This workflow leverages the precision of graph queries for safety checks (contraindications, allergies) while using LLM capabilities for understanding the question and generating a helpful, contextualized response.
 
+#### Diagram: Comparison: Graph DB vs LLM vs Integrated System
+
 <details markdown="1">
-    <summary>Comparison: Graph DB vs LLM vs Integrated System</summary>
-    Type: chart
+<summary>Comparison: Graph DB vs LLM vs Integrated System</summary>
+Type: chart
+**sim-id:** comparison-graph-db-llm-integrated-system<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Grouped bar chart
+Chart type: Grouped bar chart
 
-    Purpose: Compare the capabilities of standalone graph databases, standalone LLMs, and integrated systems across key healthcare AI dimensions
+Purpose: Compare the capabilities of standalone graph databases, standalone LLMs, and integrated systems across key healthcare AI dimensions
 
-    X-axis: Capability dimensions
-    Y-axis: Performance score (0-10 scale)
+X-axis: Capability dimensions
+Y-axis: Performance score (0-10 scale)
 
-    Capability dimensions (X-axis categories):
-    1. Factual Accuracy
-    2. Explainability
-    3. Natural Language Understanding
-    4. Relationship Reasoning
-    5. Knowledge Currency
-    6. Hallucination Risk (inverted scale)
-    7. Complex Query Support
+Capability dimensions (X-axis categories):
+1. Factual Accuracy
+2. Explainability
+3. Natural Language Understanding
+4. Relationship Reasoning
+5. Knowledge Currency
+6. Hallucination Risk (inverted scale)
+7. Complex Query Support
 
-    Data series (three bars per category):
+Data series (three bars per category):
 
-    1. Graph Database Alone (blue bars):
-       - Factual Accuracy: 10
-       - Explainability: 10
-       - Natural Language Understanding: 2
-       - Relationship Reasoning: 10
-       - Knowledge Currency: 9
-       - Hallucination Risk: 10 (no hallucination)
-       - Complex Query Support: 7
+1. Graph Database Alone (blue bars):
+   - Factual Accuracy: 10
+   - Explainability: 10
+   - Natural Language Understanding: 2
+   - Relationship Reasoning: 10
+   - Knowledge Currency: 9
+   - Hallucination Risk: 10 (no hallucination)
+   - Complex Query Support: 7
 
-    2. LLM Alone (orange bars):
-       - Factual Accuracy: 6
-       - Explainability: 4
-       - Natural Language Understanding: 10
-       - Relationship Reasoning: 6
-       - Knowledge Currency: 5 (knowledge cutoff)
-       - Hallucination Risk: 4 (significant risk)
-       - Complex Query Support: 8
+2. LLM Alone (orange bars):
+   - Factual Accuracy: 6
+   - Explainability: 4
+   - Natural Language Understanding: 10
+   - Relationship Reasoning: 6
+   - Knowledge Currency: 5 (knowledge cutoff)
+   - Hallucination Risk: 4 (significant risk)
+   - Complex Query Support: 8
 
-    3. Integrated System (green bars):
-       - Factual Accuracy: 10
-       - Explainability: 9
-       - Natural Language Understanding: 10
-       - Relationship Reasoning: 10
-       - Knowledge Currency: 10
-       - Hallucination Risk: 9 (minimal risk)
-       - Complex Query Support: 10
+3. Integrated System (green bars):
+   - Factual Accuracy: 10
+   - Explainability: 9
+   - Natural Language Understanding: 10
+   - Relationship Reasoning: 10
+   - Knowledge Currency: 10
+   - Hallucination Risk: 9 (minimal risk)
+   - Complex Query Support: 10
 
-    Title: "Healthcare AI Capabilities: Standalone vs Integrated Approaches"
-    Legend: Position top-right
+Title: "Healthcare AI Capabilities: Standalone vs Integrated Approaches"
+Legend: Position top-right
 
-    Annotations:
-    - Arrow pointing to Integrated "Hallucination Risk": "Graph grounding reduces hallucination by 70%"
-    - Bracket above Integrated scores: "Best-of-both-worlds approach"
-    - Note below chart: "Scores based on benchmark evaluations across clinical QA tasks (n=500 questions)"
+Annotations:
+- Arrow pointing to Integrated "Hallucination Risk": "Graph grounding reduces hallucination by 70%"
+- Bracket above Integrated scores: "Best-of-both-worlds approach"
+- Note below chart: "Scores based on benchmark evaluations across clinical QA tasks (n=500 questions)"
 
-    Visual styling:
-    - Bar groups separated by capability dimension
-    - Grid lines at 0, 2, 4, 6, 8, 10 for easy reading
-    - Integrated system bars highlighted with subtle glow effect
-    - Inverted color for "Hallucination Risk" (red tones) to indicate lower is better
+Visual styling:
+- Bar groups separated by capability dimension
+- Grid lines at 0, 2, 4, 6, 8, 10 for easy reading
+- Integrated system bars highlighted with subtle glow effect
+- Inverted color for "Hallucination Risk" (red tones) to indicate lower is better
 
-    Implementation: Chart.js or D3.js
-    Canvas size: 900x500px
+Implementation: Chart.js or D3.js
+Canvas size: 900x500px
 </details>
 
 ## Clinical Decision Support Systems
@@ -479,79 +504,84 @@ The architecture of a graph-based clinical decision support system includes:
 - **ML risk models**: Predictive models for deterioration, readmission, or adverse events
 - **LLM interface**: Natural language explanations of recommendations
 
+#### Diagram: Clinical Decision Support Workflow
+
 <details markdown="1">
-    <summary>Clinical Decision Support Workflow</summary>
-    Type: workflow
+<summary>Clinical Decision Support Workflow</summary>
+Type: workflow
+**sim-id:** clinical-decision-support-workflow<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
 
-    Purpose: Illustrate how graph-based CDS systems process clinical events and deliver contextualized recommendations
+Purpose: Illustrate how graph-based CDS systems process clinical events and deliver contextualized recommendations
 
-    Visual style: Swimlane flowchart with three lanes
+Visual style: Swimlane flowchart with three lanes
 
-    Swimlanes:
-    1. Clinical Event
-    2. Graph-Based CDS System
-    3. Clinician
+Swimlanes:
+1. Clinical Event
+2. Graph-Based CDS System
+3. Clinician
 
-    Steps:
+Steps:
 
-    1. Clinical Event Lane: "Medication Order Entered"
-       Hover text: "Physician orders new medication for patient"
+1. Clinical Event Lane: "Medication Order Entered"
+   Hover text: "Physician orders new medication for patient"
 
-    2. System Lane: "Retrieve Patient Graph"
-       Hover text: "Load complete patient context: diagnoses, current meds, allergies, recent labs, social factors"
+2. System Lane: "Retrieve Patient Graph"
+   Hover text: "Load complete patient context: diagnoses, current meds, allergies, recent labs, social factors"
 
-    3. System Lane: "Query Knowledge Graph"
-       Hover text: "Traverse relationships: drug interactions, contraindications, dosing guidelines for patient's conditions"
+3. System Lane: "Query Knowledge Graph"
+   Hover text: "Traverse relationships: drug interactions, contraindications, dosing guidelines for patient's conditions"
 
-    4. System Lane: Decision Diamond: "Safety Issues Detected?"
-       Hover text: "Check for: drug-drug interactions, drug-disease contraindications, allergy conflicts, dosing concerns"
+4. System Lane: Decision Diamond: "Safety Issues Detected?"
+   Hover text: "Check for: drug-drug interactions, drug-disease contraindications, allergy conflicts, dosing concerns"
 
-    5a. System Lane: "No Issues → Silent Approval"
-        Hover text: "Order proceeds without interruption when safe"
+5a. System Lane: "No Issues → Silent Approval"
+    Hover text: "Order proceeds without interruption when safe"
 
-    5b. System Lane: "Issues Found → Calculate Clinical Significance"
-        Hover text: "Use patient context to determine if alert is actionable: Is this a known stable situation? Is there a documented override reason?"
+5b. System Lane: "Issues Found → Calculate Clinical Significance"
+    Hover text: "Use patient context to determine if alert is actionable: Is this a known stable situation? Is there a documented override reason?"
 
-    6. System Lane: Decision Diamond: "High Severity + Not Previously Addressed?"
-       Hover text: "Filter alert fatigue by only showing novel, high-risk issues"
+6. System Lane: Decision Diamond: "High Severity + Not Previously Addressed?"
+   Hover text: "Filter alert fatigue by only showing novel, high-risk issues"
 
-    7a. System Lane: "Low Relevance → Log Only"
-        Hover text: "Record concern but don't interrupt workflow"
+7a. System Lane: "Low Relevance → Log Only"
+    Hover text: "Record concern but don't interrupt workflow"
 
-    7b. System Lane: "High Relevance → Generate Contextualized Alert"
-        Hover text: "LLM creates explanation: 'This medication may worsen renal function. Patient's GFR has declined 15% over 3 months. Consider dose adjustment or alternative.'"
+7b. System Lane: "High Relevance → Generate Contextualized Alert"
+    Hover text: "LLM creates explanation: 'This medication may worsen renal function. Patient's GFR has declined 15% over 3 months. Consider dose adjustment or alternative.'"
 
-    8. Clinician Lane: "Review Alert with Evidence"
-       Hover text: "Alert includes: severity, clinical reasoning, supporting evidence, alternative options"
+8. Clinician Lane: "Review Alert with Evidence"
+   Hover text: "Alert includes: severity, clinical reasoning, supporting evidence, alternative options"
 
-    9. Clinician Lane: Decision Diamond: "Accept Recommendation?"
+9. Clinician Lane: Decision Diamond: "Accept Recommendation?"
 
-    10a. Clinician Lane: "Modify Order"
-         Hover text: "Choose alternative medication or adjust dose"
+10a. Clinician Lane: "Modify Order"
+     Hover text: "Choose alternative medication or adjust dose"
 
-    10b. Clinician Lane: "Override with Justification"
-         Hover text: "Document clinical reasoning for proceeding despite alert"
+10b. Clinician Lane: "Override with Justification"
+     Hover text: "Document clinical reasoning for proceeding despite alert"
 
-    11. System Lane: "Learn from Decision"
-        Hover text: "Feedback improves future alert relevance; overrides with strong justification reduce similar alerts"
+11. System Lane: "Learn from Decision"
+    Hover text: "Feedback improves future alert relevance; overrides with strong justification reduce similar alerts"
 
-    12. Clinical Event Lane: "Order Finalized"
-        Hover text: "Safe, evidence-based medication order processed"
+12. Clinical Event Lane: "Order Finalized"
+    Hover text: "Safe, evidence-based medication order processed"
 
-    Color coding:
-    - Green: Data retrieval steps
-    - Yellow: Decision points
-    - Red: Safety checks
-    - Blue: Clinician actions
-    - Purple: Machine learning / feedback steps
+Color coding:
+- Green: Data retrieval steps
+- Yellow: Decision points
+- Red: Safety checks
+- Blue: Clinician actions
+- Purple: Machine learning / feedback steps
 
-    Annotations:
-    - "Context-aware filtering reduces alert fatigue by 60-80%"
-    - "Graph traversal enables multi-factor safety analysis"
-    - "LLM explanations improve clinician trust and compliance"
+Annotations:
+- "Context-aware filtering reduces alert fatigue by 60-80%"
+- "Graph traversal enables multi-factor safety analysis"
+- "LLM explanations improve clinician trust and compliance"
 
-    Implementation: HTML/CSS/JavaScript interactive workflow with hover states
-    Canvas size: 1200x800px
+Implementation: HTML/CSS/JavaScript interactive workflow with hover states
+Canvas size: 1200x800px
 </details>
 
 The effectiveness of CDS systems is measured not by the number of alerts generated, but by clinician adherence to recommendations and measurable improvements in patient outcomes. Graph-based systems that provide contextualized, explainable guidance demonstrate significantly higher acceptance rates than traditional rule-based approaches.
@@ -577,72 +607,77 @@ Consider a discovery scenario: a healthcare system wants to understand why certa
 
 This approach might discover that patients with certain combinations of comorbidities, living in specific environments (e.g., high altitude), and following particular medication sequences have better outcomes—insights that would be difficult to identify through traditional statistical methods.
 
+#### Diagram: Clinical Discovery Pipeline Timeline
+
 <details markdown="1">
-    <summary>Clinical Discovery Pipeline Timeline</summary>
-    Type: timeline
+<summary>Clinical Discovery Pipeline Timeline</summary>
+Type: timeline
+**sim-id:** clinical-discovery-pipeline-timeline<br/>
+**Library:** vis-timeline<br/>
+**Status:** Specified
 
-    Time period: Ongoing research process (Phase 1 through Publication)
+Time period: Ongoing research process (Phase 1 through Publication)
 
-    Orientation: Horizontal
+Orientation: Horizontal
 
-    Events:
+Events:
 
-    1. Phase 1: Data Integration (Week 1-2)
-       - "Aggregate patient data from EHR, claims, pharmacy, labs into unified patient graphs"
-       - Icon: Database consolidation
+1. Phase 1: Data Integration (Week 1-2)
+   - "Aggregate patient data from EHR, claims, pharmacy, labs into unified patient graphs"
+   - Icon: Database consolidation
 
-    2. Phase 2: Graph Construction (Week 2-3)
-       - "Create nodes (patients, conditions, medications, procedures) and edges (treatment, diagnosis, outcome relationships)"
-       - Icon: Network building
+2. Phase 2: Graph Construction (Week 2-3)
+   - "Create nodes (patients, conditions, medications, procedures) and edges (treatment, diagnosis, outcome relationships)"
+   - Icon: Network building
 
-    3. Phase 3: Embedding Generation (Week 3-4)
-       - "Apply graph neural networks to generate patient embeddings that capture clinical trajectories"
-       - Icon: Vector transformation
+3. Phase 3: Embedding Generation (Week 3-4)
+   - "Apply graph neural networks to generate patient embeddings that capture clinical trajectories"
+   - Icon: Vector transformation
 
-    4. Phase 4: Cohort Discovery (Week 4-6)
-       - "Use unsupervised learning (clustering) to identify patient subgroups with distinct patterns"
-       - Icon: Grouping circles
+4. Phase 4: Cohort Discovery (Week 4-6)
+   - "Use unsupervised learning (clustering) to identify patient subgroups with distinct patterns"
+   - Icon: Grouping circles
 
-    5. Phase 5: Pattern Analysis (Week 6-8)
-       - "Traverse graphs within each cohort to find discriminating features and relationships"
-       - Icon: Magnifying glass over network
+5. Phase 5: Pattern Analysis (Week 6-8)
+   - "Traverse graphs within each cohort to find discriminating features and relationships"
+   - Icon: Magnifying glass over network
 
-    6. Phase 6: Hypothesis Formation (Week 8-10)
-       - "Generate testable clinical hypotheses based on discovered patterns"
-       - Icon: Light bulb
+6. Phase 6: Hypothesis Formation (Week 8-10)
+   - "Generate testable clinical hypotheses based on discovered patterns"
+   - Icon: Light bulb
 
-    7. Phase 7: Statistical Validation (Week 10-14)
-       - "Validate findings using traditional epidemiological methods and independent datasets"
-       - Icon: Chart with confidence intervals
+7. Phase 7: Statistical Validation (Week 10-14)
+   - "Validate findings using traditional epidemiological methods and independent datasets"
+   - Icon: Chart with confidence intervals
 
-    8. Phase 8: Prospective Cohort (Month 4-12)
-       - "Test hypotheses prospectively in real-world clinical settings"
-       - Icon: Calendar with checkmarks
+8. Phase 8: Prospective Cohort (Month 4-12)
+   - "Test hypotheses prospectively in real-world clinical settings"
+   - Icon: Calendar with checkmarks
 
-    9. Phase 9: Publication (Month 12-18)
-       - "Disseminate findings through peer-reviewed publications and clinical guidelines"
-       - Icon: Document with seal
+9. Phase 9: Publication (Month 12-18)
+   - "Disseminate findings through peer-reviewed publications and clinical guidelines"
+   - Icon: Document with seal
 
-    Visual style: Horizontal timeline with above/below alternating placement
+Visual style: Horizontal timeline with above/below alternating placement
 
-    Color coding:
-    - Blue: Data preparation phases (1-3)
-    - Green: Discovery and analysis phases (4-6)
-    - Orange: Validation phases (7-8)
-    - Purple: Dissemination phase (9)
+Color coding:
+- Blue: Data preparation phases (1-3)
+- Green: Discovery and analysis phases (4-6)
+- Orange: Validation phases (7-8)
+- Purple: Dissemination phase (9)
 
-    Interactive features:
-    - Hover over each phase: Expand to show detailed activities, tools used, and deliverables
-    - Click phase: Display example from heart failure research
-    - Progress indicator: Show typical timeline vs accelerated timeline using graph+AI approaches
+Interactive features:
+- Hover over each phase: Expand to show detailed activities, tools used, and deliverables
+- Click phase: Display example from heart failure research
+- Progress indicator: Show typical timeline vs accelerated timeline using graph+AI approaches
 
-    Annotations:
-    - "Traditional methods: 24-36 months"
-    - "Graph+AI approach: 12-18 months"
-    - "40% reduction in time-to-discovery"
+Annotations:
+- "Traditional methods: 24-36 months"
+- "Graph+AI approach: 12-18 months"
+- "40% reduction in time-to-discovery"
 
-    Implementation: HTML/CSS/JavaScript timeline with interactive tooltips
-    Canvas size: 1200x400px
+Implementation: HTML/CSS/JavaScript timeline with interactive tooltips
+Canvas size: 1200x400px
 </details>
 
 ## Recommendation Systems for Personalized Care
@@ -688,80 +723,85 @@ Common predictive analytics applications in healthcare include:
 - **Length of stay prediction**: Anticipate resource needs and optimize bed management
 - **Adverse drug event prediction**: Identify patients at high risk for medication-related complications
 
+#### Diagram: Predictive Model Performance: Traditional vs Graph-Based
+
 <details markdown="1">
-    <summary>Predictive Model Performance: Traditional vs Graph-Based</summary>
-    Type: chart
+<summary>Predictive Model Performance: Traditional vs Graph-Based</summary>
+Type: chart
+**sim-id:** predictive-model-performance-traditional-graph-based<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Line chart with confidence intervals
+Chart type: Line chart with confidence intervals
 
-    Purpose: Compare the predictive performance of traditional ML models vs graph-based models as training data size increases
+Purpose: Compare the predictive performance of traditional ML models vs graph-based models as training data size increases
 
-    X-axis: Training dataset size (number of patient records, logarithmic scale)
-    - Range: 100 to 1,000,000 patients
-    - Points: 100, 500, 1,000, 5,000, 10,000, 50,000, 100,000, 500,000, 1,000,000
+X-axis: Training dataset size (number of patient records, logarithmic scale)
+- Range: 100 to 1,000,000 patients
+- Points: 100, 500, 1,000, 5,000, 10,000, 50,000, 100,000, 500,000, 1,000,000
 
-    Y-axis: AUROC (Area Under ROC Curve)
-    - Range: 0.50 to 1.00
-    - Gridlines every 0.05
+Y-axis: AUROC (Area Under ROC Curve)
+- Range: 0.50 to 1.00
+- Gridlines every 0.05
 
-    Data series:
+Data series:
 
-    1. Traditional Logistic Regression (orange line):
-       - 100 patients: 0.58 (±0.08)
-       - 500: 0.65 (±0.06)
-       - 1,000: 0.68 (±0.05)
-       - 5,000: 0.72 (±0.04)
-       - 10,000: 0.74 (±0.03)
-       - 50,000: 0.76 (±0.02)
-       - 100,000: 0.77 (±0.02)
-       - 500,000: 0.78 (±0.01)
-       - 1,000,000: 0.78 (±0.01)
-       - Pattern: Performance plateaus around 0.78
+1. Traditional Logistic Regression (orange line):
+   - 100 patients: 0.58 (±0.08)
+   - 500: 0.65 (±0.06)
+   - 1,000: 0.68 (±0.05)
+   - 5,000: 0.72 (±0.04)
+   - 10,000: 0.74 (±0.03)
+   - 50,000: 0.76 (±0.02)
+   - 100,000: 0.77 (±0.02)
+   - 500,000: 0.78 (±0.01)
+   - 1,000,000: 0.78 (±0.01)
+   - Pattern: Performance plateaus around 0.78
 
-    2. Random Forest (purple line):
-       - 100: 0.62 (±0.09)
-       - 500: 0.69 (±0.06)
-       - 1,000: 0.73 (±0.05)
-       - 5,000: 0.77 (±0.03)
-       - 10,000: 0.79 (±0.03)
-       - 50,000: 0.81 (±0.02)
-       - 100,000: 0.82 (±0.02)
-       - 500,000: 0.83 (±0.01)
-       - 1,000,000: 0.83 (±0.01)
-       - Pattern: Better than logistic regression, plateaus at 0.83
+2. Random Forest (purple line):
+   - 100: 0.62 (±0.09)
+   - 500: 0.69 (±0.06)
+   - 1,000: 0.73 (±0.05)
+   - 5,000: 0.77 (±0.03)
+   - 10,000: 0.79 (±0.03)
+   - 50,000: 0.81 (±0.02)
+   - 100,000: 0.82 (±0.02)
+   - 500,000: 0.83 (±0.01)
+   - 1,000,000: 0.83 (±0.01)
+   - Pattern: Better than logistic regression, plateaus at 0.83
 
-    3. Graph Neural Network (green line):
-       - 100: 0.64 (±0.10)
-       - 500: 0.72 (±0.07)
-       - 1,000: 0.76 (±0.05)
-       - 5,000: 0.82 (±0.04)
-       - 10,000: 0.85 (±0.03)
-       - 50,000: 0.88 (±0.02)
-       - 100,000: 0.90 (±0.02)
-       - 500,000: 0.92 (±0.01)
-       - 1,000,000: 0.93 (±0.01)
-       - Pattern: Continues improving with more data
+3. Graph Neural Network (green line):
+   - 100: 0.64 (±0.10)
+   - 500: 0.72 (±0.07)
+   - 1,000: 0.76 (±0.05)
+   - 5,000: 0.82 (±0.04)
+   - 10,000: 0.85 (±0.03)
+   - 50,000: 0.88 (±0.02)
+   - 100,000: 0.90 (±0.02)
+   - 500,000: 0.92 (±0.01)
+   - 1,000,000: 0.93 (±0.01)
+   - Pattern: Continues improving with more data
 
-    Title: "30-Day Readmission Prediction: Model Performance vs Training Data Size"
-    Subtitle: "Graph-based models leverage relational context for superior predictions"
+Title: "30-Day Readmission Prediction: Model Performance vs Training Data Size"
+Subtitle: "Graph-based models leverage relational context for superior predictions"
 
-    Legend: Position top-left with method names and final AUROC
+Legend: Position top-left with method names and final AUROC
 
-    Annotations:
-    - Vertical dashed line at 10,000 patients: "Typical single-hospital dataset size"
-    - Arrow pointing to GNN line at 100,000: "Graph structure enables 15% better prediction than traditional methods"
-    - Shaded region for confidence intervals (95% CI)
-    - Horizontal reference line at 0.50: "Random chance baseline"
+Annotations:
+- Vertical dashed line at 10,000 patients: "Typical single-hospital dataset size"
+- Arrow pointing to GNN line at 100,000: "Graph structure enables 15% better prediction than traditional methods"
+- Shaded region for confidence intervals (95% CI)
+- Horizontal reference line at 0.50: "Random chance baseline"
 
-    Visual styling:
-    - Logarithmic X-axis with labeled tick marks
-    - Bold lines for mean performance
-    - Translucent shaded regions for confidence intervals
-    - Markers at each data point
-    - GNN line highlighted with slightly thicker stroke
+Visual styling:
+- Logarithmic X-axis with labeled tick marks
+- Bold lines for mean performance
+- Translucent shaded regions for confidence intervals
+- Markers at each data point
+- GNN line highlighted with slightly thicker stroke
 
-    Implementation: Chart.js with logarithmic scale plugin
-    Canvas size: 900x600px
+Implementation: Chart.js with logarithmic scale plugin
+Canvas size: 900x600px
 </details>
 
 ## Risk Stratification for Targeted Interventions
@@ -788,78 +828,83 @@ Applications of risk stratification include:
 - **Resource allocation**: Distribute limited resources (home health visits, specialist consultations, social services) to patients most likely to benefit
 - **Population health management**: Segment populations for tailored wellness programs, preventive screening campaigns, or chronic disease management
 
+#### Diagram: Risk Stratification Pyramid with Intervention Strategies
+
 <details markdown="1">
-    <summary>Risk Stratification Pyramid with Intervention Strategies</summary>
-    Type: infographic
+<summary>Risk Stratification Pyramid with Intervention Strategies</summary>
+Type: infographic
+**sim-id:** risk-stratification-pyramid-intervention-strategies<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Visualize population risk distribution and corresponding intervention intensity using a pyramid structure
+Purpose: Visualize population risk distribution and corresponding intervention intensity using a pyramid structure
 
-    Layout: Vertical pyramid divided into four tiers, with intervention descriptions alongside
+Layout: Vertical pyramid divided into four tiers, with intervention descriptions alongside
 
-    Pyramid tiers (bottom to top):
+Pyramid tiers (bottom to top):
 
-    1. Bottom tier (largest, 60-70% of population): Low Risk
-       - Color: Green
-       - Label: "Low Risk: Healthy or well-controlled chronic conditions"
-       - Population: ~65%
-       - Intervention box (right side):
-         * Strategy: "Population Health Initiatives"
-         * Actions: Wellness programs, preventive screening, health education, annual check-ups
-         * Cost: $200-500 per patient per year
-         * Graph signals: Few diagnoses, medication adherence, regular preventive care
+1. Bottom tier (largest, 60-70% of population): Low Risk
+   - Color: Green
+   - Label: "Low Risk: Healthy or well-controlled chronic conditions"
+   - Population: ~65%
+   - Intervention box (right side):
+     * Strategy: "Population Health Initiatives"
+     * Actions: Wellness programs, preventive screening, health education, annual check-ups
+     * Cost: $200-500 per patient per year
+     * Graph signals: Few diagnoses, medication adherence, regular preventive care
 
-    2. Second tier (20-25% of population): Moderate Risk
-       - Color: Yellow
-       - Label: "Moderate Risk: Multiple chronic conditions or recent acute events"
-       - Population: ~25%
-       - Intervention box:
-         * Strategy: "Proactive Disease Management"
-         * Actions: Care coordination, chronic disease programs, medication management, quarterly visits
-         * Cost: $1,500-3,000 per patient per year
-         * Graph signals: 2-3 chronic conditions, some medication non-adherence, occasional hospitalizations
+2. Second tier (20-25% of population): Moderate Risk
+   - Color: Yellow
+   - Label: "Moderate Risk: Multiple chronic conditions or recent acute events"
+   - Population: ~25%
+   - Intervention box:
+     * Strategy: "Proactive Disease Management"
+     * Actions: Care coordination, chronic disease programs, medication management, quarterly visits
+     * Cost: $1,500-3,000 per patient per year
+     * Graph signals: 2-3 chronic conditions, some medication non-adherence, occasional hospitalizations
 
-    3. Third tier (8-12% of population): High Risk
-       - Color: Orange
-       - Label: "High Risk: Complex conditions, frequent utilization, poor control"
-       - Population: ~10%
-       - Intervention box:
-         * Strategy: "Intensive Case Management"
-         * Actions: Dedicated care manager, home visits, social services, weekly contact, care plan optimization
-         * Cost: $5,000-10,000 per patient per year
-         * Graph signals: 4+ comorbidities, multiple recent admissions, social determinant barriers, care fragmentation
+3. Third tier (8-12% of population): High Risk
+   - Color: Orange
+   - Label: "High Risk: Complex conditions, frequent utilization, poor control"
+   - Population: ~10%
+   - Intervention box:
+     * Strategy: "Intensive Case Management"
+     * Actions: Dedicated care manager, home visits, social services, weekly contact, care plan optimization
+     * Cost: $5,000-10,000 per patient per year
+     * Graph signals: 4+ comorbidities, multiple recent admissions, social determinant barriers, care fragmentation
 
-    4. Top tier (smallest, 2-5% of population): Very High Risk
-       - Color: Red
-       - Label: "Very High Risk: Critical complexity, imminent deterioration risk"
-       - Population: ~3%
-       - Intervention box:
-         * Strategy: "Comprehensive Complex Care"
-         * Actions: Multidisciplinary care team, daily monitoring, home health, palliative care consultation, hospital-at-home
-         * Cost: $20,000-50,000 per patient per year
-         * Graph signals: 6+ conditions, frequent ER/hospital use, end-stage disease, severe social barriers, declining trajectory
+4. Top tier (smallest, 2-5% of population): Very High Risk
+   - Color: Red
+   - Label: "Very High Risk: Critical complexity, imminent deterioration risk"
+   - Population: ~3%
+   - Intervention box:
+     * Strategy: "Comprehensive Complex Care"
+     * Actions: Multidisciplinary care team, daily monitoring, home health, palliative care consultation, hospital-at-home
+     * Cost: $20,000-50,000 per patient per year
+     * Graph signals: 6+ conditions, frequent ER/hospital use, end-stage disease, severe social barriers, declining trajectory
 
-    Additional elements:
+Additional elements:
 
-    - Left side of pyramid: Percentage labels for each tier
-    - Right side of pyramid: Patient count for a 100,000-member population
-    - Arrows showing movement between tiers (upward = deterioration, downward = improvement)
-    - Cost efficiency note: "Top 5% account for 50% of total healthcare costs"
+- Left side of pyramid: Percentage labels for each tier
+- Right side of pyramid: Patient count for a 100,000-member population
+- Arrows showing movement between tiers (upward = deterioration, downward = improvement)
+- Cost efficiency note: "Top 5% account for 50% of total healthcare costs"
 
-    Interactive features:
-    - Click tier: Expand to show example patient profiles from that risk category
-    - Hover intervention: Display effectiveness metrics (reduction in ER visits, hospitalization rates)
-    - Toggle view: Switch between percentage view and absolute numbers for different population sizes
+Interactive features:
+- Click tier: Expand to show example patient profiles from that risk category
+- Hover intervention: Display effectiveness metrics (reduction in ER visits, hospitalization rates)
+- Toggle view: Switch between percentage view and absolute numbers for different population sizes
 
-    Color scheme:
-    - Green to red gradient showing increasing risk
-    - Intervention boxes in neutral blue-gray
+Color scheme:
+- Green to red gradient showing increasing risk
+- Intervention boxes in neutral blue-gray
 
-    Annotations:
-    - "Graph-based models identify 35% more high-risk patients than traditional scoring"
-    - "Early intervention for moderate-risk patients prevents 40% from progressing to high-risk"
+Annotations:
+- "Graph-based models identify 35% more high-risk patients than traditional scoring"
+- "Early intervention for moderate-risk patients prevents 40% from progressing to high-risk"
 
-    Implementation: SVG-based interactive infographic with JavaScript
-    Canvas size: 1000x800px
+Implementation: SVG-based interactive infographic with JavaScript
+Canvas size: 1000x800px
 </details>
 
 ## Population Health Analytics

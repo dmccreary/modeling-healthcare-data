@@ -45,47 +45,52 @@ Pattern matching consists of three core elements:
 
 Consider a healthcare scenario where you need to find all patients who were prescribed a specific medication after being diagnosed with diabetes. In a relational database, this would require joining patient, diagnosis, and prescription tables with complex date filtering. In a graph query language, you describe the pattern directly: a Patient node connected to a Diagnosis node (with disease="Diabetes") which connects to a Prescription node (with medication="Metformin"), with temporal constraints on the relationship timestamps.
 
+#### Diagram: Healthcare Graph Pattern Examples
+
 <details markdown="1">
-    <summary>Healthcare Graph Pattern Examples</summary>
-    Type: diagram
+<summary>Healthcare Graph Pattern Examples</summary>
+Type: diagram
+**sim-id:** healthcare-graph-pattern-examples<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Illustrate common pattern matching scenarios in healthcare graphs
+Purpose: Illustrate common pattern matching scenarios in healthcare graphs
 
-    Components to show:
-    - Three example patterns side by side
+Components to show:
+- Three example patterns side by side
 
-    Pattern 1 - Patient-Diagnosis-Prescription:
-    - Patient (circle, blue)
-    - Connected by HAS_DIAGNOSIS arrow to
-    - Diagnosis node (circle, red) labeled "Diabetes"
-    - Connected by PRESCRIBED arrow to
-    - Prescription node (circle, green) labeled "Metformin"
-    - Date constraint annotation on PRESCRIBED edge
+Pattern 1 - Patient-Diagnosis-Prescription:
+- Patient (circle, blue)
+- Connected by HAS_DIAGNOSIS arrow to
+- Diagnosis node (circle, red) labeled "Diabetes"
+- Connected by PRESCRIBED arrow to
+- Prescription node (circle, green) labeled "Metformin"
+- Date constraint annotation on PRESCRIBED edge
 
-    Pattern 2 - Provider Referral Network:
-    - PCP (Primary Care Provider) node (square, purple)
-    - Connected by REFERS_TO arrow to
-    - Specialist node (square, purple)
-    - Connected by REFERS_TO arrow to
-    - Laboratory node (square, orange)
-    - Show bi-directional possibility with dotted reverse arrows
+Pattern 2 - Provider Referral Network:
+- PCP (Primary Care Provider) node (square, purple)
+- Connected by REFERS_TO arrow to
+- Specialist node (square, purple)
+- Connected by REFERS_TO arrow to
+- Laboratory node (square, orange)
+- Show bi-directional possibility with dotted reverse arrows
 
-    Pattern 3 - Treatment Pathway:
-    - Patient (circle, blue)
-    - Connected to sequence of Treatment nodes (hexagons, teal)
-    - Treatment1 → Treatment2 → Treatment3
-    - NEXT relationship arrows with temporal ordering
-    - Outcome node (diamond, yellow) at end
+Pattern 3 - Treatment Pathway:
+- Patient (circle, blue)
+- Connected to sequence of Treatment nodes (hexagons, teal)
+- Treatment1 → Treatment2 → Treatment3
+- NEXT relationship arrows with temporal ordering
+- Outcome node (diamond, yellow) at end
 
-    Style: Clean network diagram with labeled nodes and directed edges
+Style: Clean network diagram with labeled nodes and directed edges
 
-    Labels: Include node types and relationship names on arrows
+Labels: Include node types and relationship names on arrows
 
-    Annotations: Add property constraints like "date > 2024-01-01" on relevant edges
+Annotations: Add property constraints like "date > 2024-01-01" on relevant edges
 
-    Color scheme: Use healthcare-themed colors (blues for patients, purples for providers, reds for conditions)
+Color scheme: Use healthcare-themed colors (blues for patients, purples for providers, reds for conditions)
 
-    Implementation: SVG diagram with clear labels and directional arrows
+Implementation: SVG diagram with clear labels and directional arrows
 </details>
 
 The power of pattern matching lies in its declarative nature. You specify *what* pattern you want to find, not *how* to find it. The graph database engine handles the traversal optimization, leveraging indexes and native graph storage to execute queries efficiently.
@@ -116,58 +121,63 @@ RETURN p.patient_id, m1.name, m2.name, p.primary_provider
 
 This query identifies patients (`p`) who take two different medications (`m1` and `m2`) that have a `CONFLICTS_WITH` relationship, a critical safety check that would require complex self-joins in SQL.
 
+#### Diagram: Cypher Query Components Interactive Infographic
+
 <details markdown="1">
-    <summary>Cypher Query Components Interactive Infographic</summary>
-    Type: infographic
+<summary>Cypher Query Components Interactive Infographic</summary>
+Type: infographic
+**sim-id:** cypher-query-components-infographic<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Create an interactive breakdown of Cypher query syntax with healthcare examples
+Purpose: Create an interactive breakdown of Cypher query syntax with healthcare examples
 
-    Layout: Vertical flow showing query structure from top to bottom
+Layout: Vertical flow showing query structure from top to bottom
 
-    Sections:
+Sections:
 
-    1. MATCH Clause (Blue section at top):
-       - Header: "MATCH: Specify Graph Patterns"
-       - Visual: Node-relationship pattern diagram
-       - Example: `MATCH (p:Patient)-[:HAS_DIAGNOSIS]->(d:Disease)`
-       - Hover: "Describes the graph structure you want to find"
-       - Click to expand: Shows variations (optional matches, variable-length paths)
+1. MATCH Clause (Blue section at top):
+   - Header: "MATCH: Specify Graph Patterns"
+   - Visual: Node-relationship pattern diagram
+   - Example: `MATCH (p:Patient)-[:HAS_DIAGNOSIS]->(d:Disease)`
+   - Hover: "Describes the graph structure you want to find"
+   - Click to expand: Shows variations (optional matches, variable-length paths)
 
-    2. WHERE Clause (Yellow section):
-       - Header: "WHERE: Filter Results"
-       - Visual: Funnel icon with filter criteria
-       - Example: `WHERE d.icd_code STARTS WITH 'E11' AND p.age > 65`
-       - Hover: "Applies property-based constraints"
-       - Click to expand: Shows common operators (>, <, IN, CONTAINS, regex)
+2. WHERE Clause (Yellow section):
+   - Header: "WHERE: Filter Results"
+   - Visual: Funnel icon with filter criteria
+   - Example: `WHERE d.icd_code STARTS WITH 'E11' AND p.age > 65`
+   - Hover: "Applies property-based constraints"
+   - Click to expand: Shows common operators (>, <, IN, CONTAINS, regex)
 
-    3. WITH Clause (Purple section):
-       - Header: "WITH: Pipeline Query Stages"
-       - Visual: Flow diagram showing data transformation
-       - Example: `WITH p, count(d) AS diagnosis_count WHERE diagnosis_count > 3`
-       - Hover: "Chains query segments and aggregates data"
-       - Click to expand: Shows aggregation functions (count, sum, collect)
+3. WITH Clause (Purple section):
+   - Header: "WITH: Pipeline Query Stages"
+   - Visual: Flow diagram showing data transformation
+   - Example: `WITH p, count(d) AS diagnosis_count WHERE diagnosis_count > 3`
+   - Hover: "Chains query segments and aggregates data"
+   - Click to expand: Shows aggregation functions (count, sum, collect)
 
-    4. RETURN Clause (Green section at bottom):
-       - Header: "RETURN: Shape Output"
-       - Visual: Table/result set icon
-       - Example: `RETURN p.patient_id, p.name, diagnosis_count ORDER BY diagnosis_count DESC`
-       - Hover: "Defines what data to output and how to order it"
-       - Click to expand: Shows formatting options (DISTINCT, LIMIT, ORDER BY)
+4. RETURN Clause (Green section at bottom):
+   - Header: "RETURN: Shape Output"
+   - Visual: Table/result set icon
+   - Example: `RETURN p.patient_id, p.name, diagnosis_count ORDER BY diagnosis_count DESC`
+   - Hover: "Defines what data to output and how to order it"
+   - Click to expand: Shows formatting options (DISTINCT, LIMIT, ORDER BY)
 
-    5. Complete Example (Gray section):
-       - Full query combining all clauses
-       - Color-coded to match sections above
-       - Description: "Find elderly patients with multiple chronic conditions"
+5. Complete Example (Gray section):
+   - Full query combining all clauses
+   - Color-coded to match sections above
+   - Description: "Find elderly patients with multiple chronic conditions"
 
-    Interactive features:
-    - Hover over each section for tooltip explanation
-    - Click section header to expand with detailed examples
-    - Click healthcare example to see result preview
-    - Color-coded syntax highlighting matching the sections
+Interactive features:
+- Hover over each section for tooltip explanation
+- Click section header to expand with detailed examples
+- Click healthcare example to see result preview
+- Color-coded syntax highlighting matching the sections
 
-    Visual style: Modern card-based layout with syntax highlighting
+Visual style: Modern card-based layout with syntax highlighting
 
-    Implementation: HTML/CSS/JavaScript with expandable sections and tooltips
+Implementation: HTML/CSS/JavaScript with expandable sections and tooltips
 </details>
 
 Cypher's expressiveness extends to variable-length paths, which are essential for healthcare network analysis. To find all providers within three referral steps of a primary care physician, you can write:
@@ -205,54 +215,59 @@ The following table compares key features across graph query languages:
 
 GQL's standardization effort aims to prevent fragmentation in the graph database market, similar to how SQL standardization enabled database portability in the relational era. Healthcare organizations adopting GQL can expect greater flexibility in choosing graph database vendors without rewriting application queries.
 
+#### Diagram: Evolution of Graph Query Languages Timeline
+
 <details markdown="1">
-    <summary>Evolution of Graph Query Languages Timeline</summary>
-    Type: timeline
+<summary>Evolution of Graph Query Languages Timeline</summary>
+Type: timeline
+**sim-id:** evolution-graph-query-languages-timeline<br/>
+**Library:** vis-timeline<br/>
+**Status:** Specified
 
-    Time period: 2000-2025
+Time period: 2000-2025
 
-    Orientation: Horizontal
+Orientation: Horizontal
 
-    Events:
+Events:
 
-    - 2002: Resource Description Framework (RDF) and SPARQL for semantic web
-      Detail: Academic focus on triple stores, limited industry adoption for operational systems
+- 2002: Resource Description Framework (RDF) and SPARQL for semantic web
+  Detail: Academic focus on triple stores, limited industry adoption for operational systems
 
-    - 2010: Neo4j releases Cypher as open-source query language
-      Detail: ASCII-art syntax makes graph patterns intuitive, drives Neo4j adoption in enterprise
+- 2010: Neo4j releases Cypher as open-source query language
+  Detail: ASCII-art syntax makes graph patterns intuitive, drives Neo4j adoption in enterprise
 
-    - 2012: TigerGraph introduces GSQL with strong typing and procedural features
-      Detail: Targets high-performance analytics use cases with compiled queries
+- 2012: TigerGraph introduces GSQL with strong typing and procedural features
+  Detail: Targets high-performance analytics use cases with compiled queries
 
-    - 2015: openCypher project launches for vendor-neutral Cypher specification
-      Detail: Multiple vendors (SAP, Redis, Memgraph) adopt Cypher implementations
+- 2015: openCypher project launches for vendor-neutral Cypher specification
+  Detail: Multiple vendors (SAP, Redis, Memgraph) adopt Cypher implementations
 
-    - 2019: ISO begins formal GQL standardization process
-      Detail: Industry collaboration to create SQL-equivalent standard for graph databases
+- 2019: ISO begins formal GQL standardization process
+  Detail: Industry collaboration to create SQL-equivalent standard for graph databases
 
-    - 2023: GQL draft specification published for public review
-      Detail: Combines Cypher, GSQL, and SPARQL concepts into unified standard
+- 2023: GQL draft specification published for public review
+  Detail: Combines Cypher, GSQL, and SPARQL concepts into unified standard
 
-    - 2024: GQL approved as ISO/IEC international standard
-      Detail: First major graph query language with formal standardization
+- 2024: GQL approved as ISO/IEC international standard
+  Detail: First major graph query language with formal standardization
 
-    - 2025: Major database vendors announce GQL support roadmaps
-      Detail: Oracle, Neo4j, TigerGraph commit to GQL implementations
+- 2025: Major database vendors announce GQL support roadmaps
+  Detail: Oracle, Neo4j, TigerGraph commit to GQL implementations
 
-    Visual style: Horizontal timeline with milestone markers
+Visual style: Horizontal timeline with milestone markers
 
-    Color coding:
-    - Blue: Academic/research developments (2000-2010)
-    - Purple: Industry innovation period (2010-2019)
-    - Green: Standardization era (2019-2024)
-    - Gold: Adoption phase (2024+)
+Color coding:
+- Blue: Academic/research developments (2000-2010)
+- Purple: Industry innovation period (2010-2019)
+- Green: Standardization era (2019-2024)
+- Gold: Adoption phase (2024+)
 
-    Interactive features:
-    - Hover over milestone to see detailed description
-    - Click to expand with links to specifications and vendor announcements
-    - Show concurrent developments in parallel tracks
+Interactive features:
+- Hover over milestone to see detailed description
+- Click to expand with links to specifications and vendor announcements
+- Show concurrent developments in parallel tracks
 
-    Implementation: HTML/CSS/JavaScript timeline with SVG elements
+Implementation: HTML/CSS/JavaScript timeline with SVG elements
 </details>
 
 For healthcare applications, GQL's formal schema support enables stronger data governance. Medical ontologies like SNOMED CT and ICD coding systems can be represented as formal graph schemas, with GQL queries validated against these schemas at compile time rather than runtime, reducing errors in clinical decision support systems.
@@ -297,69 +312,74 @@ CREATE QUERY patient_risk_score(VERTEX<Patient> input_patient) {
 
 The `@risk_score` accumulator maintains state across the traversal, aggregating severity weights from treatments and incorporating comparative data from similar patients—a pattern that would require multiple query rounds or complex subqueries in purely declarative languages.
 
+#### Diagram: GSQL Accumulator Pattern MicroSim
+
 <details markdown="1">
-    <summary>GSQL Accumulator Pattern MicroSim</summary>
-    Type: microsim
+<summary>GSQL Accumulator Pattern MicroSim</summary>
+Type: microsim
+**sim-id:** gsql-accumulator-pattern-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Demonstrate how GSQL accumulators aggregate data during graph traversals in real-time
+Learning objective: Demonstrate how GSQL accumulators aggregate data during graph traversals in real-time
 
-    Canvas layout (900x650px):
-    - Top section (900x450): Graph visualization area
-    - Bottom section (900x200): Control panel and accumulator value display
+Canvas layout (900x650px):
+- Top section (900x450): Graph visualization area
+- Bottom section (900x200): Control panel and accumulator value display
 
-    Visual elements in graph area:
-    - Central Patient node (large blue circle) labeled "Patient ID: 12345"
-    - 8 Treatment nodes (medium green circles) connected to patient with HAS_TREATMENT edges
-    - 4 Complication nodes (small red circles) connected to some treatments
-    - Each treatment node shows severity_weight value (1-10)
-    - Each complication shows complication_weight value (1-5)
+Visual elements in graph area:
+- Central Patient node (large blue circle) labeled "Patient ID: 12345"
+- 8 Treatment nodes (medium green circles) connected to patient with HAS_TREATMENT edges
+- 4 Complication nodes (small red circles) connected to some treatments
+- Each treatment node shows severity_weight value (1-10)
+- Each complication shows complication_weight value (1-5)
 
-    Interactive controls (bottom panel):
-    - Button: "Start Traversal" - begins animated accumulation
-    - Button: "Reset" - clears accumulators and animation
-    - Slider: Animation speed (100ms - 2000ms per step)
-    - Checkbox: "Show Accumulator Updates" (highlights nodes as visited)
-    - Dropdown: Select accumulator type (SumAccum, MaxAccum, AvgAccum, SetAccum)
+Interactive controls (bottom panel):
+- Button: "Start Traversal" - begins animated accumulation
+- Button: "Reset" - clears accumulators and animation
+- Slider: Animation speed (100ms - 2000ms per step)
+- Checkbox: "Show Accumulator Updates" (highlights nodes as visited)
+- Dropdown: Select accumulator type (SumAccum, MaxAccum, AvgAccum, SetAccum)
 
-    Accumulator Display Panel:
-    - Current risk_score value (large number, updates during traversal)
-    - Treatment count (increments as treatments visited)
-    - Average severity (calculated in real-time)
-    - Complications detected (list accumulates)
+Accumulator Display Panel:
+- Current risk_score value (large number, updates during traversal)
+- Treatment count (increments as treatments visited)
+- Average severity (calculated in real-time)
+- Complications detected (list accumulates)
 
-    Default parameters:
-    - Accumulator: SumAccum
-    - Animation speed: 500ms
-    - Patient: Pre-populated with 8 treatments
+Default parameters:
+- Accumulator: SumAccum
+- Animation speed: 500ms
+- Patient: Pre-populated with 8 treatments
 
-    Behavior:
-    - Click "Start Traversal" to begin
-    - Animate traversal from Patient to each Treatment node sequentially
-    - As each Treatment is visited:
-      * Highlight current node in yellow
-      * Add severity_weight to risk_score accumulator
-      * Update accumulator display panel with new value
-      * Show "+X" animation near patient node
-    - When treatment has complications:
-      * Traverse to Complication nodes
-      * Add complication_weight to accumulator
-      * Mark complication nodes as visited (blue outline)
-    - Final state: Show total risk_score and summary statistics
+Behavior:
+- Click "Start Traversal" to begin
+- Animate traversal from Patient to each Treatment node sequentially
+- As each Treatment is visited:
+  * Highlight current node in yellow
+  * Add severity_weight to risk_score accumulator
+  * Update accumulator display panel with new value
+  * Show "+X" animation near patient node
+- When treatment has complications:
+  * Traverse to Complication nodes
+  * Add complication_weight to accumulator
+  * Mark complication nodes as visited (blue outline)
+- Final state: Show total risk_score and summary statistics
 
-    Code structure:
-    - Use p5.js for rendering graph and animations
-    - Store graph as adjacency structure with node/edge properties
-    - Implement accumulator classes (SumAccum, MaxAccum, AvgAccum, SetAccum)
-    - Use frameCount and timing logic for step-by-step animation
-    - Color-code nodes based on visit status (unvisited gray, current yellow, visited green)
+Code structure:
+- Use p5.js for rendering graph and animations
+- Store graph as adjacency structure with node/edge properties
+- Implement accumulator classes (SumAccum, MaxAccum, AvgAccum, SetAccum)
+- Use frameCount and timing logic for step-by-step animation
+- Color-code nodes based on visit status (unvisited gray, current yellow, visited green)
 
-    Implementation notes:
-    - Graph layout using force-directed algorithm (patient at center)
-    - Edge labels show relationship types
-    - Node hover shows full property details
-    - Accumulator panel updates in real-time with smooth number transitions
+Implementation notes:
+- Graph layout using force-directed algorithm (patient at center)
+- Edge labels show relationship types
+- Node hover shows full property details
+- Accumulator panel updates in real-time with smooth number transitions
 
-    Implementation: p5.js with custom accumulator simulation logic
+Implementation: p5.js with custom accumulator simulation logic
 </details>
 
 GSQL's compiled execution model provides significant performance advantages for healthcare analytics at scale. A query analyzing medication interaction networks across millions of patients can execute 10-100x faster than interpreted query languages, enabling real-time clinical decision support that would be impractical with slower execution models.
@@ -403,62 +423,67 @@ RETURN [node IN nodes(path) | node.treatment_name] AS recommended_pathway,
 
 This query identifies the shortest treatment pathway from diagnosis to controlled outcome, calculating total cost and duration by aggregating relationship properties along the path.
 
+#### Diagram: Care Pathway Comparison Chart
+
 <details markdown="1">
-    <summary>Care Pathway Comparison Chart</summary>
-    Type: chart
+<summary>Care Pathway Comparison Chart</summary>
+Type: chart
+**sim-id:** care-pathway-comparison-chart<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Horizontal bar chart with grouped bars
+Chart type: Horizontal bar chart with grouped bars
 
-    Purpose: Compare effectiveness metrics across different Type 2 Diabetes treatment pathways discovered by path queries
+Purpose: Compare effectiveness metrics across different Type 2 Diabetes treatment pathways discovered by path queries
 
-    Y-axis: Treatment pathway names (5 pathways)
-    X-axis: Effectiveness score (0-100, composite metric)
+Y-axis: Treatment pathway names (5 pathways)
+X-axis: Effectiveness score (0-100, composite metric)
 
-    Pathways (Y-axis labels):
-    1. "Metformin → Lifestyle → Controlled" (shortest)
-    2. "Metformin → Insulin → GLP-1 → Controlled"
-    3. "Lifestyle → Metformin → SGLT2 → Controlled"
-    4. "Metformin → DPP-4 → Insulin → Controlled"
-    5. "Insulin → Metformin → GLP-1 → Controlled"
+Pathways (Y-axis labels):
+1. "Metformin → Lifestyle → Controlled" (shortest)
+2. "Metformin → Insulin → GLP-1 → Controlled"
+3. "Lifestyle → Metformin → SGLT2 → Controlled"
+4. "Metformin → DPP-4 → Insulin → Controlled"
+5. "Insulin → Metformin → GLP-1 → Controlled"
 
-    Data series (grouped bars for each pathway):
+Data series (grouped bars for each pathway):
 
-    Series 1 - Patient Outcomes (blue bars):
-    - Pathway 1: 85
-    - Pathway 2: 78
-    - Pathway 3: 82
-    - Pathway 4: 75
-    - Pathway 5: 72
+Series 1 - Patient Outcomes (blue bars):
+- Pathway 1: 85
+- Pathway 2: 78
+- Pathway 3: 82
+- Pathway 4: 75
+- Pathway 5: 72
 
-    Series 2 - Cost Efficiency (green bars, inverted cost scale):
-    - Pathway 1: 90 (lowest cost = highest score)
-    - Pathway 2: 60
-    - Pathway 3: 75
-    - Pathway 4: 65
-    - Pathway 5: 55
+Series 2 - Cost Efficiency (green bars, inverted cost scale):
+- Pathway 1: 90 (lowest cost = highest score)
+- Pathway 2: 60
+- Pathway 3: 75
+- Pathway 4: 65
+- Pathway 5: 55
 
-    Series 3 - Time to Control (orange bars, inverted time scale):
-    - Pathway 1: 88 (shortest time = highest score)
-    - Pathway 2: 70
-    - Pathway 3: 80
-    - Pathway 4: 68
-    - Pathway 5: 65
+Series 3 - Time to Control (orange bars, inverted time scale):
+- Pathway 1: 88 (shortest time = highest score)
+- Pathway 2: 70
+- Pathway 3: 80
+- Pathway 4: 68
+- Pathway 5: 65
 
-    Title: "Comparative Effectiveness of Type 2 Diabetes Treatment Pathways"
+Title: "Comparative Effectiveness of Type 2 Diabetes Treatment Pathways"
 
-    Legend: Position top-right
-    - Blue: Patient outcome success rate
-    - Green: Cost efficiency (higher = lower cost)
-    - Orange: Time efficiency (higher = faster to control)
+Legend: Position top-right
+- Blue: Patient outcome success rate
+- Green: Cost efficiency (higher = lower cost)
+- Orange: Time efficiency (higher = faster to control)
 
-    Annotations:
-    - Star icon next to Pathway 1: "Optimal pathway (highest combined score)"
-    - Note below chart: "Based on analysis of 15,000 patient care pathways from graph database"
+Annotations:
+- Star icon next to Pathway 1: "Optimal pathway (highest combined score)"
+- Note below chart: "Based on analysis of 15,000 patient care pathways from graph database"
 
-    Tooltip on hover:
-    - Show exact scores and underlying metrics (actual cost, days, outcome %)
+Tooltip on hover:
+- Show exact scores and underlying metrics (actual cost, days, outcome %)
 
-    Implementation: Chart.js horizontal grouped bar chart
+Implementation: Chart.js horizontal grouped bar chart
 </details>
 
 Advanced path queries can identify anomalous patterns that might indicate fraud or quality issues. Detecting unusual referral loops or unnecessarily long treatment pathways helps healthcare payers identify waste and providers optimize care delivery.
@@ -497,111 +522,116 @@ The `OPTIONAL MATCH` clauses ensure that all relationship types are checked even
 
 For healthcare analytics platforms, subgraph extraction enables comprehensive patient 360° views that would require dozens of SQL joins and complex application logic to assemble. By retrieving the entire clinical neighborhood in one query, graph databases dramatically simplify application architecture while improving query performance.
 
+#### Diagram: Patient Clinical Context Subgraph Visualization
+
 <details markdown="1">
-    <summary>Patient Clinical Context Subgraph Visualization</summary>
-    Type: graph-model
+<summary>Patient Clinical Context Subgraph Visualization</summary>
+Type: graph-model
+**sim-id:** patient-clinical-context-subgraph-visualization<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate a typical patient clinical context subgraph with all related healthcare entities
+Purpose: Illustrate a typical patient clinical context subgraph with all related healthcare entities
 
-    Node types:
+Node types:
 
-    1. Patient (large blue circle, center)
-       - Properties: patient_id, name, age, gender
-       - Example: "Sarah Johnson, 67, Female"
+1. Patient (large blue circle, center)
+   - Properties: patient_id, name, age, gender
+   - Example: "Sarah Johnson, 67, Female"
 
-    2. Diagnosis (red hexagons)
-       - Properties: icd_code, condition_name, diagnosed_date
-       - Examples: "E11.9 Type 2 Diabetes", "I10 Hypertension", "E78.5 Hyperlipidemia"
+2. Diagnosis (red hexagons)
+   - Properties: icd_code, condition_name, diagnosed_date
+   - Examples: "E11.9 Type 2 Diabetes", "I10 Hypertension", "E78.5 Hyperlipidemia"
 
-    3. Medication (green rounded rectangles)
-       - Properties: drug_name, dosage, start_date
-       - Examples: "Metformin 500mg", "Lisinopril 10mg", "Atorvastatin 20mg"
+3. Medication (green rounded rectangles)
+   - Properties: drug_name, dosage, start_date
+   - Examples: "Metformin 500mg", "Lisinopril 10mg", "Atorvastatin 20mg"
 
-    4. Provider (purple squares)
-       - Properties: name, specialty, npi
-       - Examples: "Dr. Martinez (PCP)", "Dr. Chen (Endocrinology)", "Dr. Patel (Cardiology)"
+4. Provider (purple squares)
+   - Properties: name, specialty, npi
+   - Examples: "Dr. Martinez (PCP)", "Dr. Chen (Endocrinology)", "Dr. Patel (Cardiology)"
 
-    5. Encounter (orange diamonds)
-       - Properties: encounter_date, type, chief_complaint
-       - Examples: "2024-01-15 Office Visit", "2024-03-20 Lab Work", "2024-06-10 Follow-up"
+5. Encounter (orange diamonds)
+   - Properties: encounter_date, type, chief_complaint
+   - Examples: "2024-01-15 Office Visit", "2024-03-20 Lab Work", "2024-06-10 Follow-up"
 
-    6. Facility (gray rounded squares)
-       - Properties: facility_name, type, location
-       - Examples: "Community Health Center", "Regional Hospital", "ABC Lab Services"
+6. Facility (gray rounded squares)
+   - Properties: facility_name, type, location
+   - Examples: "Community Health Center", "Regional Hospital", "ABC Lab Services"
 
-    7. Lab Result (teal circles)
-       - Properties: test_name, value, date
-       - Examples: "HbA1c: 7.2%", "LDL: 110 mg/dL", "Blood Pressure: 135/85"
+7. Lab Result (teal circles)
+   - Properties: test_name, value, date
+   - Examples: "HbA1c: 7.2%", "LDL: 110 mg/dL", "Blood Pressure: 135/85"
 
-    Edge types:
+Edge types:
 
-    1. HAS_DIAGNOSIS (solid red arrows from Patient to Diagnosis)
-       - Properties: diagnosed_date, status (active/resolved)
+1. HAS_DIAGNOSIS (solid red arrows from Patient to Diagnosis)
+   - Properties: diagnosed_date, status (active/resolved)
 
-    2. TAKES (solid green arrows from Patient to Medication)
-       - Properties: start_date, end_date, prescribing_provider
+2. TAKES (solid green arrows from Patient to Medication)
+   - Properties: start_date, end_date, prescribing_provider
 
-    3. TREATED_BY (dashed purple arrows from Patient to Provider)
-       - Properties: relationship_start, last_encounter
+3. TREATED_BY (dashed purple arrows from Patient to Provider)
+   - Properties: relationship_start, last_encounter
 
-    4. HAS_ENCOUNTER (solid orange arrows from Patient to Encounter)
-       - Properties: encounter_date, encounter_type
+4. HAS_ENCOUNTER (solid orange arrows from Patient to Encounter)
+   - Properties: encounter_date, encounter_type
 
-    5. AT_FACILITY (dotted gray arrows from Encounter to Facility)
-       - Properties: date, department
+5. AT_FACILITY (dotted gray arrows from Encounter to Facility)
+   - Properties: date, department
 
-    6. RESULTED_IN (blue arrows from Encounter to Lab Result)
-       - Properties: collection_date
+6. RESULTED_IN (blue arrows from Encounter to Lab Result)
+   - Properties: collection_date
 
-    7. PRESCRIBED_BY (dotted green arrows from Medication to Provider)
-       - Properties: prescription_date, refills
+7. PRESCRIBED_BY (dotted green arrows from Medication to Provider)
+   - Properties: prescription_date, refills
 
-    Sample data structure:
-    - Central Patient node: Sarah Johnson
-      ├─ HAS_DIAGNOSIS → Type 2 Diabetes
-      ├─ HAS_DIAGNOSIS → Hypertension
-      ├─ HAS_DIAGNOSIS → Hyperlipidemia
-      ├─ TAKES → Metformin (prescribed by Dr. Martinez)
-      ├─ TAKES → Lisinopril (prescribed by Dr. Patel)
-      ├─ TAKES → Atorvastatin (prescribed by Dr. Patel)
-      ├─ TREATED_BY → Dr. Martinez (PCP)
-      ├─ TREATED_BY → Dr. Chen (Endocrinology)
-      ├─ TREATED_BY → Dr. Patel (Cardiology)
-      ├─ HAS_ENCOUNTER → Office Visit 2024-01-15
-      │   ├─ AT_FACILITY → Community Health Center
-      │   └─ RESULTED_IN → HbA1c Lab Result
-      ├─ HAS_ENCOUNTER → Lab Work 2024-03-20
-      │   ├─ AT_FACILITY → ABC Lab Services
-      │   └─ RESULTED_IN → LDL Lab Result
-      └─ HAS_ENCOUNTER → Follow-up 2024-06-10
-          └─ AT_FACILITY → Community Health Center
+Sample data structure:
+- Central Patient node: Sarah Johnson
+  ├─ HAS_DIAGNOSIS → Type 2 Diabetes
+  ├─ HAS_DIAGNOSIS → Hypertension
+  ├─ HAS_DIAGNOSIS → Hyperlipidemia
+  ├─ TAKES → Metformin (prescribed by Dr. Martinez)
+  ├─ TAKES → Lisinopril (prescribed by Dr. Patel)
+  ├─ TAKES → Atorvastatin (prescribed by Dr. Patel)
+  ├─ TREATED_BY → Dr. Martinez (PCP)
+  ├─ TREATED_BY → Dr. Chen (Endocrinology)
+  ├─ TREATED_BY → Dr. Patel (Cardiology)
+  ├─ HAS_ENCOUNTER → Office Visit 2024-01-15
+  │   ├─ AT_FACILITY → Community Health Center
+  │   └─ RESULTED_IN → HbA1c Lab Result
+  ├─ HAS_ENCOUNTER → Lab Work 2024-03-20
+  │   ├─ AT_FACILITY → ABC Lab Services
+  │   └─ RESULTED_IN → LDL Lab Result
+  └─ HAS_ENCOUNTER → Follow-up 2024-06-10
+      └─ AT_FACILITY → Community Health Center
 
-    Layout: Radial/force-directed with Patient at center, entity types clustered by color
+Layout: Radial/force-directed with Patient at center, entity types clustered by color
 
-    Interactive features:
-    - Hover over node: Display all properties in tooltip
-    - Click node: Highlight all directly connected nodes and relationships
-    - Double-click node: Expand to show additional details (e.g., full encounter notes)
-    - Click edge: Show relationship properties and temporal information
-    - Filter by entity type: Checkboxes to hide/show specific node types
-    - Temporal slider: Filter relationships by date range
-    - Search: Find specific entities within the subgraph
+Interactive features:
+- Hover over node: Display all properties in tooltip
+- Click node: Highlight all directly connected nodes and relationships
+- Double-click node: Expand to show additional details (e.g., full encounter notes)
+- Click edge: Show relationship properties and temporal information
+- Filter by entity type: Checkboxes to hide/show specific node types
+- Temporal slider: Filter relationships by date range
+- Search: Find specific entities within the subgraph
 
-    Visual styling:
-    - Node size proportional to number of connections (patient largest)
-    - Edge thickness based on relationship recency (recent = thicker)
-    - Color-coded nodes by type (consistent with legend)
-    - Temporal highlighting: Recent nodes/edges more saturated color
+Visual styling:
+- Node size proportional to number of connections (patient largest)
+- Edge thickness based on relationship recency (recent = thicker)
+- Color-coded nodes by type (consistent with legend)
+- Temporal highlighting: Recent nodes/edges more saturated color
 
-    Legend (right sidebar):
-    - Node types with shape and color guide
-    - Edge types with line style guide
-    - Interactive controls explanation
-    - Property inspector panel (shows selected node details)
+Legend (right sidebar):
+- Node types with shape and color guide
+- Edge types with line style guide
+- Interactive controls explanation
+- Property inspector panel (shows selected node details)
 
-    Implementation: vis-network JavaScript library
-    Canvas size: 1000x700px
-    Background: Light gray with subtle grid
+Implementation: vis-network JavaScript library
+Canvas size: 1000x700px
+Background: Light gray with subtle grid
 </details>
 
 Subgraph queries also enable community detection and network analysis. Healthcare payers use subgraph extraction to identify provider communities with unusual billing patterns, potentially indicating fraud rings or waste. By querying for densely connected provider-patient-procedure subgraphs with statistical anomalies, investigators can quickly identify suspicious networks for detailed review.
@@ -662,104 +692,109 @@ LIMIT 20
 
 Providers with high total_degree scores serve as network hubs, making them key stakeholders for care coordination initiatives or potential bottlenecks if capacity constrained.
 
+#### Diagram: Medication Effectiveness Comparison MicroSim
+
 <details markdown="1">
-    <summary>Medication Effectiveness Comparison MicroSim</summary>
-    Type: microsim
+<summary>Medication Effectiveness Comparison MicroSim</summary>
+Type: microsim
+**sim-id:** medication-effectiveness-comparison-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Demonstrate how aggregate queries enable comparative effectiveness research by visualizing outcome distributions across treatment groups
+Learning objective: Demonstrate how aggregate queries enable comparative effectiveness research by visualizing outcome distributions across treatment groups
 
-    Canvas layout (1000x700px):
-    - Left section (650x700): Visualization area with dual charts
-    - Right section (350x700): Control panel and data table
+Canvas layout (1000x700px):
+- Left section (650x700): Visualization area with dual charts
+- Right section (350x700): Control panel and data table
 
-    Visual elements (left section):
+Visual elements (left section):
 
-    Top chart (650x350): Scatter plot with trend lines
-    - X-axis: Months on treatment (0-24)
-    - Y-axis: Average HbA1c level (4.0-10.0)
-    - Data points: Individual patient measurements (semi-transparent circles)
-    - Trend lines: One per medication group (smoothed averages)
-    - Color-coded by medication: Metformin (blue), Insulin (red), GLP-1 (green), SGLT2 (purple)
-    - Reference line: Clinical target HbA1c = 7.0 (dashed horizontal)
+Top chart (650x350): Scatter plot with trend lines
+- X-axis: Months on treatment (0-24)
+- Y-axis: Average HbA1c level (4.0-10.0)
+- Data points: Individual patient measurements (semi-transparent circles)
+- Trend lines: One per medication group (smoothed averages)
+- Color-coded by medication: Metformin (blue), Insulin (red), GLP-1 (green), SGLT2 (purple)
+- Reference line: Clinical target HbA1c = 7.0 (dashed horizontal)
 
-    Bottom chart (650x350): Box plot comparison
-    - X-axis: Medication groups (Metformin, Insulin, GLP-1, SGLT2)
-    - Y-axis: HbA1c level at 12 months (4.0-10.0)
-    - Box plots showing median, quartiles, outliers for each medication
-    - Color-coded matching top chart
-    - Annotations showing patient counts per group
+Bottom chart (650x350): Box plot comparison
+- X-axis: Medication groups (Metformin, Insulin, GLP-1, SGLT2)
+- Y-axis: HbA1c level at 12 months (4.0-10.0)
+- Box plots showing median, quartiles, outliers for each medication
+- Color-coded matching top chart
+- Annotations showing patient counts per group
 
-    Interactive controls (right panel):
+Interactive controls (right panel):
 
-    1. Filters section:
-       - Slider: Patient age range (18-90)
-       - Dropdown: Gender (All, Male, Female)
-       - Checkboxes: Comorbidities to include/exclude (Hypertension, Hyperlipidemia, CKD)
-       - Slider: Minimum patient count per group (10-100)
+1. Filters section:
+   - Slider: Patient age range (18-90)
+   - Dropdown: Gender (All, Male, Female)
+   - Checkboxes: Comorbidities to include/exclude (Hypertension, Hyperlipidemia, CKD)
+   - Slider: Minimum patient count per group (10-100)
 
-    2. Medications to display:
-       - Checkboxes for each medication type (all checked by default)
-       - Color indicators next to each
+2. Medications to display:
+   - Checkboxes for each medication type (all checked by default)
+   - Color indicators next to each
 
-    3. Time window:
-       - Slider: Follow-up duration (3-24 months)
-       - Radio buttons: Outcome metric (HbA1c, Weight Change, Hypoglycemia Events)
+3. Time window:
+   - Slider: Follow-up duration (3-24 months)
+   - Radio buttons: Outcome metric (HbA1c, Weight Change, Hypoglycemia Events)
 
-    4. Statistics panel:
-       - Auto-updating table showing:
-         * Medication name
-         * N (patient count)
-         * Mean outcome
-         * Std deviation
-         * p-value vs reference group
+4. Statistics panel:
+   - Auto-updating table showing:
+     * Medication name
+     * N (patient count)
+     * Mean outcome
+     * Std deviation
+     * p-value vs reference group
 
-    5. Action buttons:
-       - "Run Query": Execute graph aggregate query with current filters
-       - "Reset": Return to default parameters
-       - "Export Data": Download results as CSV
+5. Action buttons:
+   - "Run Query": Execute graph aggregate query with current filters
+   - "Reset": Return to default parameters
+   - "Export Data": Download results as CSV
 
-    Default parameters:
-    - Age range: 40-70
-    - Gender: All
-    - Comorbidities: None selected (all patients)
-    - Minimum N: 30
-    - Follow-up: 12 months
-    - Outcome: HbA1c
+Default parameters:
+- Age range: 40-70
+- Gender: All
+- Comorbidities: None selected (all patients)
+- Minimum N: 30
+- Follow-up: 12 months
+- Outcome: HbA1c
 
-    Behavior:
-    - On load: Display initial aggregate data
-    - When filters change: Update statistics panel immediately
-    - Click "Run Query": Animate query execution
-      * Show "Executing graph query..." message
-      * Display mock query text in console area
-      * Animate data point loading (fade in over 1 second)
-      * Update charts with new filtered data
-      * Recalculate statistics and p-values
-    - Hover over data point: Show patient details tooltip
-    - Hover over box plot: Show detailed quartile values
-    - Click trend line: Highlight that medication group
+Behavior:
+- On load: Display initial aggregate data
+- When filters change: Update statistics panel immediately
+- Click "Run Query": Animate query execution
+  * Show "Executing graph query..." message
+  * Display mock query text in console area
+  * Animate data point loading (fade in over 1 second)
+  * Update charts with new filtered data
+  * Recalculate statistics and p-values
+- Hover over data point: Show patient details tooltip
+- Hover over box plot: Show detailed quartile values
+- Click trend line: Highlight that medication group
 
-    Sample data:
-    - Simulate 500 patients across 4 medication groups
-    - Include realistic outcome distributions based on clinical literature
-    - Metformin: Lower cost, moderate effectiveness
-    - Insulin: Variable outcomes, higher hypoglycemia risk
-    - GLP-1: Best outcomes, highest cost
-    - SGLT2: Good outcomes, CV benefits
+Sample data:
+- Simulate 500 patients across 4 medication groups
+- Include realistic outcome distributions based on clinical literature
+- Metformin: Lower cost, moderate effectiveness
+- Insulin: Variable outcomes, higher hypoglycemia risk
+- GLP-1: Best outcomes, highest cost
+- SGLT2: Good outcomes, CV benefits
 
-    Educational annotations:
-    - Tooltip explaining statistical significance when hovering p-values
-    - Info icon near box plots explaining quartile interpretation
-    - Sample Cypher query displayed in collapsible code panel
+Educational annotations:
+- Tooltip explaining statistical significance when hovering p-values
+- Info icon near box plots explaining quartile interpretation
+- Sample Cypher query displayed in collapsible code panel
 
-    Implementation notes:
-    - Use p5.js for scatter plot rendering
-    - Chart.js for box plots
-    - Calculate statistics using JavaScript math libraries
-    - Color scheme accessible (colorblind-friendly palette)
-    - Responsive scaling for different display sizes
+Implementation notes:
+- Use p5.js for scatter plot rendering
+- Chart.js for box plots
+- Calculate statistics using JavaScript math libraries
+- Color scheme accessible (colorblind-friendly palette)
+- Responsive scaling for different display sizes
 
-    Implementation: p5.js with Chart.js for box plots, custom statistics calculations
+Implementation: p5.js with Chart.js for box plots, custom statistics calculations
 </details>
 
 Aggregate queries in graph databases offer significant advantages over traditional analytics. Rather than pre-aggregating data into summary tables or OLAP cubes, graph databases compute aggregates dynamically across relationship structures, enabling ad-hoc analysis of arbitrary groupings and network-based statistics that would be prohibitively complex in relational systems.
@@ -810,66 +845,71 @@ RETURN count(p)
 
 For a database with 10 million diagnosis nodes, an indexed query executes in milliseconds while an unindexed query might require seconds or minutes of full node scanning.
 
+#### Diagram: Query Performance Impact of Indexing
+
 <details markdown="1">
-    <summary>Query Performance Impact of Indexing</summary>
-    Type: chart
+<summary>Query Performance Impact of Indexing</summary>
+Type: chart
+**sim-id:** query-performance-impact-indexing<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Line chart with dual Y-axes
+Chart type: Line chart with dual Y-axes
 
-    Purpose: Demonstrate performance improvement from indexing on healthcare graph queries of increasing complexity
+Purpose: Demonstrate performance improvement from indexing on healthcare graph queries of increasing complexity
 
-    X-axis: Query complexity (number of nodes in result set)
-    - Values: 10, 100, 1K, 10K, 100K, 1M
+X-axis: Query complexity (number of nodes in result set)
+- Values: 10, 100, 1K, 10K, 100K, 1M
 
-    Left Y-axis: Query execution time (milliseconds, logarithmic scale)
-    Right Y-axis: Throughput (queries per second)
+Left Y-axis: Query execution time (milliseconds, logarithmic scale)
+Right Y-axis: Throughput (queries per second)
 
-    Data series:
+Data series:
 
-    Series 1 - Without Index (red line, left axis):
-    - 10 nodes: 50ms
-    - 100 nodes: 250ms
-    - 1K nodes: 1,800ms
-    - 10K nodes: 15,000ms
-    - 100K nodes: 125,000ms
-    - 1M nodes: 980,000ms (timeout)
+Series 1 - Without Index (red line, left axis):
+- 10 nodes: 50ms
+- 100 nodes: 250ms
+- 1K nodes: 1,800ms
+- 10K nodes: 15,000ms
+- 100K nodes: 125,000ms
+- 1M nodes: 980,000ms (timeout)
 
-    Series 2 - With Property Index (blue line, left axis):
-    - 10 nodes: 5ms
-    - 100 nodes: 12ms
-    - 1K nodes: 45ms
-    - 10K nodes: 180ms
-    - 100K nodes: 950ms
-    - 1M nodes: 6,200ms
+Series 2 - With Property Index (blue line, left axis):
+- 10 nodes: 5ms
+- 100 nodes: 12ms
+- 1K nodes: 45ms
+- 10K nodes: 180ms
+- 100K nodes: 950ms
+- 1M nodes: 6,200ms
 
-    Series 3 - With Composite Index (green line, left axis):
-    - 10 nodes: 3ms
-    - 100 nodes: 8ms
-    - 1K nodes: 28ms
-    - 10K nodes: 110ms
-    - 100K nodes: 520ms
-    - 1M nodes: 3,100ms
+Series 3 - With Composite Index (green line, left axis):
+- 10 nodes: 3ms
+- 100 nodes: 8ms
+- 1K nodes: 28ms
+- 10K nodes: 110ms
+- 100K nodes: 520ms
+- 1M nodes: 3,100ms
 
-    Title: "Impact of Indexing on Patient Diagnosis Query Performance"
+Title: "Impact of Indexing on Patient Diagnosis Query Performance"
 
-    Legend: Position top-left
-    - Red: No index (full node scan)
-    - Blue: Single property index (icd_code)
-    - Green: Composite index (icd_code + diagnosed_date)
+Legend: Position top-left
+- Red: No index (full node scan)
+- Blue: Single property index (icd_code)
+- Green: Composite index (icd_code + diagnosed_date)
 
-    Annotations:
-    - Shaded region above 1000ms: "Unacceptable for real-time applications"
-    - Arrow pointing to green line: "Composite index enables sub-second queries up to 100K patients"
-    - Note at 1M data point: "Red line: Query timeout (>16 minutes)"
+Annotations:
+- Shaded region above 1000ms: "Unacceptable for real-time applications"
+- Arrow pointing to green line: "Composite index enables sub-second queries up to 100K patients"
+- Note at 1M data point: "Red line: Query timeout (>16 minutes)"
 
-    Grid lines: Horizontal at 10ms, 100ms, 1000ms thresholds
+Grid lines: Horizontal at 10ms, 100ms, 1000ms thresholds
 
-    Tooltip on hover:
-    - Exact execution time
-    - Speedup factor vs non-indexed
-    - Equivalent queries per second
+Tooltip on hover:
+- Exact execution time
+- Speedup factor vs non-indexed
+- Equivalent queries per second
 
-    Implementation: Chart.js line chart with logarithmic Y-axis
+Implementation: Chart.js line chart with logarithmic Y-axis
 </details>
 
 However, indexes come with trade-offs. Each index consumes memory and storage, and write operations (creating/updating/deleting nodes) must update all relevant indexes, adding overhead. Index strategy should balance read performance against write costs based on application workload characteristics.
@@ -944,97 +984,102 @@ WHERE provider.specialty = 'Cardiology'
 RETURN path
 ```
 
+#### Diagram: Query Optimization Workflow Diagram
+
 <details markdown="1">
-    <summary>Query Optimization Workflow Diagram</summary>
-    Type: workflow
+<summary>Query Optimization Workflow Diagram</summary>
+Type: workflow
+**sim-id:** query-optimization-workflow-diagram<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the systematic process for optimizing slow healthcare graph queries
+Purpose: Illustrate the systematic process for optimizing slow healthcare graph queries
 
-    Visual style: Flowchart with decision diamonds, process rectangles, and annotation boxes
+Visual style: Flowchart with decision diamonds, process rectangles, and annotation boxes
 
-    Steps:
+Steps:
 
-    1. Start: "Slow Query Identified"
-       Hover: "User reports query taking >5 seconds or timing out"
+1. Start: "Slow Query Identified"
+   Hover: "User reports query taking >5 seconds or timing out"
 
-    2. Process: "Run PROFILE Analysis"
-       Hover: "Execute query with PROFILE keyword to gather execution statistics"
-       Annotation: `PROFILE MATCH (p:Patient)... RETURN p`
+2. Process: "Run PROFILE Analysis"
+   Hover: "Execute query with PROFILE keyword to gather execution statistics"
+   Annotation: `PROFILE MATCH (p:Patient)... RETURN p`
 
-    3. Decision: "Index Available?"
-       Hover: "Check if query uses indexed properties for anchor nodes"
+3. Decision: "Index Available?"
+   Hover: "Check if query uses indexed properties for anchor nodes"
 
-    4a. If No → Process: "Create Appropriate Index"
-        Hover: "Add property or composite index on filter properties"
-        Annotation: `CREATE INDEX FOR (p:Patient) ON (p.mrn)`
-        → Loop back to step 2
+4a. If No → Process: "Create Appropriate Index"
+    Hover: "Add property or composite index on filter properties"
+    Annotation: `CREATE INDEX FOR (p:Patient) ON (p.mrn)`
+    → Loop back to step 2
 
-    4b. If Yes → Continue to step 5
+4b. If Yes → Continue to step 5
 
-    5. Decision: "Scanning Full Node Labels?"
-       Hover: "Check if query matches MATCH (p:Patient) without property filters"
+5. Decision: "Scanning Full Node Labels?"
+   Hover: "Check if query matches MATCH (p:Patient) without property filters"
 
-    6a. If Yes → Process: "Add Anchoring Filters"
-        Hover: "Rewrite query to start from specific indexed nodes"
-        Annotation: "Start from indexed lookup: WHERE p.patient_id = $id"
-        → Loop back to step 2
+6a. If Yes → Process: "Add Anchoring Filters"
+    Hover: "Rewrite query to start from specific indexed nodes"
+    Annotation: "Start from indexed lookup: WHERE p.patient_id = $id"
+    → Loop back to step 2
 
-    6b. If No → Continue to step 7
+6b. If No → Continue to step 7
 
-    7. Decision: "Unbounded Traversals?"
-       Hover: "Check for variable-length paths without max depth: *  or *1.."
+7. Decision: "Unbounded Traversals?"
+   Hover: "Check for variable-length paths without max depth: *  or *1.."
 
-    8a. If Yes → Process: "Add Path Length Bounds"
-        Hover: "Set maximum traversal depth: *1..5"
-        Annotation: "Prevent exponential expansion"
-        → Loop back to step 2
+8a. If Yes → Process: "Add Path Length Bounds"
+    Hover: "Set maximum traversal depth: *1..5"
+    Annotation: "Prevent exponential expansion"
+    → Loop back to step 2
 
-    8b. If No → Continue to step 9
+8b. If No → Continue to step 9
 
-    9. Decision: "Large Result Set?"
-       Hover: "Check if query returns >10,000 rows"
+9. Decision: "Large Result Set?"
+   Hover: "Check if query returns >10,000 rows"
 
-    10a. If Yes → Process: "Add Pagination"
-         Hover: "Use SKIP/LIMIT for pagination, return only needed data"
-         Annotation: `RETURN p SKIP $offset LIMIT $page_size`
-         → Loop back to step 2
+10a. If Yes → Process: "Add Pagination"
+     Hover: "Use SKIP/LIMIT for pagination, return only needed data"
+     Annotation: `RETURN p SKIP $offset LIMIT $page_size`
+     → Loop back to step 2
 
-    10b. If No → Continue to step 11
+10b. If No → Continue to step 11
 
-    11. Decision: "Complex Aggregations?"
-        Hover: "Check for multiple collect(), count(), or statistical functions"
+11. Decision: "Complex Aggregations?"
+    Hover: "Check for multiple collect(), count(), or statistical functions"
 
-    12a. If Yes → Process: "Split into Subqueries"
-         Hover: "Use CALL subqueries to optimize aggregation order"
-         Annotation: "Break complex query into CALL {...} blocks"
-         → Loop back to step 2
+12a. If Yes → Process: "Split into Subqueries"
+     Hover: "Use CALL subqueries to optimize aggregation order"
+     Annotation: "Break complex query into CALL {...} blocks"
+     → Loop back to step 2
 
-    12b. If No → Continue to step 13
+12b. If No → Continue to step 13
 
-    13. Process: "Consider Graph Schema Optimization"
-        Hover: "Denormalize frequently-accessed properties or restructure relationships"
-        Annotation: "May require data model changes"
+13. Process: "Consider Graph Schema Optimization"
+    Hover: "Denormalize frequently-accessed properties or restructure relationships"
+    Annotation: "May require data model changes"
 
-    14. End: "Query Optimized"
-        Hover: "Query now executes within performance target (<100ms for real-time, <5s for analytics)"
+14. End: "Query Optimized"
+    Hover: "Query now executes within performance target (<100ms for real-time, <5s for analytics)"
 
-    Color coding:
-    - Blue: Analysis/profiling steps
-    - Yellow: Decision points
-    - Green: Optimization actions
-    - Orange: Schema design considerations
+Color coding:
+- Blue: Analysis/profiling steps
+- Yellow: Decision points
+- Green: Optimization actions
+- Orange: Schema design considerations
 
-    Swimlanes:
-    - Developer (left): Query writing and profiling
-    - Database (center): Execution and optimization
-    - DBA (right): Schema and index management
+Swimlanes:
+- Developer (left): Query writing and profiling
+- Database (center): Execution and optimization
+- DBA (right): Schema and index management
 
-    Annotations:
-    - Side panel showing sample PROFILE output
-    - Example query transformations for each optimization type
-    - Performance targets: <100ms (real-time), <5s (interactive analytics)
+Annotations:
+- Side panel showing sample PROFILE output
+- Example query transformations for each optimization type
+- Performance targets: <100ms (real-time), <5s (interactive analytics)
 
-    Implementation: SVG flowchart with interactive hover tooltips and expandable code examples
+Implementation: SVG flowchart with interactive hover tooltips and expandable code examples
 </details>
 
 For healthcare systems handling high query volumes, query parameterization enables plan caching. Rather than compiling a new execution plan for each patient lookup, parameterized queries reuse optimized plans:

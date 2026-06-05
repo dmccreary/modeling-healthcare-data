@@ -1,0 +1,14 @@
+{
+  "sim_id": "evolution-graph-query-languages-timeline",
+  "diagram_name": "Evolution of Graph Query Languages Timeline",
+  "chapter_number": 3,
+  "chapter_title": "Graph Query Languages",
+  "chapter_dir": "03-graph-query-languages",
+  "library": "vis-timeline",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: timeline\n**sim-id:** evolution-graph-query-languages-timeline<br/>\n**Library:** vis-timeline<br/>\n**Status:** Specified\n\nTime period: 2000-2025\n\nOrientation: Horizontal\n\nEvents:\n\n- 2002: Resource Description Framework (RDF) and SPARQL for semantic web\n  Detail: Academic focus on triple stores, limited industry adoption for operational systems\n\n- 2010: Neo4j releases Cypher as open-source query language\n  Detail: ASCII-art syntax makes graph patterns intuitive, drives Neo4j adoption in enterprise\n\n- 2012: TigerGraph introduces GSQL with strong typing and procedural features\n  Detail: Targets high-performance analytics use cases with compiled queries\n\n- 2015: openCypher project launches for vendor-neutral Cypher specification\n  Detail: Multiple vendors (SAP, Redis, Memgraph) adopt Cypher implementations\n\n- 2019: ISO begins formal GQL standardization process\n  Detail: Industry collaboration to create SQL-equivalent standard for graph databases\n\n- 2023: GQL draft specification published for public review\n  Detail: Combines Cypher, GSQL, and SPARQL concepts into unified standard\n\n- 2024: GQL approved as ISO/IEC international standard\n  Detail: First major graph query language with formal standardization\n\n- 2025: Major database vendors announce GQL support roadmaps\n  Detail: Oracle, Neo4j, TigerGraph commit to GQL implementations\n\nVisual style: Horizontal timeline with milestone markers\n\nColor coding:\n- Blue: Academic/research developments (2000-2010)\n- Purple: Industry innovation period (2010-2019)\n- Green: Standardization era (2019-2024)\n- Gold: Adoption phase (2024+)\n\nInteractive features:\n- Hover over milestone to see detailed description\n- Click to expand with links to specifications and vendor announcements\n- Show concurrent developments in parallel tracks\n\nImplementation: HTML/CSS/JavaScript timeline with SVG elements"
+}

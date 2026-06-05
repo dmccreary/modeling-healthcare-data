@@ -1,0 +1,14 @@
+{
+  "sim_id": "query-performance-comparison-chart-rdbms-graph",
+  "diagram_name": "Query Performance Comparison Chart: RDBMS vs Graph Database",
+  "chapter_number": 1,
+  "chapter_title": "Graph Theory Database Foundations",
+  "chapter_dir": "01-graph-theory-database-foundations",
+  "library": "Chart.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: chart\n**sim-id:** query-performance-comparison-chart-rdbms-graph<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nChart type: Line chart with logarithmic Y-axis\n\nPurpose: Demonstrate the exponential performance degradation of relational database JOIN queries compared to the constant-time traversal performance of graph databases as relationship depth increases\n\nX-axis: \"Number of Relationship Hops\" (1, 2, 3, 4, 5, 6)\nY-axis: \"Query Response Time (milliseconds)\" - Logarithmic scale from 1ms to 100,000ms\n\nData series:\n1. RDBMS with JOINs (red line with square markers):\n   - 1 hop: 15ms\n   - 2 hops: 180ms\n   - 3 hops: 3,200ms\n   - 4 hops: 52,000ms\n   - 5 hops: 850,000ms (14+ minutes, often times out)\n   - 6 hops: Data point not shown (query timeout)\n\n2. Graph Database (green line with circle markers):\n   - 1 hop: 3ms\n   - 2 hops: 5ms\n   - 3 hops: 8ms\n   - 4 hops: 11ms\n   - 5 hops: 14ms\n   - 6 hops: 17ms\n\nTitle: \"Multi-Hop Query Performance: Relational vs Graph Database\"\nSubtitle: \"Healthcare Dependency Analysis (100,000 patient records)\"\n\nLegend:\n- Position: Top-right\n- Entries: \"RDBMS (JOIN operations)\", \"Graph DB (Index-free adjacency)\"\n\nAnnotations:\n- Arrow pointing to RDBMS line at 4 hops: \"Queries often timeout beyond 4 hops\"\n- Arrow pointing to graph DB line: \"Near-constant performance\"\n- Text box at bottom: \"Graph databases maintain O(1) traversal time regardless of relationship depth\"\n\nGrid:\n- Horizontal grid lines at each power of 10 on Y-axis\n- Vertical grid lines at each hop on X-axis\n\nColors:\n- RDBMS line: Red (#DC3545)\n- Graph DB line: Green (#28A745)\n- Background: White\n- Grid: Light gray (#E0E0E0)\n\nStyling:\n- Line thickness: 3px\n- Marker size: 8px\n- Font: Sans-serif, 12pt for labels, 14pt for title\n\nImplementation: Chart.js JavaScript library with logarithmic Y-axis scale\nCanvas size: 800x500px"
+}

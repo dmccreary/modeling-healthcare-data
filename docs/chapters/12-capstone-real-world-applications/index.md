@@ -44,68 +44,73 @@ Modern healthcare analytics platforms typically consist of several interconnecte
 - **Presentation layer**: Provides dashboards, APIs, and interactive visualizations for different user personas (clinicians, administrators, analysts)
 - **Governance framework**: Implements RBAC, audit logging, data lineage tracking, and HIPAA compliance controls
 
+#### Diagram: Healthcare Analytics Platform Architecture Diagram
+
 <details markdown="1">
-    <summary>Healthcare Analytics Platform Architecture Diagram</summary>
-    Type: diagram
+<summary>Healthcare Analytics Platform Architecture Diagram</summary>
+Type: diagram
+**sim-id:** healthcare-analytics-platform-architecture-diagram<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the multi-layer architecture of a graph-based healthcare analytics platform
+Purpose: Illustrate the multi-layer architecture of a graph-based healthcare analytics platform
 
-    Components to show:
+Components to show:
 
-    Top layer - "Presentation Layer":
-    - Clinician Dashboard (pink)
-    - Administrator Portal (light blue)
-    - Analyst Workbench (orange)
-    - API Gateway (gray)
+Top layer - "Presentation Layer":
+- Clinician Dashboard (pink)
+- Administrator Portal (light blue)
+- Analyst Workbench (orange)
+- API Gateway (gray)
 
-    Second layer - "Analytics & AI Layer":
-    - Graph Analytics Engine (gold)
-    - Vector Store (green)
-    - LLM Integration (purple)
-    - ML Models (teal)
+Second layer - "Analytics & AI Layer":
+- Graph Analytics Engine (gold)
+- Vector Store (green)
+- LLM Integration (purple)
+- ML Models (teal)
 
-    Third layer - "Graph Database Core":
-    - Neo4j/TigerGraph cluster (blue, large central component)
-    - Patient subgraph (left section)
-    - Provider subgraph (center section)
-    - Payer subgraph (right section)
+Third layer - "Graph Database Core":
+- Neo4j/TigerGraph cluster (blue, large central component)
+- Patient subgraph (left section)
+- Provider subgraph (center section)
+- Payer subgraph (right section)
 
-    Fourth layer - "Data Ingestion Layer":
-    - EHR Connector (pink)
-    - Claims Processor Interface (orange)
-    - Pharmacy System Connector (green)
-    - Lab System Interface (purple)
+Fourth layer - "Data Ingestion Layer":
+- EHR Connector (pink)
+- Claims Processor Interface (orange)
+- Pharmacy System Connector (green)
+- Lab System Interface (purple)
 
-    Bottom layer - "Source Systems":
-    - Epic EHR (left)
-    - Claims Database (center-left)
-    - Pharmacy System (center-right)
-    - Lab System (right)
+Bottom layer - "Source Systems":
+- Epic EHR (left)
+- Claims Database (center-left)
+- Pharmacy System (center-right)
+- Lab System (right)
 
-    Fifth layer (vertical on right side) - "Governance Framework":
-    - RBAC Module
-    - Audit Logger
-    - Lineage Tracker
-    - HIPAA Compliance Engine
+Fifth layer (vertical on right side) - "Governance Framework":
+- RBAC Module
+- Audit Logger
+- Lineage Tracker
+- HIPAA Compliance Engine
 
-    Connections:
-    - Bidirectional arrows between presentation and analytics layers
-    - Arrows from analytics layer to graph database
-    - Arrows from graph database to data ingestion
-    - Arrows from data ingestion to source systems
-    - Dotted lines from governance framework to all other layers
+Connections:
+- Bidirectional arrows between presentation and analytics layers
+- Arrows from analytics layer to graph database
+- Arrows from graph database to data ingestion
+- Arrows from data ingestion to source systems
+- Dotted lines from governance framework to all other layers
 
-    Style: Layered architecture diagram with colored blocks
+Style: Layered architecture diagram with colored blocks
 
-    Labels:
-    - "Real-time queries" on presentation-to-analytics arrows
-    - "Graph traversals" on analytics-to-database arrows
-    - "ETL pipelines" on ingestion-to-source arrows
-    - "Policy enforcement" on governance dotted lines
+Labels:
+- "Real-time queries" on presentation-to-analytics arrows
+- "Graph traversals" on analytics-to-database arrows
+- "ETL pipelines" on ingestion-to-source arrows
+- "Policy enforcement" on governance dotted lines
 
-    Color scheme: Use distinct colors for each layer (specified above), with governance in red to indicate its cross-cutting nature
+Color scheme: Use distinct colors for each layer (specified above), with governance in red to indicate its cross-cutting nature
 
-    Implementation: SVG diagram or draw.io format
+Implementation: SVG diagram or draw.io format
 </details>
 
 ### Integration Patterns
@@ -124,55 +129,60 @@ Common integration patterns include:
 
 The choice of integration pattern depends on data volume, latency requirements, source system capabilities, and governance constraints. Many platforms employ a hybrid approach, using real-time streaming for time-sensitive clinical data while batch processing handles high-volume claims data.
 
+#### Diagram: Data Integration Flow Interactive Infographic
+
 <details markdown="1">
-    <summary>Data Integration Flow Interactive Infographic</summary>
-    Type: infographic
+<summary>Data Integration Flow Interactive Infographic</summary>
+Type: infographic
+**sim-id:** data-integration-flow-infographic<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Visualize how different source systems feed data into the graph database core using various integration patterns
+Purpose: Visualize how different source systems feed data into the graph database core using various integration patterns
 
-    Layout: Central graph database node with radiating connections to source systems
+Layout: Central graph database node with radiating connections to source systems
 
-    Central element:
-    - Graph database icon (large, center)
-    - Label: "Healthcare Knowledge Graph"
+Central element:
+- Graph database icon (large, center)
+- Label: "Healthcare Knowledge Graph"
 
-    Source systems (arranged in circle around center):
-    1. EHR System (top, pink icon)
-    2. Claims Processor (top-right, orange icon)
-    3. Pharmacy System (right, green icon)
-    4. Lab System (bottom-right, purple icon)
-    5. ADT System (bottom, blue icon)
-    6. FHIR Server (bottom-left, teal icon)
-    7. Reference Data (left, gray icon)
-    8. Social Services (top-left, yellow icon)
+Source systems (arranged in circle around center):
+1. EHR System (top, pink icon)
+2. Claims Processor (top-right, orange icon)
+3. Pharmacy System (right, green icon)
+4. Lab System (bottom-right, purple icon)
+5. ADT System (bottom, blue icon)
+6. FHIR Server (bottom-left, teal icon)
+7. Reference Data (left, gray icon)
+8. Social Services (top-left, yellow icon)
 
-    Connection arrows with labels:
-    - EHR → Graph: "CDC Stream" (animated flowing dots, red)
-    - Claims → Graph: "Batch ETL (nightly)" (solid orange, thicker)
-    - Pharmacy → Graph: "API Calls" (dashed green)
-    - Lab → Graph: "HL7 Messages" (dotted purple)
-    - ADT → Graph: "Kafka Events" (animated flowing, blue)
-    - FHIR → Graph: "Federated Query" (double-line teal)
-    - Reference → Graph: "Lookup API" (thin gray)
-    - Social Services → Graph: "Manual Upload" (yellow, dashed)
+Connection arrows with labels:
+- EHR → Graph: "CDC Stream" (animated flowing dots, red)
+- Claims → Graph: "Batch ETL (nightly)" (solid orange, thicker)
+- Pharmacy → Graph: "API Calls" (dashed green)
+- Lab → Graph: "HL7 Messages" (dotted purple)
+- ADT → Graph: "Kafka Events" (animated flowing, blue)
+- FHIR → Graph: "Federated Query" (double-line teal)
+- Reference → Graph: "Lookup API" (thin gray)
+- Social Services → Graph: "Manual Upload" (yellow, dashed)
 
-    Interactive elements:
-    - Hover over each source system icon to see: system name, data types provided, update frequency
-    - Hover over connection arrows to see: integration pattern details, latency, data volume
-    - Click on graph database center to expand view showing internal node types
-    - Animation: flowing dots along CDC and Kafka connections to show real-time data
+Interactive elements:
+- Hover over each source system icon to see: system name, data types provided, update frequency
+- Hover over connection arrows to see: integration pattern details, latency, data volume
+- Click on graph database center to expand view showing internal node types
+- Animation: flowing dots along CDC and Kafka connections to show real-time data
 
-    Visual style: Modern network diagram with colorful icons and flowing connections
+Visual style: Modern network diagram with colorful icons and flowing connections
 
-    Stats display (bottom of infographic):
-    - Total daily records ingested
-    - Real-time streams active
-    - Average ingestion latency
-    - Data quality score
+Stats display (bottom of infographic):
+- Total daily records ingested
+- Real-time streams active
+- Average ingestion latency
+- Data quality score
 
-    Color scheme: Each source system has its own color (specified above), graph database is gold
+Color scheme: Each source system has its own color (specified above), graph database is gold
 
-    Implementation: HTML/CSS/JavaScript with SVG for graphics, anime.js for animations
+Implementation: HTML/CSS/JavaScript with SVG for graphics, anime.js for animations
 </details>
 
 ### Platform Scalability Considerations
@@ -205,79 +215,84 @@ Organizations typically adopt one of several migration strategies:
 4. **Dual-write pattern**: Write to both relational and graph systems simultaneously during transition period (ensures data consistency, requires synchronization logic)
 5. **Event sourcing**: Capture all data changes as events, replay into graph structure (enables point-in-time reconstruction, requires event infrastructure)
 
+#### Diagram: Migration Strategy Comparison Chart
+
 <details markdown="1">
-    <summary>Migration Strategy Comparison Chart</summary>
-    Type: chart
+<summary>Migration Strategy Comparison Chart</summary>
+Type: chart
+**sim-id:** migration-strategy-comparison-chart<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Radar/spider chart
+Chart type: Radar/spider chart
 
-    Purpose: Compare different migration strategies across multiple evaluation criteria
+Purpose: Compare different migration strategies across multiple evaluation criteria
 
-    Evaluation dimensions (axes):
-    1. Risk Level (0-10 scale, where 10 is highest risk)
-    2. Implementation Timeline (0-10 scale, where 10 is longest duration)
-    3. Data Consistency (0-10 scale, where 10 is strongest consistency)
-    4. Operational Disruption (0-10 scale, where 10 is most disruptive)
-    5. Cost (0-10 scale, where 10 is most expensive)
-    6. Rollback Capability (0-10 scale, where 10 is easiest to rollback)
+Evaluation dimensions (axes):
+1. Risk Level (0-10 scale, where 10 is highest risk)
+2. Implementation Timeline (0-10 scale, where 10 is longest duration)
+3. Data Consistency (0-10 scale, where 10 is strongest consistency)
+4. Operational Disruption (0-10 scale, where 10 is most disruptive)
+5. Cost (0-10 scale, where 10 is most expensive)
+6. Rollback Capability (0-10 scale, where 10 is easiest to rollback)
 
-    Data series:
+Data series:
 
-    1. Greenfield Replacement (red line):
-       - Risk: 9
-       - Timeline: 6
-       - Consistency: 8
-       - Disruption: 10
-       - Cost: 8
-       - Rollback: 2
+1. Greenfield Replacement (red line):
+   - Risk: 9
+   - Timeline: 6
+   - Consistency: 8
+   - Disruption: 10
+   - Cost: 8
+   - Rollback: 2
 
-    2. Strangler Pattern (orange line):
-       - Risk: 4
-       - Timeline: 9
-       - Consistency: 7
-       - Disruption: 3
-       - Cost: 7
-       - Rollback: 7
+2. Strangler Pattern (orange line):
+   - Risk: 4
+   - Timeline: 9
+   - Consistency: 7
+   - Disruption: 3
+   - Cost: 7
+   - Rollback: 7
 
-    3. Hybrid Architecture (blue line):
-       - Risk: 5
-       - Timeline: 7
-       - Consistency: 6
-       - Disruption: 4
-       - Cost: 9
-       - Rollback: 6
+3. Hybrid Architecture (blue line):
+   - Risk: 5
+   - Timeline: 7
+   - Consistency: 6
+   - Disruption: 4
+   - Cost: 9
+   - Rollback: 6
 
-    4. Dual-Write Pattern (green line):
-       - Risk: 6
-       - Timeline: 6
-       - Consistency: 9
-       - Disruption: 5
-       - Cost: 6
-       - Rollback: 8
+4. Dual-Write Pattern (green line):
+   - Risk: 6
+   - Timeline: 6
+   - Consistency: 9
+   - Disruption: 5
+   - Cost: 6
+   - Rollback: 8
 
-    5. Event Sourcing (purple line):
-       - Risk: 7
-       - Timeline: 8
-       - Consistency: 10
-       - Disruption: 6
-       - Cost: 8
-       - Rollback: 9
+5. Event Sourcing (purple line):
+   - Risk: 7
+   - Timeline: 8
+   - Consistency: 10
+   - Disruption: 6
+   - Cost: 8
+   - Rollback: 9
 
-    Title: "Healthcare System Migration Strategy Trade-offs"
+Title: "Healthcare System Migration Strategy Trade-offs"
 
-    Legend: Position bottom-right, showing all five strategies
+Legend: Position bottom-right, showing all five strategies
 
-    Annotations:
-    - Arrow pointing to Event Sourcing data consistency: "Best for audit requirements"
-    - Arrow pointing to Strangler Pattern disruption: "Lowest operational impact"
-    - Highlighted region: Shade area where Rollback > 7 in light green to indicate "safer" strategies
+Annotations:
+- Arrow pointing to Event Sourcing data consistency: "Best for audit requirements"
+- Arrow pointing to Strangler Pattern disruption: "Lowest operational impact"
+- Highlighted region: Shade area where Rollback > 7 in light green to indicate "safer" strategies
 
-    Interactive features:
-    - Hover over data points to see exact values
-    - Click legend items to show/hide strategy lines
-    - Toggle between normalized (0-10) and absolute metrics views
+Interactive features:
+- Hover over data points to see exact values
+- Click legend items to show/hide strategy lines
+- Toggle between normalized (0-10) and absolute metrics views
 
-    Implementation: Chart.js with radar chart plugin or D3.js for more custom interactions
+Implementation: Chart.js with radar chart plugin or D3.js for more custom interactions
 </details>
 
 ### Organizational Change Management
@@ -312,105 +327,110 @@ Typical data quality challenges include:
 
 Graph databases make these quality issues more visible because relationship-centric queries fail when expected edges are missing, whereas relational systems often return empty result sets that mask underlying problems. This visibility can be viewed positively as an opportunity to improve data quality through systematic data cleansing initiatives.
 
+#### Diagram: Data Quality Impact Analysis MicroSim
+
 <details markdown="1">
-    <summary>Data Quality Impact Analysis MicroSim</summary>
-    Type: microsim
+<summary>Data Quality Impact Analysis MicroSim</summary>
+Type: microsim
+**sim-id:** data-quality-impact-analysis-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Demonstrate how data quality issues affect graph query results and analytics accuracy
+Learning objective: Demonstrate how data quality issues affect graph query results and analytics accuracy
 
-    Canvas layout (1000x700px):
-    - Top section (1000x450): Graph visualization area showing patient-provider-prescription network
-    - Bottom section (1000x250): Control panel and metrics display
+Canvas layout (1000x700px):
+- Top section (1000x450): Graph visualization area showing patient-provider-prescription network
+- Bottom section (1000x250): Control panel and metrics display
 
-    Visual elements in graph area:
+Visual elements in graph area:
 
-    Sample graph with 20 nodes:
-    - 5 patient nodes (pink circles)
-    - 5 provider nodes (light blue squares)
-    - 5 prescription nodes (green hexagons)
-    - 5 diagnosis nodes (orange triangles)
+Sample graph with 20 nodes:
+- 5 patient nodes (pink circles)
+- 5 provider nodes (light blue squares)
+- 5 prescription nodes (green hexagons)
+- 5 diagnosis nodes (orange triangles)
 
-    Edges:
-    - Patient-Provider (TREATED_BY) edges
-    - Patient-Diagnosis (HAS_DIAGNOSIS) edges
-    - Provider-Prescription (PRESCRIBED) edges
-    - Prescription-Patient (PRESCRIBED_TO) edges
+Edges:
+- Patient-Provider (TREATED_BY) edges
+- Patient-Diagnosis (HAS_DIAGNOSIS) edges
+- Provider-Prescription (PRESCRIBED) edges
+- Prescription-Patient (PRESCRIBED_TO) edges
 
-    Interactive controls (bottom panel):
+Interactive controls (bottom panel):
 
-    Left side - "Introduce Data Quality Issues":
-    - Checkbox: "Duplicate patient records" (creates 2 patient nodes for same person)
-    - Checkbox: "Missing provider relationships" (removes 30% of TREATED_BY edges)
-    - Checkbox: "Inconsistent diagnosis codes" (changes ICD codes on diagnosis nodes)
-    - Checkbox: "Null prescription dates" (removes date properties)
-    - Slider: "Data quality level" (0-100%, affects all issue types proportionally)
-    - Button: "Reset to clean data"
+Left side - "Introduce Data Quality Issues":
+- Checkbox: "Duplicate patient records" (creates 2 patient nodes for same person)
+- Checkbox: "Missing provider relationships" (removes 30% of TREATED_BY edges)
+- Checkbox: "Inconsistent diagnosis codes" (changes ICD codes on diagnosis nodes)
+- Checkbox: "Null prescription dates" (removes date properties)
+- Slider: "Data quality level" (0-100%, affects all issue types proportionally)
+- Button: "Reset to clean data"
 
-    Center - "Query Execution":
-    - Dropdown: Select query type:
-      - "Find all patients of Dr. Smith"
-      - "Track prescription history for Patient-001"
-      - "Identify polypharmacy risks"
-      - "Calculate provider prescription patterns"
-    - Button: "Execute Query"
-    - Display: Query result count and execution time
+Center - "Query Execution":
+- Dropdown: Select query type:
+  - "Find all patients of Dr. Smith"
+  - "Track prescription history for Patient-001"
+  - "Identify polypharmacy risks"
+  - "Calculate provider prescription patterns"
+- Button: "Execute Query"
+- Display: Query result count and execution time
 
-    Right side - "Metrics Display":
-    - Gauge: "Query success rate" (percentage of queries returning expected results)
-    - Number: "Missing relationships detected"
-    - Number: "Orphaned nodes found"
-    - Chart: Small bar chart showing data quality score by node type
+Right side - "Metrics Display":
+- Gauge: "Query success rate" (percentage of queries returning expected results)
+- Number: "Missing relationships detected"
+- Number: "Orphaned nodes found"
+- Chart: Small bar chart showing data quality score by node type
 
-    Default parameters:
-    - Start with clean data (all issues unchecked)
-    - Data quality level: 100%
-    - Selected query: "Find all patients of Dr. Smith"
+Default parameters:
+- Start with clean data (all issues unchecked)
+- Data quality level: 100%
+- Selected query: "Find all patients of Dr. Smith"
 
-    Behavior:
+Behavior:
 
-    When user checks data quality issue boxes:
-    - Graph visualization updates to show problems:
-      - Duplicate nodes appear with "?" overlay
-      - Missing edges shown as dotted red lines with "MISSING" label
-      - Inconsistent codes highlighted in yellow
-      - Nodes with null properties shown with dashed borders
+When user checks data quality issue boxes:
+- Graph visualization updates to show problems:
+  - Duplicate nodes appear with "?" overlay
+  - Missing edges shown as dotted red lines with "MISSING" label
+  - Inconsistent codes highlighted in yellow
+  - Nodes with null properties shown with dashed borders
 
-    When user adjusts data quality slider:
-    - Proportionally introduce issues across all checked categories
-    - Update metrics in real-time
+When user adjusts data quality slider:
+- Proportionally introduce issues across all checked categories
+- Update metrics in real-time
 
-    When user clicks "Execute Query":
-    - Animate graph traversal showing query path
-    - Highlight nodes/edges visited during query
-    - Show query results in panel
-    - If query fails due to missing data, show red X on broken path
-    - Update success rate metric
+When user clicks "Execute Query":
+- Animate graph traversal showing query path
+- Highlight nodes/edges visited during query
+- Show query results in panel
+- If query fails due to missing data, show red X on broken path
+- Update success rate metric
 
-    When user clicks "Reset":
-    - Return to clean data state
-    - Clear all checkboxes
-    - Reset slider to 100%
+When user clicks "Reset":
+- Return to clean data state
+- Clear all checkboxes
+- Reset slider to 100%
 
-    Visual styling:
-    - Clean data: solid colors, crisp edges
-    - Problematic data: faded colors, dashed borders, warning overlays
-    - Query path: animated blue glow along traversed edges
-    - Failed queries: red highlighting of breakpoints
+Visual styling:
+- Clean data: solid colors, crisp edges
+- Problematic data: faded colors, dashed borders, warning overlays
+- Query path: animated blue glow along traversed edges
+- Failed queries: red highlighting of breakpoints
 
-    Learning message:
-    Display at bottom: "Notice how missing relationships cause queries to fail. In production systems, data quality issues can lead to incomplete analytics and incorrect clinical insights."
+Learning message:
+Display at bottom: "Notice how missing relationships cause queries to fail. In production systems, data quality issues can lead to incomplete analytics and incorrect clinical insights."
 
-    Implementation notes:
-    - Use p5.js for rendering graph
-    - Store graph as adjacency list with node/edge properties
-    - Implement query execution as graph traversal algorithms
-    - Use frameCount and setTimeout for animations
-    - Calculate metrics based on graph state after each interaction
+Implementation notes:
+- Use p5.js for rendering graph
+- Store graph as adjacency list with node/edge properties
+- Implement query execution as graph traversal algorithms
+- Use frameCount and setTimeout for animations
+- Calculate metrics based on graph state after each interaction
 
-    Additional features:
-    - Export current graph state as JSON
-    - Show side-by-side comparison of clean vs dirty query results
-    - Tooltip on hover showing node properties and quality issues
+Additional features:
+- Export current graph state as JSON
+- Show side-by-side comparison of clean vs dirty query results
+- Tooltip on hover showing node properties and quality issues
 </details>
 
 ### Regulatory Compliance and Security
@@ -429,97 +449,102 @@ Key compliance requirements include:
 
 Graph databases introduce unique security challenges because traditional row-level security mechanisms don't naturally extend to graph traversals that cross multiple node types. Organizations must implement relationship-aware access control that prevents unauthorized discovery of connections between entities, even when individual entities are visible.
 
+#### Diagram: Graph RBAC Workflow Diagram
+
 <details markdown="1">
-    <summary>Graph RBAC Workflow Diagram</summary>
-    Type: workflow
+<summary>Graph RBAC Workflow Diagram</summary>
+Type: workflow
+**sim-id:** graph-rbac-workflow-diagram<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
 
-    Purpose: Illustrate how role-based access control decisions are evaluated in a graph database healthcare system
+Purpose: Illustrate how role-based access control decisions are evaluated in a graph database healthcare system
 
-    Visual style: Flowchart with decision diamonds, process rectangles, and data store cylinders
+Visual style: Flowchart with decision diamonds, process rectangles, and data store cylinders
 
-    Roles shown (represented as color-coded swimlanes):
-    1. End User (requesting data)
-    2. Application Layer (processing request)
-    3. RBAC Engine (making decisions)
-    4. Graph Database (executing queries)
+Roles shown (represented as color-coded swimlanes):
+1. End User (requesting data)
+2. Application Layer (processing request)
+3. RBAC Engine (making decisions)
+4. Graph Database (executing queries)
 
-    Steps:
+Steps:
 
-    1. Start: "User Requests Patient Data"
-       Swimlane: End User
-       Hover text: "Clinician clicks on patient record in EHR interface"
+1. Start: "User Requests Patient Data"
+   Swimlane: End User
+   Hover text: "Clinician clicks on patient record in EHR interface"
 
-    2. Process: "Extract User Context"
-       Swimlane: Application Layer
-       Hover text: "Retrieve user ID, roles, facility, specialty from session token"
+2. Process: "Extract User Context"
+   Swimlane: Application Layer
+   Hover text: "Retrieve user ID, roles, facility, specialty from session token"
 
-    3. Process: "Identify Required Data"
-       Swimlane: Application Layer
-       Hover text: "Determine which graph nodes and relationships are needed to fulfill request"
+3. Process: "Identify Required Data"
+   Swimlane: Application Layer
+   Hover text: "Determine which graph nodes and relationships are needed to fulfill request"
 
-    4. Decision: "User Has Role?"
-       Swimlane: RBAC Engine
-       Hover text: "Check if user's role (physician, nurse, admin, billing) permits this data type"
-       Branches: Yes → Continue, No → Deny
+4. Decision: "User Has Role?"
+   Swimlane: RBAC Engine
+   Hover text: "Check if user's role (physician, nurse, admin, billing) permits this data type"
+   Branches: Yes → Continue, No → Deny
 
-    5a. Process: "Return Access Denied"
-        Swimlane: Application Layer
-        Hover text: "Log denial event, show error message to user"
-        Leads to: End
+5a. Process: "Return Access Denied"
+    Swimlane: Application Layer
+    Hover text: "Log denial event, show error message to user"
+    Leads to: End
 
-    5b. Decision: "Patient Relationship Exists?"
-        Swimlane: RBAC Engine
-        Hover text: "Query graph for relationship: Is user an authorized provider for this patient?"
-        Branches: Yes → Continue, No → Check Override
+5b. Decision: "Patient Relationship Exists?"
+    Swimlane: RBAC Engine
+    Hover text: "Query graph for relationship: Is user an authorized provider for this patient?"
+    Branches: Yes → Continue, No → Check Override
 
-    6. Decision: "Break-Glass Override?"
-       Swimlane: RBAC Engine
-       Hover text: "Emergency access: Does user invoke break-glass for life-threatening situation?"
-       Branches: Yes → Allow with Alert, No → Deny
+6. Decision: "Break-Glass Override?"
+   Swimlane: RBAC Engine
+   Hover text: "Emergency access: Does user invoke break-glass for life-threatening situation?"
+   Branches: Yes → Allow with Alert, No → Deny
 
-    7a. Process: "Allow with Audit Alert"
-        Swimlane: RBAC Engine
-        Hover text: "Grant access, trigger compliance review, notify privacy officer"
-        Leads to: Execute Query
+7a. Process: "Allow with Audit Alert"
+    Swimlane: RBAC Engine
+    Hover text: "Grant access, trigger compliance review, notify privacy officer"
+    Leads to: Execute Query
 
-    7b. Process: "Filter Graph Traversal"
-        Swimlane: RBAC Engine
-        Hover text: "Inject WHERE clauses to limit graph traversal to authorized paths only"
+7b. Process: "Filter Graph Traversal"
+    Swimlane: RBAC Engine
+    Hover text: "Inject WHERE clauses to limit graph traversal to authorized paths only"
 
-    8. Process: "Execute Cypher Query with Filters"
-       Swimlane: Graph Database
-       Hover text: "Run: MATCH (p:Patient)-[r]->(n) WHERE p.id = $pid AND user_can_traverse(r, $user_role)"
+8. Process: "Execute Cypher Query with Filters"
+   Swimlane: Graph Database
+   Hover text: "Run: MATCH (p:Patient)-[r]->(n) WHERE p.id = $pid AND user_can_traverse(r, $user_role)"
 
-    9. Process: "Apply Property-Level Filtering"
-       Swimlane: Graph Database
-       Hover text: "Remove sensitive properties (SSN, HIV status) based on role permissions"
+9. Process: "Apply Property-Level Filtering"
+   Swimlane: Graph Database
+   Hover text: "Remove sensitive properties (SSN, HIV status) based on role permissions"
 
-    10. Process: "Log Access Event"
-        Swimlane: Application Layer
-        Hover text: "Record: timestamp, user, patient, data accessed, purpose of use for HIPAA audit"
+10. Process: "Log Access Event"
+    Swimlane: Application Layer
+    Hover text: "Record: timestamp, user, patient, data accessed, purpose of use for HIPAA audit"
 
-    11. End: "Return Filtered Results"
-        Swimlane: Application Layer
-        Hover text: "Display patient data to user with appropriate redactions"
+11. End: "Return Filtered Results"
+    Swimlane: Application Layer
+    Hover text: "Display patient data to user with appropriate redactions"
 
-    Color coding:
-    - Blue: Authentication/authorization steps
-    - Yellow: Decision points
-    - Green: Successful access paths
-    - Red: Denial or alert paths
-    - Orange: Data access operations
+Color coding:
+- Blue: Authentication/authorization steps
+- Yellow: Decision points
+- Green: Successful access paths
+- Red: Denial or alert paths
+- Orange: Data access operations
 
-    Additional visual elements:
-    - Lock icons on denied paths
-    - Warning triangle on break-glass override
-    - Audit log icon on logging step
-    - Database cylinder icon on graph operations
+Additional visual elements:
+- Lock icons on denied paths
+- Warning triangle on break-glass override
+- Audit log icon on logging step
+- Database cylinder icon on graph operations
 
-    Annotations:
-    - Note box at "Patient Relationship Exists" decision: "Graph query checks for TREATS, REFERRED_BY, or CONSULTED edges between provider and patient"
-    - Note box at "Filter Graph Traversal": "Critical: prevents unauthorized relationship discovery through multi-hop traversals"
+Annotations:
+- Note box at "Patient Relationship Exists" decision: "Graph query checks for TREATS, REFERRED_BY, or CONSULTED edges between provider and patient"
+- Note box at "Filter Graph Traversal": "Critical: prevents unauthorized relationship discovery through multi-hop traversals"
 
-    Implementation: draw.io or Lucidchart export to SVG, with hover interactions via JavaScript
+Implementation: draw.io or Lucidchart export to SVG, with hover interactions via JavaScript
 </details>
 
 ## Capstone Project Design
@@ -550,99 +575,104 @@ Projects should address one of the following use case categories:
 5. **Population health management**: Identify at-risk cohorts, predict disease progression, or allocate preventive resources
 6. **Cost reduction**: Identify wasteful spending patterns, optimize formulary compliance, or reduce unnecessary utilization
 
+#### Diagram: Capstone Project Architecture Template
+
 <details markdown="1">
-    <summary>Capstone Project Architecture Template</summary>
-    Type: diagram
+<summary>Capstone Project Architecture Template</summary>
+Type: diagram
+**sim-id:** capstone-project-architecture-template<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Provide a reference architecture that students can adapt for their capstone projects
+Purpose: Provide a reference architecture that students can adapt for their capstone projects
 
-    Architecture layers (top to bottom):
+Architecture layers (top to bottom):
 
-    **Layer 1: User Interface Tier**
+**Layer 1: User Interface Tier**
 
-    Components:
-    - Web Dashboard (React or Vue.js)
-      - Visualization components (vis-network, D3.js, Chart.js)
-      - Query interface
-      - Admin console
-    - REST API endpoints
-    - GraphQL API (optional)
+Components:
+- Web Dashboard (React or Vue.js)
+  - Visualization components (vis-network, D3.js, Chart.js)
+  - Query interface
+  - Admin console
+- REST API endpoints
+- GraphQL API (optional)
 
-    **Layer 2: Application Logic Tier**
+**Layer 2: Application Logic Tier**
 
-    Components:
-    - Business Logic Services
-      - Query orchestration service
-      - Analytics calculation service
-      - RBAC enforcement service
-    - Integration Services
-      - ETL job scheduler
-      - Data validation service
-      - Event processor (for real-time updates)
-    - AI/ML Services
-      - Embedding generation service (OpenAI API or local model)
-      - Vector similarity search
-      - LLM integration for natural language queries
+Components:
+- Business Logic Services
+  - Query orchestration service
+  - Analytics calculation service
+  - RBAC enforcement service
+- Integration Services
+  - ETL job scheduler
+  - Data validation service
+  - Event processor (for real-time updates)
+- AI/ML Services
+  - Embedding generation service (OpenAI API or local model)
+  - Vector similarity search
+  - LLM integration for natural language queries
 
-    **Layer 3: Data Tier**
+**Layer 3: Data Tier**
 
-    Components:
-    - Graph Database (Neo4j Community Edition or TigerGraph)
-      - Patient subgraph
-      - Provider subgraph
-      - Payer subgraph
-      - Clinical reference data
-    - Vector Database (optional: Pinecone free tier or local Weaviate)
-    - Cache Layer (Redis or in-memory)
+Components:
+- Graph Database (Neo4j Community Edition or TigerGraph)
+  - Patient subgraph
+  - Provider subgraph
+  - Payer subgraph
+  - Clinical reference data
+- Vector Database (optional: Pinecone free tier or local Weaviate)
+- Cache Layer (Redis or in-memory)
 
-    **Layer 4: Data Sources**
+**Layer 4: Data Sources**
 
-    Components:
-    - Synthea synthetic patient data
-    - CMS public datasets (Medicare claims)
-    - FDA drug database (RxNorm, NDC codes)
-    - Custom generated test data
+Components:
+- Synthea synthetic patient data
+- CMS public datasets (Medicare claims)
+- FDA drug database (RxNorm, NDC codes)
+- Custom generated test data
 
-    **Cross-cutting Concerns** (shown as vertical bars on sides):
+**Cross-cutting Concerns** (shown as vertical bars on sides):
 
-    Left side:
-    - Logging and Monitoring
-      - Application logs
-      - Query performance metrics
-      - Error tracking
+Left side:
+- Logging and Monitoring
+  - Application logs
+  - Query performance metrics
+  - Error tracking
 
-    Right side:
-    - Security and Governance
-      - Authentication (JWT tokens)
-      - Authorization (RBAC rules)
-      - Audit logging
-      - Data encryption
+Right side:
+- Security and Governance
+  - Authentication (JWT tokens)
+  - Authorization (RBAC rules)
+  - Audit logging
+  - Data encryption
 
-    Visual style: Layered architecture with components as rounded rectangles within each layer
+Visual style: Layered architecture with components as rounded rectangles within each layer
 
-    Connections:
-    - Solid arrows: Synchronous calls
-    - Dashed arrows: Asynchronous messages
-    - Double arrows: Bidirectional communication
+Connections:
+- Solid arrows: Synchronous calls
+- Dashed arrows: Asynchronous messages
+- Double arrows: Bidirectional communication
 
-    Color scheme:
-    - Layer 1 (UI): Light blue
-    - Layer 2 (Logic): Orange
-    - Layer 3 (Data): Gold
-    - Layer 4 (Sources): Green
-    - Cross-cutting: Gray
+Color scheme:
+- Layer 1 (UI): Light blue
+- Layer 2 (Logic): Orange
+- Layer 3 (Data): Gold
+- Layer 4 (Sources): Green
+- Cross-cutting: Gray
 
-    Labels on connections:
-    - "HTTPS/REST" between UI and Logic
-    - "Cypher queries" between Logic and Graph DB
-    - "ETL pipelines" between Sources and Data tier
+Labels on connections:
+- "HTTPS/REST" between UI and Logic
+- "Cypher queries" between Logic and Graph DB
+- "ETL pipelines" between Sources and Data tier
 
-    Annotations:
-    - Note box: "Start with minimal viable architecture - add complexity as needed"
-    - Note box: "Use Docker Compose to orchestrate all services locally"
-    - Highlight: Emphasize Graph Database as central component
+Annotations:
+- Note box: "Start with minimal viable architecture - add complexity as needed"
+- Note box: "Use Docker Compose to orchestrate all services locally"
+- Highlight: Emphasize Graph Database as central component
 
-    Implementation: Lucidchart, draw.io, or similar tool exported to SVG
+Implementation: Lucidchart, draw.io, or similar tool exported to SVG
 </details>
 
 ### Suggested Project Ideas
@@ -709,99 +739,104 @@ Extension opportunities:
 - Implement intervention tracking to measure program effectiveness
 - Deploy real-time scoring as patients are discharged
 
+#### Diagram: Project Complexity Comparison Table
+
 <details markdown="1">
-    <summary>Project Complexity Comparison Table</summary>
-    Type: chart
+<summary>Project Complexity Comparison Table</summary>
+Type: chart
+**sim-id:** project-complexity-comparison-table<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Stacked horizontal bar chart
+Chart type: Stacked horizontal bar chart
 
-    Purpose: Help students assess project complexity across different dimensions to select appropriate scope
+Purpose: Help students assess project complexity across different dimensions to select appropriate scope
 
-    Y-axis: Project ideas (listed below)
-    X-axis: Complexity points (0-100 scale)
+Y-axis: Project ideas (listed below)
+X-axis: Complexity points (0-100 scale)
 
-    Project ideas (rows):
-    1. Polypharmacy Risk Detection
-    2. Hospital Referral Network Optimizer
-    3. Readmission Risk Prediction Platform
-    4. Claims Fraud Detection System
-    5. Clinical Pathway Recommender
-    6. Population Health Cohort Analyzer
+Project ideas (rows):
+1. Polypharmacy Risk Detection
+2. Hospital Referral Network Optimizer
+3. Readmission Risk Prediction Platform
+4. Claims Fraud Detection System
+5. Clinical Pathway Recommender
+6. Population Health Cohort Analyzer
 
-    Complexity dimensions (stacked bars, different colors):
-    - Data Integration (blue): Complexity of ingesting and cleaning data
-    - Graph Modeling (orange): Sophistication of graph schema and relationships
-    - Analytics Implementation (gold): Difficulty of implementing algorithms and queries
-    - AI/ML Integration (green): Complexity of embedding and AI features
-    - User Interface (purple): Sophistication of visualization and interaction
+Complexity dimensions (stacked bars, different colors):
+- Data Integration (blue): Complexity of ingesting and cleaning data
+- Graph Modeling (orange): Sophistication of graph schema and relationships
+- Analytics Implementation (gold): Difficulty of implementing algorithms and queries
+- AI/ML Integration (green): Complexity of embedding and AI features
+- User Interface (purple): Sophistication of visualization and interaction
 
-    Data values (each dimension 0-20 points, total up to 100):
+Data values (each dimension 0-20 points, total up to 100):
 
-    1. Polypharmacy Risk Detection:
-       - Data Integration: 12
-       - Graph Modeling: 14
-       - Analytics: 16
-       - AI/ML: 10
-       - UI: 13
-       - Total: 65
+1. Polypharmacy Risk Detection:
+   - Data Integration: 12
+   - Graph Modeling: 14
+   - Analytics: 16
+   - AI/ML: 10
+   - UI: 13
+   - Total: 65
 
-    2. Hospital Referral Network Optimizer:
-       - Data Integration: 10
-       - Graph Modeling: 16
-       - Analytics: 18
-       - AI/ML: 8
-       - UI: 15
-       - Total: 67
+2. Hospital Referral Network Optimizer:
+   - Data Integration: 10
+   - Graph Modeling: 16
+   - Analytics: 18
+   - AI/ML: 8
+   - UI: 15
+   - Total: 67
 
-    3. Readmission Risk Prediction:
-       - Data Integration: 15
-       - Graph Modeling: 14
-       - Analytics: 16
-       - AI/ML: 18
-       - UI: 12
-       - Total: 75
+3. Readmission Risk Prediction:
+   - Data Integration: 15
+   - Graph Modeling: 14
+   - Analytics: 16
+   - AI/ML: 18
+   - UI: 12
+   - Total: 75
 
-    4. Claims Fraud Detection:
-       - Data Integration: 18
-       - Graph Modeling: 16
-       - Analytics: 19
-       - AI/ML: 14
-       - UI: 14
-       - Total: 81
+4. Claims Fraud Detection:
+   - Data Integration: 18
+   - Graph Modeling: 16
+   - Analytics: 19
+   - AI/ML: 14
+   - UI: 14
+   - Total: 81
 
-    5. Clinical Pathway Recommender:
-       - Data Integration: 16
-       - Graph Modeling: 19
-       - Analytics: 17
-       - AI/ML: 20
-       - UI: 16
-       - Total: 88
+5. Clinical Pathway Recommender:
+   - Data Integration: 16
+   - Graph Modeling: 19
+   - Analytics: 17
+   - AI/ML: 20
+   - UI: 16
+   - Total: 88
 
-    6. Population Health Cohort Analyzer:
-       - Data Integration: 17
-       - Graph Modeling: 15
-       - Analytics: 18
-       - AI/ML: 16
-       - UI: 18
-       - Total: 84
+6. Population Health Cohort Analyzer:
+   - Data Integration: 17
+   - Graph Modeling: 15
+   - Analytics: 18
+   - AI/ML: 16
+   - UI: 18
+   - Total: 84
 
-    Title: "Capstone Project Complexity Assessment"
+Title: "Capstone Project Complexity Assessment"
 
-    Legend:
-    - Show all five complexity dimensions with colors
-    - Add note: "Total points represent overall project complexity. Target 60-80 points for one-semester capstone."
+Legend:
+- Show all five complexity dimensions with colors
+- Add note: "Total points represent overall project complexity. Target 60-80 points for one-semester capstone."
 
-    Annotations:
-    - Highlight Projects 1-3 in light green box: "Recommended scope for first-time graph projects"
-    - Highlight Projects 4-6 in light yellow box: "Advanced projects requiring prior graph experience"
-    - Add vertical line at 70 points: "Optimal complexity target"
+Annotations:
+- Highlight Projects 1-3 in light green box: "Recommended scope for first-time graph projects"
+- Highlight Projects 4-6 in light yellow box: "Advanced projects requiring prior graph experience"
+- Add vertical line at 70 points: "Optimal complexity target"
 
-    Interactive features:
-    - Hover over each bar segment to see dimension name and point value
-    - Click on project name to expand description panel with features and extensions
-    - Filter by complexity dimension to compare projects on specific criteria
+Interactive features:
+- Hover over each bar segment to see dimension name and point value
+- Click on project name to expand description panel with features and extensions
+- Filter by complexity dimension to compare projects on specific criteria
 
-    Implementation: Chart.js stacked bar chart with custom hover tooltips
+Implementation: Chart.js stacked bar chart with custom hover tooltips
 </details>
 
 ### Development Methodology and Timeline
@@ -904,91 +939,96 @@ Recommended presentation outline:
    - Have backup slides with additional technical details
    - Demonstrate depth of understanding through thoughtful answers
 
+#### Diagram: Presentation Effectiveness Rubric
+
 <details markdown="1">
-    <summary>Presentation Effectiveness Rubric</summary>
-    Type: infographic
+<summary>Presentation Effectiveness Rubric</summary>
+Type: infographic
+**sim-id:** presentation-effectiveness-rubric<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Provide visual rubric showing evaluation criteria and scoring levels for project presentations
+Purpose: Provide visual rubric showing evaluation criteria and scoring levels for project presentations
 
-    Layout: Grid format with criteria as rows and performance levels as columns
+Layout: Grid format with criteria as rows and performance levels as columns
 
-    Criteria (rows - 7 total):
-    1. Problem Definition
-    2. Technical Architecture
-    3. Implementation Quality
-    4. Live Demonstration
-    5. Results and Evidence
-    6. Presentation Skills
-    7. Q&A Handling
+Criteria (rows - 7 total):
+1. Problem Definition
+2. Technical Architecture
+3. Implementation Quality
+4. Live Demonstration
+5. Results and Evidence
+6. Presentation Skills
+7. Q&A Handling
 
-    Performance levels (columns - 4 total):
-    - Exemplary (4 points) - Dark green
-    - Proficient (3 points) - Light green
-    - Developing (2 points) - Yellow
-    - Beginning (1 point) - Orange
+Performance levels (columns - 4 total):
+- Exemplary (4 points) - Dark green
+- Proficient (3 points) - Light green
+- Developing (2 points) - Yellow
+- Beginning (1 point) - Orange
 
-    Cell content for each criterion:
+Cell content for each criterion:
 
-    **Problem Definition:**
-    - Exemplary: "Compelling healthcare problem with quantified impact, clear gap in existing solutions, measurable success criteria"
-    - Proficient: "Healthcare problem identified with some quantification, comparison to current approaches, success criteria defined"
-    - Developing: "Problem stated but lacks quantification, limited context on alternatives, vague success criteria"
-    - Beginning: "Problem unclear or too broad, no comparison to existing solutions, success criteria missing"
+**Problem Definition:**
+- Exemplary: "Compelling healthcare problem with quantified impact, clear gap in existing solutions, measurable success criteria"
+- Proficient: "Healthcare problem identified with some quantification, comparison to current approaches, success criteria defined"
+- Developing: "Problem stated but lacks quantification, limited context on alternatives, vague success criteria"
+- Beginning: "Problem unclear or too broad, no comparison to existing solutions, success criteria missing"
 
-    **Technical Architecture:**
-    - Exemplary: "Comprehensive architecture diagram, well-justified technology choices, clear data model with 10+ node types, integration patterns explained"
-    - Proficient: "Complete architecture shown, technology choices explained, data model with 6-9 node types, integration approach described"
-    - Developing: "Basic architecture diagram, limited technology justification, simple data model, integration approach unclear"
-    - Beginning: "Architecture missing or incomplete, technology choices not justified, data model too simple or unclear"
+**Technical Architecture:**
+- Exemplary: "Comprehensive architecture diagram, well-justified technology choices, clear data model with 10+ node types, integration patterns explained"
+- Proficient: "Complete architecture shown, technology choices explained, data model with 6-9 node types, integration approach described"
+- Developing: "Basic architecture diagram, limited technology justification, simple data model, integration approach unclear"
+- Beginning: "Architecture missing or incomplete, technology choices not justified, data model too simple or unclear"
 
-    **Implementation Quality:**
-    - Exemplary: "Production-quality code, complex queries with 3+ hop traversals, 2+ graph algorithms, AI integration, comprehensive testing"
-    - Proficient: "Clean code, multi-hop queries, 1-2 graph algorithms, some AI features, basic testing"
-    - Developing: "Working code with some issues, simple queries, algorithms partially implemented, limited testing"
-    - Beginning: "Incomplete implementation, queries don't work reliably, algorithms missing, no testing evidence"
+**Implementation Quality:**
+- Exemplary: "Production-quality code, complex queries with 3+ hop traversals, 2+ graph algorithms, AI integration, comprehensive testing"
+- Proficient: "Clean code, multi-hop queries, 1-2 graph algorithms, some AI features, basic testing"
+- Developing: "Working code with some issues, simple queries, algorithms partially implemented, limited testing"
+- Beginning: "Incomplete implementation, queries don't work reliably, algorithms missing, no testing evidence"
 
-    **Live Demonstration:**
-    - Exemplary: "Smooth demo showing 3+ user scenarios, impressive visualizations, handles errors gracefully, demonstrates RBAC"
-    - Proficient: "Successful demo of core features, good visualizations, 2 user scenarios, shows key functionality"
-    - Developing: "Demo works but has rough edges, limited scenarios, basic visualizations, technical difficulties"
-    - Beginning: "Demo fails or shows minimal functionality, poor visualizations, cannot demonstrate key features"
+**Live Demonstration:**
+- Exemplary: "Smooth demo showing 3+ user scenarios, impressive visualizations, handles errors gracefully, demonstrates RBAC"
+- Proficient: "Successful demo of core features, good visualizations, 2 user scenarios, shows key functionality"
+- Developing: "Demo works but has rough edges, limited scenarios, basic visualizations, technical difficulties"
+- Beginning: "Demo fails or shows minimal functionality, poor visualizations, cannot demonstrate key features"
 
-    **Results and Evidence:**
-    - Exemplary: "Quantitative metrics vs. baselines, performance benchmarks, user testing results, healthcare impact analysis"
-    - Proficient: "Some quantitative results, performance discussed, qualitative impact assessment"
-    - Developing: "Limited results shown, mostly anecdotal evidence, impact unclear"
-    - Beginning: "No results presented, cannot articulate project value or impact"
+**Results and Evidence:**
+- Exemplary: "Quantitative metrics vs. baselines, performance benchmarks, user testing results, healthcare impact analysis"
+- Proficient: "Some quantitative results, performance discussed, qualitative impact assessment"
+- Developing: "Limited results shown, mostly anecdotal evidence, impact unclear"
+- Beginning: "No results presented, cannot articulate project value or impact"
 
-    **Presentation Skills:**
-    - Exemplary: "Engaging storytelling, clear visuals, appropriate technical depth for audience, confident delivery, time management"
-    - Proficient: "Clear organization, good visuals, maintains audience interest, stays on time"
-    - Developing: "Somewhat organized, visuals adequate, loses audience at times, timing issues"
-    - Beginning: "Disorganized, poor visuals, cannot maintain audience attention, major timing problems"
+**Presentation Skills:**
+- Exemplary: "Engaging storytelling, clear visuals, appropriate technical depth for audience, confident delivery, time management"
+- Proficient: "Clear organization, good visuals, maintains audience interest, stays on time"
+- Developing: "Somewhat organized, visuals adequate, loses audience at times, timing issues"
+- Beginning: "Disorganized, poor visuals, cannot maintain audience attention, major timing problems"
 
-    **Q&A Handling:**
-    - Exemplary: "Thoughtful answers demonstrating deep understanding, acknowledges limitations, connects to broader context"
-    - Proficient: "Answers most questions correctly, shows good understanding, some depth in responses"
-    - Developing: "Struggles with some questions, limited depth, appears uncertain about design choices"
-    - Beginning: "Cannot answer basic questions, reveals lack of understanding, defensive or evasive"
+**Q&A Handling:**
+- Exemplary: "Thoughtful answers demonstrating deep understanding, acknowledges limitations, connects to broader context"
+- Proficient: "Answers most questions correctly, shows good understanding, some depth in responses"
+- Developing: "Struggles with some questions, limited depth, appears uncertain about design choices"
+- Beginning: "Cannot answer basic questions, reveals lack of understanding, defensive or evasive"
 
-    Visual styling:
-    - Header row with white text on dark blue background
-    - Each cell has colored background based on performance level
-    - Criterion names in bold on left column
-    - Total score shown at bottom: "/ 28 points possible"
+Visual styling:
+- Header row with white text on dark blue background
+- Each cell has colored background based on performance level
+- Criterion names in bold on left column
+- Total score shown at bottom: "/ 28 points possible"
 
-    Scoring guide (shown at bottom):
-    - 25-28 points: Outstanding (A)
-    - 21-24 points: Excellent (B)
-    - 17-20 points: Good (C)
-    - Below 17: Needs Improvement
+Scoring guide (shown at bottom):
+- 25-28 points: Outstanding (A)
+- 21-24 points: Excellent (B)
+- 17-20 points: Good (C)
+- Below 17: Needs Improvement
 
-    Interactive features:
-    - Hover over each cell to see full descriptor text
-    - Click on criterion name to see example video clips at each level
-    - Self-assessment mode: click cells to calculate your expected score
+Interactive features:
+- Hover over each cell to see full descriptor text
+- Click on criterion name to see example video clips at each level
+- Self-assessment mode: click cells to calculate your expected score
 
-    Implementation: HTML table with CSS grid styling and JavaScript for interactions
+Implementation: HTML table with CSS grid styling and JavaScript for interactions
 </details>
 
 ### Demonstration Techniques
@@ -1077,155 +1117,160 @@ Key market trends include:
 
 These trends create demand for professionals with diverse skill combinations including graph database administration, graph data modeling, healthcare informatics, clinical analytics, and AI/ML integration. Organizations particularly value candidates who understand both technical graph concepts and healthcare domain context, as this combination remains relatively rare in the talent market.
 
+#### Diagram: Healthcare Graph Database Job Roles and Skills Map
+
 <details markdown="1">
-    <summary>Healthcare Graph Database Job Roles and Skills Map</summary>
-    Type: graph-model
+<summary>Healthcare Graph Database Job Roles and Skills Map</summary>
+Type: graph-model
+**sim-id:** healthcare-graph-database-job-roles-skills<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Visualize different career roles in healthcare graph databases and the skills associated with each role
+Purpose: Visualize different career roles in healthcare graph databases and the skills associated with each role
 
-    Node types:
+Node types:
 
-    1. Job Roles (large pink circles):
-       - Properties: title, salary_range, demand_level
-       - Examples:
-         - "Graph Database Administrator"
-         - "Healthcare Data Architect"
-         - "Clinical Graph Analyst"
-         - "Graph ML Engineer"
-         - "Healthcare Knowledge Graph Engineer"
-         - "Graph Solutions Architect"
+1. Job Roles (large pink circles):
+   - Properties: title, salary_range, demand_level
+   - Examples:
+     - "Graph Database Administrator"
+     - "Healthcare Data Architect"
+     - "Clinical Graph Analyst"
+     - "Graph ML Engineer"
+     - "Healthcare Knowledge Graph Engineer"
+     - "Graph Solutions Architect"
 
-    2. Technical Skills (medium light blue squares):
-       - Properties: skill_name, proficiency_level_required
-       - Examples:
-         - "Neo4j/Cypher"
-         - "TigerGraph/GSQL"
-         - "Python"
-         - "Graph Algorithms"
-         - "Vector Databases"
-         - "Docker/Kubernetes"
-         - "AWS/Azure"
+2. Technical Skills (medium light blue squares):
+   - Properties: skill_name, proficiency_level_required
+   - Examples:
+     - "Neo4j/Cypher"
+     - "TigerGraph/GSQL"
+     - "Python"
+     - "Graph Algorithms"
+     - "Vector Databases"
+     - "Docker/Kubernetes"
+     - "AWS/Azure"
 
-    3. Healthcare Skills (medium green hexagons):
-       - Properties: skill_name, importance
-       - Examples:
-         - "Clinical Workflows"
-         - "HIPAA Compliance"
-         - "HL7/FHIR"
-         - "Medical Coding (ICD/CPT)"
-         - "Healthcare Analytics"
-         - "Value-Based Care Models"
+3. Healthcare Skills (medium green hexagons):
+   - Properties: skill_name, importance
+   - Examples:
+     - "Clinical Workflows"
+     - "HIPAA Compliance"
+     - "HL7/FHIR"
+     - "Medical Coding (ICD/CPT)"
+     - "Healthcare Analytics"
+     - "Value-Based Care Models"
 
-    4. Soft Skills (small orange triangles):
-       - Properties: skill_name
-       - Examples:
-         - "Stakeholder Communication"
-         - "Data Storytelling"
-         - "Project Management"
-         - "Problem Solving"
-         - "Collaboration"
+4. Soft Skills (small orange triangles):
+   - Properties: skill_name
+   - Examples:
+     - "Stakeholder Communication"
+     - "Data Storytelling"
+     - "Project Management"
+     - "Problem Solving"
+     - "Collaboration"
 
-    Edge types:
+Edge types:
 
-    1. REQUIRES (solid blue arrows):
-       - From Job Role to Skills
-       - Properties: importance_level (essential, preferred, nice-to-have)
-       - Example: "Graph Database Administrator" → REQUIRES → "Neo4j/Cypher" [essential]
+1. REQUIRES (solid blue arrows):
+   - From Job Role to Skills
+   - Properties: importance_level (essential, preferred, nice-to-have)
+   - Example: "Graph Database Administrator" → REQUIRES → "Neo4j/Cypher" [essential]
 
-    2. BUILDS_ON (dashed purple arrows):
-       - Between Skills showing prerequisites
-       - Properties: relationship_type
-       - Example: "Graph ML Engineer" → BUILDS_ON → "Graph Algorithms"
+2. BUILDS_ON (dashed purple arrows):
+   - Between Skills showing prerequisites
+   - Properties: relationship_type
+   - Example: "Graph ML Engineer" → BUILDS_ON → "Graph Algorithms"
 
-    3. LEADS_TO (dotted green arrows):
-       - Career progression paths between roles
-       - Properties: typical_years_experience
-       - Example: "Clinical Graph Analyst" → LEADS_TO [3-5 years] → "Healthcare Data Architect"
+3. LEADS_TO (dotted green arrows):
+   - Career progression paths between roles
+   - Properties: typical_years_experience
+   - Example: "Clinical Graph Analyst" → LEADS_TO [3-5 years] → "Healthcare Data Architect"
 
-    Sample data structure:
+Sample data structure:
 
-    "Graph Database Administrator" role requires:
-    - Neo4j/Cypher [essential]
-    - Python [essential]
-    - Docker/Kubernetes [essential]
-    - AWS/Azure [preferred]
-    - HIPAA Compliance [essential]
-    - Stakeholder Communication [preferred]
-    Salary range: $95K-$135K
-    Demand: High
+"Graph Database Administrator" role requires:
+- Neo4j/Cypher [essential]
+- Python [essential]
+- Docker/Kubernetes [essential]
+- AWS/Azure [preferred]
+- HIPAA Compliance [essential]
+- Stakeholder Communication [preferred]
+Salary range: $95K-$135K
+Demand: High
 
-    "Healthcare Data Architect" role requires:
-    - Neo4j/Cypher [essential]
-    - Graph Algorithms [essential]
-    - HL7/FHIR [essential]
-    - Clinical Workflows [essential]
-    - Healthcare Analytics [essential]
-    - Python [essential]
-    - Project Management [preferred]
-    - Data Storytelling [preferred]
-    Salary range: $125K-$175K
-    Demand: Very High
+"Healthcare Data Architect" role requires:
+- Neo4j/Cypher [essential]
+- Graph Algorithms [essential]
+- HL7/FHIR [essential]
+- Clinical Workflows [essential]
+- Healthcare Analytics [essential]
+- Python [essential]
+- Project Management [preferred]
+- Data Storytelling [preferred]
+Salary range: $125K-$175K
+Demand: Very High
 
-    "Graph ML Engineer" role requires:
-    - Python [essential]
-    - Graph Algorithms [essential]
-    - Vector Databases [essential]
-    - Neo4j/Cypher [preferred]
-    - Healthcare Analytics [preferred]
-    - Problem Solving [essential]
-    Salary range: $130K-$190K
-    Demand: Very High
+"Graph ML Engineer" role requires:
+- Python [essential]
+- Graph Algorithms [essential]
+- Vector Databases [essential]
+- Neo4j/Cypher [preferred]
+- Healthcare Analytics [preferred]
+- Problem Solving [essential]
+Salary range: $130K-$190K
+Demand: Very High
 
-    Career progression paths:
-    - "Graph Database Administrator" → [2-3 years] → "Healthcare Data Architect"
-    - "Clinical Graph Analyst" → [3-5 years] → "Healthcare Data Architect"
-    - "Healthcare Data Architect" → [4-6 years] → "Graph Solutions Architect"
-    - "Graph Database Administrator" → [2-4 years] → "Graph ML Engineer"
+Career progression paths:
+- "Graph Database Administrator" → [2-3 years] → "Healthcare Data Architect"
+- "Clinical Graph Analyst" → [3-5 years] → "Healthcare Data Architect"
+- "Healthcare Data Architect" → [4-6 years] → "Graph Solutions Architect"
+- "Graph Database Administrator" → [2-4 years] → "Graph ML Engineer"
 
-    Layout: Force-directed with job roles at center, skills arranged around periphery
+Layout: Force-directed with job roles at center, skills arranged around periphery
 
-    Interactive features:
-    - Hover over job role: Show full description, salary range, demand level
-    - Hover over skill node: Show which roles require it and importance level
-    - Click on job role: Highlight all required skills (color code by importance)
-    - Click on skill: Highlight all roles that require it
-    - Double-click job role: Show typical job description and responsibilities
-    - Filter controls:
-      - Slider: Years of experience (shows only accessible roles)
-      - Checkbox: Show only high-demand roles
-      - Dropdown: Filter by primary skill focus (graph DB, healthcare, ML)
+Interactive features:
+- Hover over job role: Show full description, salary range, demand level
+- Hover over skill node: Show which roles require it and importance level
+- Click on job role: Highlight all required skills (color code by importance)
+- Click on skill: Highlight all roles that require it
+- Double-click job role: Show typical job description and responsibilities
+- Filter controls:
+  - Slider: Years of experience (shows only accessible roles)
+  - Checkbox: Show only high-demand roles
+  - Dropdown: Filter by primary skill focus (graph DB, healthcare, ML)
 
-    Visual styling:
-    - Node size based on number of connections (highly connected skills shown larger)
-    - Edge thickness based on importance level (essential = thick, preferred = medium, nice-to-have = thin)
-    - Color coding:
-      - Essential skills: solid blue edges
-      - Preferred skills: dashed purple edges
-      - Nice-to-have skills: dotted gray edges
-    - Career progression paths: animated flowing green arrows
+Visual styling:
+- Node size based on number of connections (highly connected skills shown larger)
+- Edge thickness based on importance level (essential = thick, preferred = medium, nice-to-have = thin)
+- Color coding:
+  - Essential skills: solid blue edges
+  - Preferred skills: dashed purple edges
+  - Nice-to-have skills: dotted gray edges
+- Career progression paths: animated flowing green arrows
 
-    Legend (bottom right):
-    - Node shapes and their meanings
-    - Edge types and importance levels
-    - Salary range color coding (roles colored by salary tier)
+Legend (bottom right):
+- Node shapes and their meanings
+- Edge types and importance levels
+- Salary range color coding (roles colored by salary tier)
 
-    Additional data panel (right side):
-    When role selected, display:
-    - Full job title
-    - Salary range
-    - Demand level (with trend arrow)
-    - Required years experience
-    - Top 5 companies hiring
-    - Typical responsibilities list
-    - Career path options
+Additional data panel (right side):
+When role selected, display:
+- Full job title
+- Salary range
+- Demand level (with trend arrow)
+- Required years experience
+- Top 5 companies hiring
+- Typical responsibilities list
+- Career path options
 
-    Implementation: vis-network JavaScript library
-    Canvas size: 1200x800px
+Implementation: vis-network JavaScript library
+Canvas size: 1200x800px
 
-    Data source notes:
-    - Salary data: Glassdoor, LinkedIn, Stack Overflow surveys
-    - Demand data: Job posting analysis from Indeed, LinkedIn Jobs
-    - Skills requirements: Job description analysis from healthcare organizations
+Data source notes:
+- Salary data: Glassdoor, LinkedIn, Stack Overflow surveys
+- Demand data: Job posting analysis from Indeed, LinkedIn Jobs
+- Skills requirements: Job description analysis from healthcare organizations
 </details>
 
 ### Educational Pathways and Skill Development

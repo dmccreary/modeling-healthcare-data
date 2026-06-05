@@ -1,0 +1,14 @@
+{
+  "sim_id": "comparison-graph-db-llm-integrated-system",
+  "diagram_name": "Comparison: Graph DB vs LLM vs Integrated System",
+  "chapter_number": 10,
+  "chapter_title": "Ai Machine Learning Integration",
+  "chapter_dir": "10-ai-machine-learning-integration",
+  "library": "Chart.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: chart\n**sim-id:** comparison-graph-db-llm-integrated-system<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nChart type: Grouped bar chart\n\nPurpose: Compare the capabilities of standalone graph databases, standalone LLMs, and integrated systems across key healthcare AI dimensions\n\nX-axis: Capability dimensions\nY-axis: Performance score (0-10 scale)\n\nCapability dimensions (X-axis categories):\n1. Factual Accuracy\n2. Explainability\n3. Natural Language Understanding\n4. Relationship Reasoning\n5. Knowledge Currency\n6. Hallucination Risk (inverted scale)\n7. Complex Query Support\n\nData series (three bars per category):\n\n1. Graph Database Alone (blue bars):\n   - Factual Accuracy: 10\n   - Explainability: 10\n   - Natural Language Understanding: 2\n   - Relationship Reasoning: 10\n   - Knowledge Currency: 9\n   - Hallucination Risk: 10 (no hallucination)\n   - Complex Query Support: 7\n\n2. LLM Alone (orange bars):\n   - Factual Accuracy: 6\n   - Explainability: 4\n   - Natural Language Understanding: 10\n   - Relationship Reasoning: 6\n   - Knowledge Currency: 5 (knowledge cutoff)\n   - Hallucination Risk: 4 (significant risk)\n   - Complex Query Support: 8\n\n3. Integrated System (green bars):\n   - Factual Accuracy: 10\n   - Explainability: 9\n   - Natural Language Understanding: 10\n   - Relationship Reasoning: 10\n   - Knowledge Currency: 10\n   - Hallucination Risk: 9 (minimal risk)\n   - Complex Query Support: 10\n\nTitle: \"Healthcare AI Capabilities: Standalone vs Integrated Approaches\"\nLegend: Position top-right\n\nAnnotations:\n- Arrow pointing to Integrated \"Hallucination Risk\": \"Graph grounding reduces hallucination by 70%\"\n- Bracket above Integrated scores: \"Best-of-both-worlds approach\"\n- Note below chart: \"Scores based on benchmark evaluations across clinical QA tasks (n=500 questions)\"\n\nVisual styling:\n- Bar groups separated by capability dimension\n- Grid lines at 0, 2, 4, 6, 8, 10 for easy reading\n- Integrated system bars highlighted with subtle glow effect\n- Inverted color for \"Hallucination Risk\" (red tones) to indicate lower is better\n\nImplementation: Chart.js or D3.js\nCanvas size: 900x500px"
+}

@@ -62,150 +62,155 @@ The following table illustrates the structure and relationships in a typical cha
 | CDM-40023 | Operating Room Time - General | 0360 | - | Surgery | $125.00 | Per Minute | 2024-01-01 |
 | CDM-50145 | Lab - Complete Blood Count | 0300 | 85025 | Laboratory | $45.00 | Per Test | 2024-01-01 |
 
+#### Diagram: Charge Master and Billing Code Graph Model
+
 <details markdown="1">
-    <summary>Charge Master and Billing Code Graph Model</summary>
-    Type: graph-model
+<summary>Charge Master and Billing Code Graph Model</summary>
+Type: graph-model
+**sim-id:** charge-master-billing-code-graph-model<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate how billing codes, charge master items, departments, and services are interconnected in a graph database to enable efficient pricing lookups, variance analysis, and revenue optimization.
+Purpose: Illustrate how billing codes, charge master items, departments, and services are interconnected in a graph database to enable efficient pricing lookups, variance analysis, and revenue optimization.
 
-    Node types:
-    1. ChargeMAster Item (orange rectangles)
-       - Properties: cdm_id, description, base_charge, unit_of_measure, effective_date, active (boolean)
-       - Example: "CDM-10234: ED Visit Level 3"
+Node types:
+1. ChargeMAster Item (orange rectangles)
+   - Properties: cdm_id, description, base_charge, unit_of_measure, effective_date, active (boolean)
+   - Example: "CDM-10234: ED Visit Level 3"
 
-    2. Billing Code (light blue rounded rectangles)
-       - Properties: code, code_type (ICD-10, CPT, HCPCS), description, version
-       - Examples: "99283 (CPT)", "E11.9 (ICD-10)", "E0601 (HCPCS)"
+2. Billing Code (light blue rounded rectangles)
+   - Properties: code, code_type (ICD-10, CPT, HCPCS), description, version
+   - Examples: "99283 (CPT)", "E11.9 (ICD-10)", "E0601 (HCPCS)"
 
-    3. Revenue Code (yellow circles)
-       - Properties: code, description, category
-       - Example: "0450: Emergency Department Services"
+3. Revenue Code (yellow circles)
+   - Properties: code, description, category
+   - Example: "0450: Emergency Department Services"
 
-    4. Department (green hexagons)
-       - Properties: dept_id, name, cost_center, margin_target
-       - Examples: "Emergency Department", "Radiology", "Laboratory"
+4. Department (green hexagons)
+   - Properties: dept_id, name, cost_center, margin_target
+   - Examples: "Emergency Department", "Radiology", "Laboratory"
 
-    5. Service (purple circles)
-       - Properties: service_id, name, service_line, complexity_level
-       - Example: "Emergency Department Visit"
+5. Service (purple circles)
+   - Properties: service_id, name, service_line, complexity_level
+   - Example: "Emergency Department Visit"
 
-    6. Payer (gray squares)
-       - Properties: payer_id, name, type (commercial, medicare, medicaid)
-       - Example: "Medicare Part B"
+6. Payer (gray squares)
+   - Properties: payer_id, name, type (commercial, medicare, medicaid)
+   - Example: "Medicare Part B"
 
-    7. Contract Rate (pink circles)
-       - Properties: contract_id, effective_date, rate_type (fee_schedule, percentage_of_charges, DRG), rate_amount
-       - Example: "Medicare Fee Schedule 2024"
+7. Contract Rate (pink circles)
+   - Properties: contract_id, effective_date, rate_type (fee_schedule, percentage_of_charges, DRG), rate_amount
+   - Example: "Medicare Fee Schedule 2024"
 
-    Edge types:
-    1. MAPS_TO_CPT/HCPCS (solid blue arrow)
-       - From: ChargeMaster Item → Billing Code (CPT/HCPCS)
-       - Properties: primary_code (boolean), modifier
+Edge types:
+1. MAPS_TO_CPT/HCPCS (solid blue arrow)
+   - From: ChargeMaster Item → Billing Code (CPT/HCPCS)
+   - Properties: primary_code (boolean), modifier
 
-    2. SUPPORTS_DIAGNOSIS (dashed blue arrow)
-       - From: ChargeMaster Item → Billing Code (ICD-10)
-       - Properties: medical_necessity_link
+2. SUPPORTS_DIAGNOSIS (dashed blue arrow)
+   - From: ChargeMaster Item → Billing Code (ICD-10)
+   - Properties: medical_necessity_link
 
-    3. CATEGORIZED_AS (solid yellow arrow)
-       - From: ChargeMaster Item → Revenue Code
-       - Properties: reporting_category
+3. CATEGORIZED_AS (solid yellow arrow)
+   - From: ChargeMaster Item → Revenue Code
+   - Properties: reporting_category
 
-    4. PROVIDED_BY (solid green arrow)
-       - From: ChargeMaster Item → Department
-       - Properties: cost_allocation_percentage
+4. PROVIDED_BY (solid green arrow)
+   - From: ChargeMaster Item → Department
+   - Properties: cost_allocation_percentage
 
-    5. PART_OF_SERVICE (solid purple arrow)
-       - From: ChargeMaster Item → Service
-       - Properties: bundled (boolean)
+5. PART_OF_SERVICE (solid purple arrow)
+   - From: ChargeMaster Item → Service
+   - Properties: bundled (boolean)
 
-    6. HAS_CONTRACT_RATE (dashed pink arrow)
-       - From: Payer → ChargeMaster Item
-       - Properties: contracted_rate, reimbursement_percentage, payment_type
+6. HAS_CONTRACT_RATE (dashed pink arrow)
+   - From: Payer → ChargeMaster Item
+   - Properties: contracted_rate, reimbursement_percentage, payment_type
 
-    7. REFERENCES (dotted gray arrow)
-       - From: Billing Code → Billing Code
-       - Properties: relationship_type (replaces, related_to, bundled_with)
+7. REFERENCES (dotted gray arrow)
+   - From: Billing Code → Billing Code
+   - Properties: relationship_type (replaces, related_to, bundled_with)
 
-    Sample data structure:
+Sample data structure:
 
-    - Emergency Department (Department)
-      ├─ PROVIDED_BY ← CDM-10234: ED Visit Level 3 (ChargeMaster Item: $750)
-      │  ├─ MAPS_TO_CPT → 99283 (CPT: ED Visit)
-      │  ├─ CATEGORIZED_AS → 0450 (Revenue Code: ED Services)
-      │  ├─ PART_OF_SERVICE → Emergency Department Visit (Service)
-      │  ├─ HAS_CONTRACT_RATE ← Medicare Part B (Payer: $312.00)
-      │  ├─ HAS_CONTRACT_RATE ← BlueCross PPO (Payer: $525.00)
-      │  └─ HAS_CONTRACT_RATE ← Medicaid (Payer: $285.00)
-      │
-      └─ PROVIDED_BY ← CDM-10567: ED Trauma Activation (ChargeMaster Item: $1,200)
-         ├─ MAPS_TO_CPT → 99285 (CPT: ED Visit High Complexity)
-         └─ CATEGORIZED_AS → 0450 (Revenue Code: ED Services)
+- Emergency Department (Department)
+  ├─ PROVIDED_BY ← CDM-10234: ED Visit Level 3 (ChargeMaster Item: $750)
+  │  ├─ MAPS_TO_CPT → 99283 (CPT: ED Visit)
+  │  ├─ CATEGORIZED_AS → 0450 (Revenue Code: ED Services)
+  │  ├─ PART_OF_SERVICE → Emergency Department Visit (Service)
+  │  ├─ HAS_CONTRACT_RATE ← Medicare Part B (Payer: $312.00)
+  │  ├─ HAS_CONTRACT_RATE ← BlueCross PPO (Payer: $525.00)
+  │  └─ HAS_CONTRACT_RATE ← Medicaid (Payer: $285.00)
+  │
+  └─ PROVIDED_BY ← CDM-10567: ED Trauma Activation (ChargeMaster Item: $1,200)
+     ├─ MAPS_TO_CPT → 99285 (CPT: ED Visit High Complexity)
+     └─ CATEGORIZED_AS → 0450 (Revenue Code: ED Services)
 
-    - Radiology (Department)
-      └─ PROVIDED_BY ← CDM-20156: MRI Brain Without Contrast (ChargeMaster Item: $2,400)
-         ├─ MAPS_TO_CPT → 70551 (CPT: MRI Brain)
-         ├─ CATEGORIZED_AS → 0611 (Revenue Code: MRI)
-         ├─ SUPPORTS_DIAGNOSIS → R51 (ICD-10: Headache)
-         ├─ SUPPORTS_DIAGNOSIS → G43.909 (ICD-10: Migraine)
-         └─ HAS_CONTRACT_RATE ← Medicare Part B (Payer: $520.00)
+- Radiology (Department)
+  └─ PROVIDED_BY ← CDM-20156: MRI Brain Without Contrast (ChargeMaster Item: $2,400)
+     ├─ MAPS_TO_CPT → 70551 (CPT: MRI Brain)
+     ├─ CATEGORIZED_AS → 0611 (Revenue Code: MRI)
+     ├─ SUPPORTS_DIAGNOSIS → R51 (ICD-10: Headache)
+     ├─ SUPPORTS_DIAGNOSIS → G43.909 (ICD-10: Migraine)
+     └─ HAS_CONTRACT_RATE ← Medicare Part B (Payer: $520.00)
 
-    - Laboratory (Department)
-      └─ PROVIDED_BY ← CDM-50145: Complete Blood Count (ChargeMaster Item: $45)
-         ├─ MAPS_TO_CPT → 85025 (CPT: CBC with differential)
-         ├─ CATEGORIZED_AS → 0300 (Revenue Code: Laboratory)
-         └─ HAS_CONTRACT_RATE ← Medicare (Payer: $12.50)
+- Laboratory (Department)
+  └─ PROVIDED_BY ← CDM-50145: Complete Blood Count (ChargeMaster Item: $45)
+     ├─ MAPS_TO_CPT → 85025 (CPT: CBC with differential)
+     ├─ CATEGORIZED_AS → 0300 (Revenue Code: Laboratory)
+     └─ HAS_CONTRACT_RATE ← Medicare (Payer: $12.50)
 
-    Layout: Hierarchical with Departments at top level, ChargeMaster Items in middle tier, and Billing Codes/Revenue Codes at bottom, with Payers connecting from the side with contract rates
+Layout: Hierarchical with Departments at top level, ChargeMaster Items in middle tier, and Billing Codes/Revenue Codes at bottom, with Payers connecting from the side with contract rates
 
-    Interactive features:
-    - Hover node: Display all properties including base charge and contracted rates
-    - Click ChargeMaster Item: Show all payer-specific rates and reimbursement variance
-    - Click Billing Code: Highlight all ChargeMaster items using that code
-    - Click Payer: Show all contracted rates and average reimbursement percentage
-    - Double-click Department: Expand to show all services and aggregate revenue
-    - Right-click ChargeMaster Item: Show sample queries:
-      * "Calculate average reimbursement as % of charges"
-      * "Find items with widest payer variance"
-      * "Identify unbundled services that could be bundled"
-    - Filter controls: Show only items by department, by service line, by code type
+Interactive features:
+- Hover node: Display all properties including base charge and contracted rates
+- Click ChargeMaster Item: Show all payer-specific rates and reimbursement variance
+- Click Billing Code: Highlight all ChargeMaster items using that code
+- Click Payer: Show all contracted rates and average reimbursement percentage
+- Double-click Department: Expand to show all services and aggregate revenue
+- Right-click ChargeMaster Item: Show sample queries:
+  * "Calculate average reimbursement as % of charges"
+  * "Find items with widest payer variance"
+  * "Identify unbundled services that could be bundled"
+- Filter controls: Show only items by department, by service line, by code type
 
-    Visual styling:
-    - Node size based on annual charge volume
-    - Edge thickness for contract rates based on payment amount (thicker = higher reimbursement)
-    - Color-code contract rate edges by payer type (blue=Medicare, green=Medicaid, purple=Commercial)
-    - Highlight pricing variance when ChargeMaster Item selected (show gap between base charge and contracted rates)
-    - Use heat map coloring for profitability (green=profitable, yellow=break-even, red=loss)
+Visual styling:
+- Node size based on annual charge volume
+- Edge thickness for contract rates based on payment amount (thicker = higher reimbursement)
+- Color-code contract rate edges by payer type (blue=Medicare, green=Medicaid, purple=Commercial)
+- Highlight pricing variance when ChargeMaster Item selected (show gap between base charge and contracted rates)
+- Use heat map coloring for profitability (green=profitable, yellow=break-even, red=loss)
 
-    Example queries displayed (interactive):
-    1. "Find highest variance items (charge vs. reimbursement)"
-       MATCH (cdm:ChargeMasterItem)-[r:HAS_CONTRACT_RATE]-(p:Payer)
-       WITH cdm, avg(r.contracted_rate) as avg_reimbursement, cdm.base_charge as charge
-       RETURN cdm.description, charge, avg_reimbursement,
-              (charge - avg_reimbursement) as variance,
-              (avg_reimbursement / charge * 100) as reimbursement_pct
-       ORDER BY variance DESC
-       LIMIT 20
+Example queries displayed (interactive):
+1. "Find highest variance items (charge vs. reimbursement)"
+   MATCH (cdm:ChargeMasterItem)-[r:HAS_CONTRACT_RATE]-(p:Payer)
+   WITH cdm, avg(r.contracted_rate) as avg_reimbursement, cdm.base_charge as charge
+   RETURN cdm.description, charge, avg_reimbursement,
+          (charge - avg_reimbursement) as variance,
+          (avg_reimbursement / charge * 100) as reimbursement_pct
+   ORDER BY variance DESC
+   LIMIT 20
 
-    2. "Compare reimbursement across payers for same service"
-       MATCH (cdm:ChargeMasterItem {cdm_id: 'CDM-10234'})-[r:HAS_CONTRACT_RATE]-(p:Payer)
-       RETURN p.name, r.contracted_rate,
-              (r.contracted_rate / cdm.base_charge * 100) as pct_of_charges
-       ORDER BY r.contracted_rate DESC
+2. "Compare reimbursement across payers for same service"
+   MATCH (cdm:ChargeMasterItem {cdm_id: 'CDM-10234'})-[r:HAS_CONTRACT_RATE]-(p:Payer)
+   RETURN p.name, r.contracted_rate,
+          (r.contracted_rate / cdm.base_charge * 100) as pct_of_charges
+   ORDER BY r.contracted_rate DESC
 
-    3. "Find all services requiring specific diagnosis code"
-       MATCH (cdm:ChargeMasterItem)-[:SUPPORTS_DIAGNOSIS]->(icd:BillingCode {code: 'E11.9'})
-       RETURN cdm.description, cdm.base_charge
-       ORDER BY cdm.base_charge DESC
+3. "Find all services requiring specific diagnosis code"
+   MATCH (cdm:ChargeMasterItem)-[:SUPPORTS_DIAGNOSIS]->(icd:BillingCode {code: 'E11.9'})
+   RETURN cdm.description, cdm.base_charge
+   ORDER BY cdm.base_charge DESC
 
-    Legend:
-    - Node shapes and colors with type labels
-    - Edge styles and their relationship meanings
-    - Payer type color coding
-    - Profitability heat map scale
+Legend:
+- Node shapes and colors with type labels
+- Edge styles and their relationship meanings
+- Payer type color coding
+- Profitability heat map scale
 
-    Implementation: vis-network JavaScript library with custom styling
-    Canvas size: 1000x800px with zoom, pan, search, and filter controls
-    Additional features: Export as CSV for financial analysis, print view, full-screen mode
+Implementation: vis-network JavaScript library with custom styling
+Canvas size: 1000x800px with zoom, pan, search, and filter controls
+Additional features: Export as CSV for financial analysis, print view, full-screen mode
 </details>
 
 ## Revenue Cycle Management
@@ -226,249 +231,254 @@ The complete revenue cycle includes the following major phases:
 
 **Collections and patient financial services:** Managing patient responsibility balances, offering payment plans, pursuing collections on delinquent accounts, and providing financial assistance when appropriate. Graph models of patient payment histories inform collection strategies and financial assistance eligibility.
 
+#### Diagram: Healthcare Revenue Cycle Workflow with Graph Analytics
+
 <details markdown="1">
-    <summary>Healthcare Revenue Cycle Workflow with Graph Analytics</summary>
-    Type: workflow
+<summary>Healthcare Revenue Cycle Workflow with Graph Analytics</summary>
+Type: workflow
+**sim-id:** healthcare-revenue-cycle-workflow-graph-analytics<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the complete revenue cycle from patient registration through payment reconciliation, showing where graph database queries optimize efficiency, reduce revenue leakage, and accelerate cash flow.
+Purpose: Illustrate the complete revenue cycle from patient registration through payment reconciliation, showing where graph database queries optimize efficiency, reduce revenue leakage, and accelerate cash flow.
 
-    Visual style: Horizontal swimlane flowchart with process rectangles, decision diamonds, and graph query indicators
+Visual style: Horizontal swimlane flowchart with process rectangles, decision diamonds, and graph query indicators
 
-    Swimlanes (from top to bottom):
-    1. Patient/Front Desk
-    2. Clinical Documentation
-    3. Health Information Management (Coding)
-    4. Patient Accounting/Billing
-    5. Graph Database Analytics
-    6. Payer
-    7. Collections/Accounts Receivable
+Swimlanes (from top to bottom):
+1. Patient/Front Desk
+2. Clinical Documentation
+3. Health Information Management (Coding)
+4. Patient Accounting/Billing
+5. Graph Database Analytics
+6. Payer
+7. Collections/Accounts Receivable
 
-    Steps:
+Steps:
 
-    Phase 1: PRE-SERVICE (Days -7 to 0)
+Phase 1: PRE-SERVICE (Days -7 to 0)
 
-    1. START (Patient lane): "Patient Schedules Appointment"
-       Hover text: "Patient calls or uses portal to schedule service"
+1. START (Patient lane): "Patient Schedules Appointment"
+   Hover text: "Patient calls or uses portal to schedule service"
 
-    2. PROCESS (Front Desk): "Register Patient and Verify Insurance"
-       Hover text: "Collect demographic information, insurance details, consent forms"
+2. PROCESS (Front Desk): "Register Patient and Verify Insurance"
+   Hover text: "Collect demographic information, insurance details, consent forms"
 
-    3. QUERY (Graph Analytics): "Check Insurance Eligibility"
-       Hover text: "Real-time graph traversal: Patient → Insurance Policy → Payer → Active?"
-       Query: "MATCH (p:Patient {id: $patient_id})-[:COVERED_BY]->(pol:Policy)-[:WITH_PAYER]->(payer:Payer)
-              WHERE $service_date >= pol.effective_date AND $service_date <= pol.termination_date
-              RETURN pol.plan_type, pol.deductible_remaining, pol.oop_remaining"
+3. QUERY (Graph Analytics): "Check Insurance Eligibility"
+   Hover text: "Real-time graph traversal: Patient → Insurance Policy → Payer → Active?"
+   Query: "MATCH (p:Patient {id: $patient_id})-[:COVERED_BY]->(pol:Policy)-[:WITH_PAYER]->(payer:Payer)
+          WHERE $service_date >= pol.effective_date AND $service_date <= pol.termination_date
+          RETURN pol.plan_type, pol.deductible_remaining, pol.oop_remaining"
 
-    4. DECISION (Front Desk): "Coverage Active?"
-       Hover text: "Is patient covered on scheduled service date?"
+4. DECISION (Front Desk): "Coverage Active?"
+   Hover text: "Is patient covered on scheduled service date?"
 
-    4a. IF NO → PROCESS (Front Desk): "Patient Self-Pay"
-        Hover text: "Inform patient of self-pay status, collect payment or establish payment plan"
+4a. IF NO → PROCESS (Front Desk): "Patient Self-Pay"
+    Hover text: "Inform patient of self-pay status, collect payment or establish payment plan"
 
-    4b. IF YES → Continue to step 5
+4b. IF YES → Continue to step 5
 
-    5. QUERY (Graph Analytics): "Check Prior Authorization Requirements"
-       Hover text: "Graph query: Planned Service → Requires Prior Auth? → Authorization Status?"
-       Query: "MATCH (svc:Service {cpt_code: $cpt_code})-[:REQUIRES_PRIOR_AUTH]->(payer:Payer {id: $payer_id})
-              OPTIONAL MATCH (p:Patient {id: $patient_id})-[:HAS_AUTHORIZATION]->(auth:Authorization)
-              WHERE auth.service_code = $cpt_code AND auth.status = 'Approved'
-              RETURN svc.prior_auth_required, auth.auth_number, auth.valid_through"
+5. QUERY (Graph Analytics): "Check Prior Authorization Requirements"
+   Hover text: "Graph query: Planned Service → Requires Prior Auth? → Authorization Status?"
+   Query: "MATCH (svc:Service {cpt_code: $cpt_code})-[:REQUIRES_PRIOR_AUTH]->(payer:Payer {id: $payer_id})
+          OPTIONAL MATCH (p:Patient {id: $patient_id})-[:HAS_AUTHORIZATION]->(auth:Authorization)
+          WHERE auth.service_code = $cpt_code AND auth.status = 'Approved'
+          RETURN svc.prior_auth_required, auth.auth_number, auth.valid_through"
 
-    6. DECISION (Front Desk): "Prior Auth Required and Obtained?"
+6. DECISION (Front Desk): "Prior Auth Required and Obtained?"
 
-    6a. IF Required but NOT obtained → PROCESS (Front Desk): "Obtain Prior Authorization"
-        Hover text: "Clinical staff submits auth request to payer with supporting documentation"
-        → Wait for approval → Continue when received
+6a. IF Required but NOT obtained → PROCESS (Front Desk): "Obtain Prior Authorization"
+    Hover text: "Clinical staff submits auth request to payer with supporting documentation"
+    → Wait for approval → Continue when received
 
-    6b. IF Obtained or Not Required → Continue to step 7
+6b. IF Obtained or Not Required → Continue to step 7
 
-    7. PROCESS (Front Desk): "Estimate Patient Financial Responsibility"
-       Hover text: "Calculate estimated copay, deductible, coinsurance based on benefit design"
+7. PROCESS (Front Desk): "Estimate Patient Financial Responsibility"
+   Hover text: "Calculate estimated copay, deductible, coinsurance based on benefit design"
 
-    8. PROCESS (Front Desk): "Collect Copay/Deposit"
-       Hover text: "Collect patient payment for copay or estimated responsibility"
+8. PROCESS (Front Desk): "Collect Copay/Deposit"
+   Hover text: "Collect patient payment for copay or estimated responsibility"
 
-    Phase 2: SERVICE DELIVERY (Day 0)
+Phase 2: SERVICE DELIVERY (Day 0)
 
-    9. PROCESS (Clinical Documentation): "Provide Healthcare Services"
-       Hover text: "Physician, nurses, technicians deliver care; document in EMR"
+9. PROCESS (Clinical Documentation): "Provide Healthcare Services"
+   Hover text: "Physician, nurses, technicians deliver care; document in EMR"
 
-    10. PROCESS (Clinical Documentation): "Document Services and Diagnoses"
-        Hover text: "Clinician documents encounter details, diagnoses, procedures, medications, supplies"
+10. PROCESS (Clinical Documentation): "Document Services and Diagnoses"
+    Hover text: "Clinician documents encounter details, diagnoses, procedures, medications, supplies"
 
-    11. PROCESS (Clinical Documentation): "Charge Capture"
-        Hover text: "System automatically captures charges from EMR, pharmacy, supply chain, ancillary systems"
+11. PROCESS (Clinical Documentation): "Charge Capture"
+    Hover text: "System automatically captures charges from EMR, pharmacy, supply chain, ancillary systems"
 
-    Phase 3: CODING AND BILLING (Days 1-3)
+Phase 3: CODING AND BILLING (Days 1-3)
 
-    12. PROCESS (HIM/Coding): "Assign Diagnosis and Procedure Codes"
-        Hover text: "Certified coders review documentation and assign ICD-10, CPT, HCPCS codes"
+12. PROCESS (HIM/Coding): "Assign Diagnosis and Procedure Codes"
+    Hover text: "Certified coders review documentation and assign ICD-10, CPT, HCPCS codes"
 
-    13. QUERY (Graph Analytics): "Validate Coding and Medical Necessity"
-        Hover text: "Graph query checks diagnosis supports procedures, flags potential denials"
-        Query: "MATCH (proc:Procedure {cpt: $cpt})-[:REQUIRES_DIAGNOSIS]->(req_dx:Diagnosis)
-               MATCH (encounter:Encounter)-[:HAS_DIAGNOSIS]->(actual_dx:Diagnosis)
-               WHERE NOT actual_dx IN req_dx
-               RETURN 'Medical necessity not documented' as warning"
+13. QUERY (Graph Analytics): "Validate Coding and Medical Necessity"
+    Hover text: "Graph query checks diagnosis supports procedures, flags potential denials"
+    Query: "MATCH (proc:Procedure {cpt: $cpt})-[:REQUIRES_DIAGNOSIS]->(req_dx:Diagnosis)
+           MATCH (encounter:Encounter)-[:HAS_DIAGNOSIS]->(actual_dx:Diagnosis)
+           WHERE NOT actual_dx IN req_dx
+           RETURN 'Medical necessity not documented' as warning"
 
-    14. PROCESS (Patient Accounting): "Generate Claim"
-        Hover text: "System creates 837 EDI claim with all charges, codes, supporting information"
+14. PROCESS (Patient Accounting): "Generate Claim"
+    Hover text: "System creates 837 EDI claim with all charges, codes, supporting information"
 
-    15. PROCESS (Patient Accounting): "Claim Scrubbing"
-        Hover text: "Automated edits check for coding errors, missing information, payer-specific requirements"
+15. PROCESS (Patient Accounting): "Claim Scrubbing"
+    Hover text: "Automated edits check for coding errors, missing information, payer-specific requirements"
 
-    16. DECISION (Patient Accounting): "Claim Clean?"
+16. DECISION (Patient Accounting): "Claim Clean?"
 
-    16a. IF NO → PROCESS (Patient Accounting): "Correct Errors"
-         Hover text: "Return to coding or documentation to fix issues"
-         → Loop back to step 12 or 13
+16a. IF NO → PROCESS (Patient Accounting): "Correct Errors"
+     Hover text: "Return to coding or documentation to fix issues"
+     → Loop back to step 12 or 13
 
-    16b. IF YES → Continue to step 17
+16b. IF YES → Continue to step 17
 
-    17. PROCESS (Patient Accounting): "Submit Claim to Payer"
-        Hover text: "Electronic submission via clearinghouse or direct to payer"
+17. PROCESS (Patient Accounting): "Submit Claim to Payer"
+    Hover text: "Electronic submission via clearinghouse or direct to payer"
 
-    Phase 4: ADJUDICATION (Days 4-30)
+Phase 4: ADJUDICATION (Days 4-30)
 
-    18. PROCESS (Payer): "Claim Processing and Adjudication"
-        Hover text: "Payer validates eligibility, checks authorization, applies benefits, determines payment"
+18. PROCESS (Payer): "Claim Processing and Adjudication"
+    Hover text: "Payer validates eligibility, checks authorization, applies benefits, determines payment"
 
-    19. QUERY (Graph Analytics): "Track Claim Status"
-        Hover text: "Monitor claim through adjudication; alert on delays or issues"
-        Query: "MATCH (claim:Claim {id: $claim_id})
-               WHERE claim.submitted_date < date() - duration({days: 15})
-               AND claim.status = 'Pending'
-               RETURN claim.claim_id, claim.amount, claim.payer,
-                      duration.inDays(claim.submitted_date, date()).days as days_pending"
+19. QUERY (Graph Analytics): "Track Claim Status"
+    Hover text: "Monitor claim through adjudication; alert on delays or issues"
+    Query: "MATCH (claim:Claim {id: $claim_id})
+           WHERE claim.submitted_date < date() - duration({days: 15})
+           AND claim.status = 'Pending'
+           RETURN claim.claim_id, claim.amount, claim.payer,
+                  duration.inDays(claim.submitted_date, date()).days as days_pending"
 
-    20. DECISION (Payer): "Claim Approved?"
+20. DECISION (Payer): "Claim Approved?"
 
-    20a. IF NO (Denied) → Continue to step 25 (Denial Management)
+20a. IF NO (Denied) → Continue to step 25 (Denial Management)
 
-    20b. IF YES (Approved) → Continue to step 21
+20b. IF YES (Approved) → Continue to step 21
 
-    Phase 5: PAYMENT AND RECONCILIATION (Days 14-45)
+Phase 5: PAYMENT AND RECONCILIATION (Days 14-45)
 
-    21. PROCESS (Payer): "Issue Payment (EFT or Check)"
-        Hover text: "Payer sends payment with remittance advice (ERA/EOB)"
+21. PROCESS (Payer): "Issue Payment (EFT or Check)"
+    Hover text: "Payer sends payment with remittance advice (ERA/EOB)"
 
-    22. PROCESS (Patient Accounting): "Post Payment"
-        Hover text: "Apply payment to patient account, post adjustments, identify patient responsibility"
+22. PROCESS (Patient Accounting): "Post Payment"
+    Hover text: "Apply payment to patient account, post adjustments, identify patient responsibility"
 
-    23. QUERY (Graph Analytics): "Identify Payment Variances"
-        Hover text: "Compare expected vs. actual payment; flag underpayments for review"
-        Query: "MATCH (claim:Claim)-[:PAYMENT_RECEIVED]->(pmt:Payment)
-               MATCH (claim)-[:USES_RATE]->(rate:ContractRate)
-               WHERE pmt.amount < rate.expected_payment * 0.95
-               RETURN claim.claim_id, rate.expected_payment, pmt.amount,
-                      (rate.expected_payment - pmt.amount) as variance"
+23. QUERY (Graph Analytics): "Identify Payment Variances"
+    Hover text: "Compare expected vs. actual payment; flag underpayments for review"
+    Query: "MATCH (claim:Claim)-[:PAYMENT_RECEIVED]->(pmt:Payment)
+           MATCH (claim)-[:USES_RATE]->(rate:ContractRate)
+           WHERE pmt.amount < rate.expected_payment * 0.95
+           RETURN claim.claim_id, rate.expected_payment, pmt.amount,
+                  (rate.expected_payment - pmt.amount) as variance"
 
-    24. DECISION (Patient Accounting): "Payment Correct?"
+24. DECISION (Patient Accounting): "Payment Correct?"
 
-    24a. IF NO → PROCESS (Patient Accounting): "Appeal Underpayment"
-         Hover text: "Submit appeal with supporting contract documentation"
-         → Return to step 18 (Payer reviews appeal)
+24a. IF NO → PROCESS (Patient Accounting): "Appeal Underpayment"
+     Hover text: "Submit appeal with supporting contract documentation"
+     → Return to step 18 (Payer reviews appeal)
 
-    24b. IF YES → Continue to step 28
+24b. IF YES → Continue to step 28
 
-    Phase 6: DENIAL MANAGEMENT (parallel process when claim denied)
+Phase 6: DENIAL MANAGEMENT (parallel process when claim denied)
 
-    25. PROCESS (Patient Accounting): "Analyze Denial Reason"
-        Hover text: "Review denial code and explanation; determine if correctable"
+25. PROCESS (Patient Accounting): "Analyze Denial Reason"
+    Hover text: "Review denial code and explanation; determine if correctable"
 
-    26. QUERY (Graph Analytics): "Identify Denial Patterns"
-        Hover text: "Graph analytics identifies systematic issues by provider, code, payer"
-        Query: "MATCH (claim:Claim {status: 'Denied'})-[:DENIAL_REASON]->(reason:DenialCode)
-               MATCH (claim)-[:FILED_BY]->(provider:Provider)
-               WITH provider, reason, count(claim) as denial_count
-               WHERE denial_count > 5
-               RETURN provider.name, reason.code, reason.description, denial_count
-               ORDER BY denial_count DESC"
+26. QUERY (Graph Analytics): "Identify Denial Patterns"
+    Hover text: "Graph analytics identifies systematic issues by provider, code, payer"
+    Query: "MATCH (claim:Claim {status: 'Denied'})-[:DENIAL_REASON]->(reason:DenialCode)
+           MATCH (claim)-[:FILED_BY]->(provider:Provider)
+           WITH provider, reason, count(claim) as denial_count
+           WHERE denial_count > 5
+           RETURN provider.name, reason.code, reason.description, denial_count
+           ORDER BY denial_count DESC"
 
-    27. DECISION (Patient Accounting): "Correctable Denial?"
+27. DECISION (Patient Accounting): "Correctable Denial?"
 
-    27a. IF YES → PROCESS (Patient Accounting): "Correct and Resubmit"
-         Hover text: "Fix coding, add documentation, update authorization, resubmit claim"
-         → Loop back to step 17 (Submit Claim)
+27a. IF YES → PROCESS (Patient Accounting): "Correct and Resubmit"
+     Hover text: "Fix coding, add documentation, update authorization, resubmit claim"
+     → Loop back to step 17 (Submit Claim)
 
-    27b. IF NO → DECISION: "Appealable?"
-         27b-i. IF YES → PROCESS (Patient Accounting): "File Appeal"
-                Hover text: "Submit formal appeal with supporting documentation"
-                → Return to step 18 (Payer reviews)
-         27b-ii. IF NO → Continue to step 28 (adjust off as bad debt)
+27b. IF NO → DECISION: "Appealable?"
+     27b-i. IF YES → PROCESS (Patient Accounting): "File Appeal"
+            Hover text: "Submit formal appeal with supporting documentation"
+            → Return to step 18 (Payer reviews)
+     27b-ii. IF NO → Continue to step 28 (adjust off as bad debt)
 
-    Phase 7: PATIENT COLLECTIONS (ongoing)
+Phase 7: PATIENT COLLECTIONS (ongoing)
 
-    28. PROCESS (Patient Accounting): "Generate Patient Statement"
-        Hover text: "Bill patient for copay, deductible, coinsurance, non-covered services"
+28. PROCESS (Patient Accounting): "Generate Patient Statement"
+    Hover text: "Bill patient for copay, deductible, coinsurance, non-covered services"
 
-    29. QUERY (Graph Analytics): "Assess Payment Likelihood"
-        Hover text: "Graph analytics predicts payment likelihood based on patient history"
-        Query: "MATCH (p:Patient {id: $patient_id})-[:HAS_BALANCE]->(bal:Balance)
-               MATCH (p)-[:PAYMENT_HISTORY]->(hist:Payment)
-               WITH p, bal.amount as current_balance,
-                    avg(hist.days_to_payment) as avg_days,
-                    sum(hist.amount) / sum(hist.billed_amount) as payment_rate
-               RETURN current_balance, avg_days, payment_rate,
-                      CASE WHEN payment_rate > 0.8 THEN 'High'
-                           WHEN payment_rate > 0.5 THEN 'Medium'
-                           ELSE 'Low' END as payment_likelihood"
+29. QUERY (Graph Analytics): "Assess Payment Likelihood"
+    Hover text: "Graph analytics predicts payment likelihood based on patient history"
+    Query: "MATCH (p:Patient {id: $patient_id})-[:HAS_BALANCE]->(bal:Balance)
+           MATCH (p)-[:PAYMENT_HISTORY]->(hist:Payment)
+           WITH p, bal.amount as current_balance,
+                avg(hist.days_to_payment) as avg_days,
+                sum(hist.amount) / sum(hist.billed_amount) as payment_rate
+           RETURN current_balance, avg_days, payment_rate,
+                  CASE WHEN payment_rate > 0.8 THEN 'High'
+                       WHEN payment_rate > 0.5 THEN 'Medium'
+                       ELSE 'Low' END as payment_likelihood"
 
-    30. DECISION (Collections/AR): "Payment Received?"
+30. DECISION (Collections/AR): "Payment Received?"
 
-    30a. IF YES → END: "Account Closed"
-         Hover text: "Patient paid in full; account reconciled and closed"
+30a. IF YES → END: "Account Closed"
+     Hover text: "Patient paid in full; account reconciled and closed"
 
-    30b. IF NO after 30 days → PROCESS (Collections/AR): "Payment Reminder"
-         Hover text: "Send reminder notice, offer payment plan"
+30b. IF NO after 30 days → PROCESS (Collections/AR): "Payment Reminder"
+     Hover text: "Send reminder notice, offer payment plan"
 
-    30c. IF NO after 90 days → PROCESS (Collections/AR): "Collections Activity"
-         Hover text: "Escalate to collections agency or write off as bad debt"
+30c. IF NO after 90 days → PROCESS (Collections/AR): "Collections Activity"
+     Hover text: "Escalate to collections agency or write off as bad debt"
 
-    31. QUERY (Graph Analytics): "Calculate Revenue Cycle Metrics"
-        Hover text: "Real-time KPI dashboard: Days in A/R, collection rate, denial rate, net revenue"
-        Query: "MATCH (claim:Claim)
-               WHERE claim.service_date >= date() - duration({days: 90})
-               WITH count(claim) as total_claims,
-                    sum(CASE WHEN claim.status = 'Paid' THEN 1 ELSE 0 END) as paid_claims,
-                    sum(CASE WHEN claim.status = 'Denied' THEN 1 ELSE 0 END) as denied_claims,
-                    avg(duration.inDays(claim.service_date, claim.payment_date).days) as avg_days_to_payment,
-                    sum(claim.billed_amount) as total_billed,
-                    sum(claim.paid_amount) as total_collected
-               RETURN total_claims,
-                      (paid_claims * 100.0 / total_claims) as payment_rate,
-                      (denied_claims * 100.0 / total_claims) as denial_rate,
-                      avg_days_to_payment as days_in_AR,
-                      (total_collected * 100.0 / total_billed) as collection_rate"
+31. QUERY (Graph Analytics): "Calculate Revenue Cycle Metrics"
+    Hover text: "Real-time KPI dashboard: Days in A/R, collection rate, denial rate, net revenue"
+    Query: "MATCH (claim:Claim)
+           WHERE claim.service_date >= date() - duration({days: 90})
+           WITH count(claim) as total_claims,
+                sum(CASE WHEN claim.status = 'Paid' THEN 1 ELSE 0 END) as paid_claims,
+                sum(CASE WHEN claim.status = 'Denied' THEN 1 ELSE 0 END) as denied_claims,
+                avg(duration.inDays(claim.service_date, claim.payment_date).days) as avg_days_to_payment,
+                sum(claim.billed_amount) as total_billed,
+                sum(claim.paid_amount) as total_collected
+           RETURN total_claims,
+                  (paid_claims * 100.0 / total_claims) as payment_rate,
+                  (denied_claims * 100.0 / total_claims) as denial_rate,
+                  avg_days_to_payment as days_in_AR,
+                  (total_collected * 100.0 / total_billed) as collection_rate"
 
-    32. END: "Revenue Cycle Complete"
-        Hover text: "All activities completed; financial data available for analytics and reporting"
+32. END: "Revenue Cycle Complete"
+    Hover text: "All activities completed; financial data available for analytics and reporting"
 
-    Color coding:
-    - Light blue: Pre-service activities
-    - Green: Service delivery and documentation
-    - Yellow: Coding and billing
-    - Purple: Payer adjudication
-    - Orange: Payment and reconciliation
-    - Red: Denial management
-    - Gray: Collections
+Color coding:
+- Light blue: Pre-service activities
+- Green: Service delivery and documentation
+- Yellow: Coding and billing
+- Purple: Payer adjudication
+- Orange: Payment and reconciliation
+- Red: Denial management
+- Gray: Collections
 
-    Arrows:
-    - Solid black: Primary flow
-    - Dashed red: Denial/error paths
-    - Dotted green: Graph query operations
-    - Blue dashed: Payment flows
+Arrows:
+- Solid black: Primary flow
+- Dashed red: Denial/error paths
+- Dotted green: Graph query operations
+- Blue dashed: Payment flows
 
-    Key Performance Indicators (shown in sidebar):
-    - Days in A/R: Target <40 days
-    - Clean claim rate: Target >95%
-    - Denial rate: Target <5%
-    - Collection rate: Target >96%
-    - Cost to collect: Target <3% of revenue
+Key Performance Indicators (shown in sidebar):
+- Days in A/R: Target <40 days
+- Clean claim rate: Target >95%
+- Denial rate: Target <5%
+- Collection rate: Target >96%
+- Cost to collect: Target <3% of revenue
 
-    Implementation: HTML/CSS/JavaScript with interactive SVG, mermaid, or jointJS
-    Canvas size: 1600x1000px with vertical and horizontal scroll capability
-    Additional features: Clickable KPI boxes showing real-time metrics from graph queries
+Implementation: HTML/CSS/JavaScript with interactive SVG, mermaid, or jointJS
+Canvas size: 1600x1000px with vertical and horizontal scroll capability
+Additional features: Clickable KPI boxes showing real-time metrics from graph queries
 </details>
 
 ## Healthcare Cost Analysis and Profitability
@@ -491,162 +501,167 @@ The following list summarizes key cost categories in healthcare financial analys
 - **General overhead:** Facility costs, utilities, information technology, administration, compliance, marketing
 - **Capital costs:** Depreciation of buildings and equipment, interest on debt, equipment leases
 
+#### Diagram: Service Line Profitability Analysis Interactive MicroSim
+
 <details markdown="1">
-    <summary>Service Line Profitability Analysis Interactive MicroSim</summary>
-    Type: microsim
+<summary>Service Line Profitability Analysis Interactive MicroSim</summary>
+Type: microsim
+**sim-id:** service-line-profitability-analysis-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Help students understand how to calculate service line profitability by analyzing revenue, direct costs, indirect costs, and volume, and how changes in payer mix or utilization affect financial performance.
+Learning objective: Help students understand how to calculate service line profitability by analyzing revenue, direct costs, indirect costs, and volume, and how changes in payer mix or utilization affect financial performance.
 
-    Canvas layout (1200x800px):
-    - Left side (800x800): Visualization area with multiple charts
-    - Right side (400x800): Control panel and financial details
+Canvas layout (1200x800px):
+- Left side (800x800): Visualization area with multiple charts
+- Right side (400x800): Control panel and financial details
 
-    Visual elements in main area (stacked vertically):
+Visual elements in main area (stacked vertically):
 
-    1. Waterfall chart showing revenue to net margin (top, 800x250px):
-       - Starting bar: Gross Revenue
-       - Negative bars: Contractual Adjustments, Direct Costs, Indirect Costs, Overhead Allocation
-       - Ending bar: Net Margin (green if positive, red if negative)
-       - Labels showing dollar amounts on each bar
+1. Waterfall chart showing revenue to net margin (top, 800x250px):
+   - Starting bar: Gross Revenue
+   - Negative bars: Contractual Adjustments, Direct Costs, Indirect Costs, Overhead Allocation
+   - Ending bar: Net Margin (green if positive, red if negative)
+   - Labels showing dollar amounts on each bar
 
-    2. Payer mix pie chart (middle left, 380x250px):
-       - Segments: Medicare (blue), Medicaid (green), Commercial (purple), Self-Pay (orange)
-       - Percentage labels on segments
-       - Shows volume and average reimbursement for each payer
+2. Payer mix pie chart (middle left, 380x250px):
+   - Segments: Medicare (blue), Medicaid (green), Commercial (purple), Self-Pay (orange)
+   - Percentage labels on segments
+   - Shows volume and average reimbursement for each payer
 
-    3. Cost composition stacked bar (middle right, 380x250px):
-       - Y-axis: Cost categories (Clinical Staff, Supplies, Pharmacy, Overhead)
-       - X-axis: Total cost with breakdown
-       - Color-coded segments with dollar amounts
+3. Cost composition stacked bar (middle right, 380x250px):
+   - Y-axis: Cost categories (Clinical Staff, Supplies, Pharmacy, Overhead)
+   - X-axis: Total cost with breakdown
+   - Color-coded segments with dollar amounts
 
-    4. Volume and margin trend (bottom, 800x250px):
-       - Dual-axis line chart
-       - Left Y-axis: Monthly volume (blue line)
-       - Right Y-axis: Operating margin % (orange line)
-       - X-axis: 12 months
-       - Shaded area shows margin target range (2-4%)
+4. Volume and margin trend (bottom, 800x250px):
+   - Dual-axis line chart
+   - Left Y-axis: Monthly volume (blue line)
+   - Right Y-axis: Operating margin % (orange line)
+   - X-axis: 12 months
+   - Shaded area shows margin target range (2-4%)
 
-    Interactive controls (right panel):
+Interactive controls (right panel):
 
-    Service Line Selector (dropdown):
-    - Emergency Department
-    - Cardiology
-    - Orthopedic Surgery
-    - Obstetrics
-    - Medical Imaging
-    - Behavioral Health
+Service Line Selector (dropdown):
+- Emergency Department
+- Cardiology
+- Orthopedic Surgery
+- Obstetrics
+- Medical Imaging
+- Behavioral Health
 
-    Volume and Pricing Controls:
-    - Slider: Monthly volume (50-500 cases, default varies by service line)
-    - Slider: Average charge per case ($500-$50,000, default varies)
-    - Display: Gross annual revenue (calculated)
+Volume and Pricing Controls:
+- Slider: Monthly volume (50-500 cases, default varies by service line)
+- Slider: Average charge per case ($500-$50,000, default varies)
+- Display: Gross annual revenue (calculated)
 
-    Payer Mix Sliders (percentages must sum to 100%):
-    - Medicare: 0-60% (default 35%)
-    - Medicaid: 0-40% (default 15%)
-    - Commercial: 0-80% (default 45%)
-    - Self-Pay: 0-20% (default 5%)
-    - Auto-balance checkbox: automatically adjusts others when one changes
+Payer Mix Sliders (percentages must sum to 100%):
+- Medicare: 0-60% (default 35%)
+- Medicaid: 0-40% (default 15%)
+- Commercial: 0-80% (default 45%)
+- Self-Pay: 0-20% (default 5%)
+- Auto-balance checkbox: automatically adjusts others when one changes
 
-    Reimbursement Rates (% of charges):
-    - Medicare rate: 30-50% (default 40%)
-    - Medicaid rate: 20-40% (default 30%)
-    - Commercial rate: 50-80% (default 65%)
-    - Self-Pay collection rate: 10-50% (default 25%)
+Reimbursement Rates (% of charges):
+- Medicare rate: 30-50% (default 40%)
+- Medicaid rate: 20-40% (default 30%)
+- Commercial rate: 50-80% (default 65%)
+- Self-Pay collection rate: 10-50% (default 25%)
 
-    Cost Structure Inputs:
-    - Direct cost per case: $100-$20,000 (default varies by service)
-    - Indirect cost per case: $50-$5,000 (default 30% of direct)
-    - Overhead allocation per case: $50-$3,000 (default 20% of direct)
+Cost Structure Inputs:
+- Direct cost per case: $100-$20,000 (default varies by service)
+- Indirect cost per case: $50-$5,000 (default 30% of direct)
+- Overhead allocation per case: $50-$3,000 (default 20% of direct)
 
-    Financial Summary Display (updates in real-time):
-    - Annual gross revenue: $X.X million
-    - Contractual adjustments: $(X.X) million (XX%)
-    - Net revenue: $X.X million
-    - Direct costs: $(X.X) million
-    - Indirect costs: $(X.X) million
-    - Overhead allocation: $(X.X) million
-    - Net margin: $X.X million
-    - Operating margin %: XX% (color-coded: green >2%, yellow 0-2%, red <0%)
-    - Break-even volume: XXX cases per month
+Financial Summary Display (updates in real-time):
+- Annual gross revenue: $X.X million
+- Contractual adjustments: $(X.X) million (XX%)
+- Net revenue: $X.X million
+- Direct costs: $(X.X) million
+- Indirect costs: $(X.X) million
+- Overhead allocation: $(X.X) million
+- Net margin: $X.X million
+- Operating margin %: XX% (color-coded: green >2%, yellow 0-2%, red <0%)
+- Break-even volume: XXX cases per month
 
-    Buttons:
-    - "Reset to Defaults" - restore original values for selected service line
-    - "Compare Service Lines" - open side-by-side comparison view
-    - "Run Scenario Analysis" - test what-if scenarios
-    - "Export Data" - download financial summary
+Buttons:
+- "Reset to Defaults" - restore original values for selected service line
+- "Compare Service Lines" - open side-by-side comparison view
+- "Run Scenario Analysis" - test what-if scenarios
+- "Export Data" - download financial summary
 
-    Pre-loaded service line profiles:
+Pre-loaded service line profiles:
 
-    1. Emergency Department:
-       - Volume: 350 cases/month
-       - Avg charge: $2,500
-       - Payer mix: Medicare 30%, Medicaid 25%, Commercial 35%, Self-Pay 10%
-       - Direct cost: $800/case
-       - Typically operates at 3-5% margin
+1. Emergency Department:
+   - Volume: 350 cases/month
+   - Avg charge: $2,500
+   - Payer mix: Medicare 30%, Medicaid 25%, Commercial 35%, Self-Pay 10%
+   - Direct cost: $800/case
+   - Typically operates at 3-5% margin
 
-    2. Cardiology (interventional):
-       - Volume: 120 cases/month
-       - Avg charge: $45,000
-       - Payer mix: Medicare 45%, Medicaid 10%, Commercial 42%, Self-Pay 3%
-       - Direct cost: $18,000/case
-       - Typically operates at 8-12% margin
+2. Cardiology (interventional):
+   - Volume: 120 cases/month
+   - Avg charge: $45,000
+   - Payer mix: Medicare 45%, Medicaid 10%, Commercial 42%, Self-Pay 3%
+   - Direct cost: $18,000/case
+   - Typically operates at 8-12% margin
 
-    3. Orthopedic Surgery:
-       - Volume: 80 cases/month
-       - Avg charge: $35,000
-       - Payer mix: Medicare 40%, Medicaid 8%, Commercial 50%, Self-Pay 2%
-       - Direct cost: $12,000/case
-       - Typically operates at 10-15% margin
+3. Orthopedic Surgery:
+   - Volume: 80 cases/month
+   - Avg charge: $35,000
+   - Payer mix: Medicare 40%, Medicaid 8%, Commercial 50%, Self-Pay 2%
+   - Direct cost: $12,000/case
+   - Typically operates at 10-15% margin
 
-    4. Obstetrics (normal delivery):
-       - Volume: 200 cases/month
-       - Avg charge: $12,000
-       - Payer mix: Medicare 0%, Medicaid 45%, Commercial 52%, Self-Pay 3%
-       - Direct cost: $4,500/case
-       - Typically operates at 2-4% margin
+4. Obstetrics (normal delivery):
+   - Volume: 200 cases/month
+   - Avg charge: $12,000
+   - Payer mix: Medicare 0%, Medicaid 45%, Commercial 52%, Self-Pay 3%
+   - Direct cost: $4,500/case
+   - Typically operates at 2-4% margin
 
-    5. Medical Imaging (MRI):
-       - Volume: 250 cases/month
-       - Avg charge: $3,200
-       - Payer mix: Medicare 42%, Medicaid 18%, Commercial 38%, Self-Pay 2%
-       - Direct cost: $450/case
-       - Typically operates at 15-20% margin (high margin due to low variable costs)
+5. Medical Imaging (MRI):
+   - Volume: 250 cases/month
+   - Avg charge: $3,200
+   - Payer mix: Medicare 42%, Medicaid 18%, Commercial 38%, Self-Pay 2%
+   - Direct cost: $450/case
+   - Typically operates at 15-20% margin (high margin due to low variable costs)
 
-    6. Behavioral Health (inpatient):
-       - Volume: 60 cases/month
-       - Avg charge: $18,000
-       - Payer mix: Medicare 20%, Medicaid 50%, Commercial 25%, Self-Pay 5%
-       - Direct cost: $9,000/case
-       - Typically operates at (-5%) to 2% margin (often loses money)
+6. Behavioral Health (inpatient):
+   - Volume: 60 cases/month
+   - Avg charge: $18,000
+   - Payer mix: Medicare 20%, Medicaid 50%, Commercial 25%, Self-Pay 5%
+   - Direct cost: $9,000/case
+   - Typically operates at (-5%) to 2% margin (often loses money)
 
-    Behavior:
-    - When user adjusts any slider, immediately recalculate all financial metrics
-    - Update all four visualizations with smooth animations
-    - Highlight operating margin in green (>2%), yellow (0-2%), or red (<0%)
-    - Show warning message if margin falls below break-even: "This service line is unprofitable. Consider: increasing volume, improving payer mix, or reducing costs."
-    - Calculate and display break-even volume: volume needed to achieve 0% margin with current assumptions
-    - When "Compare Service Lines" clicked, show side-by-side comparison of 2-3 service lines with key metrics
+Behavior:
+- When user adjusts any slider, immediately recalculate all financial metrics
+- Update all four visualizations with smooth animations
+- Highlight operating margin in green (>2%), yellow (0-2%), or red (<0%)
+- Show warning message if margin falls below break-even: "This service line is unprofitable. Consider: increasing volume, improving payer mix, or reducing costs."
+- Calculate and display break-even volume: volume needed to achieve 0% margin with current assumptions
+- When "Compare Service Lines" clicked, show side-by-side comparison of 2-3 service lines with key metrics
 
-    Educational callouts:
-    - Tooltip on "Contractual Adjustments": "Difference between charges and actual reimbursement. Commercial payers typically reimburse 50-80% of charges, Medicare 30-50%, Medicaid 20-40%."
-    - Tooltip on "Payer Mix": "The distribution of patients by insurance type. Payer mix significantly impacts profitability since reimbursement rates vary widely."
-    - Tooltip on "Operating Margin": "Industry benchmark: 2-4% for non-profit hospitals, 6-8% for for-profit. Margins fund capital investments and maintain financial stability."
-    - Tooltip on "Cross-Subsidization": "Profitable service lines (imaging, cardiology) often subsidize unprofitable but essential services (behavioral health, emergency dept)."
+Educational callouts:
+- Tooltip on "Contractual Adjustments": "Difference between charges and actual reimbursement. Commercial payers typically reimburse 50-80% of charges, Medicare 30-50%, Medicaid 20-40%."
+- Tooltip on "Payer Mix": "The distribution of patients by insurance type. Payer mix significantly impacts profitability since reimbursement rates vary widely."
+- Tooltip on "Operating Margin": "Industry benchmark: 2-4% for non-profit hospitals, 6-8% for for-profit. Margins fund capital investments and maintain financial stability."
+- Tooltip on "Cross-Subsidization": "Profitable service lines (imaging, cardiology) often subsidize unprofitable but essential services (behavioral health, emergency dept)."
 
-    Scenario analysis feature:
-    - Button: "What if Medicare reduces rates by 10%?" - automatically adjusts Medicare rate and shows impact
-    - Button: "What if we increase volume by 20%?" - adjusts volume and shows margin improvement
-    - Button: "What if we renegotiate commercial contracts to 70%?" - updates commercial rate
-    - Show side-by-side comparison of current vs. scenario with delta values
+Scenario analysis feature:
+- Button: "What if Medicare reduces rates by 10%?" - automatically adjusts Medicare rate and shows impact
+- Button: "What if we increase volume by 20%?" - adjusts volume and shows margin improvement
+- Button: "What if we renegotiate commercial contracts to 70%?" - updates commercial rate
+- Show side-by-side comparison of current vs. scenario with delta values
 
-    Implementation notes:
-    - Use p5.js for visualizations or Chart.js for professional charting
-    - Implement real-time calculation engine that updates on any input change
-    - Use color coding consistently throughout (green=profitable, red=loss-making)
-    - Provide clear formulas in tooltips so students understand calculations
-    - Add "Show Calculations" expandable section that displays step-by-step math
-    - Include "Export to Excel" feature for detailed financial modeling
+Implementation notes:
+- Use p5.js for visualizations or Chart.js for professional charting
+- Implement real-time calculation engine that updates on any input change
+- Use color coding consistently throughout (green=profitable, red=loss-making)
+- Provide clear formulas in tooltips so students understand calculations
+- Add "Show Calculations" expandable section that displays step-by-step math
+- Include "Export to Excel" feature for detailed financial modeling
 </details>
 
 ## Payer Mix and Contract Negotiation
@@ -682,6 +697,49 @@ The following table compares common provider reimbursement methodologies:
 | Capitation | Fixed monthly payment per member | Very High | Predictable revenue, incentivizes prevention | Assumes utilization risk, requires large panels | HMOs, some Medicaid managed care |
 | Value-Based Payment | Payment varies based on quality and cost performance | High | Rewards quality and efficiency | Complex metrics, delayed payment reconciliation | ACOs, Medicare Shared Savings |
 
+The MicroSim below lets you shift a practice's payer mix and contracted rates and watch net revenue respond, the core calculation behind every contract negotiation.
+
+#### Diagram: Payer Mix and Contract Negotiation MicroSim
+
+<details markdown="1">
+<summary>Payer Mix and Contract Negotiation MicroSim</summary>
+Type: microsim
+**sim-id:** payer-mix-contract-negotiation<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
+
+Learning objective: Apply (L3 — use, calculate) how payer mix proportions and contracted reimbursement rates jointly determine total net revenue at constant service volume, so learners can model the financial impact of a proposed rate change or mix shift.
+
+Canvas layout (responsive, target 900x560; resizes with the window):
+- Top: a stacked bar or donut showing payer mix (% of volume by payer) alongside a bar of revenue contribution by payer.
+- Bottom: a slider set per payer and a net-revenue readout with delta versus baseline.
+
+Visual elements:
+- Payers Commercial, Medicare, Medicaid, and Self-pay, each with a volume share and a reimbursement rate (% of charges).
+- A baseline reference and a current-scenario value so learners see the change.
+
+Interactive controls (use built-in DOM controls):
+- Sliders "Volume share" per payer (auto-normalized to 100%)
+- Sliders "Contracted rate (% of charges)" per payer
+- Input "Total annual charges ($M)" (default 50)
+- Button "Reset to baseline"
+
+Default parameters: Commercial 35% @ 65%, Medicare 30% @ 42%, Medicaid 25% @ 33%, Self-pay 10% @ 12%; charges $50M.
+
+Data Visibility Requirements (Apply objective — show the math):
+  Stage 1: Show each payer's volume share x total charges = payer charges.
+  Stage 2: Show payer charges x contracted rate = payer net revenue.
+  Final: Sum to total net revenue, with the delta versus baseline highlighted.
+
+Behavior:
+- Raising the Commercial rate a few points, or shifting 5% of volume from Medicaid to Commercial, both raise net revenue; the sim quantifies each, showing why mix and rate are negotiation levers of comparable power.
+- Volume-share sliders auto-renormalize to 100% so comparisons stay fair.
+
+Instructional Rationale: The Apply objective requires learners to compute revenue under alternative scenarios. Exposing the per-payer charges-to-net-revenue chain makes the result traceable rather than a single output number. Immediate recompute on slider change supports the what-if reasoning central to negotiation.
+
+Implementation: Chart.js for the bars/donut with DOM sliders; revenue math computed in-browser; responsive to window resize.
+</details>
+
 ## Provider Compensation Models
 
 **Provider compensation** refers to the methods by which healthcare organizations pay individual physicians, advanced practice providers, and other clinical staff for their professional services. Compensation models significantly influence provider behavior, patient care patterns, organizational financial performance, and physician satisfaction, making compensation design a critical strategic decision. Graph databases enable analysis of provider productivity, quality performance, and patient panel characteristics that inform fair and effective compensation design.
@@ -702,88 +760,93 @@ Common provider compensation models include:
 
 Graph modeling of provider compensation enables sophisticated analysis connecting providers, patients, services, diagnoses, quality metrics, and financial outcomes to ensure compensation models align with organizational objectives while remaining competitive in the physician recruitment market.
 
+#### Diagram: Provider Compensation Comparison Chart
+
 <details markdown="1">
-    <summary>Provider Compensation Comparison Chart</summary>
-    Type: chart
+<summary>Provider Compensation Comparison Chart</summary>
+Type: chart
+**sim-id:** provider-compensation-comparison-chart<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Grouped bar chart with multiple data series
+Chart type: Grouped bar chart with multiple data series
 
-    Purpose: Compare provider compensation across different models showing average annual income, productivity metrics, quality scores, and organizational cost per provider
+Purpose: Compare provider compensation across different models showing average annual income, productivity metrics, quality scores, and organizational cost per provider
 
-    X-axis: Compensation model type (Salary, wRVU, Salary+Bonus, Equal Shares, Capitation)
-    Y-axis (left): Annual compensation in thousands ($200k-$500k)
-    Y-axis (right): Productivity in wRVUs (4,000-8,000)
+X-axis: Compensation model type (Salary, wRVU, Salary+Bonus, Equal Shares, Capitation)
+Y-axis (left): Annual compensation in thousands ($200k-$500k)
+Y-axis (right): Productivity in wRVUs (4,000-8,000)
 
-    Data series:
+Data series:
 
-    1. Average annual compensation (dark blue bars, left axis):
-       - Salary: $285k
-       - wRVU-based: $380k
-       - Salary + Bonus: $325k
-       - Equal Shares: $310k
-       - Capitation: $295k
+1. Average annual compensation (dark blue bars, left axis):
+   - Salary: $285k
+   - wRVU-based: $380k
+   - Salary + Bonus: $325k
+   - Equal Shares: $310k
+   - Capitation: $295k
 
-    2. Average productivity in wRVUs (light blue bars, right axis):
-       - Salary: 4,800 wRVUs/year
-       - wRVU-based: 7,200 wRVUs/year
-       - Salary + Bonus: 5,900 wRVUs/year
-       - Equal Shares: 5,500 wRVUs/year
-       - Capitation: 4,200 wRVUs/year
+2. Average productivity in wRVUs (light blue bars, right axis):
+   - Salary: 4,800 wRVUs/year
+   - wRVU-based: 7,200 wRVUs/year
+   - Salary + Bonus: 5,900 wRVUs/year
+   - Equal Shares: 5,500 wRVUs/year
+   - Capitation: 4,200 wRVUs/year
 
-    3. Quality composite score (green dots with values, overlaid, 0-100 scale):
-       - Salary: 78
-       - wRVU-based: 72
-       - Salary + Bonus: 82
-       - Equal Shares: 80
-       - Capitation: 85
+3. Quality composite score (green dots with values, overlaid, 0-100 scale):
+   - Salary: 78
+   - wRVU-based: 72
+   - Salary + Bonus: 82
+   - Equal Shares: 80
+   - Capitation: 85
 
-    4. Physician satisfaction (orange stars, overlaid, 1-5 scale):
-       - Salary: 3.2
-       - wRVU-based: 3.8
-       - Salary + Bonus: 4.1
-       - Equal Shares: 3.5
-       - Capitation: 2.9
+4. Physician satisfaction (orange stars, overlaid, 1-5 scale):
+   - Salary: 3.2
+   - wRVU-based: 3.8
+   - Salary + Bonus: 4.1
+   - Equal Shares: 3.5
+   - Capitation: 2.9
 
-    Title: "Provider Compensation Model Comparison: Primary Care Physicians"
-    Subtitle: "Analysis of 500 PCPs across 50 health systems, 2024"
+Title: "Provider Compensation Model Comparison: Primary Care Physicians"
+Subtitle: "Analysis of 500 PCPs across 50 health systems, 2024"
 
-    Annotations:
-    - Arrow pointing to wRVU-based: "Highest productivity but lower quality scores"
-    - Arrow pointing to Salary+Bonus: "Best balance of quality, satisfaction, and productivity"
-    - Arrow pointing to Capitation: "Highest quality but lowest physician satisfaction"
-    - Callout box: "wRVU model: 15% higher compensation but 8% lower quality scores vs. salary+bonus"
+Annotations:
+- Arrow pointing to wRVU-based: "Highest productivity but lower quality scores"
+- Arrow pointing to Salary+Bonus: "Best balance of quality, satisfaction, and productivity"
+- Arrow pointing to Capitation: "Highest quality but lowest physician satisfaction"
+- Callout box: "wRVU model: 15% higher compensation but 8% lower quality scores vs. salary+bonus"
 
-    Interactive features:
-    - Hover: Show exact values for all metrics
-    - Click on model: Drill down to distribution (box plot showing range and quartiles)
-    - Toggle button: Switch specialty (Primary Care vs. Specialists vs. Surgeons)
-    - Filter: Show only models meeting quality threshold (e.g., >75 quality score)
-    - Comparison mode: Select two models to see side-by-side detailed comparison
+Interactive features:
+- Hover: Show exact values for all metrics
+- Click on model: Drill down to distribution (box plot showing range and quartiles)
+- Toggle button: Switch specialty (Primary Care vs. Specialists vs. Surgeons)
+- Filter: Show only models meeting quality threshold (e.g., >75 quality score)
+- Comparison mode: Select two models to see side-by-side detailed comparison
 
-    Additional metrics in tooltip:
-    - Patient panel size
-    - Visit volume per week
-    - After-hours work (hours/week)
-    - Turnover rate (% leaving within 3 years)
-    - Organizational cost per provider (compensation + benefits + overhead)
+Additional metrics in tooltip:
+- Patient panel size
+- Visit volume per week
+- After-hours work (hours/week)
+- Turnover rate (% leaving within 3 years)
+- Organizational cost per provider (compensation + benefits + overhead)
 
-    Legend:
-    - Bar colors and axes
-    - Dot and star overlays with scale
-    - Quality score calculation explanation: "Composite of clinical quality, patient satisfaction, and adherence to guidelines"
+Legend:
+- Bar colors and axes
+- Dot and star overlays with scale
+- Quality score calculation explanation: "Composite of clinical quality, patient satisfaction, and adherence to guidelines"
 
-    Data table below chart (optional, toggled):
-    | Model | Comp | wRVUs | Quality | Satisfaction | Panel Size | Turnover |
-    |-------|------|-------|---------|--------------|------------|----------|
-    | Salary | $285k | 4,800 | 78 | 3.2 | 1,800 | 18% |
-    | wRVU | $380k | 7,200 | 72 | 3.8 | 2,400 | 22% |
-    | Salary+Bonus | $325k | 5,900 | 82 | 4.1 | 2,000 | 12% |
-    | Equal Shares | $310k | 5,500 | 80 | 3.5 | 1,900 | 15% |
-    | Capitation | $295k | 4,200 | 85 | 2.9 | 2,200 | 25% |
+Data table below chart (optional, toggled):
+| Model | Comp | wRVUs | Quality | Satisfaction | Panel Size | Turnover |
+|-------|------|-------|---------|--------------|------------|----------|
+| Salary | $285k | 4,800 | 78 | 3.2 | 1,800 | 18% |
+| wRVU | $380k | 7,200 | 72 | 3.8 | 2,400 | 22% |
+| Salary+Bonus | $325k | 5,900 | 82 | 4.1 | 2,000 | 12% |
+| Equal Shares | $310k | 5,500 | 80 | 3.5 | 1,900 | 15% |
+| Capitation | $295k | 4,200 | 85 | 2.9 | 2,200 | 25% |
 
-    Implementation: Chart.js with custom plugins for dual-axis, overlays, and interactivity
-    Canvas size: 1000x600px
-    Additional features: Export as PNG, print view, full-screen mode, share link
+Implementation: Chart.js with custom plugins for dual-axis, overlays, and interactivity
+Canvas size: 1000x600px
+Additional features: Export as PNG, print view, full-screen mode, share link
 </details>
 
 ## Capitation and Risk-Based Contracting
@@ -805,167 +868,172 @@ Key considerations for capitation contracting include:
 
 Graph databases excel at risk adjustment calculations and capitation analytics by connecting patients, diagnoses, procedures, pharmacy claims, and financial data to calculate risk scores, track utilization patterns, and identify high-risk patients requiring proactive care management.
 
+#### Diagram: Risk Adjustment and Capitation Calculator MicroSim
+
 <details markdown="1">
-    <summary>Risk Adjustment and Capitation Calculator MicroSim</summary>
-    Type: microsim
+<summary>Risk Adjustment and Capitation Calculator MicroSim</summary>
+Type: microsim
+**sim-id:** risk-adjustment-capitation-calculator-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Help students understand how risk adjustment methodologies (HCC model) calculate patient risk scores and how capitation payments are determined, and explore the financial implications of managing patient panels under capitation.
+Learning objective: Help students understand how risk adjustment methodologies (HCC model) calculate patient risk scores and how capitation payments are determined, and explore the financial implications of managing patient panels under capitation.
 
-    Canvas layout (1200x800px):
-    - Left side (750x800): Patient panel visualization and risk distribution
-    - Right side (450x800): Control panel and financial calculations
+Canvas layout (1200x800px):
+- Left side (750x800): Patient panel visualization and risk distribution
+- Right side (450x800): Control panel and financial calculations
 
-    Visual elements in main area:
+Visual elements in main area:
 
-    1. Risk score distribution (top, 750x200px):
-       - Histogram showing distribution of patient risk scores
-       - X-axis: Risk score (0.0 to 3.0+)
-       - Y-axis: Number of patients
-       - Color-coded bars: Green (0-0.5 low risk), Yellow (0.5-1.5 average), Orange (1.5-2.5 high), Red (2.5+ very high)
-       - Mean risk score line with label
-       - Annotations showing percentiles (25th, 50th, 75th)
+1. Risk score distribution (top, 750x200px):
+   - Histogram showing distribution of patient risk scores
+   - X-axis: Risk score (0.0 to 3.0+)
+   - Y-axis: Number of patients
+   - Color-coded bars: Green (0-0.5 low risk), Yellow (0.5-1.5 average), Orange (1.5-2.5 high), Red (2.5+ very high)
+   - Mean risk score line with label
+   - Annotations showing percentiles (25th, 50th, 75th)
 
-    2. Patient list with risk scores (middle, 750x400px):
-       - Scrollable table showing 20-30 sample patients
-       - Columns: Patient ID, Age, Sex, Chronic Conditions, Risk Score, Estimated Annual Cost, Actual YTD Cost
-       - Sortable by any column
-       - Color-coded rows based on risk level
-       - Click patient to see condition details
+2. Patient list with risk scores (middle, 750x400px):
+   - Scrollable table showing 20-30 sample patients
+   - Columns: Patient ID, Age, Sex, Chronic Conditions, Risk Score, Estimated Annual Cost, Actual YTD Cost
+   - Sortable by any column
+   - Color-coded rows based on risk level
+   - Click patient to see condition details
 
-    3. Financial summary dashboard (bottom, 750x200px):
-       - Four key metric boxes:
-         * Total Capitation Revenue (from PMPM × members × months × avg risk score)
-         * Actual Medical Costs YTD
-         * Surplus/(Deficit)
-         * % Margin
-       - Simple bar showing budget vs. actual with variance
-       - Trend sparklines for last 12 months
+3. Financial summary dashboard (bottom, 750x200px):
+   - Four key metric boxes:
+     * Total Capitation Revenue (from PMPM × members × months × avg risk score)
+     * Actual Medical Costs YTD
+     * Surplus/(Deficit)
+     * % Margin
+   - Simple bar showing budget vs. actual with variance
+   - Trend sparklines for last 12 months
 
-    Interactive controls (right panel):
+Interactive controls (right panel):
 
-    Panel Demographics:
-    - Input: Total panel size (500-5,000 patients, default 2,000)
-    - Slider: Average age (35-70 years, default 52)
-    - Slider: % Female (40-70%, default 54%)
-    - Slider: % Medicare/Medicaid dual eligible (0-30%, default 12%)
+Panel Demographics:
+- Input: Total panel size (500-5,000 patients, default 2,000)
+- Slider: Average age (35-70 years, default 52)
+- Slider: % Female (40-70%, default 54%)
+- Slider: % Medicare/Medicaid dual eligible (0-30%, default 12%)
 
-    Chronic Condition Prevalence (checkboxes with prevalence sliders):
-    - Diabetes: 0-30% (default 15%)
-    - Hypertension: 0-50% (default 32%)
-    - COPD: 0-20% (default 8%)
-    - CHF (Congestive Heart Failure): 0-15% (default 6%)
-    - CKD (Chronic Kidney Disease): 0-15% (default 7%)
-    - Cancer: 0-10% (default 4%)
-    - Depression: 0-25% (default 12%)
+Chronic Condition Prevalence (checkboxes with prevalence sliders):
+- Diabetes: 0-30% (default 15%)
+- Hypertension: 0-50% (default 32%)
+- COPD: 0-20% (default 8%)
+- CHF (Congestive Heart Failure): 0-15% (default 6%)
+- CKD (Chronic Kidney Disease): 0-15% (default 7%)
+- Cancer: 0-10% (default 4%)
+- Depression: 0-25% (default 12%)
 
-    Risk Score Calculation (display only, auto-calculated):
-    - Average risk score: X.XX
-    - Risk score range: X.XX to X.XX
-    - Standard deviation: X.XX
-    - Patients in high-risk category (>2.0): XXX (XX%)
+Risk Score Calculation (display only, auto-calculated):
+- Average risk score: X.XX
+- Risk score range: X.XX to X.XX
+- Standard deviation: X.XX
+- Patients in high-risk category (>2.0): XXX (XX%)
 
-    Financial Inputs:
-    - Base PMPM rate: $200-$800 (default $450)
-    - Contract type: Dropdown (Partial Cap - PCP only, Full Cap - All services, Global Cap - All services including hospital)
-    - Stop-loss threshold: $50k-$250k (default $100k per patient per year)
-    - Quality bonus potential: $0-$50 PMPM (default $25)
+Financial Inputs:
+- Base PMPM rate: $200-$800 (default $450)
+- Contract type: Dropdown (Partial Cap - PCP only, Full Cap - All services, Global Cap - All services including hospital)
+- Stop-loss threshold: $50k-$250k (default $100k per patient per year)
+- Quality bonus potential: $0-$50 PMPM (default $25)
 
-    Utilization Assumptions:
-    - Average PCP visits per year: 2-8 (default 4.2)
-    - Average specialist visits per year: 0-6 (default 2.1)
-    - Hospital admits per 1,000: 50-200 (default 85)
-    - ED visits per 1,000: 200-600 (default 380)
-    - Average cost per PCP visit: $150
-    - Average cost per specialist visit: $250
-    - Average cost per hospital admit: $18,000
-    - Average cost per ED visit: $1,800
+Utilization Assumptions:
+- Average PCP visits per year: 2-8 (default 4.2)
+- Average specialist visits per year: 0-6 (default 2.1)
+- Hospital admits per 1,000: 50-200 (default 85)
+- ED visits per 1,000: 200-600 (default 380)
+- Average cost per PCP visit: $150
+- Average cost per specialist visit: $250
+- Average cost per hospital admit: $18,000
+- Average cost per ED visit: $1,800
 
-    Buttons:
-    - "Generate Panel" - create random patient panel based on inputs
-    - "Add High-Risk Patient" - add patient with multiple chronic conditions
-    - "Run Utilization Simulation" - simulate 12 months of care utilization
-    - "Reset to Average Panel" - restore defaults
+Buttons:
+- "Generate Panel" - create random patient panel based on inputs
+- "Add High-Risk Patient" - add patient with multiple chronic conditions
+- "Run Utilization Simulation" - simulate 12 months of care utilization
+- "Reset to Average Panel" - restore defaults
 
-    Financial Calculations Display:
+Financial Calculations Display:
 
-    Annual Capitation Revenue:
-    - Panel size: X,XXX patients
-    - Base PMPM: $XXX
-    - Average risk score: X.XX
-    - Risk-adjusted PMPM: $XXX × X.XX = $XXX
-    - Annual revenue: $XXX × X,XXX × 12 = $X.X million
-    - Quality bonus achieved: $X.X million
-    - Total revenue: $X.X million
+Annual Capitation Revenue:
+- Panel size: X,XXX patients
+- Base PMPM: $XXX
+- Average risk score: X.XX
+- Risk-adjusted PMPM: $XXX × X.XX = $XXX
+- Annual revenue: $XXX × X,XXX × 12 = $X.X million
+- Quality bonus achieved: $X.X million
+- Total revenue: $X.X million
 
-    Projected Medical Costs:
-    - Primary care visits: X,XXX visits × $XXX = $X.X million
-    - Specialist visits: X,XXX visits × $XXX = $X.X million
-    - Hospital admissions: XXX admits × $XX,XXX = $X.X million
-    - Emergency dept: X,XXX visits × $X,XXX = $X.X million
-    - Pharmacy: Estimated $X.X million
-    - Total costs: $X.X million
+Projected Medical Costs:
+- Primary care visits: X,XXX visits × $XXX = $X.X million
+- Specialist visits: X,XXX visits × $XXX = $X.X million
+- Hospital admissions: XXX admits × $XX,XXX = $X.X million
+- Emergency dept: X,XXX visits × $X,XXX = $X.X million
+- Pharmacy: Estimated $X.X million
+- Total costs: $X.X million
 
-    Financial Performance:
-    - Surplus/(Deficit): $X.X million
-    - Operating margin: XX%
-    - PMPM surplus: $XX
-    - Risk reserve recommended: $X.X million (10-15% of revenue)
+Financial Performance:
+- Surplus/(Deficit): $X.X million
+- Operating margin: XX%
+- PMPM surplus: $XX
+- Risk reserve recommended: $X.X million (10-15% of revenue)
 
-    Scenario Analysis Results:
-    - Break-even panel size: X,XXX patients
-    - Impact of 10% reduction in utilization: +$XXXk margin
-    - Impact of 5% increase in high-risk patients: -$XXXk margin
+Scenario Analysis Results:
+- Break-even panel size: X,XXX patients
+- Impact of 10% reduction in utilization: +$XXXk margin
+- Impact of 5% increase in high-risk patients: -$XXXk margin
 
-    Pre-loaded scenarios:
+Pre-loaded scenarios:
 
-    1. "Healthy suburban panel" - Low risk
-       - Avg age: 42, Low chronic disease prevalence
-       - Avg risk score: 0.78
-       - Expected margin: 8-12%
+1. "Healthy suburban panel" - Low risk
+   - Avg age: 42, Low chronic disease prevalence
+   - Avg risk score: 0.78
+   - Expected margin: 8-12%
 
-    2. "Urban safety-net panel" - High risk
-       - Avg age: 58, High chronic disease, 25% dual eligible
-       - Avg risk score: 1.45
-       - Expected margin: 2-4% (challenging)
+2. "Urban safety-net panel" - High risk
+   - Avg age: 58, High chronic disease, 25% dual eligible
+   - Avg risk score: 1.45
+   - Expected margin: 2-4% (challenging)
 
-    3. "Medicare Advantage panel" - Very high risk
-       - Avg age: 72, Multiple chronic conditions common
-       - Avg risk score: 1.82
-       - Expected margin: 3-6% (requires excellent care management)
+3. "Medicare Advantage panel" - Very high risk
+   - Avg age: 72, Multiple chronic conditions common
+   - Avg risk score: 1.82
+   - Expected margin: 3-6% (requires excellent care management)
 
-    Behavior:
-    - When user adjusts demographics or condition prevalence, recalculate risk scores for entire panel
-    - Generate synthetic patient records with appropriate HCC codes based on inputs
-    - Calculate each patient's risk score using simplified HCC methodology
-    - Show risk score distribution in histogram with smooth animation
-    - When "Run Utilization Simulation" clicked:
-      * Generate realistic utilization for each patient based on risk score
-      * Higher risk patients have higher probability of hospital admits, ED visits
-      * Calculate actual costs based on utilization
-      * Compare to capitation revenue
-      * Show monthly cash flow over 12 months
-    - Highlight patients in financial danger (actual costs > 2× risk-adjusted cap)
-    - Show warning if margin falls below 2%: "Financial risk: Consider care management interventions for high-risk patients"
+Behavior:
+- When user adjusts demographics or condition prevalence, recalculate risk scores for entire panel
+- Generate synthetic patient records with appropriate HCC codes based on inputs
+- Calculate each patient's risk score using simplified HCC methodology
+- Show risk score distribution in histogram with smooth animation
+- When "Run Utilization Simulation" clicked:
+  * Generate realistic utilization for each patient based on risk score
+  * Higher risk patients have higher probability of hospital admits, ED visits
+  * Calculate actual costs based on utilization
+  * Compare to capitation revenue
+  * Show monthly cash flow over 12 months
+- Highlight patients in financial danger (actual costs > 2× risk-adjusted cap)
+- Show warning if margin falls below 2%: "Financial risk: Consider care management interventions for high-risk patients"
 
-    Educational callouts:
-    - Tooltip on "Risk Score": "HCC risk adjustment predicts expected healthcare costs. 1.0 = average, >1.0 = above average, <1.0 = below average. Based on demographics and chronic conditions."
-    - Tooltip on "Stop-Loss": "Insurance that protects providers from catastrophic costs. If patient costs exceed threshold (e.g., $100k), stop-loss insurance pays excess."
-    - Tooltip on "PMPM": "Per Member Per Month - fixed payment received regardless of utilization. Must manage care efficiently to earn margin."
-    - Tooltip on "Care Management": "Proactive outreach to high-risk patients can reduce ED visits and hospital admits by 15-25%, improving financial performance."
-    - Info box: "Capitation success requires: (1) Accurate risk adjustment, (2) Care management programs, (3) Data analytics, (4) Provider engagement, (5) Adequate reserves"
+Educational callouts:
+- Tooltip on "Risk Score": "HCC risk adjustment predicts expected healthcare costs. 1.0 = average, >1.0 = above average, <1.0 = below average. Based on demographics and chronic conditions."
+- Tooltip on "Stop-Loss": "Insurance that protects providers from catastrophic costs. If patient costs exceed threshold (e.g., $100k), stop-loss insurance pays excess."
+- Tooltip on "PMPM": "Per Member Per Month - fixed payment received regardless of utilization. Must manage care efficiently to earn margin."
+- Tooltip on "Care Management": "Proactive outreach to high-risk patients can reduce ED visits and hospital admits by 15-25%, improving financial performance."
+- Info box: "Capitation success requires: (1) Accurate risk adjustment, (2) Care management programs, (3) Data analytics, (4) Provider engagement, (5) Adequate reserves"
 
-    Advanced features:
-    - "Care Management Impact" slider: Reduce utilization by 0-25% for high-risk patients (simulates care management effectiveness)
-    - "Coding Improvement" button: Increase risk scores by capturing undocumented conditions (demonstrates importance of complete diagnosis coding)
-    - "Contract Comparison" mode: Compare partial vs. full vs. global capitation side-by-side
+Advanced features:
+- "Care Management Impact" slider: Reduce utilization by 0-25% for high-risk patients (simulates care management effectiveness)
+- "Coding Improvement" button: Increase risk scores by capturing undocumented conditions (demonstrates importance of complete diagnosis coding)
+- "Contract Comparison" mode: Compare partial vs. full vs. global capitation side-by-side
 
-    Implementation notes:
-    - Use p5.js or Chart.js for visualizations
-    - Implement simplified HCC risk score algorithm with major condition categories
-    - Use Monte Carlo simulation for utilization patterns (probabilistic model)
-    - Provide detailed formula explanations in expandable sections
-    - Color-code everything consistently (green=profitable, red=loss)
-    - Add "Export Analysis" feature to download detailed financial report
+Implementation notes:
+- Use p5.js or Chart.js for visualizations
+- Implement simplified HCC risk score algorithm with major condition categories
+- Use Monte Carlo simulation for utilization patterns (probabilistic model)
+- Provide detailed formula explanations in expandable sections
+- Color-code everything consistently (green=profitable, red=loss)
+- Add "Export Analysis" feature to download detailed financial report
 </details>
 
 ## Quality Metrics and Value-Based Payment
@@ -1001,6 +1069,51 @@ The following summarizes key quality measurement frameworks used in healthcare:
 - **Hospital Quality Star Ratings:** CMS public reporting program rating hospitals 1-5 stars based on quality measures
 - **Physician Quality Reporting System (PQRS):** Predecessor to MIPS, incentivized quality measure reporting
 - **Clinical Quality Measures (eCQMs):** Electronic quality measures calculated from EHR data for Meaningful Use/Promoting Interoperability
+
+The MicroSim below lets you run an accountable care organization through a performance year: set quality scores and spending against a benchmark and see whether you earn shared savings or owe a penalty.
+
+#### Diagram: Value-Based Payment Shared-Savings MicroSim
+
+<details markdown="1">
+<summary>Value-Based Payment Shared-Savings MicroSim</summary>
+Type: microsim
+**sim-id:** value-based-payment-shared-savings<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
+
+Learning objective: Evaluate (L5 — judge, assess, justify) how a value-based contract converts quality performance and total cost of care into a shared-savings bonus or a downside penalty, so learners can judge whether a given quality/cost combination is financially favorable.
+
+Canvas layout (responsive, target 900x560; resizes with the window):
+- Left (~55%): a number line or gauge showing actual spend versus the benchmark, with the savings (or loss) band shaded.
+- Right (~45%): a quality-gate indicator, the settlement calculation, and the final payment adjustment.
+
+Visual elements:
+- A spending benchmark marker, an actual-spend marker, and the difference between them.
+- A quality-gate light (a minimum quality score must be cleared to share in savings).
+- A settlement panel: gross savings, quality multiplier, provider share, and final bonus or penalty.
+
+Interactive controls (use built-in p5 DOM controls):
+- Slider "Total cost of care vs. benchmark" (-15% to +15%)
+- Slider "Composite quality score" (0–100)
+- Slider "Shared-savings rate" (40–75%)
+- Checkbox "Two-sided risk" (enables the downside penalty)
+- Button "Settle year"
+
+Default parameters: spend -3% vs benchmark, quality 78, shared-savings rate 50%, two-sided risk on.
+
+Data Visibility Requirements (Evaluate objective):
+  Stage 1: Show the benchmark and actual spend, and the gross savings or loss.
+  Stage 2: Show the quality gate (pass/fail) and any quality multiplier applied.
+  Final: Show provider share x adjusted savings = bonus, or (under two-sided risk) the penalty owed.
+
+Behavior:
+- High quality but spend above benchmark yields no savings (and a penalty under two-sided risk); modest savings with failing quality forfeits the bonus, so learners must weigh the two dimensions together.
+- Toggling two-sided risk reveals the asymmetric stakes of upside-only versus downside contracts.
+
+Instructional Rationale: An Evaluate objective requires judging a scenario against criteria. Surfacing the benchmark gap, quality gate, and settlement math lets learners justify whether a quality/cost combination is favorable rather than be told. Discrete "Settle year" steps keep each outcome tied to the chosen inputs.
+
+Implementation: p5.js with DOM controls; shared-savings settlement math computed in-browser; responsive to window resize.
+</details>
 
 ## Graph Analytics for Financial Optimization
 

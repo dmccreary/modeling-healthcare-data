@@ -85,180 +85,185 @@ The following list summarizes additional common fraud schemes:
 - **Home health fraud:** Billing for services to patients not homebound, falsifying care plans, billing for skilled nursing when providing only custodial care
 - **Lab/imaging fraud:** Performing unnecessary tests, billing for tests not ordered, waiving copays to induce utilization
 
+#### Diagram: Healthcare Fraud Scheme Network Visualization
+
 <details markdown="1">
-    <summary>Healthcare Fraud Scheme Network Visualization</summary>
-    Type: graph-model
+<summary>Healthcare Fraud Scheme Network Visualization</summary>
+Type: graph-model
+**sim-id:** healthcare-fraud-scheme-network-visualization<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate common fraud schemes as graph patterns, showing how different types of fraud manifest as distinctive network structures that can be detected through graph analytics.
+Purpose: Illustrate common fraud schemes as graph patterns, showing how different types of fraud manifest as distinctive network structures that can be detected through graph analytics.
 
-    Node types:
-    1. Provider (blue circles)
-       - Properties: npi, name, specialty, practice_address
-       - Size represents billing volume
-       - Example: "Dr. Smith, Family Practice"
+Node types:
+1. Provider (blue circles)
+   - Properties: npi, name, specialty, practice_address
+   - Size represents billing volume
+   - Example: "Dr. Smith, Family Practice"
 
-    2. Patient (green circles)
-       - Properties: patient_id, date_of_birth, address
-       - Example: "Patient #12345"
+2. Patient (green circles)
+   - Properties: patient_id, date_of_birth, address
+   - Example: "Patient #12345"
 
-    3. Claim (orange squares)
-       - Properties: claim_id, service_date, billed_amount, paid_amount
-       - Example: "Claim-2024-789456"
+3. Claim (orange squares)
+   - Properties: claim_id, service_date, billed_amount, paid_amount
+   - Example: "Claim-2024-789456"
 
-    4. Diagnosis (purple diamonds)
-       - Properties: icd_code, description
-       - Example: "E11.9: Type 2 Diabetes"
+4. Diagnosis (purple diamonds)
+   - Properties: icd_code, description
+   - Example: "E11.9: Type 2 Diabetes"
 
-    5. Procedure (yellow hexagons)
-       - Properties: cpt_code, description, allowed_amount
-       - Example: "99215: Office Visit Level 5"
+5. Procedure (yellow hexagons)
+   - Properties: cpt_code, description, allowed_amount
+   - Example: "99215: Office Visit Level 5"
 
-    6. DME Item (gray rectangles)
-       - Properties: hcpcs_code, description, item_cost
-       - Example: "E0601: CPAP Device"
+6. DME Item (gray rectangles)
+   - Properties: hcpcs_code, description, item_cost
+   - Example: "E0601: CPAP Device"
 
-    7. Referring Provider (teal circles)
-       - Properties: npi, name, specialty
-       - Example: "Dr. Jones, Cardiologist"
+7. Referring Provider (teal circles)
+   - Properties: npi, name, specialty
+   - Example: "Dr. Jones, Cardiologist"
 
-    Edge types:
-    1. FILED (solid orange arrow)
-       - From: Provider → Claim
-       - Properties: submission_date
+Edge types:
+1. FILED (solid orange arrow)
+   - From: Provider → Claim
+   - Properties: submission_date
 
-    2. FOR_PATIENT (solid green arrow)
-       - From: Claim → Patient
-       - Properties: service_date
+2. FOR_PATIENT (solid green arrow)
+   - From: Claim → Patient
+   - Properties: service_date
 
-    3. HAS_DIAGNOSIS (dashed purple arrow)
-       - From: Claim → Diagnosis
-       - Properties: diagnosis_order (primary, secondary)
+3. HAS_DIAGNOSIS (dashed purple arrow)
+   - From: Claim → Diagnosis
+   - Properties: diagnosis_order (primary, secondary)
 
-    4. INCLUDES_PROCEDURE (solid yellow arrow)
-       - From: Claim → Procedure
-       - Properties: quantity, modifier
+4. INCLUDES_PROCEDURE (solid yellow arrow)
+   - From: Claim → Procedure
+   - Properties: quantity, modifier
 
-    5. REFERRED_BY (dotted teal arrow)
-       - From: Claim → Referring Provider
-       - Properties: referral_date
+5. REFERRED_BY (dotted teal arrow)
+   - From: Claim → Referring Provider
+   - Properties: referral_date
 
-    6. PRESCRIBED_DME (dashed gray arrow)
-       - From: Provider → DME Item → Patient
-       - Properties: prescription_date
+6. PRESCRIBED_DME (dashed gray arrow)
+   - From: Provider → DME Item → Patient
+   - Properties: prescription_date
 
-    Fraud Pattern Examples:
+Fraud Pattern Examples:
 
-    Pattern 1: PHANTOM BILLING
-    - Single provider node with many claims
-    - Claims connected to patients who have NO other medical activity
-    - Timeline shows services billed on same day/time to patients in different locations
-    - Visual: Provider in center with many claims radiating out, patient nodes have only single connection
-    - Detection: Degree centrality + temporal analysis
+Pattern 1: PHANTOM BILLING
+- Single provider node with many claims
+- Claims connected to patients who have NO other medical activity
+- Timeline shows services billed on same day/time to patients in different locations
+- Visual: Provider in center with many claims radiating out, patient nodes have only single connection
+- Detection: Degree centrality + temporal analysis
 
-    Pattern 2: UPCODING
-    - Provider billing predominantly high-level codes (99215, 99285)
-    - Peer providers serving similar patients billing lower-level codes (99213, 99283)
-    - Visual: Compare code distribution histograms for target provider vs. peers
-    - Detection: Statistical outlier analysis on code distribution
+Pattern 2: UPCODING
+- Provider billing predominantly high-level codes (99215, 99285)
+- Peer providers serving similar patients billing lower-level codes (99213, 99283)
+- Visual: Compare code distribution histograms for target provider vs. peers
+- Detection: Statistical outlier analysis on code distribution
 
-    Pattern 3: UNBUNDLING
-    - Multiple procedure nodes connected to single claim where bundled code should be used
-    - Pattern repeats across many claims from same provider
-    - Visual: Claims with 5-8 procedure nodes vs. peers with 1-2 procedures per claim
-    - Detection: NCCI edit violations + pattern frequency
+Pattern 3: UNBUNDLING
+- Multiple procedure nodes connected to single claim where bundled code should be used
+- Pattern repeats across many claims from same provider
+- Visual: Claims with 5-8 procedure nodes vs. peers with 1-2 procedures per claim
+- Detection: NCCI edit violations + pattern frequency
 
-    Pattern 4: KICKBACK SCHEME (Circular Referrals)
-    - Provider A refers to Provider B
-    - Provider B refers to Provider C
-    - Provider C refers back to Provider A
-    - All three share financial relationships (shown as separate ownership/partnership edges)
-    - Visual: Triangle or circular referral pattern with bidirectional flows
-    - Detection: Cycle detection + financial relationship overlay
+Pattern 4: KICKBACK SCHEME (Circular Referrals)
+- Provider A refers to Provider B
+- Provider B refers to Provider C
+- Provider C refers back to Provider A
+- All three share financial relationships (shown as separate ownership/partnership edges)
+- Visual: Triangle or circular referral pattern with bidirectional flows
+- Detection: Cycle detection + financial relationship overlay
 
-    Pattern 5: DUPLICATE CLAIMS
-    - Multiple claims with same provider-patient-procedure-date combination
-    - Slight variations in diagnosis codes or modifiers to evade simple duplicate detection
-    - Visual: Cluster of nearly identical claims with highlighted differences
-    - Detection: Similarity scoring (Jaccard, edit distance) + temporal clustering
+Pattern 5: DUPLICATE CLAIMS
+- Multiple claims with same provider-patient-procedure-date combination
+- Slight variations in diagnosis codes or modifiers to evade simple duplicate detection
+- Visual: Cluster of nearly identical claims with highlighted differences
+- Detection: Similarity scoring (Jaccard, edit distance) + temporal clustering
 
-    Pattern 6: DME FRAUD
-    - Single DME provider with referrals from many physicians
-    - Referring physicians have no logical specialty connection to DME items
-    - Patients receiving multiple expensive DME items within short timeframe
-    - Visual: Star pattern with DME provider at center, many referring providers radiating out
-    - Detection: Referral network centrality + specialty mismatch analysis
+Pattern 6: DME FRAUD
+- Single DME provider with referrals from many physicians
+- Referring physicians have no logical specialty connection to DME items
+- Patients receiving multiple expensive DME items within short timeframe
+- Visual: Star pattern with DME provider at center, many referring providers radiating out
+- Detection: Referral network centrality + specialty mismatch analysis
 
-    Interactive features:
-    - Toggle between different fraud pattern views (dropdown selector)
-    - Click "Show Normal Pattern" vs. "Show Fraud Pattern" comparison
-    - Highlight specific fraud indicators when pattern selected
-    - Hover over nodes: Show statistics (e.g., "This provider's referral rate is 12x peer average")
-    - Click node: Drill into detailed transaction history
-    - Run detection algorithm visualization: Animate how algorithm identifies suspicious pattern
-    - Risk score overlay: Color-code nodes by fraud risk (green=low, yellow=moderate, orange=high, red=critical)
+Interactive features:
+- Toggle between different fraud pattern views (dropdown selector)
+- Click "Show Normal Pattern" vs. "Show Fraud Pattern" comparison
+- Highlight specific fraud indicators when pattern selected
+- Hover over nodes: Show statistics (e.g., "This provider's referral rate is 12x peer average")
+- Click node: Drill into detailed transaction history
+- Run detection algorithm visualization: Animate how algorithm identifies suspicious pattern
+- Risk score overlay: Color-code nodes by fraud risk (green=low, yellow=moderate, orange=high, red=critical)
 
-    Detection metrics displayed:
-    - For each pattern, show key metrics that indicate fraud:
-      * Phantom billing: % patients with single claim only, billing volume per day
-      * Upcoding: Z-score of code distribution vs. peers
-      * Unbundling: NCCI violation rate, average procedures per claim
-      * Kickback: Referral reciprocity score, financial relationship overlap
-      * Duplicate: Claim similarity scores, time clustering
-      * DME: Referral concentration, specialty mismatch rate
+Detection metrics displayed:
+- For each pattern, show key metrics that indicate fraud:
+  * Phantom billing: % patients with single claim only, billing volume per day
+  * Upcoding: Z-score of code distribution vs. peers
+  * Unbundling: NCCI violation rate, average procedures per claim
+  * Kickback: Referral reciprocity score, financial relationship overlap
+  * Duplicate: Claim similarity scores, time clustering
+  * DME: Referral concentration, specialty mismatch rate
 
-    Sample queries shown (interactive):
-    1. "Find phantom billing candidates"
-       MATCH (prov:Provider)-[:FILED]->(c:Claim)-[:FOR_PATIENT]->(pat:Patient)
-       WITH prov, pat, count(c) as claim_count,
-            size((pat)-[:HAS_CLAIM]-()) as total_patient_claims
-       WHERE total_patient_claims = 1 AND claim_count > 0
-       WITH prov, count(pat) as single_claim_patients,
-            count(DISTINCT pat) as total_patients
-       WHERE single_claim_patients > total_patients * 0.5
-       RETURN prov.name, single_claim_patients, total_patients,
-              (single_claim_patients * 100.0 / total_patients) as phantom_indicator_pct
-       ORDER BY phantom_indicator_pct DESC
+Sample queries shown (interactive):
+1. "Find phantom billing candidates"
+   MATCH (prov:Provider)-[:FILED]->(c:Claim)-[:FOR_PATIENT]->(pat:Patient)
+   WITH prov, pat, count(c) as claim_count,
+        size((pat)-[:HAS_CLAIM]-()) as total_patient_claims
+   WHERE total_patient_claims = 1 AND claim_count > 0
+   WITH prov, count(pat) as single_claim_patients,
+        count(DISTINCT pat) as total_patients
+   WHERE single_claim_patients > total_patients * 0.5
+   RETURN prov.name, single_claim_patients, total_patients,
+          (single_claim_patients * 100.0 / total_patients) as phantom_indicator_pct
+   ORDER BY phantom_indicator_pct DESC
 
-    2. "Detect circular referral patterns (kickbacks)"
-       MATCH path = (p1:Provider)-[:REFERS_TO*2..4]->(p1)
-       WHERE length(path) >= 2
-       WITH nodes(path) as providers, length(path) as cycle_length
-       MATCH (p1)-[r:FINANCIAL_RELATIONSHIP]-(p2)
-       WHERE p1 IN providers AND p2 IN providers
-       RETURN providers, cycle_length, count(r) as financial_links
-       ORDER BY financial_links DESC, cycle_length
+2. "Detect circular referral patterns (kickbacks)"
+   MATCH path = (p1:Provider)-[:REFERS_TO*2..4]->(p1)
+   WHERE length(path) >= 2
+   WITH nodes(path) as providers, length(path) as cycle_length
+   MATCH (p1)-[r:FINANCIAL_RELATIONSHIP]-(p2)
+   WHERE p1 IN providers AND p2 IN providers
+   RETURN providers, cycle_length, count(r) as financial_links
+   ORDER BY financial_links DESC, cycle_length
 
-    3. "Find unbundling patterns"
-       MATCH (p:Provider)-[:FILED]->(c:Claim)-[:INCLUDES_PROCEDURE]->(proc:Procedure)
-       WITH p, c, collect(proc.cpt_code) as procedures, count(proc) as proc_count
-       WHERE proc_count >= 5
-       MATCH (ncci:NCCIEdit)
-       WHERE any(code IN procedures WHERE code IN ncci.bundled_codes)
-       WITH p, count(DISTINCT c) as violation_claims,
-            sum(c.paid_amount) as total_overpayment
-       WHERE violation_claims > 10
-       RETURN p.name, violation_claims, total_overpayment
-       ORDER BY total_overpayment DESC
+3. "Find unbundling patterns"
+   MATCH (p:Provider)-[:FILED]->(c:Claim)-[:INCLUDES_PROCEDURE]->(proc:Procedure)
+   WITH p, c, collect(proc.cpt_code) as procedures, count(proc) as proc_count
+   WHERE proc_count >= 5
+   MATCH (ncci:NCCIEdit)
+   WHERE any(code IN procedures WHERE code IN ncci.bundled_codes)
+   WITH p, count(DISTINCT c) as violation_claims,
+        sum(c.paid_amount) as total_overpayment
+   WHERE violation_claims > 10
+   RETURN p.name, violation_claims, total_overpayment
+   ORDER BY total_overpayment DESC
 
-    Layout: Multiple subgraphs showing each fraud pattern side-by-side, or toggle between patterns
+Layout: Multiple subgraphs showing each fraud pattern side-by-side, or toggle between patterns
 
-    Visual styling:
-    - Use distinct colors for each node type
-    - Fraud indicators highlighted in red (thick borders, pulsing animation)
-    - Normal activity shown in muted colors
-    - Edge thickness represents transaction volume/frequency
-    - Heat map overlay for risk scores
-    - Timeline scrubber to show how patterns develop over time
+Visual styling:
+- Use distinct colors for each node type
+- Fraud indicators highlighted in red (thick borders, pulsing animation)
+- Normal activity shown in muted colors
+- Edge thickness represents transaction volume/frequency
+- Heat map overlay for risk scores
+- Timeline scrubber to show how patterns develop over time
 
-    Legend:
-    - Node types and shapes
-    - Edge types and meanings
-    - Color coding for risk levels
-    - Fraud pattern indicators
+Legend:
+- Node types and shapes
+- Edge types and meanings
+- Color coding for risk levels
+- Fraud pattern indicators
 
-    Implementation: vis-network JavaScript library with custom fraud detection highlighting
-    Canvas size: 1200x900px with pattern selector and metric dashboard
-    Additional features: Export suspicious cases, generate investigation report, link to detailed queries
+Implementation: vis-network JavaScript library with custom fraud detection highlighting
+Canvas size: 1200x900px with pattern selector and metric dashboard
+Additional features: Export suspicious cases, generate investigation report, link to detailed queries
 </details>
 
 ## Fraud Detection Using Graph Analytics
@@ -280,211 +285,261 @@ Key graph algorithms used for fraud detection include:
 - **Similarity scoring:** Compares provider billing patterns to peer groups to identify statistical outliers
 - **Temporal pattern analysis:** Examines how relationships and patterns evolve over time to detect emerging fraud schemes
 
+Before tracing the full detection workflow, the MicroSim below lets you slide the anomaly-score threshold and watch the unavoidable tradeoff between catching fraud and burying investigators in false positives.
+
+#### Diagram: Anomaly Score Threshold Explorer MicroSim
+
 <details markdown="1">
-    <summary>Graph-Based Fraud Detection Algorithm Workflow</summary>
-    Type: workflow
+<summary>Anomaly Score Threshold Explorer MicroSim</summary>
+Type: microsim
+**sim-id:** anomaly-score-threshold-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the complete process of using graph algorithms for fraud detection, from data ingestion through investigation prioritization, showing how multiple algorithms work together to identify suspicious activity.
+Learning objective: Evaluate (L5 — judge, prioritize, justify) how moving an anomaly-score threshold changes the count of true-positive fraud catches versus false-positive investigations, so learners can justify a threshold given investigation capacity and the cost of missed fraud.
 
-    Visual style: Vertical flowchart with branching paths and algorithm callouts
+Canvas layout (responsive, target 900x560; resizes with the window):
+- Left (~60%): a strip plot of ~120 providers positioned by graph anomaly score (0–100), with true fraudsters drawn as red dots and legitimate providers as blue, overlapping in a realistic middle band, plus a draggable vertical threshold line.
+- Right (~40%): a live confusion matrix, precision/recall/F1 readouts, and a cost panel.
 
-    Main Flow Steps:
+Visual elements:
+- Two overlapping score distributions (legitimate centered low, fraud centered high, with a contested overlap band).
+- The threshold line; everything to its right is "flagged for investigation" (shaded).
+- A 2x2 confusion matrix that recolors live: TP (green), FP (orange), FN (red), TN (gray).
 
-    1. START: "Claims Data Ingestion"
-       - Input: Claims transactions, provider data, patient data, referral records, financial relationships
-       - Volume: Millions of claims per day
-       - Format: EDI 837, internal billing systems, registration systems
+Interactive controls (use built-in p5 DOM controls):
+- Slider "Anomaly threshold" (0–100, default 70), or drag the line directly
+- Slider "Investigator capacity" (cases per week, default 15) — flags beyond capacity are highlighted as a backlog
+- Slider "Cost of missed fraud ($K)" (default 50)
+- Checkbox "Show ground-truth colors" (default on; turning it off simulates real-world uncertainty)
+- Button "Reset"
 
-    2. PROCESS: "Build Healthcare Graph"
-       - Create nodes: Providers, Patients, Claims, Diagnoses, Procedures, Payers
-       - Create edges: FILED, FOR_PATIENT, HAS_DIAGNOSIS, INCLUDES_PROCEDURE, REFERRED_BY
-       - Graph size: Millions of nodes, tens of millions of edges
-       - Update frequency: Daily incremental updates
+Default parameters: threshold 70, capacity 15, missed-fraud cost $50K, ground truth on.
 
-    3. PARALLEL PROCESSING: "Run Detection Algorithms"
+Data Visibility Requirements (Evaluate objective):
+  Stage 1: Show the score distributions and the current threshold.
+  Stage 2: As the threshold moves, update the confusion-matrix counts in real time.
+  Final: Show precision, recall, F1, flagged count versus capacity, and total expected cost (missed-fraud cost + investigation cost) so the learner can justify a choice.
 
-       Branch A: STATISTICAL OUTLIER DETECTION
-       3a. Analyze billing patterns
-           - Calculate metrics: Billing volume, average claim amount, code distribution
-           - Compare to peer groups: Same specialty, geography, patient demographics
-           - Statistical tests: Z-score, modified Z-score, isolation forest
-           - Output: Providers with anomalous billing (score 0-100)
+Behavior:
+- Lowering the threshold raises recall (catches more fraud) but floods false positives and exceeds investigator capacity; raising it does the opposite. The cost panel reveals an interior threshold that minimizes total expected cost.
+- Turning off ground-truth colors forces the learner to reason about a threshold they cannot perfectly validate—mirroring real fraud operations.
 
-       Branch B: COMMUNITY DETECTION
-       3b. Identify provider clusters
-           - Algorithm: Louvain community detection
-           - Basis: Shared patients, referral patterns, billing similarities
-           - Parameters: Resolution parameter for cluster size
-           - Output: Communities with density scores, modularity metrics
+Instructional Rationale: An Evaluate objective requires the learner to make and defend a judgment under competing criteria. Surfacing the confusion matrix, capacity backlog, and total-cost figure as the threshold moves lets the learner weigh missed fraud against wasted investigations rather than be handed a "right" answer. Direct manipulation with immediate metric feedback (no animation) supports criterion-based decision-making.
 
-       Branch C: REFERRAL NETWORK ANALYSIS
-       3c. Analyze referral patterns
-           - Build referral graph: REFERS_TO edges between providers
-           - Calculate centrality: PageRank, betweenness, degree centrality
-           - Detect cycles: Find circular referral patterns (length 2-5)
-           - Reciprocity analysis: Measure bidirectional referral rates
-           - Output: Providers with unusual referral patterns (risk score)
+Implementation: p5.js with DOM controls; two precomputed labeled score distributions; confusion-matrix and cost math computed in-browser; responsive to window resize.
+</details>
 
-       Branch D: TEMPORAL PATTERN ANALYSIS
-       3d. Examine trends over time
-           - Time series analysis: Billing volume trends, code drift
-           - Change point detection: Sudden changes in behavior
-           - Seasonality analysis: Distinguish legitimate seasonal patterns from suspicious
-           - Output: Providers with significant behavioral changes
+#### Diagram: Graph-Based Fraud Detection Algorithm Workflow
 
-       Branch E: CLAIM SIMILARITY ANALYSIS
-       3e. Find duplicate/similar claims
-           - Feature extraction: Provider, patient, date, codes, amount
-           - Similarity scoring: Jaccard similarity, cosine similarity
-           - Temporal clustering: Group claims by time proximity
-           - Output: Clusters of suspiciously similar claims
+<details markdown="1">
+<summary>Graph-Based Fraud Detection Algorithm Workflow</summary>
+Type: workflow
+**sim-id:** graph-based-fraud-detection-algorithm-workflow<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
 
-    4. MERGE: "Combine Risk Scores"
-       - Aggregate results from all detection algorithms
-       - Weighted scoring: Assign weights based on algorithm confidence
-       - Risk score calculation: Composite score 0-100
-       - Formula: Risk = 0.25×Outlier + 0.20×Community + 0.25×Referral + 0.15×Temporal + 0.15×Similarity
+Purpose: Illustrate the complete process of using graph algorithms for fraud detection, from data ingestion through investigation prioritization, showing how multiple algorithms work together to identify suspicious activity.
 
-    5. PROCESS: "Apply Business Rules"
-       - Whitelist: Exclude known legitimate providers (teaching hospitals, trauma centers)
-       - Specialty adjustments: Account for expected variations by specialty
-       - Volume thresholds: Require minimum billing volume for investigation
-       - Historical context: Consider prior investigation results
-       - Output: Filtered list of high-priority cases
+Visual style: Vertical flowchart with branching paths and algorithm callouts
 
-    6. PROCESS: "Generate Investigation Cases"
-       - Rank providers by composite risk score
-       - Create case files with supporting evidence:
-         * Statistical anomalies detected
-         * Graph patterns identified
-         * Peer comparison data
-         * Detailed claim listings
-         * Patient profile analysis
-       - Estimate financial exposure
-       - Assign investigation priority: Critical, High, Medium, Low
+Main Flow Steps:
 
-    7. DECISION: "Risk Score Above Threshold?"
-       - Critical (90-100): Immediate investigation, potential law enforcement referral
-       - High (75-89): Priority investigation within 30 days
-       - Medium (60-74): Investigation within 90 days
-       - Low (<60): Monitoring, educational outreach
+1. START: "Claims Data Ingestion"
+   - Input: Claims transactions, provider data, patient data, referral records, financial relationships
+   - Volume: Millions of claims per day
+   - Format: EDI 837, internal billing systems, registration systems
 
-    8a. IF CRITICAL/HIGH: "Human Investigation"
-        - Special Investigation Unit (SIU) review
-        - Detailed claim audit
-        - Patient contact/interviews
-        - Provider site visit
-        - Medical record review
-        - Compare documentation to billed services
+2. PROCESS: "Build Healthcare Graph"
+   - Create nodes: Providers, Patients, Claims, Diagnoses, Procedures, Payers
+   - Create edges: FILED, FOR_PATIENT, HAS_DIAGNOSIS, INCLUDES_PROCEDURE, REFERRED_BY
+   - Graph size: Millions of nodes, tens of millions of edges
+   - Update frequency: Daily incremental updates
 
-    8b. IF MEDIUM: "Enhanced Monitoring"
-        - Prepayment review of future claims
-        - Automated edits and audits
-        - Quarterly pattern analysis
-        - Educational intervention
+3. PARALLEL PROCESSING: "Run Detection Algorithms"
 
-    8c. IF LOW: "Standard Processing"
-        - Continue routine monitoring
-        - Flag for review if patterns worsen
+   Branch A: STATISTICAL OUTLIER DETECTION
+   3a. Analyze billing patterns
+       - Calculate metrics: Billing volume, average claim amount, code distribution
+       - Compare to peer groups: Same specialty, geography, patient demographics
+       - Statistical tests: Z-score, modified Z-score, isolation forest
+       - Output: Providers with anomalous billing (score 0-100)
 
-    9. INVESTIGATION OUTCOMES:
+   Branch B: COMMUNITY DETECTION
+   3b. Identify provider clusters
+       - Algorithm: Louvain community detection
+       - Basis: Shared patients, referral patterns, billing similarities
+       - Parameters: Resolution parameter for cluster size
+       - Output: Communities with density scores, modularity metrics
 
-    9a. FRAUD CONFIRMED
-        - Administrative actions: Payment recoupment, contract termination
-        - Civil actions: False Claims Act lawsuit, civil monetary penalties
-        - Criminal referral: Department of Justice, FBI Healthcare Fraud Unit
-        - Exclusion: OIG List of Excluded Individuals/Entities (LEIE)
-        - Update graph: Mark provider as confirmed fraud, inform future detection
+   Branch C: REFERRAL NETWORK ANALYSIS
+   3c. Analyze referral patterns
+       - Build referral graph: REFERS_TO edges between providers
+       - Calculate centrality: PageRank, betweenness, degree centrality
+       - Detect cycles: Find circular referral patterns (length 2-5)
+       - Reciprocity analysis: Measure bidirectional referral rates
+       - Output: Providers with unusual referral patterns (risk score)
 
-    9b. ABUSE IDENTIFIED (Not Fraud)
-        - Corrective action plan
-        - Provider education
-        - Prepayment review for period of time
-        - Repayment of overpayments
-        - Update graph: Adjust risk model to reduce false positives
+   Branch D: TEMPORAL PATTERN ANALYSIS
+   3d. Examine trends over time
+       - Time series analysis: Billing volume trends, code drift
+       - Change point detection: Sudden changes in behavior
+       - Seasonality analysis: Distinguish legitimate seasonal patterns from suspicious
+       - Output: Providers with significant behavioral changes
 
-    9c. WASTE IDENTIFIED
-        - Provider education on best practices
-        - Clinical guidelines distribution
-        - Peer comparison feedback
-        - Update graph: Refine algorithms
+   Branch E: CLAIM SIMILARITY ANALYSIS
+   3e. Find duplicate/similar claims
+       - Feature extraction: Provider, patient, date, codes, amount
+       - Similarity scoring: Jaccard similarity, cosine similarity
+       - Temporal clustering: Group claims by time proximity
+       - Output: Clusters of suspiciously similar claims
 
-    9d. LEGITIMATE ACTIVITY
-        - Close case, no action
-        - Update whitelist
-        - Refine detection algorithms to reduce false positives
-        - Update graph: Adjust risk model
+4. MERGE: "Combine Risk Scores"
+   - Aggregate results from all detection algorithms
+   - Weighted scoring: Assign weights based on algorithm confidence
+   - Risk score calculation: Composite score 0-100
+   - Formula: Risk = 0.25×Outlier + 0.20×Community + 0.25×Referral + 0.15×Temporal + 0.15×Similarity
 
-    10. FEEDBACK LOOP: "Update Detection Models"
-        - Machine learning: Train models on confirmed fraud cases
-        - Algorithm tuning: Adjust weights and thresholds based on results
-        - New pattern identification: Document new fraud schemes discovered
-        - Graph enrichment: Add investigation outcomes as node properties
+5. PROCESS: "Apply Business Rules"
+   - Whitelist: Exclude known legitimate providers (teaching hospitals, trauma centers)
+   - Specialty adjustments: Account for expected variations by specialty
+   - Volume thresholds: Require minimum billing volume for investigation
+   - Historical context: Consider prior investigation results
+   - Output: Filtered list of high-priority cases
 
-    11. END: "Continuous Monitoring"
-        - Real-time alerting: Flag new suspicious activity
-        - Quarterly reports: Aggregate fraud trends, financial impact
-        - Industry sharing: Participate in fraud information exchanges
-        - Return to Step 1: Daily incremental processing
+6. PROCESS: "Generate Investigation Cases"
+   - Rank providers by composite risk score
+   - Create case files with supporting evidence:
+     * Statistical anomalies detected
+     * Graph patterns identified
+     * Peer comparison data
+     * Detailed claim listings
+     * Patient profile analysis
+   - Estimate financial exposure
+   - Assign investigation priority: Critical, High, Medium, Low
 
-    Graph Query Callouts (shown as side annotations):
+7. DECISION: "Risk Score Above Threshold?"
+   - Critical (90-100): Immediate investigation, potential law enforcement referral
+   - High (75-89): Priority investigation within 30 days
+   - Medium (60-74): Investigation within 90 days
+   - Low (<60): Monitoring, educational outreach
 
-    Query 1: "Find providers with circular referrals and financial ties"
-    MATCH path = (p1:Provider)-[:REFERS_TO*2..4]->(p1)
-    WHERE length(path) <= 4
-    WITH nodes(path) as cycle_providers
-    MATCH (p1)-[:FINANCIAL_RELATIONSHIP]-(p2)
-    WHERE p1 IN cycle_providers AND p2 IN cycle_providers
-    RETURN cycle_providers, count(*) as financial_links
-    ORDER BY financial_links DESC
+8a. IF CRITICAL/HIGH: "Human Investigation"
+    - Special Investigation Unit (SIU) review
+    - Detailed claim audit
+    - Patient contact/interviews
+    - Provider site visit
+    - Medical record review
+    - Compare documentation to billed services
 
-    Query 2: "Community detection with billing pattern similarity"
-    CALL gds.louvain.stream('provider-network')
-    YIELD nodeId, communityId
-    WITH gds.util.asNode(nodeId) as provider, communityId
-    MATCH (provider)-[:FILED]->(c:Claim)
-    WITH communityId,
-         avg(c.paid_amount) as avg_claim_amount,
-         collect(DISTINCT provider.npi) as providers
-    WHERE size(providers) > 5 AND avg_claim_amount > 5000
-    RETURN communityId, providers, avg_claim_amount
+8b. IF MEDIUM: "Enhanced Monitoring"
+    - Prepayment review of future claims
+    - Automated edits and audits
+    - Quarterly pattern analysis
+    - Educational intervention
 
-    Query 3: "Statistical outlier detection with peer comparison"
-    MATCH (p:Provider {specialty: $specialty})-[:FILED]->(c:Claim)
-    WITH p,
-         count(c) as claim_volume,
-         avg(c.paid_amount) as avg_amount,
-         stdDev(c.paid_amount) as std_amount
-    WITH collect({provider: p, volume: claim_volume, avg: avg_amount}) as all_providers,
-         avg(claim_volume) as peer_avg_volume,
-         stdDev(claim_volume) as peer_std_volume
-    UNWIND all_providers as prov
-    WITH prov,
-         (prov.volume - peer_avg_volume) / peer_std_volume as z_score
-    WHERE abs(z_score) > 3.0
-    RETURN prov.provider.name, prov.volume, z_score
-    ORDER BY abs(z_score) DESC
+8c. IF LOW: "Standard Processing"
+    - Continue routine monitoring
+    - Flag for review if patterns worsen
 
-    Color Coding:
-    - Blue: Data ingestion and graph construction
-    - Green: Detection algorithms
-    - Yellow: Risk scoring and prioritization
-    - Orange: Investigation activities
-    - Red: Fraud confirmed and enforcement
-    - Purple: Model updates and feedback
+9. INVESTIGATION OUTCOMES:
 
-    Key Performance Indicators (sidebar):
-    - Total providers monitored: X million
-    - Suspicious cases identified: X,XXX
-    - Investigations initiated: X,XXX
-    - Fraud confirmed: XXX cases, $XX million recovered
-    - False positive rate: XX%
-    - Average time to detection: XX days
-    - ROI: $XX recovered per $1 invested
+9a. FRAUD CONFIRMED
+    - Administrative actions: Payment recoupment, contract termination
+    - Civil actions: False Claims Act lawsuit, civil monetary penalties
+    - Criminal referral: Department of Justice, FBI Healthcare Fraud Unit
+    - Exclusion: OIG List of Excluded Individuals/Entities (LEIE)
+    - Update graph: Mark provider as confirmed fraud, inform future detection
 
-    Implementation: HTML/CSS/JavaScript with interactive SVG or mermaid
-    Canvas size: 1000x1400px (vertical scroll)
-    Additional features: Click on any algorithm to see detailed explanation, hover for example output
+9b. ABUSE IDENTIFIED (Not Fraud)
+    - Corrective action plan
+    - Provider education
+    - Prepayment review for period of time
+    - Repayment of overpayments
+    - Update graph: Adjust risk model to reduce false positives
+
+9c. WASTE IDENTIFIED
+    - Provider education on best practices
+    - Clinical guidelines distribution
+    - Peer comparison feedback
+    - Update graph: Refine algorithms
+
+9d. LEGITIMATE ACTIVITY
+    - Close case, no action
+    - Update whitelist
+    - Refine detection algorithms to reduce false positives
+    - Update graph: Adjust risk model
+
+10. FEEDBACK LOOP: "Update Detection Models"
+    - Machine learning: Train models on confirmed fraud cases
+    - Algorithm tuning: Adjust weights and thresholds based on results
+    - New pattern identification: Document new fraud schemes discovered
+    - Graph enrichment: Add investigation outcomes as node properties
+
+11. END: "Continuous Monitoring"
+    - Real-time alerting: Flag new suspicious activity
+    - Quarterly reports: Aggregate fraud trends, financial impact
+    - Industry sharing: Participate in fraud information exchanges
+    - Return to Step 1: Daily incremental processing
+
+Graph Query Callouts (shown as side annotations):
+
+Query 1: "Find providers with circular referrals and financial ties"
+MATCH path = (p1:Provider)-[:REFERS_TO*2..4]->(p1)
+WHERE length(path) <= 4
+WITH nodes(path) as cycle_providers
+MATCH (p1)-[:FINANCIAL_RELATIONSHIP]-(p2)
+WHERE p1 IN cycle_providers AND p2 IN cycle_providers
+RETURN cycle_providers, count(*) as financial_links
+ORDER BY financial_links DESC
+
+Query 2: "Community detection with billing pattern similarity"
+CALL gds.louvain.stream('provider-network')
+YIELD nodeId, communityId
+WITH gds.util.asNode(nodeId) as provider, communityId
+MATCH (provider)-[:FILED]->(c:Claim)
+WITH communityId,
+     avg(c.paid_amount) as avg_claim_amount,
+     collect(DISTINCT provider.npi) as providers
+WHERE size(providers) > 5 AND avg_claim_amount > 5000
+RETURN communityId, providers, avg_claim_amount
+
+Query 3: "Statistical outlier detection with peer comparison"
+MATCH (p:Provider {specialty: $specialty})-[:FILED]->(c:Claim)
+WITH p,
+     count(c) as claim_volume,
+     avg(c.paid_amount) as avg_amount,
+     stdDev(c.paid_amount) as std_amount
+WITH collect({provider: p, volume: claim_volume, avg: avg_amount}) as all_providers,
+     avg(claim_volume) as peer_avg_volume,
+     stdDev(claim_volume) as peer_std_volume
+UNWIND all_providers as prov
+WITH prov,
+     (prov.volume - peer_avg_volume) / peer_std_volume as z_score
+WHERE abs(z_score) > 3.0
+RETURN prov.provider.name, prov.volume, z_score
+ORDER BY abs(z_score) DESC
+
+Color Coding:
+- Blue: Data ingestion and graph construction
+- Green: Detection algorithms
+- Yellow: Risk scoring and prioritization
+- Orange: Investigation activities
+- Red: Fraud confirmed and enforcement
+- Purple: Model updates and feedback
+
+Key Performance Indicators (sidebar):
+- Total providers monitored: X million
+- Suspicious cases identified: X,XXX
+- Investigations initiated: X,XXX
+- Fraud confirmed: XXX cases, $XX million recovered
+- False positive rate: XX%
+- Average time to detection: XX days
+- ROI: $XX recovered per $1 invested
+
+Implementation: HTML/CSS/JavaScript with interactive SVG or mermaid
+Canvas size: 1000x1400px (vertical scroll)
+Additional features: Click on any algorithm to see detailed explanation, hover for example output
 </details>
 
 ## Behavioral Health Fraud
@@ -511,179 +566,184 @@ Graph-based detection of behavioral health fraud leverages several key indicator
 - **Geographic anomalies:** Identifying patients traveling long distances for treatment when closer options exist, suggesting recruitment
 - **Rapid readmissions:** Tracking patients who cycle repeatedly through multiple facilities in short timeframes
 
+#### Diagram: Behavioral Health Fraud Network Interactive MicroSim
+
 <details markdown="1">
-    <summary>Behavioral Health Fraud Network Interactive MicroSim</summary>
-    Type: microsim
+<summary>Behavioral Health Fraud Network Interactive MicroSim</summary>
+Type: microsim
+**sim-id:** behavioral-health-fraud-network-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Help students understand how patient recruitment fraud rings operate in behavioral health, identify network indicators of fraud, and practice using graph analysis to detect coordinated schemes.
+Learning objective: Help students understand how patient recruitment fraud rings operate in behavioral health, identify network indicators of fraud, and practice using graph analysis to detect coordinated schemes.
 
-    Canvas layout (1300x850px):
-    - Left side (850x850): Interactive network visualization
-    - Right side (450x850): Investigation panel and controls
+Canvas layout (1300x850px):
+- Left side (850x850): Interactive network visualization
+- Right side (450x850): Investigation panel and controls
 
-    Visual elements in network area:
+Visual elements in network area:
 
-    Node types (with distinct shapes and colors):
-    - Treatment Facilities (large blue circles)
-    - Patients (small green circles)
-    - Recruiters/Body Brokers (orange triangles)
-    - Sober Living Homes (purple squares)
-    - Laboratories (yellow diamonds)
-    - Transportation Companies (gray hexagons)
-    - Insurance Plans (red pentagons)
+Node types (with distinct shapes and colors):
+- Treatment Facilities (large blue circles)
+- Patients (small green circles)
+- Recruiters/Body Brokers (orange triangles)
+- Sober Living Homes (purple squares)
+- Laboratories (yellow diamonds)
+- Transportation Companies (gray hexagons)
+- Insurance Plans (red pentagons)
 
-    Edge types:
-    - Patient admitted to facility (solid green)
-    - Recruiter referred patient (dashed orange)
-    - Patient housed at sober home (dotted purple)
-    - Facility orders from lab (solid yellow)
-    - Financial relationship (thick red dashed)
-    - Transportation provided (dotted gray)
+Edge types:
+- Patient admitted to facility (solid green)
+- Recruiter referred patient (dashed orange)
+- Patient housed at sober home (dotted purple)
+- Facility orders from lab (solid yellow)
+- Financial relationship (thick red dashed)
+- Transportation provided (dotted gray)
 
-    Scenario: Florida Behavioral Health Fraud Ring
+Scenario: Florida Behavioral Health Fraud Ring
 
-    Pre-loaded network showing:
-    - 5 treatment facilities (PHP/IOP programs)
-    - 3 sober living homes
-    - 2 urine drug screen laboratories
-    - 8 patient recruiters/body brokers
-    - 45 patients with out-of-state commercial insurance
-    - 2 transportation companies
-    - Financial relationships connecting entities
+Pre-loaded network showing:
+- 5 treatment facilities (PHP/IOP programs)
+- 3 sober living homes
+- 2 urine drug screen laboratories
+- 8 patient recruiters/body brokers
+- 45 patients with out-of-state commercial insurance
+- 2 transportation companies
+- Financial relationships connecting entities
 
-    Legitimate vs. Fraudulent Patterns:
+Legitimate vs. Fraudulent Patterns:
 
-    LEGITIMATE PATTERN (shown on left half):
-    - Local patients (from same metro area)
-    - Single admission per patient
-    - Variety of insurance types including Medicaid
-    - Referrals from diverse sources (hospitals, physicians, self-referral)
-    - Lab testing at normal frequency (2-3 times per week)
-    - Average length of stay: 30-45 days
-    - No financial relationships between entities
+LEGITIMATE PATTERN (shown on left half):
+- Local patients (from same metro area)
+- Single admission per patient
+- Variety of insurance types including Medicaid
+- Referrals from diverse sources (hospitals, physicians, self-referral)
+- Lab testing at normal frequency (2-3 times per week)
+- Average length of stay: 30-45 days
+- No financial relationships between entities
 
-    FRAUDULENT PATTERN (shown on right half):
-    - Patients from multiple out-of-state locations (highlighted)
-    - Same patients cycling through multiple facilities
-    - Exclusively high-reimbursement commercial insurance (Blue Cross, Aetna)
-    - All patients referred by same 3-5 recruiters
-    - Excessive lab testing (daily UDS, genetic tests)
-    - Extended lengths of stay (90-180 days without improvement)
-    - Financial ties: Facilities co-owned by recruiters, kickbacks to labs, shared ownership of sober homes
+FRAUDULENT PATTERN (shown on right half):
+- Patients from multiple out-of-state locations (highlighted)
+- Same patients cycling through multiple facilities
+- Exclusively high-reimbursement commercial insurance (Blue Cross, Aetna)
+- All patients referred by same 3-5 recruiters
+- Excessive lab testing (daily UDS, genetic tests)
+- Extended lengths of stay (90-180 days without improvement)
+- Financial ties: Facilities co-owned by recruiters, kickbacks to labs, shared ownership of sober homes
 
-    Interactive controls (right panel):
+Interactive controls (right panel):
 
-    Investigation Mode Selector:
-    - "Show Full Network" - display all entities and relationships
-    - "Patient Flow Analysis" - highlight patient journeys through system
-    - "Financial Connections" - emphasize ownership and payment relationships
-    - "Recruiter Networks" - focus on body brokers and their referral patterns
-    - "Lab Testing Patterns" - show testing frequency and billing
+Investigation Mode Selector:
+- "Show Full Network" - display all entities and relationships
+- "Patient Flow Analysis" - highlight patient journeys through system
+- "Financial Connections" - emphasize ownership and payment relationships
+- "Recruiter Networks" - focus on body brokers and their referral patterns
+- "Lab Testing Patterns" - show testing frequency and billing
 
-    Detection Algorithms (run on-demand):
+Detection Algorithms (run on-demand):
 
-    1. Button: "Find Coordinated Admission Patterns"
-       - Highlights patients admitted to multiple facilities in network within short time periods
-       - Shows: "12 patients admitted to 3+ facilities within 90 days"
-       - Calculates: Total billing $2.8M for these patients
+1. Button: "Find Coordinated Admission Patterns"
+   - Highlights patients admitted to multiple facilities in network within short time periods
+   - Shows: "12 patients admitted to 3+ facilities within 90 days"
+   - Calculates: Total billing $2.8M for these patients
 
-    2. Button: "Identify Out-of-State Patient Clusters"
-       - Highlights patients whose home address is >500 miles from facility
-       - Shows: "38 of 45 patients (84%) from out of state vs. 8% for legitimate facilities"
-       - Maps: Show patient origin states
+2. Button: "Identify Out-of-State Patient Clusters"
+   - Highlights patients whose home address is >500 miles from facility
+   - Shows: "38 of 45 patients (84%) from out of state vs. 8% for legitimate facilities"
+   - Maps: Show patient origin states
 
-    3. Button: "Detect Recruiter Kickback Indicators"
-       - Highlights recruiters referring to multiple facilities
-       - Calculates referral fees: Average $1,500 per patient × 45 patients = $67,500
-       - Shows financial relationships: Recruiter A co-owns Facility 1 and Sober Home 2
+3. Button: "Detect Recruiter Kickback Indicators"
+   - Highlights recruiters referring to multiple facilities
+   - Calculates referral fees: Average $1,500 per patient × 45 patients = $67,500
+   - Shows financial relationships: Recruiter A co-owns Facility 1 and Sober Home 2
 
-    4. Button: "Analyze Lab Testing Overutilization"
-       - Compares testing frequency: Network facilities 15 UDS tests per patient per month vs. industry norm of 8
-       - Highlights financial relationship: Lab B owned by same entity as Facility 1
-       - Calculates excess billing: $450k in unnecessary testing
+4. Button: "Analyze Lab Testing Overutilization"
+   - Compares testing frequency: Network facilities 15 UDS tests per patient per month vs. industry norm of 8
+   - Highlights financial relationship: Lab B owned by same entity as Facility 1
+   - Calculates excess billing: $450k in unnecessary testing
 
-    5. Button: "Find Circular Ownership Patterns"
-       - Reveals shared ownership: Same individual owns Treatment Facility 1, Sober Home 2, Lab B, Transport Co A
-       - Visualizes money flow: Insurance pays facility → facility pays lab (same owner) → facility pays sober home (same owner)
-       - Shows: "87% of revenue stays within controlled entity network"
+5. Button: "Find Circular Ownership Patterns"
+   - Reveals shared ownership: Same individual owns Treatment Facility 1, Sober Home 2, Lab B, Transport Co A
+   - Visualizes money flow: Insurance pays facility → facility pays lab (same owner) → facility pays sober home (same owner)
+   - Shows: "87% of revenue stays within controlled entity network"
 
-    Patient Journey Visualization:
+Patient Journey Visualization:
 
-    Click on any patient node to see their timeline:
-    - Day 1: Recruiter contacts patient in Ohio, offers free plane ticket to Florida
-    - Day 3: Patient arrives, housed at Sober Home A
-    - Day 4: Admitted to Facility 1 for PHP (billed at $1,500/day)
-    - Week 1-4: Daily UDS testing ($150/test), genetic testing ($5,000)
-    - Day 30: "Stepped down" to IOP at Facility 1 (billed at $800/day)
-    - Day 60: Insurance questions medical necessity
-    - Day 61: Patient "transferred" to Facility 2 (resets utilization review)
-    - Day 90: Patient discharged, returns to Ohio
-    - Day 120: Recruiter contacts patient again, cycle repeats
+Click on any patient node to see their timeline:
+- Day 1: Recruiter contacts patient in Ohio, offers free plane ticket to Florida
+- Day 3: Patient arrives, housed at Sober Home A
+- Day 4: Admitted to Facility 1 for PHP (billed at $1,500/day)
+- Week 1-4: Daily UDS testing ($150/test), genetic testing ($5,000)
+- Day 30: "Stepped down" to IOP at Facility 1 (billed at $800/day)
+- Day 60: Insurance questions medical necessity
+- Day 61: Patient "transferred" to Facility 2 (resets utilization review)
+- Day 90: Patient discharged, returns to Ohio
+- Day 120: Recruiter contacts patient again, cycle repeats
 
-    Red Flags Display (updates based on analysis):
-    - ⚠️ High out-of-state patient percentage: 84% vs. 8% norm
-    - ⚠️ Excessive LOS: 127 days avg vs. 35 days norm
-    - ⚠️ Readmission cycling: 12 patients readmitted 3+ times
-    - ⚠️ Shared ownership: 5 entities controlled by 2 individuals
-    - ⚠️ Lab overutilization: 187% above benchmark
-    - ⚠️ Payer concentration: 92% commercial vs. 40% norm
-    - ⚠️ Recruiter concentration: 78% of patients from 3 recruiters
+Red Flags Display (updates based on analysis):
+- ⚠️ High out-of-state patient percentage: 84% vs. 8% norm
+- ⚠️ Excessive LOS: 127 days avg vs. 35 days norm
+- ⚠️ Readmission cycling: 12 patients readmitted 3+ times
+- ⚠️ Shared ownership: 5 entities controlled by 2 individuals
+- ⚠️ Lab overutilization: 187% above benchmark
+- ⚠️ Payer concentration: 92% commercial vs. 40% norm
+- ⚠️ Recruiter concentration: 78% of patients from 3 recruiters
 
-    Financial Impact Calculator:
-    - Total billed to insurance: $8.7 million (18 months)
-    - Estimated appropriate cost: $2.1 million
-    - Potential overpayment: $6.6 million
-    - Estimated kickback payments: $850k to recruiters, labs, sober homes
+Financial Impact Calculator:
+- Total billed to insurance: $8.7 million (18 months)
+- Estimated appropriate cost: $2.1 million
+- Potential overpayment: $6.6 million
+- Estimated kickback payments: $850k to recruiters, labs, sober homes
 
-    Investigation Actions (buttons):
-    - "Interview Patients" - simulate patient interviews revealing recruitment
-    - "Subpoena Financial Records" - reveal hidden ownership connections
-    - "Conduct Site Visit" - discover census fraud (patients not at facility when billed)
-    - "Coordinate with Other Payers" - find same pattern across insurers
-    - "Generate Investigation Report" - export findings
+Investigation Actions (buttons):
+- "Interview Patients" - simulate patient interviews revealing recruitment
+- "Subpoena Financial Records" - reveal hidden ownership connections
+- "Conduct Site Visit" - discover census fraud (patients not at facility when billed)
+- "Coordinate with Other Payers" - find same pattern across insurers
+- "Generate Investigation Report" - export findings
 
-    Educational Features:
+Educational Features:
 
-    "How Legitimate Facilities Differ" comparison toggle:
-    - Shows side-by-side metrics
-    - Legitimate: Local patients, diverse referral sources, appropriate testing, single admissions
-    - Fraudulent: Out-of-state patients, concentrat recruiter referrals, excessive testing, readmission cycling
+"How Legitimate Facilities Differ" comparison toggle:
+- Shows side-by-side metrics
+- Legitimate: Local patients, diverse referral sources, appropriate testing, single admissions
+- Fraudulent: Out-of-state patients, concentrat recruiter referrals, excessive testing, readmission cycling
 
-    "Regulatory Framework" info panel:
-    - Federal Anti-Kickback Statute explanation
-    - Patient brokering state laws (illegal in multiple states)
-    - Stark Law implications
-    - Parity Act requirements
+"Regulatory Framework" info panel:
+- Federal Anti-Kickback Statute explanation
+- Patient brokering state laws (illegal in multiple states)
+- Stark Law implications
+- Parity Act requirements
 
-    "Detection Best Practices" checklist:
-    - ✓ Monitor out-of-state admission rates
-    - ✓ Track patient readmission patterns
-    - ✓ Analyze lab testing frequency vs. clinical necessity
-    - ✓ Map ownership relationships across provider types
-    - ✓ Identify referral source concentration
-    - ✓ Compare length of stay to outcomes data
+"Detection Best Practices" checklist:
+- ✓ Monitor out-of-state admission rates
+- ✓ Track patient readmission patterns
+- ✓ Analyze lab testing frequency vs. clinical necessity
+- ✓ Map ownership relationships across provider types
+- ✓ Identify referral source concentration
+- ✓ Compare length of stay to outcomes data
 
-    Gamification:
-    - Student role: Special Investigator for commercial insurer
-    - Goal: Identify all fraud indicators before "budget runs out"
-    - Scoring: Points for each red flag discovered, penalties for false accusations
-    - Time limit: 15 minutes to build investigation case
-    - Success criteria: Identify at least 6 of 8 major fraud indicators
+Gamification:
+- Student role: Special Investigator for commercial insurer
+- Goal: Identify all fraud indicators before "budget runs out"
+- Scoring: Points for each red flag discovered, penalties for false accusations
+- Time limit: 15 minutes to build investigation case
+- Success criteria: Identify at least 6 of 8 major fraud indicators
 
-    Behavior:
-    - Initially show network without fraud indicators visible
-    - Student must run detection algorithms to reveal patterns
-    - Each algorithm takes "time" (game mechanic) and provides evidence
-    - Student builds investigation case by selecting evidence
-    - Final screen shows whether case is strong enough for prosecution
+Behavior:
+- Initially show network without fraud indicators visible
+- Student must run detection algorithms to reveal patterns
+- Each algorithm takes "time" (game mechanic) and provides evidence
+- Student builds investigation case by selecting evidence
+- Final screen shows whether case is strong enough for prosecution
 
-    Implementation notes:
-    - Use vis-network for graph visualization
-    - Implement zoom, pan, drag functionality
-    - Use animation to show patient flows through system over time
-    - Provide "Investigation Playbook" reference with real-world detection techniques
-    - Include actual case study references (Department of Justice press releases)
-    - Color-code risk level: Green (normal), Yellow (suspicious), Red (high-risk fraud indicators)
+Implementation notes:
+- Use vis-network for graph visualization
+- Implement zoom, pan, drag functionality
+- Use animation to show patient flows through system over time
+- Provide "Investigation Playbook" reference with real-world detection techniques
+- Include actual case study references (Department of Justice press releases)
+- Color-code risk level: Green (normal), Yellow (suspicious), Red (high-risk fraud indicators)
 </details>
 
 ## Durable Medical Equipment (DME) Fraud
@@ -718,6 +778,45 @@ The following summarizes key indicators of DME fraud:
 - **Billing patterns:** High percentage of expensive items (power wheelchairs, hospital beds), bills submitted shortly before bankruptcy/shutdown
 - **Patient indicators:** Deceased patients receiving equipment, patients in nursing homes receiving unnecessary equipment, patients unaware of equipment ordered in their name
 
+The MicroSim below lets you work a DME caseload the way an investigator does: switch on red flags one at a time to surface the suppliers worth auditing and see the numbers behind each flag.
+
+#### Diagram: DME Fraud Pattern Detector MicroSim
+
+<details markdown="1">
+<summary>DME Fraud Pattern Detector MicroSim</summary>
+Type: microsim
+**sim-id:** dme-fraud-pattern-detector<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
+
+Learning objective: Analyze (L4 — differentiate, examine, attribute) how DME-specific network signals (referral concentration, geographic distance, patient-address clustering, prescriber specialty mismatch) separate legitimate equipment suppliers from fraud-suggestive ones in a physician–supplier referral network.
+
+Canvas layout (responsive, target 920x600; resizes with the window):
+- Main area (left ~65%): a bipartite vis-network of Physician nodes and DME Supplier nodes connected by PRESCRIBES_TO / REFERS_TO edges, with a few patient-address clusters shown as small grouped markers near suppliers.
+- Right panel (~35%): red-flag toggles, a ranked supplier table, and a per-supplier detail infobox.
+
+Visual elements:
+- Supplier nodes sized by total billing; physician nodes sized by prescription volume.
+- Edges weighted by referral count; suspicious suppliers recolor toward red as more red flags apply.
+- A seeded fraud supplier that receives nearly all referrals from two physicians, serves patients hundreds of miles away, shows multiple patients at one address, and has prescribers outside the relevant specialty.
+
+Interactive controls (use built-in DOM controls, never hand-drawn):
+- Checkboxes (red-flag filters): Referral concentration | Geographic anomaly | Patient-address clustering | Specialty mismatch
+- Slider "Concentration threshold" (% of a supplier's referrals from its top two physicians)
+- Button "Score suppliers"
+- Button "Reset"
+
+Default parameters: all flags off, concentration threshold 70%.
+
+Behavior and data visibility:
+- Enabling each flag adds a transparent scoring criterion; the supplier table re-ranks and the infobox lists, for the selected supplier, the concrete numbers behind each flag (for example, "92% of referrals from 2 physicians", "mean patient distance 412 mi", "5 patients at 1 address").
+- Clicking a supplier highlights its physician neighborhood and patient cluster, so learners attribute the score to specific structural evidence rather than a black-box risk number.
+
+Instructional Rationale: An Analyze objective requires the learner to decompose a risk signal into its parts. Letting learners switch individual red flags on and off and read the underlying numbers makes each contribution attributable, and contrasting the seeded fraud supplier with legitimate ones teaches differentiation. Selection-driven highlighting (no animation) keeps focus on structure.
+
+Implementation: vis-network bipartite graph with DOM controls; per-supplier metrics (concentration, distance, address clustering, specialty match) computed in-browser over a synthetic dataset; responsive to window resize.
+</details>
+
 ## Provider Network Fraud and Collusion
 
 **Provider network fraud** involves coordination between multiple healthcare entities—providers, facilities, laboratories, pharmacies, DME suppliers—to execute complex fraudulent schemes that would be difficult for any single entity alone. These coordinated schemes are particularly challenging to detect with traditional transaction-based fraud detection because individual transactions may appear legitimate; only by analyzing the network of relationships does the fraud become apparent. Graph databases excel at this type of detection through network analysis and community detection algorithms.
@@ -742,194 +841,199 @@ Graph algorithms particularly effective for detecting provider network fraud inc
 - **Link prediction:** Identifies likely but undisclosed relationships between providers
 - **Motif detection:** Finds recurring subgraph patterns characteristic of fraud schemes (e.g., circular referral patterns, star patterns with one central node receiving all referrals)
 
+#### Diagram: Provider Network Fraud Detection Dashboard
+
 <details markdown="1">
-    <summary>Provider Network Fraud Detection Dashboard</summary>
-    Type: chart
+<summary>Provider Network Fraud Detection Dashboard</summary>
+Type: chart
+**sim-id:** provider-network-fraud-detection-dashboard<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Multi-panel dashboard with network visualization and metrics
+Chart type: Multi-panel dashboard with network visualization and metrics
 
-    Purpose: Provide comprehensive view of provider network fraud indicators combining network visualization, statistical metrics, financial impact analysis, and investigation priorities.
+Purpose: Provide comprehensive view of provider network fraud indicators combining network visualization, statistical metrics, financial impact analysis, and investigation priorities.
 
-    Dashboard Layout (1400x900px):
+Dashboard Layout (1400x900px):
 
-    Panel 1: Network Visualization (top, 1400x500px)
-    - Large force-directed graph showing provider relationships
-    - Node types: Providers (circles), Facilities (squares), Labs (triangles), Pharmacies (diamonds), Patients (small dots)
-    - Node colors: Risk score heat map (green=low, yellow=moderate, orange=high, red=critical)
-    - Node sizes: Billing volume
-    - Edge types: Referrals (arrows), Financial relationships (dashed thick), Shared patients (thin), Ownership (bold)
-    - Community detection: Color-coded regions showing detected communities
-    - Interactive: Click node for details, hover edge for relationship metrics, drag to rearrange
+Panel 1: Network Visualization (top, 1400x500px)
+- Large force-directed graph showing provider relationships
+- Node types: Providers (circles), Facilities (squares), Labs (triangles), Pharmacies (diamonds), Patients (small dots)
+- Node colors: Risk score heat map (green=low, yellow=moderate, orange=high, red=critical)
+- Node sizes: Billing volume
+- Edge types: Referrals (arrows), Financial relationships (dashed thick), Shared patients (thin), Ownership (bold)
+- Community detection: Color-coded regions showing detected communities
+- Interactive: Click node for details, hover edge for relationship metrics, drag to rearrange
 
-    Panel 2: Risk Metrics Table (left, 400x350px)
-    Table showing top 20 providers by fraud risk:
+Panel 2: Risk Metrics Table (left, 400x350px)
+Table showing top 20 providers by fraud risk:
 
-    | Rank | Provider | Risk Score | Primary Indicators | Estimated Exposure |
-    |------|----------|------------|-------------------|-------------------|
-    | 1 | ABC Medical Group | 94 | Circular referrals, kickbacks | $2.8M |
-    | 2 | XYZ Diagnostics | 89 | Referral concentration, upcoding | $1.9M |
-    | 3 | Dr. Smith Clinic | 87 | Phantom billing, shared patients | $1.7M |
-    | ... | ... | ... | ... | ... |
+| Rank | Provider | Risk Score | Primary Indicators | Estimated Exposure |
+|------|----------|------------|-------------------|-------------------|
+| 1 | ABC Medical Group | 94 | Circular referrals, kickbacks | $2.8M |
+| 2 | XYZ Diagnostics | 89 | Referral concentration, upcoding | $1.9M |
+| 3 | Dr. Smith Clinic | 87 | Phantom billing, shared patients | $1.7M |
+| ... | ... | ... | ... | ... |
 
-    Columns sortable, filterable by risk threshold
-    Click row to highlight provider in network visualization
-    Color-coded risk scores match network heat map
+Columns sortable, filterable by risk threshold
+Click row to highlight provider in network visualization
+Color-coded risk scores match network heat map
 
-    Panel 3: Community Analysis (middle, 500x350px)
-    Shows detected communities with metrics:
+Panel 3: Community Analysis (middle, 500x350px)
+Shows detected communities with metrics:
 
-    Community 1 (Red Zone):
-    - Members: 12 providers, 3 facilities, 2 labs
-    - Connections: 47 referral relationships, 8 financial ties
-    - Billing volume: $15.8M (18 months)
-    - Risk indicators:
-      * Circular referral pattern (5 closed loops)
-      * Shared ownership of 4 entities
-      * Referral reciprocity: 89% (norm: 12%)
-      * Patient sharing: 234 patients seen by 4+ members
-    - Estimated fraud exposure: $8.2M
-    - Investigation priority: CRITICAL
+Community 1 (Red Zone):
+- Members: 12 providers, 3 facilities, 2 labs
+- Connections: 47 referral relationships, 8 financial ties
+- Billing volume: $15.8M (18 months)
+- Risk indicators:
+  * Circular referral pattern (5 closed loops)
+  * Shared ownership of 4 entities
+  * Referral reciprocity: 89% (norm: 12%)
+  * Patient sharing: 234 patients seen by 4+ members
+- Estimated fraud exposure: $8.2M
+- Investigation priority: CRITICAL
 
-    Community 2 (Orange Zone):
-    - Members: 8 providers, 1 DME supplier
-    - Connections: 23 referral relationships
-    - Risk indicators: [similar format]
-    - Investigation priority: HIGH
+Community 2 (Orange Zone):
+- Members: 8 providers, 1 DME supplier
+- Connections: 23 referral relationships
+- Risk indicators: [similar format]
+- Investigation priority: HIGH
 
-    [Additional communities...]
+[Additional communities...]
 
-    Interactive: Click community to isolate in network view, drill into member details
+Interactive: Click community to isolate in network view, drill into member details
 
-    Panel 4: Temporal Trends (right, 500x350px)
-    Line chart showing fraud indicators over time:
-    - X-axis: Months (last 24 months)
-    - Y-axis: Multiple metrics
-    - Lines:
-      * Network density (blue): Connections between providers increasing
-      * Average risk score (orange): Overall risk trending up
-      * Investigation cases (green): Open investigations
-      * Confirmed fraud (red): Cases with confirmed fraud
-    - Annotations: Mark significant events (new regulations, enforcement actions)
-    - Shows: "Network density increased 47% in last 12 months, suggesting growth of organized schemes"
+Panel 4: Temporal Trends (right, 500x350px)
+Line chart showing fraud indicators over time:
+- X-axis: Months (last 24 months)
+- Y-axis: Multiple metrics
+- Lines:
+  * Network density (blue): Connections between providers increasing
+  * Average risk score (orange): Overall risk trending up
+  * Investigation cases (green): Open investigations
+  * Confirmed fraud (red): Cases with confirmed fraud
+- Annotations: Mark significant events (new regulations, enforcement actions)
+- Shows: "Network density increased 47% in last 12 months, suggesting growth of organized schemes"
 
-    Panel 5: Financial Impact Summary (bottom left, 450x150px)
-    Key metrics boxes:
+Panel 5: Financial Impact Summary (bottom left, 450x150px)
+Key metrics boxes:
 
-    [Total Network Billing] [$128.5M]
-    18-month period
+[Total Network Billing] [$128.5M]
+18-month period
 
-    [Estimated Fraud] [$31.2M]
-    24% of total (high)
+[Estimated Fraud] [$31.2M]
+24% of total (high)
 
-    [Investigations Active] [47 cases]
-    15 critical, 32 high priority
+[Investigations Active] [47 cases]
+15 critical, 32 high priority
 
-    [Recoveries YTD] [$8.7M]
-    28% of estimated fraud
+[Recoveries YTD] [$8.7M]
+28% of estimated fraud
 
-    Color-coding: Red if exceeding thresholds, green if within norms
+Color-coding: Red if exceeding thresholds, green if within norms
 
-    Panel 6: Algorithm Performance (bottom middle, 450x150px)
-    Detection algorithm metrics:
+Panel 6: Algorithm Performance (bottom middle, 450x150px)
+Detection algorithm metrics:
 
-    | Algorithm | Cases Flagged | Confirmed Fraud | Precision | Recall |
-    |-----------|---------------|-----------------|-----------|--------|
-    | Community Detection | 23 | 18 | 78% | 85% |
-    | Referral Analysis | 34 | 21 | 62% | 91% |
-    | Billing Outliers | 56 | 31 | 55% | 88% |
-    | Combined Model | 47 | 37 | 79% | 95% |
+| Algorithm | Cases Flagged | Confirmed Fraud | Precision | Recall |
+|-----------|---------------|-----------------|-----------|--------|
+| Community Detection | 23 | 18 | 78% | 85% |
+| Referral Analysis | 34 | 21 | 62% | 91% |
+| Billing Outliers | 56 | 31 | 55% | 88% |
+| Combined Model | 47 | 37 | 79% | 95% |
 
-    Shows which algorithms are most effective, guides resource allocation
+Shows which algorithms are most effective, guides resource allocation
 
-    Panel 7: Investigation Actions (bottom right, 500x150px)
-    Action buttons with status indicators:
+Panel 7: Investigation Actions (bottom right, 500x150px)
+Action buttons with status indicators:
 
-    - [Run Detection Algorithms] - Execute all fraud detection algorithms on current data
-    - [Generate Investigation Reports] - Create case files for high-risk providers (PDF export)
-    - [Alert Enforcement] - Send notifications to Special Investigation Unit
-    - [Export Network Data] - Download graph data for advanced analysis
-    - [Update Risk Models] - Refresh risk scoring based on latest investigation outcomes
-    - [View Case History] - See past investigations and outcomes
+- [Run Detection Algorithms] - Execute all fraud detection algorithms on current data
+- [Generate Investigation Reports] - Create case files for high-risk providers (PDF export)
+- [Alert Enforcement] - Send notifications to Special Investigation Unit
+- [Export Network Data] - Download graph data for advanced analysis
+- [Update Risk Models] - Refresh risk scoring based on latest investigation outcomes
+- [View Case History] - See past investigations and outcomes
 
-    Status indicators show:
-    - Last run: 2 hours ago
-    - Next scheduled run: 10 PM today
-    - Alerts pending: 5
-    - Cases updated today: 12
+Status indicators show:
+- Last run: 2 hours ago
+- Next scheduled run: 10 PM today
+- Alerts pending: 5
+- Cases updated today: 12
 
-    Interactive Features:
+Interactive Features:
 
-    1. Network Exploration:
-       - Zoom, pan, drag nodes
-       - Filter by risk score threshold (slider: 0-100)
-       - Filter by community
-       - Filter by provider type, specialty
-       - Highlight specific relationship types (toggle referrals, financial, ownership)
-       - Path finder: Select two providers, show all paths connecting them
-       - Ego network: Select provider, show only their immediate connections
+1. Network Exploration:
+   - Zoom, pan, drag nodes
+   - Filter by risk score threshold (slider: 0-100)
+   - Filter by community
+   - Filter by provider type, specialty
+   - Highlight specific relationship types (toggle referrals, financial, ownership)
+   - Path finder: Select two providers, show all paths connecting them
+   - Ego network: Select provider, show only their immediate connections
 
-    2. Drill-Down Analysis:
-       - Click any provider: See detailed profile
-         * Billing history
-         * Referral patterns (who they refer to, who refers to them)
-         * Shared patients with other providers
-         * Financial relationships
-         * Investigation history
-         * Risk score breakdown by factor
-       - Click any community: Isolate in network view, see full member list and metrics
-       - Click any edge: See relationship details (volume, frequency, financial terms)
+2. Drill-Down Analysis:
+   - Click any provider: See detailed profile
+     * Billing history
+     * Referral patterns (who they refer to, who refers to them)
+     * Shared patients with other providers
+     * Financial relationships
+     * Investigation history
+     * Risk score breakdown by factor
+   - Click any community: Isolate in network view, see full member list and metrics
+   - Click any edge: See relationship details (volume, frequency, financial terms)
 
-    3. Time-Based Analysis:
-       - Timeline scrubber: Slide through time to see network evolution
-       - Animate network growth: Watch how communities form over time
-       - Change point detection: Identify when provider behavior shifted
+3. Time-Based Analysis:
+   - Timeline scrubber: Slide through time to see network evolution
+   - Animate network growth: Watch how communities form over time
+   - Change point detection: Identify when provider behavior shifted
 
-    4. Comparative Analysis:
-       - Compare provider to peers: Same specialty, geography, size
-       - Benchmark metrics: Show where provider deviates from norms
-       - Heat map overlay: Show geographic concentration of high-risk providers
+4. Comparative Analysis:
+   - Compare provider to peers: Same specialty, geography, size
+   - Benchmark metrics: Show where provider deviates from norms
+   - Heat map overlay: Show geographic concentration of high-risk providers
 
-    5. Investigation Management:
-       - Assign cases to investigators (dropdown)
-       - Set investigation priorities (drag and drop ranking)
-       - Track investigation status (open, in progress, closed)
-       - Link related cases (if multiple providers in same scheme)
-       - Document findings (notes, evidence uploads)
+5. Investigation Management:
+   - Assign cases to investigators (dropdown)
+   - Set investigation priorities (drag and drop ranking)
+   - Track investigation status (open, in progress, closed)
+   - Link related cases (if multiple providers in same scheme)
+   - Document findings (notes, evidence uploads)
 
-    Sample Queries (available via "Show Query" buttons):
+Sample Queries (available via "Show Query" buttons):
 
-    Query 1: "Find communities with financial relationships"
-    CALL gds.louvain.stream('provider-network')
-    YIELD nodeId, communityId
-    WITH communityId, collect(gds.util.asNode(nodeId)) as members
-    WHERE size(members) >= 5
-    MATCH (m1)-[r:FINANCIAL_RELATIONSHIP]-(m2)
-    WHERE m1 IN members AND m2 IN members
-    RETURN communityId, members, count(r) as financial_links,
-           sum(r.annual_value) as total_financial_value
-    ORDER BY financial_links DESC
+Query 1: "Find communities with financial relationships"
+CALL gds.louvain.stream('provider-network')
+YIELD nodeId, communityId
+WITH communityId, collect(gds.util.asNode(nodeId)) as members
+WHERE size(members) >= 5
+MATCH (m1)-[r:FINANCIAL_RELATIONSHIP]-(m2)
+WHERE m1 IN members AND m2 IN members
+RETURN communityId, members, count(r) as financial_links,
+       sum(r.annual_value) as total_financial_value
+ORDER BY financial_links DESC
 
-    Query 2: "Detect circular referral with shared patients"
-    MATCH path = (p1:Provider)-[:REFERS_TO*2..4]->(p1)
-    WITH nodes(path) as cycle
-    UNWIND cycle as provider
-    MATCH (provider)-[:TREATED]->(patient:Patient)<-[:TREATED]-(other)
-    WHERE other IN cycle AND other <> provider
-    WITH cycle, count(DISTINCT patient) as shared_patients
-    WHERE shared_patients > 10
-    RETURN cycle, shared_patients
-    ORDER BY shared_patients DESC
+Query 2: "Detect circular referral with shared patients"
+MATCH path = (p1:Provider)-[:REFERS_TO*2..4]->(p1)
+WITH nodes(path) as cycle
+UNWIND cycle as provider
+MATCH (provider)-[:TREATED]->(patient:Patient)<-[:TREATED]-(other)
+WHERE other IN cycle AND other <> provider
+WITH cycle, count(DISTINCT patient) as shared_patients
+WHERE shared_patients > 10
+RETURN cycle, shared_patients
+ORDER BY shared_patients DESC
 
-    Data Refresh:
-    - Real-time: Network visualization updates as new relationships detected
-    - Hourly: Risk scores recalculated
-    - Daily: Full detection algorithm run
-    - Weekly: Community detection rerun
-    - Monthly: Historical trend analysis
+Data Refresh:
+- Real-time: Network visualization updates as new relationships detected
+- Hourly: Risk scores recalculated
+- Daily: Full detection algorithm run
+- Weekly: Community detection rerun
+- Monthly: Historical trend analysis
 
-    Implementation: D3.js for network visualization, Chart.js for metrics, React for dashboard framework
-    Performance: Handles networks up to 100,000 nodes, 1M edges
-    Additional features: Export to PDF, scheduled email reports, mobile-responsive view, role-based access control
+Implementation: D3.js for network visualization, Chart.js for metrics, React for dashboard framework
+Performance: Handles networks up to 100,000 nodes, 1M edges
+Additional features: Export to PDF, scheduled email reports, mobile-responsive view, role-based access control
 </details>
 
 ## Compliance Monitoring and Regulatory Requirements

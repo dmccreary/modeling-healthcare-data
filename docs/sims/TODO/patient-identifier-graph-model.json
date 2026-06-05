@@ -1,0 +1,14 @@
+{
+  "sim_id": "patient-identifier-graph-model",
+  "diagram_name": "Patient Identifier Graph Model",
+  "chapter_number": 4,
+  "chapter_title": "Patient Centric Data Modeling",
+  "chapter_dir": "04-patient-centric-data-modeling",
+  "library": "vis-network",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: graph-model\n**sim-id:** patient-identifier-graph-model<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\nPurpose: Illustrate how multiple patient identifiers are connected to a single patient record node\n\nNode types:\n1. Patient (large blue circle)\n   - Properties: master_patient_id, name, birth_date\n   - Example: \"Jane Smith, DOB: 1985-03-15\"\n\n2. Identifier (small orange rectangles)\n   - Properties: identifier_value, type, issuing_system, active_status\n   - Examples:\n     - \"MRN-12345 (Hospital A Medical Record Number)\"\n     - \"SSN-123-45-6789 (Social Security Number)\"\n     - \"INSUR-987654 (Insurance Member ID)\"\n     - \"MRN-98765 (Hospital B Medical Record Number)\"\n\n3. Identity System (gray hexagons)\n   - Properties: system_name, authority, jurisdiction\n   - Examples: \"Hospital A EHR\", \"National SSN Registry\", \"Insurance Provider X\"\n\nEdge types:\n1. HAS_IDENTIFIER (solid blue arrows from Patient to Identifier)\n   - Properties: assigned_date, confidence_score\n\n2. ISSUED_BY (dashed gray arrows from Identifier to Identity System)\n   - Properties: issue_date, expiration_date\n\nSample data:\n- Patient \"Jane Smith\"\n  ├─ HAS_IDENTIFIER → MRN-12345\n  │  └─ ISSUED_BY → Hospital A EHR\n  ├─ HAS_IDENTIFIER → MRN-98765\n  │  └─ ISSUED_BY → Hospital B EHR\n  ├─ HAS_IDENTIFIER → SSN-123-45-6789\n  │  └─ ISSUED_BY → National SSN Registry\n  └─ HAS_IDENTIFIER → INSUR-987654\n     └─ ISSUED_BY → Insurance Provider X\n\nLayout: Radial with Patient node at center and identifiers arranged in a circle around it\n\nInteractive features:\n- Hover over Identifier node: Show full identifier details and issuing system\n- Click Patient node: Highlight all associated identifiers\n- Double-click Identifier: Show historical record of use\n- Filter: Toggle identifier types on/off (MRN, SSN, Insurance, etc.)\n\nVisual styling:\n- Patient node: Large (60px), blue, labeled with name\n- Identifier nodes: Medium (40px), orange, labeled with ID value\n- System nodes: Small (30px), gray, labeled with system name\n- Active identifiers: Solid border\n- Inactive identifiers: Dashed border\n\nLegend:\n- Node shapes: Circle = Patient, Rectangle = Identifier, Hexagon = System\n- Edge styles: Solid = direct association, Dashed = system relationship\n- Border styles: Solid = active, Dashed = inactive\n\nImplementation: vis-network JavaScript library\nCanvas size: 800x600px"
+}

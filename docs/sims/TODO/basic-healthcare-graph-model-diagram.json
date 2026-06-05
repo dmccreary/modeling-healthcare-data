@@ -1,0 +1,14 @@
+{
+  "sim_id": "basic-healthcare-graph-model-diagram",
+  "diagram_name": "Basic Healthcare Graph Model Diagram",
+  "chapter_number": 1,
+  "chapter_title": "Graph Theory Database Foundations",
+  "chapter_dir": "01-graph-theory-database-foundations",
+  "library": "vis-network",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: graph-model\n**sim-id:** basic-healthcare-graph-model-diagram<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\nuse the hc-graph-generator skill to create a new MicroSim using the following requirements\n\nPurpose: Illustrate the fundamental components of a graph—nodes and edges—using a simple healthcare scenario\n\nComponents to show:\n- 5 circular nodes representing healthcare entities\n- Node 1 (blue): Patient \"Sarah Chen\"\n- Node 2 (green): Provider \"Dr. Martinez\"\n- Node 3 (orange): Diagnosis \"Type 2 Diabetes\"\n- Node 4 (purple): Medication \"Metformin\"\n- Node 5 (yellow): Facility \"City Hospital\"\n\nConnections (directed arrows):\n- Arrow from Patient to Provider, labeled \"VISITED_PROVIDER\"\n- Arrow from Provider to Diagnosis, labeled \"DIAGNOSED_WITH\"\n- Arrow from Patient to Diagnosis, labeled \"HAS_CONDITION\"\n- Arrow from Provider to Medication, labeled \"PRESCRIBED\"\n- Arrow from Patient to Facility, labeled \"ADMITTED_TO\"\n\nStyle: Network diagram with labeled nodes and directed edges\n\nLabels:\n- Each node shows its type (Patient, Provider, etc.) and name\n- Edge labels clearly visible along the arrows\n- Small legend in corner: \"Circle = Node (Entity)\", \"Arrow = Edge (Relationship)\"\n\nColor scheme:\n- Nodes: Color-coded by type as specified above\n- Edges: Dark gray with arrowheads indicating direction\n- Background: White"
+}

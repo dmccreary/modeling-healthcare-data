@@ -1,0 +1,14 @@
+{
+  "sim_id": "query-performance-impact-indexing",
+  "diagram_name": "Query Performance Impact of Indexing",
+  "chapter_number": 3,
+  "chapter_title": "Graph Query Languages",
+  "chapter_dir": "03-graph-query-languages",
+  "library": "Chart.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: chart\n**sim-id:** query-performance-impact-indexing<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nChart type: Line chart with dual Y-axes\n\nPurpose: Demonstrate performance improvement from indexing on healthcare graph queries of increasing complexity\n\nX-axis: Query complexity (number of nodes in result set)\n- Values: 10, 100, 1K, 10K, 100K, 1M\n\nLeft Y-axis: Query execution time (milliseconds, logarithmic scale)\nRight Y-axis: Throughput (queries per second)\n\nData series:\n\nSeries 1 - Without Index (red line, left axis):\n- 10 nodes: 50ms\n- 100 nodes: 250ms\n- 1K nodes: 1,800ms\n- 10K nodes: 15,000ms\n- 100K nodes: 125,000ms\n- 1M nodes: 980,000ms (timeout)\n\nSeries 2 - With Property Index (blue line, left axis):\n- 10 nodes: 5ms\n- 100 nodes: 12ms\n- 1K nodes: 45ms\n- 10K nodes: 180ms\n- 100K nodes: 950ms\n- 1M nodes: 6,200ms\n\nSeries 3 - With Composite Index (green line, left axis):\n- 10 nodes: 3ms\n- 100 nodes: 8ms\n- 1K nodes: 28ms\n- 10K nodes: 110ms\n- 100K nodes: 520ms\n- 1M nodes: 3,100ms\n\nTitle: \"Impact of Indexing on Patient Diagnosis Query Performance\"\n\nLegend: Position top-left\n- Red: No index (full node scan)\n- Blue: Single property index (icd_code)\n- Green: Composite index (icd_code + diagnosed_date)\n\nAnnotations:\n- Shaded region above 1000ms: \"Unacceptable for real-time applications\"\n- Arrow pointing to green line: \"Composite index enables sub-second queries up to 100K patients\"\n- Note at 1M data point: \"Red line: Query timeout (>16 minutes)\"\n\nGrid lines: Horizontal at 10ms, 100ms, 1000ms thresholds\n\nTooltip on hover:\n- Exact execution time\n- Speedup factor vs non-indexed\n- Equivalent queries per second\n\nImplementation: Chart.js line chart with logarithmic Y-axis"
+}

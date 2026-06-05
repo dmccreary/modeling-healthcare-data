@@ -1,0 +1,14 @@
+{
+  "sim_id": "per-person-healthcare-cost-comparison-chart",
+  "diagram_name": "Per-Person Healthcare Cost Comparison Chart",
+  "chapter_number": 2,
+  "chapter_title": "Intro To Healthcare Systems",
+  "chapter_dir": "02-intro-to-healthcare-systems",
+  "library": "Chart.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: chart\n**sim-id:** per-person-healthcare-cost-comparison-chart<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\nUse the chart-generator skill to create the following chart\n\nChart type: Bar chart with dual y-axis\n\nPurpose: Compare per-person healthcare spending across countries and show U.S. cost premium\n\nX-axis: Countries (United States, Switzerland, Germany, Sweden, Netherlands, France, Canada, United Kingdom, Japan)\n\nY-axis (left): Per-person annual healthcare spending (USD)\nY-axis (right): Healthcare spending as % of GDP\n\nData series 1 (bars - primary y-axis):\n- United States: $12,914\n- Switzerland: $7,138\n- Germany: $6,731\n- Sweden: $6,262\n- Netherlands: $6,190\n- France: $5,564\n- Canada: $5,418\n- United Kingdom: $5,087\n- Japan: $4,691\n\nData series 2 (line with markers - secondary y-axis):\n- United States: 18.3%\n- Switzerland: 11.3%\n- Germany: 11.7%\n- Sweden: 10.9%\n- Netherlands: 10.1%\n- France: 11.0%\n- Canada: 10.8%\n- United Kingdom: 10.2%\n- Japan: 10.9%\n\nColor scheme:\n- U.S. bar: Red (to highlight)\n- Other countries: Blue\n- Line graph: Orange with circular markers\n\nTitle: \"Per-Person Healthcare Spending: United States vs. Comparable Nations (2021)\"\n\nAnnotations:\n- Arrow pointing to U.S. bar: \"2x higher than comparable nations\"\n- Shaded region showing \"Typical range for developed nations\"\n- Data source note: \"OECD Health Statistics 2022\"\n\nLegend: Position top-right showing bar and line meanings\n\nImplementation: Chart.js library with responsive design"
+}

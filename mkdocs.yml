@@ -68,6 +68,7 @@ nav:
     - FAQ Coverage: learning-graph/faq-coverage-gaps.md
     - FAQ Quality: learning-graph/faq-quality-report.md
     - Quiz Generation Report: learning-graph/quiz-generation-report.md
+    - MicroSim Coverage Report: learning-graph/microsim-coverage-report.md
     - Quiz Bank: learning-graph/quiz-bank.json
     - Additional Concepts: learning-graph/additional-concepts.md
 

@@ -45,48 +45,54 @@ The United States healthcare system faces a distinctive challenge: it delivers w
 
 Before diving into data modeling approaches, we must first understand the healthcare domain itself—the stakeholders, workflows, terminology, and data standards that shape how healthcare information is captured, exchanged, and analyzed.
 
+#### Diagram: Healthcare Ecosystem Stakeholder Diagram
+
 <details markdown="1">
-    <summary>Healthcare Ecosystem Stakeholder Diagram</summary>
-    
-    Use the hc-graph-generator skill to create the following MicroSim called 'hc-stakeholders'
+<summary>Healthcare Ecosystem Stakeholder Diagram</summary>
+Type: diagram
+**sim-id:** healthcare-ecosystem-stakeholder-diagram<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the three primary stakeholder perspectives in healthcare and their key relationships
+Use the hc-graph-generator skill to create the following MicroSim called 'hc-stakeholders'
 
-    Components to show:
-    - Central triangle with three points labeled: "Patient", "Provider", and "Payer"
-    - Each stakeholder as a different colored circle (Patient: blue, Provider: green, Payer: orange)
-    - Bidirectional arrows connecting all three stakeholders
-    - Secondary entities around the perimeter: Pharmacy, Lab, Hospital, Clinic, Insurance Company, Employer, Government
+Purpose: Illustrate the three primary stakeholder perspectives in healthcare and their key relationships
 
-    Relationships (arrows with labels):
-    - Patient ↔ Provider: "Care Delivery", "Medical Records"
-    - Provider ↔ Payer: "Claims", "Reimbursement"
-    - Payer ↔ Patient: "Coverage", "Premiums"
-    - Provider → Pharmacy: "Prescriptions"
-    - Provider → Lab: "Test Orders", "Results"
-    - Payer → Pharmacy: "Formulary Rules", "Reimbursement"
-    - Employer → Payer: "Group Coverage"
-    - Government → Payer: "Regulations", "Medicare/Medicaid"
+Components to show:
+- Central triangle with three points labeled: "Patient", "Provider", and "Payer"
+- Each stakeholder as a different colored circle (Patient: blue, Provider: green, Payer: orange)
+- Bidirectional arrows connecting all three stakeholders
+- Secondary entities around the perimeter: Pharmacy, Lab, Hospital, Clinic, Insurance Company, Employer, Government
 
-    Style: Network diagram with central triangle and satellite nodes
+Relationships (arrows with labels):
+- Patient ↔ Provider: "Care Delivery", "Medical Records"
+- Provider ↔ Payer: "Claims", "Reimbursement"
+- Payer ↔ Patient: "Coverage", "Premiums"
+- Provider → Pharmacy: "Prescriptions"
+- Provider → Lab: "Test Orders", "Results"
+- Payer → Pharmacy: "Formulary Rules", "Reimbursement"
+- Employer → Payer: "Group Coverage"
+- Government → Payer: "Regulations", "Medicare/Medicaid"
 
-    Visual hierarchy:
-    - Primary stakeholders (larger circles, bold labels)
-    - Secondary entities (smaller circles, regular labels)
-    - Primary relationships (thick arrows)
-    - Secondary relationships (thin arrows)
+Style: Network diagram with central triangle and satellite nodes
 
-    Color scheme:
-    - Patient entities: Blue tones
-    - Provider entities: Green tones
-    - Payer entities: Orange tones
-    - Government/regulatory: Gray
+Visual hierarchy:
+- Primary stakeholders (larger circles, bold labels)
+- Secondary entities (smaller circles, regular labels)
+- Primary relationships (thick arrows)
+- Secondary relationships (thin arrows)
 
-    Annotations:
-    - Label showing "Data flows in all directions"
-    - Note: "Each relationship generates complex data exchanges"
+Color scheme:
+- Patient entities: Blue tones
+- Provider entities: Green tones
+- Payer entities: Orange tones
+- Government/regulatory: Gray
 
-    Implementation: SVG-based diagram or Mermaid diagram embedded in markdown
+Annotations:
+- Label showing "Data flows in all directions"
+- Note: "Each relationship generates complex data exchanges"
+
+Implementation: SVG-based diagram or Mermaid diagram embedded in markdown
 </details>
 
 ## Understanding Healthcare Economics
@@ -107,56 +113,62 @@ Several factors contribute to elevated U.S. healthcare costs:
 - **Technology adoption costs**: Expensive medical equipment and electronic health record systems
 - **Market consolidation**: Hospital and provider mergers reducing competition
 
+#### Diagram: Per-Person Healthcare Cost Comparison Chart
+
 <details markdown="1">
-    <summary>Per-Person Healthcare Cost Comparison Chart</summary>
-    Use the chart-generator skill to create the following chart
+<summary>Per-Person Healthcare Cost Comparison Chart</summary>
+Type: chart
+**sim-id:** per-person-healthcare-cost-comparison-chart<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
+Use the chart-generator skill to create the following chart
 
-    Chart type: Bar chart with dual y-axis
+Chart type: Bar chart with dual y-axis
 
-    Purpose: Compare per-person healthcare spending across countries and show U.S. cost premium
+Purpose: Compare per-person healthcare spending across countries and show U.S. cost premium
 
-    X-axis: Countries (United States, Switzerland, Germany, Sweden, Netherlands, France, Canada, United Kingdom, Japan)
+X-axis: Countries (United States, Switzerland, Germany, Sweden, Netherlands, France, Canada, United Kingdom, Japan)
 
-    Y-axis (left): Per-person annual healthcare spending (USD)
-    Y-axis (right): Healthcare spending as % of GDP
+Y-axis (left): Per-person annual healthcare spending (USD)
+Y-axis (right): Healthcare spending as % of GDP
 
-    Data series 1 (bars - primary y-axis):
-    - United States: $12,914
-    - Switzerland: $7,138
-    - Germany: $6,731
-    - Sweden: $6,262
-    - Netherlands: $6,190
-    - France: $5,564
-    - Canada: $5,418
-    - United Kingdom: $5,087
-    - Japan: $4,691
+Data series 1 (bars - primary y-axis):
+- United States: $12,914
+- Switzerland: $7,138
+- Germany: $6,731
+- Sweden: $6,262
+- Netherlands: $6,190
+- France: $5,564
+- Canada: $5,418
+- United Kingdom: $5,087
+- Japan: $4,691
 
-    Data series 2 (line with markers - secondary y-axis):
-    - United States: 18.3%
-    - Switzerland: 11.3%
-    - Germany: 11.7%
-    - Sweden: 10.9%
-    - Netherlands: 10.1%
-    - France: 11.0%
-    - Canada: 10.8%
-    - United Kingdom: 10.2%
-    - Japan: 10.9%
+Data series 2 (line with markers - secondary y-axis):
+- United States: 18.3%
+- Switzerland: 11.3%
+- Germany: 11.7%
+- Sweden: 10.9%
+- Netherlands: 10.1%
+- France: 11.0%
+- Canada: 10.8%
+- United Kingdom: 10.2%
+- Japan: 10.9%
 
-    Color scheme:
-    - U.S. bar: Red (to highlight)
-    - Other countries: Blue
-    - Line graph: Orange with circular markers
+Color scheme:
+- U.S. bar: Red (to highlight)
+- Other countries: Blue
+- Line graph: Orange with circular markers
 
-    Title: "Per-Person Healthcare Spending: United States vs. Comparable Nations (2021)"
+Title: "Per-Person Healthcare Spending: United States vs. Comparable Nations (2021)"
 
-    Annotations:
-    - Arrow pointing to U.S. bar: "2x higher than comparable nations"
-    - Shaded region showing "Typical range for developed nations"
-    - Data source note: "OECD Health Statistics 2022"
+Annotations:
+- Arrow pointing to U.S. bar: "2x higher than comparable nations"
+- Shaded region showing "Typical range for developed nations"
+- Data source note: "OECD Health Statistics 2022"
 
-    Legend: Position top-right showing bar and line meanings
+Legend: Position top-right showing bar and line meanings
 
-    Implementation: Chart.js library with responsive design
+Implementation: Chart.js library with responsive design
 </details>
 
 ### Payment Models: Fee-For-Service vs. Value-Based Care
@@ -194,133 +206,138 @@ Value-based care models include several variants:
 - **Capitation**: Fixed per-patient-per-month payment regardless of services consumed
 - **Shared Savings/Risk**: Providers share financial gains from cost reductions while maintaining quality
 
+#### Diagram: Healthcare Payment Model Comparison MicroSim
+
 <details markdown="1">
-    <summary>Healthcare Payment Model Comparison MicroSim</summary>
-    Type: microsim
+<summary>Healthcare Payment Model Comparison MicroSim</summary>
+Type: microsim
+**sim-id:** healthcare-payment-model-comparison-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Enable students to explore how different payment models affect provider behavior, healthcare costs, and patient outcomes through an interactive simulation
+Learning objective: Enable students to explore how different payment models affect provider behavior, healthcare costs, and patient outcomes through an interactive simulation
 
-    Canvas layout (1000x700px):
-    - Top section (1000x150): Title and model selector
-    - Left side (650x550): Visualization area showing patient flow and costs
-    - Right side (350x550): Control panel and metrics dashboard
+Canvas layout (1000x700px):
+- Top section (1000x150): Title and model selector
+- Left side (650x550): Visualization area showing patient flow and costs
+- Right side (350x550): Control panel and metrics dashboard
 
-    Visual elements in simulation area:
-    - 10 patient icons moving through a healthcare journey
-    - Provider building (hospital icon)
-    - Service stations: Office Visit, Lab Tests, Imaging, Procedures, Follow-up
-    - Money indicators ($) showing costs generated
-    - Health meter for each patient (green=healthy, yellow=moderate, red=poor)
-    - Timeline showing days elapsed
+Visual elements in simulation area:
+- 10 patient icons moving through a healthcare journey
+- Provider building (hospital icon)
+- Service stations: Office Visit, Lab Tests, Imaging, Procedures, Follow-up
+- Money indicators ($) showing costs generated
+- Health meter for each patient (green=healthy, yellow=moderate, red=poor)
+- Timeline showing days elapsed
 
-    Interactive controls (right panel):
+Interactive controls (right panel):
 
-    1. Payment Model Selector (radio buttons):
-       - Fee-For-Service
-       - Value-Based Care (Bundled Payment)
-       - Value-Based Care (Capitation)
-       - Value-Based Care (ACO Shared Savings)
+1. Payment Model Selector (radio buttons):
+   - Fee-For-Service
+   - Value-Based Care (Bundled Payment)
+   - Value-Based Care (Capitation)
+   - Value-Based Care (ACO Shared Savings)
 
-    2. Patient Population Characteristics (sliders):
-       - Chronic disease prevalence: 0-50% (default: 30%)
-       - Health literacy level: Low/Medium/High (default: Medium)
-       - Complexity of conditions: Simple/Mixed/Complex (default: Mixed)
+2. Patient Population Characteristics (sliders):
+   - Chronic disease prevalence: 0-50% (default: 30%)
+   - Health literacy level: Low/Medium/High (default: Medium)
+   - Complexity of conditions: Simple/Mixed/Complex (default: Mixed)
 
-    3. Provider Behavior Parameters (sliders):
-       - Care coordination investment: 0-100% (default: 50%)
-       - Preventive care emphasis: 0-100% (default: 50%)
-       - Technology adoption: 0-100% (default: 50%)
+3. Provider Behavior Parameters (sliders):
+   - Care coordination investment: 0-100% (default: 50%)
+   - Preventive care emphasis: 0-100% (default: 50%)
+   - Technology adoption: 0-100% (default: 50%)
 
-    4. Simulation Controls:
-       - "Start Simulation" button
-       - "Reset" button
-       - Speed slider: 1x to 10x (default: 3x)
-       - "Pause/Resume" button
+4. Simulation Controls:
+   - "Start Simulation" button
+   - "Reset" button
+   - Speed slider: 1x to 10x (default: 3x)
+   - "Pause/Resume" button
 
-    Metrics Dashboard (updates in real-time):
-    - Total Cost per Patient: $X,XXX
-    - Number of Services per Patient: X.X
-    - Average Health Outcome Score: XX/100
-    - Provider Revenue: $XX,XXX
-    - Provider Margin: XX%
-    - Preventive Services Ratio: XX%
-    - Emergency Visit Rate: XX%
-    - Patient Satisfaction: XX/100
+Metrics Dashboard (updates in real-time):
+- Total Cost per Patient: $X,XXX
+- Number of Services per Patient: X.X
+- Average Health Outcome Score: XX/100
+- Provider Revenue: $XX,XXX
+- Provider Margin: XX%
+- Preventive Services Ratio: XX%
+- Emergency Visit Rate: XX%
+- Patient Satisfaction: XX/100
 
-    Default parameters for each payment model:
+Default parameters for each payment model:
 
-    Fee-For-Service:
-    - Base office visit: $150
-    - Lab test: $100
-    - Imaging: $400
-    - Procedure: $800
-    - Follow-up: $120
-    - Provider incentive: Maximize service volume
-    - Typical services per patient: 8-12
-    - Total cost per patient: $3,500-5,000
+Fee-For-Service:
+- Base office visit: $150
+- Lab test: $100
+- Imaging: $400
+- Procedure: $800
+- Follow-up: $120
+- Provider incentive: Maximize service volume
+- Typical services per patient: 8-12
+- Total cost per patient: $3,500-5,000
 
-    Bundled Payment (episode of care):
-    - Bundle payment: $3,000 per episode
-    - Provider keeps savings if costs < $3,000
-    - Provider loses money if costs > $3,000
-    - Provider incentive: Efficient care delivery
-    - Typical services per patient: 5-7
-    - Total cost per patient: $2,500-3,200
+Bundled Payment (episode of care):
+- Bundle payment: $3,000 per episode
+- Provider keeps savings if costs < $3,000
+- Provider loses money if costs > $3,000
+- Provider incentive: Efficient care delivery
+- Typical services per patient: 5-7
+- Total cost per patient: $2,500-3,200
 
-    Capitation:
-    - Per-member-per-month: $250
-    - Covers all services for time period
-    - Provider incentive: Prevention and care coordination
-    - Typical services per patient: 3-5
-    - Total cost per patient: $1,800-2,800
+Capitation:
+- Per-member-per-month: $250
+- Covers all services for time period
+- Provider incentive: Prevention and care coordination
+- Typical services per patient: 3-5
+- Total cost per patient: $1,800-2,800
 
-    Behavior modeling:
+Behavior modeling:
 
-    Under Fee-For-Service:
-    - Patients undergo more diagnostic tests
-    - More procedures performed
-    - More follow-up visits scheduled
-    - Less investment in prevention
-    - Higher short-term costs
-    - Outcomes: moderate improvement
+Under Fee-For-Service:
+- Patients undergo more diagnostic tests
+- More procedures performed
+- More follow-up visits scheduled
+- Less investment in prevention
+- Higher short-term costs
+- Outcomes: moderate improvement
 
-    Under Value-Based Care:
-    - More preventive services
-    - Better care coordination
-    - Fewer unnecessary tests
-    - More patient education
-    - Lower long-term costs
-    - Outcomes: greater improvement
+Under Value-Based Care:
+- More preventive services
+- Better care coordination
+- Fewer unnecessary tests
+- More patient education
+- Lower long-term costs
+- Outcomes: greater improvement
 
-    Animation behavior:
-    - Patient icons move through service stations
-    - $ icons pop up when services delivered
-    - Health meters change color based on care received
-    - Cost counter increments
-    - Comparison metrics update continuously
-    - At end, show side-by-side comparison of models
+Animation behavior:
+- Patient icons move through service stations
+- $ icons pop up when services delivered
+- Health meters change color based on care received
+- Cost counter increments
+- Comparison metrics update continuously
+- At end, show side-by-side comparison of models
 
-    Visual feedback:
-    - Highlight differences in care pathways between models
-    - Show cost accumulation differently (rapid under FFS, controlled under VBC)
-    - Display outcome improvements with color changes
-    - Graph total cost trajectory over time
+Visual feedback:
+- Highlight differences in care pathways between models
+- Show cost accumulation differently (rapid under FFS, controlled under VBC)
+- Display outcome improvements with color changes
+- Graph total cost trajectory over time
 
-    Educational annotations:
-    - Hover over service stations to see costs and frequency
-    - Click patient icons to see individual care journey
-    - Hover over metrics to see explanations
-    - Display key insights when simulation completes
+Educational annotations:
+- Hover over service stations to see costs and frequency
+- Click patient icons to see individual care journey
+- Hover over metrics to see explanations
+- Display key insights when simulation completes
 
-    Implementation notes:
-    - Use p5.js for rendering and animation
-    - Store model parameters in JavaScript objects
-    - Implement simple probability models for care decisions
-    - Use random variation within realistic ranges
-    - Ensure reproducible results with seed option
-    - Include "Explanation" mode that pauses and highlights key decision points
+Implementation notes:
+- Use p5.js for rendering and animation
+- Store model parameters in JavaScript objects
+- Implement simple probability models for care decisions
+- Use random variation within realistic ranges
+- Ensure reproducible results with seed option
+- Include "Explanation" mode that pauses and highlights key decision points
 
-    Implementation: p5.js with HTML/CSS controls, deployed in /docs/sims/healthcare-payment-models/
+Implementation: p5.js with HTML/CSS controls, deployed in /docs/sims/healthcare-payment-models/
 </details>
 
 The transition from fee-for-service to value-based care represents one of the most significant ongoing transformations in U.S. healthcare. This shift creates substantial data challenges: VBC requires comprehensive patient data across time and care settings, sophisticated risk stratification models, real-time quality measurement, and predictive analytics to identify high-risk patients before expensive complications occur. Graph databases excel at these requirements by naturally representing the complex, interconnected relationships among patients, providers, conditions, treatments, and outcomes.
@@ -453,135 +470,141 @@ Each encounter generates substantial structured and unstructured data:
 - Operative reports
 - Consultation notes
 
+#### Diagram: Clinical Encounter Workflow Diagram
+
 <iframe src="../../sims/encounter-workflow/main.html" width="100%" height="800px"></iframe>
 [View Encounter Workflow Fullscreen](../../sims/encounter-workflow/main.html)
 <details markdown="1">
-    <summary>Clinical Encounter Workflow Diagram</summary>
-    Use the mermaid-generator skill to create the following MicroSim
+<summary>Clinical Encounter Workflow Diagram</summary>
+Type: workflow
+**sim-id:** clinical-encounter-workflow-diagram<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
+Use the mermaid-generator skill to create the following MicroSim
 
-    Name: encounter-workflow
+Name: encounter-workflow
 
-    Purpose: Illustrate the typical flow of a patient encounter from arrival through billing, showing data capture points and system interactions
+Purpose: Illustrate the typical flow of a patient encounter from arrival through billing, showing data capture points and system interactions
 
-    Visual style: Swimlane flowchart with four lanes representing different roles/systems
+Visual style: Swimlane flowchart with four lanes representing different roles/systems
 
-    Swimlanes:
-    1. Patient
-    2. Clinical Staff (Registration, Nursing, Physician)
-    3. Clinical Systems (EHR, CPOE, Lab/Imaging)
-    4. Administrative Systems (Billing, Claims)
+Swimlanes:
+1. Patient
+2. Clinical Staff (Registration, Nursing, Physician)
+3. Clinical Systems (EHR, CPOE, Lab/Imaging)
+4. Administrative Systems (Billing, Claims)
 
-    Workflow steps:
+Workflow steps:
 
-    **Patient Lane:**
-    1. Patient Arrives
-       Hover: "Patient presents to clinic or hospital"
+**Patient Lane:**
+1. Patient Arrives
+   Hover: "Patient presents to clinic or hospital"
 
-    2. Provides Information
-       Hover: "Demographics, insurance, chief complaint"
+2. Provides Information
+   Hover: "Demographics, insurance, chief complaint"
 
-    3. Undergoes Care
-       Hover: "Examination, tests, procedures, treatments"
+3. Undergoes Care
+   Hover: "Examination, tests, procedures, treatments"
 
-    4. Receives Instructions
-       Hover: "Discharge instructions, prescriptions, follow-up appointments"
+4. Receives Instructions
+   Hover: "Discharge instructions, prescriptions, follow-up appointments"
 
-    5. Receives Bill/EOB
-       Hover: "Explanation of Benefits showing charges and coverage"
+5. Receives Bill/EOB
+   Hover: "Explanation of Benefits showing charges and coverage"
 
-    **Clinical Staff Lane:**
-    1. Registration
-       Hover: "Verify identity, check insurance eligibility, collect copay"
-       Data captured: Demographics, insurance, reason for visit
+**Clinical Staff Lane:**
+1. Registration
+   Hover: "Verify identity, check insurance eligibility, collect copay"
+   Data captured: Demographics, insurance, reason for visit
 
-    2. Triage/Vitals
-       Hover: "Record vital signs, chief complaint, medications, allergies"
-       Data captured: Blood pressure, temperature, pulse, height, weight
+2. Triage/Vitals
+   Hover: "Record vital signs, chief complaint, medications, allergies"
+   Data captured: Blood pressure, temperature, pulse, height, weight
 
-    3. Provider Assessment
-       Hover: "History, physical exam, differential diagnosis"
-       Data captured: History of present illness, review of systems, exam findings
+3. Provider Assessment
+   Hover: "History, physical exam, differential diagnosis"
+   Data captured: History of present illness, review of systems, exam findings
 
-    4. Order Entry
-       Hover: "Labs, imaging, medications, procedures"
-       Data captured: Orders sent to CPOE
+4. Order Entry
+   Hover: "Labs, imaging, medications, procedures"
+   Data captured: Orders sent to CPOE
 
-    5. Results Review
-       Hover: "Interpret test results, revise diagnosis"
-       Data captured: Results integrated into EHR
+5. Results Review
+   Hover: "Interpret test results, revise diagnosis"
+   Data captured: Results integrated into EHR
 
-    6. Documentation
-       Hover: "Clinical notes, diagnosis codes, procedure codes"
-       Data captured: Encounter note, ICD codes, CPT codes
+6. Documentation
+   Hover: "Clinical notes, diagnosis codes, procedure codes"
+   Data captured: Encounter note, ICD codes, CPT codes
 
-    7. Discharge/Follow-up
-       Hover: "Prescriptions, referrals, next appointment"
-       Data captured: Care plan, prescriptions, referral orders
+7. Discharge/Follow-up
+   Hover: "Prescriptions, referrals, next appointment"
+   Data captured: Care plan, prescriptions, referral orders
 
-    **Clinical Systems Lane:**
-    1. EHR: Create Encounter
-       Hover: "New encounter record created with patient context"
+**Clinical Systems Lane:**
+1. EHR: Create Encounter
+   Hover: "New encounter record created with patient context"
 
-    2. CPOE: Receive Orders
-       Hover: "Computerized Provider Order Entry processes orders"
+2. CPOE: Receive Orders
+   Hover: "Computerized Provider Order Entry processes orders"
 
-    3. Lab/Imaging: Perform Tests
-       Hover: "Diagnostic services execute ordered tests"
+3. Lab/Imaging: Perform Tests
+   Hover: "Diagnostic services execute ordered tests"
 
-    4. Results Interface
-       Hover: "Test results flow back to EHR via HL7/FHIR"
+4. Results Interface
+   Hover: "Test results flow back to EHR via HL7/FHIR"
 
-    5. EHR: Document Finalization
-       Hover: "Provider signs note, triggers billing process"
+5. EHR: Document Finalization
+   Hover: "Provider signs note, triggers billing process"
 
-    **Administrative Systems Lane:**
-    1. Eligibility Check
-       Hover: "Real-time verification of insurance coverage"
-       System: Claims clearinghouse or payer portal
+**Administrative Systems Lane:**
+1. Eligibility Check
+   Hover: "Real-time verification of insurance coverage"
+   System: Claims clearinghouse or payer portal
 
-    2. Charge Capture
-       Hover: "Extract billable services from clinical documentation"
-       System: Charge Description Master (CDM)
+2. Charge Capture
+   Hover: "Extract billable services from clinical documentation"
+   System: Charge Description Master (CDM)
 
-    3. Medical Coding
-       Hover: "Assign ICD, CPT, HCPCS codes to encounter"
-       System: Coding module (may use AI/NLP assistance)
+3. Medical Coding
+   Hover: "Assign ICD, CPT, HCPCS codes to encounter"
+   System: Coding module (may use AI/NLP assistance)
 
-    4. Claim Generation
-       Hover: "Create CMS-1500 or UB-04 claim with all required data elements"
-       System: Billing system
+4. Claim Generation
+   Hover: "Create CMS-1500 or UB-04 claim with all required data elements"
+   System: Billing system
 
-    5. Claim Submission
-       Hover: "Electronic submission to payer via EDI 837 transaction"
-       System: Claims clearinghouse
+5. Claim Submission
+   Hover: "Electronic submission to payer via EDI 837 transaction"
+   System: Claims clearinghouse
 
-    6. Adjudication Wait
-       Hover: "Payer reviews claim, determines payment"
-       System: Payer adjudication engine
+6. Adjudication Wait
+   Hover: "Payer reviews claim, determines payment"
+   System: Payer adjudication engine
 
-    7. Payment Posting
-       Hover: "Record payment, contractual adjustments, patient responsibility"
-       System: Billing system accounts receivable
+7. Payment Posting
+   Hover: "Record payment, contractual adjustments, patient responsibility"
+   System: Billing system accounts receivable
 
-    Decision points:
-    - After Registration: Is eligibility active? (Yes → Continue, No → Patient pay or reschedule)
-    - After Provider Assessment: Admit to hospital? (Yes → Inpatient workflow, No → Continue outpatient)
-    - After Documentation: Coding complete? (Yes → Submit claim, No → Return to coder)
-    - After Claim Submission: Claim accepted? (Yes → Wait for payment, No → Fix errors and resubmit)
+Decision points:
+- After Registration: Is eligibility active? (Yes → Continue, No → Patient pay or reschedule)
+- After Provider Assessment: Admit to hospital? (Yes → Inpatient workflow, No → Continue outpatient)
+- After Documentation: Coding complete? (Yes → Submit claim, No → Return to coder)
+- After Claim Submission: Claim accepted? (Yes → Wait for payment, No → Fix errors and resubmit)
 
-    Color coding:
-    - Patient activities: Blue
-    - Clinical activities: Green
-    - System processes: Purple
-    - Financial processes: Orange
-    - Decision points: Yellow diamonds
+Color coding:
+- Patient activities: Blue
+- Clinical activities: Green
+- System processes: Purple
+- Financial processes: Orange
+- Decision points: Yellow diamonds
 
-    Annotations:
-    - Typical timeframes for key stages
-    - Data standards used (HL7, FHIR, X12)
-    - Common pain points and delays
+Annotations:
+- Typical timeframes for key stages
+- Data standards used (HL7, FHIR, X12)
+- Common pain points and delays
 
-    Implementation: Mermaid diagram or interactive SVG with hover states, embedded in markdown or as separate HTML file
+Implementation: Mermaid diagram or interactive SVG with hover states, embedded in markdown or as separate HTML file
 </details>
 
 ### Clinical Workflows
@@ -682,129 +705,134 @@ The primary medical coding systems in U.S. healthcare are:
 - **SNOMED CT (Systematized Nomenclature of Medicine Clinical Terms)**: Comprehensive clinical terminology
 - **RxNorm**: Normalized medication names and relationships
 
+#### Diagram: Medical Coding Systems Interactive Infographic
+
 <details markdown="1">
-    <summary>Medical Coding Systems Interactive Infographic</summary>
-    Type: infographic
+<summary>Medical Coding Systems Interactive Infographic</summary>
+Type: infographic
+**sim-id:** medical-coding-systems-infographic<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Provide a visual overview of the major medical coding systems, their purposes, governing bodies, and relationships
+Purpose: Provide a visual overview of the major medical coding systems, their purposes, governing bodies, and relationships
 
-    Layout: Central hub-and-spoke design with "Medical Coding Systems" at center
+Layout: Central hub-and-spoke design with "Medical Coding Systems" at center
 
-    Main coding systems (spokes radiating from center):
+Main coding systems (spokes radiating from center):
 
-    1. **ICD (International Classification of Diseases)**
-       Position: Top center
-       Color: Red
-       Icon: Medical diagnosis symbol
-       Click to expand details:
-       - Full name: International Classification of Diseases, 10th/11th Revision
-       - Governing body: World Health Organization (WHO)
-       - U.S. version: ICD-10-CM (Clinical Modification) for diagnoses
-       - U.S. procedure codes: ICD-10-PCS (Procedure Coding System)
-       - Purpose: Classify diseases, injuries, causes of death
-       - Structure: Hierarchical categories with 3-7 character codes
-       - Example: E11.9 = Type 2 diabetes mellitus without complications
-       - Use cases: Claims, epidemiology, quality measures, mortality statistics
-       - Update frequency: Annual (October 1)
+1. **ICD (International Classification of Diseases)**
+   Position: Top center
+   Color: Red
+   Icon: Medical diagnosis symbol
+   Click to expand details:
+   - Full name: International Classification of Diseases, 10th/11th Revision
+   - Governing body: World Health Organization (WHO)
+   - U.S. version: ICD-10-CM (Clinical Modification) for diagnoses
+   - U.S. procedure codes: ICD-10-PCS (Procedure Coding System)
+   - Purpose: Classify diseases, injuries, causes of death
+   - Structure: Hierarchical categories with 3-7 character codes
+   - Example: E11.9 = Type 2 diabetes mellitus without complications
+   - Use cases: Claims, epidemiology, quality measures, mortality statistics
+   - Update frequency: Annual (October 1)
 
-    2. **CPT (Current Procedural Terminology)**
-       Position: Upper right
-       Color: Blue
-       Icon: Stethoscope/procedure symbol
-       Click to expand details:
-       - Full name: Current Procedural Terminology
-       - Governing body: American Medical Association (AMA)
-       - Purpose: Describe physician services, procedures, diagnostic tests
-       - Structure: 5-digit codes with optional 2-digit modifiers
-       - Categories: Category I (common procedures), Category II (quality measures), Category III (emerging procedures)
-       - Example: 99213 = Office visit, established patient, level 3
-       - Use cases: Professional fee billing, utilization tracking, performance measurement
-       - Update frequency: Annual (January 1)
+2. **CPT (Current Procedural Terminology)**
+   Position: Upper right
+   Color: Blue
+   Icon: Stethoscope/procedure symbol
+   Click to expand details:
+   - Full name: Current Procedural Terminology
+   - Governing body: American Medical Association (AMA)
+   - Purpose: Describe physician services, procedures, diagnostic tests
+   - Structure: 5-digit codes with optional 2-digit modifiers
+   - Categories: Category I (common procedures), Category II (quality measures), Category III (emerging procedures)
+   - Example: 99213 = Office visit, established patient, level 3
+   - Use cases: Professional fee billing, utilization tracking, performance measurement
+   - Update frequency: Annual (January 1)
 
-    3. **HCPCS (Healthcare Common Procedure Coding System)**
-       Position: Right
-       Color: Green
-       Icon: Medical supply/durable medical equipment
-       Click to expand details:
-       - Full name: Healthcare Common Procedure Coding System
-       - Governing body: Centers for Medicare & Medicaid Services (CMS)
-       - Structure: Level I = CPT codes, Level II = National codes (A-V)
-       - Purpose: Services, supplies, equipment, ambulance, drugs not in CPT
-       - Example: E0163 = Commode chair, mobile or stationary
-       - Use cases: Medicare/Medicaid billing, durable medical equipment, supplies
-       - Update frequency: Quarterly
+3. **HCPCS (Healthcare Common Procedure Coding System)**
+   Position: Right
+   Color: Green
+   Icon: Medical supply/durable medical equipment
+   Click to expand details:
+   - Full name: Healthcare Common Procedure Coding System
+   - Governing body: Centers for Medicare & Medicaid Services (CMS)
+   - Structure: Level I = CPT codes, Level II = National codes (A-V)
+   - Purpose: Services, supplies, equipment, ambulance, drugs not in CPT
+   - Example: E0163 = Commode chair, mobile or stationary
+   - Use cases: Medicare/Medicaid billing, durable medical equipment, supplies
+   - Update frequency: Quarterly
 
-    4. **NDC/Drug Codes**
-       Position: Lower right
-       Color: Purple
-       Icon: Pill/medication bottle
-       Click to expand details:
-       - Full name: National Drug Code
-       - Governing body: U.S. Food and Drug Administration (FDA)
-       - Structure: 10-11 digit code (labeler-product-package)
-       - Purpose: Uniquely identify drug products
-       - Example: 0071-0155-23 = Lipitor 20mg, 90 tablets
-       - Related systems: RxNorm (normalized names), GPI (therapeutic classification)
-       - Use cases: Pharmacy billing, formulary management, drug utilization review
-       - Update frequency: Continuous as products registered
+4. **NDC/Drug Codes**
+   Position: Lower right
+   Color: Purple
+   Icon: Pill/medication bottle
+   Click to expand details:
+   - Full name: National Drug Code
+   - Governing body: U.S. Food and Drug Administration (FDA)
+   - Structure: 10-11 digit code (labeler-product-package)
+   - Purpose: Uniquely identify drug products
+   - Example: 0071-0155-23 = Lipitor 20mg, 90 tablets
+   - Related systems: RxNorm (normalized names), GPI (therapeutic classification)
+   - Use cases: Pharmacy billing, formulary management, drug utilization review
+   - Update frequency: Continuous as products registered
 
-    5. **LOINC (Lab/Clinical Observations)**
-       Position: Lower left
-       Color: Orange
-       Icon: Laboratory test tube
-       Click to expand details:
-       - Full name: Logical Observation Identifiers Names and Codes
-       - Governing body: Regenstrief Institute
-       - Purpose: Identify laboratory and clinical observations
-       - Structure: Numeric codes with six-part names
-       - Example: 2339-0 = Glucose [Mass/volume] in Blood
-       - Use cases: Lab results exchange, clinical observations, vital signs
-       - Update frequency: Biannually
+5. **LOINC (Lab/Clinical Observations)**
+   Position: Lower left
+   Color: Orange
+   Icon: Laboratory test tube
+   Click to expand details:
+   - Full name: Logical Observation Identifiers Names and Codes
+   - Governing body: Regenstrief Institute
+   - Purpose: Identify laboratory and clinical observations
+   - Structure: Numeric codes with six-part names
+   - Example: 2339-0 = Glucose [Mass/volume] in Blood
+   - Use cases: Lab results exchange, clinical observations, vital signs
+   - Update frequency: Biannually
 
-    6. **SNOMED CT (Clinical Terminology)**
-       Position: Left
-       Color: Teal
-       Icon: Medical hierarchy tree
-       Click to expand details:
-       - Full name: Systematized Nomenclature of Medicine Clinical Terms
-       - Governing body: International Health Terminology Standards Development Organisation (IHTSDO)
-       - Purpose: Comprehensive clinical terminology and ontology
-       - Structure: Concept codes with hierarchical relationships
-       - Example: 44054006 = Diabetes mellitus type 2
-       - Use cases: EHR documentation, clinical decision support, semantic interoperability
-       - Update frequency: Biannual releases
+6. **SNOMED CT (Clinical Terminology)**
+   Position: Left
+   Color: Teal
+   Icon: Medical hierarchy tree
+   Click to expand details:
+   - Full name: Systematized Nomenclature of Medicine Clinical Terms
+   - Governing body: International Health Terminology Standards Development Organisation (IHTSDO)
+   - Purpose: Comprehensive clinical terminology and ontology
+   - Structure: Concept codes with hierarchical relationships
+   - Example: 44054006 = Diabetes mellitus type 2
+   - Use cases: EHR documentation, clinical decision support, semantic interoperability
+   - Update frequency: Biannual releases
 
-    Relationship connectors (lines between spokes):
-    - ICD ↔ CPT: "Often billed together" (dotted line)
-    - CPT ↔ HCPCS: "HCPCS Level I = CPT" (solid line)
-    - ICD ↔ SNOMED CT: "SNOMED more granular than ICD" (dotted line)
-    - NDC ↔ HCPCS: "Some HCPCS codes map to drug categories" (dotted line)
-    - All systems → Center: "All contribute to healthcare data ecosystem"
+Relationship connectors (lines between spokes):
+- ICD ↔ CPT: "Often billed together" (dotted line)
+- CPT ↔ HCPCS: "HCPCS Level I = CPT" (solid line)
+- ICD ↔ SNOMED CT: "SNOMED more granular than ICD" (dotted line)
+- NDC ↔ HCPCS: "Some HCPCS codes map to drug categories" (dotted line)
+- All systems → Center: "All contribute to healthcare data ecosystem"
 
-    Interactive features:
-    - Hover over coding system: Show brief description and icon highlight
-    - Click coding system: Expand detailed panel with full information
-    - Click relationship line: Show mapping examples between systems
-    - Toggle button: "Show update timelines" (displays timeline view of update frequencies)
-    - Search box: Enter a condition/procedure to see which coding systems apply
+Interactive features:
+- Hover over coding system: Show brief description and icon highlight
+- Click coding system: Expand detailed panel with full information
+- Click relationship line: Show mapping examples between systems
+- Toggle button: "Show update timelines" (displays timeline view of update frequencies)
+- Search box: Enter a condition/procedure to see which coding systems apply
 
-    Visual enhancements:
-    - Each coding system uses distinct color
-    - Icons represent primary use case
-    - Pulsing animation on hover
-    - Smooth expand/collapse animations
-    - Clean, modern flat design
+Visual enhancements:
+- Each coding system uses distinct color
+- Icons represent primary use case
+- Pulsing animation on hover
+- Smooth expand/collapse animations
+- Clean, modern flat design
 
-    Annotations:
-    - "All U.S. healthcare claims must include ICD diagnosis codes"
-    - "CPT and HCPCS together describe all billable services"
-    - "Multiple coding systems often describe the same clinical concept"
+Annotations:
+- "All U.S. healthcare claims must include ICD diagnosis codes"
+- "CPT and HCPCS together describe all billable services"
+- "Multiple coding systems often describe the same clinical concept"
 
-    Footer information:
-    - "Understanding these coding systems is essential for healthcare data modeling"
-    - "Graph databases can represent relationships among codes from different systems"
+Footer information:
+- "Understanding these coding systems is essential for healthcare data modeling"
+- "Graph databases can represent relationships among codes from different systems"
 
-    Implementation: HTML/CSS/JavaScript with SVG or Canvas, responsive design, deployed as standalone HTML file
+Implementation: HTML/CSS/JavaScript with SVG or Canvas, responsive design, deployed as standalone HTML file
 </details>
 
 ### ICD Codes: Diagnosis and Inpatient Procedures
@@ -968,6 +996,52 @@ Drug codes support critical healthcare functions:
 - **Adverse event reporting**: Pharmacovigilance and safety monitoring
 - **Pharmacy billing**: Submission of pharmacy claims with NDC codes
 
+The MicroSim below lets you practice telling these coding systems apart: read a real billing scenario and decide whether it calls for an ICD, CPT, HCPCS, or NDC code.
+
+#### Diagram: Medical Code System Classifier MicroSim
+
+<details markdown="1">
+<summary>Medical Code System Classifier MicroSim</summary>
+Type: microsim
+**sim-id:** medical-code-classifier<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
+
+Learning objective: Evaluate (L5 — classify, judge) which coding system (ICD-10, CPT, HCPCS, or NDC/RxNorm) applies to a given clinical or billing scenario, so learners can distinguish what each code set is FOR rather than merely recalling its name.
+
+Canvas layout (responsive, target 880x520; resizes with the window):
+- Center: a scenario card describing a clinical or billing situation.
+- Below: four answer buttons (ICD-10, CPT, HCPCS, NDC/RxNorm).
+- Footer: score, streak, and a feedback/explanation panel.
+
+Visual elements:
+- One scenario at a time, drawn from a data.json question bank.
+- Selected-answer feedback: correct (green) or incorrect (red) with a one-sentence rationale and the correct mapping.
+- A progress/score readout.
+
+Interactive controls (use built-in p5 DOM controls):
+- Four classification buttons (one per code system)
+- Button "Next scenario"
+- Button "Restart"
+
+Default parameters: shuffled question order, score 0.
+
+Data / question bank (kept in data.json so questions are editable):
+- Each item holds scenario text, the correct code system, and a short rationale. Examples:
+  - "A physician documents the patient's Type 2 diabetes diagnosis" → ICD-10
+  - "Billing for a 30-minute office visit and an EKG" → CPT
+  - "Billing for a wheelchair and ambulance transport" → HCPCS
+  - "Pharmacy dispenses Lipitor 10 mg, 90-count bottle" → NDC/RxNorm
+
+Behavior:
+- After each answer, show whether it was right, reveal the rationale, and update score and streak; "Next scenario" advances.
+- Mix in near-miss distractor scenarios (for example, a procedure students often mis-assign to ICD) to force discrimination.
+
+Instructional Rationale: An Evaluate/classify objective is best assessed by having learners categorize fresh examples with immediate feedback, not by re-reading definitions. The data.json bank lets instructors add scenarios. Following the concept-classifier pattern, feedback is immediate and explanatory.
+
+Implementation: p5.js classification quiz reading data.json (see the concept-classifier skill); responsive to window resize.
+</details>
+
 ## Healthcare Interoperability and Data Exchange
 
 ### The Interoperability Challenge
@@ -1070,175 +1144,180 @@ Graph databases offer unique advantages for healthcare interoperability challeng
 - **Semantic mapping**: Represent relationships among coding systems (ICD, SNOMED CT, LOINC, etc.)
 - **Master data management**: Create unified views of patients, providers, and facilities across sources
 
+#### Diagram: Healthcare Data Integration Graph Model
+
 <details markdown="1">
-    <summary>Healthcare Data Integration Graph Model</summary>
-    Type: graph-model
+<summary>Healthcare Data Integration Graph Model</summary>
+Type: graph-model
+**sim-id:** healthcare-data-integration-graph-model<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Demonstrate how graph databases can integrate healthcare data from multiple sources (EHR, claims, lab, pharmacy) around a unified patient view
+Purpose: Demonstrate how graph databases can integrate healthcare data from multiple sources (EHR, claims, lab, pharmacy) around a unified patient view
 
-    Node types:
+Node types:
 
-    1. **Patient** (blue circles, large)
-       Properties: patient_id, MRN, name, DOB, gender, address
-       Labels: "Master Patient Record"
+1. **Patient** (blue circles, large)
+   Properties: patient_id, MRN, name, DOB, gender, address
+   Labels: "Master Patient Record"
 
-    2. **Source System** (gray hexagons, medium)
-       Properties: system_name, vendor, organization
-       Examples: "Epic EHR - Hospital A", "Claims Database - Payer X", "LabCorp Interface", "CVS Pharmacy"
+2. **Source System** (gray hexagons, medium)
+   Properties: system_name, vendor, organization
+   Examples: "Epic EHR - Hospital A", "Claims Database - Payer X", "LabCorp Interface", "CVS Pharmacy"
 
-    3. **Encounter** (green squares, medium)
-       Properties: encounter_id, date, type, facility, chief_complaint
-       Examples: "Office Visit 2024-01-15", "ED Visit 2024-02-03", "Hospitalization 2024-03-10"
+3. **Encounter** (green squares, medium)
+   Properties: encounter_id, date, type, facility, chief_complaint
+   Examples: "Office Visit 2024-01-15", "ED Visit 2024-02-03", "Hospitalization 2024-03-10"
 
-    4. **Diagnosis** (red diamonds, small)
-       Properties: ICD_code, description, onset_date, status
-       Examples: "E11.9 Type 2 Diabetes", "I10 Essential Hypertension", "J45.909 Asthma"
+4. **Diagnosis** (red diamonds, small)
+   Properties: ICD_code, description, onset_date, status
+   Examples: "E11.9 Type 2 Diabetes", "I10 Essential Hypertension", "J45.909 Asthma"
 
-    5. **Medication** (purple pill shapes, small)
-       Properties: drug_name, NDC, RxNorm, dose, frequency, start_date
-       Examples: "Metformin 500mg BID", "Lisinopril 10mg daily", "Albuterol inhaler PRN"
+5. **Medication** (purple pill shapes, small)
+   Properties: drug_name, NDC, RxNorm, dose, frequency, start_date
+   Examples: "Metformin 500mg BID", "Lisinopril 10mg daily", "Albuterol inhaler PRN"
 
-    6. **Lab Result** (orange test tubes, small)
-       Properties: LOINC_code, test_name, value, units, date, reference_range
-       Examples: "HbA1c 7.2%", "Glucose 145 mg/dL", "Creatinine 0.9 mg/dL"
+6. **Lab Result** (orange test tubes, small)
+   Properties: LOINC_code, test_name, value, units, date, reference_range
+   Examples: "HbA1c 7.2%", "Glucose 145 mg/dL", "Creatinine 0.9 mg/dL"
 
-    7. **Provider** (teal stethoscope icons, medium)
-       Properties: NPI, name, specialty, organization
-       Examples: "Dr. Smith - PCP", "Dr. Jones - Endocrinology", "Dr. Lee - Emergency Medicine"
+7. **Provider** (teal stethoscope icons, medium)
+   Properties: NPI, name, specialty, organization
+   Examples: "Dr. Smith - PCP", "Dr. Jones - Endocrinology", "Dr. Lee - Emergency Medicine"
 
-    8. **Coding System** (yellow books, small)
-       Properties: system_name, version, code
-       Examples: "ICD-10-CM", "RxNorm", "LOINC", "SNOMED CT"
+8. **Coding System** (yellow books, small)
+   Properties: system_name, version, code
+   Examples: "ICD-10-CM", "RxNorm", "LOINC", "SNOMED CT"
 
-    Edge types:
+Edge types:
 
-    1. **SOURCED_FROM** (Patient → Source System)
-       Properties: identifier_type, identifier_value, confidence_score
-       Style: Dashed gray arrows
-       Purpose: Show which systems contributed patient data
+1. **SOURCED_FROM** (Patient → Source System)
+   Properties: identifier_type, identifier_value, confidence_score
+   Style: Dashed gray arrows
+   Purpose: Show which systems contributed patient data
 
-    2. **HAD_ENCOUNTER** (Patient → Encounter)
-       Properties: admission_date, discharge_date
-       Style: Solid green arrows
-       Purpose: Link patient to care episodes
+2. **HAD_ENCOUNTER** (Patient → Encounter)
+   Properties: admission_date, discharge_date
+   Style: Solid green arrows
+   Purpose: Link patient to care episodes
 
-    3. **DOCUMENTED_BY** (Encounter → Provider)
-       Properties: role (attending, consulting, PCP)
-       Style: Solid teal arrows
-       Purpose: Connect encounters to providers
+3. **DOCUMENTED_BY** (Encounter → Provider)
+   Properties: role (attending, consulting, PCP)
+   Style: Solid teal arrows
+   Purpose: Connect encounters to providers
 
-    4. **DIAGNOSED_WITH** (Encounter → Diagnosis)
-       Properties: diagnosis_type (primary, secondary), documentation_date
-       Style: Solid red arrows
-       Purpose: Link diagnoses to encounters
+4. **DIAGNOSED_WITH** (Encounter → Diagnosis)
+   Properties: diagnosis_type (primary, secondary), documentation_date
+   Style: Solid red arrows
+   Purpose: Link diagnoses to encounters
 
-    5. **PRESCRIBED** (Encounter → Medication)
-       Properties: prescription_date, prescribing_provider, status (active, discontinued)
-       Style: Solid purple arrows
-       Purpose: Connect medications to encounters where prescribed
+5. **PRESCRIBED** (Encounter → Medication)
+   Properties: prescription_date, prescribing_provider, status (active, discontinued)
+   Style: Solid purple arrows
+   Purpose: Connect medications to encounters where prescribed
 
-    6. **ORDERED** (Encounter → Lab Result)
-       Properties: order_date, ordering_provider
-       Style: Solid orange arrows
-       Purpose: Link lab results to encounters
+6. **ORDERED** (Encounter → Lab Result)
+   Properties: order_date, ordering_provider
+   Style: Solid orange arrows
+   Purpose: Link lab results to encounters
 
-    7. **TAKES** (Patient → Medication)
-       Properties: start_date, end_date, adherence_score
-       Style: Dashed purple arrows
-       Purpose: Show current medication regimen
+7. **TAKES** (Patient → Medication)
+   Properties: start_date, end_date, adherence_score
+   Style: Dashed purple arrows
+   Purpose: Show current medication regimen
 
-    8. **HAS_DIAGNOSIS** (Patient → Diagnosis)
-       Properties: onset_date, status (active, resolved, historical)
-       Style: Dashed red arrows
-       Purpose: Link patient to problem list
+8. **HAS_DIAGNOSIS** (Patient → Diagnosis)
+   Properties: onset_date, status (active, resolved, historical)
+   Style: Dashed red arrows
+   Purpose: Link patient to problem list
 
-    9. **CODED_AS** (Diagnosis → Coding System)
-       Properties: code_value, version
-       Style: Dotted yellow arrows
-       Purpose: Show code mappings across terminologies
+9. **CODED_AS** (Diagnosis → Coding System)
+   Properties: code_value, version
+   Style: Dotted yellow arrows
+   Purpose: Show code mappings across terminologies
 
-    10. **MAPS_TO** (Coding System → Coding System)
-        Properties: mapping_confidence, mapping_type (equivalent, narrower, broader)
-        Style: Bidirectional dotted yellow arrows
-        Purpose: Represent semantic relationships among coding systems
+10. **MAPS_TO** (Coding System → Coding System)
+    Properties: mapping_confidence, mapping_type (equivalent, narrower, broader)
+    Style: Bidirectional dotted yellow arrows
+    Purpose: Represent semantic relationships among coding systems
 
-    Sample data structure:
+Sample data structure:
 
-    Central patient node: "John Doe, DOB: 1960-01-01"
-    ├─ SOURCED_FROM → "Epic EHR - Hospital A" (MRN: 123456)
-    ├─ SOURCED_FROM → "Claims Database - Payer X" (Member ID: 987654)
-    ├─ SOURCED_FROM → "LabCorp Interface" (Account: LC-456)
-    ├─ HAD_ENCOUNTER → "Office Visit 2024-01-15"
-    │  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
-    │  ├─ DIAGNOSED_WITH → "E11.9 Type 2 Diabetes"
-    │  ├─ PRESCRIBED → "Metformin 500mg BID"
-    │  └─ ORDERED → "HbA1c 7.2%"
-    ├─ HAD_ENCOUNTER → "Office Visit 2024-04-10"
-    │  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
-    │  └─ ORDERED → "HbA1c 6.8%"
-    ├─ HAS_DIAGNOSIS → "E11.9 Type 2 Diabetes"
-    │  └─ CODED_AS → "ICD-10-CM: E11.9"
-    │     └─ MAPS_TO → "SNOMED CT: 44054006 (Diabetes mellitus type 2)"
-    ├─ HAS_DIAGNOSIS → "I10 Essential Hypertension"
-    └─ TAKES → "Metformin 500mg BID"
+Central patient node: "John Doe, DOB: 1960-01-01"
+├─ SOURCED_FROM → "Epic EHR - Hospital A" (MRN: 123456)
+├─ SOURCED_FROM → "Claims Database - Payer X" (Member ID: 987654)
+├─ SOURCED_FROM → "LabCorp Interface" (Account: LC-456)
+├─ HAD_ENCOUNTER → "Office Visit 2024-01-15"
+│  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
+│  ├─ DIAGNOSED_WITH → "E11.9 Type 2 Diabetes"
+│  ├─ PRESCRIBED → "Metformin 500mg BID"
+│  └─ ORDERED → "HbA1c 7.2%"
+├─ HAD_ENCOUNTER → "Office Visit 2024-04-10"
+│  ├─ DOCUMENTED_BY → "Dr. Smith - PCP"
+│  └─ ORDERED → "HbA1c 6.8%"
+├─ HAS_DIAGNOSIS → "E11.9 Type 2 Diabetes"
+│  └─ CODED_AS → "ICD-10-CM: E11.9"
+│     └─ MAPS_TO → "SNOMED CT: 44054006 (Diabetes mellitus type 2)"
+├─ HAS_DIAGNOSIS → "I10 Essential Hypertension"
+└─ TAKES → "Metformin 500mg BID"
 
-    Layout: Hierarchical radial layout with patient at center
+Layout: Hierarchical radial layout with patient at center
 
-    Interactive features:
-    - **Zoom**: Mouse wheel to zoom in/out
-    - **Pan**: Click and drag background
-    - **Node hover**: Show full properties in tooltip
-    - **Node click**: Highlight all connected nodes and edges (1-hop neighborhood)
-    - **Edge hover**: Show relationship properties
-    - **Double-click node**: Expand to show additional connections (if collapsed)
-    - **Right-click node**: Context menu with options:
-      - "Find similar patients" (show patients with similar diagnoses)
-      - "View timeline" (temporal view of connected encounters)
-      - "Show data lineage" (highlight source systems)
-    - **Filter panel**: Toggle node types on/off to simplify view
-    - **Search box**: Find specific patients, diagnoses, medications by name or code
+Interactive features:
+- **Zoom**: Mouse wheel to zoom in/out
+- **Pan**: Click and drag background
+- **Node hover**: Show full properties in tooltip
+- **Node click**: Highlight all connected nodes and edges (1-hop neighborhood)
+- **Edge hover**: Show relationship properties
+- **Double-click node**: Expand to show additional connections (if collapsed)
+- **Right-click node**: Context menu with options:
+  - "Find similar patients" (show patients with similar diagnoses)
+  - "View timeline" (temporal view of connected encounters)
+  - "Show data lineage" (highlight source systems)
+- **Filter panel**: Toggle node types on/off to simplify view
+- **Search box**: Find specific patients, diagnoses, medications by name or code
 
-    Visual styling:
-    - **Node size**: Based on number of connections (degree centrality)
-    - **Edge thickness**: Thicker for more recent/active relationships
-    - **Color coding**: Consistent colors for node types
-    - **Transparency**: Lower opacity for historical/inactive elements
-    - **Animation**: Gentle pulsing for nodes with recent activity
-    - **Clustering**: Visually group related nodes (encounters + associated diagnoses/meds)
+Visual styling:
+- **Node size**: Based on number of connections (degree centrality)
+- **Edge thickness**: Thicker for more recent/active relationships
+- **Color coding**: Consistent colors for node types
+- **Transparency**: Lower opacity for historical/inactive elements
+- **Animation**: Gentle pulsing for nodes with recent activity
+- **Clustering**: Visually group related nodes (encounters + associated diagnoses/meds)
 
-    Legend (top-right panel):
-    - Node shape and color key
-    - Edge style meanings
-    - Interaction instructions
-    - "Show sample queries" button
+Legend (top-right panel):
+- Node shape and color key
+- Edge style meanings
+- Interaction instructions
+- "Show sample queries" button
 
-    Sample queries panel (expandable):
-    1. "Find all encounters where diabetes was diagnosed"
-    2. "Show medication history across all sources"
-    3. "Identify gaps in lab monitoring"
-    4. "Trace data lineage for HbA1c result"
-    5. "Find coding system mappings for diabetes"
+Sample queries panel (expandable):
+1. "Find all encounters where diabetes was diagnosed"
+2. "Show medication history across all sources"
+3. "Identify gaps in lab monitoring"
+4. "Trace data lineage for HbA1c result"
+5. "Find coding system mappings for diabetes"
 
-    Educational annotations:
-    - Callout: "Patient data integrated from 4 source systems"
-    - Callout: "Graph model handles multiple identifiers per patient"
-    - Callout: "Coding system relationships enable semantic queries"
-    - Callout: "Temporal relationships show care progression"
+Educational annotations:
+- Callout: "Patient data integrated from 4 source systems"
+- Callout: "Graph model handles multiple identifiers per patient"
+- Callout: "Coding system relationships enable semantic queries"
+- Callout: "Temporal relationships show care progression"
 
-    Canvas size: 1000x800px
+Canvas size: 1000x800px
 
-    Implementation:
-    - vis-network JavaScript library for graph visualization
-    - D3.js for enhanced layout and animations
-    - Responsive design for various screen sizes
-    - Export options: PNG image, JSON data, Cypher queries
-    - Deployed in /docs/sims/healthcare-data-integration-graph/
+Implementation:
+- vis-network JavaScript library for graph visualization
+- D3.js for enhanced layout and animations
+- Responsive design for various screen sizes
+- Export options: PNG image, JSON data, Cypher queries
+- Deployed in /docs/sims/healthcare-data-integration-graph/
 
-    Data generation:
-    - Use realistic synthetic patient data
-    - Include 1 patient (center), 4 source systems, 5-7 encounters, 3-5 diagnoses, 4-6 medications, 6-10 lab results, 3-4 providers
-    - Ensure temporal consistency (later encounters reference earlier diagnoses)
-    - Include code mappings among ICD, SNOMED, RxNorm, LOINC
+Data generation:
+- Use realistic synthetic patient data
+- Include 1 patient (center), 4 source systems, 5-7 encounters, 3-5 diagnoses, 4-6 medications, 6-10 lab results, 3-4 providers
+- Ensure temporal consistency (later encounters reference earlier diagnoses)
+- Include code mappings among ICD, SNOMED, RxNorm, LOINC
 </details>
 
 ## Summary and Key Takeaways

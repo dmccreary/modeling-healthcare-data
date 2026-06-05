@@ -1,0 +1,14 @@
+{
+  "sim_id": "directed-acyclic-graph-care-pathway",
+  "diagram_name": "Directed Acyclic Graph Example: Care Pathway",
+  "chapter_number": 1,
+  "chapter_title": "Graph Theory Database Foundations",
+  "chapter_dir": "01-graph-theory-database-foundations",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: diagram\n**sim-id:** directed-acyclic-graph-care-pathway<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\nuse the hc-graph-generator skill to create a new MicroSim using the following requirements\n\nPurpose: Demonstrate a DAG structure representing a clinical care pathway where stages progress without cycles\n\nComponents to show:\n- 8 rectangular nodes arranged in a flow from left to right and top to bottom\n- Node 1: \"Patient Admission\"\n- Node 2: \"Initial Assessment\"\n- Node 3: \"Diagnostic Testing\"\n- Node 4: \"Test Results Review\"\n- Node 5: \"Treatment Planning\"\n- Node 6: \"Treatment Administration\"\n- Node 7: \"Monitoring & Evaluation\"\n- Node 8: \"Discharge Planning\"\n\nConnections (directed arrows showing workflow):\n- Admission → Initial Assessment\n- Initial Assessment → Diagnostic Testing\n- Diagnostic Testing → Test Results Review\n- Test Results Review → Treatment Planning\n- Treatment Planning → Treatment Administration\n- Treatment Administration → Monitoring & Evaluation\n- Monitoring & Evaluation → Discharge Planning\n- (Optional paths) Test Results Review → Additional Testing (dotted line back to node 3 only if new tests needed)\n- Note: No cycles that return to previous stages\n\nStyle: Flowchart-style diagram with clear directional flow\n\nLabels:\n- Each node shows the care stage name\n- Arrows labeled with action or transition\n- Annotation: \"DAG Property: No cycles—each stage progresses forward in time\"\n\nColor scheme:\n- Nodes: Light blue gradient\n- Arrows: Dark blue\n- Optional/conditional paths: Dotted lines\n- Background: White\n\nVisual notes:\n- Add small clock icons to emphasize temporal progression\n- Highlight the acyclic nature with a note: \"A patient does not cycle back to admission during a single encounter\"\n\nImplementation: Flowchart diagram tool (Mermaid, draw.io, or Graphviz)"
+}

@@ -1,0 +1,14 @@
+{
+  "sim_id": "healthcare-ecosystem-stakeholder-diagram",
+  "diagram_name": "Healthcare Ecosystem Stakeholder Diagram",
+  "chapter_number": 2,
+  "chapter_title": "Intro To Healthcare Systems",
+  "chapter_dir": "02-intro-to-healthcare-systems",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: diagram\n**sim-id:** healthcare-ecosystem-stakeholder-diagram<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nUse the hc-graph-generator skill to create the following MicroSim called 'hc-stakeholders'\n\nPurpose: Illustrate the three primary stakeholder perspectives in healthcare and their key relationships\n\nComponents to show:\n- Central triangle with three points labeled: \"Patient\", \"Provider\", and \"Payer\"\n- Each stakeholder as a different colored circle (Patient: blue, Provider: green, Payer: orange)\n- Bidirectional arrows connecting all three stakeholders\n- Secondary entities around the perimeter: Pharmacy, Lab, Hospital, Clinic, Insurance Company, Employer, Government\n\nRelationships (arrows with labels):\n- Patient ↔ Provider: \"Care Delivery\", \"Medical Records\"\n- Provider ↔ Payer: \"Claims\", \"Reimbursement\"\n- Payer ↔ Patient: \"Coverage\", \"Premiums\"\n- Provider → Pharmacy: \"Prescriptions\"\n- Provider → Lab: \"Test Orders\", \"Results\"\n- Payer → Pharmacy: \"Formulary Rules\", \"Reimbursement\"\n- Employer → Payer: \"Group Coverage\"\n- Government → Payer: \"Regulations\", \"Medicare/Medicaid\"\n\nStyle: Network diagram with central triangle and satellite nodes\n\nVisual hierarchy:\n- Primary stakeholders (larger circles, bold labels)\n- Secondary entities (smaller circles, regular labels)\n- Primary relationships (thick arrows)\n- Secondary relationships (thin arrows)\n\nColor scheme:\n- Patient entities: Blue tones\n- Provider entities: Green tones\n- Payer entities: Orange tones\n- Government/regulatory: Gray\n\nAnnotations:\n- Label showing \"Data flows in all directions\"\n- Note: \"Each relationship generates complex data exchanges\"\n\nImplementation: SVG-based diagram or Mermaid diagram embedded in markdown"
+}

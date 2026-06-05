@@ -1,0 +1,14 @@
+{
+  "sim_id": "care-pathway-comparison-chart",
+  "diagram_name": "Care Pathway Comparison Chart",
+  "chapter_number": 3,
+  "chapter_title": "Graph Query Languages",
+  "chapter_dir": "03-graph-query-languages",
+  "library": "Chart.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: chart\n**sim-id:** care-pathway-comparison-chart<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nChart type: Horizontal bar chart with grouped bars\n\nPurpose: Compare effectiveness metrics across different Type 2 Diabetes treatment pathways discovered by path queries\n\nY-axis: Treatment pathway names (5 pathways)\nX-axis: Effectiveness score (0-100, composite metric)\n\nPathways (Y-axis labels):\n1. \"Metformin → Lifestyle → Controlled\" (shortest)\n2. \"Metformin → Insulin → GLP-1 → Controlled\"\n3. \"Lifestyle → Metformin → SGLT2 → Controlled\"\n4. \"Metformin → DPP-4 → Insulin → Controlled\"\n5. \"Insulin → Metformin → GLP-1 → Controlled\"\n\nData series (grouped bars for each pathway):\n\nSeries 1 - Patient Outcomes (blue bars):\n- Pathway 1: 85\n- Pathway 2: 78\n- Pathway 3: 82\n- Pathway 4: 75\n- Pathway 5: 72\n\nSeries 2 - Cost Efficiency (green bars, inverted cost scale):\n- Pathway 1: 90 (lowest cost = highest score)\n- Pathway 2: 60\n- Pathway 3: 75\n- Pathway 4: 65\n- Pathway 5: 55\n\nSeries 3 - Time to Control (orange bars, inverted time scale):\n- Pathway 1: 88 (shortest time = highest score)\n- Pathway 2: 70\n- Pathway 3: 80\n- Pathway 4: 68\n- Pathway 5: 65\n\nTitle: \"Comparative Effectiveness of Type 2 Diabetes Treatment Pathways\"\n\nLegend: Position top-right\n- Blue: Patient outcome success rate\n- Green: Cost efficiency (higher = lower cost)\n- Orange: Time efficiency (higher = faster to control)\n\nAnnotations:\n- Star icon next to Pathway 1: \"Optimal pathway (highest combined score)\"\n- Note below chart: \"Based on analysis of 15,000 patient care pathways from graph database\"\n\nTooltip on hover:\n- Show exact scores and underlying metrics (actual cost, days, outcome %)\n\nImplementation: Chart.js horizontal grouped bar chart"
+}

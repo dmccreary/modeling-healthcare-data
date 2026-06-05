@@ -122,106 +122,111 @@ Graph models of emergency department operations capture:
 - **Disposition**: Admitted to hospital, transferred to another facility, discharged home
 - **Referral relationships**: Follow-up care coordination with primary care or specialists
 
+#### Diagram: Healthcare Delivery Network Graph Model
+
 <details markdown="1">
-    <summary>Healthcare Delivery Network Graph Model</summary>
-    Type: graph-model
+<summary>Healthcare Delivery Network Graph Model</summary>
+Type: graph-model
+**sim-id:** healthcare-delivery-network-graph-model<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the relationships between different healthcare facility types, providers, and patients in a regional healthcare delivery network
+Purpose: Illustrate the relationships between different healthcare facility types, providers, and patients in a regional healthcare delivery network
 
-    Node types:
-    1. Hospital (large red hexagons)
-       - Properties: name, bed_count, trauma_level
-       - Example: "Regional Medical Center (450 beds, Level I Trauma)"
+Node types:
+1. Hospital (large red hexagons)
+   - Properties: name, bed_count, trauma_level
+   - Example: "Regional Medical Center (450 beds, Level I Trauma)"
 
-    2. Clinic (medium blue squares)
-       - Properties: name, specialty, provider_count
-       - Examples:
-         - "Downtown Primary Care Clinic (Family Medicine, 8 providers)"
-         - "Cardiology Associates (Cardiology, 5 providers)"
+2. Clinic (medium blue squares)
+   - Properties: name, specialty, provider_count
+   - Examples:
+     - "Downtown Primary Care Clinic (Family Medicine, 8 providers)"
+     - "Cardiology Associates (Cardiology, 5 providers)"
 
-    3. Outpatient Facility (medium green circles)
-       - Properties: name, service_type
-       - Examples:
-         - "Surgical Center West (Ambulatory Surgery)"
-         - "Imaging Center North (Diagnostic Imaging)"
+3. Outpatient Facility (medium green circles)
+   - Properties: name, service_type
+   - Examples:
+     - "Surgical Center West (Ambulatory Surgery)"
+     - "Imaging Center North (Diagnostic Imaging)"
 
-    4. Emergency Department (medium red triangles)
-       - Properties: name, annual_volume, trauma_designation
-       - Example: "Regional ED (45,000 visits/year, Level I)"
+4. Emergency Department (medium red triangles)
+   - Properties: name, annual_volume, trauma_designation
+   - Example: "Regional ED (45,000 visits/year, Level I)"
 
-    5. Provider (small orange circles)
-       - Properties: name, specialty, provider_type (PCP/Specialist)
-       - Examples: "Dr. Smith (Family Medicine, PCP)", "Dr. Jones (Cardiology, Specialist)"
+5. Provider (small orange circles)
+   - Properties: name, specialty, provider_type (PCP/Specialist)
+   - Examples: "Dr. Smith (Family Medicine, PCP)", "Dr. Jones (Cardiology, Specialist)"
 
-    6. Patient (tiny gray circles, sample set)
-       - Properties: patient_id, primary_pcp
-       - Example: "Patient cohort (500 represented)"
+6. Patient (tiny gray circles, sample set)
+   - Properties: patient_id, primary_pcp
+   - Example: "Patient cohort (500 represented)"
 
-    Edge types:
-    1. PRACTICES_AT (Provider → Facility)
-       - Properties: primary_location (boolean), hours_per_week
-       - Shows where providers deliver care
+Edge types:
+1. PRACTICES_AT (Provider → Facility)
+   - Properties: primary_location (boolean), hours_per_week
+   - Shows where providers deliver care
 
-    2. AFFILIATED_WITH (Clinic/Outpatient → Hospital)
-       - Properties: affiliation_type (owned, affiliated, independent)
-       - Shows organizational relationships
+2. AFFILIATED_WITH (Clinic/Outpatient → Hospital)
+   - Properties: affiliation_type (owned, affiliated, independent)
+   - Shows organizational relationships
 
-    3. REFERS_TO (Provider → Provider or Facility → Facility)
-       - Properties: referral_count, referral_specialty
-       - Shows referral patterns
+3. REFERS_TO (Provider → Provider or Facility → Facility)
+   - Properties: referral_count, referral_specialty
+   - Shows referral patterns
 
-    4. HAS_PCP (Patient → Provider)
-       - Properties: attribution_date
-       - Shows patient-PCP assignments
+4. HAS_PCP (Patient → Provider)
+   - Properties: attribution_date
+   - Shows patient-PCP assignments
 
-    5. TRANSFERS_TO (Emergency Department → Hospital Department)
-       - Properties: transfer_volume, typical_conditions
-       - Shows ED-to-inpatient pathways
+5. TRANSFERS_TO (Emergency Department → Hospital Department)
+   - Properties: transfer_volume, typical_conditions
+   - Shows ED-to-inpatient pathways
 
-    Sample data structure:
-    - Regional Medical Center (Hospital)
-      ├─ Includes → Regional ED (Emergency Department)
-      ├─ Affiliated with → Downtown Primary Care Clinic
-      ├─ Affiliated with → Cardiology Associates
-      └─ Receives transfers from → Community Hospital ED
+Sample data structure:
+- Regional Medical Center (Hospital)
+  ├─ Includes → Regional ED (Emergency Department)
+  ├─ Affiliated with → Downtown Primary Care Clinic
+  ├─ Affiliated with → Cardiology Associates
+  └─ Receives transfers from → Community Hospital ED
 
-    - Downtown Primary Care Clinic
-      ├─ Dr. Smith (PCP) PRACTICES_AT
-      │  ├─ Has 1,200 patients assigned
-      │  └─ REFERS_TO → Dr. Jones (Cardiologist)
-      └─ Dr. Brown (PCP) PRACTICES_AT
+- Downtown Primary Care Clinic
+  ├─ Dr. Smith (PCP) PRACTICES_AT
+  │  ├─ Has 1,200 patients assigned
+  │  └─ REFERS_TO → Dr. Jones (Cardiologist)
+  └─ Dr. Brown (PCP) PRACTICES_AT
 
-    - Cardiology Associates
-      ├─ Dr. Jones (Cardiologist) PRACTICES_AT
-      │  └─ Receives referrals from 15 PCPs
-      └─ Dr. White (Cardiologist) PRACTICES_AT
+- Cardiology Associates
+  ├─ Dr. Jones (Cardiologist) PRACTICES_AT
+  │  └─ Receives referrals from 15 PCPs
+  └─ Dr. White (Cardiologist) PRACTICES_AT
 
-    Layout: Force-directed with hospital as central large node, facilities arranged radially, providers clustered near their practice locations
+Layout: Force-directed with hospital as central large node, facilities arranged radially, providers clustered near their practice locations
 
-    Interactive features:
-    - Hover over node: Show summary statistics (bed count, provider count, patient volume)
-    - Click Provider node: Highlight all practice locations and referral relationships
-    - Click Facility node: Highlight all associated providers and referral sources/targets
-    - Double-click Hospital: Expand to show internal departments
-    - Filter controls:
-      - Toggle node types on/off (Hospitals, Clinics, Outpatient, Providers, Patients)
-      - Filter by specialty (show only cardiology network, only primary care, etc.)
-      - Filter by geographic region
-    - "Show referral flows" toggle: Animate typical patient journey from PCP → Specialist → Hospital
+Interactive features:
+- Hover over node: Show summary statistics (bed count, provider count, patient volume)
+- Click Provider node: Highlight all practice locations and referral relationships
+- Click Facility node: Highlight all associated providers and referral sources/targets
+- Double-click Hospital: Expand to show internal departments
+- Filter controls:
+  - Toggle node types on/off (Hospitals, Clinics, Outpatient, Providers, Patients)
+  - Filter by specialty (show only cardiology network, only primary care, etc.)
+  - Filter by geographic region
+- "Show referral flows" toggle: Animate typical patient journey from PCP → Specialist → Hospital
 
-    Visual styling:
-    - Node size proportional to volume metrics (hospital beds, clinic visit volume, provider panel size)
-    - Edge thickness proportional to referral volume
-    - Color coding: Red = hospital/ED, Blue = primary care, Orange = specialty care, Green = outpatient services
-    - Active providers (accepting patients): Solid border; Not accepting: Dashed border
+Visual styling:
+- Node size proportional to volume metrics (hospital beds, clinic visit volume, provider panel size)
+- Edge thickness proportional to referral volume
+- Color coding: Red = hospital/ED, Blue = primary care, Orange = specialty care, Green = outpatient services
+- Active providers (accepting patients): Solid border; Not accepting: Dashed border
 
-    Legend:
-    - Node shapes: Hexagon = Hospital, Square = Clinic, Circle = Outpatient Facility, Triangle = ED, Small circle = Provider
-    - Edge types: Solid = primary affiliation, Dashed = referral relationship, Dotted = transfer pathway
-    - Color coding by facility/specialty type
+Legend:
+- Node shapes: Hexagon = Hospital, Square = Clinic, Circle = Outpatient Facility, Triangle = ED, Small circle = Provider
+- Edge types: Solid = primary affiliation, Dashed = referral relationship, Dotted = transfer pathway
+- Color coding by facility/specialty type
 
-    Implementation: vis-network JavaScript library
-    Canvas size: 1200x900px
+Implementation: vis-network JavaScript library
+Canvas size: 1200x900px
 </details>
 
 ## Provider Networks and Organizational Structures
@@ -282,124 +287,129 @@ Traditional primary care teams typically include:
 
 Graph models of care teams capture both standing team structures (a primary care clinic's established team composition) and dynamic patient-specific teams (the set of providers actively involved in a cancer patient's treatment). Relationships between providers on teams include role-based connections, communication patterns, shared patients, and collaborative care protocols.
 
+#### Diagram: Multidisciplinary Care Team Graph Model
+
 <details markdown="1">
-    <summary>Multidisciplinary Care Team Graph Model</summary>
-    Type: graph-model
+<summary>Multidisciplinary Care Team Graph Model</summary>
+Type: graph-model
+**sim-id:** multidisciplinary-care-team-graph-model<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Visualize the structure and relationships within a multidisciplinary care team managing a complex patient (example: diabetes with cardiovascular complications)
+Purpose: Visualize the structure and relationships within a multidisciplinary care team managing a complex patient (example: diabetes with cardiovascular complications)
 
-    Node types:
-    1. Patient (large blue circle, center)
-       - Properties: patient_id, name, diagnoses
-       - Example: "John Doe, Age 62, Type 2 Diabetes + CAD + CKD Stage 3"
+Node types:
+1. Patient (large blue circle, center)
+   - Properties: patient_id, name, diagnoses
+   - Example: "John Doe, Age 62, Type 2 Diabetes + CAD + CKD Stage 3"
 
-    2. Primary Care Provider (medium green square)
-       - Properties: name, specialty
-       - Example: "Dr. Martinez, Family Medicine"
+2. Primary Care Provider (medium green square)
+   - Properties: name, specialty
+   - Example: "Dr. Martinez, Family Medicine"
 
-    3. Specialist Providers (medium orange squares)
-       - Properties: name, specialty
-       - Examples:
-         - "Dr. Kim, Endocrinology"
-         - "Dr. Patel, Cardiology"
-         - "Dr. Thompson, Nephrology"
+3. Specialist Providers (medium orange squares)
+   - Properties: name, specialty
+   - Examples:
+     - "Dr. Kim, Endocrinology"
+     - "Dr. Patel, Cardiology"
+     - "Dr. Thompson, Nephrology"
 
-    4. Allied Health Professionals (small purple circles)
-       - Properties: name, role
-       - Examples:
-         - "Sarah, RN (Care Coordinator)"
-         - "James, PharmD (Clinical Pharmacist)"
-         - "Lisa, RD (Registered Dietitian)"
-         - "Tom, LCSW (Social Worker)"
+4. Allied Health Professionals (small purple circles)
+   - Properties: name, role
+   - Examples:
+     - "Sarah, RN (Care Coordinator)"
+     - "James, PharmD (Clinical Pharmacist)"
+     - "Lisa, RD (Registered Dietitian)"
+     - "Tom, LCSW (Social Worker)"
 
-    5. Facility/Department (small gray hexagons)
-       - Properties: name, type
-       - Examples: "Downtown Clinic", "Cardiology Practice", "Hospital Pharmacy"
+5. Facility/Department (small gray hexagons)
+   - Properties: name, type
+   - Examples: "Downtown Clinic", "Cardiology Practice", "Hospital Pharmacy"
 
-    Edge types:
-    1. MANAGES_PRIMARY_CARE (PCP → Patient)
-       - Properties: attribution_date, last_visit
-       - Solid green line
+Edge types:
+1. MANAGES_PRIMARY_CARE (PCP → Patient)
+   - Properties: attribution_date, last_visit
+   - Solid green line
 
-    2. CONSULTS_FOR (Specialist → Patient)
-       - Properties: specialty_focus, consultation_frequency
-       - Solid orange lines
+2. CONSULTS_FOR (Specialist → Patient)
+   - Properties: specialty_focus, consultation_frequency
+   - Solid orange lines
 
-    3. SUPPORTS_CARE (Allied Health → Patient)
-       - Properties: role, intervention_type
-       - Dashed purple lines
+3. SUPPORTS_CARE (Allied Health → Patient)
+   - Properties: role, intervention_type
+   - Dashed purple lines
 
-    4. REFERS_TO (Provider → Provider)
-       - Properties: referral_date, indication
-       - Dotted blue arrows showing referral pathways
+4. REFERS_TO (Provider → Provider)
+   - Properties: referral_date, indication
+   - Dotted blue arrows showing referral pathways
 
-    5. COLLABORATES_WITH (Provider ↔ Provider)
-       - Properties: communication_frequency, shared_care_protocol
-       - Bidirectional gray lines
+5. COLLABORATES_WITH (Provider ↔ Provider)
+   - Properties: communication_frequency, shared_care_protocol
+   - Bidirectional gray lines
 
-    6. PRACTICES_AT (Provider → Facility)
-       - Properties: primary_location
-       - Thin black lines
+6. PRACTICES_AT (Provider → Facility)
+   - Properties: primary_location
+   - Thin black lines
 
-    Sample data structure:
-    Patient "John Doe" (center)
-      ├─ MANAGED_BY → Dr. Martinez (PCP)
-      │  ├─ REFERRED_TO → Dr. Kim (Endocrinologist)
-      │  ├─ REFERRED_TO → Dr. Patel (Cardiologist)
-      │  └─ REFERRED_TO → Dr. Thompson (Nephrologist)
-      │
-      ├─ Dr. Kim (Endocrinologist)
-      │  ├─ COLLABORATES_WITH → Dr. Patel (co-managing DM + CAD)
-      │  └─ COLLABORATES_WITH → James, PharmD (medication optimization)
-      │
-      ├─ Dr. Patel (Cardiologist)
-      │  └─ COLLABORATES_WITH → Dr. Thompson (managing CAD + CKD)
-      │
-      ├─ Sarah, RN (Care Coordinator)
-      │  ├─ COORDINATES_WITH → All providers
-      │  └─ SUPPORTS_CARE → Patient (care management)
-      │
-      ├─ James, PharmD (Clinical Pharmacist)
-      │  └─ SUPPORTS_CARE → Patient (medication reconciliation, adherence)
-      │
-      ├─ Lisa, RD (Dietitian)
-      │  └─ SUPPORTS_CARE → Patient (nutrition counseling)
-      │
-      └─ Tom, LCSW (Social Worker)
-         └─ SUPPORTS_CARE → Patient (behavioral health, resources)
+Sample data structure:
+Patient "John Doe" (center)
+  ├─ MANAGED_BY → Dr. Martinez (PCP)
+  │  ├─ REFERRED_TO → Dr. Kim (Endocrinologist)
+  │  ├─ REFERRED_TO → Dr. Patel (Cardiologist)
+  │  └─ REFERRED_TO → Dr. Thompson (Nephrologist)
+  │
+  ├─ Dr. Kim (Endocrinologist)
+  │  ├─ COLLABORATES_WITH → Dr. Patel (co-managing DM + CAD)
+  │  └─ COLLABORATES_WITH → James, PharmD (medication optimization)
+  │
+  ├─ Dr. Patel (Cardiologist)
+  │  └─ COLLABORATES_WITH → Dr. Thompson (managing CAD + CKD)
+  │
+  ├─ Sarah, RN (Care Coordinator)
+  │  ├─ COORDINATES_WITH → All providers
+  │  └─ SUPPORTS_CARE → Patient (care management)
+  │
+  ├─ James, PharmD (Clinical Pharmacist)
+  │  └─ SUPPORTS_CARE → Patient (medication reconciliation, adherence)
+  │
+  ├─ Lisa, RD (Dietitian)
+  │  └─ SUPPORTS_CARE → Patient (nutrition counseling)
+  │
+  └─ Tom, LCSW (Social Worker)
+     └─ SUPPORTS_CARE → Patient (behavioral health, resources)
 
-    Layout: Radial with patient at center, providers in inner ring, allied health in outer ring
+Layout: Radial with patient at center, providers in inner ring, allied health in outer ring
 
-    Interactive features:
-    - Hover over Provider: Show specialty, visit history with patient, current medications prescribed
-    - Hover over edge: Show relationship type and recent interactions
-    - Click Provider: Highlight all direct collaborations and referral relationships
-    - Click Patient: Display summary of care team composition and coordination metrics
-    - "Show communication paths" toggle: Highlight communication frequency with line thickness
-    - "Timeline view" button: Show temporal evolution of care team (when providers joined/left care team)
-    - Filter by role: Show only physicians, show only allied health, show full team
+Interactive features:
+- Hover over Provider: Show specialty, visit history with patient, current medications prescribed
+- Hover over edge: Show relationship type and recent interactions
+- Click Provider: Highlight all direct collaborations and referral relationships
+- Click Patient: Display summary of care team composition and coordination metrics
+- "Show communication paths" toggle: Highlight communication frequency with line thickness
+- "Timeline view" button: Show temporal evolution of care team (when providers joined/left care team)
+- Filter by role: Show only physicians, show only allied health, show full team
 
-    Visual styling:
-    - Patient node: Extra large (80px), blue, prominently labeled
-    - Provider nodes sized by visit frequency with patient (more visits = larger node)
-    - Edge thickness represents communication/collaboration frequency
-    - Color coding: Green = primary care, Orange = specialty care, Purple = allied health
-    - Animated pulse on nodes with pending actions (overdue visits, medication reconciliation needed)
+Visual styling:
+- Patient node: Extra large (80px), blue, prominently labeled
+- Provider nodes sized by visit frequency with patient (more visits = larger node)
+- Edge thickness represents communication/collaboration frequency
+- Color coding: Green = primary care, Orange = specialty care, Purple = allied health
+- Animated pulse on nodes with pending actions (overdue visits, medication reconciliation needed)
 
-    Annotations:
-    - Display care team metrics:
-      - Team size: 8 members
-      - Coordination events: 24 in last 6 months
-      - Last team conference: 2 weeks ago
-      - Patient outcome trend: HbA1c improving (8.2% → 7.4%)
+Annotations:
+- Display care team metrics:
+  - Team size: 8 members
+  - Coordination events: 24 in last 6 months
+  - Last team conference: 2 weeks ago
+  - Patient outcome trend: HbA1c improving (8.2% → 7.4%)
 
-    Legend:
-    - Node shapes and colors by role
-    - Edge types: Solid = active care, Dashed = support role, Dotted = referral
-    - Line thickness = collaboration intensity
+Legend:
+- Node shapes and colors by role
+- Edge types: Solid = active care, Dashed = support role, Dotted = referral
+- Line thickness = collaboration intensity
 
-    Implementation: vis-network JavaScript library
-    Canvas size: 900x900px
+Implementation: vis-network JavaScript library
+Canvas size: 900x900px
 </details>
 
 ## Scheduling, Appointments, and Capacity Management
@@ -436,6 +446,51 @@ Graph queries enable sophisticated appointment analytics such as:
 - Calculating actual vs. expected appointment duration for schedule accuracy
 - Tracking patient access metrics (time to third-next-available appointment)
 
+The MicroSim below turns these scheduling tradeoffs into something you can experiment with: adjust the no-show rate and overbooking policy and watch provider idle time and patient wait time move in opposite directions.
+
+#### Diagram: Appointment Scheduling and No-Show Simulator MicroSim
+
+<details markdown="1">
+<summary>Appointment Scheduling and No-Show Simulator MicroSim</summary>
+Type: microsim
+**sim-id:** appointment-no-show-simulator<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
+
+Learning objective: Apply (L3 — use, demonstrate, calculate) how appointment templates, no-show rates, and overbooking policies jointly determine provider utilization, patient wait time, and clinic overtime, so learners can reason quantitatively about the core scheduling tradeoff.
+
+Canvas layout (responsive, target 900x560; resizes with the window):
+- Left (~60%): a one-day clinic schedule column (time slots from 8:00 to 17:00) with each appointment colored by outcome (kept = green, no-show = gray, overbook collision causing wait = orange).
+- Right (~40%): sliders, a computed KPI panel, and a one-line interpretation box.
+
+Visual elements:
+- ~16 time slots; booked appointments fill slots, and overbooked appointments stack on a slot.
+- A live KPI panel: provider utilization %, patient mean wait (minutes), clinic end time / overtime (minutes), and patients seen.
+
+Interactive controls (use built-in p5 DOM controls):
+- Slider "No-show rate" (0–40%, default 18%)
+- Slider "Overbooking factor" (1.0–1.6 appointments per slot, default 1.0)
+- Dropdown "Visit-length variability": Low | Medium | High
+- Dropdown "Template": Wave | Modified-wave | Stream
+- Button "Run day"
+- Button "Reset"
+
+Default parameters: No-show 18%, overbooking 1.0, variability Medium, template Stream.
+
+Data Visibility Requirements (Apply objective):
+  Stage 1: Show the booked schedule before the day runs.
+  Stage 2: On "Run day", reveal which appointments no-showed and which overbooks collided.
+  Final: Show the four KPIs with a one-line interpretation (for example, "Overbooking 1.3x recovered 2 idle slots but added 14 min mean wait").
+
+Behavior:
+- Raising the no-show slider increases gray slots and drops utilization; raising overbooking refills those gaps but, when patients do show, creates orange collisions that raise wait time and overtime.
+- The KPI panel updates every run so learners can search for the overbooking factor that maximizes patients-seen without pushing mean wait past a threshold.
+
+Instructional Rationale: The Apply objective requires learners to manipulate policy levers and read the resulting metrics. Showing the booked schedule, then the realized outcomes, then the KPIs supports predict-then-verify reasoning about the no-show/overbooking tradeoff. A discrete "Run day" (not continuous animation) keeps each experiment attributable to the chosen settings.
+
+Implementation: p5.js with DOM controls; a lightweight discrete-event simulation of one clinic day (Bernoulli no-shows, sampled visit lengths); responsive to window resize.
+</details>
+
 ### Provider Capacity
 
 **Provider Capacity** represents the volume of clinical services a provider or facility can deliver within a given time period, constrained by schedule availability, resources, and regulatory limits. Capacity management is fundamental to healthcare operations, affecting patient access times, provider workload, financial performance, and care quality.
@@ -450,98 +505,103 @@ Capacity metrics include:
 
 Graph models support capacity analysis by connecting providers to schedules, appointments, and facilities, enabling queries that calculate capacity utilization, identify bottlenecks, and forecast demand. For example, a graph query can identify specialists with low utilization who could accommodate referrals that are currently experiencing long wait times with high-volume specialists.
 
+#### Diagram: Provider Capacity Utilization Dashboard Chart
+
 <details markdown="1">
-    <summary>Provider Capacity Utilization Dashboard Chart</summary>
-    Type: chart
+<summary>Provider Capacity Utilization Dashboard Chart</summary>
+Type: chart
+**sim-id:** provider-capacity-utilization-dashboard-chart<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Purpose: Visualize provider capacity and utilization across different specialties to identify access bottlenecks and optimization opportunities
+Purpose: Visualize provider capacity and utilization across different specialties to identify access bottlenecks and optimization opportunities
 
-    Chart type: Combo chart (grouped bar + line overlay)
+Chart type: Combo chart (grouped bar + line overlay)
 
-    Title: "Provider Capacity and Utilization by Specialty - Current Month"
+Title: "Provider Capacity and Utilization by Specialty - Current Month"
 
-    X-axis: Specialty categories (6 specialties)
-    - Primary Care
-    - Cardiology
-    - Orthopedics
-    - Endocrinology
-    - Dermatology
-    - Gastroenterology
+X-axis: Specialty categories (6 specialties)
+- Primary Care
+- Cardiology
+- Orthopedics
+- Endocrinology
+- Dermatology
+- Gastroenterology
 
-    Y-axis (left): Appointment counts (0-800)
-    Y-axis (right): Utilization percentage (0-100%)
+Y-axis (left): Appointment counts (0-800)
+Y-axis (right): Utilization percentage (0-100%)
 
-    Data series:
+Data series:
 
-    Bar series (left Y-axis):
-    1. Total Capacity Slots (light blue bars)
-       - Primary Care: 750
-       - Cardiology: 400
-       - Orthopedics: 350
-       - Endocrinology: 250
-       - Dermatology: 300
-       - Gastroenterology: 280
+Bar series (left Y-axis):
+1. Total Capacity Slots (light blue bars)
+   - Primary Care: 750
+   - Cardiology: 400
+   - Orthopedics: 350
+   - Endocrinology: 250
+   - Dermatology: 300
+   - Gastroenterology: 280
 
-    2. Scheduled Appointments (dark blue bars)
-       - Primary Care: 680
-       - Cardiology: 390
-       - Orthopedics: 315
-       - Endocrinology: 238
-       - Dermatology: 270
-       - Gastroenterology: 252
+2. Scheduled Appointments (dark blue bars)
+   - Primary Care: 680
+   - Cardiology: 390
+   - Orthopedics: 315
+   - Endocrinology: 238
+   - Dermatology: 270
+   - Gastroenterology: 252
 
-    3. Completed Appointments (green bars)
-       - Primary Care: 612
-       - Cardiology: 350
-       - Orthopedics: 283
-       - Endocrinology: 214
-       - Dermatology: 243
-       - Gastroenterology: 227
+3. Completed Appointments (green bars)
+   - Primary Care: 612
+   - Cardiology: 350
+   - Orthopedics: 283
+   - Endocrinology: 214
+   - Dermatology: 243
+   - Gastroenterology: 227
 
-    Line series (right Y-axis):
-    4. Utilization Rate (orange line with markers)
-       - Primary Care: 91% (680/750)
-       - Cardiology: 98% (390/400)
-       - Orthopedics: 90% (315/350)
-       - Endocrinology: 95% (238/250)
-       - Dermatology: 90% (270/300)
-       - Gastroenterology: 90% (252/280)
+Line series (right Y-axis):
+4. Utilization Rate (orange line with markers)
+   - Primary Care: 91% (680/750)
+   - Cardiology: 98% (390/400)
+   - Orthopedics: 90% (315/350)
+   - Endocrinology: 95% (238/250)
+   - Dermatology: 90% (270/300)
+   - Gastroenterology: 90% (252/280)
 
-    5. Target Utilization (red dashed line)
-       - Flat line at 85% across all specialties
+5. Target Utilization (red dashed line)
+   - Flat line at 85% across all specialties
 
-    Chart styling:
-    - Bar width: Wide with small gaps for readability
-    - Bars grouped by specialty
-    - Grid lines: Horizontal lines every 100 units (left) and 10% (right)
-    - Data labels: Show utilization percentage above each specialty
-    - Legend: Bottom of chart
+Chart styling:
+- Bar width: Wide with small gaps for readability
+- Bars grouped by specialty
+- Grid lines: Horizontal lines every 100 units (left) and 10% (right)
+- Data labels: Show utilization percentage above each specialty
+- Legend: Bottom of chart
 
-    Annotations:
-    - Arrow pointing to Cardiology: "98% utilization - capacity constraint"
-    - Arrow pointing to Primary Care: "10% no-show rate (68 missed appointments)"
-    - Callout box on Cardiology: "Average wait time: 23 days for new patient"
-    - Callout box on Endocrinology: "High utilization (95%) with growing waitlist"
+Annotations:
+- Arrow pointing to Cardiology: "98% utilization - capacity constraint"
+- Arrow pointing to Primary Care: "10% no-show rate (68 missed appointments)"
+- Callout box on Cardiology: "Average wait time: 23 days for new patient"
+- Callout box on Endocrinology: "High utilization (95%) with growing waitlist"
 
-    Color coding:
-    - Light blue: Total capacity (what's available)
-    - Dark blue: Scheduled (what's booked)
-    - Green: Completed (what was delivered)
-    - Orange line: Actual utilization percentage
-    - Red dashed line: Target utilization benchmark
+Color coding:
+- Light blue: Total capacity (what's available)
+- Dark blue: Scheduled (what's booked)
+- Green: Completed (what was delivered)
+- Orange line: Actual utilization percentage
+- Red dashed line: Target utilization benchmark
 
-    Additional metrics panel (below chart):
-    - Network-wide utilization: 92%
-    - Total no-show rate: 9.3%
-    - Average new patient access time: 14.5 days
-    - Specialties above capacity threshold: 2 (Cardiology, Endocrinology)
-    - Optimization opportunity: Redistribute 45 slots from low-volume sessions
+Additional metrics panel (below chart):
+- Network-wide utilization: 92%
+- Total no-show rate: 9.3%
+- Average new patient access time: 14.5 days
+- Specialties above capacity threshold: 2 (Cardiology, Endocrinology)
+- Optimization opportunity: Redistribute 45 slots from low-volume sessions
 
-    Graph database query insight:
-    "This chart was generated by graph queries aggregating appointment data across provider schedules, tracking status transitions from scheduled → completed, and calculating specialty-level capacity metrics"
+Graph database query insight:
+"This chart was generated by graph queries aggregating appointment data across provider schedules, tracking status transitions from scheduled → completed, and calculating specialty-level capacity metrics"
 
-    Implementation: Chart.js with dual Y-axis configuration
-    Canvas size: 1000x600px
+Implementation: Chart.js with dual Y-axis configuration
+Canvas size: 1000x600px
 </details>
 
 ## Provider Credentials, Quality, and Performance
@@ -614,118 +674,123 @@ Graph models integrate performance data with provider nodes, enabling comparativ
 | Patient Experience | Communication rating, care coordination score, recommend provider | CAHPS surveys, online reviews | Match patients to highly-rated providers, investigate low-scoring patterns |
 | Efficiency | Cost per diabetes patient, imaging utilization rate, generic prescribing rate | Claims analytics, pharmacy data | Reward efficient providers, identify outliers for education |
 
+#### Diagram: Provider Performance Comparison MicroSim
+
 <details markdown="1">
-    <summary>Provider Performance Comparison MicroSim</summary>
-    Type: microsim
+<summary>Provider Performance Comparison MicroSim</summary>
+Type: microsim
+**sim-id:** provider-performance-comparison-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Enable interactive exploration of provider performance metrics across multiple dimensions, demonstrating how graph databases can aggregate and compare performance data from multiple sources for network optimization
+Learning objective: Enable interactive exploration of provider performance metrics across multiple dimensions, demonstrating how graph databases can aggregate and compare performance data from multiple sources for network optimization
 
-    Canvas layout (1200x800px):
-    - Top section (1200x100): Title, filters, and metric selectors
-    - Middle-left (700x600): Scatter plot visualization showing provider performance
-    - Middle-right (500x600): Details panel showing selected provider's full metrics
-    - Bottom section (1200x100): Summary statistics and insights
+Canvas layout (1200x800px):
+- Top section (1200x100): Title, filters, and metric selectors
+- Middle-left (700x600): Scatter plot visualization showing provider performance
+- Middle-right (500x600): Details panel showing selected provider's full metrics
+- Bottom section (1200x100): Summary statistics and insights
 
-    Top section controls:
-    - Dropdown: Select specialty (All, Primary Care, Cardiology, Orthopedics, etc.)
-    - Dropdown: Select X-axis metric (Patient Satisfaction, Cost Efficiency, Clinical Quality Score)
-    - Dropdown: Select Y-axis metric (Same options as X-axis)
-    - Checkbox: Show provider names on hover
-    - Button: "Reset View"
+Top section controls:
+- Dropdown: Select specialty (All, Primary Care, Cardiology, Orthopedics, etc.)
+- Dropdown: Select X-axis metric (Patient Satisfaction, Cost Efficiency, Clinical Quality Score)
+- Dropdown: Select Y-axis metric (Same options as X-axis)
+- Checkbox: Show provider names on hover
+- Button: "Reset View"
 
-    Scatter plot visualization (middle-left):
-    - X-axis: Selected metric 1 (e.g., Patient Satisfaction Score, 0-5 scale)
-    - Y-axis: Selected metric 2 (e.g., Clinical Quality Score, 0-100 scale)
-    - Data points: Each provider represented as a circle
-    - Circle size: Proportional to patient panel size or visit volume
-    - Circle color: By performance quadrant:
-      - Green: High on both metrics (top-right quadrant)
-      - Yellow: High on one metric, medium on other
-      - Orange: Medium on both metrics
-      - Red: Low on one or both metrics
-    - Quadrant lines: Divide plot at median values for each axis
-    - Labels: "High Quality, High Satisfaction" (top-right), etc.
+Scatter plot visualization (middle-left):
+- X-axis: Selected metric 1 (e.g., Patient Satisfaction Score, 0-5 scale)
+- Y-axis: Selected metric 2 (e.g., Clinical Quality Score, 0-100 scale)
+- Data points: Each provider represented as a circle
+- Circle size: Proportional to patient panel size or visit volume
+- Circle color: By performance quadrant:
+  - Green: High on both metrics (top-right quadrant)
+  - Yellow: High on one metric, medium on other
+  - Orange: Medium on both metrics
+  - Red: Low on one or both metrics
+- Quadrant lines: Divide plot at median values for each axis
+- Labels: "High Quality, High Satisfaction" (top-right), etc.
 
-    Sample provider data (Primary Care):
-    - Dr. Anderson: Satisfaction 4.8, Quality 92, Panel 1,800 (green, top-right)
-    - Dr. Baker: Satisfaction 4.2, Quality 78, Panel 1,500 (yellow, middle-right)
-    - Dr. Chen: Satisfaction 4.6, Quality 65, Panel 2,200 (yellow, bottom-right)
-    - Dr. Davis: Satisfaction 3.9, Quality 88, Panel 1,300 (yellow, top-middle)
-    - Dr. Evans: Satisfaction 3.5, Quality 62, Panel 1,900 (red, bottom-left)
-    - [15 more providers distributed across quadrants]
+Sample provider data (Primary Care):
+- Dr. Anderson: Satisfaction 4.8, Quality 92, Panel 1,800 (green, top-right)
+- Dr. Baker: Satisfaction 4.2, Quality 78, Panel 1,500 (yellow, middle-right)
+- Dr. Chen: Satisfaction 4.6, Quality 65, Panel 2,200 (yellow, bottom-right)
+- Dr. Davis: Satisfaction 3.9, Quality 88, Panel 1,300 (yellow, top-middle)
+- Dr. Evans: Satisfaction 3.5, Quality 62, Panel 1,900 (red, bottom-left)
+- [15 more providers distributed across quadrants]
 
-    Interactive features:
-    - Hover over data point: Show provider card with:
-      - Provider name and specialty
-      - All performance metrics (not just X and Y axes)
-      - Patient panel size
-      - Years in practice
-      - Primary practice location
-    - Click data point: Lock details panel to that provider
-    - Double-click data point: Zoom into that provider's network (show referring PCPs, patients, facilities)
-    - Drag to select multiple providers: Show group statistics in details panel
-    - Metric selector changes: Smoothly animate data points to new positions
+Interactive features:
+- Hover over data point: Show provider card with:
+  - Provider name and specialty
+  - All performance metrics (not just X and Y axes)
+  - Patient panel size
+  - Years in practice
+  - Primary practice location
+- Click data point: Lock details panel to that provider
+- Double-click data point: Zoom into that provider's network (show referring PCPs, patients, facilities)
+- Drag to select multiple providers: Show group statistics in details panel
+- Metric selector changes: Smoothly animate data points to new positions
 
-    Details panel (middle-right) when provider selected:
-    Display full provider profile:
-    - Provider name, photo placeholder, specialty
-    - Key metrics with visual indicators:
-      - Patient Satisfaction: 4.8/5.0 (star rating visual)
-      - Clinical Quality Score: 92/100 (progress bar)
-      - Cost Efficiency: 8% below average (green indicator)
-      - Panel Size: 1,800 patients
-      - Appointment Availability: 7 days (green)
-      - No-show Rate: 6% (green)
-      - Patient Demographics: Age distribution, condition prevalence
-    - Performance trend: Small line chart showing metrics over last 12 months
-    - Peer comparison: "Ranks 4th of 23 in network for overall performance"
-    - Care team: "Works with 2 care coordinators, 1 pharmacist, 3 medical assistants"
+Details panel (middle-right) when provider selected:
+Display full provider profile:
+- Provider name, photo placeholder, specialty
+- Key metrics with visual indicators:
+  - Patient Satisfaction: 4.8/5.0 (star rating visual)
+  - Clinical Quality Score: 92/100 (progress bar)
+  - Cost Efficiency: 8% below average (green indicator)
+  - Panel Size: 1,800 patients
+  - Appointment Availability: 7 days (green)
+  - No-show Rate: 6% (green)
+  - Patient Demographics: Age distribution, condition prevalence
+- Performance trend: Small line chart showing metrics over last 12 months
+- Peer comparison: "Ranks 4th of 23 in network for overall performance"
+- Care team: "Works with 2 care coordinators, 1 pharmacist, 3 medical assistants"
 
-    Bottom summary section:
-    Display network-level insights:
-    - Total providers: 68
-    - High performers (both metrics > median): 18 (26%)
-    - Improvement opportunities: 12 (18%)
-    - Network median satisfaction: 4.3/5.0
-    - Network median quality score: 78/100
-    - "Graph insight: Providers with larger care teams show 15% higher quality scores on average"
+Bottom summary section:
+Display network-level insights:
+- Total providers: 68
+- High performers (both metrics > median): 18 (26%)
+- Improvement opportunities: 12 (18%)
+- Network median satisfaction: 4.3/5.0
+- Network median quality score: 78/100
+- "Graph insight: Providers with larger care teams show 15% higher quality scores on average"
 
-    Default parameters:
-    - Specialty: Primary Care
-    - X-axis: Patient Satisfaction Score
-    - Y-axis: Clinical Quality Score
-    - All providers displayed
+Default parameters:
+- Specialty: Primary Care
+- X-axis: Patient Satisfaction Score
+- Y-axis: Clinical Quality Score
+- All providers displayed
 
-    Behavior:
-    - On load, display scatter plot with primary care providers
-    - Animate points appearing with fade-in effect
-    - When specialty filter changes, fade out old points, fade in new points
-    - When axis metric changes, animate points moving to new positions
-    - When hovering, enlarge point slightly and show connector line to details panel
-    - When clicking, lock selection with highlighted border
+Behavior:
+- On load, display scatter plot with primary care providers
+- Animate points appearing with fade-in effect
+- When specialty filter changes, fade out old points, fade in new points
+- When axis metric changes, animate points moving to new positions
+- When hovering, enlarge point slightly and show connector line to details panel
+- When clicking, lock selection with highlighted border
 
-    Educational features:
-    - "Graph Query Example" button: Shows Cypher query to aggregate performance data
-      ```
-      MATCH (p:Provider)-[:PRACTICES_IN]->(s:Specialty {name: 'Primary Care'})
-      MATCH (p)-[:HAS_METRIC]->(m:PerformanceMetric)
-      RETURN p.name,
-             avg(CASE WHEN m.type = 'satisfaction' THEN m.score END) as satisfaction,
-             avg(CASE WHEN m.type = 'quality' THEN m.score END) as quality,
-             size((p)-[:HAS_PATIENT]->()) as panel_size
-      ```
-    - Info icons explaining each metric with clinical relevance
-    - "Best Practice" callouts: "High-performing providers typically have structured care teams and systematic follow-up processes"
+Educational features:
+- "Graph Query Example" button: Shows Cypher query to aggregate performance data
+  ```
+  MATCH (p:Provider)-[:PRACTICES_IN]->(s:Specialty {name: 'Primary Care'})
+  MATCH (p)-[:HAS_METRIC]->(m:PerformanceMetric)
+  RETURN p.name,
+         avg(CASE WHEN m.type = 'satisfaction' THEN m.score END) as satisfaction,
+         avg(CASE WHEN m.type = 'quality' THEN m.score END) as quality,
+         size((p)-[:HAS_PATIENT]->()) as panel_size
+  ```
+- Info icons explaining each metric with clinical relevance
+- "Best Practice" callouts: "High-performing providers typically have structured care teams and systematic follow-up processes"
 
-    Implementation notes:
-    - Use p5.js for rendering scatter plot and animations
-    - Store sample provider data as JSON objects
-    - Implement quadrant highlighting with semi-transparent overlays
-    - Use color interpolation for smooth category transitions
-    - Calculate statistics in real-time as filters change
+Implementation notes:
+- Use p5.js for rendering scatter plot and animations
+- Store sample provider data as JSON objects
+- Implement quadrant highlighting with semi-transparent overlays
+- Use color interpolation for smooth category transitions
+- Calculate statistics in real-time as filters change
 
-    Implementation: p5.js
-    Canvas size: 1200x800px
+Implementation: p5.js
+Canvas size: 1200x800px
 </details>
 
 ## Clinical Excellence: Guidelines, Protocols, and Evidence-Based Practice
@@ -774,153 +839,158 @@ Protocol types include:
 
 In graph models, protocols are represented as structured workflows connecting conditions or presentations to ordered sequences of assessments, interventions, and decision points. Protocol adherence can be measured by comparing actual care paths (traced through graph relationships) to protocol-specified paths, enabling quality measurement and identification of practice variation.
 
+#### Diagram: Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department
+
 <details markdown="1">
-    <summary>Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department</summary>
-    Type: workflow
+<summary>Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department</summary>
+Type: workflow
+**sim-id:** clinical-protocol-workflow-chest-pain-evaluation<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
 
-    Purpose: Illustrate how clinical protocols are modeled as graph structures with decision points, enabling protocol adherence tracking and outcome correlation
+Purpose: Illustrate how clinical protocols are modeled as graph structures with decision points, enabling protocol adherence tracking and outcome correlation
 
-    Visual style: Flowchart with decision diamonds, process rectangles, and swimlanes
+Visual style: Flowchart with decision diamonds, process rectangles, and swimlanes
 
-    Swimlanes (top to bottom):
-    1. Patient Presentation
-    2. Initial Assessment
-    3. Risk Stratification
-    4. Diagnostic Testing
-    5. Treatment / Disposition
-    6. Follow-up
+Swimlanes (top to bottom):
+1. Patient Presentation
+2. Initial Assessment
+3. Risk Stratification
+4. Diagnostic Testing
+5. Treatment / Disposition
+6. Follow-up
 
-    Timeline: Horizontal flow from left (arrival) to right (disposition)
+Timeline: Horizontal flow from left (arrival) to right (disposition)
 
-    Steps:
+Steps:
 
-    STEP 1 - Patient Arrival:
-    Patient Presentation: "Patient arrives with chest pain"
-    Hover text: "ED triage classification: ESI Level 2 (high risk), activate chest pain protocol"
+STEP 1 - Patient Arrival:
+Patient Presentation: "Patient arrives with chest pain"
+Hover text: "ED triage classification: ESI Level 2 (high risk), activate chest pain protocol"
 
-    STEP 2 - Immediate Actions (Time 0-10 minutes):
-    Initial Assessment:
-    - "Obtain vital signs and 12-lead ECG"
-    - "IV access established"
-    - "Continuous cardiac monitoring"
-    Hover text: "Graph captures timestamp properties: ECG obtained at T+7 min (meets <10 min target)"
+STEP 2 - Immediate Actions (Time 0-10 minutes):
+Initial Assessment:
+- "Obtain vital signs and 12-lead ECG"
+- "IV access established"
+- "Continuous cardiac monitoring"
+Hover text: "Graph captures timestamp properties: ECG obtained at T+7 min (meets <10 min target)"
 
-    STEP 3 - Risk Stratification (Time 10-20 minutes):
-    Decision: "ECG shows STEMI?"
+STEP 3 - Risk Stratification (Time 10-20 minutes):
+Decision: "ECG shows STEMI?"
 
-    Branch A (If YES - STEMI):
-      - "Activate cardiac catheterization lab"
-      - "Administer antiplatelet therapy (aspirin, P2Y12 inhibitor)"
-      - "Prepare for primary PCI"
-      - Hover text: "High-risk pathway: Direct to cath lab, door-to-balloon time target <90 minutes"
-      - END at cardiac catheterization
+Branch A (If YES - STEMI):
+  - "Activate cardiac catheterization lab"
+  - "Administer antiplatelet therapy (aspirin, P2Y12 inhibitor)"
+  - "Prepare for primary PCI"
+  - Hover text: "High-risk pathway: Direct to cath lab, door-to-balloon time target <90 minutes"
+  - END at cardiac catheterization
 
-    Branch B (If NO - Non-STEMI or unclear):
-      - Continue to "Calculate HEART score"
-      - Hover text: "HEART score incorporates: History, ECG, Age, Risk factors, Troponin"
+Branch B (If NO - Non-STEMI or unclear):
+  - Continue to "Calculate HEART score"
+  - Hover text: "HEART score incorporates: History, ECG, Age, Risk factors, Troponin"
 
-    STEP 4 - HEART Score Decision (Time 20 minutes):
-    Decision: "HEART Score?"
+STEP 4 - HEART Score Decision (Time 20 minutes):
+Decision: "HEART Score?"
 
-    Branch B1 (HEART 0-3: Low Risk):
-      - "Obtain troponin at 0 and 2 hours"
-      - "Stress test or coronary CTA as outpatient"
-      - "Discharge from ED with cardiology follow-up"
-      - Hover text: "Low-risk pathway: <2% risk of MACE at 6 weeks"
+Branch B1 (HEART 0-3: Low Risk):
+  - "Obtain troponin at 0 and 2 hours"
+  - "Stress test or coronary CTA as outpatient"
+  - "Discharge from ED with cardiology follow-up"
+  - Hover text: "Low-risk pathway: <2% risk of MACE at 6 weeks"
 
-    Branch B2 (HEART 4-6: Moderate Risk):
-      - "Serial troponins (0, 2, 4 hours)"
-      - "Admit to observation unit"
-      - "Stress test prior to discharge"
-      - Hover text: "Moderate-risk pathway: 12-20% risk of MACE, requires observation"
+Branch B2 (HEART 4-6: Moderate Risk):
+  - "Serial troponins (0, 2, 4 hours)"
+  - "Admit to observation unit"
+  - "Stress test prior to discharge"
+  - Hover text: "Moderate-risk pathway: 12-20% risk of MACE, requires observation"
 
-    Branch B3 (HEART 7-10: High Risk):
-      - "Serial troponins"
-      - "Cardiology consultation"
-      - "Admit to cardiology service"
-      - "Coronary angiography within 24-72 hours"
-      - Hover text: "High-risk pathway: >50% risk of MACE, requires inpatient management"
+Branch B3 (HEART 7-10: High Risk):
+  - "Serial troponins"
+  - "Cardiology consultation"
+  - "Admit to cardiology service"
+  - "Coronary angiography within 24-72 hours"
+  - Hover text: "High-risk pathway: >50% risk of MACE, requires inpatient management"
 
-    STEP 5 - Troponin Results (Time varies by pathway):
-    Decision: "Troponin elevated?"
+STEP 5 - Troponin Results (Time varies by pathway):
+Decision: "Troponin elevated?"
 
-    If YES:
-      - "Diagnosis: NSTEMI or unstable angina"
-      - "Antiplatelet + anticoagulation therapy"
-      - "Cardiology consultation"
-      - "Inpatient admission"
-      - Hover text: "Elevated troponin confirms acute coronary syndrome"
+If YES:
+  - "Diagnosis: NSTEMI or unstable angina"
+  - "Antiplatelet + anticoagulation therapy"
+  - "Cardiology consultation"
+  - "Inpatient admission"
+  - Hover text: "Elevated troponin confirms acute coronary syndrome"
 
-    If NO:
-      - "Consider alternative diagnoses"
-      - "PE protocol if indicated"
-      - "GI evaluation if indicated"
-      - "Possible discharge with follow-up"
-      - Hover text: "Non-cardiac chest pain: Consider PE, GERD, MSK causes"
+If NO:
+  - "Consider alternative diagnoses"
+  - "PE protocol if indicated"
+  - "GI evaluation if indicated"
+  - "Possible discharge with follow-up"
+  - Hover text: "Non-cardiac chest pain: Consider PE, GERD, MSK causes"
 
-    STEP 6 - Disposition and Follow-up:
-    Treatment/Disposition outcomes:
-    - "Discharge home with PCP follow-up"
-    - "Observation unit admission"
-    - "Inpatient cardiology admission"
-    - "Transfer to cardiac catheterization"
+STEP 6 - Disposition and Follow-up:
+Treatment/Disposition outcomes:
+- "Discharge home with PCP follow-up"
+- "Observation unit admission"
+- "Inpatient cardiology admission"
+- "Transfer to cardiac catheterization"
 
-    Follow-up:
-    - "Cardiology appointment within 7 days"
-    - "Stress test scheduled"
-    - "Medication reconciliation and education"
-    Hover text: "Graph tracks disposition and ensures follow-up appointments are scheduled before discharge"
+Follow-up:
+- "Cardiology appointment within 7 days"
+- "Stress test scheduled"
+- "Medication reconciliation and education"
+Hover text: "Graph tracks disposition and ensures follow-up appointments are scheduled before discharge"
 
-    Color coding:
-    - Green: Low-risk pathway
-    - Yellow: Moderate-risk pathway
-    - Orange: High-risk pathway (HEART 7-10)
-    - Red: Critical pathway (STEMI)
-    - Blue: Diagnostic/testing steps
-    - Purple: Treatment interventions
+Color coding:
+- Green: Low-risk pathway
+- Yellow: Moderate-risk pathway
+- Orange: High-risk pathway (HEART 7-10)
+- Red: Critical pathway (STEMI)
+- Blue: Diagnostic/testing steps
+- Purple: Treatment interventions
 
-    Time annotations:
-    - Display cumulative time at each decision point
-    - Highlight protocol compliance: "ECG at 7 min ✓", "Troponin at 18 min ✓"
-    - Show time-to-treatment metrics for quality measurement
+Time annotations:
+- Display cumulative time at each decision point
+- Highlight protocol compliance: "ECG at 7 min ✓", "Troponin at 18 min ✓"
+- Show time-to-treatment metrics for quality measurement
 
-    Graph database representation:
-    Show example graph pattern:
-    ```
-    (patient:Patient)-[:PRESENTS_WITH]->(presentation:ChiefComplaint {type: 'chest_pain'})
-    (presentation)-[:TRIGGERS]->(protocol:ClinicalProtocol {name: 'Chest Pain Evaluation'})
-    (protocol)-[:INCLUDES_STEP {sequence: 1}]->(step1:ProtocolStep {action: 'Obtain ECG'})
-    (step1)-[:IF_RESULT {condition: 'STEMI'}]->(step2a:ProtocolStep {action: 'Activate cath lab'})
-    (step1)-[:IF_RESULT {condition: 'No STEMI'}]->(step2b:ProtocolStep {action: 'Calculate HEART score'})
-    ```
+Graph database representation:
+Show example graph pattern:
+```
+(patient:Patient)-[:PRESENTS_WITH]->(presentation:ChiefComplaint {type: 'chest_pain'})
+(presentation)-[:TRIGGERS]->(protocol:ClinicalProtocol {name: 'Chest Pain Evaluation'})
+(protocol)-[:INCLUDES_STEP {sequence: 1}]->(step1:ProtocolStep {action: 'Obtain ECG'})
+(step1)-[:IF_RESULT {condition: 'STEMI'}]->(step2a:ProtocolStep {action: 'Activate cath lab'})
+(step1)-[:IF_RESULT {condition: 'No STEMI'}]->(step2b:ProtocolStep {action: 'Calculate HEART score'})
+```
 
-    Interactive features:
-    - Hover over any step: See detailed description, time targets, and clinical rationale
-    - Click step: Highlight all subsequent possible pathways from that point
-    - Click decision diamond: Show distribution of actual patient flows (e.g., "65% take low-risk pathway")
-    - "Show protocol adherence" toggle: Highlight steps where protocol was followed vs. deviated
-    - "View patient example" button: Overlay a specific patient's actual path through protocol
-    - Time slider: Animate typical patient progression through protocol with timing
+Interactive features:
+- Hover over any step: See detailed description, time targets, and clinical rationale
+- Click step: Highlight all subsequent possible pathways from that point
+- Click decision diamond: Show distribution of actual patient flows (e.g., "65% take low-risk pathway")
+- "Show protocol adherence" toggle: Highlight steps where protocol was followed vs. deviated
+- "View patient example" button: Overlay a specific patient's actual path through protocol
+- Time slider: Animate typical patient progression through protocol with timing
 
-    Metrics panel (side):
-    Display protocol performance metrics:
-    - Patients evaluated: 487 this month
-    - Protocol adherence: 91%
-    - Average time to ECG: 8.3 minutes (target <10)
-    - Average ED length of stay by pathway:
-      - Low-risk discharge: 3.2 hours
-      - Moderate-risk observation: 18 hours
-      - High-risk admission: 6.4 hours (ED time before admission)
-    - STEMI door-to-balloon time: 76 minutes average (target <90)
-    - 30-day MACE rate by pathway: Low 0.8%, Moderate 4.2%, High 12.1%
+Metrics panel (side):
+Display protocol performance metrics:
+- Patients evaluated: 487 this month
+- Protocol adherence: 91%
+- Average time to ECG: 8.3 minutes (target <10)
+- Average ED length of stay by pathway:
+  - Low-risk discharge: 3.2 hours
+  - Moderate-risk observation: 18 hours
+  - High-risk admission: 6.4 hours (ED time before admission)
+- STEMI door-to-balloon time: 76 minutes average (target <90)
+- 30-day MACE rate by pathway: Low 0.8%, Moderate 4.2%, High 12.1%
 
-    Educational callouts:
-    - "Why HEART score?" Info box explaining risk stratification importance
-    - "Evidence basis" links to studies supporting protocol steps
-    - "Graph advantage" box: "Graph traversals can identify protocol deviations in real-time, enabling immediate clinical alerts"
+Educational callouts:
+- "Why HEART score?" Info box explaining risk stratification importance
+- "Evidence basis" links to studies supporting protocol steps
+- "Graph advantage" box: "Graph traversals can identify protocol deviations in real-time, enabling immediate clinical alerts"
 
-    Implementation: HTML/CSS/JavaScript with SVG for flowchart elements and D3.js for animations
-    Canvas size: 1400x1000px
+Implementation: HTML/CSS/JavaScript with SVG for flowchart elements and D3.js for animations
+Canvas size: 1400x1000px
 </details>
 
 ## Referral Coordination and Care Transitions
@@ -951,191 +1021,196 @@ Referral patterns create rich network structures in graph databases, revealing c
 - Which specialists receive referrals from the broadest network of referring providers (network reach)?
 - Are there inappropriate referral patterns (e.g., referrals to specialists outside the network when in-network alternatives exist)?
 
+#### Diagram: Provider Referral Network Analysis MicroSim
+
 <details markdown="1">
-    <summary>Provider Referral Network Analysis MicroSim</summary>
-    Type: microsim
+<summary>Provider Referral Network Analysis MicroSim</summary>
+Type: microsim
+**sim-id:** provider-referral-network-analysis-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Visualize and analyze referral patterns between primary care providers and specialists to identify care coordination opportunities, network leakage, and access bottlenecks
+Learning objective: Visualize and analyze referral patterns between primary care providers and specialists to identify care coordination opportunities, network leakage, and access bottlenecks
 
-    Canvas layout (1400x900px):
-    - Top section (1400x100): Controls and filters
-    - Middle-left (900x700): Network graph visualization
-    - Middle-right (500x700): Analytics panel
-    - Bottom section (1400x100): Summary insights
+Canvas layout (1400x900px):
+- Top section (1400x100): Controls and filters
+- Middle-left (900x700): Network graph visualization
+- Middle-right (500x700): Analytics panel
+- Bottom section (1400x100): Summary insights
 
-    Top section controls:
-    - Dropdown: Time period (Last month, Last quarter, Last year)
-    - Dropdown: Specialty filter (All, Cardiology, Orthopedics, GI, etc.)
-    - Slider: Minimum referral volume (filter out low-volume connections)
-    - Checkbox: Show in-network only vs. Show all referrals (including out-of-network)
-    - Checkbox: Show patient flow animation
-    - Button: "Reset view"
+Top section controls:
+- Dropdown: Time period (Last month, Last quarter, Last year)
+- Dropdown: Specialty filter (All, Cardiology, Orthopedics, GI, etc.)
+- Slider: Minimum referral volume (filter out low-volume connections)
+- Checkbox: Show in-network only vs. Show all referrals (including out-of-network)
+- Checkbox: Show patient flow animation
+- Button: "Reset view"
 
-    Network visualization (middle-left):
+Network visualization (middle-left):
 
-    Node types:
-    1. Primary Care Providers (blue circles, left side)
-       - Size proportional to total referrals sent
-       - Label: Provider name
-       - Example nodes:
-         - Dr. Smith (large, 180 referrals/year)
-         - Dr. Jones (medium, 95 referrals/year)
-         - Dr. Brown (medium, 110 referrals/year)
+Node types:
+1. Primary Care Providers (blue circles, left side)
+   - Size proportional to total referrals sent
+   - Label: Provider name
+   - Example nodes:
+     - Dr. Smith (large, 180 referrals/year)
+     - Dr. Jones (medium, 95 referrals/year)
+     - Dr. Brown (medium, 110 referrals/year)
 
-    2. Specialist Providers (orange circles, right side)
-       - Size proportional to total referrals received
-       - Color intensity by network status: Bright orange = in-network, Faded orange = out-of-network
-       - Label: Provider name + specialty
-       - Example nodes:
-         - Dr. Martinez - Cardiology (large, in-network, 220 referrals received)
-         - Dr. Kim - Cardiology (medium, out-of-network, 45 referrals received)
-         - Dr. Patel - Orthopedics (large, in-network, 195 referrals received)
+2. Specialist Providers (orange circles, right side)
+   - Size proportional to total referrals received
+   - Color intensity by network status: Bright orange = in-network, Faded orange = out-of-network
+   - Label: Provider name + specialty
+   - Example nodes:
+     - Dr. Martinez - Cardiology (large, in-network, 220 referrals received)
+     - Dr. Kim - Cardiology (medium, out-of-network, 45 referrals received)
+     - Dr. Patel - Orthopedics (large, in-network, 195 referrals received)
 
-    3. Specialty category nodes (optional grouping)
-       - Hexagons grouping specialists by specialty
-       - Only shown when "Group by specialty" checkbox enabled
+3. Specialty category nodes (optional grouping)
+   - Hexagons grouping specialists by specialty
+   - Only shown when "Group by specialty" checkbox enabled
 
-    Edge types:
-    - Directed edges from PCP to Specialist
-    - Edge thickness proportional to referral volume
-    - Edge color:
-      - Green: In-network referrals
-      - Red: Out-of-network referrals ("leakage")
-      - Yellow: Referrals with long wait times (>30 days to appointment)
-    - Animated particles flowing along edges when "Show patient flow" enabled
+Edge types:
+- Directed edges from PCP to Specialist
+- Edge thickness proportional to referral volume
+- Edge color:
+  - Green: In-network referrals
+  - Red: Out-of-network referrals ("leakage")
+  - Yellow: Referrals with long wait times (>30 days to appointment)
+- Animated particles flowing along edges when "Show patient flow" enabled
 
-    Layout: Force-directed with horizontal bias (PCPs clustered left, specialists right)
+Layout: Force-directed with horizontal bias (PCPs clustered left, specialists right)
 
-    Sample data:
-    - Dr. Smith (PCP) → Dr. Martinez (Cardiology): 35 referrals (green, thick line)
-    - Dr. Smith (PCP) → Dr. Kim (Cardiology, out-of-network): 8 referrals (red, thin line)
-    - Dr. Jones (PCP) → Dr. Martinez (Cardiology): 28 referrals (green, thick line)
-    - Dr. Smith (PCP) → Dr. Patel (Orthopedics): 42 referrals (green, very thick line)
-    - Dr. Brown (PCP) → Dr. Lee (GI): 15 referrals (yellow-green, wait time 35 days)
+Sample data:
+- Dr. Smith (PCP) → Dr. Martinez (Cardiology): 35 referrals (green, thick line)
+- Dr. Smith (PCP) → Dr. Kim (Cardiology, out-of-network): 8 referrals (red, thin line)
+- Dr. Jones (PCP) → Dr. Martinez (Cardiology): 28 referrals (green, thick line)
+- Dr. Smith (PCP) → Dr. Patel (Orthopedics): 42 referrals (green, very thick line)
+- Dr. Brown (PCP) → Dr. Lee (GI): 15 referrals (yellow-green, wait time 35 days)
 
-    Interactive features:
-    - Hover over PCP node: Highlight all outgoing referrals and show summary:
-      - Total referrals sent: 180
-      - In-network referrals: 168 (93%)
-      - Out-of-network referrals: 12 (7% - "leakage")
-      - Top 3 specialists referred to
-      - Average time to specialist appointment: 18 days
+Interactive features:
+- Hover over PCP node: Highlight all outgoing referrals and show summary:
+  - Total referrals sent: 180
+  - In-network referrals: 168 (93%)
+  - Out-of-network referrals: 12 (7% - "leakage")
+  - Top 3 specialists referred to
+  - Average time to specialist appointment: 18 days
 
-    - Hover over Specialist node: Highlight all incoming referrals and show summary:
-      - Total referrals received: 220
-      - Referring PCPs: 18
-      - Average wait time to new appointment: 15 days
-      - Current capacity utilization: 96%
-      - Referral completion rate: 89% (referrals that result in completed visits)
+- Hover over Specialist node: Highlight all incoming referrals and show summary:
+  - Total referrals received: 220
+  - Referring PCPs: 18
+  - Average wait time to new appointment: 15 days
+  - Current capacity utilization: 96%
+  - Referral completion rate: 89% (referrals that result in completed visits)
 
-    - Click PCP node: Lock selection and show detailed referral breakdown in analytics panel
-    - Click Specialist node: Show referring provider distribution and wait time analysis
-    - Click edge: Show specific referral details (volume, average wait time, completion rate, common diagnoses)
-    - Double-click node: Expand to show second-degree connections (e.g., show all specialists that receive referrals from any PCP who refers to the selected specialist)
-    - Drag nodes to rearrange layout
-    - Scroll to zoom, drag background to pan
+- Click PCP node: Lock selection and show detailed referral breakdown in analytics panel
+- Click Specialist node: Show referring provider distribution and wait time analysis
+- Click edge: Show specific referral details (volume, average wait time, completion rate, common diagnoses)
+- Double-click node: Expand to show second-degree connections (e.g., show all specialists that receive referrals from any PCP who refers to the selected specialist)
+- Drag nodes to rearrange layout
+- Scroll to zoom, drag background to pan
 
-    Analytics panel (middle-right):
-    When PCP selected, display:
-    - Provider name and practice location
-    - Referral pattern analysis:
-      - Total referrals in period: 180
-      - Breakdown by specialty:
-        - Cardiology: 45 (25%)
-        - Orthopedics: 42 (23%)
-        - GI: 28 (16%)
-        - Dermatology: 22 (12%)
-        - Other: 43 (24%)
-      - Network adherence: 93% (168/180 in-network)
-      - Leakage cost estimate: $18,000 (based on out-of-network differential)
-      - Average time to specialist appointment: 18 days
-      - Referral completion rate: 87%
+Analytics panel (middle-right):
+When PCP selected, display:
+- Provider name and practice location
+- Referral pattern analysis:
+  - Total referrals in period: 180
+  - Breakdown by specialty:
+    - Cardiology: 45 (25%)
+    - Orthopedics: 42 (23%)
+    - GI: 28 (16%)
+    - Dermatology: 22 (12%)
+    - Other: 43 (24%)
+  - Network adherence: 93% (168/180 in-network)
+  - Leakage cost estimate: $18,000 (based on out-of-network differential)
+  - Average time to specialist appointment: 18 days
+  - Referral completion rate: 87%
 
-    - Top out-of-network referrals (opportunities):
-      - Dr. Kim (Cardiology, out-of-network): 8 referrals
-      - Recommendation: "Redirect to Dr. Martinez (in-network, similar quality, 15-day wait)"
+- Top out-of-network referrals (opportunities):
+  - Dr. Kim (Cardiology, out-of-network): 8 referrals
+  - Recommendation: "Redirect to Dr. Martinez (in-network, similar quality, 15-day wait)"
 
-    - Quality indicators:
-      - Patients return for follow-up after specialist visit: 91%
-      - Specialist reports returned to PCP: 78% (below target of 90%)
+- Quality indicators:
+  - Patients return for follow-up after specialist visit: 91%
+  - Specialist reports returned to PCP: 78% (below target of 90%)
 
-    When Specialist selected, display:
-    - Provider name, specialty, network status
-    - Referral volume analysis:
-      - Total referrals received: 220
-      - Referring PCPs: 18
-      - Referral density (Herfindahl index): 0.14 (well-distributed across many PCPs)
-      - Top 5 referring PCPs (with volumes)
-      - Referral indications (top diagnoses/reasons)
+When Specialist selected, display:
+- Provider name, specialty, network status
+- Referral volume analysis:
+  - Total referrals received: 220
+  - Referring PCPs: 18
+  - Referral density (Herfindahl index): 0.14 (well-distributed across many PCPs)
+  - Top 5 referring PCPs (with volumes)
+  - Referral indications (top diagnoses/reasons)
 
-    - Access metrics:
-      - Average wait time to new appointment: 15 days
-      - Current capacity: 96% utilized (near capacity constraint)
-      - Recommendation: "High utilization - consider adding capacity or redistributing referrals"
+- Access metrics:
+  - Average wait time to new appointment: 15 days
+  - Current capacity: 96% utilized (near capacity constraint)
+  - Recommendation: "High utilization - consider adding capacity or redistributing referrals"
 
-    - Completion and outcomes:
-      - Appointment completion rate: 89%
-      - Consultation reports sent back to PCP: 85%
-      - Patient satisfaction: 4.6/5.0
+- Completion and outcomes:
+  - Appointment completion rate: 89%
+  - Consultation reports sent back to PCP: 85%
+  - Patient satisfaction: 4.6/5.0
 
-    Bottom summary section:
-    Network-level insights:
-    - Total referrals in period: 1,847
-    - In-network referrals: 1,695 (92%)
-    - Out-of-network "leakage": 152 (8%)
-    - Estimated leakage cost: $228,000
-    - Average PCP-to-specialist wait time: 19 days
-    - Specialists at capacity (>95% utilization): 4
-    - Referral completion rate: 86%
+Bottom summary section:
+Network-level insights:
+- Total referrals in period: 1,847
+- In-network referrals: 1,695 (92%)
+- Out-of-network "leakage": 152 (8%)
+- Estimated leakage cost: $228,000
+- Average PCP-to-specialist wait time: 19 days
+- Specialists at capacity (>95% utilization): 4
+- Referral completion rate: 86%
 
-    Graph insight: "PCPs with care coordinators show 23% higher referral completion rates and 12% shorter wait times due to proactive appointment scheduling"
+Graph insight: "PCPs with care coordinators show 23% higher referral completion rates and 12% shorter wait times due to proactive appointment scheduling"
 
-    Default parameters:
-    - Time period: Last quarter
-    - Specialty: All
-    - Minimum referral volume: 5
-    - Show in-network only: No (show all referrals)
-    - Patient flow animation: Off
+Default parameters:
+- Time period: Last quarter
+- Specialty: All
+- Minimum referral volume: 5
+- Show in-network only: No (show all referrals)
+- Patient flow animation: Off
 
-    Behavior:
-    - On page load, display full referral network with animation of nodes positioning
-    - When specialty filter applied, fade out unrelated specialists and referral edges
-    - When hovering, enlarge node and make connecting edges bold
-    - When time period changes, animate edge thickness transitions
-    - When "Show patient flow" enabled, animate small particles traveling along edges at rate proportional to referral volume
-    - When minimum volume slider adjusted, fade out low-volume edges below threshold
+Behavior:
+- On page load, display full referral network with animation of nodes positioning
+- When specialty filter applied, fade out unrelated specialists and referral edges
+- When hovering, enlarge node and make connecting edges bold
+- When time period changes, animate edge thickness transitions
+- When "Show patient flow" enabled, animate small particles traveling along edges at rate proportional to referral volume
+- When minimum volume slider adjusted, fade out low-volume edges below threshold
 
-    Educational features:
-    - "Graph Query Example" button shows Neo4j Cypher query:
-      ```
-      // Find out-of-network referral leakage for a PCP
-      MATCH (pcp:Provider {name: 'Dr. Smith'})-[r:REFERS_TO]->(specialist:Provider)
-      WHERE specialist.network_status = 'out-of-network'
-      RETURN specialist.name, specialist.specialty, count(r) as referral_count,
-             sum(r.cost_differential) as leakage_cost
-      ORDER BY referral_count DESC
-      ```
+Educational features:
+- "Graph Query Example" button shows Neo4j Cypher query:
+  ```
+  // Find out-of-network referral leakage for a PCP
+  MATCH (pcp:Provider {name: 'Dr. Smith'})-[r:REFERS_TO]->(specialist:Provider)
+  WHERE specialist.network_status = 'out-of-network'
+  RETURN specialist.name, specialist.specialty, count(r) as referral_count,
+         sum(r.cost_differential) as leakage_cost
+  ORDER BY referral_count DESC
+  ```
 
-    - Info tooltips explaining key concepts:
-      - "Network leakage": When patients are referred to out-of-network providers despite availability of in-network alternatives
-      - "Referral completion rate": Percentage of referrals that result in completed specialist visits
-      - "Herfindahl index": Measure of referral concentration (0 = perfectly distributed, 1 = all to one specialist)
+- Info tooltips explaining key concepts:
+  - "Network leakage": When patients are referred to out-of-network providers despite availability of in-network alternatives
+  - "Referral completion rate": Percentage of referrals that result in completed specialist visits
+  - "Herfindahl index": Measure of referral concentration (0 = perfectly distributed, 1 = all to one specialist)
 
-    - "Optimization recommendations" panel:
-      - Identifies high-leakage PCPs and suggests in-network alternatives
-      - Highlights capacity-constrained specialists needing additional slots
-      - Recommends referral redistribution to reduce wait times
+- "Optimization recommendations" panel:
+  - Identifies high-leakage PCPs and suggests in-network alternatives
+  - Highlights capacity-constrained specialists needing additional slots
+  - Recommends referral redistribution to reduce wait times
 
-    Implementation notes:
-    - Use p5.js for network visualization with force-directed layout
-    - Implement edge bundling for visual clarity when many edges present
-    - Store referral data as graph structure (nodes array, edges array with properties)
-    - Use physics simulation for force-directed layout with constraints (horizontal separation)
-    - Implement efficient hover detection using spatial hashing
-    - Particle animation uses traveling dots along Bezier curves
+Implementation notes:
+- Use p5.js for network visualization with force-directed layout
+- Implement edge bundling for visual clarity when many edges present
+- Store referral data as graph structure (nodes array, edges array with properties)
+- Use physics simulation for force-directed layout with constraints (horizontal separation)
+- Implement efficient hover detection using spatial hashing
+- Particle animation uses traveling dots along Bezier curves
 
-    Implementation: p5.js
-    Canvas size: 1400x900px
+Implementation: p5.js
+Canvas size: 1400x900px
 </details>
 
 ## Summary and Key Takeaways

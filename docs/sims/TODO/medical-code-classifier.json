@@ -1,0 +1,14 @@
+{
+  "sim_id": "medical-code-classifier",
+  "diagram_name": "Medical Code System Classifier MicroSim",
+  "chapter_number": 2,
+  "chapter_title": "Intro To Healthcare Systems",
+  "chapter_dir": "02-intro-to-healthcare-systems",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": "Evaluate (L5 — classify, judge) which coding system (ICD-10, CPT, HCPCS, or NDC/RxNorm) applies to a given clinical or billing scenario, so learners can distinguish what each code set is FOR rather than merely recalling its name.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: microsim\n**sim-id:** medical-code-classifier<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nLearning objective: Evaluate (L5 — classify, judge) which coding system (ICD-10, CPT, HCPCS, or NDC/RxNorm) applies to a given clinical or billing scenario, so learners can distinguish what each code set is FOR rather than merely recalling its name.\n\nCanvas layout (responsive, target 880x520; resizes with the window):\n- Center: a scenario card describing a clinical or billing situation.\n- Below: four answer buttons (ICD-10, CPT, HCPCS, NDC/RxNorm).\n- Footer: score, streak, and a feedback/explanation panel.\n\nVisual elements:\n- One scenario at a time, drawn from a data.json question bank.\n- Selected-answer feedback: correct (green) or incorrect (red) with a one-sentence rationale and the correct mapping.\n- A progress/score readout.\n\nInteractive controls (use built-in p5 DOM controls):\n- Four classification buttons (one per code system)\n- Button \"Next scenario\"\n- Button \"Restart\"\n\nDefault parameters: shuffled question order, score 0.\n\nData / question bank (kept in data.json so questions are editable):\n- Each item holds scenario text, the correct code system, and a short rationale. Examples:\n  - \"A physician documents the patient's Type 2 diabetes diagnosis\" → ICD-10\n  - \"Billing for a 30-minute office visit and an EKG\" → CPT\n  - \"Billing for a wheelchair and ambulance transport\" → HCPCS\n  - \"Pharmacy dispenses Lipitor 10 mg, 90-count bottle\" → NDC/RxNorm\n\nBehavior:\n- After each answer, show whether it was right, reveal the rationale, and update score and streak; \"Next scenario\" advances.\n- Mix in near-miss distractor scenarios (for example, a procedure students often mis-assign to ICD) to force discrimination.\n\nInstructional Rationale: An Evaluate/classify objective is best assessed by having learners categorize fresh examples with immediate feedback, not by re-reading definitions. The data.json bank lets instructors add scenarios. Following the concept-classifier pattern, feedback is immediate and explanatory.\n\nImplementation: p5.js classification quiz reading data.json (see the concept-classifier skill); responsive to window resize."
+}

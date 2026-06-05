@@ -112,191 +112,196 @@ LIMIT 1
 
 Beyond single-source shortest path, **all-pairs shortest path** algorithms compute the shortest paths between every pair of nodes in the graph, enabling comprehensive network analysis. The Floyd-Warshall algorithm solves all-pairs shortest path in O(V³) time, which is practical for moderate-sized networks (thousands of nodes) but becomes prohibitive for very large graphs. Healthcare applications include analyzing the overall efficiency of referral networks, identifying bottlenecks in care delivery, and computing comprehensive distance matrices for patient-provider matching.
 
+#### Diagram: Care Pathway Shortest Path Interactive MicroSim
+
 <details markdown="1">
-    <summary>Care Pathway Shortest Path Interactive MicroSim</summary>
-    Type: microsim
+<summary>Care Pathway Shortest Path Interactive MicroSim</summary>
+Type: microsim
+**sim-id:** care-pathway-shortest-path-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Help students understand how shortest path algorithms work by visualizing Dijkstra's algorithm finding optimal care pathways through a diagnostic network, showing step-by-step execution and allowing experimentation with different scenarios.
+Learning objective: Help students understand how shortest path algorithms work by visualizing Dijkstra's algorithm finding optimal care pathways through a diagnostic network, showing step-by-step execution and allowing experimentation with different scenarios.
 
-    Canvas layout (1200x800px):
-    - Left side (750x800): Graph visualization showing care pathway network
-    - Right side (450x800): Algorithm controls and explanation panel
+Canvas layout (1200x800px):
+- Left side (750x800): Graph visualization showing care pathway network
+- Right side (450x800): Algorithm controls and explanation panel
 
-    Visual elements in main area:
+Visual elements in main area:
 
-    Graph Network (Healthcare Diagnostic Pathway):
-    - Nodes (circular, 50px diameter):
-      * Start: "Patient with Headache" (green)
-      * Primary Care Visit (light blue)
-      * Neurology Consult (blue)
-      * MRI Scan (purple)
-      * CT Scan (purple)
-      * Blood Work (yellow)
-      * Specialist Opinion 1 (orange)
-      * Specialist Opinion 2 (orange)
-      * Diagnosis (red)
-      * Treatment Plan (green)
-    - Edges (arrows with weights):
-      * Edge labels show: days to next step
-      * Width indicates probability of taking this path
-      * Color indicates cost (green=low, yellow=moderate, red=high)
+Graph Network (Healthcare Diagnostic Pathway):
+- Nodes (circular, 50px diameter):
+  * Start: "Patient with Headache" (green)
+  * Primary Care Visit (light blue)
+  * Neurology Consult (blue)
+  * MRI Scan (purple)
+  * CT Scan (purple)
+  * Blood Work (yellow)
+  * Specialist Opinion 1 (orange)
+  * Specialist Opinion 2 (orange)
+  * Diagnosis (red)
+  * Treatment Plan (green)
+- Edges (arrows with weights):
+  * Edge labels show: days to next step
+  * Width indicates probability of taking this path
+  * Color indicates cost (green=low, yellow=moderate, red=high)
 
-    Example network structure:
-    - Patient → PCP Visit (1 day, $150)
-    - PCP Visit → Neurology (7 days, $250) OR Blood Work (2 days, $100) OR CT Scan (3 days, $1200)
-    - Neurology → MRI (14 days, $2400) OR Specialist Opinion 1 (5 days, $350)
-    - MRI → Diagnosis (3 days, $0)
-    - CT Scan → Specialist Opinion 2 (4 days, $350)
-    - Blood Work → Neurology (1 day, $0)
-    - Specialist Opinion 1 → Diagnosis (2 days, $0)
-    - Specialist Opinion 2 → MRI (7 days, $2400)
-    - Multiple paths to final "Treatment Plan" node
+Example network structure:
+- Patient → PCP Visit (1 day, $150)
+- PCP Visit → Neurology (7 days, $250) OR Blood Work (2 days, $100) OR CT Scan (3 days, $1200)
+- Neurology → MRI (14 days, $2400) OR Specialist Opinion 1 (5 days, $350)
+- MRI → Diagnosis (3 days, $0)
+- CT Scan → Specialist Opinion 2 (4 days, $350)
+- Blood Work → Neurology (1 day, $0)
+- Specialist Opinion 1 → Diagnosis (2 days, $0)
+- Specialist Opinion 2 → MRI (7 days, $2400)
+- Multiple paths to final "Treatment Plan" node
 
-    Dijkstra's Algorithm Visualization:
+Dijkstra's Algorithm Visualization:
 
-    Step-by-step execution shown with animation:
-    1. Initialize: All nodes marked with infinite distance except start (distance = 0)
-    2. Current node highlighted in bright yellow with pulsing border
-    3. Visited nodes marked in green with checkmark
-    4. Unvisited nodes in gray
-    5. Edge currently being examined highlighted in bright blue
-    6. Distance labels update in real-time as algorithm evaluates paths
-    7. "Relaxation" step shown: when shorter path found, old distance crossed out, new distance displayed
+Step-by-step execution shown with animation:
+1. Initialize: All nodes marked with infinite distance except start (distance = 0)
+2. Current node highlighted in bright yellow with pulsing border
+3. Visited nodes marked in green with checkmark
+4. Unvisited nodes in gray
+5. Edge currently being examined highlighted in bright blue
+6. Distance labels update in real-time as algorithm evaluates paths
+7. "Relaxation" step shown: when shorter path found, old distance crossed out, new distance displayed
 
-    Interactive controls (right panel):
+Interactive controls (right panel):
 
-    Scenario Selector (dropdown):
-    - Minimize Time to Diagnosis
-    - Minimize Total Cost
-    - Minimize Number of Steps
-    - Balanced (Time + Cost)
-    - Custom Weights
+Scenario Selector (dropdown):
+- Minimize Time to Diagnosis
+- Minimize Total Cost
+- Minimize Number of Steps
+- Balanced (Time + Cost)
+- Custom Weights
 
-    Start/End Node Selectors:
-    - Start: Default "Patient with Headache" (can select any node)
-    - End: Default "Treatment Plan" (can select any node)
+Start/End Node Selectors:
+- Start: Default "Patient with Headache" (can select any node)
+- End: Default "Treatment Plan" (can select any node)
 
-    Weight Optimization (sliders when "Custom Weights" selected):
-    - Time weight: 0-100% (default 50%)
-    - Cost weight: 0-100% (default 30%)
-    - Quality weight: 0-100% (default 20%)
-    - Weights must sum to 100%
+Weight Optimization (sliders when "Custom Weights" selected):
+- Time weight: 0-100% (default 50%)
+- Cost weight: 0-100% (default 30%)
+- Quality weight: 0-100% (default 20%)
+- Weights must sum to 100%
 
-    Execution Controls:
-    - Button: "Run Algorithm" - execute Dijkstra's from start
-    - Button: "Step Forward" - advance one algorithm step
-    - Button: "Step Backward" - go back one step (for learning)
-    - Button: "Reset" - clear all progress
-    - Checkbox: "Auto-play" - run automatically with delay
-    - Slider: "Animation Speed" (0.5x to 3x, default 1x)
+Execution Controls:
+- Button: "Run Algorithm" - execute Dijkstra's from start
+- Button: "Step Forward" - advance one algorithm step
+- Button: "Step Backward" - go back one step (for learning)
+- Button: "Reset" - clear all progress
+- Checkbox: "Auto-play" - run automatically with delay
+- Slider: "Animation Speed" (0.5x to 3x, default 1x)
 
-    Algorithm State Display:
+Algorithm State Display:
 
-    Current Step Explanation (text box):
-    - Shows what the algorithm is doing at current step
-    - Example: "Step 5: Examining edge from 'PCP Visit' to 'Blood Work'. Current distance to Blood Work: 3 days. Distance via PCP: 1 + 2 = 3 days. No improvement, keep current distance."
+Current Step Explanation (text box):
+- Shows what the algorithm is doing at current step
+- Example: "Step 5: Examining edge from 'PCP Visit' to 'Blood Work'. Current distance to Blood Work: 3 days. Distance via PCP: 1 + 2 = 3 days. No improvement, keep current distance."
 
-    Distance Table (real-time updates):
-    | Node | Current Distance | Previous Node | Status |
-    |------|------------------|---------------|--------|
-    | Patient with Headache | 0 days | - | Visited ✓ |
-    | PCP Visit | 1 day | Patient | Visited ✓ |
-    | Blood Work | 3 days | PCP Visit | Current |
-    | Neurology | 8 days | PCP Visit | Unvisited |
-    | ... | ... | ... | ... |
+Distance Table (real-time updates):
+| Node | Current Distance | Previous Node | Status |
+|------|------------------|---------------|--------|
+| Patient with Headache | 0 days | - | Visited ✓ |
+| PCP Visit | 1 day | Patient | Visited ✓ |
+| Blood Work | 3 days | PCP Visit | Current |
+| Neurology | 8 days | PCP Visit | Unvisited |
+| ... | ... | ... | ... |
 
-    Priority Queue Display (visual representation):
-    - Shows nodes in order of current minimum distance
-    - Updates as algorithm progresses
-    - Highlights node about to be processed
+Priority Queue Display (visual representation):
+- Shows nodes in order of current minimum distance
+- Updates as algorithm progresses
+- Highlights node about to be processed
 
-    Path Visualization:
+Path Visualization:
 
-    Once algorithm completes:
-    - Shortest path highlighted in thick green line with animation flowing from start to end
-    - All nodes on path highlighted with green glow
-    - Alternative paths shown in faded gray for comparison
-    - Path summary box displays:
-      * Total time: X days
-      * Total cost: $X,XXX
-      * Number of steps: X
-      * Nodes in path: [list with arrows]
-      * Comparison to alternative paths: "This path is 7 days faster and $1,200 cheaper than next best option"
+Once algorithm completes:
+- Shortest path highlighted in thick green line with animation flowing from start to end
+- All nodes on path highlighted with green glow
+- Alternative paths shown in faded gray for comparison
+- Path summary box displays:
+  * Total time: X days
+  * Total cost: $X,XXX
+  * Number of steps: X
+  * Nodes in path: [list with arrows]
+  * Comparison to alternative paths: "This path is 7 days faster and $1,200 cheaper than next best option"
 
-    Educational Features:
+Educational Features:
 
-    "Algorithm Explanation" expandable panel:
-    - Pseudocode for Dijkstra's algorithm
-    - Complexity analysis: O((V+E) log V)
-    - Why it works: Greedy approach always selects minimum distance
-    - Limitations: Doesn't work with negative weights
-    - When to use: Single-source shortest path with non-negative weights
+"Algorithm Explanation" expandable panel:
+- Pseudocode for Dijkstra's algorithm
+- Complexity analysis: O((V+E) log V)
+- Why it works: Greedy approach always selects minimum distance
+- Limitations: Doesn't work with negative weights
+- When to use: Single-source shortest path with non-negative weights
 
-    "Healthcare Applications" info box:
-    - Care pathway optimization
-    - Referral network navigation
-    - Emergency routing
-    - Clinical trial matching
-    - Diagnostic protocol selection
+"Healthcare Applications" info box:
+- Care pathway optimization
+- Referral network navigation
+- Emergency routing
+- Clinical trial matching
+- Diagnostic protocol selection
 
-    Alternative Scenarios (pre-loaded):
+Alternative Scenarios (pre-loaded):
 
-    Scenario 1: "Fast Track to Diagnosis"
-    - Optimizes for minimum time
-    - Path: Patient → PCP → Blood Work → Neurology → Specialist 1 → Diagnosis (13 days, $850)
+Scenario 1: "Fast Track to Diagnosis"
+- Optimizes for minimum time
+- Path: Patient → PCP → Blood Work → Neurology → Specialist 1 → Diagnosis (13 days, $850)
 
-    Scenario 2: "Cost-Conscious Pathway"
-    - Optimizes for minimum cost
-    - Path: Patient → PCP → Blood Work → Neurology → Specialist 1 → Diagnosis ($850, 13 days)
-    - Note: In this case, happens to be same as fast track
+Scenario 2: "Cost-Conscious Pathway"
+- Optimizes for minimum cost
+- Path: Patient → PCP → Blood Work → Neurology → Specialist 1 → Diagnosis ($850, 13 days)
+- Note: In this case, happens to be same as fast track
 
-    Scenario 3: "Academic Medical Center Route"
-    - Optimizes for highest quality specialists
-    - Path: Patient → PCP → Neurology → MRI → Diagnosis (25 days, $3,000)
-    - Trade-off: Longer wait, higher cost, but top specialists
+Scenario 3: "Academic Medical Center Route"
+- Optimizes for highest quality specialists
+- Path: Patient → PCP → Neurology → MRI → Diagnosis (25 days, $3,000)
+- Trade-off: Longer wait, higher cost, but top specialists
 
-    Scenario 4: "Emergency Pathway"
-    - Patient has severe symptoms
-    - Path bypasses normal wait times: Patient → CT Scan → Specialist 2 → MRI → Diagnosis (7 days, $4,100)
-    - Fastest but most expensive
+Scenario 4: "Emergency Pathway"
+- Patient has severe symptoms
+- Path bypasses normal wait times: Patient → CT Scan → Specialist 2 → MRI → Diagnosis (7 days, $4,100)
+- Fastest but most expensive
 
-    Comparison Feature:
-    - Button: "Compare All Scenarios"
-    - Shows side-by-side table of all 4 scenarios with metrics
-    - Radar chart showing time vs. cost vs. quality vs. # steps
-    - Helps students understand optimization trade-offs
+Comparison Feature:
+- Button: "Compare All Scenarios"
+- Shows side-by-side table of all 4 scenarios with metrics
+- Radar chart showing time vs. cost vs. quality vs. # steps
+- Helps students understand optimization trade-offs
 
-    Quiz Mode:
-    - Button: "Test Your Understanding"
-    - Algorithm runs, student must predict next node to visit
-    - Shows current state, student clicks which node they think algorithm will process next
-    - Immediate feedback: correct/incorrect with explanation
-    - Score tracking
+Quiz Mode:
+- Button: "Test Your Understanding"
+- Algorithm runs, student must predict next node to visit
+- Shows current state, student clicks which node they think algorithm will process next
+- Immediate feedback: correct/incorrect with explanation
+- Score tracking
 
-    Behavior:
-    - When "Run Algorithm" clicked, animate full Dijkstra's execution
-    - Each step shows:
-      * Which node is current
-      * Which edges are being examined
-      * How distances are updated (relaxation)
-      * Which node is added to visited set
-    - Use smooth transitions and color changes
-    - Highlight "aha moments" where shorter path is discovered
-    - At completion, celebrate with animation showing optimal path
+Behavior:
+- When "Run Algorithm" clicked, animate full Dijkstra's execution
+- Each step shows:
+  * Which node is current
+  * Which edges are being examined
+  * How distances are updated (relaxation)
+  * Which node is added to visited set
+- Use smooth transitions and color changes
+- Highlight "aha moments" where shorter path is discovered
+- At completion, celebrate with animation showing optimal path
 
-    Edge Cases to Demonstrate:
-    - Path ties (multiple paths with same length) - show that algorithm picks one deterministically
-    - Disconnected nodes (unreachable from start) - show infinite distance maintained
-    - Single-step path vs. multi-hop path comparison
+Edge Cases to Demonstrate:
+- Path ties (multiple paths with same length) - show that algorithm picks one deterministically
+- Disconnected nodes (unreachable from start) - show infinite distance maintained
+- Single-step path vs. multi-hop path comparison
 
-    Implementation notes:
-    - Use p5.js for graph visualization
-    - Implement Dijkstra's algorithm in JavaScript with state tracking for animation
-    - Use priority queue (min-heap) for efficiency
-    - Store complete execution trace for step-forward/backward
-    - Color palette: Use healthcare-themed colors (calming blues/greens for positive, yellows/reds for warnings)
-    - Provide "Export Path" button that generates textual care pathway recommendation
-    - Add "Print Patient Journey" feature that creates formatted pathway for clinical use
+Implementation notes:
+- Use p5.js for graph visualization
+- Implement Dijkstra's algorithm in JavaScript with state tracking for animation
+- Use priority queue (min-heap) for efficiency
+- Store complete execution trace for step-forward/backward
+- Color palette: Use healthcare-themed colors (calming blues/greens for positive, yellows/reds for warnings)
+- Provide "Export Path" button that generates textual care pathway recommendation
+- Add "Print Patient Journey" feature that creates formatted pathway for clinical use
 </details>
 
 ## Centrality Measures: Identifying Important Nodes
@@ -339,198 +344,242 @@ The following list summarizes key centrality measures and their interpretations:
 - **Harmonic Centrality:** Sum of inverse distances; variant of closeness that handles disconnected graphs
 - **Katz Centrality:** Walks of all lengths weighted by attenuation factor; generalizes eigenvector centrality
 
+#### Diagram: Provider Network Centrality Analysis Dashboard
+
 <details markdown="1">
-    <summary>Provider Network Centrality Analysis Dashboard</summary>
-    Type: chart
+<summary>Provider Network Centrality Analysis Dashboard</summary>
+Type: chart
+**sim-id:** provider-network-centrality-analysis-dashboard<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Chart type: Multi-panel dashboard with network visualization and centrality metrics
+Chart type: Multi-panel dashboard with network visualization and centrality metrics
 
-    Purpose: Demonstrate how different centrality measures identify different types of important nodes in a healthcare provider network, allowing comparison of degree, betweenness, and PageRank centrality with interactive exploration.
+Purpose: Demonstrate how different centrality measures identify different types of important nodes in a healthcare provider network, allowing comparison of degree, betweenness, and PageRank centrality with interactive exploration.
 
-    Dashboard Layout (1400x900px):
+Dashboard Layout (1400x900px):
 
-    Panel 1: Provider Network Visualization (top left, 700x500px)
-    - Force-directed graph layout showing provider network
-    - Nodes: 50 providers (circles)
-    - Node size: Varies based on selected centrality measure
-    - Node color: Heat map based on centrality score (blue=low, yellow=medium, red=high)
-    - Edges: Referral relationships (arrows)
-    - Edge thickness: Referral volume
-    - Labels: Provider ID or name (toggleable)
-    - Interactive: Click node to see details, drag to rearrange, zoom/pan
+Panel 1: Provider Network Visualization (top left, 700x500px)
+- Force-directed graph layout showing provider network
+- Nodes: 50 providers (circles)
+- Node size: Varies based on selected centrality measure
+- Node color: Heat map based on centrality score (blue=low, yellow=medium, red=high)
+- Edges: Referral relationships (arrows)
+- Edge thickness: Referral volume
+- Labels: Provider ID or name (toggleable)
+- Interactive: Click node to see details, drag to rearrange, zoom/pan
 
-    Sample network structure:
-    - 5 primary care providers (hubs with many outgoing referrals)
-    - 15 specialists in common specialties (cardiology, orthopedics, etc.)
-    - 10 super-specialists (highly specialized, receive many referrals)
-    - 8 coordinating providers (high betweenness, connect different groups)
-    - 12 peripheral providers (few connections)
-    - Realistic referral patterns based on specialty relationships
+Sample network structure:
+- 5 primary care providers (hubs with many outgoing referrals)
+- 15 specialists in common specialties (cardiology, orthopedics, etc.)
+- 10 super-specialists (highly specialized, receive many referrals)
+- 8 coordinating providers (high betweenness, connect different groups)
+- 12 peripheral providers (few connections)
+- Realistic referral patterns based on specialty relationships
 
-    Panel 2: Centrality Measure Selector (top right, 700x200px)
-    Radio buttons to select centrality measure:
-    - ○ Degree Centrality (In-Degree, Out-Degree, Total)
-    - ○ Betweenness Centrality
-    - ○ PageRank
-    - ○ Compare All (shows all three simultaneously)
+Panel 2: Centrality Measure Selector (top right, 700x200px)
+Radio buttons to select centrality measure:
+- ○ Degree Centrality (In-Degree, Out-Degree, Total)
+- ○ Betweenness Centrality
+- ○ PageRank
+- ○ Compare All (shows all three simultaneously)
 
-    When measure selected:
-    - Network visualization updates with node sizes reflecting chosen measure
-    - Color heat map updates to show centrality scores
-    - Rankings table updates (Panel 3)
-    - Description panel explains the measure (Panel 4)
+When measure selected:
+- Network visualization updates with node sizes reflecting chosen measure
+- Color heat map updates to show centrality scores
+- Rankings table updates (Panel 3)
+- Description panel explains the measure (Panel 4)
 
-    Panel 3: Centrality Rankings Table (top right below selector, 700x300px)
-    Shows top 15 providers ranked by selected centrality measure:
+Panel 3: Centrality Rankings Table (top right below selector, 700x300px)
+Shows top 15 providers ranked by selected centrality measure:
 
-    | Rank | Provider | Specialty | Centrality Score | Patient Volume | Referrals In | Referrals Out |
-    |------|----------|-----------|------------------|----------------|--------------|---------------|
-    | 1 | Dr. Anderson | Cardiology | 0.0847 | 2,450 | 342 | 89 |
-    | 2 | Dr. Chen | Internal Med | 0.0782 | 3,120 | 78 | 456 |
-    | 3 | Metro Hospital | Hospital | 0.0691 | 12,500 | 892 | 234 |
-    | ... | ... | ... | ... | ... | ... | ... |
+| Rank | Provider | Specialty | Centrality Score | Patient Volume | Referrals In | Referrals Out |
+|------|----------|-----------|------------------|----------------|--------------|---------------|
+| 1 | Dr. Anderson | Cardiology | 0.0847 | 2,450 | 342 | 89 |
+| 2 | Dr. Chen | Internal Med | 0.0782 | 3,120 | 78 | 456 |
+| 3 | Metro Hospital | Hospital | 0.0691 | 12,500 | 892 | 234 |
+| ... | ... | ... | ... | ... | ... | ... |
 
-    - Sortable by any column
-    - Color-coded scores matching network heat map
-    - Click row to highlight provider in network visualization
-    - Hover shows provider details
+- Sortable by any column
+- Color-coded scores matching network heat map
+- Click row to highlight provider in network visualization
+- Hover shows provider details
 
-    Panel 4: Measure Explanation (middle left, 700x200px)
-    Dynamic text box explaining selected measure:
+Panel 4: Measure Explanation (middle left, 700x200px)
+Dynamic text box explaining selected measure:
 
-    For Degree Centrality:
-    "Degree centrality counts the number of direct connections a provider has. In this referral network:
-    - IN-DEGREE: Number of referrals received (popular specialists)
-    - OUT-DEGREE: Number of referrals sent (primary care, coordinators)
-    - TOTAL DEGREE: Sum of in-degree and out-degree
+For Degree Centrality:
+"Degree centrality counts the number of direct connections a provider has. In this referral network:
+- IN-DEGREE: Number of referrals received (popular specialists)
+- OUT-DEGREE: Number of referrals sent (primary care, coordinators)
+- TOTAL DEGREE: Sum of in-degree and out-degree
 
-    High degree indicates active participation in the referral network. Dr. Chen has the highest total degree (534 connections), indicating a very active practice with extensive referral relationships."
+High degree indicates active participation in the referral network. Dr. Chen has the highest total degree (534 connections), indicating a very active practice with extensive referral relationships."
 
-    For Betweenness Centrality:
-    "Betweenness centrality measures how often a provider appears on the shortest referral path between other providers. High betweenness indicates a critical 'bridge' or 'broker' role.
+For Betweenness Centrality:
+"Betweenness centrality measures how often a provider appears on the shortest referral path between other providers. High betweenness indicates a critical 'bridge' or 'broker' role.
 
-    Providers with high betweenness centrality are essential connectors in the network. If they leave the network or stop accepting referrals, it significantly disrupts care coordination. Dr. Martinez (Neurology) has highest betweenness (0.189), serving as a critical bridge between primary care and subspecialists."
+Providers with high betweenness centrality are essential connectors in the network. If they leave the network or stop accepting referrals, it significantly disrupts care coordination. Dr. Martinez (Neurology) has highest betweenness (0.189), serving as a critical bridge between primary care and subspecialists."
 
-    For PageRank:
-    "PageRank measures a provider's importance based on both the quantity and quality of incoming referrals. A provider receives high PageRank if they are referred to by many providers, especially if those referring providers themselves have high PageRank.
+For PageRank:
+"PageRank measures a provider's importance based on both the quantity and quality of incoming referrals. A provider receives high PageRank if they are referred to by many providers, especially if those referring providers themselves have high PageRank.
 
-    PageRank identifies the most 'trusted' providers in the network. Metro Cardiac Center has the highest PageRank (0.0847), receiving referrals from many highly-connected providers, indicating strong reputation."
+PageRank identifies the most 'trusted' providers in the network. Metro Cardiac Center has the highest PageRank (0.0847), receiving referrals from many highly-connected providers, indicating strong reputation."
 
-    Panel 5: Centrality Distribution Chart (middle right, 700x200px)
-    Histogram showing distribution of centrality scores:
-    - X-axis: Centrality score (binned)
-    - Y-axis: Number of providers
-    - Shows shape of distribution (power law for degree/PageRank, more normal for betweenness)
-    - Highlights top 10% in red
-    - Annotations:
-      * Mean: X.XX
-      * Median: X.XX
-      * Std Dev: X.XX
-      * Max: X.XX
-      * "Power law distribution typical of real networks"
+Panel 5: Centrality Distribution Chart (middle right, 700x200px)
+Histogram showing distribution of centrality scores:
+- X-axis: Centrality score (binned)
+- Y-axis: Number of providers
+- Shows shape of distribution (power law for degree/PageRank, more normal for betweenness)
+- Highlights top 10% in red
+- Annotations:
+  * Mean: X.XX
+  * Median: X.XX
+  * Std Dev: X.XX
+  * Max: X.XX
+  * "Power law distribution typical of real networks"
 
-    Panel 6: Comparison Scatter Plot (bottom left, 700x400px)
-    When "Compare All" selected, shows scatter plot:
-    - X-axis: One centrality measure (dropdown selector)
-    - Y-axis: Another centrality measure (dropdown selector)
-    - Points: Providers (colored by specialty)
-    - Size: Patient volume
-    - Quadrants labeled:
-      * High X, High Y: "Network Stars" (important by both measures)
-      * High X, Low Y: "[X measure] Specialists"
-      * Low X, High Y: "[Y measure] Specialists"
-      * Low X, Low Y: "Peripheral Providers"
+Panel 6: Comparison Scatter Plot (bottom left, 700x400px)
+When "Compare All" selected, shows scatter plot:
+- X-axis: One centrality measure (dropdown selector)
+- Y-axis: Another centrality measure (dropdown selector)
+- Points: Providers (colored by specialty)
+- Size: Patient volume
+- Quadrants labeled:
+  * High X, High Y: "Network Stars" (important by both measures)
+  * High X, Low Y: "[X measure] Specialists"
+  * Low X, High Y: "[Y measure] Specialists"
+  * Low X, Low Y: "Peripheral Providers"
 
-    Example: Degree (X) vs. PageRank (Y)
-    - Shows that some providers have many connections (high degree) but low PageRank (not trusted by important providers)
-    - Others have fewer connections (lower degree) but high PageRank (connected to key opinion leaders)
-    - Identifies different types of network importance
+Example: Degree (X) vs. PageRank (Y)
+- Shows that some providers have many connections (high degree) but low PageRank (not trusted by important providers)
+- Others have fewer connections (lower degree) but high PageRank (connected to key opinion leaders)
+- Identifies different types of network importance
 
-    Panel 7: Healthcare Insights (bottom right, 700x400px)
-    Actionable insights based on centrality analysis:
+Panel 7: Healthcare Insights (bottom right, 700x400px)
+Actionable insights based on centrality analysis:
 
-    "Network Health Indicators:"
-    - Network density: 0.18 (moderately connected)
-    - Average path length: 2.4 steps (efficient referral network)
-    - Number of disconnected providers: 0 (fully connected)
-    - Clustering coefficient: 0.42 (moderate community structure)
+"Network Health Indicators:"
+- Network density: 0.18 (moderately connected)
+- Average path length: 2.4 steps (efficient referral network)
+- Number of disconnected providers: 0 (fully connected)
+- Clustering coefficient: 0.42 (moderate community structure)
 
-    "Key Providers by Role:"
-    - Care Coordinators (High Betweenness): Dr. Martinez, Dr. Patel, Metro Hospital
-    - Trusted Specialists (High PageRank): Metro Cardiac Center, Dr. Anderson, Regional Oncology
-    - Active Referrers (High Out-Degree): Dr. Chen, Dr. Johnson, Family Health Clinic
-    - Popular Specialists (High In-Degree): Dr. Anderson, Regional Orthopedics, Metro Surgery
+"Key Providers by Role:"
+- Care Coordinators (High Betweenness): Dr. Martinez, Dr. Patel, Metro Hospital
+- Trusted Specialists (High PageRank): Metro Cardiac Center, Dr. Anderson, Regional Oncology
+- Active Referrers (High Out-Degree): Dr. Chen, Dr. Johnson, Family Health Clinic
+- Popular Specialists (High In-Degree): Dr. Anderson, Regional Orthopedics, Metro Surgery
 
-    "Network Optimization Recommendations:"
-    - ⚠️ Single point of failure: Dr. Martinez has very high betweenness (0.189). If they leave, referral efficiency drops 34%. Recommend developing backup coordinators.
-    - ✓ Well-distributed PageRank: Top 10 providers account for only 28% of total PageRank (healthy distribution)
-    - ⚠️ Underutilized specialists: 8 providers have <10 referrals/year despite appropriate specialty. Consider why they're not trusted.
-    - ✓ Efficient structure: Average path length of 2.4 steps means most patients reach specialist within 2 referrals.
+"Network Optimization Recommendations:"
+- ⚠️ Single point of failure: Dr. Martinez has very high betweenness (0.189). If they leave, referral efficiency drops 34%. Recommend developing backup coordinators.
+- ✓ Well-distributed PageRank: Top 10 providers account for only 28% of total PageRank (healthy distribution)
+- ⚠️ Underutilized specialists: 8 providers have <10 referrals/year despite appropriate specialty. Consider why they're not trusted.
+- ✓ Efficient structure: Average path length of 2.4 steps means most patients reach specialist within 2 referrals.
 
-    Interactive Features:
+Interactive Features:
 
-    1. Network Exploration:
-       - Hover node: Show tooltip with provider details, all centrality scores
-       - Click node: Highlight all connected nodes (referral partners)
-       - Double-click node: Show "ego network" (just this provider and immediate connections)
-       - Right-click node: Show menu with actions:
-         * "Find referral paths from this provider"
-         * "Show providers who refer here"
-         * "Compare to peers in same specialty"
+1. Network Exploration:
+   - Hover node: Show tooltip with provider details, all centrality scores
+   - Click node: Highlight all connected nodes (referral partners)
+   - Double-click node: Show "ego network" (just this provider and immediate connections)
+   - Right-click node: Show menu with actions:
+     * "Find referral paths from this provider"
+     * "Show providers who refer here"
+     * "Compare to peers in same specialty"
 
-    2. Filter Controls:
-       - Specialty filter: Show only selected specialties
-       - Centrality threshold slider: Hide providers below threshold
-       - Referral volume filter: Show only high-volume relationships
-       - Geographic filter: If location data available
+2. Filter Controls:
+   - Specialty filter: Show only selected specialties
+   - Centrality threshold slider: Hide providers below threshold
+   - Referral volume filter: Show only high-volume relationships
+   - Geographic filter: If location data available
 
-    3. Scenario Analysis:
-       - Button: "What if Dr. X leaves?" - Recalculate centrality with node removed
-       - Button: "Add new specialist" - See impact on network structure
-       - Button: "Optimize for quality" - Highlight high PageRank providers for narrow network
+3. Scenario Analysis:
+   - Button: "What if Dr. X leaves?" - Recalculate centrality with node removed
+   - Button: "Add new specialist" - See impact on network structure
+   - Button: "Optimize for quality" - Highlight high PageRank providers for narrow network
 
-    4. Export Features:
-       - Export rankings table as CSV
-       - Export network visualization as PNG
-       - Generate network analysis report (PDF)
-       - Save centrality scores to database
+4. Export Features:
+   - Export rankings table as CSV
+   - Export network visualization as PNG
+   - Generate network analysis report (PDF)
+   - Save centrality scores to database
 
-    Sample Cypher Queries (shown in expandable panel):
+Sample Cypher Queries (shown in expandable panel):
 
-    Query 1: "Calculate degree centrality"
-    MATCH (p:Provider)
-    RETURN p.name,
-           size((p)<-[:REFERS_TO]-()) as in_degree,
-           size((p)-[:REFERS_TO]->()) as out_degree,
-           size((p)-[:REFERS_TO]-()) as total_degree
-    ORDER BY total_degree DESC
-    LIMIT 20
+Query 1: "Calculate degree centrality"
+MATCH (p:Provider)
+RETURN p.name,
+       size((p)<-[:REFERS_TO]-()) as in_degree,
+       size((p)-[:REFERS_TO]->()) as out_degree,
+       size((p)-[:REFERS_TO]-()) as total_degree
+ORDER BY total_degree DESC
+LIMIT 20
 
-    Query 2: "Calculate PageRank"
-    CALL gds.pageRank.stream('provider-network')
-    YIELD nodeId, score
-    WITH gds.util.asNode(nodeId) as provider, score
-    RETURN provider.name, provider.specialty, score as pagerank
-    ORDER BY pagerank DESC
-    LIMIT 20
+Query 2: "Calculate PageRank"
+CALL gds.pageRank.stream('provider-network')
+YIELD nodeId, score
+WITH gds.util.asNode(nodeId) as provider, score
+RETURN provider.name, provider.specialty, score as pagerank
+ORDER BY pagerank DESC
+LIMIT 20
 
-    Query 3: "Calculate betweenness centrality"
-    CALL gds.betweenness.stream('provider-network')
-    YIELD nodeId, score
-    WITH gds.util.asNode(nodeId) as provider, score
-    RETURN provider.name, provider.specialty, score as betweenness
-    ORDER BY betweenness DESC
-    LIMIT 20
+Query 3: "Calculate betweenness centrality"
+CALL gds.betweenness.stream('provider-network')
+YIELD nodeId, score
+WITH gds.util.asNode(nodeId) as provider, score
+RETURN provider.name, provider.specialty, score as betweenness
+ORDER BY betweenness DESC
+LIMIT 20
 
-    Data Characteristics:
-    - Realistic referral network based on actual specialty relationships
-    - Power-law degree distribution (few hubs, many peripheral nodes)
-    - Assortative mixing (providers tend to refer within specialty groups)
-    - Small-world properties (short average path length, high clustering)
+Data Characteristics:
+- Realistic referral network based on actual specialty relationships
+- Power-law degree distribution (few hubs, many peripheral nodes)
+- Assortative mixing (providers tend to refer within specialty groups)
+- Small-world properties (short average path length, high clustering)
 
-    Implementation: D3.js for network visualization, Chart.js for histograms and scatter plots, React for dashboard
-    Performance: Optimized for networks up to 1,000 nodes, 10,000 edges
-    Additional features: Animation showing how centrality scores converge during PageRank iteration, time-series view of how network centrality evolves
+Implementation: D3.js for network visualization, Chart.js for histograms and scatter plots, React for dashboard
+Performance: Optimized for networks up to 1,000 nodes, 10,000 edges
+Additional features: Animation showing how centrality scores converge during PageRank iteration, time-series view of how network centrality evolves
+</details>
+
+Before moving on, the MicroSim below lets you switch centrality measures on a single fixed network and watch the rankings rearrange—the fastest way to internalize that "important" is measure-dependent.
+
+#### Diagram: Centrality Measures Comparison MicroSim
+
+<details markdown="1">
+<summary>Centrality Measures Comparison MicroSim</summary>
+Type: microsim
+**sim-id:** centrality-measures-comparison<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
+
+Learning objective: Analyze (L4 — differentiate, compare) how degree, betweenness, closeness, and PageRank centrality rank the SAME provider referral network differently, so learners can choose the right measure of "importance" for a given healthcare question.
+
+Canvas layout (responsive, target 900x600; must resize with the window):
+- Main area (left ~65%): a draggable provider referral network (vis-network) of ~16 Provider nodes.
+- Right panel (~35%): a centrality selector, a live top-5 ranking table, and a definition infobox.
+
+Visual elements:
+- Provider nodes whose SIZE and COLOR intensity encode the currently selected centrality score (bigger/darker = more central).
+- Include deliberately contrasting structures: a high-degree hub, a low-degree "bridge" provider connecting two clusters (high betweenness, modest degree), and a densely-embedded provider (high closeness/PageRank).
+
+Interactive controls (use built-in DOM controls, never hand-drawn):
+- Dropdown "Centrality": Degree | Betweenness | Closeness | PageRank
+- Checkbox "Show score labels" (default on)
+- Slider "PageRank damping" (0.50–0.95, default 0.85), active only when PageRank is selected
+- Button "Recompute"
+
+Default parameters: Centrality = Degree, damping = 0.85, labels on.
+
+Behavior and data visibility:
+- Switching the measure instantly re-sizes and re-colors every node and rewrites the top-5 table; the infobox shows a plain-language definition and a healthcare interpretation of that measure.
+- The bridge provider rises to #1 under Betweenness but sits mid-pack under Degree—make this re-ordering visible so learners SEE that importance is measure-dependent.
+- Hovering a node shows all four of its scores side by side for direct comparison.
+
+Instructional Rationale: An Analyze/compare objective is best served by holding the network constant and letting the learner switch the lens, so any re-ranking is attributable to the measure rather than the data. Selection-driven recolor (not continuous animation) keeps focus on the comparison.
+
+Implementation: vis-network with DOM controls; degree computed directly, betweenness via Brandes' algorithm, closeness via BFS distances, PageRank via power iteration; responsive to window resize.
 </details>
 
 ## Clustering Coefficient and Community Structure
@@ -555,247 +604,252 @@ The following compares local clustering with global network structure:
 - Interpretation: Overall tendency toward community formation
 - Healthcare example: Provider network overall has strong care teams (high clustering) vs. fragmented care delivery (low clustering)
 
+#### Diagram: Network Community Detection Interactive Graph Model
+
 <details markdown="1">
-    <summary>Network Community Detection Interactive Graph Model</summary>
-    Type: graph-model
+<summary>Network Community Detection Interactive Graph Model</summary>
+Type: graph-model
+**sim-id:** network-community-detection-graph-model<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate how community detection algorithms partition healthcare networks into meaningful groups, showing the Louvain algorithm identifying patient cohorts, provider communities, and disease clusters.
+Purpose: Illustrate how community detection algorithms partition healthcare networks into meaningful groups, showing the Louvain algorithm identifying patient cohorts, provider communities, and disease clusters.
 
-    Node types:
-    1. Patient (green circles)
-       - Properties: patient_id, age, gender, diagnosis_codes[], zip_code
-       - Size: Number of healthcare encounters
-       - Example: "Patient #4829, Age 67, CHF+Diabetes"
+Node types:
+1. Patient (green circles)
+   - Properties: patient_id, age, gender, diagnosis_codes[], zip_code
+   - Size: Number of healthcare encounters
+   - Example: "Patient #4829, Age 67, CHF+Diabetes"
 
-    2. Provider (blue squares)
-       - Properties: npi, name, specialty, practice_location
-       - Size: Patient panel size
-       - Example: "Dr. Smith, Cardiology, Metro Clinic"
+2. Provider (blue squares)
+   - Properties: npi, name, specialty, practice_location
+   - Size: Patient panel size
+   - Example: "Dr. Smith, Cardiology, Metro Clinic"
 
-    3. Diagnosis (purple diamonds)
-       - Properties: icd_code, description, category
-       - Size: Number of patients with diagnosis
-       - Example: "I50.9: Heart Failure"
+3. Diagnosis (purple diamonds)
+   - Properties: icd_code, description, category
+   - Size: Number of patients with diagnosis
+   - Example: "I50.9: Heart Failure"
 
-    4. Medication (orange hexagons)
-       - Properties: ndc_code, drug_name, drug_class
-       - Size: Number of prescriptions
-       - Example: "Metformin, Antidiabetic"
+4. Medication (orange hexagons)
+   - Properties: ndc_code, drug_name, drug_class
+   - Size: Number of prescriptions
+   - Example: "Metformin, Antidiabetic"
 
-    Edge types:
-    1. HAS_DIAGNOSIS (solid purple)
-       - From: Patient → Diagnosis
-       - Properties: diagnosis_date, primary (boolean)
+Edge types:
+1. HAS_DIAGNOSIS (solid purple)
+   - From: Patient → Diagnosis
+   - Properties: diagnosis_date, primary (boolean)
 
-    2. TREATED_BY (solid blue)
-       - From: Patient → Provider
-       - Properties: encounter_count, last_visit_date
+2. TREATED_BY (solid blue)
+   - From: Patient → Provider
+   - Properties: encounter_count, last_visit_date
 
-    3. PRESCRIBED (dashed orange)
-       - From: Patient → Medication
-       - Properties: prescription_date, dosage
+3. PRESCRIBED (dashed orange)
+   - From: Patient → Medication
+   - Properties: prescription_date, dosage
 
-    4. CO_PRESCRIBED (dotted orange)
-       - From: Medication → Medication
-       - Properties: co_prescription_frequency
-       - Note: Created when medications frequently prescribed together
+4. CO_PRESCRIBED (dotted orange)
+   - From: Medication → Medication
+   - Properties: co_prescription_frequency
+   - Note: Created when medications frequently prescribed together
 
-    5. CO_OCCURS (dashed purple)
-       - From: Diagnosis → Diagnosis
-       - Properties: co_occurrence_rate
-       - Note: Diagnoses that frequently appear together
+5. CO_OCCURS (dashed purple)
+   - From: Diagnosis → Diagnosis
+   - Properties: co_occurrence_rate
+   - Note: Diagnoses that frequently appear together
 
-    6. REFERS_TO (solid blue arrow)
-       - From: Provider → Provider
-       - Properties: referral_count
+6. REFERS_TO (solid blue arrow)
+   - From: Provider → Provider
+   - Properties: referral_count
 
-    Sample Network:
-    - 100 patients
-    - 20 providers (5 primary care, 15 specialists)
-    - 30 diagnosis codes
-    - 25 medications
+Sample Network:
+- 100 patients
+- 20 providers (5 primary care, 15 specialists)
+- 30 diagnosis codes
+- 25 medications
 
-    Community Detection Scenarios:
+Community Detection Scenarios:
 
-    Scenario 1: Patient Cohort Detection
-    Goal: Identify groups of similar patients based on diagnoses and treatments
+Scenario 1: Patient Cohort Detection
+Goal: Identify groups of similar patients based on diagnoses and treatments
 
-    Algorithm: Louvain community detection on patient-diagnosis-medication network
+Algorithm: Louvain community detection on patient-diagnosis-medication network
 
-    Expected Communities (shown with distinct colors):
-    - Community 1 (Red): Cardiac patients
-      * 25 patients
-      * Common diagnoses: Heart failure, Hypertension, Coronary artery disease
-      * Common medications: Beta-blockers, ACE inhibitors, Diuretics
-      * Common providers: Cardiologists, cardiology-focused PCP
-      * Insights: "This cohort has high readmission risk (32% vs. 18% average). Consider enhanced care coordination."
+Expected Communities (shown with distinct colors):
+- Community 1 (Red): Cardiac patients
+  * 25 patients
+  * Common diagnoses: Heart failure, Hypertension, Coronary artery disease
+  * Common medications: Beta-blockers, ACE inhibitors, Diuretics
+  * Common providers: Cardiologists, cardiology-focused PCP
+  * Insights: "This cohort has high readmission risk (32% vs. 18% average). Consider enhanced care coordination."
 
-    - Community 2 (Green): Diabetic patients
-      * 22 patients
-      * Common diagnoses: Type 2 diabetes, Diabetic neuropathy, Retinopathy
-      * Common medications: Metformin, Insulin, Statins
-      * Common providers: Endocrinologists, ophthalmologists
-      * Insights: "78% are not meeting HbA1c targets. Recommend intensified management protocol."
+- Community 2 (Green): Diabetic patients
+  * 22 patients
+  * Common diagnoses: Type 2 diabetes, Diabetic neuropathy, Retinopathy
+  * Common medications: Metformin, Insulin, Statins
+  * Common providers: Endocrinologists, ophthalmologists
+  * Insights: "78% are not meeting HbA1c targets. Recommend intensified management protocol."
 
-    - Community 3 (Blue): Elderly complex patients
-      * 18 patients
-      * Common diagnoses: Multiple chronic conditions (avg 5.2 diagnoses)
-      * Common medications: Polypharmacy (avg 8.4 medications)
-      * Common providers: Geriatricians, multiple specialists
-      * Insights: "High medication interaction risk. Recommend pharmacist consultation for all."
+- Community 3 (Blue): Elderly complex patients
+  * 18 patients
+  * Common diagnoses: Multiple chronic conditions (avg 5.2 diagnoses)
+  * Common medications: Polypharmacy (avg 8.4 medications)
+  * Common providers: Geriatricians, multiple specialists
+  * Insights: "High medication interaction risk. Recommend pharmacist consultation for all."
 
-    - Community 4 (Yellow): Healthy/Prevention
-      * 20 patients
-      * Common diagnoses: Preventive care codes, wellness visits
-      * Common medications: Minimal (vitamins, occasional antibiotics)
-      * Common providers: Primary care only
-      * Insights: "Good health maintenance. Opportunity for coaching to maintain status."
+- Community 4 (Yellow): Healthy/Prevention
+  * 20 patients
+  * Common diagnoses: Preventive care codes, wellness visits
+  * Common medications: Minimal (vitamins, occasional antibiotics)
+  * Common providers: Primary care only
+  * Insights: "Good health maintenance. Opportunity for coaching to maintain status."
 
-    - Community 5 (Purple): Respiratory conditions
-      * 15 patients
-      * Common diagnoses: COPD, Asthma, Pneumonia
-      * Common medications: Inhalers, Corticosteroids, Bronchodilators
-      * Common providers: Pulmonologists
-      * Insights: "High ER utilization for exacerbations. Consider telehealth monitoring."
+- Community 5 (Purple): Respiratory conditions
+  * 15 patients
+  * Common diagnoses: COPD, Asthma, Pneumonia
+  * Common medications: Inhalers, Corticosteroids, Bronchodilators
+  * Common providers: Pulmonologists
+  * Insights: "High ER utilization for exacerbations. Consider telehealth monitoring."
 
-    Scenario 2: Provider Network Communities
-    Goal: Identify natural provider practice groups based on referral patterns
+Scenario 2: Provider Network Communities
+Goal: Identify natural provider practice groups based on referral patterns
 
-    Algorithm: Louvain on provider-referral network
+Algorithm: Louvain on provider-referral network
 
-    Expected Communities:
-    - Community A: Cardiac care network (3 PCPs, 2 cardiologists, 1 cardiac surgeon)
-    - Community B: Orthopedic network (2 PCPs, 3 orthopedists, 1 physical therapy clinic)
-    - Community C: Primary care cluster (5 family medicine providers with minimal specialist connections)
-    - Community D: Academic medical center (highly interconnected specialists with cross-referrals)
+Expected Communities:
+- Community A: Cardiac care network (3 PCPs, 2 cardiologists, 1 cardiac surgeon)
+- Community B: Orthopedic network (2 PCPs, 3 orthopedists, 1 physical therapy clinic)
+- Community C: Primary care cluster (5 family medicine providers with minimal specialist connections)
+- Community D: Academic medical center (highly interconnected specialists with cross-referrals)
 
-    Interactive Features:
+Interactive Features:
 
-    1. Algorithm Selector (dropdown):
-       - Louvain (fast, hierarchical)
-       - Label Propagation (very fast, non-deterministic)
-       - Connected Components (strict separation)
-       - Leiden (improved Louvain)
+1. Algorithm Selector (dropdown):
+   - Louvain (fast, hierarchical)
+   - Label Propagation (very fast, non-deterministic)
+   - Connected Components (strict separation)
+   - Leiden (improved Louvain)
 
-    2. Network View Selector (radio buttons):
-       - Patient-Diagnosis-Medication view
-       - Provider-Referral view
-       - Combined multi-layer view
-       - Bipartite patient-provider view
+2. Network View Selector (radio buttons):
+   - Patient-Diagnosis-Medication view
+   - Provider-Referral view
+   - Combined multi-layer view
+   - Bipartite patient-provider view
 
-    3. Algorithm Visualization:
-       - Button: "Run Community Detection"
-       - Animation shows:
-         * Initialization: All nodes same color
-         * Iteration 1: Nodes start changing colors based on neighbor communities
-         * Iteration 2-N: Communities stabilize
-         * Final: Distinct communities with color coding
-       - Progress bar: "Iteration 5/12, Modularity: 0.67"
+3. Algorithm Visualization:
+   - Button: "Run Community Detection"
+   - Animation shows:
+     * Initialization: All nodes same color
+     * Iteration 1: Nodes start changing colors based on neighbor communities
+     * Iteration 2-N: Communities stabilize
+     * Final: Distinct communities with color coding
+   - Progress bar: "Iteration 5/12, Modularity: 0.67"
 
-    4. Community Controls:
-       - Slider: "Minimum community size" (5-50 nodes)
-       - Slider: "Resolution parameter" (affects granularity)
-       - Checkbox: "Show inter-community edges" (visualize boundaries)
-       - Checkbox: "Label communities" (show community statistics)
+4. Community Controls:
+   - Slider: "Minimum community size" (5-50 nodes)
+   - Slider: "Resolution parameter" (affects granularity)
+   - Checkbox: "Show inter-community edges" (visualize boundaries)
+   - Checkbox: "Label communities" (show community statistics)
 
-    5. Community Inspector (click any community):
-       Shows detailed metrics:
-       - Community ID and color
-       - Number of nodes
-       - Internal edge density vs. external connections
-       - Modularity contribution
-       - Top nodes by centrality within community
-       - Common attributes (top diagnoses, medications, demographics)
-       - Healthcare interpretation
+5. Community Inspector (click any community):
+   Shows detailed metrics:
+   - Community ID and color
+   - Number of nodes
+   - Internal edge density vs. external connections
+   - Modularity contribution
+   - Top nodes by centrality within community
+   - Common attributes (top diagnoses, medications, demographics)
+   - Healthcare interpretation
 
-    6. Quality Metrics:
-       - Modularity score: 0.0 to 1.0 (higher = better community structure)
-       - Number of communities detected
-       - Average community size
-       - Conductance (ratio of inter-community to intra-community edges)
-       - Silhouette score (cohesion and separation)
+6. Quality Metrics:
+   - Modularity score: 0.0 to 1.0 (higher = better community structure)
+   - Number of communities detected
+   - Average community size
+   - Conductance (ratio of inter-community to intra-community edges)
+   - Silhouette score (cohesion and separation)
 
-    7. Comparison Mode:
-       - Run multiple algorithms
-       - Show side-by-side results
-       - Highlight: "Louvain found 5 communities (modularity 0.72), Label Propagation found 7 communities (modularity 0.68)"
-       - Agreement matrix: Which patients are in same community across algorithms?
+7. Comparison Mode:
+   - Run multiple algorithms
+   - Show side-by-side results
+   - Highlight: "Louvain found 5 communities (modularity 0.72), Label Propagation found 7 communities (modularity 0.68)"
+   - Agreement matrix: Which patients are in same community across algorithms?
 
-    Healthcare Insights Panel:
+Healthcare Insights Panel:
 
-    For Patient Communities:
-    "Community detection identified 5 distinct patient cohorts:
-    - Cardiac cohort (25 patients): Focus on reducing readmissions through care coordination
-    - Diabetic cohort (22 patients): Improve glycemic control through intensified management
-    - Complex elderly (18 patients): Medication reconciliation and fall prevention
-    - Healthy cohort (20 patients): Maintain wellness through preventive services
-    - Respiratory cohort (15 patients): Reduce exacerbations through remote monitoring
+For Patient Communities:
+"Community detection identified 5 distinct patient cohorts:
+- Cardiac cohort (25 patients): Focus on reducing readmissions through care coordination
+- Diabetic cohort (22 patients): Improve glycemic control through intensified management
+- Complex elderly (18 patients): Medication reconciliation and fall prevention
+- Healthy cohort (20 patients): Maintain wellness through preventive services
+- Respiratory cohort (15 patients): Reduce exacerbations through remote monitoring
 
-    RECOMMENDED ACTIONS:
-    1. Assign care managers to Cardiac and Complex Elderly cohorts (highest risk)
-    2. Implement diabetes care pathways for Diabetic cohort
-    3. Deploy remote monitoring for Respiratory cohort
-    4. Create targeted wellness programs for Healthy cohort"
+RECOMMENDED ACTIONS:
+1. Assign care managers to Cardiac and Complex Elderly cohorts (highest risk)
+2. Implement diabetes care pathways for Diabetic cohort
+3. Deploy remote monitoring for Respiratory cohort
+4. Create targeted wellness programs for Healthy cohort"
 
-    For Provider Communities:
-    "Network analysis identified 4 natural provider practice communities:
-    - Cardiac care network: Efficient referral patterns (avg 1.2 referrals to diagnosis)
-    - Orthopedic network: High patient satisfaction (4.7/5.0 average)
-    - Primary care cluster: Isolated from specialists (only 12% specialist referral rate vs. 28% network average) ⚠️
-    - Academic medical center: High quality scores but long wait times (avg 21 days)
+For Provider Communities:
+"Network analysis identified 4 natural provider practice communities:
+- Cardiac care network: Efficient referral patterns (avg 1.2 referrals to diagnosis)
+- Orthopedic network: High patient satisfaction (4.7/5.0 average)
+- Primary care cluster: Isolated from specialists (only 12% specialist referral rate vs. 28% network average) ⚠️
+- Academic medical center: High quality scores but long wait times (avg 21 days)
 
-    NETWORK OPTIMIZATION:
-    - Primary care cluster needs better specialist connections - recommend adding preferred specialist relationships
-    - Academic center wait times could be reduced by better load balancing with community providers"
+NETWORK OPTIMIZATION:
+- Primary care cluster needs better specialist connections - recommend adding preferred specialist relationships
+- Academic center wait times could be reduced by better load balancing with community providers"
 
-    Sample Cypher Queries (shown in sidebar):
+Sample Cypher Queries (shown in sidebar):
 
-    Query 1: "Run Louvain community detection on patients"
-    CALL gds.louvain.stream('patient-network', {
-      relationshipWeightProperty: 'similarity'
-    })
-    YIELD nodeId, communityId
-    WITH gds.util.asNode(nodeId) as patient, communityId
-    RETURN communityId,
-           count(patient) as community_size,
-           collect(patient.patient_id)[0..5] as sample_patients
-    ORDER BY community_size DESC
+Query 1: "Run Louvain community detection on patients"
+CALL gds.louvain.stream('patient-network', {
+  relationshipWeightProperty: 'similarity'
+})
+YIELD nodeId, communityId
+WITH gds.util.asNode(nodeId) as patient, communityId
+RETURN communityId,
+       count(patient) as community_size,
+       collect(patient.patient_id)[0..5] as sample_patients
+ORDER BY community_size DESC
 
-    Query 2: "Calculate modularity of communities"
-    CALL gds.louvain.write('patient-network', {
-      writeProperty: 'community'
-    })
-    YIELD modularity, communityCount
-    RETURN modularity, communityCount
+Query 2: "Calculate modularity of communities"
+CALL gds.louvain.write('patient-network', {
+  writeProperty: 'community'
+})
+YIELD modularity, communityCount
+RETURN modularity, communityCount
 
-    Query 3: "Find common diagnoses within each community"
-    MATCH (p:Patient {community: $community_id})-[:HAS_DIAGNOSIS]->(d:Diagnosis)
-    WITH d, count(p) as patient_count
-    ORDER BY patient_count DESC
-    RETURN d.description, patient_count
-    LIMIT 10
+Query 3: "Find common diagnoses within each community"
+MATCH (p:Patient {community: $community_id})-[:HAS_DIAGNOSIS]->(d:Diagnosis)
+WITH d, count(p) as patient_count
+ORDER BY patient_count DESC
+RETURN d.description, patient_count
+LIMIT 10
 
-    Layout Options:
-    - Force-directed: Natural clustering visible
-    - Circular by community: Each community in circle segment
-    - Hierarchical: Tree structure showing community hierarchy
-    - Geographic: If location data available, map-based
+Layout Options:
+- Force-directed: Natural clustering visible
+- Circular by community: Each community in circle segment
+- Hierarchical: Tree structure showing community hierarchy
+- Geographic: If location data available, map-based
 
-    Visual Styling:
-    - Communities: Distinct colors (max 12 communities supported)
-    - Community boundaries: Dashed circles or convex hulls around member nodes
-    - Inter-community edges: Thin gray lines
-    - Intra-community edges: Thicker, colored by community
-    - Node labels: Show on hover or toggle on/off
+Visual Styling:
+- Communities: Distinct colors (max 12 communities supported)
+- Community boundaries: Dashed circles or convex hulls around member nodes
+- Inter-community edges: Thin gray lines
+- Intra-community edges: Thicker, colored by community
+- Node labels: Show on hover or toggle on/off
 
-    Educational Callouts:
-    - "Modularity": Tooltip explaining what modularity measures and why it matters
-    - "Resolution Parameter": How it affects granularity (low = fewer large communities, high = many small communities)
-    - "Louvain Algorithm": Brief explanation of two-phase approach (local optimization, then aggregation)
+Educational Callouts:
+- "Modularity": Tooltip explaining what modularity measures and why it matters
+- "Resolution Parameter": How it affects granularity (low = fewer large communities, high = many small communities)
+- "Louvain Algorithm": Brief explanation of two-phase approach (local optimization, then aggregation)
 
-    Implementation: vis-network for graph visualization, Neo4j Graph Data Science library algorithms
-    Canvas size: 1200x900px with community statistics sidebar
-    Additional features: Export community assignments, generate community report, compare to ground truth (if labels available)
+Implementation: vis-network for graph visualization, Neo4j Graph Data Science library algorithms
+Canvas size: 1200x900px with community statistics sidebar
+Additional features: Export community assignments, generate community report, compare to ground truth (if labels available)
 </details>
 
 ## Cycle Detection and Pattern Recognition
@@ -865,6 +919,47 @@ ORDER BY fraud_risk_level DESC, financial_links DESC, total_referrals DESC
 LIMIT 20
 ```
 
+The MicroSim below lets you hunt for these patterns yourself. Toggle the financial-link constraint to see firsthand why a structural cycle is not automatically a fraudulent one.
+
+#### Diagram: Cycle Detection and Pattern Explorer MicroSim
+
+<details markdown="1">
+<summary>Cycle Detection and Pattern Explorer MicroSim</summary>
+Type: microsim
+**sim-id:** cycle-detection-pattern-explorer<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
+
+Learning objective: Analyze (L4 — examine, distinguish) how cycle-detection and subgraph-pattern algorithms surface circular referral loops and structural motifs (triangle, star, chain, clique) in a provider referral network, so learners can distinguish benign care-coordination loops from kickback-suggestive cycles.
+
+Canvas layout (responsive, target 900x600; must resize with the window):
+- Main area (left ~65%): a draggable provider referral graph (vis-network) of ~14 Provider nodes connected by directed REFERS_TO edges, with a few FINANCIAL_RELATIONSHIP edges drawn as dashed gold lines.
+- Right panel (~35%): controls, a legend, and an infobox that reports the currently highlighted structure.
+
+Visual elements:
+- Provider nodes (circles) sized by degree; default gray.
+- Directed referral edges (arrows). A seeded 3-cycle and 4-cycle exist among providers who also share FINANCIAL_RELATIONSHIP edges.
+- When a pattern is detected or selected, its nodes recolor (cycle = red, triangle = orange, star hub = blue, clique = purple) and its edges thicken.
+
+Interactive controls (use built-in DOM controls, never hand-drawn):
+- Dropdown "Pattern": Cycles | Triangles | Star | Clique
+- Slider "Max cycle length": 2–6 (default 4)
+- Checkbox "Require financial link" (default on) — only highlight cycles whose members also share a FINANCIAL_RELATIONSHIP edge
+- Button "Detect"
+- Button "Reset"
+
+Default parameters: Pattern = Cycles, Max cycle length = 4, Require financial link = on.
+
+Behavior and data visibility:
+- On "Detect", list every matching structure in the infobox with: member provider names, cycle length, number of shared financial links, total referral volume, and a computed risk label (High / Medium / Low) using the same thresholds as the chapter's Cypher query (financial_links >= 2 AND total_referrals > 100 → High).
+- Clicking a listed match focuses and highlights that subgraph; hovering a node shows its degree and total referral volume.
+- Toggling "Require financial link" off reveals additional benign cycles, teaching the difference between a structural cycle and a fraud-suggestive cycle.
+
+Instructional Rationale: An Analyze-level objective requires the learner to manipulate the network and compare which cycles are benign coordination loops versus kickback-suggestive ones. Letting the learner toggle the financial-link constraint and re-run detection makes the distinction concrete rather than asserted. Selection-driven highlighting (no continuous animation) keeps attention on structure.
+
+Implementation: vis-network for the graph with DOM controls; cycle enumeration via depth-first search up to the max length on the adjacency list; triangle/star/clique detection via neighbor-set checks; responsive to window resize.
+</details>
+
 ## Similarity Measures and Link Prediction
 
 **Similarity measures** quantify how alike two nodes are based on their attributes, connections, or position in the network. Different similarity algorithms capture different notions of likeness: shared neighbors, overlapping attributes, or structural equivalence. In healthcare, similarity measures enable patient matching for cohort studies, duplicate record detection, treatment recommendation based on similar patients, and provider peer comparison.
@@ -896,6 +991,50 @@ Healthcare applications of similarity and link prediction include:
 - **Drug interaction discovery:** Predicting likely drug-drug interactions based on similarity of molecular structures and known interactions
 - **Clinical trial matching:** Finding patients similar to those who benefited from specific treatments
 - **Missing diagnosis detection:** Identifying likely diagnoses that weren't coded based on similarity to other patients with same symptoms and test results
+
+The following MicroSim makes link-prediction scoring concrete by exposing the shared-neighbor math behind each candidate edge, then ranking the most likely future connections.
+
+#### Diagram: Link Prediction Scoring MicroSim
+
+<details markdown="1">
+<summary>Link Prediction Scoring MicroSim</summary>
+Type: microsim
+**sim-id:** link-prediction-scoring<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
+
+Learning objective: Apply (L3 — use, calculate) Common Neighbors, Jaccard, and Adamic-Adar link-prediction scores to a provider referral network to rank the most likely missing or future connections (for example, which specialist a primary care provider will refer to next).
+
+Canvas layout (responsive, target 900x560; resizes with the window):
+- Left (~60%): a small network of PCPs and specialists drawn as nodes, with existing edges solid and candidate (currently non-existent) edges shown faint and dashed.
+- Right (~40%): a metric selector, a ranked candidate table, and a worked-calculation panel.
+
+Visual elements:
+- ~10–12 nodes; existing edges in black; candidate pairs (unconnected nodes sharing at least one neighbor) in light dashed gray.
+- The selected candidate pair's shared neighbors highlight in green; the predicted edge draws as a bold colored dashed line whose opacity scales with the score.
+
+Interactive controls (use built-in p5 DOM controls):
+- Dropdown "Score": Common Neighbors | Jaccard | Adamic-Adar
+- Slider "Top-K to show": 1–8 (default 5)
+- Button "Rank predictions"
+- Button "Reset"
+
+Default parameters: Score = Adamic-Adar, Top-K = 5.
+
+Data Visibility Requirements (Apply objective — show the math):
+  Stage 1: Show the selected candidate pair (A, B) and N(A), N(B) as explicit node-id sets.
+  Stage 2: Show the shared-neighbor set N(A) ∩ N(B) (highlighted green in the graph).
+  Stage 3: Show the chosen formula with actual numbers substituted, e.g. Adamic-Adar = 1/log(deg z1) + 1/log(deg z2) = 0.91.
+  Final: Show the Top-K ranked candidate table (pair, shared neighbors, score) and draw the #1 predicted edge in bold.
+
+Behavior:
+- Changing the Score dropdown re-ranks the table and updates the worked-calculation panel, so learners see why Adamic-Adar can re-order pairs versus Common Neighbors (rare shared neighbors weigh more).
+- Clicking a table row selects that pair and updates both the graph highlight and the calculation panel.
+
+Instructional Rationale: The Apply objective requires learners to compute and compare scores, so the sim exposes the intermediate sets and the substituted formula rather than only the final ranking. Comparing the three metrics on one network makes the weighting differences tangible. No continuous animation—the learner drives each step.
+
+Implementation: p5.js with an adjacency list; compute all three scores over every unconnected pair sharing at least one neighbor; render graph and tables; responsive to window resize.
+</details>
 
 ## Graph Embeddings and Representation Learning
 
@@ -935,6 +1074,51 @@ Healthcare applications of GNNs:
 - **Molecule property prediction:** Predicting drug efficacy or toxicity from molecular graph structure
 - **Hospital readmission prediction:** Using GNNs on patient-provider-diagnosis networks to predict readmission risk
 - **Treatment outcome prediction:** Predicting treatment success based on patient similarity networks and historical outcomes
+
+The MicroSim below lets you step through how an embedding gradually separates patient cohorts in vector space, and how each round of neighbor aggregation—the core idea behind a graph neural network—tightens those clusters.
+
+#### Diagram: Node Embedding Explorer MicroSim
+
+<details markdown="1">
+<summary>Node Embedding Explorer MicroSim</summary>
+Type: microsim
+**sim-id:** node-embedding-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
+
+Learning objective: Understand (L2 — interpret, explain) how a node embedding maps a healthcare graph into a 2-D vector space so that structurally similar patients land near each other, and how a Graph Neural Network refines those vectors by aggregating neighbor features (message passing).
+
+Canvas layout (responsive, target 960x560; resizes with the window):
+- Left (~50%): the source patient–provider–condition graph, with nodes colored by a hidden "cohort" label.
+- Right (~50%): a 2-D scatter "embedding space" where each graph node appears as a point of the same color.
+
+Visual elements:
+- ~16 nodes in three latent cohorts (for example a diabetes cluster, a cardiac cluster, and a healthy cluster) with intra-cohort edges denser than inter-cohort edges.
+- The embedding scatter starts as a random cloud; after each aggregation step, points move to precomputed positions so same-cohort points pull together (NOT a free-running physics animation the learner cannot stop).
+- Hovering a graph node highlights its twin point in the scatter and vice-versa; clicking a node lists its current 4-number vector and its nearest neighbors by cosine similarity.
+
+Interactive controls (use built-in p5 DOM controls):
+- Buttons "Next step" / "Previous step" — advance or rewind message-passing rounds (0 = random init, 1–3 = aggregation rounds)
+- Dropdown "Walk bias (Node2Vec p/q)": Local (BFS-like) | Balanced | Global (DFS-like) — changes the precomputed layout to show how exploration strategy changes neighborhoods
+- Checkbox "Show cohort colors" (default on)
+- Button "Reset to random"
+
+Default parameters: step = 0, Walk bias = Balanced, cohort colors on.
+
+Data Visibility Requirements (Understand objective — step-through):
+  Stage 0: Show random initial vectors; the scatter is an undifferentiated cloud.
+  Stage 1: After one aggregation round, show each node's vector updated from its neighbors' average; points begin to separate by cohort.
+  Stage 2–3: Show progressive tightening; report a "cohort separation" score that increases each step.
+  Selected node: always show its 4-number vector and top-3 nearest neighbors with cosine values.
+
+Behavior:
+- "Next step" applies one round of neighbor-feature averaging (the intuition behind GraphSAGE/GCN message passing) and moves points to their precomputed positions for that step.
+- Changing "Walk bias" reloads the layout so learners can compare how local versus global exploration groups nodes differently.
+
+Instructional Rationale: This is an Understand/explain objective, so per the skill the sim uses discrete Next/Previous step-through with concrete vectors visible at each stage rather than continuous animation. Linking each graph node to its embedding point (hover both ways) makes the abstract "vector representation" concrete, and the increasing separation score lets learners predict-then-verify what another aggregation round will do.
+
+Implementation: p5.js with precomputed per-step 2-D coordinates and small fixed vectors (no live training); cosine similarity computed in-browser; responsive to window resize.
+</details>
 
 ## Summary and Key Takeaways
 

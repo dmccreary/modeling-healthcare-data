@@ -1,0 +1,14 @@
+{
+  "sim_id": "denial-reasons-analysis-chart",
+  "diagram_name": "Denial Reasons Analysis Chart",
+  "chapter_number": 6,
+  "chapter_title": "Payer Perspective Insurance",
+  "chapter_dir": "06-payer-perspective-insurance",
+  "library": "Chart.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: chart\n**sim-id:** denial-reasons-analysis-chart<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nChart type: Stacked bar chart with drill-down capability\n\nPurpose: Visualize claim denial reasons by frequency and financial impact, helping identify optimization opportunities in claim processing\n\nX-axis: Denial reason categories\nY-axis (left): Number of denied claims (primary axis)\nY-axis (right): Total denied amount in dollars (secondary axis)\n\nData series:\n1. Claim count (blue bars):\n   - Coverage/Eligibility Issues: 45,000 claims\n   - Coding Errors: 38,000 claims\n   - Timely Filing: 22,000 claims\n   - Prior Authorization: 18,000 claims\n   - Medical Necessity: 15,000 claims\n   - Duplicate Claims: 12,000 claims\n   - Coordination of Benefits: 9,000 claims\n   - Bundling/NCCI Edits: 7,000 claims\n   - Other: 4,000 claims\n\n2. Total denied amount (orange line with markers, right axis):\n   - Coverage/Eligibility Issues: $85M\n   - Medical Necessity: $72M\n   - Prior Authorization: $58M\n   - Coding Errors: $43M\n   - Coordination of Benefits: $28M\n   - Bundling/NCCI Edits: $19M\n   - Timely Filing: $15M\n   - Duplicate Claims: $5M\n   - Other: $3M\n\n3. Overturn rate on appeal (green percentage labels on bars):\n   - Coverage/Eligibility Issues: 15%\n   - Coding Errors: 65%\n   - Timely Filing: 5%\n   - Prior Authorization: 45%\n   - Medical Necessity: 35%\n   - Duplicate Claims: 10%\n   - Coordination of Benefits: 25%\n   - Bundling/NCCI Edits: 40%\n   - Other: 20%\n\nTitle: \"Claim Denial Analysis: Q4 2024 (170,000 total denials, $328M total denied)\"\n\nAnnotations:\n- Arrow pointing to \"Medical Necessity\": \"Highest dollar impact but only 3rd in volume - indicates high-cost services\"\n- Arrow pointing to \"Coding Errors\": \"High volume + high overturn rate = automation opportunity\"\n- Callout box: \"Coding and Prior Auth represent 72% of overturned denials - process improvement target\"\n\nInteractive features:\n- Hover: Show exact values and overturn rate\n- Click on bar: Drill down to sub-categories (e.g., Coding Errors → Invalid Code, Incomplete Code, Wrong Code, etc.)\n- Toggle button: Switch between \"All Denials\" and \"Preventable Denials Only\"\n- Date range selector: Filter by month/quarter\n\nLegend:\n- Bar colors and their meanings\n- Line color for dollar amounts\n- Percentage labels explanation\n\nImplementation: Chart.js with custom plugins for dual-axis and interactivity\nCanvas size: 900x550px"
+}

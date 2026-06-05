@@ -73,69 +73,74 @@ The **Patient ID** presents one of the most challenging aspects of healthcare da
 
 Graph databases provide elegant solutions to the patient identification problem through their native support for multiple relationships and flexible schema. Rather than forcing a single canonical identifier, we can model multiple identifier types as nodes connected to the patient record, each with properties indicating the issuing system, identifier type, and validity period.
 
+#### Diagram: Patient Identifier Graph Model
+
 <details markdown="1">
-    <summary>Patient Identifier Graph Model</summary>
-    Type: graph-model
+<summary>Patient Identifier Graph Model</summary>
+Type: graph-model
+**sim-id:** patient-identifier-graph-model<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate how multiple patient identifiers are connected to a single patient record node
+Purpose: Illustrate how multiple patient identifiers are connected to a single patient record node
 
-    Node types:
-    1. Patient (large blue circle)
-       - Properties: master_patient_id, name, birth_date
-       - Example: "Jane Smith, DOB: 1985-03-15"
+Node types:
+1. Patient (large blue circle)
+   - Properties: master_patient_id, name, birth_date
+   - Example: "Jane Smith, DOB: 1985-03-15"
 
-    2. Identifier (small orange rectangles)
-       - Properties: identifier_value, type, issuing_system, active_status
-       - Examples:
-         - "MRN-12345 (Hospital A Medical Record Number)"
-         - "SSN-123-45-6789 (Social Security Number)"
-         - "INSUR-987654 (Insurance Member ID)"
-         - "MRN-98765 (Hospital B Medical Record Number)"
+2. Identifier (small orange rectangles)
+   - Properties: identifier_value, type, issuing_system, active_status
+   - Examples:
+     - "MRN-12345 (Hospital A Medical Record Number)"
+     - "SSN-123-45-6789 (Social Security Number)"
+     - "INSUR-987654 (Insurance Member ID)"
+     - "MRN-98765 (Hospital B Medical Record Number)"
 
-    3. Identity System (gray hexagons)
-       - Properties: system_name, authority, jurisdiction
-       - Examples: "Hospital A EHR", "National SSN Registry", "Insurance Provider X"
+3. Identity System (gray hexagons)
+   - Properties: system_name, authority, jurisdiction
+   - Examples: "Hospital A EHR", "National SSN Registry", "Insurance Provider X"
 
-    Edge types:
-    1. HAS_IDENTIFIER (solid blue arrows from Patient to Identifier)
-       - Properties: assigned_date, confidence_score
+Edge types:
+1. HAS_IDENTIFIER (solid blue arrows from Patient to Identifier)
+   - Properties: assigned_date, confidence_score
 
-    2. ISSUED_BY (dashed gray arrows from Identifier to Identity System)
-       - Properties: issue_date, expiration_date
+2. ISSUED_BY (dashed gray arrows from Identifier to Identity System)
+   - Properties: issue_date, expiration_date
 
-    Sample data:
-    - Patient "Jane Smith"
-      ├─ HAS_IDENTIFIER → MRN-12345
-      │  └─ ISSUED_BY → Hospital A EHR
-      ├─ HAS_IDENTIFIER → MRN-98765
-      │  └─ ISSUED_BY → Hospital B EHR
-      ├─ HAS_IDENTIFIER → SSN-123-45-6789
-      │  └─ ISSUED_BY → National SSN Registry
-      └─ HAS_IDENTIFIER → INSUR-987654
-         └─ ISSUED_BY → Insurance Provider X
+Sample data:
+- Patient "Jane Smith"
+  ├─ HAS_IDENTIFIER → MRN-12345
+  │  └─ ISSUED_BY → Hospital A EHR
+  ├─ HAS_IDENTIFIER → MRN-98765
+  │  └─ ISSUED_BY → Hospital B EHR
+  ├─ HAS_IDENTIFIER → SSN-123-45-6789
+  │  └─ ISSUED_BY → National SSN Registry
+  └─ HAS_IDENTIFIER → INSUR-987654
+     └─ ISSUED_BY → Insurance Provider X
 
-    Layout: Radial with Patient node at center and identifiers arranged in a circle around it
+Layout: Radial with Patient node at center and identifiers arranged in a circle around it
 
-    Interactive features:
-    - Hover over Identifier node: Show full identifier details and issuing system
-    - Click Patient node: Highlight all associated identifiers
-    - Double-click Identifier: Show historical record of use
-    - Filter: Toggle identifier types on/off (MRN, SSN, Insurance, etc.)
+Interactive features:
+- Hover over Identifier node: Show full identifier details and issuing system
+- Click Patient node: Highlight all associated identifiers
+- Double-click Identifier: Show historical record of use
+- Filter: Toggle identifier types on/off (MRN, SSN, Insurance, etc.)
 
-    Visual styling:
-    - Patient node: Large (60px), blue, labeled with name
-    - Identifier nodes: Medium (40px), orange, labeled with ID value
-    - System nodes: Small (30px), gray, labeled with system name
-    - Active identifiers: Solid border
-    - Inactive identifiers: Dashed border
+Visual styling:
+- Patient node: Large (60px), blue, labeled with name
+- Identifier nodes: Medium (40px), orange, labeled with ID value
+- System nodes: Small (30px), gray, labeled with system name
+- Active identifiers: Solid border
+- Inactive identifiers: Dashed border
 
-    Legend:
-    - Node shapes: Circle = Patient, Rectangle = Identifier, Hexagon = System
-    - Edge styles: Solid = direct association, Dashed = system relationship
-    - Border styles: Solid = active, Dashed = inactive
+Legend:
+- Node shapes: Circle = Patient, Rectangle = Identifier, Hexagon = System
+- Edge styles: Solid = direct association, Dashed = system relationship
+- Border styles: Solid = active, Dashed = inactive
 
-    Implementation: vis-network JavaScript library
-    Canvas size: 800x600px
+Implementation: vis-network JavaScript library
+Canvas size: 800x600px
 </details>
 
 ### Patient History
@@ -197,82 +202,87 @@ The relationship between patients, symptoms, and diseases creates a complex many
 - A single symptom may indicate multiple possible diseases (chest pain → cardiac disease, GERD, anxiety, musculoskeletal injury)
 - Symptom combinations provide stronger diagnostic signals than individual symptoms
 
+#### Diagram: Symptom-Disease Diagnostic Network
+
 <details markdown="1">
-    <summary>Symptom-Disease Diagnostic Network</summary>
-    Type: graph-model
+<summary>Symptom-Disease Diagnostic Network</summary>
+Type: graph-model
+**sim-id:** symptom-disease-diagnostic-network<br/>
+**Library:** vis-network<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the many-to-many relationships between symptoms and diseases, showing how symptom patterns inform differential diagnosis
+Purpose: Illustrate the many-to-many relationships between symptoms and diseases, showing how symptom patterns inform differential diagnosis
 
-    Node types:
-    1. Patient (blue circle, large)
-       - Properties: patient_id, name
-       - Example: "Patient A"
+Node types:
+1. Patient (blue circle, large)
+   - Properties: patient_id, name
+   - Example: "Patient A"
 
-    2. Symptom Instance (yellow squares, medium)
-       - Properties: symptom_type, severity, onset_date, duration
-       - Examples:
-         - "Chest pain (severe, 2hr duration)"
-         - "Shortness of breath (moderate, 1 day)"
-         - "Fatigue (mild, 2 weeks)"
+2. Symptom Instance (yellow squares, medium)
+   - Properties: symptom_type, severity, onset_date, duration
+   - Examples:
+     - "Chest pain (severe, 2hr duration)"
+     - "Shortness of breath (moderate, 1 day)"
+     - "Fatigue (mild, 2 weeks)"
 
-    3. Symptom Type (yellow circles, small)
-       - Properties: symptom_name, body_system
-       - Examples: "Chest Pain", "Dyspnea", "Fatigue", "Nausea"
+3. Symptom Type (yellow circles, small)
+   - Properties: symptom_name, body_system
+   - Examples: "Chest Pain", "Dyspnea", "Fatigue", "Nausea"
 
-    4. Disease (red octagons, medium)
-       - Properties: disease_name, ICD_code, prevalence
-       - Examples:
-         - "Myocardial Infarction (I21)"
-         - "Pulmonary Embolism (I26)"
-         - "GERD (K21.9)"
-         - "Anxiety Disorder (F41.9)"
+4. Disease (red octagons, medium)
+   - Properties: disease_name, ICD_code, prevalence
+   - Examples:
+     - "Myocardial Infarction (I21)"
+     - "Pulmonary Embolism (I26)"
+     - "GERD (K21.9)"
+     - "Anxiety Disorder (F41.9)"
 
-    Edge types:
-    1. REPORTS_SYMPTOM (solid blue arrows: Patient → Symptom Instance)
-       - Properties: reported_date, severity_score
+Edge types:
+1. REPORTS_SYMPTOM (solid blue arrows: Patient → Symptom Instance)
+   - Properties: reported_date, severity_score
 
-    2. INSTANCE_OF (dashed yellow arrows: Symptom Instance → Symptom Type)
-       - Properties: none
+2. INSTANCE_OF (dashed yellow arrows: Symptom Instance → Symptom Type)
+   - Properties: none
 
-    3. ASSOCIATED_WITH (solid red arrows: Symptom Type → Disease)
-       - Properties: probability, specificity, sensitivity
-       - Example: Chest Pain → MI (probability: 0.35, specificity: 0.60)
+3. ASSOCIATED_WITH (solid red arrows: Symptom Type → Disease)
+   - Properties: probability, specificity, sensitivity
+   - Example: Chest Pain → MI (probability: 0.35, specificity: 0.60)
 
-    Sample data:
-    - Patient A
-      ├─ REPORTS_SYMPTOM → Chest pain instance
-      │  └─ INSTANCE_OF → Chest Pain (type)
-      │     ├─ ASSOCIATED_WITH → Myocardial Infarction (prob: 0.35)
-      │     ├─ ASSOCIATED_WITH → Pulmonary Embolism (prob: 0.15)
-      │     ├─ ASSOCIATED_WITH → GERD (prob: 0.25)
-      │     └─ ASSOCIATED_WITH → Anxiety Disorder (prob: 0.10)
-      └─ REPORTS_SYMPTOM → Shortness of breath instance
-         └─ INSTANCE_OF → Dyspnea (type)
-            ├─ ASSOCIATED_WITH → Myocardial Infarction (prob: 0.40)
-            ├─ ASSOCIATED_WITH → Pulmonary Embolism (prob: 0.55)
-            └─ ASSOCIATED_WITH → Anxiety Disorder (prob: 0.15)
+Sample data:
+- Patient A
+  ├─ REPORTS_SYMPTOM → Chest pain instance
+  │  └─ INSTANCE_OF → Chest Pain (type)
+  │     ├─ ASSOCIATED_WITH → Myocardial Infarction (prob: 0.35)
+  │     ├─ ASSOCIATED_WITH → Pulmonary Embolism (prob: 0.15)
+  │     ├─ ASSOCIATED_WITH → GERD (prob: 0.25)
+  │     └─ ASSOCIATED_WITH → Anxiety Disorder (prob: 0.10)
+  └─ REPORTS_SYMPTOM → Shortness of breath instance
+     └─ INSTANCE_OF → Dyspnea (type)
+        ├─ ASSOCIATED_WITH → Myocardial Infarction (prob: 0.40)
+        ├─ ASSOCIATED_WITH → Pulmonary Embolism (prob: 0.55)
+        └─ ASSOCIATED_WITH → Anxiety Disorder (prob: 0.15)
 
-    Layout: Hierarchical with patient at top, symptom instances in second tier, symptom types in third tier, and diseases at bottom
+Layout: Hierarchical with patient at top, symptom instances in second tier, symptom types in third tier, and diseases at bottom
 
-    Interactive features:
-    - Hover over ASSOCIATED_WITH edge: Show probability, sensitivity, specificity values
-    - Click Symptom Type: Highlight all associated diseases with probability labels
-    - Click Disease: Show all symptoms that may indicate this disease
-    - Multi-select: Select multiple symptom instances to see diseases associated with that combination (Bayesian inference)
-    - Toggle: Show/hide probability threshold filter
+Interactive features:
+- Hover over ASSOCIATED_WITH edge: Show probability, sensitivity, specificity values
+- Click Symptom Type: Highlight all associated diseases with probability labels
+- Click Disease: Show all symptoms that may indicate this disease
+- Multi-select: Select multiple symptom instances to see diseases associated with that combination (Bayesian inference)
+- Toggle: Show/hide probability threshold filter
 
-    Visual styling:
-    - Edge thickness proportional to probability value
-    - Disease nodes colored by likelihood given selected symptoms (green = high, yellow = medium, red = low)
-    - Animated pulse on high-probability diseases when multiple symptoms selected
+Visual styling:
+- Edge thickness proportional to probability value
+- Disease nodes colored by likelihood given selected symptoms (green = high, yellow = medium, red = low)
+- Animated pulse on high-probability diseases when multiple symptoms selected
 
-    Legend:
-    - Node shapes: Circle = Patient/Type, Square = Instance, Octagon = Disease
-    - Edge styles: Solid = direct association, Dashed = type relationship
-    - Color coding: Blue = patient/symptoms, Red = diseases, edge thickness = probability
+Legend:
+- Node shapes: Circle = Patient/Type, Square = Instance, Octagon = Disease
+- Edge styles: Solid = direct association, Dashed = type relationship
+- Color coding: Blue = patient/symptoms, Red = diseases, edge thickness = probability
 
-    Implementation: vis-network JavaScript library
-    Canvas size: 1000x800px
+Implementation: vis-network JavaScript library
+Canvas size: 1000x800px
 </details>
 
 ### Diagnosis
@@ -296,6 +306,49 @@ Graph models capture this diagnostic complexity through a network of relationshi
 - **primary_or_secondary**: Whether this is the primary diagnosis for an encounter
 - **supporting_evidence**: Links to lab results, imaging reports, symptoms
 - **differential_diagnoses**: Other conditions considered and ruled out
+
+The MicroSim below lets you build a diagnosis the way a clinician does: add one piece of evidence at a time and watch the probability of each candidate condition rise or fall.
+
+#### Diagram: Bayesian Diagnostic Reasoning MicroSim
+
+<details markdown="1">
+<summary>Bayesian Diagnostic Reasoning MicroSim</summary>
+Type: microsim
+**sim-id:** bayesian-diagnostic-reasoning<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
+
+Learning objective: Apply (L3 — use, calculate, demonstrate) how each new piece of evidence (symptom, exam finding, lab result) updates the probability of competing diagnoses in a differential, so learners can explain why diagnosis is iterative probability revision rather than a single lookup.
+
+Canvas layout (responsive, target 920x560; resizes with the window):
+- Left (~55%): a horizontal bar chart of 4–5 candidate conditions, each bar showing the current posterior probability; bars re-sort as probabilities change.
+- Right (~45%): a checklist of available evidence items and an explanation panel showing the most recent update.
+
+Visual elements:
+- Candidate conditions (for example Migraine, Tension Headache, Meningitis, Brain Tumor, Sinusitis) with prior probabilities shown at start.
+- Evidence items (for example "fever", "stiff neck", "gradual onset", "photophobia", "normal CT") each carrying a likelihood ratio per condition.
+- A running "leading diagnosis" banner and a confidence readout.
+
+Interactive controls (use built-in p5 DOM controls):
+- Checkboxes to toggle each evidence item present/absent
+- Dropdown "Patient prior": Low-risk clinic | Emergency Department | Specialty referral (changes priors)
+- Button "Reset evidence"
+
+Default parameters: Emergency Department priors, no evidence selected.
+
+Data Visibility Requirements (Apply objective — show the math):
+  Stage 1: Show prior probabilities for each condition.
+  Stage 2: When an evidence item is toggled, show its likelihood ratio and the posterior = (prior x LR) renormalized, with the changed bar highlighted.
+  Final: Show the ranked differential with the leading diagnosis and the evidence that moved it most.
+
+Behavior:
+- Toggling "stiff neck" plus "fever" sharply raises Meningitis; adding "normal CT" lowers Brain Tumor, so learners see how evidence discriminates between conditions.
+- Changing the prior shows that identical evidence yields different posteriors depending on clinical context (an ED prior elevates serious conditions).
+
+Instructional Rationale: The Apply objective requires learners to manipulate evidence and compute updated probabilities. Exposing the prior, likelihood ratio, and renormalized posterior at each toggle makes diagnosis legible as Bayesian updating rather than asserting it. Discrete toggles (no animation) keep each probability change attributable to one evidence item.
+
+Implementation: p5.js with DOM controls; a naive-Bayes update over a small precomputed likelihood-ratio table; responsive to window resize.
+</details>
 
 ## Treatment and Medication Management
 
@@ -367,68 +420,73 @@ Types of drug interactions modeled in graph databases:
 - **Synergistic interactions**: Combined effect exceeds sum of individual effects
 - **Contraindications**: Drug should not be used with specific conditions or other drugs
 
+#### Diagram: Medication Safety Network Interactive Infographic
+
 <details markdown="1">
-    <summary>Medication Safety Network Interactive Infographic</summary>
-    Type: infographic
+<summary>Medication Safety Network Interactive Infographic</summary>
+Type: infographic
+**sim-id:** medication-safety-network-infographic<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Purpose: Create an interactive visualization showing how graph databases identify medication safety issues by traversing relationships between prescribed medications, known interactions, patient allergies, and existing conditions
+Purpose: Create an interactive visualization showing how graph databases identify medication safety issues by traversing relationships between prescribed medications, known interactions, patient allergies, and existing conditions
 
-    Layout: Central patient node with four quadrants radiating outward
+Layout: Central patient node with four quadrants radiating outward
 
-    Quadrants:
-    1. Top-left: Active Medications (green circles)
-    2. Top-right: Known Drug Interactions (red warning triangles)
-    3. Bottom-left: Patient Allergies (orange circles)
-    4. Bottom-right: Existing Conditions (blue circles)
+Quadrants:
+1. Top-left: Active Medications (green circles)
+2. Top-right: Known Drug Interactions (red warning triangles)
+3. Bottom-left: Patient Allergies (orange circles)
+4. Bottom-right: Existing Conditions (blue circles)
 
-    Central element:
-    - Patient icon with name "John Doe"
-    - Real-time safety status indicator (green checkmark or red warning)
+Central element:
+- Patient icon with name "John Doe"
+- Real-time safety status indicator (green checkmark or red warning)
 
-    Active Medications (top-left quadrant):
-    - Warfarin 5mg daily (blood thinner)
-    - Aspirin 81mg daily (antiplatelet)
-    - Ibuprofen 400mg PRN (NSAID)
-    - Metformin 1000mg twice daily (diabetes)
+Active Medications (top-left quadrant):
+- Warfarin 5mg daily (blood thinner)
+- Aspirin 81mg daily (antiplatelet)
+- Ibuprofen 400mg PRN (NSAID)
+- Metformin 1000mg twice daily (diabetes)
 
-    Drug Interactions (top-right quadrant):
-    - HIGH RISK: Warfarin + Aspirin + Ibuprofen (triple interaction, bleeding risk)
-    - MODERATE: Metformin + contrast dye (if imaging scheduled)
+Drug Interactions (top-right quadrant):
+- HIGH RISK: Warfarin + Aspirin + Ibuprofen (triple interaction, bleeding risk)
+- MODERATE: Metformin + contrast dye (if imaging scheduled)
 
-    Allergies (bottom-left quadrant):
-    - Penicillin (severe, anaphylaxis)
-    - Sulfa drugs (moderate, rash)
+Allergies (bottom-left quadrant):
+- Penicillin (severe, anaphylaxis)
+- Sulfa drugs (moderate, rash)
 
-    Existing Conditions (bottom-right quadrant):
-    - Atrial fibrillation (indication for Warfarin)
-    - Type 2 Diabetes (indication for Metformin)
-    - Chronic kidney disease stage 3a (affects drug clearance)
+Existing Conditions (bottom-right quadrant):
+- Atrial fibrillation (indication for Warfarin)
+- Type 2 Diabetes (indication for Metformin)
+- Chronic kidney disease stage 3a (affects drug clearance)
 
-    Interactive elements:
-    1. Hover over medication: Shows full details, indications, warnings
-    2. Click medication: Highlights all interactions, allergies, and condition relationships
-    3. Click interaction warning: Shows detailed explanation of mechanism and risk level
-    4. Click "Add New Prescription" button: Opens simulation where user can test adding a new medication to see if warnings appear
-    5. Toggle "Interaction Severity" filter: Show only high-risk, or include moderate and low-risk
+Interactive elements:
+1. Hover over medication: Shows full details, indications, warnings
+2. Click medication: Highlights all interactions, allergies, and condition relationships
+3. Click interaction warning: Shows detailed explanation of mechanism and risk level
+4. Click "Add New Prescription" button: Opens simulation where user can test adding a new medication to see if warnings appear
+5. Toggle "Interaction Severity" filter: Show only high-risk, or include moderate and low-risk
 
-    Connection lines:
-    - Solid red lines: Direct drug-drug interactions
-    - Dashed orange lines: Drug-allergy conflicts
-    - Dotted blue lines: Drug-condition contraindications
-    - Green lines: Appropriate drug-condition treatment (indication)
+Connection lines:
+- Solid red lines: Direct drug-drug interactions
+- Dashed orange lines: Drug-allergy conflicts
+- Dotted blue lines: Drug-condition contraindications
+- Green lines: Appropriate drug-condition treatment (indication)
 
-    Animation:
-    - When page loads, medications appear one by one
-    - As each medication appears, interaction lines draw in real-time
-    - If high-risk interaction detected, central safety indicator turns red with pulse animation
+Animation:
+- When page loads, medications appear one by one
+- As each medication appears, interaction lines draw in real-time
+- If high-risk interaction detected, central safety indicator turns red with pulse animation
 
-    Educational callout boxes (reveal on click):
-    - "Why does this interaction matter?" - Clinical significance explanation
-    - "What should be done?" - Mitigation strategies (dose adjustment, monitoring, alternative drug)
-    - "How common is this?" - Prevalence statistics
+Educational callout boxes (reveal on click):
+- "Why does this interaction matter?" - Clinical significance explanation
+- "What should be done?" - Mitigation strategies (dose adjustment, monitoring, alternative drug)
+- "How common is this?" - Prevalence statistics
 
-    Implementation: HTML/CSS/JavaScript with SVG for connection lines
-    Canvas size: 900x900px (square layout)
+Implementation: HTML/CSS/JavaScript with SVG for connection lines
+Canvas size: 900x900px (square layout)
 </details>
 
 ### Allergies and Immunizations
@@ -493,84 +551,89 @@ Common vital sign measurements:
 - **Weight**: Kilograms or pounds
 - **BMI**: Calculated from height and weight
 
+#### Diagram: Vital Signs Trend Visualization MicroSim
+
 <details markdown="1">
-    <summary>Vital Signs Trend Visualization MicroSim</summary>
-    Type: microsim
+<summary>Vital Signs Trend Visualization MicroSim</summary>
+Type: microsim
+**sim-id:** vital-signs-trend-visualization-microsim<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Demonstrate how vital signs data stored in graph databases can be queried and visualized as time-series trends for chronic disease monitoring, enabling clinicians to identify patterns and treatment responses
+Learning objective: Demonstrate how vital signs data stored in graph databases can be queried and visualized as time-series trends for chronic disease monitoring, enabling clinicians to identify patterns and treatment responses
 
-    Canvas layout (1000x700px):
-    - Top section (1000x500): Chart area showing time-series line graphs
-    - Bottom section (1000x200): Control panel with patient selector and options
+Canvas layout (1000x700px):
+- Top section (1000x500): Chart area showing time-series line graphs
+- Bottom section (1000x200): Control panel with patient selector and options
 
-    Visual elements in chart area:
-    - X-axis: Time (dates spanning 6 months)
-    - Y-axis (left): Blood pressure (mmHg, range 80-180)
-    - Y-axis (right): Heart rate (bpm, range 50-120)
-    - Line graphs:
-      - Blue line: Systolic blood pressure
-      - Green line: Diastolic blood pressure
-      - Red line: Heart rate
-    - Reference zones (shaded backgrounds):
-      - Normal BP zone (110-130 systolic, 70-85 diastolic) in light green
-      - Elevated BP zone (130-140 systolic) in light yellow
-      - Hypertensive zone (above 140 systolic) in light red
-    - Data points: Circles on each line at measurement dates
-    - Hover markers: Show exact values and dates
+Visual elements in chart area:
+- X-axis: Time (dates spanning 6 months)
+- Y-axis (left): Blood pressure (mmHg, range 80-180)
+- Y-axis (right): Heart rate (bpm, range 50-120)
+- Line graphs:
+  - Blue line: Systolic blood pressure
+  - Green line: Diastolic blood pressure
+  - Red line: Heart rate
+- Reference zones (shaded backgrounds):
+  - Normal BP zone (110-130 systolic, 70-85 diastolic) in light green
+  - Elevated BP zone (130-140 systolic) in light yellow
+  - Hypertensive zone (above 140 systolic) in light red
+- Data points: Circles on each line at measurement dates
+- Hover markers: Show exact values and dates
 
-    Interactive controls (bottom panel):
-    - Patient selector dropdown: Choose from 5 sample patients with different conditions
-      - Patient A: Hypertension, improving with treatment
-      - Patient B: Normal vitals, stable
-      - Patient C: Hypertension, poorly controlled
-      - Patient D: Bradycardia and hypotension
-      - Patient E: Variable BP, medication non-adherence
+Interactive controls (bottom panel):
+- Patient selector dropdown: Choose from 5 sample patients with different conditions
+  - Patient A: Hypertension, improving with treatment
+  - Patient B: Normal vitals, stable
+  - Patient C: Hypertension, poorly controlled
+  - Patient D: Bradycardia and hypotension
+  - Patient E: Variable BP, medication non-adherence
 
-    - Date range slider: Adjust time window (1 month to 2 years)
+- Date range slider: Adjust time window (1 month to 2 years)
 
-    - Vital sign checkboxes: Toggle which vitals to display
-      - Systolic BP
-      - Diastolic BP
-      - Heart rate
-      - Weight
-      - BMI
+- Vital sign checkboxes: Toggle which vitals to display
+  - Systolic BP
+  - Diastolic BP
+  - Heart rate
+  - Weight
+  - BMI
 
-    - Measurement frequency dropdown: Show all measurements vs. monthly averages
+- Measurement frequency dropdown: Show all measurements vs. monthly averages
 
-    - Annotate events button: Toggle display of clinical events (medication changes, hospitalizations)
+- Annotate events button: Toggle display of clinical events (medication changes, hospitalizations)
 
-    Default parameters:
-    - Patient: Patient A (improving hypertension)
-    - Date range: 6 months
-    - Vitals displayed: Systolic BP, Diastolic BP, Heart rate
-    - Show all measurements (not averaged)
+Default parameters:
+- Patient: Patient A (improving hypertension)
+- Date range: 6 months
+- Vitals displayed: Systolic BP, Diastolic BP, Heart rate
+- Show all measurements (not averaged)
 
-    Behavior:
-    - On page load, display Patient A's data with 6-month trend
-    - When patient selected, animate transition to new patient's data
-    - When date range adjusted, smoothly zoom time axis
-    - When vital sign toggled off, fade out that line graph
-    - When hovering over data point, show tooltip with:
-      - Exact measurement value
-      - Date and time
-      - Encounter type (office visit, hospital, home monitoring)
-      - Notes if available
-    - When "Annotate events" toggled on, show vertical markers for:
-      - Medication started/stopped/adjusted (orange markers)
-      - Hospitalizations (red markers)
-      - Lifestyle interventions (green markers)
+Behavior:
+- On page load, display Patient A's data with 6-month trend
+- When patient selected, animate transition to new patient's data
+- When date range adjusted, smoothly zoom time axis
+- When vital sign toggled off, fade out that line graph
+- When hovering over data point, show tooltip with:
+  - Exact measurement value
+  - Date and time
+  - Encounter type (office visit, hospital, home monitoring)
+  - Notes if available
+- When "Annotate events" toggled on, show vertical markers for:
+  - Medication started/stopped/adjusted (orange markers)
+  - Hospitalizations (red markers)
+  - Lifestyle interventions (green markers)
 
-    Educational features:
-    - Info icon next to each vital sign: Click to see normal ranges and clinical significance
-    - "Graph Query" button: Shows the Cypher query used to retrieve this time-series data from the graph database
-    - "Compare Patients" mode: Split screen showing two patients side-by-side
+Educational features:
+- Info icon next to each vital sign: Click to see normal ranges and clinical significance
+- "Graph Query" button: Shows the Cypher query used to retrieve this time-series data from the graph database
+- "Compare Patients" mode: Split screen showing two patients side-by-side
 
-    Implementation notes:
-    - Use p5.js for canvas rendering and interactive controls
-    - Store sample patient data as JavaScript objects simulating graph query results
-    - Use frameCount for smooth animations
-    - Implement hover detection with distance calculations to data points
-    - Color code zones using alpha transparency for overlapping reference ranges
+Implementation notes:
+- Use p5.js for canvas rendering and interactive controls
+- Store sample patient data as JavaScript objects simulating graph query results
+- Use frameCount for smooth animations
+- Implement hover detection with distance calculations to data points
+- Color code zones using alpha transparency for overlapping reference ranges
 </details>
 
 ## Comprehensive Care Management
@@ -602,100 +665,105 @@ Key timeline query patterns include:
 - **Switching patterns**: When and why do providers change treatment approaches?
 - **Outcome correlation**: Do faster treatment initiation times produce better outcomes?
 
+#### Diagram: Patient Treatment Timeline Workflow Diagram
+
 <details markdown="1">
-    <summary>Patient Treatment Timeline Workflow Diagram</summary>
-    Type: workflow
+<summary>Patient Treatment Timeline Workflow Diagram</summary>
+Type: workflow
+**sim-id:** patient-treatment-timeline-workflow-diagram<br/>
+**Library:** Mermaid<br/>
+**Status:** Specified
 
-    Purpose: Illustrate the typical progression from diagnosis through treatment phases for a chronic disease patient, showing how graph databases capture temporal relationships and enable timeline reconstruction
+Purpose: Illustrate the typical progression from diagnosis through treatment phases for a chronic disease patient, showing how graph databases capture temporal relationships and enable timeline reconstruction
 
-    Visual style: Horizontal flowchart with time-based positioning and vertical swimlanes
+Visual style: Horizontal flowchart with time-based positioning and vertical swimlanes
 
-    Swimlanes (top to bottom):
-    1. Patient Status
-    2. Diagnostic Activities
-    3. Treatment Interventions
-    4. Monitoring Activities
-    5. Outcomes/Adjustments
+Swimlanes (top to bottom):
+1. Patient Status
+2. Diagnostic Activities
+3. Treatment Interventions
+4. Monitoring Activities
+5. Outcomes/Adjustments
 
-    Timeline: Spans 12 months, marked at 0, 3, 6, 9, and 12 months
+Timeline: Spans 12 months, marked at 0, 3, 6, 9, and 12 months
 
-    Steps:
+Steps:
 
-    Month 0 - Initial Diagnosis:
-    Patient Status: "Symptoms onset - fatigue, increased thirst"
-    Diagnostic: "Lab tests ordered (HbA1c, fasting glucose)"
-    Treatment: None yet
-    Monitoring: None yet
-    Hover text: "Patient presents with classic Type 2 Diabetes symptoms"
+Month 0 - Initial Diagnosis:
+Patient Status: "Symptoms onset - fatigue, increased thirst"
+Diagnostic: "Lab tests ordered (HbA1c, fasting glucose)"
+Treatment: None yet
+Monitoring: None yet
+Hover text: "Patient presents with classic Type 2 Diabetes symptoms"
 
-    Month 0.5 - Diagnosis Confirmed:
-    Patient Status: "Diagnosed with Type 2 Diabetes"
-    Diagnostic: "Lab results: HbA1c 8.5%, fasting glucose 180 mg/dL"
-    Treatment: "Started Metformin 500mg BID"
-    Monitoring: "Patient education - diet, exercise, glucose monitoring"
-    Hover text: "Graph query: CREATE (p:Patient)-[:DIAGNOSED_WITH {date: '2024-01-15'}]->(d:Disease {name: 'Type 2 Diabetes'})"
+Month 0.5 - Diagnosis Confirmed:
+Patient Status: "Diagnosed with Type 2 Diabetes"
+Diagnostic: "Lab results: HbA1c 8.5%, fasting glucose 180 mg/dL"
+Treatment: "Started Metformin 500mg BID"
+Monitoring: "Patient education - diet, exercise, glucose monitoring"
+Hover text: "Graph query: CREATE (p:Patient)-[:DIAGNOSED_WITH {date: '2024-01-15'}]->(d:Disease {name: 'Type 2 Diabetes'})"
 
-    Month 1 - Initial Monitoring:
-    Patient Status: "Adjusting to medication"
-    Diagnostic: "Home glucose log review"
-    Treatment: "Continue Metformin"
-    Monitoring: "Weekly glucose checks, side effect assessment"
-    Hover text: "Patient reports mild GI upset, improving with food timing"
+Month 1 - Initial Monitoring:
+Patient Status: "Adjusting to medication"
+Diagnostic: "Home glucose log review"
+Treatment: "Continue Metformin"
+Monitoring: "Weekly glucose checks, side effect assessment"
+Hover text: "Patient reports mild GI upset, improving with food timing"
 
-    Month 3 - First Follow-up:
-    Patient Status: "Partial improvement"
-    Diagnostic: "Repeat labs: HbA1c 7.8%, weight down 5 lbs"
-    Treatment: "Increase Metformin to 1000mg BID"
-    Monitoring: "Monthly glucose reviews, dietary counseling"
-    Hover text: "Treatment response tracked via graph relationship properties: {response: 'partial', A1c_change: -0.7}"
+Month 3 - First Follow-up:
+Patient Status: "Partial improvement"
+Diagnostic: "Repeat labs: HbA1c 7.8%, weight down 5 lbs"
+Treatment: "Increase Metformin to 1000mg BID"
+Monitoring: "Monthly glucose reviews, dietary counseling"
+Hover text: "Treatment response tracked via graph relationship properties: {response: 'partial', A1c_change: -0.7}"
 
-    Month 6 - Mid-Point Assessment:
-    Patient Status: "Plateau in improvement"
-    Diagnostic: "Repeat labs: HbA1c 7.5%, weight stable"
-    Treatment: "Add Jardiance 10mg daily (SGLT2 inhibitor)"
-    Monitoring: "Biweekly glucose checks, CV risk assessment"
-    Hover text: "Graph captures treatment intensification: (p)-[:PRESCRIBED {date: '2024-07-15'}]->(m:Medication {name: 'Jardiance'})"
+Month 6 - Mid-Point Assessment:
+Patient Status: "Plateau in improvement"
+Diagnostic: "Repeat labs: HbA1c 7.5%, weight stable"
+Treatment: "Add Jardiance 10mg daily (SGLT2 inhibitor)"
+Monitoring: "Biweekly glucose checks, CV risk assessment"
+Hover text: "Graph captures treatment intensification: (p)-[:PRESCRIBED {date: '2024-07-15'}]->(m:Medication {name: 'Jardiance'})"
 
-    Month 9 - Response Evaluation:
-    Patient Status: "Significant improvement"
-    Diagnostic: "Repeat labs: HbA1c 6.8%, weight down 12 lbs total"
-    Treatment: "Continue current regimen"
-    Monitoring: "Monthly glucose checks, activity tracker data integration"
-    Hover text: "Outcome node created: (o:Outcome {A1c: 6.8, date: '2024-10-15'})<-[:ACHIEVED]-(p)"
+Month 9 - Response Evaluation:
+Patient Status: "Significant improvement"
+Diagnostic: "Repeat labs: HbA1c 6.8%, weight down 12 lbs total"
+Treatment: "Continue current regimen"
+Monitoring: "Monthly glucose checks, activity tracker data integration"
+Hover text: "Outcome node created: (o:Outcome {A1c: 6.8, date: '2024-10-15'})<-[:ACHIEVED]-(p)"
 
-    Month 12 - Goal Achievement:
-    Patient Status: "At treatment goal"
-    Diagnostic: "Repeat labs: HbA1c 6.5%, fasting glucose 105 mg/dL"
-    Treatment: "Maintain current medications"
-    Monitoring: "Quarterly follow-ups, annual comprehensive metabolic panel"
-    Hover text: "Timeline query: MATCH (p:Patient)-[r:DIAGNOSED_WITH|PRESCRIBED|HAS_LAB_RESULT*]->(n) WHERE r.date > '2024-01-01' RETURN r ORDER BY r.date"
+Month 12 - Goal Achievement:
+Patient Status: "At treatment goal"
+Diagnostic: "Repeat labs: HbA1c 6.5%, fasting glucose 105 mg/dL"
+Treatment: "Maintain current medications"
+Monitoring: "Quarterly follow-ups, annual comprehensive metabolic panel"
+Hover text: "Timeline query: MATCH (p:Patient)-[r:DIAGNOSED_WITH|PRESCRIBED|HAS_LAB_RESULT*]->(n) WHERE r.date > '2024-01-01' RETURN r ORDER BY r.date"
 
-    Visual elements:
-    - Boxes for each activity, positioned horizontally by time
-    - Vertical lines connecting related activities across swimlanes
-    - Color coding by status:
-      - Diagnosis phase: Blue
-      - Initial treatment: Orange
-      - Monitoring stable: Green
-      - Treatment adjustment: Yellow
-      - Goal achievement: Dark green
+Visual elements:
+- Boxes for each activity, positioned horizontally by time
+- Vertical lines connecting related activities across swimlanes
+- Color coding by status:
+  - Diagnosis phase: Blue
+  - Initial treatment: Orange
+  - Monitoring stable: Green
+  - Treatment adjustment: Yellow
+  - Goal achievement: Dark green
 
-    Arrows showing workflow progression:
-    - Solid arrows: Direct causation (lab result → treatment decision)
-    - Dashed arrows: Monitoring/follow-up relationships
+Arrows showing workflow progression:
+- Solid arrows: Direct causation (lab result → treatment decision)
+- Dashed arrows: Monitoring/follow-up relationships
 
-    Interactive features:
-    - Hover over any box: See detailed clinical notes and graph query patterns
-    - Click box: Highlight all related activities across swimlanes
-    - Zoom slider: Expand/compress timeline to show more or less detail
-    - Filter: Toggle swimlanes on/off to focus on specific aspects
+Interactive features:
+- Hover over any box: See detailed clinical notes and graph query patterns
+- Click box: Highlight all related activities across swimlanes
+- Zoom slider: Expand/compress timeline to show more or less detail
+- Filter: Toggle swimlanes on/off to focus on specific aspects
 
-    Annotations:
-    - Blue info icons throughout: Click to see example graph database queries
-    - "Graph Advantage" callout boxes: Explain how graph traversals enable timeline reconstruction
+Annotations:
+- Blue info icons throughout: Click to see example graph database queries
+- "Graph Advantage" callout boxes: Explain how graph traversals enable timeline reconstruction
 
-    Implementation: HTML/CSS/JavaScript with SVG for flowchart elements
-    Canvas size: 1200x800px
+Implementation: HTML/CSS/JavaScript with SVG for flowchart elements
+Canvas size: 1200x800px
 </details>
 
 ## Holistic Patient Views and Advanced Care
@@ -720,122 +788,127 @@ Graph analytics can identify common journey patterns, such as:
 - High-risk transition points where patients are likely to be lost to follow-up
 - Facilities or providers with better outcomes for specific patient populations
 
+#### Diagram: Patient Journey Map Interactive Visualization
+
 <details markdown="1">
-    <summary>Patient Journey Map Interactive Visualization</summary>
-    Type: microsim
+<summary>Patient Journey Map Interactive Visualization</summary>
+Type: microsim
+**sim-id:** patient-journey-map-visualization<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
 
-    Learning objective: Illustrate how a single patient's healthcare journey spans multiple encounters, providers, and facilities over time, demonstrating the complexity that graph databases are designed to model and query efficiently
+Learning objective: Illustrate how a single patient's healthcare journey spans multiple encounters, providers, and facilities over time, demonstrating the complexity that graph databases are designed to model and query efficiently
 
-    Canvas layout (1200x800px):
-    - Top section (1200x100): Patient info header and timeline selector
-    - Middle section (1200x600): Interactive journey map visualization
-    - Bottom section (1200x100): Legend and statistics panel
+Canvas layout (1200x800px):
+- Top section (1200x100): Patient info header and timeline selector
+- Middle section (1200x600): Interactive journey map visualization
+- Bottom section (1200x100): Legend and statistics panel
 
-    Patient info header:
-    - Patient name, age, primary diagnoses
-    - Journey duration (e.g., "24-month journey, 37 encounters")
-    - Complexity score (calculated from number of providers, conditions, facilities)
+Patient info header:
+- Patient name, age, primary diagnoses
+- Journey duration (e.g., "24-month journey, 37 encounters")
+- Complexity score (calculated from number of providers, conditions, facilities)
 
-    Journey map visualization (middle section):
-    Visual representation as a temporal network graph:
+Journey map visualization (middle section):
+Visual representation as a temporal network graph:
 
-    Node types:
-    1. Encounter nodes (circles, sized by duration)
-       - Office visit (small blue circles)
-       - ER visit (medium yellow circles)
-       - Hospitalization (large red circles)
-       - Telehealth (small green circles)
+Node types:
+1. Encounter nodes (circles, sized by duration)
+   - Office visit (small blue circles)
+   - ER visit (medium yellow circles)
+   - Hospitalization (large red circles)
+   - Telehealth (small green circles)
 
-    2. Provider nodes (squares)
-       - Primary care (blue squares)
-       - Specialists (orange squares)
-       - Hospital physicians (red squares)
+2. Provider nodes (squares)
+   - Primary care (blue squares)
+   - Specialists (orange squares)
+   - Hospital physicians (red squares)
 
-    3. Facility nodes (hexagons)
-       - Primary care clinic (blue hexagons)
-       - Specialist offices (orange hexagons)
-       - Hospital (red hexagons)
-       - Pharmacy (green hexagons)
+3. Facility nodes (hexagons)
+   - Primary care clinic (blue hexagons)
+   - Specialist offices (orange hexagons)
+   - Hospital (red hexagons)
+   - Pharmacy (green hexagons)
 
-    4. Event nodes (triangles)
-       - New diagnosis (yellow triangles)
-       - New medication (green triangles)
-       - Procedure (purple triangles)
+4. Event nodes (triangles)
+   - New diagnosis (yellow triangles)
+   - New medication (green triangles)
+   - Procedure (purple triangles)
 
-    Edges represent transitions:
-    - Solid lines: Direct referrals
-    - Dashed lines: Patient self-referral
-    - Curved lines: Return visits to same provider
-    - Color indicates time between encounters (green = quick follow-up, red = delayed)
+Edges represent transitions:
+- Solid lines: Direct referrals
+- Dashed lines: Patient self-referral
+- Curved lines: Return visits to same provider
+- Color indicates time between encounters (green = quick follow-up, red = delayed)
 
-    Timeline layout:
-    - Nodes positioned horizontally by date (left to right = past to present)
-    - Vertical position groups by facility/provider
-    - Path through nodes shows patient's journey chronologically
+Timeline layout:
+- Nodes positioned horizontally by date (left to right = past to present)
+- Vertical position groups by facility/provider
+- Path through nodes shows patient's journey chronologically
 
-    Sample patient journey data (Type 2 Diabetes patient over 24 months):
+Sample patient journey data (Type 2 Diabetes patient over 24 months):
 
-    Month 0: Primary care visit → Lab work → Diabetes diagnosis
-    Month 1: Primary care follow-up → Started Metformin
-    Month 3: Primary care check-in → Referred to endocrinologist
-    Month 4: Endocrinologist visit → Treatment adjustment
-    Month 6: Primary care visit → Pharmacy refills
-    Month 7: ER visit for hypoglycemia episode
-    Month 7 (next day): Endocrinologist urgent follow-up
-    Month 9: Ophthalmology referral → Diabetic retinopathy screening
-    Month 12: Primary care annual visit → Preventive care updates
-    Month 15: Cardiology referral → Cardiovascular risk assessment
-    Month 18: Primary care visit → Medication adherence counseling
-    Month 21: Hospitalization for cardiac event
-    Month 21 (discharge): Cardiology follow-up scheduled
-    Month 22: Cardiac rehabilitation program enrollment
-    Month 24: Coordinated care visit (PCP + Endocrinology + Cardiology)
+Month 0: Primary care visit → Lab work → Diabetes diagnosis
+Month 1: Primary care follow-up → Started Metformin
+Month 3: Primary care check-in → Referred to endocrinologist
+Month 4: Endocrinologist visit → Treatment adjustment
+Month 6: Primary care visit → Pharmacy refills
+Month 7: ER visit for hypoglycemia episode
+Month 7 (next day): Endocrinologist urgent follow-up
+Month 9: Ophthalmology referral → Diabetic retinopathy screening
+Month 12: Primary care annual visit → Preventive care updates
+Month 15: Cardiology referral → Cardiovascular risk assessment
+Month 18: Primary care visit → Medication adherence counseling
+Month 21: Hospitalization for cardiac event
+Month 21 (discharge): Cardiology follow-up scheduled
+Month 22: Cardiac rehabilitation program enrollment
+Month 24: Coordinated care visit (PCP + Endocrinology + Cardiology)
 
-    Interactive controls:
-    - Time slider: Filter to show specific date range
-    - Node type filters: Toggle encounter types, providers, facilities on/off
-    - "Highlight care gaps" button: Show periods > 90 days without follow-up
-    - "Trace referral path" mode: Click any encounter to see full referral chain
-    - Speed control: Animate journey over time (play button)
+Interactive controls:
+- Time slider: Filter to show specific date range
+- Node type filters: Toggle encounter types, providers, facilities on/off
+- "Highlight care gaps" button: Show periods > 90 days without follow-up
+- "Trace referral path" mode: Click any encounter to see full referral chain
+- Speed control: Animate journey over time (play button)
 
-    Interactive features:
-    - Hover over node: Show detailed information
-      - Encounter: Date, type, chief complaint, diagnoses, orders
-      - Provider: Name, specialty, facility affiliation
-      - Facility: Name, address, type
-      - Event: Description, date, related encounters
-    - Click node: Highlight all connected nodes and edges
-    - Double-click encounter: Expand to show detailed timeline of that visit (orders, results, medications)
-    - Right-click node: Show graph query used to find related nodes
+Interactive features:
+- Hover over node: Show detailed information
+  - Encounter: Date, type, chief complaint, diagnoses, orders
+  - Provider: Name, specialty, facility affiliation
+  - Facility: Name, address, type
+  - Event: Description, date, related encounters
+- Click node: Highlight all connected nodes and edges
+- Double-click encounter: Expand to show detailed timeline of that visit (orders, results, medications)
+- Right-click node: Show graph query used to find related nodes
 
-    Statistics panel (bottom section):
-    Display journey metrics:
-    - Total encounters: 37
-    - Unique providers: 8
-    - Unique facilities: 5
-    - Average time between encounters: 19 days
-    - Care coordination events: 6 referrals
-    - Care gaps identified: 2 periods > 90 days
-    - ER visits: 1
-    - Hospitalizations: 1
-    - Medication adherence rate: 87%
+Statistics panel (bottom section):
+Display journey metrics:
+- Total encounters: 37
+- Unique providers: 8
+- Unique facilities: 5
+- Average time between encounters: 19 days
+- Care coordination events: 6 referrals
+- Care gaps identified: 2 periods > 90 days
+- ER visits: 1
+- Hospitalizations: 1
+- Medication adherence rate: 87%
 
-    Legend:
-    - Node shapes and their meanings
-    - Node colors by encounter type
-    - Edge styles and their meanings
-    - Size indicators
+Legend:
+- Node shapes and their meanings
+- Node colors by encounter type
+- Edge styles and their meanings
+- Size indicators
 
-    Educational callouts:
-    - "Graph Query Example" button: Shows Cypher query to reconstruct patient journey
-    - Info icons explaining why specific patterns matter (e.g., "Multiple ER visits may indicate care coordination failure")
+Educational callouts:
+- "Graph Query Example" button: Shows Cypher query to reconstruct patient journey
+- Info icons explaining why specific patterns matter (e.g., "Multiple ER visits may indicate care coordination failure")
 
-    Implementation notes:
-    - Use p5.js for rendering
-    - Implement force-directed layout with horizontal time constraint
-    - Store journey data as graph structure (nodes array, edges array)
-    - Animate journey playback by revealing nodes sequentially with timed delays
-    - Use color interpolation for time-based edge coloring
+Implementation notes:
+- Use p5.js for rendering
+- Implement force-directed layout with horizontal time constraint
+- Store journey data as graph structure (nodes array, edges array)
+- Animate journey playback by revealing nodes sequentially with timed delays
+- Use color interpolation for time-based edge coloring
 </details>
 
 ### Chronic Disease Management
@@ -884,6 +957,49 @@ Preventive care categories:
 | Influenza vaccine | All adults | Annually | Find patients without flu vaccine since last August |
 | Lipid panel | Adults with CV risk | Every 5 years | Find patients with hypertension or diabetes without lipid panel in last 5 years |
 
+The MicroSim below turns the screening rules in the table above into an interactive care-gap finder, so you can see how a single graph query surfaces every patient overdue for a given service.
+
+#### Diagram: Preventive Care Gap Closure MicroSim
+
+<details markdown="1">
+<summary>Preventive Care Gap Closure MicroSim</summary>
+Type: microsim
+**sim-id:** preventive-care-gap-closure<br/>
+**Library:** p5.js<br/>
+**Status:** Specified
+
+Learning objective: Apply (L3 — use, demonstrate) how preventive-care guideline rules (age, sex, condition, last-service date) filter a patient panel into those with open care gaps, so learners can describe how graph queries drive population-health outreach.
+
+Canvas layout (responsive, target 920x560; resizes with the window):
+- Left (~60%): a grid of ~40 patient cards (each showing age, sex, key conditions, and last-service dates); cards flagged as gaps highlight in orange.
+- Right (~40%): a rule selector, the active rule statement, and live counts.
+
+Visual elements:
+- Patient cards colored gray (compliant), orange (open gap), or green (recently closed).
+- A KPI strip: eligible population, open gaps, gap-closure rate %.
+
+Interactive controls (use built-in p5 DOM controls):
+- Dropdown "Preventive service": Colorectal screening | Mammography | HbA1c | Influenza vaccine | Lipid panel
+- Slider "Lookback window" (months or years appropriate to the service)
+- Button "Run gap query"
+- Button "Simulate outreach" (closes a random subset of gaps to show rate improvement)
+
+Default parameters: Colorectal screening with the guideline-default lookback.
+
+Data Visibility Requirements (Apply objective):
+  Stage 1: Show the full panel before filtering.
+  Stage 2: On "Run gap query", show the eligibility filter (age/sex/condition) dimming ineligible cards, then the date filter flagging overdue cards.
+  Final: Show eligible count, open-gap count, and gap-closure rate; "Simulate outreach" updates the rate.
+
+Behavior:
+- Switching the service reruns eligibility (for example, Mammography restricts to women 40–74), so learners see how each rule selects a different sub-population.
+- The two-stage filter (eligibility, then recency) mirrors the chapter's Cypher gap-query patterns.
+
+Instructional Rationale: The Apply objective requires learners to execute the rule and read who is flagged. Showing eligibility filtering and date filtering as separate visible stages makes the query logic concrete rather than a black box. Discrete "Run query" steps keep the result attributable to the chosen rule.
+
+Implementation: p5.js with DOM controls; a synthetic 40-patient panel filtered by the selected guideline rule; responsive to window resize.
+</details>
+
 ## Measuring Quality: Outcomes and Metrics
 
 ### Patient Outcome
@@ -905,72 +1021,77 @@ Graph databases enable outcome analytics that answer questions like:
 - What patient characteristics predict better or worse outcomes?
 - Do patients with better care coordination achieve better outcomes?
 
+#### Diagram: Patient Outcome Metrics Dashboard Chart
+
 <details markdown="1">
-    <summary>Patient Outcome Metrics Dashboard Chart</summary>
-    Type: chart
+<summary>Patient Outcome Metrics Dashboard Chart</summary>
+Type: chart
+**sim-id:** patient-outcome-metrics-dashboard-chart<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified
 
-    Purpose: Visualize multiple outcome measures for a chronic disease patient population, comparing outcomes across different care models (traditional vs. graph-enhanced care coordination)
+Purpose: Visualize multiple outcome measures for a chronic disease patient population, comparing outcomes across different care models (traditional vs. graph-enhanced care coordination)
 
-    Chart type: Multi-series bar chart with comparison groups
+Chart type: Multi-series bar chart with comparison groups
 
-    Title: "Diabetes Patient Outcomes: Traditional Care vs. Graph-Enhanced Care Coordination"
+Title: "Diabetes Patient Outcomes: Traditional Care vs. Graph-Enhanced Care Coordination"
 
-    X-axis: Outcome measures (6 categories)
+X-axis: Outcome measures (6 categories)
 
-    Y-axis: Percentage or absolute values (dual axes as needed)
+Y-axis: Percentage or absolute values (dual axes as needed)
 
-    Outcome measures (X-axis categories):
-    1. HbA1c at Goal (<7%)
-    2. Blood Pressure at Goal (<130/80)
-    3. Annual Retinopathy Screening Completed
-    4. Medication Adherence ≥80%
-    5. ER Visits (per 100 patients/year)
-    6. Hospital Admissions (per 100 patients/year)
+Outcome measures (X-axis categories):
+1. HbA1c at Goal (<7%)
+2. Blood Pressure at Goal (<130/80)
+3. Annual Retinopathy Screening Completed
+4. Medication Adherence ≥80%
+5. ER Visits (per 100 patients/year)
+6. Hospital Admissions (per 100 patients/year)
 
-    Data series (two bars per measure):
+Data series (two bars per measure):
 
-    Series 1: Traditional Care (light blue bars)
-    - HbA1c at Goal: 45%
-    - BP at Goal: 52%
-    - Retinopathy Screening: 38%
-    - Medication Adherence: 65%
-    - ER Visits: 35 per 100 patients
-    - Hospital Admissions: 18 per 100 patients
+Series 1: Traditional Care (light blue bars)
+- HbA1c at Goal: 45%
+- BP at Goal: 52%
+- Retinopathy Screening: 38%
+- Medication Adherence: 65%
+- ER Visits: 35 per 100 patients
+- Hospital Admissions: 18 per 100 patients
 
-    Series 2: Graph-Enhanced Care (dark blue bars)
-    - HbA1c at Goal: 62%
-    - BP at Goal: 68%
-    - Retinopathy Screening: 79%
-    - Medication Adherence: 84%
-    - ER Visits: 19 per 100 patients
-    - Hospital Admissions: 9 per 100 patients
+Series 2: Graph-Enhanced Care (dark blue bars)
+- HbA1c at Goal: 62%
+- BP at Goal: 68%
+- Retinopathy Screening: 79%
+- Medication Adherence: 84%
+- ER Visits: 19 per 100 patients
+- Hospital Admissions: 9 per 100 patients
 
-    Chart styling:
-    - Bar width: Moderate spacing for readability
-    - Grid lines: Horizontal lines every 10% or 5 units
-    - Data labels: Show exact values on top of each bar
-    - Error bars: Show 95% confidence intervals
+Chart styling:
+- Bar width: Moderate spacing for readability
+- Grid lines: Horizontal lines every 10% or 5 units
+- Data labels: Show exact values on top of each bar
+- Error bars: Show 95% confidence intervals
 
-    Annotations:
-    - Arrow pointing to ER Visits comparison: "46% reduction in ER utilization"
-    - Arrow pointing to Hospital Admissions: "50% reduction in hospitalizations"
-    - Callout box: "Graph-enhanced care coordination enables proactive outreach for screening gaps, medication adherence monitoring, and early intervention for deteriorating patients"
+Annotations:
+- Arrow pointing to ER Visits comparison: "46% reduction in ER utilization"
+- Arrow pointing to Hospital Admissions: "50% reduction in hospitalizations"
+- Callout box: "Graph-enhanced care coordination enables proactive outreach for screening gaps, medication adherence monitoring, and early intervention for deteriorating patients"
 
-    Legend:
-    - Position: Top right
-    - Shows color coding for Traditional Care vs. Graph-Enhanced Care
-    - Includes sample sizes: Traditional Care (n=1,243), Graph-Enhanced (n=987)
+Legend:
+- Position: Top right
+- Shows color coding for Traditional Care vs. Graph-Enhanced Care
+- Includes sample sizes: Traditional Care (n=1,243), Graph-Enhanced (n=987)
 
-    Statistical significance indicators:
-    - Asterisks above bars where p < 0.05
-    - Double asterisks where p < 0.01
+Statistical significance indicators:
+- Asterisks above bars where p < 0.05
+- Double asterisks where p < 0.01
 
-    Additional elements:
-    - Subtitle: "12-month outcomes for Type 2 Diabetes patients, adjusted for age, comorbidity, and baseline HbA1c"
-    - Footer: "Graph-enhanced care uses real-time graph queries to identify care gaps, predict high-risk patients, and coordinate multi-provider care teams"
+Additional elements:
+- Subtitle: "12-month outcomes for Type 2 Diabetes patients, adjusted for age, comorbidity, and baseline HbA1c"
+- Footer: "Graph-enhanced care uses real-time graph queries to identify care gaps, predict high-risk patients, and coordinate multi-provider care teams"
 
-    Implementation: Chart.js with custom annotations plugin
-    Canvas size: 900x600px
+Implementation: Chart.js with custom annotations plugin
+Canvas size: 900x600px
 </details>
 
 ### Quality of Life Metric
