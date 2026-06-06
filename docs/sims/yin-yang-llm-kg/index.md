@@ -10,7 +10,7 @@ social:
 
 # Yin-Yang: LLM vs Knowledge Graph
 
-<iframe src="main.html" height="400px" scrolling="no"></iframe>
+<iframe src="main.html" height="626" scrolling="no"></iframe>
 
 [Run the Yin-Yang LLM vs KG MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
 [Edit the MicroSim](https://editor.p5js.org/dmccreary/sketches/Vbp9256Pw)
@@ -19,8 +19,18 @@ social:
 You can include this MicroSim on your website using the following `iframe`:
 
 ```html
-<iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/yin-yang-llm-kg/main.html" width="100%" height="452px" scrolling="no"></iframe>
+<iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/yin-yang-llm-kg/main.html" width="100%" height="626px" scrolling="no"></iframe>
 ```
+
+## How to Use
+
+This MicroSim is interactive — the twelve labels on the symbol are explorable:
+
+- **Hover** over any label (the two product names or any of their five features) to see a one-sentence hint pop up.
+- **Click** a label to read a fuller explanation in the infobox beneath the symbol; the label is marked as explored (highlighted green).
+- **Explore all twelve** labels — six on each side — to fill the progress bar and trigger a celebration animation. Use the **Reset** button to start over.
+
+The celebration animations are drawn from a shared, reusable library at `docs/sims/shared/celebration-animations.js`.
 
 ## Description
 
@@ -149,8 +159,9 @@ Example scenarios:
 This MicroSim is built using p5.js and follows the MicroSim design pattern with:
 
 - Width-responsive design that adapts to different screen sizes
-- Clean separation of drawing area and information display
+- Clean separation of the symbol drawing area and the information panel below
+- Hover tooltips and click-to-detail hit-testing over the twelve on-symbol labels
+- A completion celebration loaded from the shared `../shared/celebration-animations.js` particle library (the same animation set used across the book's MicroSims)
 - Accessible design with screen reader support
-- No external dependencies beyond p5.js
 
 The visualization uses the traditional Yin-Yang symbol with its characteristic S-curve dividing the circle, with small circles representing that each contains an element of the other (showing their interconnected nature).
