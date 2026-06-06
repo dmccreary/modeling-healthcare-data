@@ -11,19 +11,16 @@ quality_score: 0
 
 # De-Identification Techniques Comparison Table
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="528" width="100%" scrolling="no"></iframe>
 
 [Run the De-Identification Techniques Comparison Table MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This table compares six de-identification techniques on the fundamental trade-off between privacy protection and data utility. Identifier removal and pseudonymization preserve high data utility but offer only medium privacy (they remain vulnerable to quasi-identifier linking or key compromise), while geographic generalization, value generalization, and noise injection give stronger privacy at the cost of analytic detail. Each row also shows the best use cases, whether the transformation is reversible, and a concrete example.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Scan the red Privacy bars against the green Data-utility bars to see the trade-off at a glance — techniques strong on one are usually weaker on the other. Use the "Best for" and "Reversible?" columns to match a technique to a use case: choose reversible pseudonymization for internal research that may need re-linking, and irreversible generalization or noise injection for public or aggregate datasets. Hover a row to highlight it.
 
 ## Iframe Embed Code
 
