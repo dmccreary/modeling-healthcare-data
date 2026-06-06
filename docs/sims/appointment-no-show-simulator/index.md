@@ -11,19 +11,16 @@ quality_score: 0
 
 # Appointment Scheduling and No-Show Simulator MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Appointment Scheduling and No-Show Simulator MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This simulator models a single clinic day to expose the core scheduling tradeoff: no-shows waste provider capacity, and overbooking fills the gaps but risks collisions, long waits, and overtime when patients actually show up. Each appointment is drawn on the day's timeline — kept (green), waited 10+ minutes (orange), or no-show (gray) — and the day's utilization, mean patient wait, overtime, and patients seen are computed from a lightweight discrete-event simulation.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Set the no-show rate, overbooking factor, visit-length variability, and appointment template, then click Run day to simulate (each run uses fresh random draws). Raise the no-show rate to see utilization fall as gray gaps appear; raise overbooking to refill those gaps, but watch mean wait and overtime climb as collisions occur. Search for the overbooking factor that maximizes patients seen without pushing the mean wait too high. Reset returns to the booked-schedule view.
 
 ## Iframe Embed Code
 
