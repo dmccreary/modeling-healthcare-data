@@ -11,19 +11,16 @@ quality_score: 0
 
 # Medical Code System Classifier MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Medical Code System Classifier MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This quiz builds the skill of recognizing which medical coding system applies to a given clinical or billing situation — ICD-10 for diagnoses, CPT for physician procedures and services, HCPCS Level II for equipment, supplies, and transport, and NDC/RxNorm for specific drug products. Each scenario is followed by immediate feedback explaining the correct mapping, including deliberate near-misses (such as a screening colonoscopy, where the reason is ICD-10 but the billed procedure is CPT) that force genuine discrimination rather than rote recall.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the scenario card and click the coding system you think applies. The sim tells you whether you were right, reveals the correct answer and a one-sentence rationale, and updates your score and streak. Click Next scenario to continue and Restart to reshuffle. The question bank lives in the QUESTIONS array in the .js file, so instructors can add their own scenarios.
 
 ## Iframe Embed Code
 
