@@ -11,19 +11,16 @@ quality_score: 0
 
 # Audit Trail Analysis MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Audit Trail Analysis MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim shows how graph-based audit-trail analysis detects inappropriate access to patient records. Users (squares, colored by risk) access patient records (circles) grouped into two wards. Access within a user's own ward is authorized (green edges), while access to patients in the other ward is unusual (red edges) — and a user who reaches across wards to many patients, like RN-Snoop here, shows a snooping pattern that flags a likely privacy violation.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Toggle the highlight to emphasize cross-ward access, and click any user to isolate just their access edges and read their access count and cross-ward total in the status line. Spot the user whose red cross-ward edges fan out across the other ward — the kind of anomalous pattern a graph query over the audit log surfaces automatically, where a row-by-row log review would miss it.
 
 ## Iframe Embed Code
 
