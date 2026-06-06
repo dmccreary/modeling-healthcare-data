@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Data Protection Layers Diagram
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Data Protection Layers Diagram MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This diagram presents the defense-in-depth security architecture for a healthcare graph database as concentric onion layers, from perimeter security on the outside through application security, identity and access management, and database security, to data protection wrapped around the protected health information (PHI) at the core. The key insight is that the layers are independent: an attacker must defeat every one of them to reach the PHI.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the rings from the outside in to follow the path an attacker would have to breach, and use the side panel to see the specific controls at each layer — firewalls and IDS/IPS at the perimeter, MFA and RBAC for identity, encryption and node-level security at the database, and field-level encryption and tokenization for the data itself. Hover over any ring to emphasize it and its entry in the side panel.
 
 ## Iframe Embed Code
 
