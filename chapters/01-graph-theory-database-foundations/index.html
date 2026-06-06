@@ -1133,6 +1133,8 @@
       
         
       
+        
+      
     
     
     
@@ -1173,6 +1175,370 @@
   
     
     
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
       
         
           
@@ -1972,70 +2338,35 @@
 <iframe src="../../sims/healthcare-graph-fundamentals/main.html" height="700px" scrolling="no"></iframe>
 <p><a href="../../sims/healthcare-graph-fundamentals/main.html">Run Fullscreen</a></p>
 <details>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Basic Healthcare Graph Model Diagram&lt;/summary&gt;
-
-use the hc-graph-generator skill to create a new MicroSim using the following requirements
-
-Purpose: Illustrate the fundamental components of a graph—nodes and edges—using a simple healthcare scenario
-
-Components to show:
+<summary>Basic Healthcare Graph Model Diagram</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> basic-healthcare-graph-model-diagram<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>use the hc-graph-generator skill to create a new MicroSim using the following requirements</p>
+<p>Purpose: Illustrate the fundamental components of a graph—nodes and edges—using a simple healthcare scenario</p>
+<p>Components to show:
 - 5 circular nodes representing healthcare entities
-- Node 1 (blue): Patient &quot;Sarah Chen&quot;
-- Node 2 (green): Provider &quot;Dr. Martinez&quot;
-- Node 3 (orange): Diagnosis &quot;Type 2 Diabetes&quot;
-- Node 4 (purple): Medication &quot;Metformin&quot;
-- Node 5 (yellow): Facility &quot;City Hospital&quot;
-
-Connections (directed arrows):
-- Arrow from Patient to Provider, labeled &quot;VISITED_PROVIDER&quot;
-- Arrow from Provider to Diagnosis, labeled &quot;DIAGNOSED_WITH&quot;
-- Arrow from Patient to Diagnosis, labeled &quot;HAS_CONDITION&quot;
-- Arrow from Provider to Medication, labeled &quot;PRESCRIBED&quot;
-- Arrow from Patient to Facility, labeled &quot;ADMITTED_TO&quot;
-
-Style: Network diagram with labeled nodes and directed edges
-
-Labels:
+- Node 1 (blue): Patient "Sarah Chen"
+- Node 2 (green): Provider "Dr. Martinez"
+- Node 3 (orange): Diagnosis "Type 2 Diabetes"
+- Node 4 (purple): Medication "Metformin"
+- Node 5 (yellow): Facility "City Hospital"</p>
+<p>Connections (directed arrows):
+- Arrow from Patient to Provider, labeled "VISITED_PROVIDER"
+- Arrow from Provider to Diagnosis, labeled "DIAGNOSED_WITH"
+- Arrow from Patient to Diagnosis, labeled "HAS_CONDITION"
+- Arrow from Provider to Medication, labeled "PRESCRIBED"
+- Arrow from Patient to Facility, labeled "ADMITTED_TO"</p>
+<p>Style: Network diagram with labeled nodes and directed edges</p>
+<p>Labels:
 - Each node shows its type (Patient, Provider, etc.) and name
 - Edge labels clearly visible along the arrows
-- Small legend in corner: &quot;Circle = Node (Entity)&quot;, &quot;Arrow = Edge (Relationship)&quot;
-
-Color scheme:
+- Small legend in corner: "Circle = Node (Entity)", "Arrow = Edge (Relationship)"</p>
+<p>Color scheme:
 - Nodes: Color-coded by type as specified above
 - Edges: Dark gray with arrowheads indicating direction
-- Background: White
-</code></pre></div></td></tr></table></div>
+- Background: White</p>
 </details>
 <h2 id="properties-adding-information-to-nodes-and-edges">Properties: Adding Information to Nodes and Edges</h2>
 <p>While nodes and edges provide the structural skeleton of a graph, <strong>properties</strong> add the descriptive details that make the data useful for real-world applications. Properties are key-value pairs attached to nodes or edges, similar to columns in relational database tables but with far greater flexibility.</p>
@@ -2131,67 +2462,24 @@ Color scheme:
 </ul>
 <h4 id="diagram-directed-acyclic-graph-example-care-pathway">Diagram: Directed Acyclic Graph Example: Care Pathway</h4>
 <details>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Directed Acyclic Graph Example: Care Pathway&lt;/summary&gt;
-use the hc-graph-generator skill to create a new MicroSim using the following requirements
-
-Purpose: Demonstrate a DAG structure representing a clinical care pathway where stages progress without cycles
-
-Components to show:
+<summary>Directed Acyclic Graph Example: Care Pathway</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> directed-acyclic-graph-care-pathway<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified
+use the hc-graph-generator skill to create a new MicroSim using the following requirements</p>
+<p>Purpose: Demonstrate a DAG structure representing a clinical care pathway where stages progress without cycles</p>
+<p>Components to show:
 - 8 rectangular nodes arranged in a flow from left to right and top to bottom
-- Node 1: &quot;Patient Admission&quot;
-- Node 2: &quot;Initial Assessment&quot;
-- Node 3: &quot;Diagnostic Testing&quot;
-- Node 4: &quot;Test Results Review&quot;
-- Node 5: &quot;Treatment Planning&quot;
-- Node 6: &quot;Treatment Administration&quot;
-- Node 7: &quot;Monitoring &amp; Evaluation&quot;
-- Node 8: &quot;Discharge Planning&quot;
-
-Connections (directed arrows showing workflow):
+- Node 1: "Patient Admission"
+- Node 2: "Initial Assessment"
+- Node 3: "Diagnostic Testing"
+- Node 4: "Test Results Review"
+- Node 5: "Treatment Planning"
+- Node 6: "Treatment Administration"
+- Node 7: "Monitoring &amp; Evaluation"
+- Node 8: "Discharge Planning"</p>
+<p>Connections (directed arrows showing workflow):
 - Admission → Initial Assessment
 - Initial Assessment → Diagnostic Testing
 - Diagnostic Testing → Test Results Review
@@ -2200,27 +2488,21 @@ Connections (directed arrows showing workflow):
 - Treatment Administration → Monitoring &amp; Evaluation
 - Monitoring &amp; Evaluation → Discharge Planning
 - (Optional paths) Test Results Review → Additional Testing (dotted line back to node 3 only if new tests needed)
-- Note: No cycles that return to previous stages
-
-Style: Flowchart-style diagram with clear directional flow
-
-Labels:
+- Note: No cycles that return to previous stages</p>
+<p>Style: Flowchart-style diagram with clear directional flow</p>
+<p>Labels:
 - Each node shows the care stage name
 - Arrows labeled with action or transition
-- Annotation: &quot;DAG Property: No cycles—each stage progresses forward in time&quot;
-
-Color scheme:
+- Annotation: "DAG Property: No cycles—each stage progresses forward in time"</p>
+<p>Color scheme:
 - Nodes: Light blue gradient
 - Arrows: Dark blue
 - Optional/conditional paths: Dotted lines
-- Background: White
-
-Visual notes:
+- Background: White</p>
+<p>Visual notes:
 - Add small clock icons to emphasize temporal progression
-- Highlight the acyclic nature with a note: &quot;A patient does not cycle back to admission during a single encounter&quot;
-
-Implementation: Flowchart diagram tool (Mermaid, draw.io, or Graphviz)
-</code></pre></div></td></tr></table></div>
+- Highlight the acyclic nature with a note: "A patient does not cycle back to admission during a single encounter"</p>
+<p>Implementation: Flowchart diagram tool (Mermaid, draw.io, or Graphviz)</p>
 </details>
 <h2 id="the-labeled-property-graph-model">The Labeled Property Graph Model</h2>
 <p>The <strong>labeled property graph</strong> (LPG) model is the most widely adopted graph database paradigm, implemented by popular systems including Neo4j, Amazon Neptune, and Azure Cosmos DB. The LPG model combines all the concepts we've discussed—nodes, edges, properties, and labels—into a cohesive, flexible data model particularly well-suited for complex domains like healthcare.</p>
@@ -2270,208 +2552,129 @@ Implementation: Flowchart diagram tool (Mermaid, draw.io, or Graphviz)
 <p>This representation captures entities (patients, providers, diagnoses, medications), their attributes (patient demographics, medication codes), relationships (prescriptions, diagnoses, visits), and relationship context (dates, dosages, encounter types) in a natural, interconnected structure.</p>
 <h4 id="diagram-healthcare-labeled-property-graph-visualization">Diagram: Healthcare Labeled Property Graph Visualization</h4>
 <details>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Healthcare Labeled Property Graph Visualization&lt;/summary&gt;
-Type: graph-model
-
-Purpose: Visualize a labeled property graph representing a patient&#39;s healthcare journey with multiple interconnected entities
-
-Node types:
+<summary>Healthcare Labeled Property Graph Visualization</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> healthcare-labeled-property-graph-visualization<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Purpose: Visualize a labeled property graph representing a patient's healthcare journey with multiple interconnected entities</p>
+<p>Node types:
 1. Patient (light blue circles)
    - Properties: patientId, name, dateOfBirth, bloodType, gender
-   - Example: {patientId: &quot;P-458392&quot;, name: &quot;Sarah Chen&quot;, dateOfBirth: &quot;1978-04-15&quot;, bloodType: &quot;A+&quot;, gender: &quot;Female&quot;}
-
-2. Provider (green squares)
-   - Properties: providerId, name, specialty, licenseNumber
-   - Example: {providerId: &quot;DR-1892&quot;, name: &quot;Dr. Martinez&quot;, specialty: &quot;Endocrinology&quot;}
-
-3. Diagnosis (red hexagons)
-   - Properties: icd10Code, diagnosisName, category
-   - Example: {icd10Code: &quot;E11.9&quot;, diagnosisName: &quot;Type 2 Diabetes&quot;, category: &quot;Endocrine&quot;}
-
-4. Medication (orange rounded rectangles)
-   - Properties: ndcCode, genericName, brandName, class
-   - Example: {ndcCode: &quot;12345-678-90&quot;, genericName: &quot;Metformin&quot;, brandName: &quot;Glucophage&quot;, class: &quot;Biguanide&quot;}
-
-5. Facility (purple diamonds)
-   - Properties: facilityId, facilityName, facilityType, address
-   - Example: {facilityId: &quot;F-2201&quot;, facilityName: &quot;City Hospital&quot;, facilityType: &quot;Hospital&quot;}
-
-6. Procedure (yellow rounded rectangles)
-   - Properties: cptCode, procedureName, category
-   - Example: {cptCode: &quot;99213&quot;, procedureName: &quot;Office Visit Level 3&quot;, category: &quot;Evaluation&quot;}
-
-Edge types:
+   - Example: {patientId: "P-458392", name: "Sarah Chen", dateOfBirth: "1978-04-15", bloodType: "A+", gender: "Female"}</p>
+<ol>
+<li>Provider (green squares)</li>
+<li>Properties: providerId, name, specialty, licenseNumber</li>
+<li>
+<p>Example: {providerId: "DR-1892", name: "Dr. Martinez", specialty: "Endocrinology"}</p>
+</li>
+<li>
+<p>Diagnosis (red hexagons)</p>
+</li>
+<li>Properties: icd10Code, diagnosisName, category</li>
+<li>
+<p>Example: {icd10Code: "E11.9", diagnosisName: "Type 2 Diabetes", category: "Endocrine"}</p>
+</li>
+<li>
+<p>Medication (orange rounded rectangles)</p>
+</li>
+<li>Properties: ndcCode, genericName, brandName, class</li>
+<li>
+<p>Example: {ndcCode: "12345-678-90", genericName: "Metformin", brandName: "Glucophage", class: "Biguanide"}</p>
+</li>
+<li>
+<p>Facility (purple diamonds)</p>
+</li>
+<li>Properties: facilityId, facilityName, facilityType, address</li>
+<li>
+<p>Example: {facilityId: "F-2201", facilityName: "City Hospital", facilityType: "Hospital"}</p>
+</li>
+<li>
+<p>Procedure (yellow rounded rectangles)</p>
+</li>
+<li>Properties: cptCode, procedureName, category</li>
+<li>Example: {cptCode: "99213", procedureName: "Office Visit Level 3", category: "Evaluation"}</li>
+</ol>
+<p>Edge types:
 1. HAS_CONDITION (solid red arrow)
    - Properties: diagnosisDate, severity, status
-   - Connects: Patient → Diagnosis
-
-2. PRESCRIBED (solid blue arrow)
-   - Properties: prescriptionDate, dosage, durationDays, refillsAllowed
-   - Connects: Provider → Medication
-
-3. TAKES_MEDICATION (dashed blue arrow)
-   - Properties: startDate, adherenceRate
-   - Connects: Patient → Medication
-
-4. TREATS (dotted green arrow)
-   - Properties: efficacyRating
-   - Connects: Medication → Diagnosis
-
-5. VISITED (solid green arrow)
-   - Properties: encounterDate, encounterType, duration
-   - Connects: Patient → Provider OR Patient → Facility
-
-6. WORKS_AT (solid purple arrow)
-   - Properties: startDate, employmentType
-   - Connects: Provider → Facility
-
-7. UNDERWENT (solid orange arrow)
-   - Properties: procedureDate, performedBy
-   - Connects: Patient → Procedure
-
-Sample data structure:
+   - Connects: Patient → Diagnosis</p>
+<ol>
+<li>PRESCRIBED (solid blue arrow)</li>
+<li>Properties: prescriptionDate, dosage, durationDays, refillsAllowed</li>
+<li>
+<p>Connects: Provider → Medication</p>
+</li>
+<li>
+<p>TAKES_MEDICATION (dashed blue arrow)</p>
+</li>
+<li>Properties: startDate, adherenceRate</li>
+<li>
+<p>Connects: Patient → Medication</p>
+</li>
+<li>
+<p>TREATS (dotted green arrow)</p>
+</li>
+<li>Properties: efficacyRating</li>
+<li>
+<p>Connects: Medication → Diagnosis</p>
+</li>
+<li>
+<p>VISITED (solid green arrow)</p>
+</li>
+<li>Properties: encounterDate, encounterType, duration</li>
+<li>
+<p>Connects: Patient → Provider OR Patient → Facility</p>
+</li>
+<li>
+<p>WORKS_AT (solid purple arrow)</p>
+</li>
+<li>Properties: startDate, employmentType</li>
+<li>
+<p>Connects: Provider → Facility</p>
+</li>
+<li>
+<p>UNDERWENT (solid orange arrow)</p>
+</li>
+<li>Properties: procedureDate, performedBy</li>
+<li>Connects: Patient → Procedure</li>
+</ol>
+<p>Sample data structure:
 Central patient node (Sarah Chen) with connections to:
 - Provider node (Dr. Martinez) via VISITED edge
 - Diagnosis node (Type 2 Diabetes) via HAS_CONDITION edge
 - Medication node (Metformin) via TAKES_MEDICATION edge
 - Facility node (City Hospital) via VISITED edge
-- Procedure node (Office Visit) via UNDERWENT edge
-
-Additional connections:
+- Procedure node (Office Visit) via UNDERWENT edge</p>
+<p>Additional connections:
 - Dr. Martinez PRESCRIBED Metformin
 - Dr. Martinez WORKS_AT City Hospital
-- Metformin TREATS Type 2 Diabetes
-
-Layout: Force-directed with patient node in center
-
-Interactive features:
+- Metformin TREATS Type 2 Diabetes</p>
+<p>Layout: Force-directed with patient node in center</p>
+<p>Interactive features:
 - Hover over node: Display properties in tooltip
 - Click node: Highlight all directly connected nodes and edges
 - Double-click node: Expand to show additional connections (e.g., show all medications for a patient)
 - Hover over edge: Display edge type and properties
-- Right-click node: Show context menu with &quot;Show all relationships&quot; option
+- Right-click node: Show context menu with "Show all relationships" option
 - Zoom: Mouse wheel (zoom in/out)
 - Pan: Click and drag canvas background
-- Filter controls: Toggle node types on/off (e.g., hide Facilities, show only Patients and Medications)
-
-Visual styling:
+- Filter controls: Toggle node types on/off (e.g., hide Facilities, show only Patients and Medications)</p>
+<p>Visual styling:
 - Node size: Proportional to number of connections (degree centrality)
 - Node border: Thicker border for nodes with &gt;5 connections
 - Edge thickness: Uniform for clarity
 - Edge color: Matches edge type (as specified above)
 - Selected node: Yellow glow effect
-- Connected nodes when selected: Light gray highlight
-
-Legend (top-right corner):
+- Connected nodes when selected: Light gray highlight</p>
+<p>Legend (top-right corner):
 - Node shapes and colors with labels (Patient, Provider, Diagnosis, etc.)
 - Edge line styles (solid, dashed, dotted) with meanings
 - Edge colors and their relationship types
-- Interactive instructions: &quot;Hover to inspect, Click to highlight, Double-click to expand&quot;
-
-Implementation: vis-network JavaScript library
+- Interactive instructions: "Hover to inspect, Click to highlight, Double-click to expand"</p>
+<p>Implementation: vis-network JavaScript library
 Canvas size: 900x700px
-Physics: Enabled with spring stiffness for natural clustering
-</code></pre></div></td></tr></table></div>
+Physics: Enabled with spring stiffness for natural clustering</p>
 </details>
 <h2 id="graph-traversal-and-paths">Graph Traversal and Paths</h2>
 <p>One of the defining advantages of graph databases is their ability to efficiently <strong>traverse</strong> the graph—following edges from node to node to discover patterns, calculate dependencies, or answer complex relationship queries. <strong>Graph traversal</strong> refers to the process of visiting nodes and edges in some systematic order, often to find specific information or compute aggregate results.</p>
@@ -2507,222 +2710,106 @@ Physics: Enabled with spring stiffness for natural clustering
 </ul>
 <h4 id="diagram-graph-traversal-visualization-microsim">Diagram: Graph Traversal Visualization MicroSim</h4>
 <details>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Graph Traversal Visualization MicroSim&lt;/summary&gt;
-Type: microsim
-
-Learning objective: Enable students to interactively explore how graph traversal algorithms navigate a healthcare graph, comparing different traversal strategies and understanding path discovery
-
-Canvas layout (1000x700px):
+<summary>Graph Traversal Visualization MicroSim</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> graph-traversal-visualization-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Learning objective: Enable students to interactively explore how graph traversal algorithms navigate a healthcare graph, comparing different traversal strategies and understanding path discovery</p>
+<p>Canvas layout (1000x700px):
 - Left side (700x700): Drawing area showing a healthcare graph network
-- Right side (300x700): Control panel and information display
-
-Visual elements in graph area:
+- Right side (300x700): Control panel and information display</p>
+<p>Visual elements in graph area:
 - 12 nodes representing different healthcare entities:
-  - 1 central Patient node (large light blue circle): &quot;Patient: Alex&quot;
-  - 3 Provider nodes (green squares): &quot;Dr. Smith&quot;, &quot;Dr. Lee&quot;, &quot;Dr. Patel&quot;
-  - 3 Medication nodes (orange rounded rectangles): &quot;Med A&quot;, &quot;Med B&quot;, &quot;Med C&quot;
-  - 2 Diagnosis nodes (red hexagons): &quot;Condition X&quot;, &quot;Condition Y&quot;
-  - 2 Facility nodes (purple diamonds): &quot;Hospital A&quot;, &quot;Clinic B&quot;
-  - 1 Procedure node (yellow rectangle): &quot;Procedure Z&quot;
-
-- Edges connecting nodes with labeled relationships:
-  - Patient --VISITED--&gt; Dr. Smith
-  - Patient --HAS_CONDITION--&gt; Condition X
-  - Patient --TAKES_MEDICATION--&gt; Med A
-  - Dr. Smith --PRESCRIBED--&gt; Med A
-  - Dr. Smith --WORKS_AT--&gt; Hospital A
-  - Med A --TREATS--&gt; Condition X
-  - Patient --VISITED--&gt; Dr. Lee
-  - Dr. Lee --PRESCRIBED--&gt; Med B
-  - Med B --TREATS--&gt; Condition Y
-  - Patient --UNDERWENT--&gt; Procedure Z
-  - Dr. Patel --PERFORMED--&gt; Procedure Z
-  - Dr. Patel --WORKS_AT--&gt; Clinic B
-
-Node states (color-coded):
+  - 1 central Patient node (large light blue circle): "Patient: Alex"
+  - 3 Provider nodes (green squares): "Dr. Smith", "Dr. Lee", "Dr. Patel"
+  - 3 Medication nodes (orange rounded rectangles): "Med A", "Med B", "Med C"
+  - 2 Diagnosis nodes (red hexagons): "Condition X", "Condition Y"
+  - 2 Facility nodes (purple diamonds): "Hospital A", "Clinic B"
+  - 1 Procedure node (yellow rectangle): "Procedure Z"</p>
+<ul>
+<li>Edges connecting nodes with labeled relationships:</li>
+<li>Patient --VISITED--&gt; Dr. Smith</li>
+<li>Patient --HAS_CONDITION--&gt; Condition X</li>
+<li>Patient --TAKES_MEDICATION--&gt; Med A</li>
+<li>Dr. Smith --PRESCRIBED--&gt; Med A</li>
+<li>Dr. Smith --WORKS_AT--&gt; Hospital A</li>
+<li>Med A --TREATS--&gt; Condition X</li>
+<li>Patient --VISITED--&gt; Dr. Lee</li>
+<li>Dr. Lee --PRESCRIBED--&gt; Med B</li>
+<li>Med B --TREATS--&gt; Condition Y</li>
+<li>Patient --UNDERWENT--&gt; Procedure Z</li>
+<li>Dr. Patel --PERFORMED--&gt; Procedure Z</li>
+<li>Dr. Patel --WORKS_AT--&gt; Clinic B</li>
+</ul>
+<p>Node states (color-coded):
 - Unvisited: Original color (gray border)
 - Current node: Bright yellow with thick border
 - Visited: Light green with green border
-- In path: Orange with thick orange border
-
-Interactive controls (right panel):
-1. Dropdown menu: &quot;Select Start Node&quot;
-   - Options: Patient node (default), or any other node
-
-2. Dropdown menu: &quot;Select Traversal Algorithm&quot;
-   - Options:
-     - Depth-First Search (DFS)
-     - Breadth-First Search (BFS)
-     - Shortest Path (to target node)
-
-3. Dropdown menu (conditionally shown): &quot;Select Target Node&quot;
-   - Shown only if &quot;Shortest Path&quot; is selected
-   - Options: List of all nodes except start node
-
-4. Slider: &quot;Animation Speed&quot;
-   - Range: 100ms (fast) to 2000ms (slow) per step
-   - Default: 500ms
-   - Label shows current speed: &quot;Speed: 500ms per step&quot;
-
-5. Button: &quot;Start Traversal&quot; (green)
-   - Begins animated traversal
-   - Disables during traversal
-
-6. Button: &quot;Pause/Resume&quot; (yellow)
-   - Toggles pause state during traversal
-   - Enabled only when traversal is running
-
-7. Button: &quot;Reset&quot; (red)
-   - Clears visualization and returns all nodes to unvisited state
-   - Clears info display
-
-8. Text display area: &quot;Traversal Info&quot;
-   - Shows current step number: &quot;Step: 5/12&quot;
-   - Shows current node: &quot;Current: Dr. Smith (Provider)&quot;
-   - Shows traversal order: &quot;Order: Patient → Med A → Condition X → Dr. Smith → Hospital A...&quot;
-   - Shows path length (for shortest path): &quot;Path length: 3 hops&quot;
-
-Default parameters:
+- In path: Orange with thick orange border</p>
+<p>Interactive controls (right panel):
+1. Dropdown menu: "Select Start Node"
+   - Options: Patient node (default), or any other node</p>
+<ol>
+<li>Dropdown menu: "Select Traversal Algorithm"</li>
+<li>
+<p>Options:</p>
+<ul>
+<li>Depth-First Search (DFS)</li>
+<li>Breadth-First Search (BFS)</li>
+<li>Shortest Path (to target node)</li>
+</ul>
+</li>
+<li>
+<p>Dropdown menu (conditionally shown): "Select Target Node"</p>
+</li>
+<li>Shown only if "Shortest Path" is selected</li>
+<li>
+<p>Options: List of all nodes except start node</p>
+</li>
+<li>
+<p>Slider: "Animation Speed"</p>
+</li>
+<li>Range: 100ms (fast) to 2000ms (slow) per step</li>
+<li>Default: 500ms</li>
+<li>
+<p>Label shows current speed: "Speed: 500ms per step"</p>
+</li>
+<li>
+<p>Button: "Start Traversal" (green)</p>
+</li>
+<li>Begins animated traversal</li>
+<li>
+<p>Disables during traversal</p>
+</li>
+<li>
+<p>Button: "Pause/Resume" (yellow)</p>
+</li>
+<li>Toggles pause state during traversal</li>
+<li>
+<p>Enabled only when traversal is running</p>
+</li>
+<li>
+<p>Button: "Reset" (red)</p>
+</li>
+<li>Clears visualization and returns all nodes to unvisited state</li>
+<li>
+<p>Clears info display</p>
+</li>
+<li>
+<p>Text display area: "Traversal Info"</p>
+</li>
+<li>Shows current step number: "Step: 5/12"</li>
+<li>Shows current node: "Current: Dr. Smith (Provider)"</li>
+<li>Shows traversal order: "Order: Patient → Med A → Condition X → Dr. Smith → Hospital A..."</li>
+<li>Shows path length (for shortest path): "Path length: 3 hops"</li>
+</ol>
+<p>Default parameters:
 - Start node: Patient node
 - Algorithm: Depth-First Search (DFS)
-- Animation speed: 500ms per step
-
-Behavior and logic:
-- When &quot;Start Traversal&quot; clicked:
+- Animation speed: 500ms per step</p>
+<p>Behavior and logic:
+- When "Start Traversal" clicked:
   1. Initialize chosen algorithm with start node
   2. Begin step-by-step animation showing:
      - Current node highlighted in yellow
@@ -2731,52 +2818,61 @@ Behavior and logic:
      - Info panel updated with current state
   3. For DFS: Explore deeply along each branch before backtracking
   4. For BFS: Explore all neighbors at current depth before moving to next depth
-  5. For Shortest Path: Use Dijkstra&#39;s algorithm to find optimal path, then animate the path
-
-- Node visit animation:
-  - Change current node to yellow
-  - Wait for animation delay
-  - Change to visited green
-  - Move to next node
-
-- Edge traversal animation:
-  - Highlight edge being traversed with thick bright blue line
-  - Show direction with animated arrow movement
-  - Fade back to normal after traversal
-
-- Path highlighting (for Shortest Path mode):
-  - Once path found, highlight all nodes and edges in path with orange
-  - Display total path length in hops
-
-- Pause/Resume:
-  - Maintains current state
-  - Resumes from exact point where paused
-
-- Reset:
-  - All nodes return to original colors
-  - All edges return to normal
-  - Info panel clears
-  - Traversal order list clears
-
-Educational annotations:
+  5. For Shortest Path: Use Dijkstra's algorithm to find optimal path, then animate the path</p>
+<ul>
+<li>Node visit animation:</li>
+<li>Change current node to yellow</li>
+<li>Wait for animation delay</li>
+<li>Change to visited green</li>
+<li>
+<p>Move to next node</p>
+</li>
+<li>
+<p>Edge traversal animation:</p>
+</li>
+<li>Highlight edge being traversed with thick bright blue line</li>
+<li>Show direction with animated arrow movement</li>
+<li>
+<p>Fade back to normal after traversal</p>
+</li>
+<li>
+<p>Path highlighting (for Shortest Path mode):</p>
+</li>
+<li>Once path found, highlight all nodes and edges in path with orange</li>
+<li>
+<p>Display total path length in hops</p>
+</li>
+<li>
+<p>Pause/Resume:</p>
+</li>
+<li>Maintains current state</li>
+<li>
+<p>Resumes from exact point where paused</p>
+</li>
+<li>
+<p>Reset:</p>
+</li>
+<li>All nodes return to original colors</li>
+<li>All edges return to normal</li>
+<li>Info panel clears</li>
+<li>Traversal order list clears</li>
+</ul>
+<p>Educational annotations:
 - Small info icon next to each algorithm option
 - Hover over info icon shows tooltip:
-  - DFS: &quot;Explores as far as possible along each branch before backtracking. Good for exhaustive search.&quot;
-  - BFS: &quot;Explores all neighbors at current depth before moving deeper. Guarantees shortest path.&quot;
-  - Shortest Path: &quot;Finds the minimum number of hops between two nodes using Dijkstra&#39;s algorithm.&quot;
-
-Implementation notes:
+  - DFS: "Explores as far as possible along each branch before backtracking. Good for exhaustive search."
+  - BFS: "Explores all neighbors at current depth before moving deeper. Guarantees shortest path."
+  - Shortest Path: "Finds the minimum number of hops between two nodes using Dijkstra's algorithm."</p>
+<p>Implementation notes:
 - Use p5.js for rendering and animation
 - Store graph as adjacency list in JavaScript object
 - Implement DFS using stack (recursive or iterative)
 - Implement BFS using queue
-- Implement shortest path using Dijkstra&#39;s algorithm with priority queue
+- Implement shortest path using Dijkstra's algorithm with priority queue
 - Use p5.js frameCount and millis() for animation timing
 - Create Node and Edge classes for easy state management
-- Use lerp() for smooth edge highlighting animations
-
-Implementation: p5.js with custom graph data structure
-</code></pre></div></td></tr></table></div>
+- Use lerp() for smooth edge highlighting animations</p>
+<p>Implementation: p5.js with custom graph data structure</p>
 </details>
 <h2 id="graph-queries">Graph Queries</h2>
 <p>While traversal describes the mechanics of following edges, <strong>graph queries</strong> are the high-level language constructs that express what information you want to retrieve or what patterns you want to find. Modern graph databases provide declarative query languages—most notably <strong>Cypher</strong> (Neo4j), <strong>Gremlin</strong> (Apache TinkerPop standard), and the emerging <strong>GQL</strong> (Graph Query Language) standard.</p>
@@ -2848,118 +2944,55 @@ Implementation: p5.js with custom graph data structure
 
 <p><a class="md-button md-button--primary" href="../../sims/query-performance-comparison/main.html">Run the Query Performance Comparison MicroSim Fullscreen</a></p>
 <details>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Query Performance Comparison Chart: RDBMS vs Graph Database&lt;/summary&gt;
-Type: chart
-
-Chart type: Line chart with logarithmic Y-axis
-
-Purpose: Demonstrate the exponential performance degradation of relational database JOIN queries compared to the constant-time traversal performance of graph databases as relationship depth increases
-
-X-axis: &quot;Number of Relationship Hops&quot; (1, 2, 3, 4, 5, 6)
-Y-axis: &quot;Query Response Time (milliseconds)&quot; - Logarithmic scale from 1ms to 100,000ms
-
-Data series:
+<summary>Query Performance Comparison Chart: RDBMS vs Graph Database</summary>
+<p>Type: chart
+<strong>sim-id:</strong> query-performance-comparison-chart-rdbms-graph<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Chart type: Line chart with logarithmic Y-axis</p>
+<p>Purpose: Demonstrate the exponential performance degradation of relational database JOIN queries compared to the constant-time traversal performance of graph databases as relationship depth increases</p>
+<p>X-axis: "Number of Relationship Hops" (1, 2, 3, 4, 5, 6)
+Y-axis: "Query Response Time (milliseconds)" - Logarithmic scale from 1ms to 100,000ms</p>
+<p>Data series:
 1. RDBMS with JOINs (red line with square markers):
    - 1 hop: 15ms
    - 2 hops: 180ms
    - 3 hops: 3,200ms
    - 4 hops: 52,000ms
    - 5 hops: 850,000ms (14+ minutes, often times out)
-   - 6 hops: Data point not shown (query timeout)
-
-2. Graph Database (green line with circle markers):
-   - 1 hop: 3ms
-   - 2 hops: 5ms
-   - 3 hops: 8ms
-   - 4 hops: 11ms
-   - 5 hops: 14ms
-   - 6 hops: 17ms
-
-Title: &quot;Multi-Hop Query Performance: Relational vs Graph Database&quot;
-Subtitle: &quot;Healthcare Dependency Analysis (100,000 patient records)&quot;
-
-Legend:
+   - 6 hops: Data point not shown (query timeout)</p>
+<ol>
+<li>Graph Database (green line with circle markers):</li>
+<li>1 hop: 3ms</li>
+<li>2 hops: 5ms</li>
+<li>3 hops: 8ms</li>
+<li>4 hops: 11ms</li>
+<li>5 hops: 14ms</li>
+<li>6 hops: 17ms</li>
+</ol>
+<p>Title: "Multi-Hop Query Performance: Relational vs Graph Database"
+Subtitle: "Healthcare Dependency Analysis (100,000 patient records)"</p>
+<p>Legend:
 - Position: Top-right
-- Entries: &quot;RDBMS (JOIN operations)&quot;, &quot;Graph DB (Index-free adjacency)&quot;
-
-Annotations:
-- Arrow pointing to RDBMS line at 4 hops: &quot;Queries often timeout beyond 4 hops&quot;
-- Arrow pointing to graph DB line: &quot;Near-constant performance&quot;
-- Text box at bottom: &quot;Graph databases maintain O(1) traversal time regardless of relationship depth&quot;
-
-Grid:
+- Entries: "RDBMS (JOIN operations)", "Graph DB (Index-free adjacency)"</p>
+<p>Annotations:
+- Arrow pointing to RDBMS line at 4 hops: "Queries often timeout beyond 4 hops"
+- Arrow pointing to graph DB line: "Near-constant performance"
+- Text box at bottom: "Graph databases maintain O(1) traversal time regardless of relationship depth"</p>
+<p>Grid:
 - Horizontal grid lines at each power of 10 on Y-axis
-- Vertical grid lines at each hop on X-axis
-
-Colors:
+- Vertical grid lines at each hop on X-axis</p>
+<p>Colors:
 - RDBMS line: Red (#DC3545)
 - Graph DB line: Green (#28A745)
 - Background: White
-- Grid: Light gray (#E0E0E0)
-
-Styling:
+- Grid: Light gray (#E0E0E0)</p>
+<p>Styling:
 - Line thickness: 3px
 - Marker size: 8px
-- Font: Sans-serif, 12pt for labels, 14pt for title
-
-Implementation: Chart.js JavaScript library with logarithmic Y-axis scale
-Canvas size: 800x500px
-</code></pre></div></td></tr></table></div>
+- Font: Sans-serif, 12pt for labels, 14pt for title</p>
+<p>Implementation: Chart.js JavaScript library with logarithmic Y-axis scale
+Canvas size: 800x500px</p>
 </details>
 <h2 id="graph-databases-vs-relational-databases">Graph Databases vs Relational Databases</h2>
 <p>To fully appreciate when and why to use graph databases for healthcare applications, it's essential to understand the fundamental architectural and philosophical differences between graph and relational database systems.</p>
@@ -3112,196 +3145,120 @@ Canvas size: 800x500px
 </ul>
 <h4 id="diagram-healthcare-data-model-implementation-workflow">Diagram: Healthcare Data Model Implementation Workflow</h4>
 <details>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;summary&gt;Healthcare Data Model Implementation Workflow&lt;/summary&gt;
-Type: workflow
-
-Purpose: Illustrate the step-by-step process of implementing a healthcare graph data model from conceptual design through deployment
-
-Visual style: Flowchart with BPMN-style notation (rectangles for tasks, diamonds for decisions, rounded rectangles for events)
-
-Swimlanes (vertical divisions):
+<summary>Healthcare Data Model Implementation Workflow</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> healthcare-data-model-implementation-workflow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Purpose: Illustrate the step-by-step process of implementing a healthcare graph data model from conceptual design through deployment</p>
+<p>Visual style: Flowchart with BPMN-style notation (rectangles for tasks, diamonds for decisions, rounded rectangles for events)</p>
+<p>Swimlanes (vertical divisions):
 - Business/Clinical Stakeholders
 - Data Architects
 - Development Team
 - Database Administrators
-- Compliance/Security Team
-
-Steps:
-
-1. **Start Event** (rounded rectangle, green): &quot;Healthcare Data Modeling Project Initiated&quot;
+- Compliance/Security Team</p>
+<p>Steps:</p>
+<ol>
+<li>
+<p><strong>Start Event</strong> (rounded rectangle, green): "Healthcare Data Modeling Project Initiated"
    Swimlane: Business/Clinical Stakeholders
-   Hover text: &quot;Project sponsor identifies need for graph database to support clinical decision support and care coordination&quot;
-
-2. **Task** (rectangle, light blue): &quot;Identify Key Entities and Relationships&quot;
+   Hover text: "Project sponsor identifies need for graph database to support clinical decision support and care coordination"</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Identify Key Entities and Relationships"
    Swimlane: Business/Clinical Stakeholders
-   Hover text: &quot;Clinical SMEs identify critical entities (patients, providers, medications, diagnoses) and their relationships&quot;
-
-3. **Task** (rectangle, light blue): &quot;Define Node Labels and Properties&quot;
+   Hover text: "Clinical SMEs identify critical entities (patients, providers, medications, diagnoses) and their relationships"</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Define Node Labels and Properties"
    Swimlane: Data Architects
-   Hover text: &quot;Data architects translate business entities into node labels (Patient, Provider, Medication) with appropriate properties&quot;
-
-4. **Task** (rectangle, light blue): &quot;Define Edge Types and Properties&quot;
+   Hover text: "Data architects translate business entities into node labels (Patient, Provider, Medication) with appropriate properties"</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Define Edge Types and Properties"
    Swimlane: Data Architects
-   Hover text: &quot;Define relationship types (PRESCRIBED, DIAGNOSED_WITH, TREATS) with contextual properties (dates, quantities)&quot;
-
-5. **Decision Diamond** (yellow): &quot;Schema Supports Key Queries?&quot;
+   Hover text: "Define relationship types (PRESCRIBED, DIAGNOSED_WITH, TREATS) with contextual properties (dates, quantities)"</p>
+</li>
+<li>
+<p><strong>Decision Diamond</strong> (yellow): "Schema Supports Key Queries?"
    Swimlane: Data Architects
-   Hover text: &quot;Validate that the schema can efficiently answer priority use cases like drug interaction checks and care pathway analysis&quot;
-   - If NO → Return to Step 3
-   - If YES → Continue to Step 6
-
-6. **Task** (rectangle, light blue): &quot;Implement Data Model in Graph Database&quot;
+   Hover text: "Validate that the schema can efficiently answer priority use cases like drug interaction checks and care pathway analysis"</p>
+</li>
+<li>If NO → Return to Step 3</li>
+<li>
+<p>If YES → Continue to Step 6</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Implement Data Model in Graph Database"
    Swimlane: Development Team
-   Hover text: &quot;Create database schema, constraints, and indexes in Neo4j or chosen graph database platform&quot;
-
-7. **Task** (rectangle, light blue): &quot;Develop ETL Pipelines&quot;
+   Hover text: "Create database schema, constraints, and indexes in Neo4j or chosen graph database platform"</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Develop ETL Pipelines"
    Swimlane: Development Team
-   Hover text: &quot;Build data ingestion pipelines to populate graph from EHR, claims, and pharmacy source systems&quot;
-
-8. **Task** (rectangle, light blue): &quot;Conduct Security Review&quot;
+   Hover text: "Build data ingestion pipelines to populate graph from EHR, claims, and pharmacy source systems"</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Conduct Security Review"
    Swimlane: Compliance/Security Team
-   Hover text: &quot;Verify HIPAA compliance, access controls, audit logging, and encryption requirements are met&quot;
-
-9. **Decision Diamond** (yellow): &quot;Security Compliant?&quot;
+   Hover text: "Verify HIPAA compliance, access controls, audit logging, and encryption requirements are met"</p>
+</li>
+<li>
+<p><strong>Decision Diamond</strong> (yellow): "Security Compliant?"
    Swimlane: Compliance/Security Team
-   Hover text: &quot;Ensure all HIPAA and organizational security policies are satisfied&quot;
-   - If NO → Return to Step 6
-   - If YES → Continue to Step 10
-
-10. **Task** (rectangle, light blue): &quot;Load Test Data&quot;
+   Hover text: "Ensure all HIPAA and organizational security policies are satisfied"</p>
+</li>
+<li>If NO → Return to Step 6</li>
+<li>
+<p>If YES → Continue to Step 10</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Load Test Data"
     Swimlane: Development Team
-    Hover text: &quot;Populate database with representative test data for performance and functional testing&quot;
-
-11. **Task** (rectangle, light blue): &quot;Execute Performance Testing&quot;
+    Hover text: "Populate database with representative test data for performance and functional testing"</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Execute Performance Testing"
     Swimlane: Database Administrators
-    Hover text: &quot;Run benchmark queries to validate response times meet SLA requirements for clinical applications&quot;
-
-12. **Decision Diamond** (yellow): &quot;Performance Acceptable?&quot;
+    Hover text: "Run benchmark queries to validate response times meet SLA requirements for clinical applications"</p>
+</li>
+<li>
+<p><strong>Decision Diamond</strong> (yellow): "Performance Acceptable?"
     Swimlane: Database Administrators
-    Hover text: &quot;Verify multi-hop traversal queries execute in &lt;100ms for real-time clinical decision support&quot;
-    - If NO → Optimize indexes/schema → Return to Step 6
-    - If YES → Continue to Step 13
-
-13. **Task** (rectangle, light blue): &quot;Deploy to Production&quot;
+    Hover text: "Verify multi-hop traversal queries execute in &lt;100ms for real-time clinical decision support"</p>
+<ul>
+<li>If NO → Optimize indexes/schema → Return to Step 6</li>
+<li>If YES → Continue to Step 13</li>
+</ul>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Deploy to Production"
     Swimlane: Database Administrators
-    Hover text: &quot;Deploy graph database to production environment with monitoring and backup configurations&quot;
-
-14. **Task** (rectangle, light blue): &quot;Establish Monitoring and Maintenance&quot;
+    Hover text: "Deploy graph database to production environment with monitoring and backup configurations"</p>
+</li>
+<li>
+<p><strong>Task</strong> (rectangle, light blue): "Establish Monitoring and Maintenance"
     Swimlane: Database Administrators
-    Hover text: &quot;Configure query performance monitoring, alerting, and regular maintenance schedules&quot;
-
-15. **End Event** (rounded rectangle, green): &quot;Healthcare Graph Database Operational&quot;
+    Hover text: "Configure query performance monitoring, alerting, and regular maintenance schedules"</p>
+</li>
+<li>
+<p><strong>End Event</strong> (rounded rectangle, green): "Healthcare Graph Database Operational"
     Swimlane: Database Administrators
-    Hover text: &quot;Graph database is live and supporting clinical applications&quot;
-
-Color coding:
+    Hover text: "Graph database is live and supporting clinical applications"</p>
+</li>
+</ol>
+<p>Color coding:
 - Start/End events: Green
 - Task rectangles: Light blue
 - Decision diamonds: Yellow
 - Rework/iteration paths: Dotted orange arrows
-- Primary flow: Solid black arrows
-
-Annotations:
-- Add time estimates for each phase (e.g., &quot;2-3 weeks&quot; under Step 2)
-- Include note: &quot;Iterate as needed—data models evolve with requirements&quot;
-
-Implementation: BPMN diagram tool (Camunda Modeler, draw.io with BPMN shapes, or similar)
-Canvas size: 1200x800px
-</code></pre></div></td></tr></table></div>
+- Primary flow: Solid black arrows</p>
+<p>Annotations:
+- Add time estimates for each phase (e.g., "2-3 weeks" under Step 2)
+- Include note: "Iterate as needed—data models evolve with requirements"</p>
+<p>Implementation: BPMN diagram tool (Camunda Modeler, draw.io with BPMN shapes, or similar)
+Canvas size: 1200x800px</p>
 </details>
 <h2 id="summary-and-key-takeaways">Summary and Key Takeaways</h2>
 <p>This chapter has introduced the foundational concepts necessary for understanding and working with graph databases in healthcare contexts. Let's recap the key ideas:</p>

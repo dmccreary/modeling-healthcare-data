@@ -1,0 +1,14 @@
+{
+  "sim_id": "healthcare-graph-pattern-examples",
+  "diagram_name": "Healthcare Graph Pattern Examples",
+  "chapter_number": 3,
+  "chapter_title": "Graph Query Languages",
+  "chapter_dir": "03-graph-query-languages",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: diagram\n**sim-id:** healthcare-graph-pattern-examples<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nPurpose: Illustrate common pattern matching scenarios in healthcare graphs\n\nComponents to show:\n- Three example patterns side by side\n\nPattern 1 - Patient-Diagnosis-Prescription:\n- Patient (circle, blue)\n- Connected by HAS_DIAGNOSIS arrow to\n- Diagnosis node (circle, red) labeled \"Diabetes\"\n- Connected by PRESCRIBED arrow to\n- Prescription node (circle, green) labeled \"Metformin\"\n- Date constraint annotation on PRESCRIBED edge\n\nPattern 2 - Provider Referral Network:\n- PCP (Primary Care Provider) node (square, purple)\n- Connected by REFERS_TO arrow to\n- Specialist node (square, purple)\n- Connected by REFERS_TO arrow to\n- Laboratory node (square, orange)\n- Show bi-directional possibility with dotted reverse arrows\n\nPattern 3 - Treatment Pathway:\n- Patient (circle, blue)\n- Connected to sequence of Treatment nodes (hexagons, teal)\n- Treatment1 → Treatment2 → Treatment3\n- NEXT relationship arrows with temporal ordering\n- Outcome node (diamond, yellow) at end\n\nStyle: Clean network diagram with labeled nodes and directed edges\n\nLabels: Include node types and relationship names on arrows\n\nAnnotations: Add property constraints like \"date > 2024-01-01\" on relevant edges\n\nColor scheme: Use healthcare-themed colors (blues for patients, purples for providers, reds for conditions)\n\nImplementation: SVG diagram with clear labels and directional arrows"
+}

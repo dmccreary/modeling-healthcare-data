@@ -1,0 +1,14 @@
+{
+  "sim_id": "ai-ml-taxonomy-healthcare",
+  "diagram_name": "AI and ML Taxonomy in Healthcare",
+  "chapter_number": 10,
+  "chapter_title": "Ai Machine Learning Integration",
+  "chapter_dir": "10-ai-machine-learning-integration",
+  "library": "Venn.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: diagram\n**sim-id:** ai-ml-taxonomy-healthcare<br/>\n**Library:** Venn.js<br/>\n**Status:** Specified\n\nPurpose: Illustrate the hierarchical nested relationship between AI, ML, deep learning\n\nComponents to show:\n- Outer circle: AI (largest)\n- Middle circle: ML (nested within AI)\n- Inner circle: Deep Learning (nested within ML)\n\n**On Hover Text**:\n\nShow the following definitions on hover:\n\n- AI: \"Systems that simulate human intelligence, reasoning, and decision-making\"\n- ML: \"Algorithms that learn patterns from data without explicit programming\"\n- Deep Learning: \"Neural networks with multiple layers that learn complex representations\"\n\nColor scheme: Blue gradient from light (outer AI) to dark (inner DL)\n\nImplementation: venn-diagram-generator skill that uses the venn.js library"
+}

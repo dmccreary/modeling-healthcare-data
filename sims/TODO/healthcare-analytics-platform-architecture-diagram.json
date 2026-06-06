@@ -1,0 +1,14 @@
+{
+  "sim_id": "healthcare-analytics-platform-architecture-diagram",
+  "diagram_name": "Healthcare Analytics Platform Architecture Diagram",
+  "chapter_number": 12,
+  "chapter_title": "Capstone Real World Applications",
+  "chapter_dir": "12-capstone-real-world-applications",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: diagram\n**sim-id:** healthcare-analytics-platform-architecture-diagram<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nPurpose: Illustrate the multi-layer architecture of a graph-based healthcare analytics platform\n\nComponents to show:\n\nTop layer - \"Presentation Layer\":\n- Clinician Dashboard (pink)\n- Administrator Portal (light blue)\n- Analyst Workbench (orange)\n- API Gateway (gray)\n\nSecond layer - \"Analytics & AI Layer\":\n- Graph Analytics Engine (gold)\n- Vector Store (green)\n- LLM Integration (purple)\n- ML Models (teal)\n\nThird layer - \"Graph Database Core\":\n- Neo4j/TigerGraph cluster (blue, large central component)\n- Patient subgraph (left section)\n- Provider subgraph (center section)\n- Payer subgraph (right section)\n\nFourth layer - \"Data Ingestion Layer\":\n- EHR Connector (pink)\n- Claims Processor Interface (orange)\n- Pharmacy System Connector (green)\n- Lab System Interface (purple)\n\nBottom layer - \"Source Systems\":\n- Epic EHR (left)\n- Claims Database (center-left)\n- Pharmacy System (center-right)\n- Lab System (right)\n\nFifth layer (vertical on right side) - \"Governance Framework\":\n- RBAC Module\n- Audit Logger\n- Lineage Tracker\n- HIPAA Compliance Engine\n\nConnections:\n- Bidirectional arrows between presentation and analytics layers\n- Arrows from analytics layer to graph database\n- Arrows from graph database to data ingestion\n- Arrows from data ingestion to source systems\n- Dotted lines from governance framework to all other layers\n\nStyle: Layered architecture diagram with colored blocks\n\nLabels:\n- \"Real-time queries\" on presentation-to-analytics arrows\n- \"Graph traversals\" on analytics-to-database arrows\n- \"ETL pipelines\" on ingestion-to-source arrows\n- \"Policy enforcement\" on governance dotted lines\n\nColor scheme: Use distinct colors for each layer (specified above), with governance in red to indicate its cross-cutting nature\n\nImplementation: SVG diagram or draw.io format"
+}

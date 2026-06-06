@@ -1,0 +1,14 @@
+{
+  "sim_id": "cypher-query-components-infographic",
+  "diagram_name": "Cypher Query Components Interactive Infographic",
+  "chapter_number": 3,
+  "chapter_title": "Graph Query Languages",
+  "chapter_dir": "03-graph-query-languages",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: infographic\n**sim-id:** cypher-query-components-infographic<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nPurpose: Create an interactive breakdown of Cypher query syntax with healthcare examples\n\nLayout: Vertical flow showing query structure from top to bottom\n\nSections:\n\n1. MATCH Clause (Blue section at top):\n   - Header: \"MATCH: Specify Graph Patterns\"\n   - Visual: Node-relationship pattern diagram\n   - Example: `MATCH (p:Patient)-[:HAS_DIAGNOSIS]->(d:Disease)`\n   - Hover: \"Describes the graph structure you want to find\"\n   - Click to expand: Shows variations (optional matches, variable-length paths)\n\n2. WHERE Clause (Yellow section):\n   - Header: \"WHERE: Filter Results\"\n   - Visual: Funnel icon with filter criteria\n   - Example: `WHERE d.icd_code STARTS WITH 'E11' AND p.age > 65`\n   - Hover: \"Applies property-based constraints\"\n   - Click to expand: Shows common operators (>, <, IN, CONTAINS, regex)\n\n3. WITH Clause (Purple section):\n   - Header: \"WITH: Pipeline Query Stages\"\n   - Visual: Flow diagram showing data transformation\n   - Example: `WITH p, count(d) AS diagnosis_count WHERE diagnosis_count > 3`\n   - Hover: \"Chains query segments and aggregates data\"\n   - Click to expand: Shows aggregation functions (count, sum, collect)\n\n4. RETURN Clause (Green section at bottom):\n   - Header: \"RETURN: Shape Output\"\n   - Visual: Table/result set icon\n   - Example: `RETURN p.patient_id, p.name, diagnosis_count ORDER BY diagnosis_count DESC`\n   - Hover: \"Defines what data to output and how to order it\"\n   - Click to expand: Shows formatting options (DISTINCT, LIMIT, ORDER BY)\n\n5. Complete Example (Gray section):\n   - Full query combining all clauses\n   - Color-coded to match sections above\n   - Description: \"Find elderly patients with multiple chronic conditions\"\n\nInteractive features:\n- Hover over each section for tooltip explanation\n- Click section header to expand with detailed examples\n- Click healthcare example to see result preview\n- Color-coded syntax highlighting matching the sections\n\nVisual style: Modern card-based layout with syntax highlighting\n\nImplementation: HTML/CSS/JavaScript with expandable sections and tooltips"
+}

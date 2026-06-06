@@ -1,0 +1,14 @@
+{
+  "sim_id": "vector-embedding-similarity-visualization-microsim",
+  "diagram_name": "Vector Embedding Similarity Visualization MicroSim",
+  "chapter_number": 10,
+  "chapter_title": "Ai Machine Learning Integration",
+  "chapter_dir": "10-ai-machine-learning-integration",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": "Demonstrate how medical concepts are positioned in vector space based on semantic similarity, and how similarity search works",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: microsim\n**sim-id:** vector-embedding-similarity-visualization-microsim<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nLearning objective: Demonstrate how medical concepts are positioned in vector space based on semantic similarity, and how similarity search works\n\nCanvas layout (1000x600px):\n- Left side (700x600): Drawing area showing 2D projection of vector space\n- Right side (300x600): Control panel\n\nVisual elements:\n- Medical concepts as colored circles in 2D space (t-SNE projection of embeddings)\n- Concept clusters: cardiovascular (red), respiratory (blue), neurological (green), metabolic (yellow)\n- Sample concepts plotted: \"myocardial infarction\", \"stroke\", \"diabetes\", \"asthma\", \"COPD\", \"hypertension\", \"migraine\", \"cardiac arrest\", etc. (20 total)\n- Search query shown as a star icon\n- Lines connecting query to nearest neighbors\n- Distance circles showing similarity radius\n\nInteractive controls:\n- Dropdown: Select search query from list of clinical scenarios\n  * \"Chest pain and dyspnea\"\n  * \"Severe headache with vision changes\"\n  * \"High blood sugar and frequent urination\"\n  * \"Difficulty breathing and wheezing\"\n- Slider: Number of nearest neighbors to find (1-10, default 5)\n- Slider: Similarity threshold (0.5-1.0, default 0.75)\n- Button: \"Search\"\n- Display panel: List of nearest concepts with similarity scores\n\nDefault parameters:\n- Query: \"Chest pain and dyspnea\"\n- Neighbors: 5\n- Threshold: 0.75\n\nBehavior:\n- When \"Search\" clicked, place query star in vector space\n- Draw lines to K nearest neighbors\n- Highlight matching concepts in yellow\n- Display similarity scores (0-1) next to each match\n- Show distance circles at threshold boundary\n- Animate the search process (query appears, then lines draw out)\n\nImplementation notes:\n- Use p5.js for rendering\n- Pre-compute 2D positions using t-SNE dimensionality reduction\n- Calculate cosine similarity: dot product divided by magnitude product\n- Use color coding to show concept categories\n- Display similarity as percentage in results panel"
+}

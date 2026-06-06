@@ -1,0 +1,14 @@
+{
+  "sim_id": "data-integration-flow-infographic",
+  "diagram_name": "Data Integration Flow Interactive Infographic",
+  "chapter_number": 12,
+  "chapter_title": "Capstone Real World Applications",
+  "chapter_dir": "12-capstone-real-world-applications",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: infographic\n**sim-id:** data-integration-flow-infographic<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nPurpose: Visualize how different source systems feed data into the graph database core using various integration patterns\n\nLayout: Central graph database node with radiating connections to source systems\n\nCentral element:\n- Graph database icon (large, center)\n- Label: \"Healthcare Knowledge Graph\"\n\nSource systems (arranged in circle around center):\n1. EHR System (top, pink icon)\n2. Claims Processor (top-right, orange icon)\n3. Pharmacy System (right, green icon)\n4. Lab System (bottom-right, purple icon)\n5. ADT System (bottom, blue icon)\n6. FHIR Server (bottom-left, teal icon)\n7. Reference Data (left, gray icon)\n8. Social Services (top-left, yellow icon)\n\nConnection arrows with labels:\n- EHR → Graph: \"CDC Stream\" (animated flowing dots, red)\n- Claims → Graph: \"Batch ETL (nightly)\" (solid orange, thicker)\n- Pharmacy → Graph: \"API Calls\" (dashed green)\n- Lab → Graph: \"HL7 Messages\" (dotted purple)\n- ADT → Graph: \"Kafka Events\" (animated flowing, blue)\n- FHIR → Graph: \"Federated Query\" (double-line teal)\n- Reference → Graph: \"Lookup API\" (thin gray)\n- Social Services → Graph: \"Manual Upload\" (yellow, dashed)\n\nInteractive elements:\n- Hover over each source system icon to see: system name, data types provided, update frequency\n- Hover over connection arrows to see: integration pattern details, latency, data volume\n- Click on graph database center to expand view showing internal node types\n- Animation: flowing dots along CDC and Kafka connections to show real-time data\n\nVisual style: Modern network diagram with colorful icons and flowing connections\n\nStats display (bottom of infographic):\n- Total daily records ingested\n- Real-time streams active\n- Average ingestion latency\n- Data quality score\n\nColor scheme: Each source system has its own color (specified above), graph database is gold\n\nImplementation: HTML/CSS/JavaScript with SVG for graphics, anime.js for animations"
+}

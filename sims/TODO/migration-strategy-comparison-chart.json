@@ -1,0 +1,14 @@
+{
+  "sim_id": "migration-strategy-comparison-chart",
+  "diagram_name": "Migration Strategy Comparison Chart",
+  "chapter_number": 12,
+  "chapter_title": "Capstone Real World Applications",
+  "chapter_dir": "12-capstone-real-world-applications",
+  "library": "Chart.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: chart\n**sim-id:** migration-strategy-comparison-chart<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nChart type: Radar/spider chart\n\nPurpose: Compare different migration strategies across multiple evaluation criteria\n\nEvaluation dimensions (axes):\n1. Risk Level (0-10 scale, where 10 is highest risk)\n2. Implementation Timeline (0-10 scale, where 10 is longest duration)\n3. Data Consistency (0-10 scale, where 10 is strongest consistency)\n4. Operational Disruption (0-10 scale, where 10 is most disruptive)\n5. Cost (0-10 scale, where 10 is most expensive)\n6. Rollback Capability (0-10 scale, where 10 is easiest to rollback)\n\nData series:\n\n1. Greenfield Replacement (red line):\n   - Risk: 9\n   - Timeline: 6\n   - Consistency: 8\n   - Disruption: 10\n   - Cost: 8\n   - Rollback: 2\n\n2. Strangler Pattern (orange line):\n   - Risk: 4\n   - Timeline: 9\n   - Consistency: 7\n   - Disruption: 3\n   - Cost: 7\n   - Rollback: 7\n\n3. Hybrid Architecture (blue line):\n   - Risk: 5\n   - Timeline: 7\n   - Consistency: 6\n   - Disruption: 4\n   - Cost: 9\n   - Rollback: 6\n\n4. Dual-Write Pattern (green line):\n   - Risk: 6\n   - Timeline: 6\n   - Consistency: 9\n   - Disruption: 5\n   - Cost: 6\n   - Rollback: 8\n\n5. Event Sourcing (purple line):\n   - Risk: 7\n   - Timeline: 8\n   - Consistency: 10\n   - Disruption: 6\n   - Cost: 8\n   - Rollback: 9\n\nTitle: \"Healthcare System Migration Strategy Trade-offs\"\n\nLegend: Position bottom-right, showing all five strategies\n\nAnnotations:\n- Arrow pointing to Event Sourcing data consistency: \"Best for audit requirements\"\n- Arrow pointing to Strangler Pattern disruption: \"Lowest operational impact\"\n- Highlighted region: Shade area where Rollback > 7 in light green to indicate \"safer\" strategies\n\nInteractive features:\n- Hover over data points to see exact values\n- Click legend items to show/hide strategy lines\n- Toggle between normalized (0-10) and absolute metrics views\n\nImplementation: Chart.js with radar chart plugin or D3.js for more custom interactions"
+}

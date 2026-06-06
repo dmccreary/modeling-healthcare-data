@@ -2,362 +2,734 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/about/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/book-metrics/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/contact/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/course-description/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/faq/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/feedback/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/glossary/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/how-we-built-this-site/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/license/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/references/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/additional-content/fhir-four-level-model/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/additional-content/neo-4j-knowledge-builder/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/appendices/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/appendices/case-studies/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/01-graph-theory-database-foundations/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/01-graph-theory-database-foundations/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/02-intro-to-healthcare-systems/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/02-intro-to-healthcare-systems/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/03-graph-query-languages/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/03-graph-query-languages/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/04-patient-centric-data-modeling/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/04-patient-centric-data-modeling/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/05-provider-operations-networks/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/05-provider-operations-networks/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/06-payer-perspective-insurance/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/06-payer-perspective-insurance/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/07-healthcare-financial-analytics/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/07-healthcare-financial-analytics/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/08-fraud-detection-compliance/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/08-fraud-detection-compliance/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/09-graph-algorithms-analytics/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/09-graph-algorithms-analytics/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/10-ai-machine-learning-integration/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/10-ai-machine-learning-integration/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/11-security-privacy-governance/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/11-security-privacy-governance/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/12-capstone-real-world-applications/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/chapters/12-capstone-real-world-applications/quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/additional-concepts/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/book-metrics/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/chapter-metrics/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/concept-list/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/concept-taxonomy/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/course-description-assessment/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/faq-coverage-gaps/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/faq-quality-report/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/glossary-quality-report/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/microsim-coverage-report/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/quality-metrics/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/quiz-generation-report/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/learning-graph/taxonomy-distribution/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/01-run-course-description-analyzer/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/02-learning-graph-generator/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/03-run-the-learning-graph-viewer-installer-skill/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/04-run-book-chapter-generator/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/05-run-chapter-content-generator-1/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/06-run-hc-graph-generator-skill/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/07-ch-2/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/08-ch-3/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/09-ch-4/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/10-ch-5/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/10-fhir-knowledge-representation/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/11-ch-10/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/12-ch-11/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/13-ch-12/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/14-ch-13/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/19-run-glossary-generator-skill/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/20-faq/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/30-graphic-novel-ideas/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/40-faq/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/40-quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/41-ch-10-quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/41-ch-4-quiz/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/icon/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/prompts/update-chapter-diagrams/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/ai-ml-taxonomy/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/ai-ml-taxonomy-healthcare/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/anomaly-score-threshold-explorer/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/appointment-no-show-simulator/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/audit-trail-analysis-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/authentication-authorization-comparison-infographic/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/basic-healthcare-graph-model-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/bayesian-diagnostic-reasoning/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/behavioral-health-fraud-network-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/capstone-project-architecture-template/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/care-pathway-comparison-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/care-pathway-shortest-path-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/centrality-measures-comparison/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/charge-master-billing-code-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/claims-lifecycle-workflow-graph-database-integration/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-care-pathway-dag/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-decision-support-workflow/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-discovery-pipeline-timeline/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-encounter-workflow-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-protocol-workflow-chest-pain-evaluation/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/codes/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/codes/TODO/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/comparison-graph-db-llm-integrated-system/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/cost-sharing-calculation-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/cycle-detection-pattern-explorer/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/cypher-query-components-infographic/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/data-integration-flow-infographic/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/data-quality-dashboard-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/data-quality-impact-analysis-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/de-identification-techniques-comparison-table/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/denial-reasons-analysis-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/directed-acyclic-graph-care-pathway/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/dme-fraud-pattern-detector/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/encounter-workflow/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/evolution-graph-query-languages-timeline/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/explainable-ai-recommendation-workflow/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/formulary-management-step-therapy-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/graph-based-fraud-detection-algorithm-workflow/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/graph-rbac-workflow-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/graph-traversal-visualization-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/graph-viewer/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/gsql-accumulator-pattern-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-analytics-platform-architecture-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-integration-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-lineage-graph-visualization/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-model-implementation-workflow/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-protection-layers-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-delivery-network-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-ecosystem-stakeholder-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-fraud-scheme-network-visualization/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-graph-database-job-roles-skills/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-graph-fundamentals/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-graph-fundamentals/TODO/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-graph-pattern-examples/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-labeled-property-graph-visualization/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-payment-model-comparison-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-rbac-graph-data-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-revenue-cycle-workflow-graph-analytics/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/hipaa-compliance-workflow-graph-database-operations/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/insurance-policy-benefit-plan-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/link-prediction-scoring/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/medical-code-classifier/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/medical-coding-systems-infographic/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/medical-knowledge-graph/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/medication-effectiveness-comparison-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/medication-safety-network-infographic/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/migration-strategy-comparison-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/multidisciplinary-care-team-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/network-community-detection-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/node-embedding-explorer/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/patient-clinical-context-subgraph-visualization/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/patient-identifier-graph-model/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/patient-journey-map-visualization/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/patient-outcome-metrics-dashboard-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/patient-treatment-timeline-workflow-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/payer-mix-contract-negotiation/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/per-person-healthcare-cost-comparison-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/predictive-model-performance-traditional-graph-based/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/presentation-effectiveness-rubric/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/preventive-care-gap-closure/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/prior-authorization-decision-tree-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/project-complexity-comparison-table/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/provider-capacity-utilization-dashboard-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/provider-compensation-comparison-chart/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/provider-network-centrality-analysis-dashboard/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/provider-network-fraud-detection-dashboard/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/provider-performance-comparison-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/provider-referral-network-analysis-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/query-optimization-workflow-diagram/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-comparison/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-comparison-chart-rdbms-graph/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-impact-indexing/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/rag-architecture-clinical-decision-support/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/risk-adjustment-capitation-calculator-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/risk-stratification-pyramid-intervention-strategies/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/service-line-profitability-analysis-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/symptom-disease-diagnostic-network/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/value-based-payment-shared-savings/</loc>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/vector-embedding-similarity-visualization-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/view-hc-icons/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/view-hc-icons/TODO/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/vital-signs-trend-visualization-microsim/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/sims/yin-yang-llm-kg/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/modeling-healthcare-data/stories/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
 </urlset>

@@ -1,0 +1,14 @@
+{
+  "sim_id": "rag-architecture-clinical-decision-support",
+  "diagram_name": "RAG Architecture for Clinical Decision Support",
+  "chapter_number": 10,
+  "chapter_title": "Ai Machine Learning Integration",
+  "chapter_dir": "10-ai-machine-learning-integration",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-05",
+  "specification": "Type: diagram\n**sim-id:** rag-architecture-clinical-decision-support<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nPurpose: Illustrate the complete RAG workflow from clinical query to generated response with source attribution\n\nComponents to show (left to right flow):\n1. Clinician Query (speech bubble)\n   - Example: \"What are evidence-based treatments for this patient's resistant hypertension?\"\n\n2. Query Embedding (transformation icon)\n   - Shows text → vector conversion\n\n3. Vector Store (database cylinder icon)\n   - Contains embeddings of:\n     * Clinical guidelines (NICE, AHA, etc.)\n     * Recent research papers\n     * Patient's medical history\n     * Drug interaction databases\n     * Local hospital protocols\n\n4. Similarity Search (magnifying glass icon)\n   - Retrieves top-K most relevant documents\n   - Shows similarity scores\n\n5. Context Assembly (document stack icon)\n   - Combines retrieved documents\n   - Shows snippet: \"Patient history: hypertension uncontrolled on ACE inhibitor...\"\n\n6. LLM Processing (brain/neural network icon)\n   - Combines query + context\n   - Generates response\n\n7. Response with Citations (document with footnotes)\n   - Evidence-based recommendation\n   - Source attributions numbered\n\n8. Feedback Loop (curved arrow back to vector store)\n   - Clinician feedback improves future retrievals\n\nConnections:\n- Numbered arrows (1→2→3→4→5→6→7) showing data flow\n- Dotted line from 7→3 showing feedback\n\nStyle: Horizontal flowchart with icons and text labels\n\nLabels:\n- Each component labeled with technical term and example\n- Arrows labeled with data type being passed\n- \"Retrieval\" phase (steps 2-5) in blue box\n- \"Generation\" phase (steps 6-7) in green box\n\nColor scheme:\n- Blue: Retrieval components\n- Green: Generation components\n- Orange: User interaction points\n- Gray: Data stores\n\nAnnotations:\n- \"Reduces hallucination\" near context assembly\n- \"Provides source attribution\" near response\n- \"Keeps knowledge current\" near vector store\n\nImplementation: Flowchart using SVG or diagramming library"
+}
