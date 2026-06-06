@@ -11,19 +11,16 @@ quality_score: 0
 
 # Preventive Care Gap Closure MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="588" width="100%" scrolling="no"></iframe>
 
 [Run the Preventive Care Gap Closure MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim shows how a preventive-care guideline becomes a population-health query that flags patients with open care gaps. A synthetic 40-patient panel is filtered in two visible stages: first by eligibility (age, sex, and condition) and then by recency (whether the last relevant service is older than the lookback window). Patients flagged as gaps turn orange, recently closed ones turn green, and ineligible ones dim — mirroring the chapter's Cypher gap-query patterns.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Pick a preventive service from the dropdown — switching to Mammography, for example, restricts the eligible population to women aged 40-74 — and adjust the lookback window. Click Run gap query to apply the eligibility and recency filters and reveal the eligible count, open-gap count, and gap-closure rate. Click Simulate outreach to close about half the open gaps and watch the closure rate rise.
 
 ## Iframe Embed Code
 
