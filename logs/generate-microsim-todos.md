@@ -123,26 +123,42 @@ individually to `main`.
 - Library counts to build: vis-timeline 2, Mermaid 11, Chart.js 15, p5.js 40, vis-network 19.
   (The single Venn.js spec was the already-built `ai-ml-taxonomy`.)
 
-## Completed (committed to main) — 68 of 87
+## Completed (committed to main) — 91 of 91  ✅ ALL DONE
 
-**vis-timeline: 2/2 · Mermaid: 11/11 · Chart.js: 15/15 · p5.js: 40/40** — all four
-libraries complete. Every sim went through the full pipeline (implement .js →
-measure/fix iframe height → Claude Vision layout review → enrich index.md → validate →
-individual git commit) and validates A (most 98-100).
+**vis-timeline: 2/2 · Mermaid: 12/12 · Chart.js: 16/16 · p5.js: 41/41 · vis-network: 20/20**
 
-p5.js spanned interactive calculators (cost-sharing, payer-mix, capitation, service-line,
-appointment no-show), classifiers/explorers (medical-code, anomaly-threshold, link-prediction,
-node-embedding, vector-embedding, provider-performance, prior-auth), animated algorithm sims
-(graph-traversal BFS/DFS, gsql-accumulator, care-pathway Dijkstra), network views (provider-
-referral, behavioral-fraud, audit-trail, patient-journey, data-quality-impact), and labeled
-infographics/diagrams (cypher-components, coding-systems, med-safety, analytics-platform,
-data-protection-onion, ecosystem-triangle, rag-pipeline, risk-pyramid, dedupe-table, etc.).
+(An initial conversion dropped 4 specs — a Venn.js taxonomy, a basic vis-network graph model,
+a Mermaid swimlane workflow, and a Chart.js log-scale comparison — all later scaffolded and built.)
 
-## Remaining — 19
+Every spec in `docs/sims/TODO/*.json` was generated through the full pipeline
+(implement `.js` → measure/fix iframe height via `/tmp/cal.sh` → headless-Chrome
+screenshot → Claude Vision layout review → enrich `index.md` About/How-to → validate →
+individual git commit). All 87 validate at grade **A** (static diagrams/graph-models 100,
+interactive sims 98). Each sim was committed to `main` individually.
 
-- **vis-network (19):** the last group. scaffold loads `vis-network@9` + `<sim-id>.js`.
-  Graph data-model / network visualizations; use `/tmp/cal.sh` (measure → set CANVAS_HEIGHT
-  → capture) like Mermaid since rendered height varies.
+vis-network group: 15 graph-data-models (knowledge graph, LPG, patient-identifier/MPI,
+RBAC, insurance benefit plan, delivery network, chargemaster, formulary/step-therapy, data
+integration, clinical-context subgraph, data lineage (hierarchical flow), job-roles/skills,
+community detection, care team, symptom-disease) + 4 interactive (centrality-measures
+comparison with live degree/betweenness/closeness/PageRank, cycle-detection explorer,
+DME-fraud detector, fraud-scheme network). All use `interaction:{zoomView:false,
+dragView:false, navigationButtons:true}` per the guide, a `randomSeed` for stable
+screenshots, and freeze physics after stabilization.
+
+### Recurring gotchas hit & fixed (for future batches)
+- **p5 reserved-name collisions:** custom functions named `box()`, `model()` collide with
+  p5's WEBGL built-ins → "only supported in WEBGL mode", silently blanks the sketch. Rename
+  (`stepBox`, `finance`). Detect via a Playwright `pageerror` listener when a sim renders blank.
+- **`text(str,x,y,w)` box origin:** `x` is the box LEFT edge, not center. Passing
+  `canvasWidth/2`+width clips text into the right half. Pass the left edge. Reintroduced
+  several times — check any centered, width-bounded label.
+- **Mermaid:** `graph` is a reserved classDef name → syntax error (tiny rendered height).
+
+### Remaining follow-up for the user
+- **Chapter iframe wiring** was deferred: `add-iframes-to-chapter.py` was NOT run because the
+  chapter `index.md` files had pre-existing uncommitted edits. To embed the sims in chapter
+  pages, run (after reviewing your chapter edits):
+  `python3 $UTILS/add-iframes-to-chapter.py --all --project-dir . --fix-heights --fix-paths`
 
 ## Technical notes / reusable tooling (for resumption)
 
