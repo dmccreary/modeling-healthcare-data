@@ -11,19 +11,16 @@ quality_score: 0
 
 # Centrality Measures Comparison MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="508" width="100%" scrolling="no"></iframe>
 
 [Run the Centrality Measures Comparison MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim ranks the same provider referral network four different ways so you can see that "importance" has several meanings. Degree centrality finds busy hubs; betweenness finds bridges that connect otherwise-separate clusters; closeness finds providers well-positioned to reach the whole network quickly; and PageRank finds providers who are influential because they connect to other influential ones. Node size and shade encode the selected measure, computed live on the graph.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Switch the centrality measure in the dropdown and watch the node sizes, shading, and top-5 ranking change for the very same network. Compare measures: the high-degree hub dominates Degree but a low-degree bridge node jumps under Betweenness, and the densely-embedded node leads under Closeness and PageRank. For PageRank, adjust the damping slider to see its effect, and use the definition box to choose the right measure for a given question.
 
 ## Iframe Embed Code
 
