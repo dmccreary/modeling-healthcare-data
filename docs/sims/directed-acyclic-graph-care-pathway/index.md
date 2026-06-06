@@ -11,19 +11,16 @@ quality_score: 0
 
 # Directed Acyclic Graph Example: Care Pathway
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="498" width="100%" scrolling="no"></iframe>
 
 [Run the Directed Acyclic Graph Example: Care Pathway MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This diagram shows a clinical care pathway modeled as a directed acyclic graph (DAG): eight stages, from patient admission through discharge planning, connected by directed arrows that always move forward in time. The single dotted edge — re-testing when results are inconclusive — loops back only to diagnostics, never to admission, illustrating the defining DAG property that a patient does not cycle back to an earlier stage within one encounter.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Follow the solid arrows through the eight numbered stages to trace the normal forward flow of an encounter. Note the dotted red "re-test if needed" edge, which is the one conditional path, and read the annotation explaining why the pathway is acyclic — a structure that lets graph databases reason about ordering and progress without infinite loops.
 
 ## Iframe Embed Code
 
