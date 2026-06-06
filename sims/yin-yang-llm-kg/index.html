@@ -3132,6 +3132,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
       Description
@@ -3553,6 +3562,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
       Description
@@ -3699,14 +3717,22 @@
 
 
 <h1 id="yin-yang-llm-vs-knowledge-graph">Yin-Yang: LLM vs Knowledge Graph</h1>
-<iframe src="main.html" height="400px" scrolling="no"></iframe>
+<iframe src="main.html" height="670" scrolling="no"></iframe>
 
 <p><a class="md-button md-button--primary" href="main.html">Run the Yin-Yang LLM vs KG MicroSim Fullscreen</a>
 <a href="https://editor.p5js.org/dmccreary/sketches/Vbp9256Pw">Edit the MicroSim</a></p>
 <h2 id="embedding-this-microsim">Embedding This MicroSim</h2>
 <p>You can include this MicroSim on your website using the following <code>iframe</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/modeling-healthcare-data/sims/yin-yang-llm-kg/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;452px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/modeling-healthcare-data/sims/yin-yang-llm-kg/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;670px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
+<h2 id="how-to-use">How to Use</h2>
+<p>This MicroSim is interactive — the twelve labels on the symbol are explorable:</p>
+<ul>
+<li><strong>Hover</strong> over any label (the two product names or any of their five features) to see a one-sentence hint pop up.</li>
+<li><strong>Click</strong> a label to read a fuller explanation in the infobox beneath the symbol; the label is marked as explored (highlighted green).</li>
+<li><strong>Explore all twelve</strong> labels — six on each side — to fill the progress bar and trigger a celebration animation. Use the <strong>Reset</strong> button to start over.</li>
+</ul>
+<p>The celebration animations are drawn from a shared, reusable library at <code>docs/sims/shared/celebration-animations.js</code>.</p>
 <h2 id="description">Description</h2>
 <p>This MicroSim uses the ancient Yin-Yang symbol to illustrate the complementary nature of two important technologies in modern AI and data management: Large Language Models (LLMs) and Enterprise Knowledge Graphs.</p>
 <p>The Yin-Yang symbol represents the concept of dualism, where two opposite forces are interconnected and interdependent. Similarly, LLMs and Knowledge Graphs serve different but complementary purposes in the technology landscape:</p>
@@ -3830,9 +3856,10 @@
 <p>This MicroSim is built using p5.js and follows the MicroSim design pattern with:</p>
 <ul>
 <li>Width-responsive design that adapts to different screen sizes</li>
-<li>Clean separation of drawing area and information display</li>
+<li>Clean separation of the symbol drawing area and the information panel below</li>
+<li>Hover tooltips and click-to-detail hit-testing over the twelve on-symbol labels</li>
+<li>A completion celebration loaded from the shared <code>../shared/celebration-animations.js</code> particle library (the same animation set used across the book's MicroSims)</li>
 <li>Accessible design with screen reader support</li>
-<li>No external dependencies beyond p5.js</li>
 </ul>
 <p>The visualization uses the traditional Yin-Yang symbol with its characteristic S-curve dividing the circle, with small circles representing that each contains an element of the other (showing their interconnected nature).</p>
 
