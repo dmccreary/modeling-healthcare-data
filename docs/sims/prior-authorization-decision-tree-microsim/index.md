@@ -11,19 +11,16 @@ quality_score: 0
 
 # Prior Authorization Decision Tree Interactive MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Prior Authorization Decision Tree Interactive MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim turns an MRI-Brain-for-headache prior-authorization policy into an interactive decision tree. Each clinical checkpoint — red-flag symptoms, conservative treatment, symptom persistence, documentation adequacy, and guideline alignment — branches toward an approve, deny, pend, or peer-review outcome. Five pre-loaded cases let students practice applying medical-necessity criteria and immediately see whether their reasoning reached the clinically correct result.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the case facts in the side panel, then answer the current checkpoint with Yes or No based on those facts; your path highlights down the tree. When you reach an outcome, the sim tells you whether it matches the case and, if not, what the correct outcome should have been. Use Reset case to retry the same case or Next case to move on; the footer tracks your running accuracy across cases.
 
 ## Iframe Embed Code
 
