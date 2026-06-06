@@ -193,9 +193,9 @@ function drawLabels() {
 
   // Yang (LLM) — black text, top/left white region
   textStyle(BOLD);
-  label('y0', DATA.yang.title.label, cx, cy - 108, CENTER, 'black', 14, false);
+  label('y0', DATA.yang.title.label, cx - 60, cy - 112, CENTER, 'black', 14, false);
   textStyle(NORMAL);
-  let yx = cx - 95, yy = cy - 56;
+  let yx = cx - 95, yy = cy - 84;
   DATA.yang.features.forEach((f, i) => label(f.key, f.label, yx, yy + i * lh, LEFT, 'black', 11, true));
 
   // Yin (KG) — white text, bottom/right black region
