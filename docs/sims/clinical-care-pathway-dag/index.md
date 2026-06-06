@@ -1,5 +1,7 @@
 # Clinical Care Pathway DAG
 
+<iframe src="main.html" width="100%" height="770px" scrolling="no" style="border:1px solid #ddd;border-radius:6px;"></iframe>
+
 [View Clinical Care Pathway DAG Fullscreen](main.html){ .md-button .md-button--primary }
 
 A Directed Acyclic Graph (DAG) visualization demonstrating how a patient's clinical care journey progresses through distinct stages without cycles. This pathway shows the temporal progression from admission through discharge, emphasizing the acyclic nature of a single care encounter where patients move forward through stages without returning to the beginning.

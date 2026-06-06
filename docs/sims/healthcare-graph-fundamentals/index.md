@@ -1,5 +1,7 @@
 # Healthcare Graph Fundamentals
 
+<iframe src="main.html" width="100%" height="770px" scrolling="no" style="border:1px solid #ddd;border-radius:6px;"></iframe>
+
 [View Healthcare Graph Fundamentals Fullscreen](main.html){ .md-button .md-button--primary }
 
 This visualization demonstrates the fundamental components of a graph—nodes and edges—using a simple healthcare scenario. It features a patient (Sarah Chen) interacting with various healthcare entities including a provider (Dr. Martinez), a diagnosis (Type 2 Diabetes), medication (Metformin), and a facility (City Hospital).
