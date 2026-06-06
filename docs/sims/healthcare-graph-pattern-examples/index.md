@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Graph Pattern Examples
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="546" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Graph Pattern Examples MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This diagram shows three common patterns that healthcare graph queries match. The first is a patient-diagnosis-prescription chain (Patient → HAS_DIAGNOSIS → Diabetes → PRESCRIBED → Metformin) with a date constraint on the prescription edge. The second is a provider referral network (PCP → REFERS_TO → Specialist → REFERS_TO → Laboratory) with dotted reverse arrows showing referrals can flow both ways. The third is a temporal treatment pathway (Patient → Tx1 → NEXT → Tx2 → Outcome) ordered in time. Node shapes and colors distinguish the entity types.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Compare the three patterns to see how different clinical questions map to different graph shapes — a linear diagnosis-to-treatment chain, a branching referral network, and an ordered temporal pathway. Note the relationship names on the arrows (HAS_DIAGNOSIS, PRESCRIBED, REFERS_TO, NEXT) and the property constraint on the prescription edge; these are exactly what a Cypher MATCH clause specifies to find the pattern in a real graph.
 
 ## Iframe Embed Code
 
