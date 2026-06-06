@@ -11,19 +11,16 @@ quality_score: 0
 
 # Network Community Detection Interactive Graph Model
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Network Community Detection Interactive Graph Model MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph illustrates how community-detection algorithms like Louvain partition a healthcare network into meaningful groups. The network contains patients, providers, diagnoses, and medications (distinguished by shape) that cluster into three disease cohorts — cardiac, diabetes, and renal — because connections within a cohort are dense while connections between cohorts are sparse. The few cross-cohort edges represent comorbid patients who bridge two communities.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+With "Color by community" on, each node is colored by the cohort the algorithm assigns it to; uncheck the box to see the same network without coloring, as the algorithm first sees it — the communities are not obvious until detected. Trace the sparse bridge edges (a patient with both diabetes and kidney disease) that link otherwise-separate cohorts. Drag nodes and use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
