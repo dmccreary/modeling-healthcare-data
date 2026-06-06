@@ -11,19 +11,16 @@ quality_score: 0
 
 # Medical Coding Systems Interactive Infographic
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="598" width="100%" scrolling="no"></iframe>
 
 [Run the Medical Coding Systems Interactive Infographic MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This hub-and-spoke infographic gives a visual overview of the six major medical coding systems — ICD-10, CPT, HCPCS, NDC, LOINC, and SNOMED CT — that together describe diagnoses, procedures, supplies, drugs, lab results, and clinical concepts. Each system radiates from a central hub, and faint connectors show where systems overlap (HCPCS Level I is CPT; SNOMED is more granular than ICD), reinforcing that a graph database can map relationships among codes from different systems.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover or click any coding system to load its details in the panel: its governing body, purpose, code structure, a worked example code, and what it is used for. Compare the systems to see the division of labor — ICD for diagnoses, CPT and HCPCS for services and supplies, NDC for drug products, LOINC for lab observations, and SNOMED CT for rich clinical terminology.
 
 ## Iframe Embed Code
 
