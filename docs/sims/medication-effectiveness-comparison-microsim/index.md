@@ -11,19 +11,16 @@ quality_score: 0
 
 # Medication Effectiveness Comparison MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="658" width="100%" scrolling="no"></iframe>
 
 [Run the Medication Effectiveness Comparison MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim demonstrates comparative effectiveness research — the kind of aggregate query a graph database enables across treatment groups. The top scatter plots each patient's HbA1c against months on treatment for four diabetes medications, with a smoothed trend line per drug and a dashed clinical target at 7.0. The bottom box plots compare the distribution of 12-month HbA1c for each drug, so students can see not just which medication lowers HbA1c most on average but how much patient-to-patient variation each has.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Use the checkboxes to show or hide individual medications and the minimum-group-size slider to require a minimum number of patients per group. Compare the trend lines to see which drug drives HbA1c down fastest (GLP-1 and SGLT2 reach the target; Metformin plateaus higher), then compare the box plots to weigh median effectiveness against the spread of outcomes — the heart of choosing a treatment from population data.
 
 ## Iframe Embed Code
 
