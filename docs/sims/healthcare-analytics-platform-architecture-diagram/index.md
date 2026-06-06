@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Analytics Platform Architecture Diagram
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Analytics Platform Architecture Diagram MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This diagram lays out the multi-layer architecture of a graph-based healthcare analytics platform. Data flows up from source systems (Epic EHR, claims, pharmacy, lab) through a data-ingestion layer into the graph database core — organized into patient, provider, and payer subgraphs — and then up into an analytics and AI layer (graph analytics, vector store, LLM integration, ML models) and a presentation layer of dashboards and APIs. A governance framework (RBAC, audit logging, lineage, HIPAA compliance) spans every layer.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the diagram from the bottom up to follow how raw source data becomes connectors, then graph subgraphs, then analytics, and finally dashboards and APIs that clinicians, administrators, and analysts use. Note that the governance framework on the right is not a single layer but a vertical concern that applies to all of them — access control, auditing, lineage, and compliance are enforced everywhere data moves.
 
 ## Iframe Embed Code
 
