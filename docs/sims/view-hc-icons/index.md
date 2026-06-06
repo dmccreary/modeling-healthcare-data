@@ -1,5 +1,5 @@
 ---
-title: Healthcare SVG Icon Library
+title: View Healthcare Icons
 description: A browsable library of 110+ high-quality, scalable SVG healthcare icons. SVG icons stay crisp at any size and can be recolored with JavaScript to encode node type, status, and theme in healthcare graph and network visualizations.
 image: /sims/view-hc-icons/view-hc-icons.png
 og:image: /sims/view-hc-icons/view-hc-icons.png
@@ -8,7 +8,7 @@ social:
    cards: false
 ---
 
-# Healthcare SVG Icon Library
+# View Healthcare Icons
 
 <iframe src="../../hc-icons/index.html" height="600" scrolling="yes" style="width:100%;border:1px solid #ddd;border-radius:6px;"></iframe>
 
