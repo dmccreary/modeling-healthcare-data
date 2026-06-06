@@ -10,7 +10,7 @@ social:
 
 # Yin-Yang: LLM vs Knowledge Graph
 
-<iframe src="main.html" height="626" scrolling="no"></iframe>
+<iframe src="main.html" height="670" scrolling="no"></iframe>
 
 [Run the Yin-Yang LLM vs KG MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
 [Edit the MicroSim](https://editor.p5js.org/dmccreary/sketches/Vbp9256Pw)
@@ -19,7 +19,7 @@ social:
 You can include this MicroSim on your website using the following `iframe`:
 
 ```html
-<iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/yin-yang-llm-kg/main.html" width="100%" height="626px" scrolling="no"></iframe>
+<iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/yin-yang-llm-kg/main.html" width="100%" height="670px" scrolling="no"></iframe>
 ```
 
 ## How to Use

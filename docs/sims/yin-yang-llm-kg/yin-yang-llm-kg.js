@@ -1,5 +1,5 @@
 // Yin-Yang: LLM vs Knowledge Graph MicroSim
-// CANVAS_HEIGHT: 624
+// CANVAS_HEIGHT: 668
 // The complementary strengths of Large Language Models and Knowledge Graphs on a
 // yin-yang symbol. Hover a label for a one-line hint, click it for a detailed infobox,
 // and explore all 12 labels to trigger a celebration. (Celebration animations come from
@@ -7,10 +7,13 @@
 
 // ---- Canvas layout ----
 let canvasWidth = 400;          // responsive width
-let drawHeight = 400;           // yin-yang symbol area
+let titleHeight = 44;           // top band for the MicroSim title
+let symbolHeight = 400;         // yin-yang symbol area (below the title)
 let infoHeight = 168;           // detail panel below the symbol
-let canvasHeight = drawHeight + infoHeight; // 568
+let drawHeight = titleHeight + symbolHeight; // aliceblue area (title + symbol); boundary to info panel
+let canvasHeight = drawHeight + infoHeight;  // 612
 let margin = 14;
+const TITLE = 'LLMs Complement Knowledge Graphs';
 
 let containerWidth;
 let containerHeight = canvasHeight;
@@ -113,6 +116,7 @@ function draw() {
   stroke('silver'); strokeWeight(1); noFill();
   rect(0, 0, canvasWidth - 1, canvasHeight - 1);
 
+  drawTitle();
   drawYinYangShape();
   drawLabels();
   drawInfoPanel();
@@ -125,10 +129,23 @@ function draw() {
   }
 }
 
+// ---- Title band ----
+function drawTitle() {
+  let ts = 22;
+  textStyle(BOLD);
+  textSize(ts);
+  while (textWidth(TITLE) > canvasWidth - 2 * margin && ts > 11) { ts -= 1; textSize(ts); }
+  noStroke();
+  fill('#15334d');
+  textAlign(CENTER, CENTER);
+  text(TITLE, canvasWidth / 2, titleHeight / 2);
+  textStyle(NORMAL);
+}
+
 // ---- Yin-Yang geometry (black = right half + bottom teardrop) ----
 function drawYinYangShape() {
   let centerX = canvasWidth / 2;
-  let centerY = drawHeight / 2;
+  let centerY = titleHeight + symbolHeight / 2;
   let radius = circleSize / 2;
 
   push();
@@ -188,12 +205,14 @@ function label(key, str, x, y, align, col, size, hasBullet) {
 
 function drawLabels() {
   let cx = canvasWidth / 2;
-  let cy = drawHeight / 2;
+  let cy = titleHeight + symbolHeight / 2;
   let lh = 15;
 
   // Yang (LLM) — black text, top/left white region
   textStyle(BOLD);
-  label('y0', DATA.yang.title.label, cx - 60, cy - 112, CENTER, 'black', 14, false);
+  // Title centered above, features left-aligned below
+  // the "cx - NN" increase NN to move more to the left
+  label('y0', DATA.yang.title.label, cx - 30, cy - 112, CENTER, 'black', 14, false);
   textStyle(NORMAL);
   let yx = cx - 95, yy = cy - 84;
   DATA.yang.features.forEach((f, i) => label(f.key, f.label, yx, yy + i * lh, LEFT, 'black', 11, true));
