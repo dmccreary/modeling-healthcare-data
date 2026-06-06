@@ -11,19 +11,16 @@ quality_score: 0
 
 # Value-Based Payment Shared-Savings MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="598" width="100%" scrolling="no"></iframe>
 
 [Run the Value-Based Payment Shared-Savings MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim shows how a value-based contract turns a year's cost and quality performance into a financial settlement. Actual total cost of care is compared to a $100M benchmark to compute gross savings or loss; a quality gate must be cleared to share in any savings, and a quality multiplier scales the share. Under two-sided risk, spending above the benchmark produces a penalty rather than simply zero.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Move the three sliders to set spend versus benchmark, composite quality, and the shared-savings rate, and toggle two-sided risk on or off. Watch the gauge show savings (green) or loss (red) and the right panel resolve the settlement into a bonus or penalty. Try high quality with spending above benchmark (no bonus, and a penalty under two-sided risk) versus modest savings with failing quality (bonus forfeited) to see why both dimensions must be weighed together.
 
 ## Iframe Embed Code
 
