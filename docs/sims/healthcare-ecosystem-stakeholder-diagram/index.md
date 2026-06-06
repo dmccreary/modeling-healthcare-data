@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Ecosystem Stakeholder Diagram
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="598" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Ecosystem Stakeholder Diagram MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This diagram shows the three primary stakeholders in healthcare — Patient, Provider, and Payer — as a central triangle connected by bidirectional relationships: care delivery and medical records between patient and provider, claims and reimbursement between provider and payer, and coverage and premiums between payer and patient. Satellite entities (pharmacy, lab, employer, and government) feed into these relationships, illustrating that every connection generates complex, multi-directional data exchanges.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Trace the three thick bidirectional arrows of the central triangle to see the core money-and-care relationships, and follow the thinner arrows to the satellite entities — prescriptions to the pharmacy, test orders to the lab, group coverage from employers, and Medicare/Medicaid from government — to see how the wider ecosystem connects. The diagram is the conceptual starting point for modeling each of these flows as relationships in a healthcare graph.
 
 ## Iframe Embed Code
 
