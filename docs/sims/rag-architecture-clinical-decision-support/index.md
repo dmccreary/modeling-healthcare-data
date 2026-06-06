@@ -11,19 +11,16 @@ quality_score: 0
 
 # RAG Architecture for Clinical Decision Support
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="546" width="100%" scrolling="no"></iframe>
 
 [Run the RAG Architecture for Clinical Decision Support MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This diagram traces the retrieval-augmented generation (RAG) pipeline that grounds an LLM in trustworthy sources for clinical decision support. A clinician's question is embedded into a vector, used to search a vector store of guidelines, research, patient history, and protocols, and the most relevant snippets are assembled into context. Only then does the LLM generate a response — now with numbered source citations — and clinician feedback flows back to improve future retrievals. The retrieval phase (steps 2-5) and generation phase (steps 6-7) are shaded separately.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Follow the numbered arrows from the clinician query (1) through the blue retrieval phase and into the green generation phase to the cited response (7), then to the feedback step (8). Trace the dashed purple feedback loop back to the vector store to see how clinician corrections improve future answers. The key idea is that grounding generation in retrieved sources produces evidence-cited recommendations instead of unsourced text.
 
 ## Iframe Embed Code
 
