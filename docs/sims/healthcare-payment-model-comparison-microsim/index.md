@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Payment Model Comparison MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="616" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Payment Model Comparison MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim compares four healthcare payment models — fee-for-service, bundled payment, capitation, and ACO shared savings — to show how each reshapes provider incentives and, through them, cost and quality. Fee-for-service pays per service and rewards volume; bundled payment fixes a price per episode and rewards efficiency; capitation pays a fixed amount per member and most strongly rewards prevention; and ACO shared savings rewards lowering total cost of care while maintaining quality. The bar panels compare all four across cost per patient, health outcomes, preventive services, and ED visit rate.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Click each model to read its incentive in the highlighted card and see its bars emphasized across the four metric panels. Compare the models to trace the throughline: as payment shifts from per-service to per-member, cost per patient and ED visits fall while preventive services and health outcomes rise — the financial logic behind the move from volume to value.
 
 ## Iframe Embed Code
 
