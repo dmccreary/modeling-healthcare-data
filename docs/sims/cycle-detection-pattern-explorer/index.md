@@ -11,19 +11,16 @@ quality_score: 0
 
 # Cycle Detection and Pattern Explorer MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="508" width="100%" scrolling="no"></iframe>
 
 [Run the Cycle Detection and Pattern Explorer MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This explorer surfaces circular referral patterns in a directed provider network. Most REFERS_TO edges flow forward, but a seeded 3-cycle and 4-cycle send referrals around a closed loop, and some of those same providers also share FINANCIAL_RELATIONSHIP edges. A benign coordination loop and a kickback ring can look similar — until you overlay the money. The graph algorithm finds the cycles; the financial overlay tells you which ones warrant scrutiny.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Use the dropdown to highlight 3-cycles, 4-cycles, or financial loops. When a cycle lights up red, read the info box to see its members and whether they also share financial ties — a referral cycle overlapping a financial loop is the classic kickback signal, where money and referrals flow around the same closed circle. Switch patterns to compare, and drag nodes or use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
