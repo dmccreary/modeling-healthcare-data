@@ -11,19 +11,16 @@ quality_score: 0
 
 # Presentation Effectiveness Rubric
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="598" width="100%" scrolling="no"></iframe>
 
 [Run the Presentation Effectiveness Rubric MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This visual rubric lays out how a capstone project presentation is scored: seven criteria — problem definition, technical architecture, implementation quality, live demonstration, results and evidence, presentation skills, and Q&A handling — each rated across four performance levels from Exemplary (4 points) down to Beginning (1 point). It gives students a clear, concrete target for what excellent work looks like in each dimension, for a maximum of 28 points.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read across any criterion row to see how performance progresses from Beginning to Exemplary, and read down a level column to see what that standard means across all criteria. Hover any cell to read its full descriptor in the panel below. Use it before presenting to self-assess and aim each part of your project at the Exemplary column.
 
 ## Iframe Embed Code
 
