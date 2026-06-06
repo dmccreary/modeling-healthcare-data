@@ -11,19 +11,16 @@ quality_score: 0
 
 # Cost-Sharing Calculation Interactive MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Cost-Sharing Calculation Interactive MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This calculator shows how the four moving parts of a health plan — the deductible, copays, coinsurance, and the out-of-pocket maximum — combine to split each service's cost between the member and the insurer over a plan year. Services are processed in the order they occur: spending first goes toward the deductible, then the member pays copays or coinsurance, until the out-of-pocket maximum is reached and the insurer covers everything else.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Adjust the deductible, out-of-pocket maximum, and coinsurance sliders, then add services from the dropdown to build up a year of care. Watch the two progress bars fill toward the deductible and the OOP maximum, the per-service member cost appear in the list, and the KPI panel update the member's and insurer's totals. Notice the milestone messages when the deductible is satisfied and when the OOP maximum caps the member's spending. Reset year clears the services.
 
 ## Iframe Embed Code
 
