@@ -11,19 +11,16 @@ quality_score: 0
 
 # Data Integration Flow Interactive Infographic
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="636" width="100%" scrolling="no"></iframe>
 
 [Run the Data Integration Flow Interactive Infographic MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This infographic shows how a central healthcare knowledge graph is fed by eight source systems, each using a different integration pattern suited to its data and latency needs. Real-time clinical events arrive by change-data-capture and Kafka streams, claims arrive in nightly batches, pharmacy and reference data come through APIs, lab results via HL7 messages, FHIR resources through federated queries, and social-services data by manual upload. The variety illustrates that one graph typically integrates many systems at many speeds.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Hover over any source system to see what data it provides, how often it updates, and which integration pattern it uses; the connection and its label highlight while the others dim. Compare the patterns — real-time streams (EHR CDC, ADT Kafka) versus the nightly claims batch versus on-demand API and federated queries — to understand the trade-offs in latency and freshness across a heterogeneous healthcare data landscape.
 
 ## Iframe Embed Code
 
