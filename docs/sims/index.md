@@ -1,4 +1,11 @@
-# MicroSims
+---
+title: MicroSims for Modeling Healthcare
+description: A table listing 100 interactive MicroSims for modeling healthcare — self-contained, browser-based visualizations you can explore directly
+hide:
+  - toc
+---
+
+# MicroSims for Modeling Healthcare
 
 This book includes **100 interactive MicroSims** — self-contained, browser-based visualizations you can explore directly. Click any thumbnail to open the MicroSim.
 
