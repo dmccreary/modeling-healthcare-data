@@ -11,19 +11,16 @@ quality_score: 0
 
 # Patient Identifier Graph Model
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Patient Identifier Graph Model MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This model shows how a master patient index links the many identifiers a single person accumulates across healthcare systems. One patient record connects via HAS_IDENTIFIER to a hospital MRN, a second hospital's MRN, a Social Security number, and an insurance member ID; each identifier in turn is ISSUED_BY a different identity system. Resolving all these identifiers to one patient — record linkage — is a classic graph problem that prevents duplicate and fragmented records.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Start at the central patient node and follow the HAS_IDENTIFIER edges out to each identifier, then the ISSUED_BY edges to the system that assigned it. Notice that the same person holds two different medical-record numbers from two hospitals — the kind of fragmentation a master patient index must reconcile. Drag nodes and use the navigation buttons to rearrange the radial layout.
 
 ## Iframe Embed Code
 
