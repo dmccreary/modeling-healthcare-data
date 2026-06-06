@@ -11,19 +11,16 @@ quality_score: 0
 
 # Node Embedding Explorer MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Node Embedding Explorer MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim makes node embeddings concrete by linking a patient graph (left) to its 2-D embedding space (right). Nodes belong to three latent cohorts — diabetes, cardiac, and healthy — with denser connections inside each cohort than between them. Each message-passing round averages a node's vector with its neighbors' (the intuition behind GraphSAGE/GCN), and the embedding points move so that structurally similar nodes pull together; a cohort-separation score rises with each round.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Use Next step and Previous to advance or rewind the message-passing rounds (round 0 is a random cloud; rounds 1-3 progressively separate the cohorts) and watch the separation score climb. Hover any node to highlight its twin point in both panels, and click a node to see its 4-number vector and nearest neighbors by cosine similarity. Change the Walk bias to compare how local versus global exploration groups nodes, toggle cohort colors off to test whether structure alone reveals the groups, and Reset to return to the random initialization.
 
 ## Iframe Embed Code
 
