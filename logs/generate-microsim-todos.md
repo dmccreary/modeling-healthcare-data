@@ -123,55 +123,26 @@ individually to `main`.
 - Library counts to build: vis-timeline 2, Mermaid 11, Chart.js 15, p5.js 40, vis-network 19.
   (The single Venn.js spec was the already-built `ai-ml-taxonomy`.)
 
-## Completed (committed to main) — 45 of 87
+## Completed (committed to main) — 68 of 87
 
-**vis-timeline: 2/2** · **Mermaid: 11/11** · **Chart.js: 15/15** · **p5.js: 17/40**
+**vis-timeline: 2/2 · Mermaid: 11/11 · Chart.js: 15/15 · p5.js: 40/40** — all four
+libraries complete. Every sim went through the full pipeline (implement .js →
+measure/fix iframe height → Claude Vision layout review → enrich index.md → validate →
+individual git commit) and validates A (most 98-100).
 
-p5.js done so far (all 98/A — full pipeline): bayesian-diagnostic-reasoning,
-value-based-payment-shared-savings, medical-code-classifier, anomaly-score-threshold-explorer,
-link-prediction-scoring, preventive-care-gap-closure, vital-signs-trend-visualization-microsim,
-provider-performance-comparison-microsim, prior-authorization-decision-tree-microsim.
+p5.js spanned interactive calculators (cost-sharing, payer-mix, capitation, service-line,
+appointment no-show), classifiers/explorers (medical-code, anomaly-threshold, link-prediction,
+node-embedding, vector-embedding, provider-performance, prior-auth), animated algorithm sims
+(graph-traversal BFS/DFS, gsql-accumulator, care-pathway Dijkstra), network views (provider-
+referral, behavioral-fraud, audit-trail, patient-journey, data-quality-impact), and labeled
+infographics/diagrams (cypher-components, coding-systems, med-safety, analytics-platform,
+data-protection-onion, ecosystem-triangle, rag-pipeline, risk-pyramid, dedupe-table, etc.).
 
-Each sim was built through the full pipeline (implement .js → measure/fix iframe
-height → screenshot → Claude Vision layout review → enrich index.md → validate
-100/A → individual git commit). `mkdocs.yml` nav regenerated (96 MicroSim entries).
+## Remaining — 19
 
-- Chart.js sims: care-pathway-comparison-chart, comparison-graph-db-llm-integrated-system,
-  data-quality-dashboard-chart (2x2), denial-reasons-analysis-chart, migration-strategy-comparison-chart,
-  patient-outcome-metrics-dashboard-chart, payer-mix-contract-negotiation (interactive calculator),
-  per-person-healthcare-cost-comparison-chart, predictive-model-performance-traditional-graph-based,
-  project-complexity-comparison-table, provider-capacity-utilization-dashboard-chart,
-  provider-compensation-comparison-chart, provider-network-centrality-analysis-dashboard (interactive),
-  provider-network-fraud-detection-dashboard (2x2), query-performance-impact-indexing.
-  Pattern: titled `<canvas>` in a fixed-height `.cc-chartbox`, `responsive:true` +
-  `maintainAspectRatio:false`, tooltips always on, log scales / dual axes / radar as
-  the data needs. Heights are stable (~470-560 single, ~750-860 for 2x2 dashboards).
-
-## Remaining — 42
-
-- **p5.js (23 left):** scaffold loads `p5@1.11.10` + `<sim-id>.js`. **Working pattern**
-  (from the 4 done): top-level vars `containerWidth/canvasWidth/drawHeight/controlHeight/
-  canvasHeight`; `setup()` calls `updateCanvasSize()` then `createCanvas(...).parent(
-  document.querySelector('main'))`; draw region = `aliceblue` rect (0,0,w,drawHeight),
-  control region = white rect below; centered title; built-in DOM controls positioned at
-  `drawHeight + offset` and re-laid-out in `windowResized()`; `describe(..., LABEL)` at end
-  of setup (note: LABEL renders a visible caption below the canvas — the measurer counts it,
-  so `/tmp/cal.sh` returns canvasHeight + ~56). GOTCHA: `text(str, x, y, w)` treats x as the
-  box LEFT (not center) — pass the left edge + width, not `canvasWidth/2`, or text clips right.
-  Many are Apply/Evaluate interactives (calculators, classifiers, explorers); a handful are
-  static "infographics" (cypher-query-components, data-integration-flow, medical-coding-systems,
-  healthcare-ecosystem-stakeholder, etc.) that are labeled diagrams.
-- **vis-network (19):** not yet started. Read `references/vis-network-guide.md`. Graph
-  data-model / network visualizations; use the measure→set-CANVAS_HEIGHT→capture loop
-  (`/tmp/cal.sh`) like Mermaid since rendered height varies.
-
-### Pending follow-up (NOT done, touches user's uncommitted chapter edits)
-
-Chapter `index.md` files in `docs/chapters/*/` have pre-existing uncommitted edits
-(the spec blocks). The new sims are built and in the nav but their `<iframe>` embeds
-have **not** been inserted into the chapter pages. To wire them in, run (and review,
-since it co-mingles with the user's WIP):
-`python3 $UTILS/add-iframes-to-chapter.py --all --project-dir . --fix-heights --fix-paths`
+- **vis-network (19):** the last group. scaffold loads `vis-network@9` + `<sim-id>.js`.
+  Graph data-model / network visualizations; use `/tmp/cal.sh` (measure → set CANVAS_HEIGHT
+  → capture) like Mermaid since rendered height varies.
 
 ## Technical notes / reusable tooling (for resumption)
 
