@@ -11,19 +11,16 @@ quality_score: 0
 
 # Anomaly Score Threshold Explorer MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="603" width="100%" scrolling="no"></iframe>
 
 [Run the Anomaly Score Threshold Explorer MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim turns fraud-detection threshold setting into a concrete trade-off. About 120 providers are plotted by their graph anomaly score, with true fraudsters (red) and legitimate providers (blue) overlapping in a contested middle band. Moving the threshold flags everyone to its right for investigation, and the panel updates a confusion matrix, precision, recall, and F1, the flagged count against weekly investigator capacity, and a total expected cost that combines the cost of missed fraud with the cost of investigations — revealing that an interior threshold minimizes total cost.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Drag the threshold line (or use the Threshold slider) and watch recall and false positives trade off in real time. Lower it to catch more fraud at the price of more false-positive investigations and a capacity backlog; raise it to do the reverse. Adjust investigator capacity and the cost of missed fraud to see how the cost-minimizing threshold shifts, and turn off ground-truth colors to reason about a threshold you cannot perfectly validate, as in real fraud operations.
 
 ## Iframe Embed Code
 
