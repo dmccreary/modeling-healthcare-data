@@ -11,19 +11,16 @@ quality_score: 0
 
 # Cypher Query Components Interactive Infographic
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="636" width="100%" scrolling="no"></iframe>
 
 [Run the Cypher Query Components Interactive Infographic MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This infographic breaks a Cypher query into its four core clauses — MATCH (find a graph pattern), WHERE (filter by properties), WITH (pipeline and aggregate), and RETURN (shape the output) — each shown with a healthcare example and color-coded. At the bottom, a complete query assembled from those clauses finds elderly patients with multiple chronic conditions, with each line colored to match its clause.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read each color-coded card from top to bottom to see what its clause does and a healthcare example of its syntax. Hover over any clause card to emphasize it and dim the others in the complete query at the bottom, making it easy to see exactly which line of the full query comes from which clause.
 
 ## Iframe Embed Code
 
