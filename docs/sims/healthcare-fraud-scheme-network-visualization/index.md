@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Fraud Scheme Network Visualization
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Fraud Scheme Network Visualization MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph shows how a healthcare fraud scheme appears as a distinctive network structure. The flagged provider, Dr. Mills (large red node, sized by billing volume), submits an unusually high number of claims that all bill the same high-value emergency procedure (99285) for only two patients, coding the same diagnosis — a dense star that is the signature of upcoding and phantom billing. Beside it, a normal provider submits a single routine claim, showing how different legitimate and fraudulent structures look.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Compare the two provider subgraphs. Trace Dr. Mills's claims and notice that all four BILL the same high-value procedure for the same two patients — a pattern no honest practice produces — while Dr. Goodman's single routine claim looks ordinary. This is the kind of structural anomaly graph analytics surfaces automatically by scoring provider subgraphs. Drag nodes and use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
