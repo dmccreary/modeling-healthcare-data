@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Graph Database Job Roles and Skills Map
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Graph Database Job Roles and Skills Map MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph maps the career landscape of healthcare graph databases: job roles and the technical and healthcare skills each requires. Because roles share skills, the graph reveals which capabilities are broadly valuable across roles (Neo4j/Cypher, Python) versus role-specific (graph algorithms for ML engineers, medical coding for analysts). It is a practical map for planning which skills to develop for a target role.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Pick a role and follow its REQUIRES edges to see the technical skills (blue squares) and healthcare skills (green hexagons) it demands. Notice which skills are connected to many roles — those are the high-leverage capabilities to learn first — and which are specialized. Drag nodes and use the navigation buttons to explore how the roles and skills interconnect.
 
 ## Iframe Embed Code
 
