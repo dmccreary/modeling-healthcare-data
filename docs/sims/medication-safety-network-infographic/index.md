@@ -11,19 +11,16 @@ quality_score: 0
 
 # Medication Safety Network Interactive Infographic
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="638" width="100%" scrolling="no"></iframe>
 
 [Run the Medication Safety Network Interactive Infographic MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This network shows how a graph database surfaces medication safety issues by traversing the relationships among a patient's active medications, drug-drug interactions, allergies, and existing conditions. Red lines mark drug-drug interactions (here the Warfarin + Aspirin + Ibuprofen triple raises bleeding risk), blue dotted lines mark contraindications (NSAIDs and metformin against stage-3a kidney disease), and green lines mark appropriate indications (Warfarin for atrial fibrillation, Metformin for diabetes). The central safety indicator flags that a high-risk combination is present.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the four groups around the patient — medications on the left, conditions on the right, and allergies along the bottom — and follow the colored lines to see which relationships are dangerous (red, blue) versus appropriate (green). Click a medication to highlight just its relationships and dim the rest, making it easy to isolate a single drug's interactions, contraindications, and indications; click the background to clear the selection.
 
 ## Iframe Embed Code
 
