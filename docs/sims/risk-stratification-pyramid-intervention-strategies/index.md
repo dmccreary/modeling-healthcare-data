@@ -11,19 +11,16 @@ quality_score: 0
 
 # Risk Stratification Pyramid with Intervention Strategies
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="578" width="100%" scrolling="no"></iframe>
 
 [Run the Risk Stratification Pyramid with Intervention Strategies MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This pyramid visualizes how a patient population distributes across risk tiers and how intervention intensity inverts that distribution. The wide green base — about 65% of patients at low risk — needs only population-health programs, while the narrow red top, a few percent at highest risk, requires intensive complex-care management costing many times more per patient. Each tier lists the graph signals (diagnoses, utilization, adherence) that a graph database uses to place a patient there.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the pyramid from the wide base (low risk, large population) to the narrow apex (highest risk, small population), and follow each tier's connector line to its intervention box on the right. Compare the cost-per-patient figures to see why a small high-risk group drives most spending, and read the graph signals to understand which data patterns identify each tier for targeted outreach.
 
 ## Iframe Embed Code
 
