@@ -11,19 +11,16 @@ quality_score: 0
 
 # Charge Master and Billing Code Graph Model
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Charge Master and Billing Code Graph Model MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph models a hospital chargemaster (CDM) and how its items connect to the codes and structures used for billing. Each ChargeMaster item — a priced, billable service — MAPS_TO one or more billing codes (CPT, ICD-10, HCPCS), HAS_REVENUE_CODE for a UB-04 revenue category, and BELONGS_TO a clinical department. Modeling these links as a graph makes pricing lookups, charge-capture variance analysis, and revenue optimization straightforward traversals.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Follow a chargemaster item's edges to see everything it connects to: the CPT/ICD codes it maps to, its revenue code, and the department that owns it. Trace, for example, the ED Visit Level 3 item to CPT 99283, revenue code 0450, and the Emergency department. Drag nodes and use the navigation buttons to explore how the chargemaster, codes, and departments interlock.
 
 ## Iframe Embed Code
 
