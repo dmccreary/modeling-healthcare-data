@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Data Lineage Graph Visualization
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Data Lineage Graph Visualization MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph traces data lineage through a healthcare analytics system, flowing left to right through five stages: source systems (Epic EHR, lab, pharmacy), the raw tables they populate, the transformations that clean and resolve them, the graph entities they become, and the analytics that consume them. Lineage edges let you answer "where did this number come from?" — tracing any dashboard metric back through its transformations to the originating source system.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the flow left to right through the five numbered stages in the legend, following the arrows from a source system to the dashboard or model it ultimately feeds. Trace a single lineage path — for example, Epic EHR → PATIENT_MASTER → Entity Resolution → Patient → Risk Model — to see exactly which systems and transformations a downstream analytic depends on. Drag nodes and use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
