@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare RBAC Graph Data Model
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare RBAC Graph Data Model MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph models role-based access control (RBAC) the way a graph database stores it. Users are assigned roles, roles inherit permissions from more general roles (a Cardiologist inherits everything a Physician can do; an ICU Nurse inherits from Nurse), and roles grant specific permissions like reading clinical records or writing orders. An access check — "can Dr. Chen write orders?" — becomes a traversal from the user through her roles and their inherited roles to the granted permissions.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Follow a user's HAS_ROLE edge to their role, then the dashed INHERITS_FROM edges up the role hierarchy, and finally the GRANTS edges to the permissions that role confers. Trace how Dr. Chen, as a Cardiologist, inherits the Physician role and so gains read, order-writing, and lab permissions, while the Billing Clerk role grants only billing access. Drag nodes and use the navigation buttons to explore the hierarchy.
 
 ## Iframe Embed Code
 
