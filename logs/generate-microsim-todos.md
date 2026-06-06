@@ -123,9 +123,9 @@ individually to `main`.
 - Library counts to build: vis-timeline 2, Mermaid 11, Chart.js 15, p5.js 40, vis-network 19.
   (The single Venn.js spec was the already-built `ai-ml-taxonomy`.)
 
-## Completed (committed to main) — 37 of 87
+## Completed (committed to main) — 45 of 87
 
-**vis-timeline: 2/2** · **Mermaid: 11/11** · **Chart.js: 15/15** · **p5.js: 9/40**
+**vis-timeline: 2/2** · **Mermaid: 11/11** · **Chart.js: 15/15** · **p5.js: 17/40**
 
 p5.js done so far (all 98/A — full pipeline): bayesian-diagnostic-reasoning,
 value-based-payment-shared-savings, medical-code-classifier, anomaly-score-threshold-explorer,
@@ -147,9 +147,9 @@ height → screenshot → Claude Vision layout review → enrich index.md → va
   `maintainAspectRatio:false`, tooltips always on, log scales / dual axes / radar as
   the data needs. Heights are stable (~470-560 single, ~750-860 for 2x2 dashboards).
 
-## Remaining — 50
+## Remaining — 42
 
-- **p5.js (31 left):** scaffold loads `p5@1.11.10` + `<sim-id>.js`. **Working pattern**
+- **p5.js (23 left):** scaffold loads `p5@1.11.10` + `<sim-id>.js`. **Working pattern**
   (from the 4 done): top-level vars `containerWidth/canvasWidth/drawHeight/controlHeight/
   canvasHeight`; `setup()` calls `updateCanvasSize()` then `createCanvas(...).parent(
   document.querySelector('main'))`; draw region = `aliceblue` rect (0,0,w,drawHeight),
