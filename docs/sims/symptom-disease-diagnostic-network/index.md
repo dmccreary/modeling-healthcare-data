@@ -11,19 +11,16 @@ quality_score: 0
 
 # Symptom-Disease Diagnostic Network
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Symptom-Disease Diagnostic Network MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph shows the many-to-many relationships at the heart of differential diagnosis. A patient reports specific symptom instances (with severity and duration), each an instance of a general symptom type, and each symptom type is associated with several candidate diseases at different probabilities. Because one symptom points to many diseases and one disease produces many symptoms, the pattern of symptoms — not any single one — narrows the diagnosis.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Trace the path from Patient A through a reported symptom instance, to its symptom type, to the diseases it suggests, reading the probability labels on the disease edges. Notice how chest pain, dyspnea, and fatigue together point most strongly to MI even though each alone is non-specific — the convergence of multiple symptom edges on one disease is what a graph query computes to rank a differential. Drag nodes and use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
