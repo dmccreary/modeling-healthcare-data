@@ -11,19 +11,16 @@ quality_score: 0
 
 # Patient Clinical Context Subgraph Visualization
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Patient Clinical Context Subgraph Visualization MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph shows the clinical context subgraph around a single patient — the connected neighborhood of everything clinically relevant to her. Sarah Johnson links to her diagnoses (HAS_DIAGNOSIS), the medications she takes (TAKES, with TREATS edges back to the conditions they address), the providers who see her (SEEN_BY), and her recent encounters (HAD_ENCOUNTER). Returning this subgraph in one query is how a graph database gives a clinician or an AI system full context on a patient.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the spokes from the central patient by color: red diagnoses, green medications, purple providers, and orange encounters. Follow the dashed TREATS edges to see which medication addresses which diagnosis (Metformin → diabetes, Lisinopril → hypertension, Atorvastatin → hyperlipidemia). This connected context is exactly what powers retrieval-augmented clinical decision support. Drag nodes and use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
