@@ -11,19 +11,16 @@ quality_score: 0
 
 # Service Line Profitability Analysis Interactive MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="636" width="100%" scrolling="no"></iframe>
 
 [Run the Service Line Profitability Analysis Interactive MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This calculator builds a waterfall "bridge" from a service line's gross revenue down to its net margin, making visible how payer mix and utilization drive financial performance. Gross charges are reduced by contractual adjustments (the gap between charges and what payers actually pay), then by direct, indirect, and overhead costs, leaving the net margin. Because each payer collects at a different rate, shifting the mix toward Commercial — the best-paying payer — meaningfully changes the result.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Adjust the three sliders — monthly case volume, the Commercial payer share, and cost per case — and watch the waterfall and KPI panel update. Notice that at the default 35% Commercial mix the service line runs a small loss; raise the Commercial share or lower cost per case to push the net-margin bar from red to green, and use the operating-margin percentage to judge how far from break-even the line is.
 
 ## Iframe Embed Code
 
