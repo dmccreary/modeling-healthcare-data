@@ -11,19 +11,16 @@ quality_score: 0
 
 # Provider Referral Network Analysis MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Provider Referral Network Analysis MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This bipartite network visualizes referral patterns between primary-care providers (left) and specialists (right). Each PCP circle is sized by the volume of referrals it sends and each specialist by the volume it receives; edge thickness shows the referral volume between a pair. Specialists outside the network are drawn in red, and their referral edges are highlighted as leakage — care (and revenue) flowing outside the network. The analytics panel summarizes total volume, leakage percentage, the top referrer, and the busiest specialist.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Raise the minimum-referral-volume slider to hide low-volume connections and reveal the dominant referral relationships, and check "In-network only" to filter out out-of-network specialists. Hover an edge to see the exact referral volume for that PCP-specialist pair. Watch the leakage percentage in the analytics panel to identify where the network is losing referrals to outside specialists — a key target for care-coordination and contracting efforts.
 
 ## Iframe Embed Code
 
