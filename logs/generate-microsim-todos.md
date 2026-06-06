@@ -123,9 +123,12 @@ individually to `main`.
 - Library counts to build: vis-timeline 2, Mermaid 11, Chart.js 15, p5.js 40, vis-network 19.
   (The single Venn.js spec was the already-built `ai-ml-taxonomy`.)
 
-## Completed (committed to main) — 28 of 87
+## Completed (committed to main) — 32 of 87
 
-**vis-timeline: 2/2 done** · **Mermaid: 11/11 done** · **Chart.js: 15/15 done**
+**vis-timeline: 2/2** · **Mermaid: 11/11** · **Chart.js: 15/15** · **p5.js: 4/40**
+
+p5.js done so far: bayesian-diagnostic-reasoning, value-based-payment-shared-savings,
+medical-code-classifier, anomaly-score-threshold-explorer (all 98/A — full pipeline).
 
 Each sim was built through the full pipeline (implement .js → measure/fix iframe
 height → screenshot → Claude Vision layout review → enrich index.md → validate
@@ -142,14 +145,22 @@ height → screenshot → Claude Vision layout review → enrich index.md → va
   `maintainAspectRatio:false`, tooltips always on, log scales / dual axes / radar as
   the data needs. Heights are stable (~470-560 single, ~750-860 for 2x2 dashboards).
 
-## Remaining — 59
+## Remaining — 55
 
-- **p5.js (40):** not yet started. Read `references/p5-guide.md`. Remember
-  `updateCanvasSize()` first in `setup()`, parent canvas to `document.querySelector('main')`,
-  use p5 built-in DOM controls, no `textFont('Segoe UI')`. Many are "Apply/Evaluate/Create"
-  interactives (calculators, classifiers, explorers) — see learning_objective in each TODO.
-- **vis-network (19):** not yet started. Read `references/vis-network-guide.md`. These are
-  graph data-model / network visualizations; use the measure→set-CANVAS_HEIGHT→capture loop
+- **p5.js (36 left):** scaffold loads `p5@1.11.10` + `<sim-id>.js`. **Working pattern**
+  (from the 4 done): top-level vars `containerWidth/canvasWidth/drawHeight/controlHeight/
+  canvasHeight`; `setup()` calls `updateCanvasSize()` then `createCanvas(...).parent(
+  document.querySelector('main'))`; draw region = `aliceblue` rect (0,0,w,drawHeight),
+  control region = white rect below; centered title; built-in DOM controls positioned at
+  `drawHeight + offset` and re-laid-out in `windowResized()`; `describe(..., LABEL)` at end
+  of setup (note: LABEL renders a visible caption below the canvas — the measurer counts it,
+  so `/tmp/cal.sh` returns canvasHeight + ~56). GOTCHA: `text(str, x, y, w)` treats x as the
+  box LEFT (not center) — pass the left edge + width, not `canvasWidth/2`, or text clips right.
+  Many are Apply/Evaluate interactives (calculators, classifiers, explorers); a handful are
+  static "infographics" (cypher-query-components, data-integration-flow, medical-coding-systems,
+  healthcare-ecosystem-stakeholder, etc.) that are labeled diagrams.
+- **vis-network (19):** not yet started. Read `references/vis-network-guide.md`. Graph
+  data-model / network visualizations; use the measure→set-CANVAS_HEIGHT→capture loop
   (`/tmp/cal.sh`) like Mermaid since rendered height varies.
 
 ### Pending follow-up (NOT done, touches user's uncommitted chapter edits)
