@@ -94,9 +94,9 @@ nav:
     - Clinical Decision Support Workflow: sims/clinical-decision-support-workflow/index.md
     - Clinical Discovery Pipeline Timeline: sims/clinical-discovery-pipeline-timeline/index.md
     - Clinical Encounter Workflow: sims/clinical-encounter-workflow-diagram/index.md
-    - Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department: sims/clinical-protocol-workflow-chest-pain-evaluation/index.md
+    - "Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department": sims/clinical-protocol-workflow-chest-pain-evaluation/index.md
     - Codes: sims/codes/index.md
-    - Comparison: Graph DB vs LLM vs Integrated System: sims/comparison-graph-db-llm-integrated-system/index.md
+    - "Comparison: Graph DB vs LLM vs Integrated System": sims/comparison-graph-db-llm-integrated-system/index.md
     - Cost-Sharing Calculation Interactive MicroSim: sims/cost-sharing-calculation-microsim/index.md
     - Cycle Detection and Pattern Explorer MicroSim: sims/cycle-detection-pattern-explorer/index.md
     - Cypher Query Components Interactive Infographic: sims/cypher-query-components-infographic/index.md
@@ -105,7 +105,7 @@ nav:
     - Data Quality Impact Analysis MicroSim: sims/data-quality-impact-analysis-microsim/index.md
     - De-Identification Techniques Comparison Table: sims/de-identification-techniques-comparison-table/index.md
     - Denial Reasons Analysis Chart: sims/denial-reasons-analysis-chart/index.md
-    - Directed Acyclic Graph Example: Care Pathway: sims/directed-acyclic-graph-care-pathway/index.md
+    - "Directed Acyclic Graph Example: Care Pathway": sims/directed-acyclic-graph-care-pathway/index.md
     - DME Fraud Pattern Detector MicroSim: sims/dme-fraud-pattern-detector/index.md
     - Evolution of Graph Query Languages Timeline: sims/evolution-graph-query-languages-timeline/index.md
     - Explainable AI Recommendation Workflow: sims/explainable-ai-recommendation-workflow/index.md
@@ -150,7 +150,7 @@ nav:
     - Patient Treatment Timeline Workflow Diagram: sims/patient-treatment-timeline-workflow-diagram/index.md
     - Payer Mix and Contract Negotiation MicroSim: sims/payer-mix-contract-negotiation/index.md
     - Per-Person Healthcare Cost Comparison Chart: sims/per-person-healthcare-cost-comparison-chart/index.md
-    - Predictive Model Performance: Traditional vs Graph-Based: sims/predictive-model-performance-traditional-graph-based/index.md
+    - "Predictive Model Performance: Traditional vs Graph-Based": sims/predictive-model-performance-traditional-graph-based/index.md
     - Presentation Effectiveness Rubric: sims/presentation-effectiveness-rubric/index.md
     - Preventive Care Gap Closure MicroSim: sims/preventive-care-gap-closure/index.md
     - Prior Authorization Decision Tree Interactive MicroSim: sims/prior-authorization-decision-tree-microsim/index.md
@@ -162,9 +162,9 @@ nav:
     - Provider Performance Comparison MicroSim: sims/provider-performance-comparison-microsim/index.md
     - Provider Referral Network Analysis MicroSim: sims/provider-referral-network-analysis-microsim/index.md
     - Query Optimization Workflow Diagram: sims/query-optimization-workflow-diagram/index.md
-    - Query Performance Comparison: RDBMS vs Graph Database: sims/query-performance-comparison/index.md
+    - "Query Performance Comparison: RDBMS vs Graph Database": sims/query-performance-comparison/index.md
     - Query Performance Impact of Indexing: sims/query-performance-impact-indexing/index.md
-    - Query Performance: RDBMS vs Graph: sims/query-performance-comparison-chart-rdbms-graph/index.md
+    - "Query Performance: RDBMS vs Graph": sims/query-performance-comparison-chart-rdbms-graph/index.md
     - RAG Architecture for Clinical Decision Support: sims/rag-architecture-clinical-decision-support/index.md
     - Risk Adjustment and Capitation Calculator MicroSim: sims/risk-adjustment-capitation-calculator-microsim/index.md
     - Risk Stratification Pyramid with Intervention Strategies: sims/risk-stratification-pyramid-intervention-strategies/index.md
@@ -175,6 +175,8 @@ nav:
     - View Healthcare Icons: sims/view-hc-icons/index.md
     - Vital Signs Trend Visualization MicroSim: sims/vital-signs-trend-visualization-microsim/index.md
     - Yin-Yang LLM vs Knowledge Graph: sims/yin-yang-llm-kg/index.md
+
+
 
 
 
