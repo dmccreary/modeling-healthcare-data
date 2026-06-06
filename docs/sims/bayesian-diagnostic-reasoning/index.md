@@ -11,19 +11,16 @@ quality_score: 0
 
 # Bayesian Diagnostic Reasoning MicroSim
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="618" width="100%" scrolling="no"></iframe>
 
 [Run the Bayesian Diagnostic Reasoning MicroSim MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This MicroSim shows medical diagnosis as Bayesian probability revision rather than a single lookup. Five candidate conditions start at prior probabilities set by the clinical context, and each evidence item you toggle multiplies those priors by the item's likelihood ratio for each condition, with the result renormalized to a posterior. The bars re-sort as the differential changes, and the panel shows the likelihood ratios behind the most recent update.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Choose a clinical setting from the Prior dropdown — a low-risk clinic, the emergency department, or a specialty referral — to set the starting probabilities. Then check evidence items (fever, stiff neck, photophobia, and so on) and watch the diagnoses re-rank: fever and stiff neck together sharply raise meningitis, while a normal CT drives down brain tumor. Notice that the same evidence yields different posteriors depending on the prior. Use Reset evidence to start over.
 
 ## Iframe Embed Code
 
