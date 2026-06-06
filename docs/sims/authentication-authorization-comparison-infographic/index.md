@@ -11,19 +11,16 @@ quality_score: 0
 
 # Authentication vs Authorization Comparison Infographic
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="528" width="100%" scrolling="no"></iframe>
 
 [Run the Authentication vs Authorization Comparison Infographic MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This split-screen infographic clarifies the often-confused distinction between authentication and authorization. Authentication answers "who are you?" — verifying identity through credentials like passwords, MFA tokens, biometrics, or smart cards. Authorization answers "what can you do?" — deciding which resources an already-authenticated user may access based on role, department, treatment relationship, and data sensitivity. In a healthcare graph system a clinician must first prove identity, then be granted access only to the records their relationships and role permit.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Read the two panels side by side: the blue authentication panel on the left and the green authorization panel on the right. Compare the questions each asks, the methods or factors each uses, and the worked Dr. Chen example to see how the same user passes authentication once but is then authorized differently for different data. The key takeaway is the order: authentication comes first, authorization follows, and both are required.
 
 ## Iframe Embed Code
 
