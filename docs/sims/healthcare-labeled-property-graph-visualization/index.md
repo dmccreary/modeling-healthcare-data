@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Labeled Property Graph Visualization
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Labeled Property Graph Visualization MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This labeled property graph captures one patient's care as typed, property-rich nodes and relationships. Sarah Chen connects to her diagnoses (HAS_CONDITION), her providers (TREATED_BY), the procedures she underwent, and through her providers to the medications prescribed and the facilities where care happened. Each node carries properties (codes, names, classes), and each edge is a named relationship — the labeled-property-graph model that lets a single query answer questions spanning conditions, providers, drugs, and places.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Follow the colored, labeled edges to reconstruct Sarah's care story: she HAS_CONDITION type 2 diabetes, is TREATED_BY Dr. Martinez who PRESCRIBED Metformin, and UNDERWENT an HbA1c test. Read each node against the legend to identify its type, and note how providers link both to medications and to the facilities they work at. Drag nodes and use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
