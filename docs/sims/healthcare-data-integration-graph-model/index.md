@@ -11,19 +11,16 @@ quality_score: 0
 
 # Healthcare Data Integration Graph Model
 
-<iframe src="main.html" height="450px" width="100%" scrolling="no"></iframe>
+<iframe src="main.html" height="488" width="100%" scrolling="no"></iframe>
 
 [Run the Healthcare Data Integration Graph Model MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
-<br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
-
 ## About This MicroSim
 
-TODO: Describe what this MicroSim demonstrates.
+This graph shows how a graph database integrates fragmented healthcare data into one unified patient view. A single master patient record HAS_ENCOUNTER for office visits, ED visits, and hospitalizations; each encounter is SOURCED_FROM a different system (Epic EHR, claims database, lab interface, pharmacy), and encounters carry diagnoses. Because every source attaches to the same patient node, a query can answer questions that span EHR, claims, lab, and pharmacy data at once.
 
 ## How to Use
 
-TODO: Describe how students should interact with this MicroSim.
+Follow the HAS_ENCOUNTER edges from the central master patient record to each encounter, then the SOURCED_FROM edges to the system that supplied it — notice that visits, claims, labs, and pharmacy data all converge on one patient. This convergence is the value of graph-based integration: instead of siloed records, every source contributes to a single connected view. Drag nodes and use the navigation buttons to explore.
 
 ## Iframe Embed Code
 
