@@ -1,0 +1,755 @@
+{
+  "project": {
+    "title": "Modeling Healthcare Data with Graphs",
+    "subtitle": "Auto-scanned intelligent textbook",
+    "author": "Dan McCreary",
+    "costPerMTokens": 15,
+    "sessionBudget": {
+      "pro": 900000,
+      "max": 3500000
+    }
+  },
+  "sections": {
+    "scaffold": {
+      "status": "published",
+      "tokensTarget": 2000,
+      "tokensDone": 2000
+    },
+    "course-description": {
+      "status": "published",
+      "tokensTarget": 4000,
+      "tokensDone": 1599
+    },
+    "learning-graph": {
+      "status": "published",
+      "tokensTarget": 20000,
+      "tokensDone": 20000
+    },
+    "chapter-structure": {
+      "status": "published",
+      "tokensTarget": 15000,
+      "tokensDone": 15000
+    },
+    "chapter-content": {
+      "countLabel": "12 chapters",
+      "children": [
+        {
+          "n": 1,
+          "title": "Graph Theory and Database Foundations",
+          "status": "reviewed",
+          "tokens": 10000
+        },
+        {
+          "n": 2,
+          "title": "Introduction to Healthcare Systems",
+          "status": "reviewed",
+          "tokens": 12102
+        },
+        {
+          "n": 3,
+          "title": "Graph Query Languages and Technologies",
+          "status": "reviewed",
+          "tokens": 10000
+        },
+        {
+          "n": 4,
+          "title": "Patient-Centric Data Modeling",
+          "status": "reviewed",
+          "tokens": 10730
+        },
+        {
+          "n": 5,
+          "title": "Provider Operations and Networks",
+          "status": "reviewed",
+          "tokens": 11508
+        },
+        {
+          "n": 6,
+          "title": "Payer Perspective and Insurance Claims",
+          "status": "reviewed",
+          "tokens": 10000
+        },
+        {
+          "n": 7,
+          "title": "Healthcare Financial Analytics",
+          "status": "reviewed",
+          "tokens": 12731
+        },
+        {
+          "n": 8,
+          "title": "Fraud Detection and Compliance",
+          "status": "reviewed",
+          "tokens": 12150
+        },
+        {
+          "n": 9,
+          "title": "Graph Algorithms and Analytics",
+          "status": "reviewed",
+          "tokens": 12263
+        },
+        {
+          "n": 10,
+          "title": "AI and Machine Learning Integration",
+          "status": "reviewed",
+          "tokens": 10000
+        },
+        {
+          "n": 11,
+          "title": "Security, Privacy, and Data Governance",
+          "status": "reviewed",
+          "tokens": 20087
+        },
+        {
+          "n": 12,
+          "title": "Capstone Projects and Real-World Applications",
+          "status": "reviewed",
+          "tokens": 11877
+        }
+      ]
+    },
+    "chapter-images": {
+      "status": "not-started",
+      "tokensTarget": 8000,
+      "tokensDone": 0
+    },
+    "microsims": {
+      "countLabel": "99 simulations",
+      "children": [
+        {
+          "n": 1,
+          "title": "AI and ML Taxonomy in Healthcare",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 2,
+          "title": "AI / ML / Deep Learning Taxonomy",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 3,
+          "title": "Anomaly Score Threshold Explorer MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 4,
+          "title": "Appointment Scheduling and No-Show Simulator MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 5,
+          "title": "Audit Trail Analysis MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 6,
+          "title": "Authentication vs Authorization Comparison Infographic",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 7,
+          "title": "Basic Healthcare Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 8,
+          "title": "Bayesian Diagnostic Reasoning MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 9,
+          "title": "Behavioral Health Fraud Network Interactive MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 10,
+          "title": "Capstone Project Architecture Template",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 11,
+          "title": "Care Pathway Comparison Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 12,
+          "title": "Care Pathway Shortest Path Interactive MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 13,
+          "title": "Centrality Measures Comparison MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 14,
+          "title": "Charge Master and Billing Code Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 15,
+          "title": "Claims Lifecycle Workflow with Graph Database Integration",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 16,
+          "title": "Clinical Care Pathway DAG",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 17,
+          "title": "Clinical Decision Support Workflow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 18,
+          "title": "Clinical Discovery Pipeline Timeline",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 19,
+          "title": "Clinical Encounter Workflow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 20,
+          "title": "Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 21,
+          "title": "Codes",
+          "status": "drafted",
+          "tokens": 5000
+        },
+        {
+          "n": 22,
+          "title": "Comparison: Graph DB vs LLM vs Integrated System",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 23,
+          "title": "Cost-Sharing Calculation Interactive MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 24,
+          "title": "Cycle Detection and Pattern Explorer MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 25,
+          "title": "Cypher Query Components Interactive Infographic",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 26,
+          "title": "Data Integration Flow Interactive Infographic",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 27,
+          "title": "Data Quality Dashboard Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 28,
+          "title": "Data Quality Impact Analysis MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 29,
+          "title": "De-Identification Techniques Comparison Table",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 30,
+          "title": "Denial Reasons Analysis Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 31,
+          "title": "Directed Acyclic Graph Example: Care Pathway",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 32,
+          "title": "DME Fraud Pattern Detector MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 33,
+          "title": "Patient Encounter Workflow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 34,
+          "title": "Evolution of Graph Query Languages Timeline",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 35,
+          "title": "Explainable AI Recommendation Workflow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 36,
+          "title": "Formulary Management and Step Therapy Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 37,
+          "title": "Graph-Based Fraud Detection Algorithm Workflow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 38,
+          "title": "Graph RBAC Workflow Diagram",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 39,
+          "title": "Graph Traversal Visualization MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 40,
+          "title": "Learning Graph Viewer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 41,
+          "title": "GSQL Accumulator Pattern MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 42,
+          "title": "Healthcare Analytics Platform Architecture Diagram",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 43,
+          "title": "Healthcare Data Integration Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 44,
+          "title": "Healthcare Data Lineage Graph Visualization",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 45,
+          "title": "Healthcare Data Model Implementation Workflow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 46,
+          "title": "Healthcare Data Protection Layers Diagram",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 47,
+          "title": "Healthcare Delivery Network Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 48,
+          "title": "Healthcare Ecosystem Stakeholder Diagram",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 49,
+          "title": "Healthcare Fraud Scheme Network Visualization",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 50,
+          "title": "Healthcare Graph Database Job Roles and Skills Map",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 51,
+          "title": "Healthcare Graph Fundamentals",
+          "status": "drafted",
+          "tokens": 5000
+        },
+        {
+          "n": 52,
+          "title": "Healthcare Graph Pattern Examples",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 53,
+          "title": "Healthcare Labeled Property Graph Visualization",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 54,
+          "title": "Healthcare Payment Model Comparison MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 55,
+          "title": "Healthcare RBAC Graph Data Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 56,
+          "title": "Healthcare Revenue Cycle Workflow with Graph Analytics",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 57,
+          "title": "HIPAA Compliance Workflow for Graph Database Operations",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 58,
+          "title": "Insurance Policy and Benefit Plan Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 59,
+          "title": "Link Prediction Scoring MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 60,
+          "title": "Medical Code System Classifier MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 61,
+          "title": "Medical Coding Systems Interactive Infographic",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 62,
+          "title": "Medical Knowledge Graph Example",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 63,
+          "title": "Medication Effectiveness Comparison MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 64,
+          "title": "Medication Safety Network Interactive Infographic",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 65,
+          "title": "Migration Strategy Comparison Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 66,
+          "title": "Multidisciplinary Care Team Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 67,
+          "title": "Network Community Detection Interactive Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 68,
+          "title": "Node Embedding Explorer MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 69,
+          "title": "Patient Clinical Context Subgraph Visualization",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 70,
+          "title": "Patient Identifier Graph Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 71,
+          "title": "Patient Journey Map Interactive Visualization",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 72,
+          "title": "Patient Outcome Metrics Dashboard Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 73,
+          "title": "Patient Treatment Timeline Workflow Diagram",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 74,
+          "title": "Payer Mix and Contract Negotiation MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 75,
+          "title": "Per-Person Healthcare Cost Comparison Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 76,
+          "title": "Predictive Model Performance: Traditional vs Graph-Based",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 77,
+          "title": "Presentation Effectiveness Rubric",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 78,
+          "title": "Preventive Care Gap Closure MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 79,
+          "title": "Prior Authorization Decision Tree Interactive MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 80,
+          "title": "Project Complexity Comparison Table",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 81,
+          "title": "Provider Capacity Utilization Dashboard Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 82,
+          "title": "Provider Compensation Comparison Chart",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 83,
+          "title": "Provider Network Centrality Analysis Dashboard",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 84,
+          "title": "Provider Network Fraud Detection Dashboard",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 85,
+          "title": "Provider Performance Comparison MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 86,
+          "title": "Provider Referral Network Analysis MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 87,
+          "title": "Query Optimization Workflow Diagram",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 88,
+          "title": "Query Performance Comparison: RDBMS vs Graph Database",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 89,
+          "title": "Query Performance: RDBMS vs Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 90,
+          "title": "Query Performance Impact of Indexing",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 91,
+          "title": "RAG Architecture for Clinical Decision Support",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 92,
+          "title": "Risk Adjustment and Capitation Calculator MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 93,
+          "title": "Risk Stratification Pyramid with Intervention Strategies",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 94,
+          "title": "Service Line Profitability Analysis Interactive MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 95,
+          "title": "Symptom-Disease Diagnostic Network",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 96,
+          "title": "Value-Based Payment Shared-Savings MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 97,
+          "title": "Vector Embedding Similarity Visualization MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 98,
+          "title": "Vital Signs Trend Visualization MicroSim",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 99,
+          "title": "Yin-Yang: LLM vs Knowledge Graph",
+          "status": "published",
+          "tokens": 5000
+        }
+      ]
+    },
+    "glossary": {
+      "status": "published",
+      "tokensTarget": 15000,
+      "tokensDone": 8710
+    },
+    "faq": {
+      "status": "published",
+      "tokensTarget": 15347,
+      "tokensDone": 15347
+    },
+    "quiz": {
+      "status": "published",
+      "tokensTarget": 30000,
+      "tokensDone": 25161
+    },
+    "reference": {
+      "status": "not-started",
+      "tokensTarget": 20000,
+      "tokensDone": 0
+    },
+    "teachers-guide": {
+      "status": "not-started",
+      "tokensTarget": 15000,
+      "tokensDone": 0
+    },
+    "book-metrics": {
+      "status": "drafted",
+      "tokensTarget": 2000,
+      "tokensDone": 900
+    },
+    "publish": {
+      "status": "drafted",
+      "tokensTarget": 10000,
+      "tokensDone": 4500
+    },
+    "stories": {
+      "status": "not-started",
+      "tokensTarget": 30000,
+      "tokensDone": 0
+    }
+  }
+}
