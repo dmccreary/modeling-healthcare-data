@@ -8,7 +8,7 @@
 │                       ▘▘ ▝▝                       │ Fixed queued messages being incorrectly executed as bash commands              │
 │                                                   │ Fixed input being lost when typing while a queued message is processed         │
 │              Sonnet 4.5 · Claude Pro              │ /release-notes for more                                                        │
-│   /Users/danmccreary/Documents/ws/claude-skills   │                                                                                │
+│   /Users/danmccreary/Documents/ws/ibook-skills   │                                                                                │
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 > run the glossary-generator skill 
@@ -40,8 +40,8 @@
 ⏺ Write(docs/glossary.md)
   ⎿  Error writing file
 
-⏺ Bash(ls -la /Users/danmccreary/Documents/ws/claude-skills/docs/glossary.md 2>&1)
-  ⎿  -rw-r--r--  1 danmccreary  staff  16608 Nov  8 19:40 /Users/danmccreary/Documents/ws/claude-skills/docs/glossary.md
+⏺ Bash(ls -la /Users/danmccreary/Documents/ws/ibook-skills/docs/glossary.md 2>&1)
+  ⎿  -rw-r--r--  1 danmccreary  staff  16608 Nov  8 19:40 /Users/danmccreary/Documents/ws/ibook-skills/docs/glossary.md
 
 ⏺ Read(docs/glossary.md)
   ⎿  Read 238 lines
@@ -175,7 +175,7 @@
         100 +  
         101 +  A Unix shell and command language used for executing system commands, running scripts, and automating tasks.
         102 +  
-        103 +  **Example:** Running `./install-claude-skills.sh` in Bash creates symlinks to make skills available globally.
+        103 +  **Example:** Running `./install-ibook-skills.sh` in Bash creates symlinks to make skills available globally.
         104 +  
         105 +  #### Bloom's 2001 Revision
         106 +  
@@ -642,7 +642,7 @@
             - machine, enabling you to work with the code and content offline.
         449 +  #### FAQ Generation Process
         450    
-        451 -  **Example:** Running `git clone https://github.com/dmccreary/claude-skills.git` downloads the entire Claude 
+        451 -  **Example:** Running `git clone https://github.com/dmccreary/ibook-skills.git` downloads the entire Claude 
             - Skills repository to your computer.
         451 +  The systematic workflow for creating comprehensive question-answer pairs from course content and anticipated 
             + learner needs.
@@ -659,9 +659,9 @@
             - documentation projects. Intelligent textbooks are often hosted on GitHub and deployed via GitHub Pages.
         457 +  Security settings that control which users and processes can read, write, or execute specific files.
         458    
-        459 -  **Example:** The Claude Skills project is hosted at github.com/dmccreary/claude-skills, allowing contributors to
+        459 -  **Example:** The Claude Skills project is hosted at github.com/dmccreary/ibook-skills, allowing contributors to
             -  fork, modify, and submit improvements.
-        459 +  **Example:** Script execution requires permission: `chmod +x install-claude-skills.sh` makes the file 
+        459 +  **Example:** Script execution requires permission: `chmod +x install-ibook-skills.sh` makes the file 
             + executable.
         460    
         461 +  #### File Creation and Editing
@@ -823,7 +823,7 @@
         598 +  
         599 +  The process of making a skill available for use in Claude Code by placing it in the `.claude/skills/` directory.
         600 +  
-        601 +  **Example:** Running `./scripts/install-claude-skills.sh` creates symlinks from project skills to global skills 
+        601 +  **Example:** Running `./scripts/install-ibook-skills.sh` creates symlinks from project skills to global skills 
             + directory.
         602 +  
         603 +  #### Installing Claude Commands
@@ -1381,7 +1381,7 @@
             - reduces duplication and ensures all projects use the same skill versions when skills are installed globally.
         999 +  Supporting files in skill directories providing examples, specifications, or guidance for skill execution.
        1000    
-       1001 -  **Example:** Running `ln -s ~/claude-skills/skills/glossary-generator ~/.claude/skills/glossary-generator` 
+       1001 -  **Example:** Running `ln -s ~/ibook-skills/skills/glossary-generator ~/.claude/skills/glossary-generator` 
             - creates a symlink allowing all projects to access the glossary-generator skill.
        1001 +  **Example:** The learning-graph-generator includes sample CSVs and JSON schemas as reference documentation.
        1002    
@@ -1446,7 +1446,7 @@
        1042 +  
        1043 +  Text files containing sequences of command-line instructions that can be executed as automated programs.
        1044 +  
-       1045 +  **Example:** `install-claude-skills.sh` is a shell script that creates multiple symlinks with one command.
+       1045 +  **Example:** `install-ibook-skills.sh` is a shell script that creates multiple symlinks with one command.
        1046 +  
        1047 +  #### Skill Definition File Structure
        1048 +  
@@ -1524,7 +1524,7 @@
        1109 +  Making symbolic links that reference files in other locations, allowing access from multiple paths without 
             + duplication.
        1110 +  
-       1111 +  **Example:** `ln -s ~/claude-skills/skills ~/.claude/skills` creates a symlink for global skill access.
+       1111 +  **Example:** `ln -s ~/ibook-skills/skills ~/.claude/skills` creates a symlink for global skill access.
        1112 +  
        1113 +  ## T
        1114 +  
@@ -1678,15 +1678,15 @@
 
 ⏺ Perfect! I've created a comprehensive glossary with all 200 concepts. Now let me generate the quality report.
 
-⏺ Bash(mkdir -p /Users/danmccreary/Documents/ws/claude-skills/docs/learning-graph)
+⏺ Bash(mkdir -p /Users/danmccreary/Documents/ws/ibook-skills/docs/learning-graph)
   ⎿  (No content)
 
 ⏺ Write(docs/learning-graph/glossary-quality-report.md)
   ⎿  Error writing file
 
-⏺ Bash(ls -la /Users/danmccreary/Documents/ws/claude-skills/docs/learning-graph/glossary-quality-report.md 2>&1 || echo "File does not
+⏺ Bash(ls -la /Users/danmccreary/Documents/ws/ibook-skills/docs/learning-graph/glossary-quality-report.md 2>&1 || echo "File does not
        exist")
-  ⎿ -rw-r--r--  1 danmccreary  staff  8661 Nov  8 19:40 /Users/danmccreary/Documents/ws/claude-skills/docs/learning-graph/glossar
+  ⎿ -rw-r--r--  1 danmccreary  staff  8661 Nov  8 19:40 /Users/danmccreary/Documents/ws/ibook-skills/docs/learning-graph/glossar
     y-quality-report.md
 
 
@@ -2227,11 +2227,11 @@
 >  
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   ⏵⏵ bypass permissions on (shift+tab to cycle)
-(mkdocs) ws/claude-skills $ claude --dangerously-skip-permissions
+(mkdocs) ws/ibook-skills $ claude --dangerously-skip-permissions
 
 ▗ ▗   ▖ ▖  Claude Code v2.0.36
            Sonnet 4.5 · Claude Pro
-  ▘▘ ▝▝    /Users/danmccreary/Documents/ws/claude-skills
+  ▘▘ ▝▝    /Users/danmccreary/Documents/ws/ibook-skills
 
 > run the faq-generator skill 
 
@@ -2247,10 +2247,10 @@
 ⏺ Read(docs/course-description.md)
   ⎿  Read 121 lines
 
-⏺ Bash(find /Users/danmccreary/Documents/ws/claude-skills/docs -name "*.md" -type f | wc -l)
+⏺ Bash(find /Users/danmccreary/Documents/ws/ibook-skills/docs -name "*.md" -type f | wc -l)
   ⎿  59
 
-⏺ Bash(find /Users/danmccreary/Documents/ws/claude-skills/docs -name "*.md" -type f -exec wc -w {} + | tail -1)
+⏺ Bash(find /Users/danmccreary/Documents/ws/ibook-skills/docs -name "*.md" -type f -exec wc -w {} + | tail -1)
   ⎿    172534 total
 
 ⏺ Search(pattern: "**/learning-graph*.csv", path: "docs")
@@ -2259,7 +2259,7 @@
 ⏺ Search(pattern: "**/glossary.md", path: "docs")
   ⎿  Found 1 file (ctrl+o to expand)
 
-⏺ Bash(test -f /Users/danmccreary/Documents/ws/claude-skills/docs/faq.md && echo "exists" || echo "not found")
+⏺ Bash(test -f /Users/danmccreary/Documents/ws/ibook-skills/docs/faq.md && echo "exists" || echo "not found")
   ⎿  not found
 
 ⏺ Read(docs/learning-graph/learning-graph.csv)
@@ -2268,7 +2268,7 @@
 ⏺ Read(docs/glossary.md)
   ⎿  Read 100 lines
 
-⏺ Bash(grep -c "^###" /Users/danmccreary/Documents/ws/claude-skills/docs/glossary.md)
+⏺ Bash(grep -c "^###" /Users/danmccreary/Documents/ws/ibook-skills/docs/glossary.md)
   ⎿  200
 
 ⏺ Excellent! I found all the necessary content. Let me calculate the completeness score:
@@ -2367,22 +2367,22 @@
      - **Concepts Not Covered:** 72 (36%)
      … +321 lines (ctrl+o to expand)
 
-⏺ Bash(grep -c "^### " /Users/danmccreary/Documents/ws/claude-skills/docs/faq.md)
+⏺ Bash(grep -c "^### " /Users/danmccreary/Documents/ws/ibook-skills/docs/faq.md)
   ⎿  66
 
-⏺ Bash(grep "^### " /Users/danmccreary/Documents/ws/claude-skills/docs/faq.md | sort | uniq -d)
+⏺ Bash(grep "^### " /Users/danmccreary/Documents/ws/ibook-skills/docs/faq.md | sort | uniq -d)
   ⎿  (No content)
 
-⏺ Bash(grep -E "^\[" /Users/danmccreary/Documents/ws/claude-skills/docs/faq.md | grep -v "^##" | wc -l)
+⏺ Bash(grep -E "^\[" /Users/danmccreary/Documents/ws/ibook-skills/docs/faq.md | grep -v "^##" | wc -l)
   ⎿  0
 
 ⏺ Read(docs/faq.md)
   ⎿  Read 50 lines
 
-⏺ Bash(grep -i "faq" /Users/danmccreary/Documents/ws/claude-skills/mkdocs.yml)
+⏺ Bash(grep -i "faq" /Users/danmccreary/Documents/ws/ibook-skills/mkdocs.yml)
   ⎿      - FAQ Generator: skill-descriptions/faq-generator.md
 
-⏺ Bash(python3 -m json.tool /Users/danmccreary/Documents/ws/claude-skills/docs/learning-graph/faq-chatbot-training.json > /dev/null
+⏺ Bash(python3 -m json.tool /Users/danmccreary/Documents/ws/ibook-skills/docs/learning-graph/faq-chatbot-training.json > /dev/null
       2>&1 && echo "Valid JSON" || echo "…)
   ⎿  Valid JSON
 

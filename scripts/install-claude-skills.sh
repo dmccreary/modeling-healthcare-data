@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# install-claude-skills.sh
+# install-ibook-skills.sh
 # Creates symbolic links in .claude/skills for each skill in the project's skills directory
 
 set -e  # Exit on error
