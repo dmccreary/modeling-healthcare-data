@@ -54,9 +54,21 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
     
     
@@ -322,27 +334,119 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -480,6 +584,8 @@
       
         
           
+        
+      
         
       
         
@@ -683,29 +789,194 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary-statistics" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary Statistics
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#distribution-by-category" class="md-nav__link">
+  <a href="#distribution-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Distribution by Category
+      Distribution Summary
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#balance-assessment" class="md-nav__link">
+  <a href="#visual-distribution" class="md-nav__link">
     <span class="md-ellipsis">
-      Balance Assessment
+      Visual Distribution
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#balance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Balance Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Balance Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-over-represented-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ No Over-Represented Categories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#category-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Category Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clinical-decision-support-fhir-and-cql-cds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clinical Decision Support, FHIR and CQL (CDS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patient-data-and-clinical-concepts-pat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patient Data and Clinical Concepts (PAT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-and-machine-learning-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI and Machine Learning (AI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-analytics-and-algorithms-anal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Analytics and Algorithms (ANAL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-operations-prov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Operations (PROV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payer-and-insurance-payer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payer and Insurance (PAYER)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-technologies-gtech" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Technologies (GTECH)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthcare-domain-fundamentals-hcare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Healthcare Domain Fundamentals (HCARE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foundation-concepts-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Foundation Concepts (FOUND)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financial-and-business-operations-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financial and Business Operations (FIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraud-waste-and-abuse-fraud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fraud, Waste, and Abuse (FRAUD)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-and-privacy-sec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Privacy (SEC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-governance-gov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Governance (GOV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capstone-and-career-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capstone and Career (CAP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -715,6 +986,21 @@
       Recommendations
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#educational-use-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Educational Use Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -865,6 +1151,27 @@
   
   <span class="md-ellipsis">
     Additional Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mascot-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mascot Test Page
   </span>
   
 
@@ -1600,29 +1907,194 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary-statistics" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary Statistics
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#distribution-by-category" class="md-nav__link">
+  <a href="#distribution-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Distribution by Category
+      Distribution Summary
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#balance-assessment" class="md-nav__link">
+  <a href="#visual-distribution" class="md-nav__link">
     <span class="md-ellipsis">
-      Balance Assessment
+      Visual Distribution
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#balance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Balance Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Balance Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-over-represented-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ No Over-Represented Categories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#category-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Category Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clinical-decision-support-fhir-and-cql-cds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clinical Decision Support, FHIR and CQL (CDS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patient-data-and-clinical-concepts-pat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patient Data and Clinical Concepts (PAT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-and-machine-learning-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI and Machine Learning (AI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-analytics-and-algorithms-anal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Analytics and Algorithms (ANAL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-operations-prov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Operations (PROV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payer-and-insurance-payer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payer and Insurance (PAYER)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-technologies-gtech" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Technologies (GTECH)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthcare-domain-fundamentals-hcare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Healthcare Domain Fundamentals (HCARE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foundation-concepts-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Foundation Concepts (FOUND)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financial-and-business-operations-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financial and Business Operations (FIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraud-waste-and-abuse-fraud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fraud, Waste, and Abuse (FRAUD)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-and-privacy-sec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Privacy (SEC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-governance-gov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Governance (GOV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capstone-and-career-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capstone and Career (CAP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1632,6 +2104,21 @@
       Recommendations
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#educational-use-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Educational Use Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1650,7 +2137,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/learning-graph/taxonomy-distribution.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/learning-graph/taxonomy-distribution.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1659,145 +2146,1306 @@
 
 
 <h1 id="taxonomy-distribution-report">Taxonomy Distribution Report</h1>
-<p>This report shows how the 200 concepts are distributed across taxonomy categories.</p>
-<h2 id="summary-statistics">Summary Statistics</h2>
+<h2 id="overview">Overview</h2>
 <ul>
-<li>Total Concepts: 200</li>
-<li>Number of Categories: 13</li>
-<li>Average Concepts per Category: 15.4</li>
-<li>Largest Category: Patient Data (25 concepts, 12.5%)</li>
-<li>Smallest Category: Capstone &amp; Career (5 concepts, 2.5%)</li>
+<li><strong>Total Concepts</strong>: 513</li>
+<li><strong>Number of Taxonomies</strong>: 14</li>
+<li><strong>Average Concepts per Taxonomy</strong>: 36.6</li>
 </ul>
-<h2 id="distribution-by-category">Distribution by Category</h2>
+<h2 id="distribution-summary">Distribution Summary</h2>
 <table>
 <thead>
 <tr>
-<th>Rank</th>
-<th>Taxonomy ID</th>
-<th>Category Name</th>
+<th>Category</th>
+<th>TaxonomyID</th>
 <th>Count</th>
 <th>Percentage</th>
-<th>Visualization</th>
+<th>Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
+<td>Clinical Decision Support, FHIR and CQL</td>
+<td>CDS</td>
+<td>59</td>
+<td>11.5%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Patient Data and Clinical Concepts</td>
 <td>PAT</td>
-<td>Patient Data</td>
-<td>25</td>
-<td>12.5%</td>
-<td>██████</td>
+<td>50</td>
+<td>9.7%</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>2</td>
-<td>PROV</td>
-<td>Provider Operations</td>
-<td>25</td>
-<td>12.5%</td>
-<td>██████</td>
-</tr>
-<tr>
-<td>3</td>
-<td>HCARE</td>
-<td>Healthcare Domain</td>
-<td>20</td>
-<td>10.0%</td>
-<td>█████</td>
-</tr>
-<tr>
-<td>4</td>
-<td>PAYER</td>
-<td>Payer &amp; Insurance</td>
-<td>20</td>
-<td>10.0%</td>
-<td>█████</td>
-</tr>
-<tr>
-<td>5</td>
-<td>FOUND</td>
-<td>Foundation Concepts</td>
-<td>15</td>
-<td>7.5%</td>
-<td>███</td>
-</tr>
-<tr>
-<td>6</td>
-<td>FIN</td>
-<td>Financial &amp; Business</td>
-<td>15</td>
-<td>7.5%</td>
-<td>███</td>
-</tr>
-<tr>
-<td>7</td>
-<td>FRAUD</td>
-<td>Fraud &amp; Compliance</td>
-<td>15</td>
-<td>7.5%</td>
-<td>███</td>
-</tr>
-<tr>
-<td>8</td>
-<td>ANAL</td>
-<td>Graph Analytics</td>
-<td>15</td>
-<td>7.5%</td>
-<td>███</td>
-</tr>
-<tr>
-<td>9</td>
+<td>AI and Machine Learning</td>
 <td>AI</td>
-<td>AI &amp; Machine Learning</td>
-<td>15</td>
-<td>7.5%</td>
-<td>███</td>
+<td>44</td>
+<td>8.6%</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>10</td>
-<td>GTECH</td>
+<td>Graph Analytics and Algorithms</td>
+<td>ANAL</td>
+<td>40</td>
+<td>7.8%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Provider Operations</td>
+<td>PROV</td>
+<td>40</td>
+<td>7.8%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Payer and Insurance</td>
+<td>PAYER</td>
+<td>40</td>
+<td>7.8%</td>
+<td>✅</td>
+</tr>
+<tr>
 <td>Graph Technologies</td>
-<td>10</td>
-<td>5.0%</td>
-<td>██</td>
+<td>GTECH</td>
+<td>35</td>
+<td>6.8%</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>11</td>
+<td>Healthcare Domain Fundamentals</td>
+<td>HCARE</td>
+<td>35</td>
+<td>6.8%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Foundation Concepts</td>
+<td>FOUND</td>
+<td>30</td>
+<td>5.8%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Financial and Business Operations</td>
+<td>FIN</td>
+<td>30</td>
+<td>5.8%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fraud, Waste, and Abuse</td>
+<td>FRAUD</td>
+<td>30</td>
+<td>5.8%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Security and Privacy</td>
 <td>SEC</td>
-<td>Security &amp; Privacy</td>
-<td>10</td>
-<td>5.0%</td>
-<td>██</td>
+<td>30</td>
+<td>5.8%</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>12</td>
-<td>GOV</td>
 <td>Data Governance</td>
-<td>10</td>
-<td>5.0%</td>
-<td>██</td>
+<td>GOV</td>
+<td>30</td>
+<td>5.8%</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>13</td>
+<td>Capstone and Career</td>
 <td>CAP</td>
-<td>Capstone &amp; Career</td>
-<td>5</td>
-<td>2.5%</td>
-<td>█</td>
+<td>20</td>
+<td>3.9%</td>
+<td>✅</td>
 </tr>
 </tbody>
 </table>
-<h2 id="balance-assessment">Balance Assessment</h2>
-<p>⚠ <strong>Under-represented categories</strong> (&lt;3% of total):</p>
+<h2 id="visual-distribution">Visual Distribution</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>Clinical Decision Support █████  59 ( 11.5%)
+Patient Data and Clinical ████  50 (  9.7%)
+AI and Machine Learning   ████  44 (  8.6%)
+Graph Analytics and Algor ███  40 (  7.8%)
+Provider Operations       ███  40 (  7.8%)
+Payer and Insurance       ███  40 (  7.8%)
+Graph Technologies        ███  35 (  6.8%)
+Healthcare Domain Fundame ███  35 (  6.8%)
+Foundation Concepts       ██  30 (  5.8%)
+Financial and Business Op ██  30 (  5.8%)
+Fraud, Waste, and Abuse   ██  30 (  5.8%)
+Security and Privacy      ██  30 (  5.8%)
+Data Governance           ██  30 (  5.8%)
+Capstone and Career       █  20 (  3.9%)
+</code></pre></div></td></tr></table></div>
+<h2 id="balance-analysis">Balance Analysis</h2>
+<h3 id="no-over-represented-categories">✅ No Over-Represented Categories</h3>
+<p>All categories are under the 30% threshold. Good balance!</p>
+<h2 id="category-details">Category Details</h2>
+<h3 id="clinical-decision-support-fhir-and-cql-cds">Clinical Decision Support, FHIR and CQL (CDS)</h3>
+<p><strong>Count</strong>: 59 concepts (11.5%)</p>
+<p><strong>Concepts</strong>:</p>
 <ul>
-<li>Capstone &amp; Career: 5 concepts (2.5%)</li>
+<li>
+<ol>
+<li>FHIR Standard</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>FHIR Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>FHIR Server</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>FHIR RESTful API</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Patient Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Condition Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Observation Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MedicationRequest Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Encounter Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>CarePlan Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>PlanDefinition Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ActivityDefinition Resource</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Knowledge Representation Level</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Narrative Level</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Semi-Structured Level</li>
+</ol>
+</li>
+<li><em>...and 44 more</em></li>
+</ul>
+<h3 id="patient-data-and-clinical-concepts-pat">Patient Data and Clinical Concepts (PAT)</h3>
+<p><strong>Count</strong>: 50 concepts (9.7%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Patient Record</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Patient ID</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Patient History</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Disease</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Medical Condition</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Symptom</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Diagnosis</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Differential Diagnosis</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Treatment Plan</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Prescription</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Medication</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Dosage</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Drug Interaction</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Adverse Event</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Allergy</li>
+</ol>
+</li>
+<li><em>...and 35 more</em></li>
+</ul>
+<h3 id="ai-and-machine-learning-ai">AI and Machine Learning (AI)</h3>
+<p><strong>Count</strong>: 44 concepts (8.6%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Artificial Intelligence</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Machine Learning</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Supervised Learning</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Unsupervised Learning</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Large Language Model</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Vector Store</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Vector Embedding</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Semantic Search</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Token Efficiency</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Retrieval-Augmented Generation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Knowledge Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Context Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Enterprise Knowledge Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph And LLM Integration</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Enterprise Nervous System</li>
+</ol>
+</li>
+<li><em>...and 29 more</em></li>
+</ul>
+<h3 id="graph-analytics-and-algorithms-anal">Graph Analytics and Algorithms (ANAL)</h3>
+<p><strong>Count</strong>: 40 concepts (7.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Graph Algorithm</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Shortest Path Algorithm</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Centrality Measure</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>PageRank Algorithm</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Betweenness Centrality</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Degree Centrality</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Closeness Centrality</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Eigenvector Centrality</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Clustering Coefficient</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Connected Components</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Strongly Connected Component</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Cycle Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Pattern Recognition</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Similarity Measure</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Jaccard Similarity</li>
+</ol>
+</li>
+<li><em>...and 25 more</em></li>
+</ul>
+<h3 id="provider-operations-prov">Provider Operations (PROV)</h3>
+<p><strong>Count</strong>: 40 concepts (7.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Primary Care Provider</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Specialist Provider</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Hospital</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Clinic</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Outpatient Facility</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Inpatient Care</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Emergency Department</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Provider Network</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Provider Schedule</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Appointment</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Referral</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Referral Inference</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Provider Credential</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Medical License</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Board Certification</li>
+</ol>
+</li>
+<li><em>...and 25 more</em></li>
+</ul>
+<h3 id="payer-and-insurance-payer">Payer and Insurance (PAYER)</h3>
+<p><strong>Count</strong>: 40 concepts (7.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Insurance Claim</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Claim Processing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Claim Adjudication</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Claim Denial</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Claim Dispute</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Insurance Policy</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Coverage</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Benefit Plan</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Copayment</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Deductible</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Out-Of-Pocket Maximum</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Premium</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Formulary</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Formulary Rule</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Brand Drug</li>
+</ol>
+</li>
+<li><em>...and 25 more</em></li>
+</ul>
+<h3 id="graph-technologies-gtech">Graph Technologies (GTECH)</h3>
+<p><strong>Count</strong>: 35 concepts (6.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Cypher Query Language</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>GQL Standard</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>GSQL</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Pattern Matching</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Query Optimization</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Index</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Query Performance</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Path Query</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Subgraph Query</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Aggregate Query</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Database Engine</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Native Graph Storage</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Index-Free Adjacency</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Data Loading</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Bulk Import</li>
+</ol>
+</li>
+<li><em>...and 20 more</em></li>
+</ul>
+<h3 id="healthcare-domain-fundamentals-hcare">Healthcare Domain Fundamentals (HCARE)</h3>
+<p><strong>Count</strong>: 35 concepts (6.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Healthcare System</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Healthcare Cost</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Per-Person Healthcare Cost</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Fee-For-Service Model</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Value-Based Care</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Healthcare Payer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Healthcare Provider</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Healthcare Patient</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Electronic Health Record</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Medical Coding System</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ICD Code</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ICD-10-CM</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>CPT Code</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HCPCS Code</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Drug Code</li>
+</ol>
+</li>
+<li><em>...and 20 more</em></li>
+</ul>
+<h3 id="foundation-concepts-found">Foundation Concepts (FOUND)</h3>
+<p><strong>Count</strong>: 30 concepts (5.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Graph Theory Basics</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Node</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Edge</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Database</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Labeled Property Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Node Property</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Edge Property</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Directed Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Undirected Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Weighted Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Directed Acyclic Graph</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Traversal</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Breadth-First Traversal</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Depth-First Traversal</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Path</li>
+</ol>
+</li>
+<li><em>...and 15 more</em></li>
+</ul>
+<h3 id="financial-and-business-operations-fin">Financial and Business Operations (FIN)</h3>
+<p><strong>Count</strong>: 30 concepts (5.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Healthcare Cost Analysis</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Revenue Cycle</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Billing Code</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Charge Master</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Cost Of Care</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Revenue</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Profitability</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Operating Margin</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Payer Mix</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Contract Negotiation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Provider Compensation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Capitation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Risk Adjustment</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Quality Metric</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Value-Based Payment</li>
+</ol>
+</li>
+<li><em>...and 15 more</em></li>
+</ul>
+<h3 id="fraud-waste-and-abuse-fraud">Fraud, Waste, and Abuse (FRAUD)</h3>
+<p><strong>Count</strong>: 30 concepts (5.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Healthcare Fraud</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Fraud Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Waste In Healthcare</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Abuse Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Upcoding</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Unbundling</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Phantom Billing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Duplicate Claim</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Kickback Scheme</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Referral Network Analysis</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Community Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Anomaly Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Behavioral Health Fraud</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DME Fraud</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Durable Medical Equipment</li>
+</ol>
+</li>
+<li><em>...and 15 more</em></li>
+</ul>
+<h3 id="security-and-privacy-sec">Security and Privacy (SEC)</h3>
+<p><strong>Count</strong>: 30 concepts (5.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>HIPAA</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Protected Health Information</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Privacy</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Security</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Access Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Role-Based Access Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Attribute-Based Access Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Authentication</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Authorization</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Multi-Factor Authentication</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Audit Trail</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>De-Identification</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Anonymization</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Encryption</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Encryption At Rest</li>
+</ol>
+</li>
+<li><em>...and 15 more</em></li>
+</ul>
+<h3 id="data-governance-gov">Data Governance (GOV)</h3>
+<p><strong>Count</strong>: 30 concepts (5.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Metadata Management</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Lineage</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Provenance</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Quality</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Traceability</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Governance Framework</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Master Data Management</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Stewardship</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Explainability</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Transparency</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Catalog</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Dictionary</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Reference Data Management</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Golden Record</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Entity Resolution</li>
+</ol>
+</li>
+<li><em>...and 15 more</em></li>
+</ul>
+<h3 id="capstone-and-career-cap">Capstone and Career (CAP)</h3>
+<p><strong>Count</strong>: 20 concepts (3.9%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Capstone Project</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Project Presentation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graph Career Path</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Healthcare Analytics Platform</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Real-World Implementation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Project Scoping</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Stakeholder Requirements</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Prototype Development</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Proof Of Concept</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Technical Demonstration</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Project Risk Assessment</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Peer Review Process</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Portfolio Development</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Job Market For Graph Modeling</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Industry Certification</li>
+</ol>
+</li>
+<li><em>...and 5 more</em></li>
 </ul>
 <h2 id="recommendations">Recommendations</h2>
 <ul>
-<li>Consider merging under-represented categories with related topics or expanding content.</li>
+<li>✅ <strong>Excellent balance</strong>: Categories are evenly distributed (spread: 7.6%)</li>
+<li>✅ <strong>MISC category minimal</strong>: Good categorization specificity</li>
+</ul>
+<h3 id="educational-use-recommendations">Educational Use Recommendations</h3>
+<ul>
+<li>Use taxonomy categories for color-coding in graph visualizations</li>
+<li>Design curriculum modules based on taxonomy groupings</li>
+<li>Create filtered views for focused learning paths</li>
+<li>Use categories for assessment organization</li>
+<li>Enable navigation by topic area in interactive tools</li>
 </ul>
 <hr />
-<p><em>Report generated by taxonomy-distribution.py</em></p>
+<p><em>Report generated by learning-graph-reports/taxonomy_distribution.py</em></p>
 
 
 
@@ -1809,6 +3457,8 @@
   
 
 
+
+  
 
 
 

@@ -1,0 +1,23 @@
+{
+  "title": "Care Setting Acuity Flow Diagram",
+  "description": "Given a patient's triage acuity level and the resulting admit decision, the learner can differentiate Emergency Department care from Inpatient Care by tracing the decision path and examining how boarding time reflects capacity strain.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "care-setting-acuity-flow-diagram",
+  "library": "vis-network",
+  "bloomLevel": "Analyze<br/>",
+  "bloomVerb": "examine, differentiate<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 12,
+  "chapter_title": "Provider Organizations, Networks, and Scheduling",
+  "chapter_dir": "12-provider-organizations-networks-scheduling",
+  "chapter_rel_dir": "chapters/12-provider-organizations-networks-scheduling"
+}

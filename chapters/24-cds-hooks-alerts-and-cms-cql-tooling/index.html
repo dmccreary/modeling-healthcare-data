@@ -1,0 +1,2560 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How compiled CQL logic reaches clinicians in real time through CDS Hooks, and how the CMS-sponsored tooling ecosystem authors, tests, and certifies clinical quality measures.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/24-cds-hooks-alerts-and-cms-cql-tooling/">
+      
+      
+        <link rel="prev" href="../23-clinical-guideline-authoring-and-cql/">
+      
+      
+        <link rel="next" href="../25-healthcare-data-security-fundamentals/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>CDS Hooks, Care Alerts, and CMS CQL Tooling - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="CDS Hooks, Care Alerts, and CMS CQL Tooling - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="How compiled CQL logic reaches clinicians in real time through CDS Hooks, and how the CMS-sponsored tooling ecosystem authors, tests, and certifies clinical quality measures." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/24-cds-hooks-alerts-and-cms-cql-tooling/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/24-cds-hooks-alerts-and-cms-cql-tooling/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="CDS Hooks, Care Alerts, and CMS CQL Tooling - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="How compiled CQL logic reaches clinicians in real time through CDS Hooks, and how the CMS-sponsored tooling ecosystem authors, tests, and certifies clinical quality measures." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/24-cds-hooks-alerts-and-cms-cql-tooling/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cds-hooks-care-alerts-and-cms-cql-tooling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CDS Hooks, Care Alerts, and CMS CQL Tooling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cds-hooks-delivering-logic-at-the-point-of-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      CDS Hooks: Delivering Logic at the Point of Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CDS Hooks: Delivering Logic at the Point of Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-decision-support-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Decision Support Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cds-hooks-request-response-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CDS Hooks Request-Response Cycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-cql-to-certified-measures-the-cms-tooling-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      From CQL to Certified Measures: The CMS Tooling Ecosystem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From CQL to Certified Measures: The CMS Tooling Ecosystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cms-cql-measure-development-and-certification-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CMS CQL Measure Development and Certification Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cds-hooks-delivering-logic-at-the-point-of-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      CDS Hooks: Delivering Logic at the Point of Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CDS Hooks: Delivering Logic at the Point of Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-decision-support-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Decision Support Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cds-hooks-request-response-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CDS Hooks Request-Response Cycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-cql-to-certified-measures-the-cms-tooling-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      From CQL to Certified Measures: The CMS Tooling Ecosystem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From CQL to Certified Measures: The CMS Tooling Ecosystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cms-cql-measure-development-and-certification-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CMS CQL Measure Development and Certification Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/24-cds-hooks-alerts-and-cms-cql-tooling/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="cds-hooks-care-alerts-and-cms-cql-tooling">CDS Hooks, Care Alerts, and CMS CQL Tooling</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter closes the clinical decision support unit with the runtime and tooling side of CQL: CDS Hooks, rule engines, alerts, order sets, and drug-drug interaction checks. It surveys the CMS-sponsored tools used to author, test, and certify CQL-based measures -- MADiE, CQL Runner, Bonnie, and Cypress -- along with FHIR implementation guides and electronic Clinical Quality Measures (eCQMs). Students finish able to trace a clinical guideline from narrative text through CQL/ELM to a certified, executable measure.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 19 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CDS Hooks</td>
+<td>19</td>
+</tr>
+<tr>
+<td>CDS Rule Engine</td>
+<td>2</td>
+</tr>
+<tr>
+<td>CDS Alert</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Order Set</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Drug-Drug Interaction Check</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Care Gap Alert</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Clinical Reminder</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Guideline-Based Care Pathway</td>
+<td>1</td>
+</tr>
+<tr>
+<td>CQL-to-ELM Compilation</td>
+<td>2</td>
+</tr>
+<tr>
+<td>MADiE Authoring Tool</td>
+<td>1</td>
+</tr>
+<tr>
+<td>CQL Runner Tool</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Bonnie Testing Tool</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Cypress Certification Tool</td>
+<td>1</td>
+</tr>
+<tr>
+<td>FHIR Implementation Guide</td>
+<td>2</td>
+</tr>
+<tr>
+<td>CQF Recommendations</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Quality Reporting Architecture</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Electronic CQM</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Measure Authoring Tool</td>
+<td>1</td>
+</tr>
+<tr>
+<td>FHIR Questionnaire Resource</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../23-clinical-guideline-authoring-and-cql/">Chapter 23: Clinical Guideline Authoring and Clinical Quality Language</a></li>
+</ul>
+<hr />
+<p>Chapter 23 ended with a compiled Clinical Quality Measure sitting inside a Clinical Reasoning Module, ready to run. This chapter answers the two questions that remain: how does that compiled logic actually reach a clinician at the exact moment a decision is being made, and how does the healthcare industry verify that the logic was authored, tested, and implemented correctly before it ever touches a real patient? Both questions have concrete, standardized answers, and both close out the book's clinical decision support unit.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">The Moment Everything We Built Finally Fires</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Welcome to the last stop in our CDS journey! We've authored guidelines, bound terminology, and compiled CQL — now let's watch that logic actually reach a clinician's screen, and meet the toolchain that makes sure it's trustworthy before it gets there. Let's connect the dots!</p>
+</div>
+<h2 id="cds-hooks-delivering-logic-at-the-point-of-care">CDS Hooks: Delivering Logic at the Point of Care</h2>
+<p>A compiled Clinical Reasoning Module has nowhere to run unless something tells it exactly when, during a clinician's workflow, to fire. <strong>CDS Hooks</strong> is the HL7 specification that defines standardized trigger points — "hooks" — in a clinical workflow where an EHR calls out to an external CDS service, sends it relevant context, and displays whatever response comes back, all without the EHR vendor needing to build any clinical logic itself. Three hook types cover the large majority of real deployments: <code>patient-view</code> fires the moment a clinician opens a patient's chart, before any specific order or action is underway; <code>order-select</code> fires the instant a clinician begins selecting a new order, while there is still time to suggest an alternative; and <code>order-sign</code> fires at the final moment before an order is signed and becomes official, the last possible checkpoint to catch a problem.</p>
+<p>Each hook call carries two kinds of information the CDS service needs to reason correctly. The <code>context</code> describes what is currently happening — which patient, which hook fired, and, for <code>order-select</code> or <code>order-sign</code>, the specific draft order under consideration. The <code>prefetch</code> is a bundle of relevant FHIR resources the EHR gathers in advance and sends along with the hook call, so the CDS service does not need to make its own slow, separate FHIR queries back to the EHR before it can respond — exactly the token-efficiency principle from Chapter 20 applied to a different bottleneck, network round-trips instead of LLM tokens. The CDS service's response takes the form of one or more <strong>CDS Alerts</strong>: a standardized "card" containing a short summary, an optional longer detail section, and optional suggested actions the clinician can accept with a single click.</p>
+<p>A worked example threads a full CDS Hooks cycle together, continuing the Maria Chen scenario from earlier chapters. Dr. Patel begins signing a new warfarin prescription for Maria Chen, who is already taking aspirin — triggering the <code>order-sign</code> hook. The EHR prefetches Maria Chen's active MedicationRequest resources (including the existing aspirin order) and sends both the prefetch bundle and the draft warfarin order as context to the CDS service. A <strong>CDS rule engine</strong> — the component that evaluates compiled CQL/ELM logic (via a Clinical Reasoning Module) against exactly this kind of incoming hook context — runs a <strong>drug-drug interaction check</strong>: comparing the draft order's medication against every active medication in the prefetch bundle for known dangerous combinations. Warfarin and aspirin together carry an elevated bleeding risk, a known interaction, so the CDS service returns a CDS Alert card warning of that risk, along with a suggested alternative from a predefined <strong>order set</strong> — a curated bundle of related orders a clinician can select together, such as "Anticoagulation Monitoring Order Set," which might bundle a reduced warfarin dose with an added INR (blood-clotting) lab test order in a single click.</p>
+<p>Not every CDS Hooks response needs to interrupt the clinician this dramatically. A <strong>clinical reminder</strong> is a lower-urgency, non-interruptive card — "this patient's flu vaccine is due" — that surfaces alongside the chart rather than blocking a workflow step, precisely because relentlessly firing full interruptive alerts for low-stakes reminders is exactly the alert-fatigue trap Chapter 20 warned about. Chaining several CDS Hooks-driven checks together across an entire course of treatment — an admission alert, a mid-stay monitoring reminder, a discharge medication-reconciliation check — produces a <strong>guideline-based care pathway</strong>: a full, multi-step clinical workflow whose individual steps are each driven by the same compiled guideline logic this book's CDS unit has built up, now expressed as a connected sequence rather than isolated, one-off alerts.</p>
+<h4 id="diagram-clinical-decision-support-workflow">Diagram: Clinical Decision Support Workflow</h4>
+<iframe src="../../sims/clinical-decision-support-workflow/main.html" height="1262" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/clinical-decision-support-workflow/main.html">Run the Clinical Decision Support Workflow MicroSim Fullscreen</a></p>
+<details>
+<summary>Clinical Decision Support Workflow (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> clinical-decision-support-workflow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-decision-support-workflow/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/clinical-decision-support-workflow</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: demonstrate, apply<br/>
+Learning objective: Given a new medication order and a patient's existing medication list, the learner can apply the CDS workflow's context-aware filtering logic to determine whether an alert should interrupt the clinician, be logged silently, or be auto-approved.</p>
+<p>Reused from the MicroSim catalog. This flowchart traces exactly the warfarin/aspirin worked example above: a new medication order is checked against the patient's full graph context and a clinical knowledge graph, scored for clinical significance, and only high-severity, novel problems interrupt the clinician (an estimated 60-80% reduction in alert fatigue from this context-aware filtering). Hovering any step explains its function; the "No" branches show silent approval or logging, and the "Yes" path shows the alert, clinician review, and feedback loop.</p>
+</details>
+<p>Continuing the same worked example one step further shows how CDS Hooks connects directly back to Chapter 23's Clinical Quality Measure. Recall the diabetes-control measure's population funnel: 39,500 patients in the denominator, 25,500 in the numerator, leaving 14,000 patients in a care gap — diabetic, but not meeting the HbA1c control target. A <strong>care gap alert</strong> is a CDS Alert specifically driven by exactly this kind of measure logic: the instant any of those 14,000 patients' charts is opened (firing the <code>patient-view</code> hook), the CDS service evaluates that same compiled <code>"In Denominator" AND NOT "In Numerator"</code> logic from Chapter 23 against the current patient in real time, and if it evaluates true, returns a card reminding the clinician that this specific patient is overdue for HbA1c control — turning a population-level quality measure into a point-of-care, patient-specific nudge without any additional guideline authoring work, because the underlying CQL logic is identical in both places.</p>
+<h4 id="diagram-cds-hooks-request-response-cycle">Diagram: CDS Hooks Request-Response Cycle</h4>
+<iframe src="../../sims/cds-hooks-request-response-cycle/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>CDS Hooks Request-Response Cycle</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> cds-hooks-request-response-cycle<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, differentiate<br/>
+Learning objective: Given a clinical scenario, the learner can examine which CDS Hooks hook type would fire and differentiate the roles of context, prefetch, and the returned card in producing a correctly timed alert.</p>
+<p>Purpose: Trace the exact warfarin/aspirin order-sign worked example through the CDS Hooks specification's request-response cycle, showing where context and prefetch data originate and how a card is constructed from a CDS Rule Engine's evaluation.</p>
+<p>Components to show (Mermaid sequence-style flowchart):
+- Node "Clinician Signs Warfarin Order" (blue) — triggers the hook
+- Node "EHR Fires order-sign Hook" (gray) — assembles context (draft order) and prefetch (active MedicationRequests including aspirin)
+- Node "CDS Service Receives Hook Call" (orange) — the external service endpoint
+- Node "CDS Rule Engine Evaluates Drug-Drug Interaction Check" (purple) — runs the compiled ELM logic via a Clinical Reasoning Module
+- Node "Card Constructed" (green) — summary "Bleeding risk: warfarin + aspirin", suggested Order Set link
+- Node "EHR Renders Card to Clinician" (blue) — the interruptive alert appears</p>
+<p>Connections: Sequential left to right, matching the list order above, with a labeled side-input arrow from "Patient's Active Medications" into the "EHR Fires order-sign Hook" node representing prefetch assembly</p>
+<p>Interactive controls:
+- Click directive on every node opening an infobox with the literal JSON payload at that step (the hook call's context/prefetch JSON, and the returned card JSON)
+- Toggle between "order-sign" and "patient-view" hook types, which swaps the scenario to the care-gap-alert example and updates every node's content accordingly</p>
+<p>Instructional Rationale: A togglable two-scenario flowchart with literal JSON payloads at each step matches the Analyze-level objective, requiring the learner to distinguish what changes (hook type, context contents) from what stays structurally identical (the five-step request-response shape) between an order-time check and a chart-opening check.</p>
+<p>Implementation: Mermaid flowchart with click handlers; responsive width.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">This Is the Whole Pipeline, Firing in Real Time</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Stop and notice what just happened: the same CQL define statements from Chapter 23 that computed a population-wide measure rate just fired, unmodified, against one specific patient's chart to produce a point-of-care alert. That reuse — write the logic once, run it at both the population scale and the bedside scale — is the entire payoff of everything this book's CDS unit has built.</p>
+</div>
+<h2 id="from-cql-to-certified-measures-the-cms-tooling-ecosystem">From CQL to Certified Measures: The CMS Tooling Ecosystem</h2>
+<p>Writing correct CQL by hand and trusting it to work is not how real quality measures reach production — the financial and clinical stakes of a wrong measure (a hospital's value-based payment, or a missed safety alert) are too high to skip independent authoring, testing, and certification tools. The Centers for Medicare &amp; Medicaid Services (CMS) sponsors a specific ecosystem of tools covering every stage from initial authoring to final EHR certification, and understanding this ecosystem is essential for anyone who will actually ship a Clinical Quality Measure rather than merely write one for a homework exercise.</p>
+<p>The <strong>MADiE authoring tool</strong> (Measure Authoring Development Integrated Environment, MADiE for short) is the modern, web-based CMS tool that consolidates measure authoring and dynamic testing into a single environment — a knowledge engineer can write a CQL library, define its population criteria, and immediately test it against synthetic patient bundles without leaving the tool. MADiE is the direct successor to two older, separate tools this ecosystem still references by name because their functions live on inside MADiE's unified workflow: the <strong>Measure Authoring Tool</strong> (MAT), the original CMS tool purely for authoring measure logic with no integrated testing, and the <strong>Bonnie testing tool</strong>, a legacy synthetic-patient testing tool historically paired with MAT that runs a library of synthetic patient test cases against a measure's CQL logic to verify it correctly includes and excludes exactly the patients it should. Where MAT and Bonnie required a knowledge engineer to switch between two separate applications for authoring and testing, MADiE's consolidation reflects a broader industry lesson: separating authoring from testing made it too easy to ship logic that "looked right" but had never actually been run against a single test patient.</p>
+<p>Sometimes a knowledge engineer needs to test a small fragment of CQL — one define statement, one expression — without the overhead of a full measure bundle at all. The <strong>CQL Runner tool</strong> exists for exactly this: an interactive, web-based tool for quick, ad hoc CQL testing, letting a knowledge engineer paste in a snippet like Chapter 23's <code>"Has Diabetes"</code> define statement, point it at a single test FHIR patient bundle, and immediately see the evaluated result — true, false, or a specific value — with no measure metadata, population criteria, or reporting configuration required. This tight, fast iteration loop makes CQL Runner the tool most knowledge engineers reach for first, well before a piece of logic is mature enough to warrant a full MADiE measure bundle; only once a fragment behaves correctly in isolation does it typically get assembled into the larger measure structure MADiE manages.</p>
+<p>Testing a measure's logic in isolation is necessary but not sufficient — an EHR vendor's actual software must also be verified to execute that compiled logic correctly once deployed, since a perfectly correct measure can still produce wrong results if the EHR's own CQL engine has a bug. The <strong>Cypress certification tool</strong> is the official, open-source certification tool CMS uses for exactly this purpose: it runs a battery of standardized test cases against an EHR vendor's CQL/eCQM execution engine and certifies whether the vendor's software produces the expected results, a required step in ONC health IT certification for any EHR that claims to support electronic quality reporting.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Reach for CQL Runner Before You Reach for a Full Measure Bundle</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a workflow shortcut worth adopting: test any new CQL define statement in CQL Runner against one or two sample patients first. It's much faster to catch a logic mistake on a single pasted snippet than to debug it after it's buried inside a full MADiE measure bundle with a dozen other define statements around it.</p>
+</div>
+<p>Beyond authoring and testing individual measures, the broader interoperability context those measures run inside is itself standardized. A <strong>FHIR Implementation Guide</strong> (IG) is a formally published, versioned set of profiles, extensions, and ValueSet bindings that constrain and extend the base FHIR specification for a specific use case, ensuring every system implementing that use case shapes its resources identically. <strong>CQF Recommendations</strong> is the specific FHIR Implementation Guide governing clinical reasoning artifacts — PlanDefinition, Library, and the CQL/ELM patterns this book's CDS unit has built up — providing the detailed, agreed-upon rules for exactly how those resources must be structured so that a measure authored against one vendor's FHIR server behaves identically against another's.</p>
+<p>A <strong>Clinical Quality Measure</strong> that has been fully implemented for automatic, electronic calculation directly from EHR data — rather than calculated manually by a human abstracting information from paper charts — is formally called an <strong>electronic CQM</strong> (eCQM). The <strong>quality reporting architecture</strong> is the complete end-to-end technical pipeline that carries an eCQM's computed result from a single health system's Clinical Reasoning Module all the way to a federal quality reporting program: local CQL evaluation against live patient data, aggregation of results across a health system's full patient population, formatting into a standardized submission document, and transmission to CMS for programs such as the Merit-based Incentive Payment System (MIPS), which directly ties a health system's calculated eCQM performance to its Medicare reimbursement rate — the most concrete, dollars-and-cents link in this entire book between a graph traversal query, a compiled CQL define statement, and an actual payment a hospital receives.</p>
+<p>Not every data element a measure needs already exists as structured data inside a typical EHR — some quality measures depend on patient-reported information that must be actively collected through a form. A <strong>FHIR Questionnaire resource</strong> represents exactly this kind of structured data-collection form — a depression screening survey, a patient-reported pain scale — defining each question, its expected answer type, and (via terminology binding, from Chapter 23) the ValueSet each answer should be coded against, so that a patient's or clinician's questionnaire responses become structured, measure-ready FHIR data (typically captured as <code>QuestionnaireResponse</code> resources) the moment the form is submitted, rather than free text buried in a note.</p>
+<h4 id="diagram-cms-cql-measure-development-and-certification-pipeline">Diagram: CMS CQL Measure Development and Certification Pipeline</h4>
+<iframe src="../../sims/cms-cql-measure-certification-pipeline/main.html" width="100%" height="560px" scrolling="no"></iframe>
+
+<details>
+<summary>CMS CQL Measure Development and Certification Pipeline</summary>
+<p>Type: timeline
+<strong>sim-id:</strong> cms-cql-measure-certification-pipeline<br/>
+<strong>Library:</strong> vis-timeline<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: summarize, sequence<br/>
+Learning objective: Given the names of the CMS-sponsored authoring, testing, and certification tools, the learner can sequence them correctly along the measure development pipeline and summarize what role each plays.</p>
+<p>Purpose: Lay out the full journey of a measure from initial authoring through EHR certification and live quality reporting, naming every CMS tool and standard this section introduced in the order a real measure would pass through them.</p>
+<p>Phases (left to right):
+1. "Author in MADiE" — knowledge engineer writes CQL library and population criteria (references CQF Recommendations IG for correct resource shaping)
+2. "Quick-Test Fragments in CQL Runner" — ad hoc testing of individual define statements
+3. "Full Measure Testing" — synthetic patient test cases run against the complete measure bundle (the role Bonnie historically played, now integrated into MADiE)
+4. "CQL-to-ELM Compilation" — the measure's CQL library compiles to ELM for execution
+5. "EHR Vendor Certification via Cypress" — the vendor's CQL execution engine is certified against standardized test cases
+6. "Live eCQM Evaluation" — the compiled measure runs automatically against real patient data inside the certified EHR's Clinical Reasoning Module
+7. "Quality Reporting Architecture Submission" — aggregated results submitted to CMS (e.g., MIPS), tying measure performance to reimbursement</p>
+<p>Interactive features:
+- Hover any phase for a one-sentence description of the tool or standard involved
+- Click a phase to open a fuller explanation, including which chapter concept it corresponds to (e.g., clicking phase 4 recalls the CQL Compiler and Expression Logical Model from Chapter 23)
+- A "Legacy Path" toggle that overlays the older MAT-and-Bonnie route (before MADiE's 2022+ consolidation) alongside the modern MADiE-centered route, so the learner can see what changed</p>
+<p>Instructional Rationale: A sequenced timeline with a legacy-vs-modern toggle matches the Understand-level objective of correctly ordering and summarizing each tool's role, while also making visible how the tooling ecosystem itself evolved — a detail that helps the learner recognize older tool names (MAT, Bonnie) they may still encounter in existing documentation.</p>
+<p>Implementation: vis-timeline JavaScript library with click-to-expand detail panels; responsive width.</p>
+</details>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">The Acronyms Will Stick — Give It a Second Pass</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+MADiE, MAT, Bonnie, Cypress, CQF Recommendations, eCQM — that's a genuine alphabet soup on a first read, and feeling a little lost here is completely normal. The trick is to anchor each name to its <em>job</em> in the pipeline (author, quick-test, full-test, certify) rather than memorizing the names in isolation; the timeline diagram above is built exactly for that kind of anchoring.</p>
+</div>
+<p>Passing through certification is not the end of the story, however, and it is worth being precise about exactly what a Cypress certification does and does not guarantee before moving on.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">A Certified EHR Does Not Guarantee a Correct Measure</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Common misconception: Cypress certification proves an EHR's CQL <em>engine</em> executes logic correctly, not that any particular measure's <em>logic</em> is clinically correct. A knowledge engineer can still author a flawed denominator or numerator definition that a perfectly certified engine will faithfully, and incorrectly, execute — which is exactly why MADiE's dynamic testing and CQL Runner's fragment testing remain essential even after an EHR is certified.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Just Traced a Guideline All the Way to a Payment</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Look at the full distance you've covered across these five chapters: from AI and knowledge graphs, through responsible evaluation, into FHIR resources and knowledge representation levels, through CQL and the Expression Logical Model, and now all the way to a CDS Hooks alert firing at the bedside and a certified eCQM tied to real reimbursement. That's the complete clinical decision support pipeline, start to finish — genuinely one of the most technically complete journeys in this entire book.</p>
+</div>
+<p>This chapter closed the clinical decision support unit by connecting compiled CQL logic to the moment of clinical care through CDS Hooks — hook types, context, prefetch, CDS Alerts, order sets, drug-drug interaction checks, clinical reminders, and care gap alerts driven directly by the population logic from Chapter 23 — and by surveying the CMS-sponsored tooling ecosystem that authors, tests, and certifies that logic before it ever reaches a patient: MADiE, CQL Runner, the legacy Measure Authoring Tool and Bonnie, Cypress certification, FHIR Implementation Guides and CQF Recommendations, and the quality reporting architecture that ties an electronic CQM's performance to real reimbursement. Together, Chapters 22 through 24 traced one continuous thread — a narrative guideline becoming a FHIR resource, becoming CQL, becoming ELM, becoming a live alert and a certified measure — that is as complete a picture of modern clinical decision support as this book can offer. The book now turns to a different kind of responsibility: securing the healthcare graphs this entire book has been built around. Continue to <a href="../25-healthcare-data-security-fundamentals/">Chapter 25: Healthcare Data Security Fundamentals</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../23-clinical-guideline-authoring-and-cql/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 23. Clinical Guideline Authoring and Clinical Quality Language">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                23. Clinical Guideline Authoring and Clinical Quality Language
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../25-healthcare-data-security-fundamentals/" class="md-footer__link md-footer__link--next" aria-label="Next: 25. Healthcare Data Security Fundamentals">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                25. Healthcare Data Security Fundamentals
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2856 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Extends graph analytics into machine-learning territory -- graph neural networks, message passing, graph clustering algorithms, temporal graph analysis, and structural metrics like motifs and density.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/06-graph-embeddings-clustering-gnn/">
+      
+      
+        <link rel="prev" href="../05-graph-algorithms-centrality-similarity/">
+      
+      
+        <link rel="next" href="../07-healthcare-economics-medical-coding/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Graph Embeddings, Clustering, and Graph Neural Networks - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Graph Embeddings, Clustering, and Graph Neural Networks - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Extends graph analytics into machine-learning territory -- graph neural networks, message passing, graph clustering algorithms, temporal graph analysis, and structural metrics like motifs and density." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/06-graph-embeddings-clustering-gnn/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/06-graph-embeddings-clustering-gnn/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Graph Embeddings, Clustering, and Graph Neural Networks - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Extends graph analytics into machine-learning territory -- graph neural networks, message passing, graph clustering algorithms, temporal graph analysis, and structural metrics like motifs and density." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/06-graph-embeddings-clustering-gnn/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#graph-embeddings-clustering-and-graph-neural-networks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Graph Embeddings, Clustering, and Graph Neural Networks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-neural-networks-learning-from-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Neural Networks: Learning From Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Neural Networks: Learning From Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-node-embedding-explorer-microsim-message-passing-as-a-gnn-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Node Embedding Explorer MicroSim (Message Passing as a GNN Layer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-older-path-to-the-same-destination-random-walks" class="md-nav__link">
+    <span class="md-ellipsis">
+      An Older Path to the Same Destination: Random Walks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-clustering-finding-groups-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Clustering: Finding Groups Automatically
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Clustering: Finding Groups Automatically">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-network-community-detection-interactive-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Network Community Detection Interactive Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-signatures-motifs-density-and-assortativity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Signatures: Motifs, Density, and Assortativity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphs-that-move-temporal-and-dynamic-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphs That Move: Temporal and Dynamic Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-at-scale-sampling-weak-connectivity-and-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working at Scale: Sampling, Weak Connectivity, and Benchmarks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-neural-networks-learning-from-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Neural Networks: Learning From Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Neural Networks: Learning From Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-node-embedding-explorer-microsim-message-passing-as-a-gnn-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Node Embedding Explorer MicroSim (Message Passing as a GNN Layer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-older-path-to-the-same-destination-random-walks" class="md-nav__link">
+    <span class="md-ellipsis">
+      An Older Path to the Same Destination: Random Walks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-clustering-finding-groups-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Clustering: Finding Groups Automatically
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Clustering: Finding Groups Automatically">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-network-community-detection-interactive-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Network Community Detection Interactive Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-signatures-motifs-density-and-assortativity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Signatures: Motifs, Density, and Assortativity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphs-that-move-temporal-and-dynamic-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphs That Move: Temporal and Dynamic Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-at-scale-sampling-weak-connectivity-and-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working at Scale: Sampling, Weak Connectivity, and Benchmarks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/06-graph-embeddings-clustering-gnn/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="graph-embeddings-clustering-and-graph-neural-networks">Graph Embeddings, Clustering, and Graph Neural Networks</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter extends graph analytics into machine-learning territory: graph and node embeddings, graph neural networks, and message passing. It covers graph clustering techniques (Louvain method, label propagation) and specialized analyses such as temporal graph analysis, motif detection, and graph benchmarking. Students finish able to explain how a graph's structure can be turned into numerical representations for downstream machine learning.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Graph Neural Network</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Message Passing</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Node Classification</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Graph Clustering</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Louvain Method</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Label Propagation</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Minimum Spanning Tree</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Random Walk</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Node2Vec</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Graph Convolutional Network</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Temporal Graph Analysis</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Dynamic Graph Update</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Graph Sampling</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Motif Detection</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Triangle Count</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Weakly Connected Component</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Graph Density Metric</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Assortativity</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Influence Propagation</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Graph Benchmarking</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../05-graph-algorithms-centrality-similarity/">Chapter 5: Graph Algorithms, Centrality, and Similarity Measures</a></li>
+</ul>
+<hr />
+<p>Chapter 5 ended by turning a graph's structure into numeric vectors through
+message passing — a first taste of graph embeddings. This chapter goes
+further: it formalizes the machine-learning architecture built on that idea,
+introduces the algorithms that automatically discover <em>groups</em> of related
+nodes rather than just pairwise similarity, and rounds out the toolkit with
+the structural metrics and time-aware techniques that make graph analytics
+production-ready for a health system's data.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">From Vectors to Learning Machines</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Let's connect the dots! You've already watched message passing turn a graph's shape into numbers by hand. This chapter hands that same idea to a learning machine, teaches it to find whole communities of related patients and providers automatically, and shows you how to keep the analysis honest as the graph keeps changing underneath you. Ready to trace a few more pathways?</p>
+</div>
+<h2 id="graph-neural-networks-learning-from-structure">Graph Neural Networks: Learning From Structure</h2>
+<p>Chapter 5 showed that repeated rounds of neighbor-averaging cause
+structurally similar nodes to converge toward similar embedding vectors — a
+manual, fixed procedure. A <strong>graph neural network</strong> (GNN) formalizes and
+generalizes that same message-passing procedure into a trainable machine
+learning model: instead of a fixed averaging rule, each round of message
+passing uses learned weights, adjusted through training so that the
+resulting embeddings are optimized for a specific downstream task, rather
+than just reflecting raw structural similarity.</p>
+<p>Formally, one layer of a GNN generalizes Chapter 5's fixed averaging
+equation by inserting a learned weight matrix ( W ) and a non-linear
+activation function ( \sigma ) (such as ReLU):</p>
+<p>[ h_v^{(k+1)} = \sigma\left( W \cdot \frac{1}{|N(v)|+1}\left(h_v^{(k)} + \sum_{u \in N(v)} h_u^{(k)}\right) \right) ]</p>
+<p>Compare this directly to Chapter 5's plain-averaging update rule: the
+averaging step inside the parentheses is <em>identical</em>. What a GNN adds is
+the matrix ( W ), whose numeric values are not fixed in advance but
+learned by training the network on labeled examples — patients with known
+readmission outcomes, say — so that the specific way neighbor information
+gets blended is whatever blend turns out to be most predictive of
+readmission, rather than a simple, task-agnostic average. The activation
+function ( \sigma ) then introduces the non-linearity that lets a
+multi-layer GNN represent far more complex patterns than repeated plain
+averaging ever could on its own.</p>
+<p>The most widely used GNN architecture is the <strong>Graph Convolutional Network</strong>
+(GCN), which borrows its name and its core idea from convolutional neural
+networks in image processing: just as an image convolution combines a
+pixel's value with its immediate neighboring pixels, a graph convolution
+combines a node's vector with its immediate neighboring nodes' vectors,
+using learned weights instead of Chapter 5's simple average. Stacking
+several convolutional layers lets information from increasingly distant
+neighbors reach a node — after two layers, a patient's embedding reflects
+not just their own providers but their providers' other patients as well.</p>
+<p>The most common task trained on top of these learned embeddings is <strong>node
+classification</strong>: predicting a label for each node using its embedding as
+input, such as predicting whether a given patient is at high risk of
+hospital readmission based on how their embedding compares to patients who
+were and were not readmitted historically. Because the embedding already
+encodes structural context — which providers a patient sees, what
+conditions cluster nearby in the graph — a GNN-based classifier can pick up
+on relational risk factors a model looking only at a patient's own
+individual properties would miss entirely. Node classification is
+formally a supervised learning task: the GNN trains on patients whose
+readmission outcome is already known (labeled data), learning weights that
+map an embedding to a predicted label, and is then applied to predict
+labels for new, unlabeled patients — the same train-then-predict structure
+used throughout machine learning, here made possible only because the
+embedding step first turned graph structure into a fixed-length numeric
+vector that a classifier can actually consume.</p>
+<h4 id="diagram-node-embedding-explorer-microsim-message-passing-as-a-gnn-layer">Diagram: Node Embedding Explorer MicroSim (Message Passing as a GNN Layer)</h4>
+<iframe src="../../sims/node-embedding-explorer/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/node-embedding-explorer/main.html">Run the Node Embedding Explorer MicroSim Fullscreen</a></p>
+<details>
+<summary>Node Embedding Explorer MicroSim (reused, revisited)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> node-embedding-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/node-embedding-explorer/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/node-embedding-explorer</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, relate<br/>
+Learning objective: Relate the manual neighbor-averaging procedure from Chapter 5 to a single trainable layer of a graph neural network, explaining what a GNN adds (learned weights) on top of the same message-passing mechanism.</p>
+<p>Reused from the MicroSim catalog. This is the same MicroSim Chapter 5 used to introduce node embeddings, revisited here with a different framing: each "Next step" round the learner steps through is mechanically identical to one graph convolution layer in a GCN, with the one difference this chapter's prose highlights — a real GNN learns the averaging weights from training data rather than using a fixed simple average. Seeing the identical mechanism twice, once as a hand-computed embedding and again as a GNN building block, reinforces that GNNs are not a wholly new idea but a trainable generalization of what the learner already practiced.</p>
+</details>
+<h2 id="an-older-path-to-the-same-destination-random-walks">An Older Path to the Same Destination: Random Walks</h2>
+<p>Message passing is not the only way to generate node embeddings. <strong>Random
+walk</strong> based methods take a different approach: starting from a node, the
+algorithm takes a series of random steps to neighboring nodes, recording the
+sequence of nodes visited, and repeats this many times from every starting
+node. <strong>Node2Vec</strong>, a widely used random-walk embedding algorithm, then
+treats each recorded walk like a sentence and each node like a word, feeding
+these walk-sequences into a word-embedding-style training process so that
+nodes appearing near each other across many walks end up with similar
+vectors — the same underlying goal as message passing, achieved by sampling
+paths instead of averaging neighbors directly.</p>
+<p>A concrete trace makes the sampling process tangible. Starting a random
+walk at Maria Chen's <code>Patient</code> node, the algorithm might step to <code>Dr.
+Patel</code> (her provider), then to <code>Type 2 Diabetes</code> (a condition Dr. Patel
+treats in many patients), then to another patient, <code>James Wu</code>, who also has
+that diagnosis — producing the walk sequence <code>[MariaChen, DrPatel,
+Type2Diabetes, JamesWu]</code>. Repeating this random-stepping process hundreds
+of times from every node in the graph produces a large collection of such
+sequences, which Node2Vec feeds into the same training algorithm used for
+word embeddings (word2vec), treating each walk as a "sentence" and each
+node as a "word." Nodes that co-occur frequently across many walks — Maria
+Chen and James Wu, in this example, both reachable through the same
+diagnosis — end up with similar vectors, purely as a byproduct of how often
+a short random walk visits both of them.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Two Philosophies, One Goal</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that message passing and random walks solve the identical problem — turning structure into comparable vectors — through opposite strategies. Message passing looks at <em>every</em> neighbor at once, layer by layer. Random walks sample <em>one path at a time</em>, many times over. Neither is universally better; random walks scale more easily to huge graphs, while message passing (via GNNs) can be trained end-to-end for a specific prediction task.</p>
+</div>
+<h2 id="graph-clustering-finding-groups-automatically">Graph Clustering: Finding Groups Automatically</h2>
+<p>Chapter 5's connected components found groups of nodes that are reachable
+from each other at all — a fairly blunt grouping, since a single connected
+component can span an entire health system. <strong>Graph clustering</strong> asks a
+sharper question: within a single connected graph, which nodes form dense,
+tightly-knit subgroups, even though the whole graph remains technically
+connected by a few sparser bridging edges? A healthcare graph of patients,
+diagnoses, and medications naturally clusters into disease cohorts —
+cardiac, diabetes, renal — because connections <em>within</em> a cohort (shared
+diagnoses, shared medications) are dense, while connections <em>between</em>
+cohorts are comparatively rare.</p>
+<p>The quality of a proposed clustering is measured by <strong>modularity</strong>, a score
+comparing the actual density of edges inside proposed clusters against the
+density that would be expected if edges were placed at random while
+keeping each node's degree the same:</p>
+<p>[ Q = \frac{1}{2m} \sum_{i,j} \left[ A_{ij} - \frac{k_i k_j}{2m} \right] \delta(c_i, c_j) ]</p>
+<p>Here ( m ) is the total number of edges, ( A_{ij} ) is 1 if an edge
+connects nodes ( i ) and ( j ) (0 otherwise), ( k_i ) and ( k_j ) are
+their degrees, and ( \delta(c_i, c_j) ) is 1 only when both nodes are
+assigned to the same cluster. In plain terms: modularity rewards a
+clustering for every real edge that falls <em>inside</em> a cluster, and penalizes
+it by how many edges we would have <em>expected</em> to see there by chance given
+each node's popularity — a clustering scores well only when its clusters
+are genuinely denser than random chance would predict, not merely because
+they happen to be large.</p>
+<p>The <strong>Louvain method</strong> is the most widely used algorithm for finding a
+high-modularity clustering in practice. It works iteratively: start with
+every node in its own single-node cluster, then repeatedly move nodes into
+whichever neighboring cluster most increases the modularity score above,
+merging small clusters into larger ones across several passes until no move
+improves the score further. Tracing the first pass on a small 6-node
+network — three cardiac patients densely cross-referencing each other's
+providers, and three diabetes patients doing the same, with only one
+provider shared between groups — Louvain would find that moving each
+cardiac patient into a shared cluster with the other cardiac patients
+increases modularity (their edges are much denser with each other than the
+random-chance baseline predicts), while moving a cardiac patient into the
+diabetes cluster would decrease it, since that patient shares almost no
+edges with the diabetes group. After one pass, two clusters emerge; a
+second pass then checks whether merging entire clusters together would
+improve modularity further, typically converging in just a few passes even
+on graphs with millions of nodes.</p>
+<p><strong>Label propagation</strong> takes a simpler, faster approach that never computes
+modularity at all: every node starts with a unique label, and on each
+round, every node adopts the label held by the majority of its neighbors,
+repeating until labels stabilize into naturally emerging clusters. In the
+same 6-node example, after one round most cardiac patients would already
+have adopted whichever label is most common among their tightly-connected
+cardiac neighbors, and diabetes patients would do the same within their own
+group — convergence often happens in just two or three rounds, which makes
+label propagation considerably faster than Louvain on very large graphs, at
+some cost in clustering precision since it never explicitly optimizes for
+modularity the way Louvain does.</p>
+<h4 id="diagram-network-community-detection-interactive-graph-model">Diagram: Network Community Detection Interactive Graph Model</h4>
+<iframe src="../../sims/network-community-detection-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/network-community-detection-graph-model/main.html">Run the Network Community Detection Interactive Graph Model MicroSim Fullscreen</a></p>
+<details>
+<summary>Network Community Detection Interactive Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> network-community-detection-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/network-community-detection-graph-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/network-community-detection-graph-model</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Examine a mixed patient-provider-diagnosis-medication network to distinguish the three disease-cohort clusters a Louvain-style algorithm assigns, and identify the sparse bridge edges that connect otherwise-separate cohorts.</p>
+<p>Reused from the MicroSim catalog. Toggling "Color by community" reveals three algorithm-assigned cohorts (cardiac, diabetes, renal) that are not visually obvious in the uncolored network, directly demonstrating why an automated clustering algorithm like Louvain earns its place — a human eyeballing the raw graph cannot reliably spot these groups, but the algorithm's modularity-driven grouping finds them immediately, including the comorbid-patient bridge edges linking two cohorts at once.</p>
+</details>
+<p>Two smaller graph-theoretic concepts round out this section's structural
+toolkit. A <strong>minimum spanning tree</strong> is the smallest possible set of edges
+that keeps every node in a connected graph reachable, with the lowest total
+edge weight — useful for network design questions like connecting a set of
+rural clinics to a shared data backbone at minimum total cable cost, rather
+than for clustering itself. Algorithms that compute a minimum spanning
+tree, such as Kruskal's or Prim's, work by greedily adding the
+cheapest available edge that does not create a cycle, repeating until
+every node is connected — for five rural clinics, this means never paying
+for a redundant connection when a cheaper path to full connectivity already
+exists.</p>
+<p>Measuring cluster quality or local structure often comes down to counting:
+a <strong>triangle count</strong> tallies how many sets of three mutually connected
+nodes exist in a graph, which is precisely the raw count Chapter 5's
+clustering coefficient normalizes into a per-node ratio — more triangles
+around a node generally means a denser, more tightly bonded local
+community. In the earlier six-node cardiac/diabetes example, the three
+cardiac patients who all cross-reference each other's providers form
+exactly one triangle among themselves, while the lone shared provider
+connecting the two cohorts does not complete any triangle with the
+diabetes group, since the diabetes patients don't also connect to each
+other through that shared provider — a triangle count of one for that
+region of the graph, versus zero for the sparser cross-cohort connections.</p>
+<h2 id="structural-signatures-motifs-density-and-assortativity">Structural Signatures: Motifs, Density, and Assortativity</h2>
+<p>Beyond clustering entire graphs into groups, graph scientists also look for
+small, meaningful shapes and global statistics that describe a graph's
+overall character. <strong>Motif detection</strong> searches a graph for small,
+recurring connection patterns — a specific 3-node or 4-node shape that
+appears far more often than random chance would predict, such as a
+"provider-refers-to-provider-refers-back" triangle that recurs across many
+different provider trios, suggesting a systemic referral pattern rather than
+an isolated case.</p>
+<p>Two summary statistics describe a graph's overall shape rather than any
+specific location within it. The <strong>graph density metric</strong> measures what
+fraction of all <em>possible</em> edges in a graph actually exist — a sparse
+referral network where most provider pairs never refer to each other has
+low density, while a small, tightly co-managed care team has high density.
+<strong>Assortativity</strong> measures whether nodes tend to connect to other nodes with
+similar characteristics (positive assortativity, like high-degree hub
+hospitals mostly referring to other high-degree hubs) or to dissimilar ones
+(negative assortativity, like large hospitals referring frequently to small
+rural clinics). A referral network with strong positive assortativity by
+hospital size suggests large academic medical centers mostly refer among
+themselves, potentially isolating smaller community clinics from
+specialist expertise — a structural insight a single centrality score could
+never reveal, since assortativity describes a <em>pattern of connection</em>
+across the whole graph rather than any one node's individual importance.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What It Measures</th>
+<th>Healthcare Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motif Detection</td>
+<td>Recurring small connection shapes</td>
+<td>A repeated 3-provider referral triangle</td>
+</tr>
+<tr>
+<td>Triangle Count</td>
+<td>Raw count of fully-connected node triples</td>
+<td>Density input to the clustering coefficient</td>
+</tr>
+<tr>
+<td>Graph Density Metric</td>
+<td>Fraction of possible edges that exist</td>
+<td>How interconnected a care team's providers are</td>
+</tr>
+<tr>
+<td>Assortativity</td>
+<td>Do similar nodes connect to each other?</td>
+<td>Large hospitals referring mostly to other large hospitals</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Triangle Count Is the Building Block, Clustering Coefficient Is the Ratio</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a shortcut for keeping these straight: triangle count is a raw whole number for the graph (or per node), while Chapter 5's clustering coefficient divides that count by the maximum possible triangles to get a 0-to-1 ratio. If you remember "count first, then normalize," you'll never mix the two up on an exam.</p>
+</div>
+<h2 id="graphs-that-move-temporal-and-dynamic-analysis">Graphs That Move: Temporal and Dynamic Analysis</h2>
+<p>Every algorithm so far has assumed the graph holds still while it's
+analyzed. Real healthcare graphs never do — patients are admitted and
+discharged, new claims arrive hourly, and referral patterns shift with
+provider turnover. <strong>Temporal graph analysis</strong> studies how a graph's
+structure changes over time, treating each edge as having a timestamp (or a
+valid time range) rather than existing permanently, so that questions can be
+asked about specific windows — "what did Maria Chen's care team look like
+during her diabetes diagnosis month, versus a year later?"</p>
+<p>Supporting that kind of analysis in a live system requires a <strong>dynamic
+graph update</strong>: the ability to add, modify, or remove nodes and edges in a
+running graph database without rebuilding the entire structure from
+scratch, which matters enormously for a hospital system where new
+encounters and lab results arrive continuously. A graph database supporting
+efficient dynamic updates can absorb a new <code>Encounter</code> node and its edges
+in milliseconds as a patient checks in, immediately making that fact
+available to every downstream query and algorithm — in contrast to a batch
+system that only refreshes its graph snapshot once per night, where a
+clinical decision support query run at 2 p.m. would still be working from
+that morning's stale picture of the patient. A related but distinct
+application layered on top of temporal structure is <strong>influence
+propagation</strong>: modeling how an effect (an infection, a piece of clinical
+guidance, or a formulary change) spreads outward through a network over
+successive time steps, following edges the way a rumor spreads through a
+social network — the same mathematical machinery public health teams use to
+model outbreak spread through a patient-contact graph. A common model,
+independent cascade, assigns each edge a fixed probability of "activating"
+its neighbor at the next time step: if a newly-infected patient has a 30%
+chance of transmitting to each of their three household contacts, one round
+of propagation activates each contact independently with probability 0.3,
+and the newly-activated contacts then attempt to activate <em>their</em> own
+untouched neighbors in the following round — a simple per-edge probability
+rule that, simulated over many rounds across a whole contact graph,
+reproduces surprisingly realistic outbreak curves.</p>
+<h2 id="working-at-scale-sampling-weak-connectivity-and-benchmarks">Working at Scale: Sampling, Weak Connectivity, and Benchmarks</h2>
+<p>Two final concepts address the practical reality of running these
+algorithms on graphs too large to process in full, or of knowing whether an
+algorithm is even working correctly. <strong>Graph sampling</strong> extracts a smaller,
+representative subgraph from a much larger one, letting an analyst
+prototype an algorithm or estimate a metric without processing the entire
+multi-million-node graph — accepting some statistical imprecision in
+exchange for tractable runtime. A common sampling strategy, snowball
+sampling, starts from a small random set of seed nodes and expands outward
+by including each seed's neighbors, then their neighbors, up to a target
+sample size — a claims-fraud team might sample 10,000 patients this way to
+prototype and tune a new pattern-recognition rule in minutes rather than
+running it against the full multi-million-patient graph on every iteration,
+only running the final, validated rule against the complete dataset once.</p>
+<p>Recall Chapter 5's strongly connected component, which required every node
+to reach every other node while respecting edge direction. A <strong>weakly
+connected component</strong> relaxes that requirement: it is a maximal group of
+nodes that are connected if you ignore edge direction entirely, treating
+every directed edge as if it were undirected. A referral network where Dr. A
+refers to Dr. B but Dr. B never refers back still forms a single weakly
+connected component (since ignoring direction, a path exists both ways) even
+though it is not a strongly connected component (since respecting direction,
+no path exists from B back to A) — the two measures answer genuinely
+different reachability questions on the identical graph. In practice,
+weakly connected components are the more commonly computed of the two
+first, because they run faster (ignoring direction simplifies the
+underlying traversal) and are often used as a preliminary data-quality
+check — a graph that unexpectedly splits into many small weakly connected
+components usually signals missing linkage data (a patient's records that
+never got matched to their existing patient node, for instance) well before
+anyone bothers computing the more expensive strongly connected components.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Weakly Connected Isn't the Same as Strongly Connected</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A common mix-up: assuming a single weakly connected component means every node can reach every other node in both directions. It doesn't! Weak connectivity only guarantees a path exists if you're allowed to ignore arrow direction. Always ask "does this question care about direction?" before choosing which connectivity measure answers it.</p>
+</div>
+<p>Finally, <strong>graph benchmarking</strong> is the practice of testing a graph
+algorithm's performance and accuracy against standardized datasets and
+known-correct results, so that claims like "our fraud-detection algorithm
+finds 95% of known fraud rings" can be verified objectively rather than
+taken on faith — the same discipline that makes any machine learning claim
+trustworthy, applied specifically to graph algorithms. A rigorous benchmark
+typically reports both accuracy (did the algorithm correctly flag the
+labeled fraud rings in a held-out test dataset, and how many false
+positives did it also raise?) and runtime performance (how did execution
+time scale as the graph's sampled size grew, connecting benchmarking
+directly back to the graph sampling technique just introduced) — together
+giving a health system's leadership a defensible, numbers-based answer to
+"does this actually work, and can it run fast enough on our real data?"
+rather than a vendor's unverified claim.</p>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Learn From a Graph, Not Just Analyze One</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just connected message passing to trainable graph neural networks, learned two different philosophies (Louvain and label propagation) for automatically discovering communities, and picked up the structural metrics and time-aware tools that make all of this production-ready. That completes the analytical core of this book.</p>
+</div>
+<p>This chapter carried Chapter 5's embedding idea into full graph neural
+networks, introduced graph clustering as the automated alternative to
+eyeballing a network for groups, and closed with the structural metrics and
+temporal techniques that keep analysis meaningful as a healthcare graph
+scales and changes over time. With the full graph-theory and graph-analytics
+toolkit now in hand,
+<a href="../07-healthcare-economics-medical-coding/">Chapter 7</a> turns to the
+healthcare domain itself — the economics, stakeholders, and medical coding
+systems that every remaining chapter's graph models will be built from.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../05-graph-algorithms-centrality-similarity/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5. Graph Algorithms, Centrality, and Similarity Measures">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                5. Graph Algorithms, Centrality, and Similarity Measures
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07-healthcare-economics-medical-coding/" class="md-footer__link md-footer__link--next" aria-label="Next: 7. Healthcare Economics and Medical Coding Systems">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                7. Healthcare Economics and Medical Coding Systems
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

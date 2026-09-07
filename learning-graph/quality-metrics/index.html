@@ -54,9 +54,21 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
     
     
@@ -104,7 +116,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learning-graph-quality-analysis" class="md-skip">
+        <a href="#learning-graph-quality-metrics-report" class="md-skip">
           Skip to content
         </a>
       
@@ -322,27 +334,119 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -506,6 +610,8 @@
       
         
       
+        
+      
     
     
     
@@ -641,36 +747,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overall-quality-score" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Overall Quality Score
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-statistics" class="md-nav__link">
+  <a href="#graph-structure-validation" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Statistics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dag-structure-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      DAG Structure Validation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#self-dependency-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      Self-Dependency Check
+      Graph Structure Validation
     </span>
   </a>
   
@@ -686,18 +774,69 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#orphaned-nodes-leaf-concepts" class="md-nav__link">
+  <a href="#dependency-chain-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Orphaned Nodes (Leaf Concepts)
+      Dependency Chain Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Chain Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longest-learning-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Longest Learning Path:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-nodes-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminal Nodes Analysis
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#top-10-most-depended-upon-concepts" class="md-nav__link">
+  <a href="#orphaned-nodes-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Top 10 Most Depended-Upon Concepts
+      Orphaned Nodes Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connected Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indegree-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indegree Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outdegree-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outdegree Distribution
     </span>
   </a>
   
@@ -901,6 +1040,27 @@
   
   <span class="md-ellipsis">
     Additional Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mascot-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mascot Test Page
   </span>
   
 
@@ -1636,36 +1796,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overall-quality-score" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Overall Quality Score
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-statistics" class="md-nav__link">
+  <a href="#graph-structure-validation" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Statistics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dag-structure-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      DAG Structure Validation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#self-dependency-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      Self-Dependency Check
+      Graph Structure Validation
     </span>
   </a>
   
@@ -1681,18 +1823,69 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#orphaned-nodes-leaf-concepts" class="md-nav__link">
+  <a href="#dependency-chain-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Orphaned Nodes (Leaf Concepts)
+      Dependency Chain Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Chain Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longest-learning-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Longest Learning Path:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-nodes-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminal Nodes Analysis
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#top-10-most-depended-upon-concepts" class="md-nav__link">
+  <a href="#orphaned-nodes-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Top 10 Most Depended-Upon Concepts
+      Orphaned Nodes Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connected Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indegree-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indegree Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outdegree-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outdegree Distribution
     </span>
   </a>
   
@@ -1722,7 +1915,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/learning-graph/quality-metrics.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/learning-graph/quality-metrics.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1730,69 +1923,109 @@
   
 
 
-<h1 id="learning-graph-quality-analysis">Learning Graph Quality Analysis</h1>
-<h2 id="overall-quality-score">Overall Quality Score</h2>
-<p><strong>Score: 90/100</strong></p>
-<p><strong>Rating: Excellent</strong></p>
-<p>✓ The learning graph meets quality standards and is ready for use.</p>
-<h2 id="basic-statistics">Basic Statistics</h2>
+<h1 id="learning-graph-quality-metrics-report">Learning Graph Quality Metrics Report</h1>
+<h2 id="overview">Overview</h2>
 <ul>
-<li>Total concepts: 200</li>
-<li>Concepts with dependencies: 196</li>
-<li>Foundational concepts (no dependencies): 4</li>
-<li>Total dependencies: 299</li>
-<li>Average dependencies per concept: 1.50</li>
-<li>Maximum dependency chain length: 11</li>
+<li><strong>Total Concepts</strong>: 513</li>
+<li><strong>Foundational Concepts</strong> (no prerequisites, other concepts depend on them): 2</li>
+<li><strong>Terminal Nodes</strong> (nothing depends on them, but have prerequisites): 193</li>
+<li><strong>Orphaned Nodes</strong> (completely disconnected, no edges): 0</li>
+<li><strong>Concepts with Dependencies</strong>: 511</li>
+<li><strong>Average Dependencies per Concept</strong>: 1.08</li>
 </ul>
-<h2 id="dag-structure-validation">DAG Structure Validation</h2>
-<p>✓ <strong>PASS</strong>: The graph is a valid Directed Acyclic Graph (no cycles detected).</p>
-<h2 id="self-dependency-check">Self-Dependency Check</h2>
-<p>✓ <strong>PASS</strong>: No self-dependencies detected.</p>
+<h2 id="graph-structure-validation">Graph Structure Validation</h2>
+<ul>
+<li><strong>Valid DAG Structure</strong>: ✅ Yes</li>
+<li><strong>Self-Dependencies</strong>: None detected ✅</li>
+<li><strong>Cycles Detected</strong>: 0</li>
+</ul>
 <h2 id="foundational-concepts">Foundational Concepts</h2>
-<p>Found 4 foundational concepts (2.0%):</p>
+<p>These concepts have no prerequisites:</p>
 <ul>
-<li>Concept 1: Graph Theory Basics</li>
-<li>Concept 13: Relational Database</li>
-<li>Concept 16: Healthcare System</li>
-<li>Concept 161: Artificial Intelligence</li>
+<li><strong>1</strong>: Graph Theory Basics</li>
+<li><strong>106</strong>: Healthcare System</li>
 </ul>
-<h2 id="orphaned-nodes-leaf-concepts">Orphaned Nodes (Leaf Concepts)</h2>
-<p>Found 87 orphaned concepts (43.5%):</p>
+<h2 id="dependency-chain-analysis">Dependency Chain Analysis</h2>
 <ul>
-<li>Concept 7: Edge Property</li>
-<li>Concept 18: Per-Person Healthcare Cost</li>
-<li>Concept 31: Clinical Workflow</li>
-<li>Concept 32: Patient Demographics</li>
-<li>Concept 35: Healthcare Data Exchange</li>
-<li>Concept 37: GQL Standard</li>
-<li>Concept 38: GSQL</li>
-<li>Concept 42: Query Performance</li>
-<li>Concept 43: Path Query</li>
-<li>Concept 44: Subgraph Query</li>
-<li>Concept 45: Aggregate Query</li>
-<li>Concept 47: Patient ID</li>
-<li>Concept 48: Patient History</li>
-<li>Concept 50: Medical Condition</li>
-<li>Concept 56: Dosage</li>
-<li>Concept 57: Drug Interaction</li>
-<li>Concept 58: Adverse Event</li>
-<li>Concept 59: Allergy</li>
-<li>Concept 60: Immunization</li>
-<li>Concept 62: Lab Result</li>
-<li>Concept 63: Vital Sign</li>
-<li>Concept 66: Patient Journey</li>
-<li>Concept 67: Chronic Disease Management</li>
-<li>Concept 68: Preventive Care</li>
-<li>Concept 70: Quality of Life Metric</li>
-<li>Concept 75: Outpatient Facility</li>
-<li>Concept 76: Inpatient Care</li>
-<li>Concept 77: Emergency Department</li>
-<li>Concept 80: Appointment</li>
-<li>Concept 83: Medical License</li>
+<li><strong>Maximum Dependency Chain Length</strong>: 31</li>
 </ul>
-<p>... and 57 more</p>
-<h2 id="top-10-most-depended-upon-concepts">Top 10 Most Depended-Upon Concepts</h2>
-<p>Concepts with the highest indegree (most other concepts depend on them):</p>
+<h3 id="longest-learning-path">Longest Learning Path:</h3>
+<ol>
+<li><strong>Graph Theory Basics</strong> (ID: 1)</li>
+<li><strong>Node Property</strong> (ID: 6)</li>
+<li><strong>Directed Acyclic Graph</strong> (ID: 11)</li>
+<li><strong>Graph Query</strong> (ID: 16)</li>
+<li><strong>Cypher Query Language</strong> (ID: 31)</li>
+<li><strong>Graph Pattern Matching</strong> (ID: 34)</li>
+<li><strong>Graph Algorithm</strong> (ID: 66)</li>
+<li><strong>Degree Centrality</strong> (ID: 71)</li>
+<li><strong>Strongly Connected Component</strong> (ID: 76)</li>
+<li><strong>Cosine Similarity</strong> (ID: 81)</li>
+<li><strong>Link Prediction</strong> (ID: 82)</li>
+<li><strong>Graph Embedding</strong> (ID: 83)</li>
+<li><strong>Artificial Intelligence</strong> (ID: 331)</li>
+<li><strong>Vector Store</strong> (ID: 336)</li>
+<li><strong>Knowledge Graph</strong> (ID: 341)</li>
+<li><strong>FHIR Standard</strong> (ID: 375)</li>
+<li><strong>Condition Resource</strong> (ID: 380)</li>
+<li><strong>PlanDefinition Resource</strong> (ID: 385)</li>
+<li><strong>Structured Level</strong> (ID: 390)</li>
+<li><strong>Forms/UI Tier</strong> (ID: 395)</li>
+<li><strong>Clinical User Story</strong> (ID: 400)</li>
+<li><strong>Terminology Binding</strong> (ID: 405)</li>
+<li><strong>Clinical Quality Measure</strong> (ID: 410)</li>
+<li><strong>CQL Define Statement</strong> (ID: 413)</li>
+<li><strong>Clinical Reasoning Module</strong> (ID: 414)</li>
+<li><strong>CDS Hooks</strong> (ID: 415)</li>
+<li><strong>Care Gap Alert</strong> (ID: 420)</li>
+<li><strong>CQL Runner Tool</strong> (ID: 425)</li>
+<li><strong>Quality Reporting Architecture</strong> (ID: 430)</li>
+<li><strong>Electronic CQM</strong> (ID: 431)</li>
+<li><strong>Measure Authoring Tool</strong> (ID: 432)</li>
+</ol>
+<h2 id="terminal-nodes-analysis">Terminal Nodes Analysis</h2>
+<p>Terminal nodes are concepts that nothing else depends on but have prerequisites. They represent natural endpoints of learning paths — culminating or specialized concepts.</p>
+<ul>
+<li><strong>Total Terminal Nodes</strong>: 193 (37.6% of all concepts)</li>
+<li><strong>Healthy Range</strong>: 5-40% of total concepts</li>
+</ul>
+<p>Concepts at the end of learning paths:</p>
+<ul>
+<li><strong>3</strong>: Edge</li>
+<li><strong>5</strong>: Labeled Property Graph</li>
+<li><strong>8</strong>: Directed Graph</li>
+<li><strong>10</strong>: Weighted Graph</li>
+<li><strong>13</strong>: Breadth-First Traversal</li>
+<li><strong>15</strong>: Graph Path</li>
+<li><strong>18</strong>: Database Schema</li>
+<li><strong>20</strong>: Entity-Relationship Model</li>
+<li><strong>23</strong>: Join Operation</li>
+<li><strong>25</strong>: Schema-On-Write</li>
+<li><strong>28</strong>: RDF Triple Store</li>
+<li><strong>30</strong>: Graph Serialization</li>
+<li><strong>33</strong>: GSQL</li>
+<li><strong>35</strong>: Graph Query Optimization</li>
+<li><strong>38</strong>: Path Query</li>
+<li><strong>40</strong>: Aggregate Query</li>
+<li><strong>43</strong>: Index-Free Adjacency</li>
+<li><strong>45</strong>: Bulk Import</li>
+<li><strong>48</strong>: Constraint Definition</li>
+<li><strong>50</strong>: Graph Visualization</li>
+</ul>
+<p><em>...and 173 more</em></p>
+<h2 id="orphaned-nodes-analysis">Orphaned Nodes Analysis</h2>
+<p>Orphaned nodes are completely disconnected concepts with no inbound AND no outbound edges. These indicate a quality problem — every concept should connect to the graph.</p>
+<ul>
+<li><strong>Total Orphaned Nodes</strong>: 0</li>
+</ul>
+<p>✅ No orphaned nodes detected. All concepts are connected to the graph.</p>
+<h2 id="connected-components">Connected Components</h2>
+<ul>
+<li><strong>Number of Connected Components</strong>: 1</li>
+</ul>
+<p>✅ All concepts are connected in a single graph.</p>
+<h2 id="indegree-analysis">Indegree Analysis</h2>
+<p>Top 10 concepts that are prerequisites for the most other concepts:</p>
 <table>
 <thead>
 <tr>
@@ -1805,73 +2038,106 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>22</td>
-<td>Healthcare Provider</td>
-<td>13</td>
+<td>410</td>
+<td>Clinical Quality Measure</td>
+<td>7</td>
 </tr>
 <tr>
 <td>2</td>
-<td>16</td>
-<td>Healthcare System</td>
-<td>9</td>
+<td>341</td>
+<td>Knowledge Graph</td>
+<td>5</td>
 </tr>
 <tr>
 <td>3</td>
-<td>146</td>
-<td>Graph Algorithm</td>
-<td>9</td>
+<td>11</td>
+<td>Directed Acyclic Graph</td>
+<td>4</td>
 </tr>
 <tr>
 <td>4</td>
-<td>96</td>
-<td>Insurance Claim</td>
-<td>8</td>
+<td>16</td>
+<td>Graph Query</td>
+<td>4</td>
 </tr>
 <tr>
 <td>5</td>
+<td>106</td>
+<td>Healthcare System</td>
 <td>4</td>
-<td>Graph Database</td>
-<td>7</td>
 </tr>
 <tr>
 <td>6</td>
-<td>12</td>
-<td>Graph Query</td>
-<td>7</td>
+<td>111</td>
+<td>Healthcare Payer</td>
+<td>4</td>
 </tr>
 <tr>
 <td>7</td>
-<td>23</td>
-<td>Healthcare Patient</td>
-<td>7</td>
+<td>141</td>
+<td>Patient Record</td>
+<td>4</td>
 </tr>
 <tr>
 <td>8</td>
-<td>46</td>
-<td>Patient Record</td>
-<td>7</td>
+<td>331</td>
+<td>Artificial Intelligence</td>
+<td>4</td>
 </tr>
 <tr>
 <td>9</td>
-<td>1</td>
-<td>Graph Theory Basics</td>
-<td>6</td>
+<td>346</td>
+<td>Clinical Decision Support</td>
+<td>4</td>
 </tr>
 <tr>
 <td>10</td>
-<td>131</td>
-<td>Healthcare Fraud</td>
-<td>6</td>
+<td>375</td>
+<td>FHIR Standard</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="outdegree-distribution">Outdegree Distribution</h2>
+<table>
+<thead>
+<tr>
+<th>Dependencies</th>
+<th>Number of Concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>479</td>
+</tr>
+<tr>
+<td>2</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
 <h2 id="recommendations">Recommendations</h2>
 <ul>
-<li>High number of orphaned nodes (43.5%). Consider if capstone/final concepts should have more concepts building upon them.</li>
-<li>Overall, the graph structure is good and ready for taxonomy assignment.</li>
+<li>✅ <strong>Terminal node percentage</strong> (37.6%): Within healthy range (5-40%)</li>
+<li>✅ <strong>DAG structure verified</strong>: Graph supports valid learning progressions</li>
+<li>ℹ️ <strong>Long dependency chains</strong> (31): Ensure students can follow extended learning paths</li>
+<li>ℹ️ <strong>Consider adding cross-dependencies</strong>: More connections could create richer learning pathways</li>
 </ul>
 <hr />
-<p><em>Report generated by analyze-graph.py</em></p>
+<p><em>Report generated by learning-graph-reports/analyze_graph.py</em></p>
 
 
 
@@ -1883,6 +2149,8 @@
   
 
 
+
+  
 
 
 

@@ -1,0 +1,23 @@
+{
+  "title": "Allowed Amount and Reimbursement Breakdown Chart",
+  "description": "Given a billed charge and a contracted allowed amount, the learner can calculate the contractual adjustment, the member's coinsurance share, and the payer's reimbursement for a set of sample claims.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "allowed-amount-reimbursement-breakdown-chart",
+  "library": "Chart.js",
+  "bloomLevel": "Apply<br/>",
+  "bloomVerb": "calculate, demonstrate<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 15,
+  "chapter_title": "Reimbursement, Health Plan Types, and Payer Contracts",
+  "chapter_dir": "15-reimbursement-health-plans-payer-contracts",
+  "chapter_rel_dir": "chapters/15-reimbursement-health-plans-payer-contracts"
+}

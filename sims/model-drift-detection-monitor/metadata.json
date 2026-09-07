@@ -1,0 +1,23 @@
+{
+  "title": "Model Drift Detection Monitor",
+  "description": "Given a rolling-window AUROC line chart with a drift-alert threshold, the learner can examine where a deployed model's performance degrades over time and differentiate normal fluctuation from a genuine drift event.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "model-drift-detection-monitor",
+  "library": "Chart.js",
+  "bloomLevel": "Analyze<br/>",
+  "bloomVerb": "examine, differentiate<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 21,
+  "chapter_title": "Responsible AI and Agentic Systems",
+  "chapter_dir": "21-responsible-ai-and-agentic-systems",
+  "chapter_rel_dir": "chapters/21-responsible-ai-and-agentic-systems"
+}

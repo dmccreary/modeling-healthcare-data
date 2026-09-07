@@ -1,0 +1,2740 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How clinical guidelines move from narrative prose through decision tables and user stories to Clinical Quality Language, the Expression Logical Model, and Clinical Quality Measures.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/23-clinical-guideline-authoring-and-cql/">
+      
+      
+        <link rel="prev" href="../22-fhir-resources-and-knowledge-representation/">
+      
+      
+        <link rel="next" href="../24-cds-hooks-alerts-and-cms-cql-tooling/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Clinical Guideline Authoring and Clinical Quality Language - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Clinical Guideline Authoring and Clinical Quality Language - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="How clinical guidelines move from narrative prose through decision tables and user stories to Clinical Quality Language, the Expression Logical Model, and Clinical Quality Measures." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/23-clinical-guideline-authoring-and-cql/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/23-clinical-guideline-authoring-and-cql/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Clinical Guideline Authoring and Clinical Quality Language - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="How clinical guidelines move from narrative prose through decision tables and user stories to Clinical Quality Language, the Expression Logical Model, and Clinical Quality Measures." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/23-clinical-guideline-authoring-and-cql/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#clinical-guideline-authoring-and-clinical-quality-language" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Clinical Guideline Authoring and Clinical Quality Language
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authoring-clinical-guidelines-from-prose-to-structured-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authoring Clinical Guidelines: From Prose to Structured Artifacts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authoring Clinical Guidelines: From Prose to Structured Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-guideline-authoring-artifacts-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Guideline Authoring Artifacts Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binding-guideline-logic-to-terminology-codesystems-valuesets-and-terminology-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binding Guideline Logic to Terminology: CodeSystems, ValueSets, and Terminology Binding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Binding Guideline Logic to Terminology: CodeSystems, ValueSets, and Terminology Binding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-codesystem-valueset-and-terminology-binding-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CodeSystem, ValueSet, and Terminology Binding Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-quality-language-from-human-readable-logic-to-executable-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clinical Quality Language: From Human-Readable Logic to Executable Measures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clinical Quality Language: From Human-Readable Logic to Executable Measures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cql-to-elm-compilation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CQL-to-ELM Compilation Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-quality-measures-populations-denominators-and-numerators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clinical Quality Measures: Populations, Denominators, and Numerators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clinical Quality Measures: Populations, Denominators, and Numerators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-quality-measure-population-funnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Quality Measure Population Funnel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authoring-clinical-guidelines-from-prose-to-structured-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authoring Clinical Guidelines: From Prose to Structured Artifacts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authoring Clinical Guidelines: From Prose to Structured Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-guideline-authoring-artifacts-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Guideline Authoring Artifacts Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binding-guideline-logic-to-terminology-codesystems-valuesets-and-terminology-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binding Guideline Logic to Terminology: CodeSystems, ValueSets, and Terminology Binding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Binding Guideline Logic to Terminology: CodeSystems, ValueSets, and Terminology Binding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-codesystem-valueset-and-terminology-binding-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CodeSystem, ValueSet, and Terminology Binding Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-quality-language-from-human-readable-logic-to-executable-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clinical Quality Language: From Human-Readable Logic to Executable Measures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clinical Quality Language: From Human-Readable Logic to Executable Measures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cql-to-elm-compilation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: CQL-to-ELM Compilation Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-quality-measures-populations-denominators-and-numerators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clinical Quality Measures: Populations, Denominators, and Numerators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clinical Quality Measures: Populations, Denominators, and Numerators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-quality-measure-population-funnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Quality Measure Population Funnel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/23-clinical-guideline-authoring-and-cql/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="clinical-guideline-authoring-and-clinical-quality-language">Clinical Guideline Authoring and Clinical Quality Language</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers how clinical guidelines are authored -- decision tables, flowcharts, user stories, and personas -- and how that narrative and semi-structured knowledge becomes machine-executable. It introduces Clinical Quality Language (CQL), its authoring format, and the Expression Logical Model (ELM) that CQL compiles into, along with Clinical Quality Measures (CQMs). Students learn how CQL separates clinical logic from the underlying data model and execution platform.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forms/UI Tier</td>
+<td>114</td>
+</tr>
+<tr>
+<td>Clinical Practice Guideline</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Guideline Authoring Process</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Decision Table</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Clinical Flowchart</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Clinical User Story</td>
+<td>107</td>
+</tr>
+<tr>
+<td>Clinical Persona</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Knowledge Engineer Role</td>
+<td>1</td>
+</tr>
+<tr>
+<td>CodeSystem Resource</td>
+<td>2</td>
+</tr>
+<tr>
+<td>ValueSet Resource</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Terminology Binding</td>
+<td>102</td>
+</tr>
+<tr>
+<td>Clinical Quality Language</td>
+<td>12</td>
+</tr>
+<tr>
+<td>CQL Authoring Format</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Expression Logical Model</td>
+<td>22</td>
+</tr>
+<tr>
+<td>CQL Compiler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Clinical Quality Measure</td>
+<td>67</td>
+</tr>
+<tr>
+<td>CQL Library</td>
+<td>2</td>
+</tr>
+<tr>
+<td>CQL Retrieve Expression</td>
+<td>1</td>
+</tr>
+<tr>
+<td>CQL Define Statement</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Clinical Reasoning Module</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../22-fhir-resources-and-knowledge-representation/">Chapter 22: FHIR Resources and Levels of Knowledge Representation</a></li>
+</ul>
+<hr />
+<p>Chapter 22 ended with a promise: a Structured-level PlanDefinition compiles into something executable. This chapter delivers on that promise from the other end, starting at the very beginning of a guideline's life — a committee's narrative recommendation — and following it all the way through decision tables, user stories, and terminology bindings to Clinical Quality Language, the Expression Logical Model, and a fully computable Clinical Quality Measure.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">From Prose to Code, One Careful Step at a Time</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Ready for the chapter where a guideline goes from a paragraph a committee argued about for months into an actual piece of runnable logic? It's a longer journey than you might expect, but every step is traceable — no mysterious leaps required. Let's connect the dots!</p>
+</div>
+<h2 id="authoring-clinical-guidelines-from-prose-to-structured-artifacts">Authoring Clinical Guidelines: From Prose to Structured Artifacts</h2>
+<p>A <strong>Clinical Practice Guideline</strong> (CPG) is a formally developed, evidence-based statement recommending specific clinical actions for a specific clinical scenario, typically produced by a professional medical society or a government health agency after reviewing the relevant research literature. The hypertension-screening recommendation, the diabetes-screening protocol from Chapter 22, and the statin-therapy guideline traced through the four knowledge representation levels are all Clinical Practice Guidelines at the Narrative level — the starting point every guideline begins from, regardless of how far down the computability spectrum it eventually travels.</p>
+<p>Turning a CPG into something a CDS system can act on follows a defined sequence called the <strong>guideline authoring process</strong>: evidence review and synthesis by clinical experts, drafting of the narrative recommendation, translation into semi-structured artifacts (decision tables, flowcharts, user stories), translation into structured, coded FHIR resources, and finally compilation into executable logic. Each stage in this process typically involves a different kind of expert, and each stage's output becomes the next stage's input — a pipeline this chapter and the next will trace end to end. Crucially, the process is rarely a clean, one-directional handoff in practice: a knowledge engineer who discovers that a narrative guideline's recommendation is ambiguous when it comes time to write a decision table routinely has to send a clarifying question back to the original clinical authors, and a semi-structured artifact frequently goes through several review cycles with clinical stakeholders before anyone attempts to code it. Treating guideline authoring as an iterative, cross-disciplinary process rather than a one-way translation pipeline is one of the most important operational lessons real-world CDS programs learn, usually the hard way, in their first year of trying to structure an existing guideline library.</p>
+<p>Guideline committees also do not always agree, and the guideline authoring process must accommodate that reality: two professional societies can publish differing recommendations for the same clinical scenario based on differing readings of the same underlying evidence, and a knowledge engineer structuring both may need to encode both as competing, clearly attributed rule sets rather than silently picking a winner — a governance decision (recall AI Governance from Chapter 21) as much as a technical one.</p>
+<p>The semi-structured stage of that pipeline produces several distinct kinds of artifacts, and knowing which one to reach for depends on what the guideline's logic actually looks like. A <strong>decision table</strong> represents guideline logic as rows of conditions and corresponding actions, one row per rule — the clearest choice when a guideline's logic is a set of independent if-then rules with no meaningful sequence between them, such as "if LDL &gt; 190 and no statin allergy, recommend high-intensity statin" sitting as one self-contained row alongside other, unrelated rules. A <strong>clinical flowchart</strong> instead represents guideline logic as a branching diagram of sequential decision points — the better choice when the order of decisions matters, such as a chest-pain triage protocol where the answer to "is the EKG abnormal?" determines which question gets asked next, and that next question would make no sense asked out of order.</p>
+<p>Neither a decision table nor a flowchart, on its own, captures <em>who</em> is using the guideline and <em>why</em> — and that gap is exactly what the <strong>Forms/UI Tier</strong> exists to address. Recall from Chapter 22 that the Data Tier covers the concepts and data elements a piece of knowledge refers to, and the Logic Tier covers its business rules; the Forms/UI Tier is the third leg of that same classification, covering the user interface and interaction design surrounding a clinical knowledge artifact — how a recommendation is presented to a clinician, what a data-entry form looks like, and what workflow a person follows to act on the guideline. Every artifact this section introduces (decision tables, flowcharts, user stories, personas) is Forms/UI Tier content, because all of them describe how a human interacts with the guideline rather than what data it needs (Data Tier) or what its underlying rule logic is (Logic Tier). A single guideline typically produces artifacts in all three tiers simultaneously: the Logic Tier captures "if LDL &gt; 190, recommend a statin," the Data Tier captures the specific LOINC and RxNorm codes that logic depends on, and the Forms/UI Tier captures how that recommendation actually appears as an alert card inside a clinician's EHR screen, worded so it fits naturally into the three seconds of attention a busy clinician has to give it.</p>
+<p>The Forms/UI Tier's most distinctive authoring tool is the <strong>clinical user story</strong> — a short, structured narrative describing a specific goal a specific type of user has, written in the now-standard software-engineering template "As a [role], I want [goal], so that [benefit]." A clinical user story for the diabetes-screening guideline from Chapter 22 might read: "As a primary care physician, I want to be alerted when a diabetic patient's chart shows no HbA1c result in the past twelve months, so that I can order the test before the visit ends." Notice what this format captures that a decision table cannot: not just the logical condition (no recent HbA1c) and the action (order the test), but the <em>timing</em> (before the visit ends) and the <em>motivation</em> (avoiding a follow-up visit purely to draw a lab the clinician could have ordered immediately) — exactly the workflow-shaping detail the Forms/UI Tier is meant to carry.</p>
+<p>A <strong>clinical persona</strong> grounds a user story in a consistent, recurring character rather than a generic role label, the same technique product designers use when building software for real users instead of abstract personas. Instead of writing five different user stories that each independently reinvent "a primary care physician," a guideline authoring team might define one persona — "Dr. Priya Nair, a family medicine physician managing a panel of 1,800 patients with limited time per visit" — and write every primary-care-facing user story against that same persona, ensuring the resulting alerts and workflows stay consistent with one coherent set of constraints (limited time, a large patient panel) rather than drifting depending on which author wrote which story.</p>
+<p>Well-written clinical user stories also serve a second, quieter purpose beyond requirements-gathering: they are the first line of defense against the alert fatigue problem Chapter 20 introduced, because a user story that explicitly names <em>when</em> in the workflow a recommendation is needed ("before the visit ends," not just "sometime") forces the guideline authoring team to think concretely about interruption cost before a single line of executable logic gets written. A guideline authored straight from a decision table with no accompanying user story is far more likely to become the kind of poorly timed, poorly targeted alert that trains clinicians to click past it without reading it.</p>
+<p>Carrying a guideline through every stage of this process — narrative, decision table or flowchart, user story and persona, and eventually structured and executable formats — requires someone fluent in both worlds: clinical content and computable representation. The <strong>knowledge engineer role</strong> is exactly that bridge: a person (or, increasingly, a small team) responsible for translating clinical experts' Narrative- and Semi-Structured-level artifacts into Structured-level, standards-compliant FHIR resources, without introducing clinical errors or losing the original guideline's intent along the way. The role demands a genuinely unusual combination of skills: enough clinical literacy to read a guideline and ask the right clarifying questions, enough familiarity with FHIR resources and terminology systems (CodeSystems and ValueSets, covered next) to encode it correctly, and enough software engineering discipline to version, test, and maintain the resulting artifacts as the underlying guideline gets updated. It is a genuinely rare skill set, which is one of the reasons the knowledge-engineering bottleneck — far more narrative guidelines exist than knowledge engineers available to structure them — is a recurring, real constraint on how much of medicine's published guidance ever becomes computable at all.</p>
+<h4 id="diagram-guideline-authoring-artifacts-explorer">Diagram: Guideline Authoring Artifacts Explorer</h4>
+<iframe src="../../sims/guideline-authoring-artifacts-explorer/main.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<details>
+<summary>Guideline Authoring Artifacts Explorer</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> guideline-authoring-artifacts-explorer<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, classify<br/>
+Learning objective: Given the same diabetes-screening guideline expressed as a narrative sentence, a decision table row, a flowchart branch, and a user story, the learner can differentiate what each artifact type captures that the others do not, and classify a new artifact example by type.</p>
+<p>Purpose: Show the same underlying guideline content transformed into four different Forms/UI Tier artifacts side by side, so the learner sees concretely what each format adds or loses relative to the others.</p>
+<p>Components to show (four-panel layout, one panel per artifact type):
+- Panel 1 "Narrative": the plain-text guideline sentence
+- Panel 2 "Decision Table": a two-column table (Condition | Action) with the same rule as one row
+- Panel 3 "Clinical Flowchart": a small branching diagram with two decision diamonds leading to the recommended action
+- Panel 4 "Clinical User Story": the "As a... I want... so that..." formatted story, tagged with its Clinical Persona (Dr. Priya Nair)</p>
+<p>Interactive controls:
+- Click any panel to expand it and highlight, in the other three panels, which words or cells correspond to the same underlying condition or action (color-linked highlighting across panels)
+- A "Classify This" mini-quiz mode: a new short guideline artifact is shown, and the learner clicks which of the four panel types it belongs to, with immediate feedback</p>
+<p>Instructional Rationale: Side-by-side, color-linked panels directly support the Analyze-level objective by making the same content's different representations simultaneously visible and comparable, rather than requiring the learner to hold each format in memory separately while comparing them.</p>
+<p>Implementation: vis-network or custom HTML/CSS grid with JavaScript-driven cross-panel highlighting; responsive width.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Match the Artifact to the Shape of the Logic</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Quick heuristic: if a guideline's rules are independent of each other, reach for a decision table. If the order of questions matters, reach for a flowchart. And whenever you need to capture <em>who</em> needs the recommendation and <em>why</em> it matters to their workflow, write a user story instead of either one.</p>
+</div>
+<h2 id="binding-guideline-logic-to-terminology-codesystems-valuesets-and-terminology-binding">Binding Guideline Logic to Terminology: CodeSystems, ValueSets, and Terminology Binding</h2>
+<p>A Structured-level guideline is only as computable as its underlying codes are precise, which means every data element a guideline references — a diagnosis, a lab test, a medication — must be bound to a formally defined vocabulary rather than a free-text description a computer cannot reliably match. A <strong>CodeSystem resource</strong> defines a complete, formally maintained vocabulary of codes and their meanings — SNOMED CT (clinical findings and procedures), LOINC (laboratory and clinical observations), RxNorm (medications), and ICD-10-CM (diagnosis codes for billing) are each represented in FHIR as a CodeSystem, each one a complete, independently governed universe of codes maintained by its own standards organization.</p>
+<p>A guideline almost never needs an entire CodeSystem's full universe of codes — a diabetes guideline needs perhaps a dozen specific diagnosis codes out of the tens of thousands ICD-10-CM defines. A <strong>ValueSet resource</strong> solves this by curating a specific, purpose-built subset of codes drawn from one or more CodeSystems for a single clinical use — a "Diabetes Diagnoses" ValueSet might include ICD-10-CM codes E10.9, E11.9, and E13.9 alongside their SNOMED CT equivalents, packaged together as the one authoritative list any guideline needing to check "does this patient have diabetes" should reference.</p>
+<p><strong>Terminology binding</strong> is the act of connecting a specific data element in a guideline or FHIR profile to a specific ValueSet, and it is the single mechanical step that turns Structured-level knowledge from merely coded into genuinely shareable and unambiguous. FHIR formally distinguishes four binding strengths, because not every data element needs the same level of terminology discipline. A <code>required</code> binding means only codes from the bound ValueSet are valid — no exceptions — appropriate for a data element like a lab result's units where ambiguity would be dangerous. An <code>extensible</code> binding means codes from the ValueSet should be used if one fits, but a different code is allowed if none of the ValueSet's options adequately describes the situation. A <code>preferred</code> binding is a recommendation without enforcement. An <code>example</code> binding exists purely to illustrate the kind of value expected, with no restriction implied at all. Choosing the wrong binding strength has real consequences: binding a critical safety field (say, a medication's route of administration) too loosely as merely <code>preferred</code> risks two systems recording the same clinical fact with incompatible codes, silently breaking any downstream logic that expects a <code>required</code>-level guarantee.</p>
+<p>A worked example threads CodeSystem, ValueSet, and binding strength together. Terminology-binding "LDL Cholesterol" for the statin guideline from Chapter 22 means: the CodeSystem is LOINC (the vocabulary that defines lab-test codes); the ValueSet is a narrow "LDL Cholesterol Lab Tests" ValueSet containing the small handful of LOINC codes that all represent an LDL measurement (since more than one code exists for slightly different LDL test methodologies); and the terminology binding connects the guideline's Observation data element specifically to that ValueSet with <code>required</code> strength, so that any Observation resource claiming to represent this guideline's LDL check must use one of those specific codes — no free-text "cholesterol test, low-density type" allowed. This is precisely the mechanism that lets a PlanDefinition written by one health system's knowledge engineers run correctly, unmodified, against a completely different health system's patient data, as long as both systems' Observation resources are terminology-bound to the same ValueSet.</p>
+<h4 id="diagram-codesystem-valueset-and-terminology-binding-explorer">Diagram: CodeSystem, ValueSet, and Terminology Binding Explorer</h4>
+<iframe src="../../sims/terminology-binding-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>CodeSystem, ValueSet, and Terminology Binding Explorer</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> terminology-binding-explorer<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: apply, demonstrate<br/>
+Learning objective: Given a new clinical data element and a choice of binding strength, the learner can apply the CodeSystem-ValueSet-binding chain to determine which codes would and would not be considered valid.</p>
+<p>Purpose: Show the three-layer relationship between a full CodeSystem, a curated ValueSet drawn from it, and a terminology binding connecting a guideline data element to that ValueSet, using the LDL Cholesterol worked example.</p>
+<p>Components to show:
+- Node "LOINC CodeSystem" (large gray circle) — labeled "tens of thousands of codes," containing many small dimmed dots representing uncurated codes
+- Node "LDL Cholesterol Lab Tests ValueSet" (blue circle, subset highlighted within the CodeSystem) — containing 3-4 specific LOINC codes shown as bright dots (e.g., 2089-1, 13457-7, 18262-6)
+- Node "Guideline Data Element: 'LDL Cholesterol'" (orange box) — connects via a labeled "terminology binding" edge to the ValueSet node
+- Dropdown/selector for binding strength: required, extensible, preferred, example</p>
+<p>Interactive controls:
+- Click any of the bright LOINC code dots inside the ValueSet to see its full code and display name
+- Change the binding-strength dropdown and see a live-updated verdict panel showing, for three example incoming codes (one inside the ValueSet, one a plausible-but-different cholesterol code outside it, one an unrelated lab code), whether each would be accepted, allowed-with-caution, or rejected under the currently selected binding strength
+- Hover the CodeSystem node to see its governance body (Regenstrief Institute for LOINC) and its total code count</p>
+<p>Instructional Rationale: A live verdict panel that recomputes accept/reject outcomes as the learner changes the binding strength directly supports the Apply-level objective, letting the learner test the consequence of each binding strength choice on concrete example codes rather than only reading the four definitions.</p>
+<p>Implementation: vis-network for the CodeSystem/ValueSet/binding graph plus a JavaScript-driven verdict panel; responsive width.</p>
+</details>
+<div class="admonition mascot-warning">
+<p class="admonition-title">A ValueSet Is Not the Same Thing as a CodeSystem</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Easy mix-up: a CodeSystem is the entire vocabulary (all of LOINC, all of SNOMED CT), while a ValueSet is always a curated, purpose-specific subset pulled from one or more CodeSystems. If you ever catch yourself calling "all of ICD-10" a ValueSet, that's your cue to double-check — a ValueSet without a specific clinical purpose behind its selection usually isn't one.</p>
+</div>
+<h2 id="clinical-quality-language-from-human-readable-logic-to-executable-measures">Clinical Quality Language: From Human-Readable Logic to Executable Measures</h2>
+<p>With terminology binding in place, a guideline's logic can finally be written in a form built specifically for this purpose. <strong>Clinical Quality Language</strong> (CQL) is a high-level, human-readable and machine-executable language, developed by HL7, for authoring clinical decision support logic and Clinical Quality Measures — designed from the ground up to read almost like structured English while still compiling deterministically into runnable code. CQL's defining design goal, and the one the course description highlights most, is separation of concerns: CQL logic is written independently of any specific data model version or execution platform, referencing FHIR resources and ValueSets abstractly so the same CQL library can run unmodified against any FHIR-conformant data source and any CQL-capable engine, rather than being rewritten for every EHR vendor's proprietary rules format.</p>
+<p>The concrete syntax a knowledge engineer actually types is called the <strong>CQL authoring format</strong> — plain text files, conventionally saved with a <code>.cql</code> extension, organized as a <code>library</code>, a set of terminology declarations, and a series of named logical expressions. A <strong>CQL retrieve expression</strong> is the basic operation for pulling matching FHIR resources out of a patient's record, written with square brackets naming the resource type and, optionally, a ValueSet to filter by — <code>[Condition: "Diabetes"]</code> retrieves every Condition resource for the patient in context whose code falls within the "Diabetes" ValueSet from the previous section, with the terminology binding from that ValueSet doing the actual filtering work under the hood.</p>
+<p>A <strong>CQL define statement</strong> gives a name to a reusable logical expression, the way a variable or function assignment does in a general-purpose programming language, so complex logic can be built up from simpler, individually readable named pieces rather than one dense unreadable expression. A collection of related define statements, terminology declarations, and metadata bundled together under one shared <code>library</code> declaration is a <strong>CQL library</strong> — the exact same <code>Library</code> resource type that Chapter 22 mentioned a PlanDefinition's <code>library</code> field references, closing the loop between the two chapters.</p>
+<p>The CQL authoring format supports several other constructs worth knowing before reading the full worked example below. A <code>context</code> declaration (typically <code>context Patient</code>) tells the engine whether each define statement should be evaluated once per patient or once for an entire population, which matters enormously for performance at scale. CQL also has rich built-in support for temporal logic — operators like <code>during</code>, <code>same day as</code>, and <code>within 30 days of</code> let a define statement express time-bounded clinical logic ("an HbA1c result <em>during</em> the measurement period") without the knowledge engineer having to hand-write date-arithmetic comparisons. And, like most programming languages, CQL supports single-line comments (starting with <code>//</code>) so a library's logic can carry inline documentation explaining <em>why</em> a particular threshold or exclusion was chosen — an underrated feature for a language whose libraries are frequently audited by people other than their original author.</p>
+<p>A worked CQL example builds all of this into one runnable artifact — the diabetes control measure whose numbers echo the population health example from Chapter 20:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>library DiabetesControlMeasure version &#39;1.0.0&#39;
+using FHIR version &#39;4.0.1&#39;
+
+valueset &quot;Diabetes&quot;: &#39;urn:oid:2.16.840.1.113883.3.464.1003.103.12.1001&#39;
+valueset &quot;HbA1c Lab Test&quot;: &#39;urn:oid:2.16.840.1.113883.3.464.1003.198.12.1013&#39;
+
+define &quot;Has Diabetes&quot;:
+  exists( [Condition: &quot;Diabetes&quot;] C where C.clinicalStatus = &#39;active&#39; )
+
+define &quot;In Denominator&quot;:
+  &quot;Has Diabetes&quot;
+
+define &quot;In Numerator&quot;:
+  exists( [Observation: &quot;HbA1c Lab Test&quot;] O
+    where O.value &lt; 7 &#39;%&#39; )
+</code></pre></div></td></tr></table></div>
+<p>Reading this top to bottom: the <code>valueset</code> declarations bind two named terms to the specific ValueSets a terminology binding would define; <code>"Has Diabetes"</code> is a define statement built directly from a retrieve expression, testing whether any active Condition resource exists in the "Diabetes" ValueSet; <code>"In Denominator"</code> simply reuses <code>"Has Diabetes"</code> by name, exactly the kind of composability that makes define statements so much easier to read and maintain than one enormous nested expression; and <code>"In Numerator"</code> is a second retrieve expression checking for a recent, well-controlled HbA1c Observation. Every reference to a FHIR resource type, and every reference to a ValueSet, is exactly the same vocabulary Chapter 22 introduced — CQL does not invent a new data model, it reasons directly over FHIR resources.</p>
+<p>CQL's authoring format is human-readable by design, but no clinical reasoning engine actually executes <code>.cql</code> text files directly. A <strong>CQL compiler</strong> translates the human-readable CQL authoring format into the <strong>Expression Logical Model</strong> (ELM) — a machine-friendly XML or JSON representation of the exact same logic, structured as an abstract syntax tree an execution engine can walk mechanically without any natural-language parsing. Compiling the <code>"Has Diabetes"</code> define statement above produces an ELM fragment conceptually shaped like this (simplified):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Has Diabetes&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;expression&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Exists&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;operand&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Query&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;expression&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Retrieve&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;dataType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Condition&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;codes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Diabetes&quot;</span><span class="p">}}],</span>
+<span class="w">      </span><span class="nt">&quot;where&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Equal&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;operand&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clinicalStatus&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;valueOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">}]}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Notice that every piece of the original CQL — the retrieve, the <code>where</code> filter, the name <code>"Has Diabetes"</code> — survives the compilation step in a more verbose, fully explicit, machine-parseable shape. This is exactly the Structured-to-Executable transition Chapter 22 described in the abstract: the CQL authoring format is Structured-level (human-authored, terminology-coded, platform-neutral), and the compiled ELM is Executable-level (verbose, unambiguous, ready for one specific engine to run with no further interpretation). The engine that actually walks this ELM tree against a specific patient's FHIR resources at runtime is called a <strong>Clinical Reasoning Module</strong> — the FHIR-defined execution component responsible for evaluating compiled CQL/ELM logic (and, per Chapter 22, PlanDefinition triggers) against real patient data and returning a result, whether that result is a simple true/false or a full Clinical Quality Measure calculation. A Clinical Reasoning Module is not a single monolithic piece of software; it is a defined capability that an EHR vendor's platform, a standalone CDS service, or a health information exchange's shared infrastructure can each implement, as long as it correctly evaluates ELM against FHIR resources and exposes its results through the standard <code>$evaluate</code> and <code>$apply</code> operations FHIR defines for this purpose. This standardized boundary is exactly what lets the same compiled measure run inside completely different vendors' technology stacks — and it is the runtime component the next chapter's CDS Hooks material connects directly into a clinician's live workflow.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">CQL Define Statements Are Just Named Nodes of Logic</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice the pattern: <code>"In Denominator"</code> doesn't repeat the diabetes-checking logic — it just points at <code>"Has Diabetes"</code> by name. That's the exact same idea as an edge pointing at a node instead of duplicating the node's data. CQL libraries are graphs of named logic, and once you see that, reading a complex library gets a lot less tentacle-y.</p>
+</div>
+<h4 id="diagram-cql-to-elm-compilation-pipeline">Diagram: CQL-to-ELM Compilation Pipeline</h4>
+<iframe src="../../sims/cql-to-elm-compilation-pipeline/main.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<details>
+<summary>CQL-to-ELM Compilation Pipeline</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> cql-to-elm-compilation-pipeline<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, translate<br/>
+Learning objective: Given a CQL define statement, the learner can explain each stage of its compilation into ELM and translate between the CQL authoring format and its corresponding ELM fragment.</p>
+<p>Purpose: Trace the "Has Diabetes" define statement from human-authored CQL text through compilation to ELM to runtime evaluation by a Clinical Reasoning Module, using the exact worked example from the surrounding prose.</p>
+<p>Components to show (left-to-right Mermaid flowchart):
+- Node "CQL Library (.cql file)" (blue) — shows the DiabetesControlMeasure library text
+- Node "CQL Compiler" (orange) — the translation step
+- Node "Expression Logical Model (ELM, JSON/XML)" (green) — shows the compiled ELM fragment
+- Node "Clinical Reasoning Module" (purple) — the runtime engine
+- Node "Patient FHIR Resources" (pink, feeding into the Clinical Reasoning Module) — Maria Chen's Condition and Observation resources from Chapter 22
+- Node "Evaluation Result" (yellow) — true/false or measure output</p>
+<p>Connections: CQL Library → CQL Compiler → ELM → Clinical Reasoning Module (also receiving Patient FHIR Resources as a second input) → Evaluation Result</p>
+<p>Interactive controls:
+- Click "CQL Library" to see the full authoring-format text
+- Click "Expression Logical Model" to see the compiled JSON fragment
+- Click "Clinical Reasoning Module" to see, step by step, how it walks the ELM tree against Maria Chen's actual Condition resource (active Type 2 Diabetes) to reach a "true" result for "Has Diabetes"
+- Toggle to swap in a patient with no active diabetes Condition and see the Evaluation Result change to "false"</p>
+<p>Instructional Rationale: A clickable pipeline that lets the learner inspect both the CQL and ELM text for the identical logic, then watch it evaluated against two different patients, directly supports the Understand-level objective of translating between the two representations and explaining what changes (and does not change) at each stage.</p>
+<p>Implementation: Mermaid flowchart with click handlers routed to code-display infoboxes; responsive width.</p>
+</details>
+<h2 id="clinical-quality-measures-populations-denominators-and-numerators">Clinical Quality Measures: Populations, Denominators, and Numerators</h2>
+<p>Everything this chapter has built — terminology bindings, retrieve expressions, define statements, compiled ELM — exists to support one of the most consequential artifacts in the entire healthcare quality system: the <strong>Clinical Quality Measure</strong> (CQM), a standardized, precisely defined measure of healthcare quality, expressed in CQL, used to evaluate how well a provider or health system is delivering a specific aspect of care across a defined patient population. A CQM is built from four standard population definitions, each one itself a CQL define statement: the <em>initial population</em> (everyone potentially eligible, such as all patients aged 18-75), the <em>denominator</em> (the subset the measure actually applies to, such as those with an active diabetes diagnosis), <em>denominator exclusions</em> (patients who should be removed from consideration for a valid clinical reason, such as those in hospice care), and the <em>numerator</em> (the subset of the denominator that met the quality target, such as those with a controlled HbA1c).</p>
+<p>CQMs are further classified by what they measure: a <em>process measure</em> tracks whether a recommended action happened at all (was an HbA1c test ordered), while an <em>outcome measure</em> tracks whether a clinical result was achieved (was the HbA1c actually under control) — the diabetes example in this chapter is an outcome measure, generally considered more clinically meaningful but also harder to move through policy alone, since a clinic can guarantee a test gets ordered but cannot single-handedly guarantee a patient's blood sugar responds to treatment. Extending the worked CQL library above into a full measure makes this concrete with numbers that continue the population health example from Chapter 20. Suppose a payer's graph, filtered by the CQM's initial population criteria, identifies 40,000 patients aged 18-75; all 40,000 satisfy the <code>"Has Diabetes"</code> denominator define statement; 500 are excluded for being in hospice care, leaving a denominator of 39,500; and of those, 25,500 satisfy the <code>"In Numerator"</code> define statement's controlled-HbA1c criteria. The measure's reported rate is the numerator divided by the denominator: ( 25{,}500 / 39{,}500 \approx 64.6\% ). This single percentage — computed automatically, every reporting period, by a Clinical Reasoning Module evaluating this exact CQL logic against the health system's live FHIR data — is what a payer uses to determine quality bonus payments under a value-based contract, which is precisely why Sage's earlier point about graphs and AI powering the shift to value-based care depends, very concretely, on CQMs like this one being both accurate and automatically computable.</p>
+<h4 id="diagram-clinical-quality-measure-population-funnel">Diagram: Clinical Quality Measure Population Funnel</h4>
+<iframe src="../../sims/clinical-quality-measure-population-funnel/main.html" width="100%" height="480px" scrolling="no"></iframe>
+
+<details>
+<summary>Clinical Quality Measure Population Funnel</summary>
+<p>Type: chart
+<strong>sim-id:</strong> clinical-quality-measure-population-funnel<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, demonstrate<br/>
+Learning objective: Given initial population, denominator exclusion, and numerator counts, the learner can calculate a Clinical Quality Measure's reported rate and demonstrate how changing an exclusion count changes the final rate.</p>
+<p>Purpose: Visualize the diabetes-control CQM's four standard populations as a narrowing funnel with live counts, reinforcing the initial-population/denominator/exclusions/numerator structure with the exact numbers from the worked example.</p>
+<p>Chart type: Funnel-style horizontal bar chart (four stacked bars, each narrower than the last)</p>
+<p>Data series (default values, editable):
+1. Initial Population: 40,000 (aged 18-75)
+2. Denominator (has diabetes): 40,000
+3. Denominator after Exclusions (hospice care removed): 39,500
+4. Numerator (HbA1c controlled): 25,500</p>
+<p>Annotations:
+- Computed rate displayed prominently: "Measure Rate = 25,500 / 39,500 = 64.6%"</p>
+<p>Interactive controls:
+- Hover any bar to see its exact count and the population definition it represents
+- Editable number input for the exclusion count, live-recalculating the denominator and displayed rate
+- Editable number input for the numerator count, live-recalculating the displayed rate</p>
+<p>Instructional Rationale: Editable inputs that immediately recompute the displayed rate match the Apply-level objective, requiring the learner to perform the division themselves conceptually and see the direct effect of population-definition choices on the final reported measure.</p>
+<p>Implementation: Chart.js horizontal bar chart with live-updating annotation text driven by input fields; responsive width.</p>
+</details>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">CQL Looks Like a New Programming Language Because It Is One</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+If the CQL syntax above felt like a lot on a first read, that's completely normal — you're reading a real, if narrow, programming language for the first time. Most people need to trace one full library, define statement by define statement, before it clicks. Go back through the diabetes example one line at a time; it gets much less tangled the second pass through.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Read a Clinical Quality Measure Like Code</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Take a moment — you just traced a guideline from narrative prose through decision tables and user stories, learned how terminology binding makes codes shareable, and read real CQL that compiles to real ELM and adds up to a real, board-reportable quality measure. That is the entire authoring pipeline behind clinical decision support, start to finish.</p>
+</div>
+<p>This chapter followed a single guideline's transformation from Narrative-level prose through Forms/UI Tier artifacts (decision tables, flowcharts, user stories, and personas authored with the help of a knowledge engineer), through terminology binding to CodeSystems and ValueSets, and finally into Clinical Quality Language — human-readable retrieve expressions and define statements organized into a CQL library, compiled by a CQL compiler into the Expression Logical Model, and evaluated by a Clinical Reasoning Module to produce a Clinical Quality Measure's reported rate. The final chapter in this unit turns to how that same executable logic reaches a clinician in real time through CDS Hooks, and how the CMS-sponsored tooling ecosystem authors, tests, and certifies these measures before they ever run against a real patient. Continue to <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/">Chapter 24: CDS Hooks, Care Alerts, and CMS CQL Tooling</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../22-fhir-resources-and-knowledge-representation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 22. FHIR Resources and Levels of Knowledge Representation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                22. FHIR Resources and Levels of Knowledge Representation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-footer__link md-footer__link--next" aria-label="Next: 24. CDS Hooks, Care Alerts, and CMS CQL Tooling">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

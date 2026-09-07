@@ -1,0 +1,2979 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Surveys Cypher, GQL, and GSQL, and covers pattern matching, query optimization, indexing, and the ETL pipelines used to load data into a graph database.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/03-graph-query-languages-pattern-matching/">
+      
+      
+        <link rel="prev" href="../02-graphs-vs-relational-databases/">
+      
+      
+        <link rel="next" href="../04-graph-database-scalability-operations/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Graph Query Languages and Pattern Matching - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Graph Query Languages and Pattern Matching - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Surveys Cypher, GQL, and GSQL, and covers pattern matching, query optimization, indexing, and the ETL pipelines used to load data into a graph database." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/03-graph-query-languages-pattern-matching/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/03-graph-query-languages-pattern-matching/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Graph Query Languages and Pattern Matching - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Surveys Cypher, GQL, and GSQL, and covers pattern matching, query optimization, indexing, and the ETL pipelines used to load data into a graph database." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/03-graph-query-languages-pattern-matching/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#graph-query-languages-and-pattern-matching" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Graph Query Languages and Pattern Matching
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-short-landscape-of-graph-query-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Short Landscape of Graph Query Languages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Short Landscape of Graph Query Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-evolution-of-graph-query-languages-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Evolution of Graph Query Languages Timeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cypher-and-the-art-of-pattern-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cypher and the Art of Pattern Matching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cypher and the Art of Pattern Matching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cypher-query-components-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cypher Query Components Interactive Infographic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-query-shapes-you-just-wrote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the Query Shapes You Just Wrote
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gsql-and-the-accumulator-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      GSQL and the Accumulator Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GSQL and the Accumulator Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-gsql-accumulator-pattern-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: GSQL Accumulator Pattern MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-queries-fast-optimization-profiling-and-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making Queries Fast: Optimization, Profiling, and Indexes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Queries Fast: Optimization, Profiling, and Indexes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-performance-impact-of-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Performance Impact of Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-optimization-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Optimization Workflow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-data-into-the-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Data Into the Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-short-landscape-of-graph-query-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Short Landscape of Graph Query Languages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Short Landscape of Graph Query Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-evolution-of-graph-query-languages-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Evolution of Graph Query Languages Timeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cypher-and-the-art-of-pattern-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cypher and the Art of Pattern Matching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cypher and the Art of Pattern Matching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cypher-query-components-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cypher Query Components Interactive Infographic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-query-shapes-you-just-wrote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the Query Shapes You Just Wrote
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gsql-and-the-accumulator-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      GSQL and the Accumulator Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GSQL and the Accumulator Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-gsql-accumulator-pattern-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: GSQL Accumulator Pattern MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-queries-fast-optimization-profiling-and-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making Queries Fast: Optimization, Profiling, and Indexes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Queries Fast: Optimization, Profiling, and Indexes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-performance-impact-of-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Performance Impact of Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-optimization-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Optimization Workflow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-data-into-the-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Data Into the Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/03-graph-query-languages-pattern-matching/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="graph-query-languages-and-pattern-matching">Graph Query Languages and Pattern Matching</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter surveys the major graph query languages -- Cypher, the GQL standard, and GSQL -- and the pattern-matching techniques used to query connected data. It covers query optimization, indexing, and the engineering behind loading data into a graph database (bulk import, ETL pipelines, schema design, and constraints). Students learn to read and reason about graph queries and to evaluate query performance.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 18 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cypher Query Language</td>
+<td>466</td>
+</tr>
+<tr>
+<td>GQL Standard</td>
+<td>2</td>
+</tr>
+<tr>
+<td>GSQL</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Graph Pattern Matching</td>
+<td>431</td>
+</tr>
+<tr>
+<td>Graph Query Optimization</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Graph Index</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Query Performance</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Path Query</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Subgraph Query</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Aggregate Query</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Graph Database Engine</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Native Graph Storage</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Index-Free Adjacency</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Graph Data Loading</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Bulk Import</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ETL Pipeline</td>
+<td>22</td>
+</tr>
+<tr>
+<td>Graph Schema Design</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Constraint Definition</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-foundations-of-graph-structures/">Chapter 1: Foundations of Graph Structures</a></li>
+<li><a href="../02-graphs-vs-relational-databases/">Chapter 2: Data Modeling: Graphs vs. Relational Databases</a></li>
+</ul>
+<hr />
+<p>Chapter 2 argued, in prose, that a graph query answers connected questions
+more cheaply than a chain of relational joins. This chapter makes that
+argument concrete by teaching you to read and write the queries themselves —
+the languages, the pattern-matching syntax, the performance tuning, and the
+pipelines that get healthcare data into a graph database in the first place.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Let's Speak Graph</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Let's connect the dots! By the end of this chapter you'll be able to read a real graph query and know exactly what pattern it's hunting for in a sea of patients, providers, and claims. Every arm of this octopus has traced a pattern or two — let's put that instinct into words a database can understand.</p>
+</div>
+<h2 id="a-short-landscape-of-graph-query-languages">A Short Landscape of Graph Query Languages</h2>
+<p>Before learning any one syntax in depth, it helps to see where today's
+languages came from and where they're headed. The field did not start with
+Cypher: it began with <strong>RDF triple stores</strong> (introduced in Chapter 2) and
+their query language SPARQL, built for the academic Semantic Web. Property
+graph databases then developed their own languages independently — Neo4j
+introduced Cypher, TigerGraph introduced <strong>GSQL</strong>, a full procedural
+language for graph analytics — and for years there was no shared standard
+across vendors, forcing anyone switching databases to relearn a new syntax
+from scratch. That fragmentation motivated the <strong>GQL Standard</strong> (ISO/IEC
+39075, ratified in 2024), the first ISO-standardized graph query language,
+built heavily on Cypher's syntax and designed to do for graph databases what
+SQL did for relational ones: give every vendor a common, portable core
+language.</p>
+<h4 id="diagram-evolution-of-graph-query-languages-timeline">Diagram: Evolution of Graph Query Languages Timeline</h4>
+<iframe src="../../sims/evolution-graph-query-languages-timeline/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/evolution-graph-query-languages-timeline/main.html">Run the Evolution of Graph Query Languages Timeline MicroSim Fullscreen</a></p>
+<details>
+<summary>Evolution of Graph Query Languages Timeline (reused)</summary>
+<p>Type: timeline
+<strong>sim-id:</strong> evolution-graph-query-languages-timeline<br/>
+<strong>Library:</strong> vis-timeline<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/evolution-graph-query-languages-timeline/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/evolution-graph-query-languages-timeline</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: summarize, classify<br/>
+Learning objective: Summarize how graph query languages evolved from academic RDF/SPARQL through vendor-specific innovation (Cypher, GSQL) to the ISO-standardized GQL, classifying each milestone by era.</p>
+<p>Reused from the MicroSim catalog. This interactive timeline traces query language milestones from 2002 to 2025, color-coded by era (Semantic Web, industry innovation, ISO standardization, vendor adoption). Hovering a milestone gives a one-line summary and clicking opens full detail, which is exactly the scaffolding a learner needs before this chapter names GQL Standard and GSQL for the first time.</p>
+</details>
+<h2 id="cypher-and-the-art-of-pattern-matching">Cypher and the Art of Pattern Matching</h2>
+<p><strong>Cypher Query Language</strong> is Neo4j's declarative graph query language and,
+because it heavily influenced the GQL standard, the most transferable
+graph-query syntax you can learn today. "Declarative" means you describe
+<em>what pattern</em> you want matched in the graph, not the step-by-step
+procedure for finding it — the database's query planner decides how to
+execute the search efficiently, the same division of labor SQL uses for
+tables.</p>
+<p>A Cypher query is built from a small number of clauses, each doing one job.
+<code>MATCH</code> describes a pattern to find in the graph, using parentheses for
+nodes and arrows for edges — this is where <strong>graph pattern matching</strong>
+happens, and it is the single most important skill in this chapter. <code>WHERE</code>
+filters the matches down using property conditions. <code>WITH</code> passes an
+intermediate result forward, often after aggregating it. <code>RETURN</code> shapes the
+final output. Here is a complete, worked example built entirely from clauses
+you've just been introduced to:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">DIAGNOSED_WITH</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="n">Condition</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Type 2 Diabetes&quot;</span><span class="p">})</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="m">65</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">patient_id</span>
+</code></pre></div></td></tr></table></div>
+<p>Read this the way you'd read the sentence it represents: "find every
+<code>Patient</code> node connected by a <code>DIAGNOSED_WITH</code> edge to a <code>Condition</code> node
+named Type 2 Diabetes, keep only the ones over 65, and return their name and
+ID." Notice that the pattern itself — <code>(p:Patient)-[:DIAGNOSED_WITH]-&gt;(c:Condition)</code>
+— is graph pattern matching in its purest form: a small, literal
+drawing of nodes and edges, written inline, that the database searches the
+whole graph for. Where a relational query specifies <em>tables and join
+conditions</em>, a Cypher pattern specifies <em>the shape of the answer itself</em>,
+and the database finds every place in the graph where that shape occurs.</p>
+<p>Patterns can also express variable-length paths, which is where pattern
+matching goes beyond anything a single join could express. The pattern
+<code>(p:Patient)-[:REFERRED_TO*1..3]-&gt;(specialist:Provider)</code> matches every
+provider reachable from a patient by one, two, or three chained referral
+edges — a single line of Cypher standing in for what would be an unbounded,
+recursive relational query.</p>
+<p>A second worked example shows pattern matching combined with aggregation in
+a single query, the way a real fraud-review dashboard might use it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">prov</span><span class="p">:</span><span class="n">Provider</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">SUBMITTED</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">claim</span><span class="p">:</span><span class="n">Claim</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">claim</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Denied&quot;</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">prov</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">claim</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">denied_count</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">denied_count</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="m">10</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">prov</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">denied_count</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">denied_count</span><span class="w"> </span><span class="k">DESC</span>
+</code></pre></div></td></tr></table></div>
+<p>Read clause by clause: <code>MATCH</code> finds every <code>Provider</code> connected to a
+<code>Claim</code> by a <code>SUBMITTED</code> edge — the pattern-matching step. <code>WHERE</code> narrows
+that match to denied claims only. <code>WITH</code> then pipes the filtered matches
+forward, grouped by provider, computing a running <code>count(claim)</code> for each
+one — an aggregate query, in the vocabulary this chapter introduces next.
+The second <code>WHERE</code> filters on that computed count, and <code>ORDER BY</code> sorts the
+final result. Notice that the pattern-matching portion (<code>MATCH</code> and its
+first <code>WHERE</code>) and the aggregation portion (<code>WITH</code> and its <code>WHERE</code>) are
+cleanly separable — a property that becomes useful once queries grow more
+complex than a single clause can comfortably express.</p>
+<p>Formally, matching a Cypher pattern against a graph is an instance of
+<strong>subgraph isomorphism</strong>: given a small pattern graph (the <code>MATCH</code> clause)
+and a large target graph (the database), find every way of mapping the
+pattern's nodes and edges onto the target graph such that labels, directions,
+and properties all agree. This problem is computationally expensive in the
+worst case for large, unconstrained patterns, which is exactly why the
+indexing and query-optimization techniques later in this chapter matter so
+much in practice — they are the difference between a pattern match finishing
+in milliseconds and one that scans far more of the graph than necessary.</p>
+<h4 id="diagram-cypher-query-components-interactive-infographic">Diagram: Cypher Query Components Interactive Infographic</h4>
+<iframe src="../../sims/cypher-query-components-infographic/main.html" width="100%" height="636px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/cypher-query-components-infographic/main.html">Run the Cypher Query Components Interactive Infographic MicroSim Fullscreen</a></p>
+<details>
+<summary>Cypher Query Components Interactive Infographic (reused)</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> cypher-query-components-infographic<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/cypher-query-components-infographic/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/cypher-query-components-infographic</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: demonstrate, classify<br/>
+Learning objective: Given a complete Cypher query, demonstrate which clause (MATCH, WHERE, WITH, RETURN) each line belongs to and classify the pattern-matching portion versus the filtering portion.</p>
+<p>Reused from the MicroSim catalog (WHAT match: exact topical fit). This infographic breaks a Cypher query into its four core clauses, each with a color-coded healthcare example, then assembles a complete query at the bottom that finds elderly patients with multiple chronic conditions. Hovering a clause card highlights the matching line in the full query, reinforcing exactly the MATCH/WHERE/RETURN breakdown just introduced in the preceding paragraphs.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Declarative Means You Describe the 'What,' Not the 'How'</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice you never told the database <em>how</em> to search for the pattern — no loops, no explicit traversal order. That's the declarative mindset: you draw the shape you want found, and the query planner figures out the fastest way to find it. This is the same mental shift SQL asked of you for tables, now applied to shapes made of nodes and edges.</p>
+</div>
+<h2 id="naming-the-query-shapes-you-just-wrote">Naming the Query Shapes You Just Wrote</h2>
+<p>The two Cypher examples above are both graph pattern matching, but they
+belong to different named categories of graph query that are worth
+distinguishing. A <strong>path query</strong> asks for a route between two nodes,
+possibly the shortest one or one within a hop limit — the variable-length
+referral pattern above is a path query. A <strong>subgraph query</strong> instead asks
+for an entire connected neighborhood around a starting point, such as "every
+node within two hops of Maria Chen," returning a small piece of the graph
+rather than a single path. An <strong>aggregate query</strong> summarizes matched data
+with a function such as count, sum, or average — "how many patients does
+each provider treat?" is an aggregate query, computed in Cypher with a
+<code>WITH provider, count(patient) AS total</code> clause — precisely the pattern the
+denied-claims example above just demonstrated.</p>
+<p>These three categories matter beyond vocabulary because each one stresses a
+graph database's execution engine differently, which is why query planners
+handle them with different strategies. A path query typically terminates as
+soon as it finds the target node (or the shortest of several candidate
+routes), so its cost depends mainly on how far away the target sits. A
+subgraph query must enumerate every node and edge within its boundary before
+it can stop, so its cost grows with how densely connected that
+neighborhood is — a patient with three providers returns a small subgraph,
+while a patient in a large multidisciplinary care team returns a much
+larger one. An aggregate query must visit every matching row before it can
+produce a final sum, count, or average, since a running total can never be
+final until the last match is seen, which is why aggregate queries often
+benefit the most from the indexing techniques covered later in this chapter.</p>
+<table>
+<thead>
+<tr>
+<th>Query Type</th>
+<th>Answers the Question</th>
+<th>Healthcare Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Path Query</td>
+<td>What route connects two nodes?</td>
+<td>Shortest referral chain from a PCP to a specialist</td>
+</tr>
+<tr>
+<td>Subgraph Query</td>
+<td>What surrounds this node?</td>
+<td>Every node within two hops of a given patient</td>
+</tr>
+<tr>
+<td>Aggregate Query</td>
+<td>What summary statistic applies?</td>
+<td>Average claims cost per provider this quarter</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gsql-and-the-accumulator-pattern">GSQL and the Accumulator Pattern</h2>
+<p>Not every graph query language is purely declarative. <strong>GSQL</strong>, TigerGraph's
+query language, is built for large-scale parallel analytics and exposes an
+imperative construct that Cypher does not: the <em>accumulator</em>, a variable
+attached to each node that updates as a traversal visits it, letting a
+single pass over the graph compute a running aggregate without a separate
+post-processing step. Where Cypher's <code>WITH ... count()</code> aggregates after the
+match completes, a GSQL accumulator aggregates <em>during</em> traversal — useful
+when the calculation depends on the specific path taken to reach each node,
+such as a cumulative risk score that depends on which treatments and
+complications were visited along the way.</p>
+<p>A simplified GSQL-style accumulator declaration and traversal looks like
+this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">SumAccum</span><span class="p">&lt;</span><span class="k">FLOAT</span><span class="p">&gt;</span><span class="w"> </span><span class="nv">@risk_score</span><span class="o">;</span>
+<span class="n">Start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">Patient</span><span class="p">.*}</span><span class="o">;</span>
+<span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Start</span><span class="o">:</span><span class="n">p</span><span class="w"> </span><span class="o">-(</span><span class="n">HAS_TREATMENT</span><span class="o">)-&gt;</span><span class="w"> </span><span class="o">:</span><span class="n">t</span>
+<span class="w">         </span><span class="k">ACCUM</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="nv">@risk_score</span><span class="w"> </span><span class="o">+= </span><span class="n">t</span><span class="p">.</span><span class="n">severity_weight</span><span class="o">;</span>
+</code></pre></div></td></tr></table></div>
+<p>The <code>SumAccum&lt;FLOAT&gt; @risk_score</code> line declares an accumulator attached to
+every node, initialized to zero. The <code>SELECT ... ACCUM</code> block then walks
+every <code>HAS_TREATMENT</code> edge from the starting patients and, for each one
+visited, adds that treatment's severity weight directly into the traveling
+patient's <code>@risk_score</code> — the running total builds up <em>as the traversal
+happens</em>, not afterward. This is the concrete mechanism behind the informal
+description above, and it is worth contrasting directly with Cypher's
+<code>WITH ... count()</code>: Cypher first finds the complete set of matches, then
+aggregates over that finished set, while GSQL's accumulator updates
+incrementally at every step of the walk itself.</p>
+<h4 id="diagram-gsql-accumulator-pattern-microsim">Diagram: GSQL Accumulator Pattern MicroSim</h4>
+<iframe src="../../sims/gsql-accumulator-pattern-microsim/main.html" width="100%" height="638px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/gsql-accumulator-pattern-microsim/main.html">Run the GSQL Accumulator Pattern MicroSim MicroSim Fullscreen</a></p>
+<details>
+<summary>GSQL Accumulator Pattern MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> gsql-accumulator-pattern-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/gsql-accumulator-pattern-microsim/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/gsql-accumulator-pattern-microsim</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, demonstrate<br/>
+Learning objective: Calculate how four different GSQL accumulator types (SumAccum, MaxAccum, AvgAccum, SetAccum) produce different running results from the identical graph traversal.</p>
+<p>Reused from the MicroSim catalog. A patient node connects to eight treatment nodes, each carrying a severity weight, with some treatments leading to complication nodes with their own weights. As the traversal visits each node in sequence, the chosen accumulator updates live, letting learners directly compare Sum, Max, Avg, and Set behavior over the exact same walk — the concrete evidence needed to understand why GSQL treats aggregation as something that happens during the walk, not after it.</p>
+</details>
+<p>This procedural style is a design decision, not an accident: <strong>graph
+database engine</strong> architectures differ in how they distribute work across a
+cluster, and an engine built for massively parallel processing (like
+TigerGraph's) benefits from an aggregation model that can accumulate values
+locally on each machine during a single distributed traversal. By contrast,
+Neo4j's engine is built around <strong>native graph storage</strong> — a storage layer
+where every node record physically contains direct references to its
+adjacent relationship records on disk, rather than reconstructing adjacency
+through a separate index. This design is what enables <strong>index-free
+adjacency</strong>: traversing from one node to its neighbors is a direct pointer
+dereference, not a lookup, which is the same architectural fact that made
+Chapter 1's constant-time traversal claim true at the storage level rather
+than just the query-language level.</p>
+<p>These are genuinely different engineering trade-offs, not just different
+marketing language for the same idea. A native-storage engine like Neo4j
+excels at deep, narrow traversals — following one patient's referral chain
+five hops deep touches only the small number of records actually on that
+path. A massively parallel engine like TigerGraph excels at broad,
+whole-graph computations — running a single accumulator-based pass that
+touches every patient and every claim simultaneously across many machines
+at once, the kind of computation Chapter 5's centrality algorithms need.
+Neither architecture is strictly better; a health system running mostly
+point-lookup clinical queries (find this patient, follow this referral)
+leans toward native storage, while one running large nightly
+fraud-detection sweeps across the entire claims graph leans toward massively
+parallel processing.</p>
+<h2 id="making-queries-fast-optimization-profiling-and-indexes">Making Queries Fast: Optimization, Profiling, and Indexes</h2>
+<p>Writing a correct pattern is only half the job; a graph engine, like any
+database, needs help finding the <em>fastest</em> way to execute it. <strong>Graph query
+optimization</strong> is the process of restructuring a query, or adding
+supporting structures, so the database's query planner can avoid
+unnecessary work. <strong>Query performance</strong> is the measurable outcome of that
+process — typically tracked as response time or throughput under a given
+data volume. The single most effective optimization tool available to you
+is a <strong>graph index</strong>: a supporting data structure, usually built on a node
+property, that lets the database jump directly to matching nodes instead of
+scanning every node with a given label to check its properties one by one.</p>
+<p>Consider the earlier Cypher query filtering on <code>name: "Type 2 Diabetes"</code>.
+Without an index on <code>Condition.name</code>, the database must inspect every
+<code>Condition</code> node in the graph to find matches — a full label scan. With an
+index on that property, the lookup becomes near-instant regardless of how
+many <code>Condition</code> nodes exist.</p>
+<p>A profiled execution plan makes this difference visible in numbers rather
+than just description. Running <code>PROFILE</code> on the unindexed query might report
+<code>NodeByLabelScan (Condition): 480,000 rows examined, 210ms</code>, followed by a
+<code>Filter</code> step discarding all but the handful of matching rows — the
+database paid the full 210ms cost of scanning every <code>Condition</code> node just to
+throw away most of them. After creating an index with <code>CREATE INDEX FOR
+(c:Condition) ON (c.name)</code>, the identical query's profile instead reports
+<code>NodeIndexSeek (Condition): 340 rows examined, 2ms</code> — two orders of
+magnitude fewer rows touched, because the database jumped directly to the
+matching entries instead of inspecting every node with that label. The
+chart below quantifies exactly how large that gap becomes as the matching
+result set grows.</p>
+<h4 id="diagram-query-performance-impact-of-indexing">Diagram: Query Performance Impact of Indexing</h4>
+<iframe src="../../sims/query-performance-impact-indexing/main.html" width="100%" height="494px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/query-performance-impact-indexing/main.html">Run the Query Performance Impact of Indexing MicroSim Fullscreen</a></p>
+<details>
+<summary>Query Performance Impact of Indexing (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> query-performance-impact-indexing<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-impact-indexing/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/query-performance-impact-indexing</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: compare, examine<br/>
+Learning objective: Compare unindexed, single-property-indexed, and composite-indexed query execution time as the matching result set scales from 10 to 1,000,000 nodes, and examine why the performance gap widens rather than staying constant.</p>
+<p>Reused from the MicroSim catalog. A log-log chart plots three lines — no index, single-property index, composite index — from 10 to 1,000,000 matching nodes. The unindexed line reaches a 16-minute timeout while the indexed lines stay sub-second, giving direct visual evidence for the Graph Index concept just defined in prose, and hovering any point shows the exact speedup factor.</p>
+</details>
+<p>Once an index exists, <strong>graph query optimization</strong> in practice usually means
+running the database's built-in profiler to see whether the planner is
+actually using it. The workflow below shows the systematic checklist a
+graph engineer follows when a query runs slower than expected.</p>
+<h4 id="diagram-query-optimization-workflow-diagram">Diagram: Query Optimization Workflow Diagram</h4>
+<iframe src="../../sims/query-optimization-workflow-diagram/main.html" width="100%" height="507px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/query-optimization-workflow-diagram/main.html">Run the Query Optimization Workflow Diagram MicroSim Fullscreen</a></p>
+<details>
+<summary>Query Optimization Workflow Diagram (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> query-optimization-workflow-diagram<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/query-optimization-workflow-diagram/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/query-optimization-workflow-diagram</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: implement, solve<br/>
+Learning objective: Apply a systematic checklist (profile, check for missing indexes, full label scans, unbounded variable-length paths, oversized result sets, heavy aggregations) to solve a slow healthcare graph query.</p>
+<p>Reused from the MicroSim catalog. This decision tree walks through diagnosing a slow query step by step, looping back to re-profile after each fix so its effect is measured before moving on. Hovering any step reveals the Cypher fix to apply, directly operationalizing the Graph Query Optimization and Query Performance concepts this section defines.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Profile Before You Guess</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a shortcut that saves real debugging time: never guess why a query is slow — run the database's <code>PROFILE</code> or <code>EXPLAIN</code> command first. It shows you exactly which step in the execution plan is expensive, so you fix the actual bottleneck instead of the one you assumed was there.</p>
+</div>
+<h2 id="getting-data-into-the-graph">Getting Data Into the Graph</h2>
+<p>None of the querying skills above matter until healthcare data actually
+lives in the graph, which raises a separate engineering problem: <strong>graph
+data loading</strong>, the general task of getting records from source systems
+into nodes and edges. The simplest form is <strong>bulk import</strong>: loading a large
+batch of nodes and edges from files (commonly CSV) in one operation,
+dramatically faster than inserting records one at a time because it skips
+per-row overhead like index maintenance until the batch finishes.</p>
+<p>Real healthcare data rarely arrives graph-ready, however, which is why
+loading is usually wrapped in an <strong>ETL pipeline</strong> — a repeatable process
+that Extracts records from source systems (an EHR database, a claims
+warehouse, a pharmacy feed), Transforms them into the node-and-edge shape
+the target graph schema expects, and Loads the result into the graph
+database. A single ETL run might extract rows from a relational <code>Patients</code>
+table, transform each row into a <code>Patient</code> node with properties copied from
+the matching columns, and load the result via bulk import — effectively
+automating the relational-to-graph translation this book has been doing by
+hand since Chapter 2. A minimal load statement for the transform-and-load
+half of that pipeline looks like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">LOAD</span><span class="w"> </span><span class="n">CSV</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">HEADERS</span><span class="w"> </span><span class="n">FROM</span><span class="w"> </span><span class="s">&#39;file:///patients.csv&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">row</span>
+<span class="k">MERGE</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="w"> </span><span class="p">{</span><span class="n">patient_id</span><span class="p">:</span><span class="w"> </span><span class="n">row</span><span class="p">.</span><span class="n">patient_id</span><span class="p">})</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">row</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">date_of_birth</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">row</span><span class="p">.</span><span class="n">date_of_birth</span>
+</code></pre></div></td></tr></table></div>
+<p><code>LOAD CSV WITH HEADERS</code> streams each row of the extracted file in as a
+variable named <code>row</code>, with column values accessible by their header name.
+<code>MERGE</code>, rather than <code>CREATE</code>, is doing important work here: it matches an
+existing <code>Patient</code> node with that <code>patient_id</code> if one already exists, and
+only creates a new node if it doesn't — the exact match-or-create behavior
+this chapter's later warning about duplicate patients depends on. <code>SET</code>
+then copies the remaining columns onto the node as properties. Running this
+same statement against a nightly extract from the source EHR is what turns
+a one-time bulk import into a repeatable ETL pipeline.</p>
+<p>Before that first bulk load ever runs, two design decisions must already be
+settled. <strong>Graph schema design</strong> is the up-front process of deciding which
+node labels, edge types, and properties the graph will use — the graph
+equivalent of designing relational tables, but without the same obligation
+to normalize, since a property graph tolerates optional and varying
+properties across nodes of the same label. <strong>Constraint definition</strong> then
+enforces rules on top of that schema, most commonly a uniqueness constraint
+ensuring no two <code>Patient</code> nodes share the same <code>patient_id</code> — a safeguard
+against the ETL pipeline accidentally creating duplicate patients on a
+re-run.</p>
+<p>Good graph schema design decisions made once, before the first load, save
+substantial rework later. A team modeling a health system's referral data
+must decide up front whether "referral" is best represented as a single
+<code>REFERRED_TO</code> edge type with a <code>date</code> property, or as its own <code>Referral</code>
+node connecting a <code>Patient</code>, a referring <code>Provider</code>, and a receiving
+<code>Provider</code> — the second design costs an extra node per referral but makes
+it possible to attach additional properties (urgency, insurance
+authorization status) that a plain edge could still hold, but that become
+awkward once several more facts need to attach to the same referral event.
+Chapter 9 revisits this exact node-versus-edge design question when
+modeling clinical encounters in depth. Constraint definition then locks in
+whichever design was chosen: beyond simple uniqueness, many graph databases
+also support existence constraints (a <code>Claim</code> node must always have a
+<code>claim_id</code>) and type constraints (a property must hold a specific data
+type), each catching a different category of data-quality problem before it
+ever reaches a query.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">A Rerun Without Constraints Duplicates Everyone</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A common trap: running a bulk import twice without a uniqueness constraint on <code>patient_id</code> silently creates a second copy of every patient instead of updating the first. The fix is to define the constraint <em>before</em> the first load, and to use a MERGE-style operation (match-or-create) rather than a blind CREATE in your ETL transform step.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Read, Optimize, and Load a Graph Query</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just went from graph vocabulary to graph fluency — reading Cypher patterns, naming path/subgraph/aggregate queries, comparing GSQL's accumulator style to Cypher's declarative one, and tracing how indexing and ETL pipelines make it all fast and repeatable. That's the full query lifecycle handled.</p>
+</div>
+<p>This chapter turned Chapter 2's abstract performance argument into concrete
+skill: you can now read a Cypher <code>MATCH</code> pattern, recognize whether a query
+is asking for a path, a subgraph, or an aggregate, explain why native graph
+storage makes index-free adjacency possible, and reason about the indexing
+and ETL work that gets healthcare data into a graph in the first place. In
+<a href="../04-graph-database-scalability-operations/">Chapter 4</a>, we take
+this same graph database and ask a different question: how do you keep it
+running, fast and available, once it holds millions of patients instead of
+four?</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-graphs-vs-relational-databases/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Data Modeling: Graphs vs. Relational Databases">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2. Data Modeling: Graphs vs. Relational Databases
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-graph-database-scalability-operations/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Graph Database Scalability and Operations">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4. Graph Database Scalability and Operations
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

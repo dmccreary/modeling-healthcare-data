@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- microsim-scaffold-stub -->
+    <title>Post-Surgical Care Transition Workflow</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Post-Surgical Care Transition Workflow</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> post-surgical-care-transition-workflow</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Analyze<br/></p>
+            <p><strong>Learning Objective:</strong> Examine a post-surgical care workflow and differentiate which upstream, graph-visible factors feed the computed Readmission Risk score.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: workflow
+    **sim-id:** post-surgical-care-transition-workflow<br/>
+    **Library:** vis-network<br/>
+    **Status:** Specified
+    
+    Bloom Taxonomy: Analyze<br/>
+    Bloom Taxonomy Verb: examine, differentiate<br/>
+    Learning objective: Examine a post-surgical care workflow and differentiate which upstream, graph-visible factors feed the computed Readmission Risk score.
+    
+    Purpose: Let the learner trace the path from a surgical episode through discharge and care transition to a computed readmission-risk score, discovering by clicking which upstream facts actually feed that score.
+    
+    Components to show (nodes, left to right in a directed layout):
+    1. Surgical Procedure (blue rounded rectangle) -- properties: procedure_code, surgeon, anesthesia_type, date
+    2. Post-Operative Monitoring (teal rounded rectangle) -- properties: vital_signs, wound_status, pain_score, complication_flag
+    3. Discharge Summary (gray document-shaped node) -- properties: diagnoses, medications, follow_up_instructions
+    4. Care Transition (orange diamond decision node) -- branches to two destinations
+    5a. Home with Home Health (green rounded rectangle)
+    5b. Skilled Nursing / Rehab Facility (green rounded rectangle)
+    6. Readmission Risk (red octagon "result" node) -- property: risk_score (0-100)
+    
+    Edges:
+    - Surgical Procedure -> Post-Operative Monitoring ("FOLLOWED_BY")
+    - Post-Operative Monitoring -> Discharge Summary ("LEADS_TO")
+    - Discharge Summary -> Care Transition ("INITIATES")
+    - Care Transition -> Home with Home Health ("ROUTES_TO", solid line)
+    - Care Transition -> Skilled Nursing / Rehab Facility ("ROUTES_TO", solid line)
+    - Four dashed contributing-factor edges into Readmission Risk: from a "Comorbidity Count" mini-node, a "Length of Stay" mini-node (attached to Post-Operative Monitoring), a "Discharge Disposition" mini-node (attached to Care Transition), and a "Prior Admissions (12 mo)" mini-node
+    
+    Visual style: Left-to-right directed workflow graph with one decision branch; the four contributing-factor nodes are drawn smaller and in a muted purple, feeding into Readmission Risk from below to visually distinguish "process" nodes from "input" nodes.
+    
+    Color scheme: Blue/teal for the surgical and monitoring steps, orange for the decision point, green for the two transition destinations, purple for contributing-factor inputs, red for the final risk node.
+    
+    Interactive controls:
+    - Click any node to open an infobox with its definition and property list (matching the definitions given in the surrounding text)
+    - Click the Readmission Risk node specifically to reveal a breakdown panel listing all four contributing factors with a sample numeric value for each (e.g., "Comorbidity Count: 3", "Length of Stay: 6 days", "Discharge Disposition: Skilled Nursing Facility", "Prior Admissions (12 mo): 1") and the resulting sample score
+    - Hover any edge to see a one-line description of the relationship it represents
+    - Toggle button: "Highlight risk inputs only" -- dims every node except the four contributing-factor nodes and the Readmission Risk node, isolating the subgraph the score actually depends on
+    - Zoom and pan enabled on the canvas
+    
+    Instructional Rationale: This is an Analyze-level objective (examine, differentiate), so the design deliberately avoids a passive animation and instead rewards active exploration: the learner must click into the Readmission Risk node to discover which of the many upstream nodes actually feed it, then use the "Highlight risk inputs only" toggle to visually confirm that discovery against the full workflow. This mirrors the real analytical skill the section teaches -- tracing a computed value back to the graph structure that produced it -- rather than simply watching the workflow animate start to finish.
+    
+    Implementation: vis-network JavaScript library with a hierarchical (left-to-right) layout option; infobox rendered as a fixed side panel updated on node/edge click.
+    -->
+</body>
+</html>

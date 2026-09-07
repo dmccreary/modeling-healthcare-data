@@ -1,0 +1,2678 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models a single patient encounter as a graph and explains the HL7/CCD/RxNorm standards, health information exchange, and ACO/PCMH care-coordination structures that connect it to the rest of the system.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/08-healthcare-interoperability-care-coordination/">
+      
+      
+        <link rel="prev" href="../07-healthcare-economics-medical-coding/">
+      
+      
+        <link rel="next" href="../09-patient-diagnosis-treatment-medication/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Healthcare Interoperability and Care Coordination - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Healthcare Interoperability and Care Coordination - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models a single patient encounter as a graph and explains the HL7/CCD/RxNorm standards, health information exchange, and ACO/PCMH care-coordination structures that connect it to the rest of the system." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/08-healthcare-interoperability-care-coordination/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/08-healthcare-interoperability-care-coordination/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Healthcare Interoperability and Care Coordination - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models a single patient encounter as a graph and explains the HL7/CCD/RxNorm standards, health information exchange, and ACO/PCMH care-coordination structures that connect it to the rest of the system." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/08-healthcare-interoperability-care-coordination/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#healthcare-interoperability-and-care-coordination" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Healthcare Interoperability and Care Coordination
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-visit-many-systems-clinical-workflow-and-the-medical-encounter" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Visit, Many Systems: Clinical Workflow and the Medical Encounter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="One Visit, Many Systems: Clinical Workflow and the Medical Encounter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-encounter-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Encounter Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaking-a-common-language-interoperability-standards-and-health-information-exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speaking a Common Language: Interoperability Standards and Health Information Exchange
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaking a Common Language: Interoperability Standards and Health Information Exchange">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-integration-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Integration Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-the-patient-demographics-and-the-social-context-of-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who Is the Patient? Demographics and the Social Context of Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Who Is the Patient? Demographics and the Social Context of Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-demographics-and-sdoh-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Demographics and SDOH Profile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zooming-out-population-health-and-care-coordination-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zooming Out: Population Health and Care Coordination Models
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-visit-many-systems-clinical-workflow-and-the-medical-encounter" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Visit, Many Systems: Clinical Workflow and the Medical Encounter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="One Visit, Many Systems: Clinical Workflow and the Medical Encounter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-encounter-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Encounter Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaking-a-common-language-interoperability-standards-and-health-information-exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speaking a Common Language: Interoperability Standards and Health Information Exchange
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaking a Common Language: Interoperability Standards and Health Information Exchange">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-integration-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Integration Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-the-patient-demographics-and-the-social-context-of-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who Is the Patient? Demographics and the Social Context of Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Who Is the Patient? Demographics and the Social Context of Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-demographics-and-sdoh-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Demographics and SDOH Profile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zooming-out-population-health-and-care-coordination-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zooming Out: Population Health and Care Coordination Models
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/08-healthcare-interoperability-care-coordination/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="healthcare-interoperability-and-care-coordination">Healthcare Interoperability and Care Coordination</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers how healthcare systems exchange data with one another: health information exchange, continuity of care documents, and the HL7 family of interoperability standards. It also introduces population health and care coordination concepts such as accountable care organizations and patient-centered medical homes. This interoperability foundation is a direct prerequisite for the FHIR-based clinical decision support chapters later in the book.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 17 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RxNorm</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Medical Terminology</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Clinical Workflow</td>
+<td>338</td>
+</tr>
+<tr>
+<td>Patient Demographics</td>
+<td>158</td>
+</tr>
+<tr>
+<td>Medical Encounter</td>
+<td>157</td>
+</tr>
+<tr>
+<td>Healthcare Interoperability</td>
+<td>169</td>
+</tr>
+<tr>
+<td>Healthcare Data Exchange</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Health Information Exchange</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Continuity Of Care Document</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Interoperability Standard</td>
+<td>1</td>
+</tr>
+<tr>
+<td>HL7 Standard</td>
+<td>2</td>
+</tr>
+<tr>
+<td>HL7 V2 Message</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Accountable Care Organization</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Patient-Centered Medical Home</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Social Determinants Of Health</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Population Health</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Care Coordination</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../07-healthcare-economics-medical-coding/">Chapter 7: Healthcare Economics and Medical Coding Systems</a></li>
+</ul>
+<hr />
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Where One Visit Becomes Many Records</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+A single doctor's visit quietly touches half a dozen separate computer systems before the day is done — the front desk, the exam room, the lab, the pharmacy, and the billing office all keep their own version of what happened. In this chapter we trace one visit through all of them and learn the standards that let those systems compare notes without losing a single detail. Let's connect the dots!</p>
+</div>
+<h2 id="one-visit-many-systems-clinical-workflow-and-the-medical-encounter">One Visit, Many Systems: Clinical Workflow and the Medical Encounter</h2>
+<p>Every time a patient walks through a clinic door, two related but distinct things happen at once. A <strong>medical encounter</strong> is the bounded clinical interaction itself: a single office visit, emergency department (ED) visit, hospitalization, or telehealth session, with a defined start time, a defined end time, and its own documentation trail. A <strong>clinical workflow</strong> is the broader sequence of steps, roles, and systems that carries that encounter from the moment it begins to the moment it is billed and closed: check-in, triage, clinical assessment, orders, documentation, and administrative wrap-up. Recall Maria Chen from Chapter 1 — every time she returns to Riverside Clinic, she generates one medical encounter, and Riverside Clinic's clinical workflow determines exactly how that encounter moves through the building before it becomes a closed, billable record.</p>
+<p>Modeling a clinical workflow as a graph means treating each step as a node connected by an <code>OCCURRED_IN</code> or <code>PERFORMED_BY</code> relationship to the role or system responsible for it, with the handoff between steps captured as an edge. Hospitals typically organize this workflow into lanes by responsibility: a patient lane (arrival, symptoms reported), a clinical staff lane (triage, physician assessment, treatment decisions), a clinical systems lane (the electronic health record, or EHR, capturing vitals and orders through computerized physician order entry, or CPOE), and an administrative systems lane (coding the visit, generating charges, submitting the claim). A single medical encounter can also take several forms depending on where and how care is delivered:</p>
+<ul>
+<li><strong>Office visit</strong> — a scheduled, typically brief encounter at an outpatient clinic</li>
+<li><strong>Emergency department (ED) visit</strong> — an unscheduled, often higher-acuity encounter</li>
+<li><strong>Hospitalization</strong> — a multi-day inpatient encounter with its own internal workflow of admission, rounding, and discharge</li>
+<li><strong>Telehealth encounter</strong> — a remote visit conducted over video or phone, generating the same documentation obligations as an in-person visit</li>
+</ul>
+<p>As Maria's encounter moves through these lanes, it leaves behind data encoded in specific formats at specific capture points: her demographics and vitals enter the EHR, her orders route through CPOE, her insurance eligibility is checked using an electronic data interchange (EDI) transaction standard called X12, and her clinical summary can increasingly be exported using FHIR — a standard this book returns to in depth once the patient-record concepts in later chapters are in place. None of these formats matter to Maria; she experiences one continuous visit. But each one matters enormously to the systems on the other end of that data, which is exactly why the next section of this chapter is devoted to the standards that keep those formats mutually intelligible.</p>
+<p>Tracing a concrete timeline makes the workflow's lane structure tangible. At 9:02 a.m. Maria checks in at the front desk (patient lane); at 9:10 a triage nurse records her vitals directly into the EHR (clinical systems lane); at 9:25 Dr. Patel completes his assessment and enters a lab order through CPOE (clinical staff and clinical systems lanes together); at 10:15 the lab posts a result back into the same EHR record; at 10:45 a medical coder assigns billing codes to the closed encounter; and by 11:00 a claim built from those codes is queued for submission as an X12 transaction (administrative systems lane). Every one of those six steps is a node in Diagram 1 below, and every arrow between them is a handoff a graph model must represent explicitly if it wants to answer "who touched this encounter, and when?"</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A Workflow Is Already a Graph</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that nothing about Maria's timeline required a spreadsheet row per step — it's already nodes and directed edges, exactly like the Maria Chen example from Chapter 1. Modeling a clinical workflow as a graph isn't a stylistic choice; it's just naming the structure that was already there.</p>
+</div>
+<p>A <strong>medical encounter</strong>, modeled as a graph node, typically carries properties like <code>encounter_id</code>, <code>start_time</code>, <code>end_time</code>, <code>encounter_type</code>, and <code>status</code>, and connects outward to the patient it belongs to, the provider who performed it, the facility where it occurred, and — eventually — the claim it generates. That <code>status</code> property usually moves through a small, well-defined lifecycle as the clinical workflow advances: <code>planned</code> before Maria arrives, <code>in-progress</code> while she is being seen, and <code>finished</code> once Dr. Patel signs off on the note — a graph query that counts encounters stuck in <code>in-progress</code> for unusually long is, in effect, monitoring the workflow itself for bottlenecks. The clinical workflow diagram below makes both concepts visible at once: the swimlane placement of each step teaches Clinical Workflow, while the sequence of steps within a single lane teaches Medical Encounter as a bounded, ordered set of events.</p>
+<h4 id="diagram-clinical-encounter-workflow">Diagram: Clinical Encounter Workflow</h4>
+<iframe src="../../sims/clinical-encounter-workflow-diagram/main.html" width="100%" height="1412px" scrolling="no"></iframe>
+
+<details>
+<summary>Clinical Encounter Workflow (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> clinical-encounter-workflow-diagram<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-encounter-workflow-diagram/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/clinical-encounter-workflow-diagram</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: interpret, classify<br/>
+Learning objective: Given the swimlane workflow of a single patient encounter, the learner can classify each step by which lane (patient, clinical staff, clinical systems, administrative systems) owns it and interpret which interoperability standard applies at each data-capture point.</p>
+<p>Reused from the MicroSim catalog. This swimlane workflow traces a full Medical Encounter from patient arrival through claims submission across four lanes: patient, clinical staff, clinical systems, and administrative systems. Every step includes hover text identifying the responsible role or system and, where relevant, the standard involved (HL7 messaging, CPOE order entry, X12 claims transactions, and FHIR-based data capture). Clicking or hovering any step reveals its description; the swimlane placement itself teaches the Clinical Workflow concept, while the individual steps teach the Medical Encounter concept as a bounded sequence of clinical events.</p>
+</details>
+<h2 id="speaking-a-common-language-interoperability-standards-and-health-information-exchange">Speaking a Common Language: Interoperability Standards and Health Information Exchange</h2>
+<p>Maria's single encounter just crossed an EHR, a lab system, and a claims pipeline without her noticing. <strong>Healthcare interoperability</strong> is the general capacity of different health information systems, devices, and applications to exchange data, interpret it consistently, and use it cooperatively — without a person manually re-typing information from one screen into another. Interoperability is often described in three increasingly demanding layers:</p>
+<ul>
+<li><strong>Foundational interoperability</strong> — the two systems can successfully send and receive the bytes at all, regardless of whether either side understands them</li>
+<li><strong>Structural interoperability</strong> — the receiving system can correctly parse the message into its component fields, because both sides agree on format (segments, delimiters, field order)</li>
+<li><strong>Semantic interoperability</strong> — both systems agree on what each field actually <em>means</em> (is <code>MI</code> a middle initial or myocardial infarction?), so the data can be acted on automatically instead of merely displayed</li>
+</ul>
+<p>Everything else in this section is really just a description of how the healthcare industry solved that last, hardest layer.</p>
+<p>The mechanism for solving it is the <strong>interoperability standard</strong>: a published technical specification that defines message structure, field meaning, and expected behavior in advance, so that two independently built systems can exchange data predictably without ever having spoken to each other's engineering teams. Interoperability standards are typically maintained by accredited standards development organizations — Health Level Seven International for clinical data, the Accredited Standards Committee for X12 transactions (the claims standard from the previous section), and NCPDP for pharmacy — each governing a different slice of the data a single encounter produces. Accreditation matters because it forces the standard through a consensus process among competing vendors, which is what lets a hospital buy a lab interface engine from one company and an EHR from another and still expect them to exchange messages correctly on day one.</p>
+<p>Health Level Seven International is the source of the <strong>HL7 standard</strong> family, the most influential group of interoperability standards in clinical healthcare. Its name refers to the seventh, or "application," layer of the OSI networking model — HL7 standards define what the data <em>means</em> at the application level, leaving lower-level plumbing (like TCP/IP) to other specifications entirely. The HL7 standard family spans several distinct generations built for different purposes, and the oldest of them is still, by transaction volume, the most heavily used interoperability standard in American healthcare today.</p>
+<p>That oldest generation is the <strong>HL7 V2 message</strong>: a pipe-and-hat delimited text format used for real-time, transactional messaging between systems — announcing an admission, transmitting an order, or delivering a lab result the instant it becomes available. Unlike a document meant to be read by a person, an HL7 v2 message is meant to be parsed instantly by a receiving system and acted on. A simplified message announcing Maria's registration might look like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>MSH|^~\&amp;|EPIC|RIVERSIDE|LIS|LABCORP|202603171340||ADT^A01|00001|P|2.3
+PID|1||MRN-48213^^^RIVERSIDE^MR||CHEN^MARIA||19850312|F
+OBX|1|NM|4548-4^Hemoglobin A1c^LN||6.9|%|&lt;5.7|H
+</code></pre></div></td></tr></table></div>
+<p>The <code>MSH</code> (message header) segment identifies the sending and receiving systems and the message type — <code>ADT^A01</code> means "admit/discharge/transfer, admission event." The <code>PID</code> (patient identification) segment carries Maria's medical record number and demographics. The <code>OBX</code> (observation result) segment carries a single lab result, here tagged with a LOINC code (<code>4548-4</code>) identifying exactly which test was performed. Every field is separated by a pipe character, which is where the format gets its informal "pipe and hat" nickname.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Real-Time Message vs. Document Snapshot</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a shortcut for keeping HL7 v2 messages straight from what comes next: a message is a single event fired the moment something happens, like a text alert. A document, coming up next, is a snapshot summarizing everything relevant as of one point in time, like a printed report. Same underlying data, very different delivery style.</p>
+</div>
+<p>Where an HL7 v2 message reports one event, a <strong>continuity of care document (CCD)</strong> captures a whole snapshot. A CCD is a standardized XML document, built on HL7's Clinical Document Architecture, that summarizes a patient's relevant clinical history — problems, medications, allergies, recent results — at a transition of care, such as a hospital discharge or a referral. If Maria is hospitalized and later returns to Riverside Clinic, the hospital does not send Dr. Patel a stream of HL7 v2 messages; it sends one CCD summarizing the admission, so he can read it the way he would read a discharge letter.</p>
+<p>Two more standards keep the <em>content</em> of these messages and documents consistent, not just their structure. <strong>RxNorm</strong>, maintained by the National Library of Medicine, is a normalized naming system for clinical drugs that assigns a single code to a medication concept regardless of which brand name, generic name, or manufacturer's own internal code a given system happens to use — "Lipitor," "atorvastatin 20 mg," and a pharmacy's proprietary NDC code for the same tablet all resolve to one shared RxNorm concept. More broadly, <strong>medical terminology</strong> refers to the standardized clinical vocabularies — RxNorm for medications, SNOMED CT for clinical findings and procedures, LOINC for lab tests and observations (the code seen in the OBX segment above), and ICD-10-CM for diagnoses, already introduced in Chapter 7 — that let a clinical concept mean the same thing no matter which system recorded it. Standards like HL7 v2 and the CCD define the <em>envelope</em>; medical terminology defines what's legible once you open it.</p>
+<p>None of these standards deliver value on their own — they need an operating network to move data through. A <strong>health information exchange (HIE)</strong> is the electronic sharing of health-related information across organizations according to these standards, and the term also refers to the organized network — often regional or statewide — that provides the technical and governance infrastructure to make that sharing routine. If Maria is later referred to Dr. Osei at Downtown Specialty Center, a functioning regional HIE lets Dr. Osei query Maria's CCD from Riverside Clinic directly, instead of waiting on a phone call or a faxed chart.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">HIE Is One Way to Exchange Data, Not the Only Way</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Don't assume every transfer of health data flows through a formal HIE network — that's a real tentacle-y mix-up to untangle. A single hospital moving lab results from its lab system into its own EHR is also exchanging healthcare data; it just isn't using an organized, multi-organization exchange network to do it.</p>
+</div>
+<p>That broader idea has its own name: <strong>healthcare data exchange</strong> is the general technical act of transferring health data between any two systems, whether or not an organized network like an HIE is involved. It covers point-to-point interfaces between two departments in a single hospital, scheduled batch file transfers between a clinic and a lab vendor, and modern application programming interfaces (APIs) alike — Riverside Clinic's nightly file transfer of the day's completed encounters to its billing vendor is healthcare data exchange even though no HIE is anywhere in the picture. An HIE, in other words, is one standards-governed, multi-organization way of accomplishing healthcare data exchange — but exchange itself happens constantly at a much smaller scale too, every time one system inside Riverside Clinic hands data to another.</p>
+<p>The table below collects the standards just introduced, since a diagram is about to show all of them converging on a single patient record.</p>
+<table>
+<thead>
+<tr>
+<th>Standard / Concept</th>
+<th>What It Standardizes</th>
+<th>Example in Maria's Record</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HL7 V2 Message</td>
+<td>Real-time transactional messages between systems</td>
+<td>An <code>ADT^A01</code> message announcing Maria's registration</td>
+</tr>
+<tr>
+<td>Continuity of Care Document (CCD)</td>
+<td>A structured document summarizing care at a transition</td>
+<td>A discharge summary sent from a hospital to Riverside Clinic</td>
+</tr>
+<tr>
+<td>RxNorm</td>
+<td>Normalized medication names and codes</td>
+<td>The same RxNorm code for "Lipitor" and "atorvastatin 20 mg"</td>
+</tr>
+<tr>
+<td>Medical Terminology (LOINC, SNOMED CT, ICD-10-CM)</td>
+<td>Standardized clinical findings, labs, and diagnoses</td>
+<td>The LOINC code <code>4548-4</code> for Maria's A1c lab result</td>
+</tr>
+</tbody>
+</table>
+<p>Every one of those rows is, in practice, a different pipe feeding the same patient. Diagram 2 shows what that convergence looks like once it reaches a graph database: one master patient record, several encounters, and several source systems, each contributing data encoded in one of the standards above.</p>
+<h4 id="diagram-healthcare-data-integration-graph-model">Diagram: Healthcare Data Integration Graph Model</h4>
+<iframe src="../../sims/healthcare-data-integration-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<details>
+<summary>Healthcare Data Integration Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> healthcare-data-integration-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-integration-graph-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-data-integration-graph-model</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, examine<br/>
+Learning objective: Given a master patient record linked to encounters sourced from different systems, the learner can differentiate which interoperability standard (HL7 V2 Message, Continuity of Care Document, RxNorm) governs each data source and examine how Healthcare Interoperability lets fragmented records converge into one queryable view.</p>
+<p>Reused from the MicroSim catalog. A central master patient record connects through HAS_ENCOUNTER edges to office-visit, ED-visit, and hospitalization encounters, and each encounter connects through a SOURCED_FROM edge to the system that supplied it: Epic EHR, a claims database, a lab interface, and a pharmacy system. Hovering a node reveals its properties; clicking highlights its connections. This is the single-patient-view payoff of Health Information Exchange and Healthcare Data Exchange: an HL7 V2 Message from the lab interface, an RxNorm-coded medication list from the pharmacy, and a Continuity Of Care Document received from a hospital discharge all attach to the same patient node instead of living in four disconnected silos.</p>
+</details>
+<h2 id="who-is-the-patient-demographics-and-the-social-context-of-care">Who Is the Patient? Demographics and the Social Context of Care</h2>
+<p>Every standard in the previous section exists to move clinical facts around reliably, but a patient record needs more than clinical facts to be useful. <strong>Patient demographics</strong> are the identifying and descriptive attributes captured about a patient — age or date of birth, sex, race and ethnicity, preferred language, and address — typically recorded at registration and used for identification, communication, regulatory reporting, and population-level analysis. In a labeled property graph, demographics live as properties directly on the <code>Patient</code> node, the same way Chapter 1's Maria Chen node carried <code>patient_id</code>, <code>date_of_birth</code>, and <code>gender</code>, rather than as separate connected nodes, because they describe attributes intrinsic to the patient rather than relationships to some other entity.</p>
+<p>Demographics matter well beyond the registration desk. They drive matching a patient's record across the very systems discussed in the previous section, support health-equity and quality reporting required by payers and regulators, and inform clinical decision support — a pediatric dosing rule, for instance, depends entirely on an accurate date of birth. Demographics describe <em>who</em> the patient is; they say nothing about what condition brought the patient in, which is exactly why they stay separate from diagnosis and treatment data covered starting in Chapter 9. A demographics panel is also usually stable — Maria's date of birth and race and ethnicity rarely change between encounters — which is a further reason these values sit as properties directly on the <code>Patient</code> node rather than as their own connected nodes with a history to track.</p>
+<p>Two patients with identical demographics and the same diagnosis can still have very different outcomes, because of factors that never appear on a standard demographics panel. <strong>Social determinants of health (SDOH)</strong> are the non-medical conditions in the environments where people are born, live, work, and age that meaningfully influence health outcomes. Five factors are tracked especially widely in clinical and population-health data:</p>
+<ul>
+<li><strong>Housing instability</strong> — frequent moves, eviction risk, or lack of stable housing</li>
+<li><strong>Food insecurity</strong> — inconsistent access to adequate nutrition</li>
+<li><strong>Transportation access</strong> — the ability to reliably reach appointments, pharmacies, and sources of healthy food</li>
+<li><strong>Health literacy</strong> — a patient's ability to obtain, understand, and act on health information</li>
+<li><strong>Income level</strong> — household earnings relative to the cost of care and daily living</li>
+</ul>
+<p>Unlike a fixed attribute such as date of birth, an SDOH factor can appear, worsen, or resolve over time, and it carries its own severity assessment independent of the patient's identity. That is exactly why SDOH factors are modeled as their own node type — <code>SDOHFactor</code> — connected to the patient by a <code>HAS_SDOH_FACTOR</code> edge carrying a <code>severity</code> or <code>risk_level</code> property, rather than folded into the demographics properties on the <code>Patient</code> node itself. It is the same label-versus-property judgment call introduced in Chapter 1, applied to a second, very different kind of data. One more forward pointer is worth planting here: SDOH data increasingly lives not in free-text case-manager notes but in FHIR <code>Observation</code> resources coded with LOINC and ICD-10-Z codes, a structured representation the FHIR-focused chapters later in this book explore in full.</p>
+<h4 id="diagram-patient-demographics-and-sdoh-profile">Diagram: Patient Demographics and SDOH Profile</h4>
+<iframe src="../../sims/patient-demographics-sdoh-profile/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Patient Demographics and SDOH Profile</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> patient-demographics-sdoh-profile<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: classify, explain<br/>
+Learning objective: Given a patient node with demographic properties and connected SDOHFactor nodes, the learner can classify each attribute as a demographic property versus a social determinant of health and explain why each is modeled differently in a labeled property graph.</p>
+<p>Purpose: Show that a Patient node carries demographics as intrinsic properties, while Social Determinants Of Health are modeled as separate connected nodes because they carry their own severity/risk data and can change independently of the patient's identity.</p>
+<p>Node types to show (color-coded by label):
+- <code>Patient</code> (pink circle, center of layout) — example instance: Maria Chen, properties <code>age: 39</code>, <code>sex: "F"</code>, <code>race_ethnicity: "Asian"</code>, <code>preferred_language: "English"</code>, <code>address: "142 Oak St, Springfield"</code>
+- <code>SDOHFactor</code> (orange diamond, five instances arranged around the Patient node) — example instances: "Housing Instability", "Food Insecurity", "Transportation Access", "Health Literacy", "Income Level", each carrying a <code>category</code> property</p>
+<p>Edge types to show:
+- <code>HAS_SDOH_FACTOR</code> (Patient to SDOHFactor), properties <code>severity</code> ("low" | "moderate" | "high") and <code>risk_level</code> (numeric 1-5), rendered as a thicker, redder line as severity increases</p>
+<p>Sample data:
+- Maria Chen (Patient) HAS_SDOH_FACTOR {severity: "moderate", risk_level: 3} Transportation Access
+- Maria Chen (Patient) HAS_SDOH_FACTOR {severity: "low", risk_level: 1} Food Insecurity
+- Maria Chen (Patient) HAS_SDOH_FACTOR {severity: "low", risk_level: 1} Health Literacy
+- Housing Instability and Income Level are shown present but unconnected to Maria, to demonstrate that not every SDOHFactor node applies to every patient</p>
+<p>Data Visibility Requirements:
+Stage 1: Show the Patient node at center with its five demographic properties visible in a label list, and five SDOHFactor nodes arranged around it, with only two or three connected by HAS_SDOH_FACTOR edges.
+Stage 2: On hover over the Patient node, show a tooltip listing all demographic properties as key-value pairs.
+Stage 3: On hover over a connected SDOHFactor node or its edge, show a tooltip with the factor name, its severity, and its numeric risk_level.
+Stage 4: On click of the Patient node, highlight all HAS_SDOH_FACTOR edges and their connected SDOHFactor nodes in a contrasting color, and dim the unconnected SDOHFactor nodes to show they do not apply to this patient.</p>
+<p>Interactive controls:
+- Legend panel (always visible) distinguishing the Patient node style, the SDOHFactor node style, and the severity color/thickness scale on edges
+- Toggle button: "Show FHIR Mapping Note" — reveals a callout explaining that SDOH data increasingly lives in FHIR Observation resources coded with LOINC and ICD-10-Z codes rather than as free-text notes, a topic explored fully in the FHIR chapters later in this book
+- Reset view button to re-center and re-fit the graph</p>
+<p>Instructional Rationale: A click-and-hover graph-model explorer matches the Understand-level objective (classify, explain) by making the label-versus-property distinction from Chapter 1 concrete in a second context: demographics stay attached to the Patient node as properties because they describe the patient directly, while SDOH factors become their own nodes because they carry independent severity data and a patient may have zero, one, or several of them. Letting the learner toggle which SDOHFactor nodes are connected reinforces that this is a real modeling choice, not an arbitrary one.</p>
+<p>Layout: Force-directed, Patient node fixed near center, five SDOHFactor nodes arranged in a ring, non-overlapping, responsive to window resize
+Canvas size: responsive width, 500px height
+Legend: node shape/color key for Patient and SDOHFactor; edge color/thickness key for severity levels low/moderate/high</p>
+<p>Implementation: vis-network JavaScript library</p>
+</details>
+<h2 id="zooming-out-population-health-and-care-coordination-models">Zooming Out: Population Health and Care Coordination Models</h2>
+<p>Demographics and SDOH data become most useful not one patient at a time, but in aggregate. <strong>Population health</strong> is the health outcomes of a defined group of individuals — a payer's covered members, an ACO's attributed patients, or every patient with Type 2 Diabetes at Riverside Clinic — including how those outcomes are distributed across the group, not just their average. A population health question is structurally a graph question: which subgroup of patients has the worst glycemic control, and what do they share — the same primary care provider, the same zip code, the same connected <code>SDOHFactor</code> nodes? Answering it is a traversal or aggregation across many <code>Patient</code> nodes filtered by shared properties or shared connections, which is precisely why the previous section's modeling choices matter at scale, not just for one chart. A population health analyst at Riverside Clinic's ACO might, for instance, start from every <code>Patient</code> node with an A1c lab result above 9.0, filter down to those also connected to a <code>SDOHFactor</code> node with <code>risk_level</code> of 4 or higher, and discover that transportation access — not medication adherence — explains most of the gap, a pattern invisible from any single patient's chart but obvious once demographics, SDOH, and lab results are traversed together.</p>
+<p>Coordinating that same group of patients day to day, rather than analyzing them in aggregate, is <strong>care coordination</strong>: the deliberate organization of a patient's care activities and the deliberate sharing of information among everyone involved in that care, aimed at making care safer and more effective whenever more than one provider is involved. When Dr. Patel refers Maria to Dr. Osei, and Dr. Osei in turn refers her to nutritionist Dana Reyes — the same referral chain traced in Chapter 1 — effective care coordination requires each provider to know what the others have already done. The CCDs and HIE queries from the previous section serve that need at a technical level; a designated care coordinator or care manager often serves the identical need at a human level, calling Maria directly to confirm she made it to her appointment with Dr. Osei and following up on referrals the graph alone won't chase down on its own.</p>
+<p>Two organizational models formalize care coordination and population health at different scales. An <strong>accountable care organization (ACO)</strong> is a network of providers, hospitals, and sometimes payers that voluntarily takes joint accountability for the cost and quality of care delivered to a defined population of attributed patients, sharing in savings — or losses — measured against a spending benchmark. The Medicare Shared Savings Program is the best-known example in the United States: if an ACO's benchmark spending target for its attributed population is $50 million for the year and it actually spends $46 million while meeting its quality targets, it can keep a share of that $4 million difference as a shared-savings payment, splitting the remainder with the payer that set the benchmark. In a graph model, an ACO is naturally represented as a node that aggregates a network of primary care providers and connects to a payer through a shared-savings contract relationship, rather than as a property attached to any single provider or patient.</p>
+<p>A <strong>patient-centered medical home (PCMH)</strong> operates at a smaller scale: it is a care delivery model, usually implemented at a single primary care practice and formally recognized through a process like NCQA certification, in which that practice acts as the coordinating hub for a patient's comprehensive care — tracking referrals, preventive care gaps, and follow-up — rather than leaving each specialist to operate independently. A PCMH and an ACO are not competitors; a PCMH can exist inside an ACO, coordinating the individual patient relationship while the ACO manages financial risk across many practices just like it. Contrasting all three arrangements — including the traditional fee-for-service model already familiar from Chapter 7 — against the same three dimensions makes the differences concrete, along with what each looks like once it is modeled as a graph.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Fee-for-Service</th>
+<th>Accountable Care Organization</th>
+<th>Patient-Centered Medical Home</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payment model</td>
+<td>Paid per service rendered; volume-driven</td>
+<td>Shared savings or risk measured against a population spending benchmark</td>
+<td>Often fee-for-service plus a per-patient care-management fee</td>
+</tr>
+<tr>
+<td>Care coordination responsibility</td>
+<td>Left to the patient or informal provider-to-provider contact</td>
+<td>Formal and network-wide, spanning many practices and specialists</td>
+<td>Centered on a single primary care practice</td>
+</tr>
+<tr>
+<td>Typical graph relationship</td>
+<td><code>Provider</code> –BILLS→ <code>Payer</code> per encounter</td>
+<td><code>ACO</code> –HAS_MEMBER→ many <code>Provider</code> nodes; <code>ACO</code> –HAS_CONTRACT→ <code>Payer</code></td>
+<td><code>Patient</code> –HAS_MEDICAL_HOME→ <code>Provider</code>, which fans out to specialists</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">You're Tracing Real Organizational Structure Now</p>
+<p><img alt="Sage cheering encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+ACOs, PCMHs, and fee-for-service contracts can feel abstract compared to a single patient's chart, but you just modeled all three as graph patterns. That skill carries straight into the provider-network chapters later in this book.</p>
+</div>
+<p>Riverside Clinic itself could plausibly sit inside all three of these dimensions at once: Dr. Patel bills fee-for-service for most visits, Riverside Clinic operates as a PCMH for patients like Maria who name it as their primary care home, and Riverside Clinic's ACO membership means some of Maria's total annual cost of care still counts toward a shared-savings calculation regardless of how any single visit was billed. None of that layered structure is visible from a single claim — it only becomes visible once fee-for-service, PCMH, and ACO relationships are each modeled as their own edges radiating outward from the same clinic node.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Connected the Standards to the Structure</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just mastered Clinical Workflow and the Medical Encounter it produces, the interoperability standards — HL7, HL7 V2 Messages, CCDs, RxNorm, and medical terminology — that let that data move, Health Information Exchange and Healthcare Data Exchange as the pipes that carry it, Patient Demographics and Social Determinants of Health as the context around the patient, and Population Health, Care Coordination, ACOs, and PCMHs as the structures that organize care around all of it.</p>
+</div>
+<p>Every concept in this chapter answered a version of the same question: once a patient's data exists, how does it move, and who is responsible for making sure it arrives intact? <a href="../09-patient-diagnosis-treatment-medication/">Chapter 9</a> picks up exactly where this leaves off, moving from the interoperability plumbing into the clinical content itself — symptoms, diagnoses, and medications — that all of these standards and coordination structures ultimately exist to carry.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../07-healthcare-economics-medical-coding/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 7. Healthcare Economics and Medical Coding Systems">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                7. Healthcare Economics and Medical Coding Systems
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../09-patient-diagnosis-treatment-medication/" class="md-footer__link md-footer__link--next" aria-label="Next: 9. Patient Diagnosis, Treatment, and Medication">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                9. Patient Diagnosis, Treatment, and Medication
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

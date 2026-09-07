@@ -1,0 +1,23 @@
+{
+  "title": "Patient Demographics and SDOH Profile",
+  "description": "Given a patient node with demographic properties and connected SDOHFactor nodes, the learner can classify each attribute as a demographic property versus a social determinant of health and explain why each is modeled differently in a labeled property graph.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "patient-demographics-sdoh-profile",
+  "library": "vis-network",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "classify, explain<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 8,
+  "chapter_title": "Healthcare Interoperability and Care Coordination",
+  "chapter_dir": "08-healthcare-interoperability-care-coordination",
+  "chapter_rel_dir": "chapters/08-healthcare-interoperability-care-coordination"
+}

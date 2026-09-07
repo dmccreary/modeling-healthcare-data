@@ -1,0 +1,23 @@
+{
+  "title": "FHIR RESTful API Request-Response Flow",
+  "description": "Given a client application's request for patient data, the learner can explain how the FHIR RESTful API and FHIR server together turn an HTTP request into a returned Bundle of resources.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "fhir-restful-api-request-response-flow",
+  "library": "Mermaid",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "explain, summarize<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 22,
+  "chapter_title": "FHIR Resources and Levels of Knowledge Representation",
+  "chapter_dir": "22-fhir-resources-and-knowledge-representation",
+  "chapter_rel_dir": "chapters/22-fhir-resources-and-knowledge-representation"
+}

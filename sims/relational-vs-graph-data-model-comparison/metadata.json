@@ -1,0 +1,23 @@
+{
+  "title": "Relational vs. Graph Data Model Side-by-Side",
+  "description": "Given the same four healthcare facts modeled two ways, the learner can differentiate how a relational schema and a graph data model each represent an identical relationship, and can trace the extra steps the relational version requires.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "relational-vs-graph-data-model-comparison",
+  "library": "p5.js",
+  "bloomLevel": "Analyze<br/>",
+  "bloomVerb": "differentiate, compare<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 2,
+  "chapter_title": "Data Modeling: Graphs vs. Relational Databases",
+  "chapter_dir": "02-graphs-vs-relational-databases",
+  "chapter_rel_dir": "chapters/02-graphs-vs-relational-databases"
+}

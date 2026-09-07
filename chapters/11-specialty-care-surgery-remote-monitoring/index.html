@@ -1,0 +1,2825 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models the post-surgical care pathway, remote monitoring and telehealth data, and behavioral health, neurodiversity, and palliative care as graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/11-specialty-care-surgery-remote-monitoring/">
+      
+      
+        <link rel="prev" href="../10-patient-care-plans-chronic-disease/">
+      
+      
+        <link rel="next" href="../12-provider-organizations-networks-scheduling/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Specialty Care, Surgery, and Remote Monitoring - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Specialty Care, Surgery, and Remote Monitoring - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models the post-surgical care pathway, remote monitoring and telehealth data, and behavioral health, neurodiversity, and palliative care as graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/11-specialty-care-surgery-remote-monitoring/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/11-specialty-care-surgery-remote-monitoring/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Specialty Care, Surgery, and Remote Monitoring - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models the post-surgical care pathway, remote monitoring and telehealth data, and behavioral health, neurodiversity, and palliative care as graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/11-specialty-care-surgery-remote-monitoring/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#specialty-care-surgery-and-remote-monitoring" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Specialty Care, Surgery, and Remote Monitoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-surgical-procedure-to-discharge" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Surgical Procedure to Discharge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Surgical Procedure to Discharge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-post-surgical-care-transition-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Post-Surgical Care Transition Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-connected-patient-portals-wearables-and-remote-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Connected Patient: Portals, Wearables, and Remote Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Connected Patient: Portals, Wearables, and Remote Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-remote-monitoring-data-flow-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Remote Monitoring Data Flow Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behavioral-health-neurodiversity-and-palliative-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Behavioral Health, Neurodiversity, and Palliative Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Behavioral Health, Neurodiversity, and Palliative Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-behavioral-health-screening-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Behavioral Health Screening Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-surgical-procedure-to-discharge" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Surgical Procedure to Discharge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Surgical Procedure to Discharge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-post-surgical-care-transition-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Post-Surgical Care Transition Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-connected-patient-portals-wearables-and-remote-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Connected Patient: Portals, Wearables, and Remote Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Connected Patient: Portals, Wearables, and Remote Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-remote-monitoring-data-flow-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Remote Monitoring Data Flow Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behavioral-health-neurodiversity-and-palliative-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Behavioral Health, Neurodiversity, and Palliative Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Behavioral Health, Neurodiversity, and Palliative Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-behavioral-health-screening-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Behavioral Health Screening Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/11-specialty-care-surgery-remote-monitoring/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="specialty-care-surgery-and-remote-monitoring">Specialty Care, Surgery, and Remote Monitoring</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers more specialized patient data: genetic markers and biomarkers, imaging and pathology reports, and the surgical and post-operative care pathway through discharge and rehabilitation. It concludes with the modern, technology-driven side of patient care -- patient portals, wearable device data, remote patient monitoring, and telehealth -- along with behavioral health and palliative care. This chapter completes the patient perspective before the book turns to the provider perspective.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 16 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Surgical Procedure</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Post-Operative Care</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Rehabilitation Plan</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Discharge Summary</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Readmission Risk</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Care Transition</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Patient Portal</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Patient-Reported Outcome</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Wearable Device Data</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Remote Patient Monitoring</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Telehealth Visit</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Behavioral Health Condition</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Neurodiversity</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Mental Health Screening</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Substance Use Disorder</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Palliative Care</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../10-patient-care-plans-chronic-disease/">Chapter 10: Patient Care Plans and Chronic Disease Management</a></li>
+</ul>
+<hr />
+<p>Chapter 10 modeled the steady, month-to-month rhythm of chronic disease
+management. This chapter shifts to two very different rhythms: the short,
+high-stakes arc of a surgical episode, and the continuous, always-on stream
+of data produced by wearables and remote monitoring. It closes out the
+patient perspective with two concept clusters that resist easy labels --
+behavioral health and palliative care -- both of which demand a graph model
+precise enough to keep a diagnosis, a difference, and a choice about the
+goals of care from blurring into one another.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">A Different Kind of Care Journey</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+This chapter follows a patient from the operating room through recovery, home, and the always-on world of wearables and telehealth -- and then into the more sensitive territory of behavioral health, neurodiversity, and palliative care. Every one of these topics deserves a graph model that is both technically sound and genuinely respectful of the person behind the data. Let's connect the dots!</p>
+</div>
+<h2 id="from-surgical-procedure-to-discharge">From Surgical Procedure to Discharge</h2>
+<p>A hospital stay for surgery begins with a <strong>Surgical Procedure</strong> node: a
+discrete clinical event carrying a procedure code (typically CPT or
+ICD-10-PCS), the performing surgeon, the anesthesia type, the surgical site,
+and the date and duration of the operation. In a labeled property graph, this
+node sits at the center of a small neighborhood of edges -- <code>PERFORMED_BY</code> to
+the surgeon, <code>PERFORMED_AT</code> to the facility, and <code>PERFORMED_FOR</code> to the
+patient -- giving every downstream care event a single, unambiguous anchor to
+reference.</p>
+<p>Everything that happens next is grouped under <strong>Post-Operative Care</strong>: the
+structured period of monitoring that follows an operation, during which
+clinicians track vital signs, check the surgical wound, manage pain, and
+watch for complications such as infection or blood clots. Modeled as a
+graph, post-operative care is not one node but a connected sequence of
+observation events, each linked back to the Surgical Procedure it follows and
+forward to whatever event -- another observation, an intervention, or
+eventually discharge -- comes next.</p>
+<p>A post-operative monitoring window typically tracks:</p>
+<ul>
+<li>Vital signs (heart rate, blood pressure, temperature, oxygen saturation) at a defined frequency</li>
+<li>Wound assessments (drainage, redness, healing progress)</li>
+<li>Pain scores on a standardized scale</li>
+<li>Complication flags (infection, deep vein thrombosis, adverse drug reaction)</li>
+</ul>
+<p>When the care team determines the patient is ready to leave the inpatient
+setting, that decision is captured in a <strong>Discharge Summary</strong>: a document
+node that consolidates the diagnoses treated, procedures performed,
+medications prescribed, and follow-up instructions into a single record that
+formally closes the inpatient episode. The Discharge Summary is the last node
+written inside the hospital encounter and the first one read by whoever
+provides care next.</p>
+<p>That handoff itself is a distinct concept worth naming: a <strong>Care Transition</strong>
+models the movement of a patient, and their information, from one care
+setting to another -- in this case, out of the hospital. Care transitions are
+exactly the point in a patient's graph where information loss is most likely,
+because two different systems, often run by two different organizations,
+must agree on what happened and what needs to happen next. A Care Transition
+edge branches to one of at least two destinations: home with home health
+services, or a skilled nursing facility for a longer recovery.</p>
+<p>If a patient is discharged into that second path, or even home with
+services, they are typically handed a <strong>Rehabilitation Plan</strong>: a structured
+schedule of physical, occupational, or speech therapy sessions, each with
+measurable goals (for example, "walk 100 feet unassisted within two weeks").
+The Rehabilitation Plan node connects back to the Surgical Procedure that
+made it necessary and forward to the individual therapy sessions that will be
+logged as it progresses.</p>
+<p>None of this monitoring is only about the current stay -- it also feeds a
+forward-looking prediction. A <strong>Readmission Risk</strong> score estimates the
+likelihood that a patient will be back in the hospital within a defined
+window, typically 30 days, and it is one of the clearest examples in this
+book of a value that is computed <em>from</em> the graph rather than stored as a raw
+fact. A readmission risk model commonly draws on:</p>
+<ul>
+<li>Comorbidity count -- how many other diagnosed conditions the patient carries</li>
+<li>Length of stay -- how many days the current admission lasted</li>
+<li>Discharge disposition -- which Care Transition destination was chosen</li>
+<li>Prior admissions in the last 12 months -- how many times this patient has already been hospitalized</li>
+</ul>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Follow the Edges Backward</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Every one of those four risk factors is reachable by walking just one or two edges away from the Readmission Risk node -- comorbidities through DIAGNOSED_WITH edges, length of stay from the admission and discharge dates, disposition from the Care Transition edge itself. That is the real payoff of graph-based risk modeling: you can always trace a score back to the exact facts that produced it.</p>
+</div>
+<h4 id="diagram-post-surgical-care-transition-workflow">Diagram: Post-Surgical Care Transition Workflow</h4>
+<iframe src="../../sims/post-surgical-care-transition-workflow/main.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<details>
+<summary>Post-Surgical Care Transition Workflow</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> post-surgical-care-transition-workflow<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, differentiate<br/>
+Learning objective: Examine a post-surgical care workflow and differentiate which upstream, graph-visible factors feed the computed Readmission Risk score.</p>
+<p>Purpose: Let the learner trace the path from a surgical episode through discharge and care transition to a computed readmission-risk score, discovering by clicking which upstream facts actually feed that score.</p>
+<p>Components to show (nodes, left to right in a directed layout):
+1. Surgical Procedure (blue rounded rectangle) -- properties: procedure_code, surgeon, anesthesia_type, date
+2. Post-Operative Monitoring (teal rounded rectangle) -- properties: vital_signs, wound_status, pain_score, complication_flag
+3. Discharge Summary (gray document-shaped node) -- properties: diagnoses, medications, follow_up_instructions
+4. Care Transition (orange diamond decision node) -- branches to two destinations
+5a. Home with Home Health (green rounded rectangle)
+5b. Skilled Nursing / Rehab Facility (green rounded rectangle)
+6. Readmission Risk (red octagon "result" node) -- property: risk_score (0-100)</p>
+<p>Edges:
+- Surgical Procedure -&gt; Post-Operative Monitoring ("FOLLOWED_BY")
+- Post-Operative Monitoring -&gt; Discharge Summary ("LEADS_TO")
+- Discharge Summary -&gt; Care Transition ("INITIATES")
+- Care Transition -&gt; Home with Home Health ("ROUTES_TO", solid line)
+- Care Transition -&gt; Skilled Nursing / Rehab Facility ("ROUTES_TO", solid line)
+- Four dashed contributing-factor edges into Readmission Risk: from a "Comorbidity Count" mini-node, a "Length of Stay" mini-node (attached to Post-Operative Monitoring), a "Discharge Disposition" mini-node (attached to Care Transition), and a "Prior Admissions (12 mo)" mini-node</p>
+<p>Visual style: Left-to-right directed workflow graph with one decision branch; the four contributing-factor nodes are drawn smaller and in a muted purple, feeding into Readmission Risk from below to visually distinguish "process" nodes from "input" nodes.</p>
+<p>Color scheme: Blue/teal for the surgical and monitoring steps, orange for the decision point, green for the two transition destinations, purple for contributing-factor inputs, red for the final risk node.</p>
+<p>Interactive controls:
+- Click any node to open an infobox with its definition and property list (matching the definitions given in the surrounding text)
+- Click the Readmission Risk node specifically to reveal a breakdown panel listing all four contributing factors with a sample numeric value for each (e.g., "Comorbidity Count: 3", "Length of Stay: 6 days", "Discharge Disposition: Skilled Nursing Facility", "Prior Admissions (12 mo): 1") and the resulting sample score
+- Hover any edge to see a one-line description of the relationship it represents
+- Toggle button: "Highlight risk inputs only" -- dims every node except the four contributing-factor nodes and the Readmission Risk node, isolating the subgraph the score actually depends on
+- Zoom and pan enabled on the canvas</p>
+<p>Instructional Rationale: This is an Analyze-level objective (examine, differentiate), so the design deliberately avoids a passive animation and instead rewards active exploration: the learner must click into the Readmission Risk node to discover which of the many upstream nodes actually feed it, then use the "Highlight risk inputs only" toggle to visually confirm that discovery against the full workflow. This mirrors the real analytical skill the section teaches -- tracing a computed value back to the graph structure that produced it -- rather than simply watching the workflow animate start to finish.</p>
+<p>Implementation: vis-network JavaScript library with a hierarchical (left-to-right) layout option; infobox rendered as a fixed side panel updated on node/edge click.</p>
+</details>
+<h2 id="the-connected-patient-portals-wearables-and-remote-monitoring">The Connected Patient: Portals, Wearables, and Remote Monitoring</h2>
+<p>Once a patient leaves the hospital, most of their data no longer arrives
+through a clinical encounter at all -- it arrives continuously, from devices
+and applications the patient controls. The hub for that relationship is the
+<strong>Patient Portal</strong>: a secure web or mobile application through which a
+patient views their own results, messages their care team, schedules
+appointments, and reviews their medical record. In graph terms, the Patient
+Portal is best modeled as an aggregating node that a Patient <code>ACCESSES</code>, and
+which in turn connects out to several different kinds of patient-originated
+data.</p>
+<p>One of those data types is the <strong>Patient-Reported Outcome</strong>, or PRO: a
+structured survey, often built from a standardized instrument, that captures
+how the patient says they are doing -- pain, mobility, mood, or quality of
+life -- in the patient's own words rather than a clinician's observation. A
+PRO node is created when a Patient <code>SUBMITS</code> a survey, typically through the
+portal, and it carries properties like the instrument name, the questions and
+responses, and a computed score.</p>
+<p>A second, very different data type comes from a <strong>Wearable Device Data</strong>
+stream: continuous measurements produced by a device the patient wears, such
+as a smartwatch or a continuous glucose monitor. Where a PRO is a single
+self-reported snapshot, wearable data is high-frequency and objective -- a
+Patient <code>WEARS</code> a Wearable Device node, which <code>GENERATES</code> a running stream of
+individual vital-sign or biomarker reading nodes.</p>
+<p>The table below makes that contrast concrete before the two data types
+reappear together in the diagram.</p>
+<table>
+<thead>
+<tr>
+<th>Data Source</th>
+<th>Who Generates It</th>
+<th>Frequency</th>
+<th>Example Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Patient-Reported Outcome</td>
+<td>The patient, self-reporting</td>
+<td>Periodic (survey-based)</td>
+<td>"Pain: 6/10 today"</td>
+</tr>
+<tr>
+<td>Wearable Device Data</td>
+<td>The device, automatically</td>
+<td>Continuous or high-frequency</td>
+<td>"Heart rate: 118 bpm at 2:14 PM"</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Two Very Different Kinds of Truth</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A Patient-Reported Outcome and a stream of Wearable Device Data can disagree, and that's not a data-quality bug -- a patient can report feeling fine while their device shows an irregular heart rhythm, or report pain while every vital sign looks normal. A good graph model keeps both kinds of nodes intact instead of collapsing them into a single "how is the patient doing" value.</p>
+</div>
+<p>Both data streams typically feed into <strong>Remote Patient Monitoring</strong>, or RPM:
+the clinical program and its supporting algorithm that continuously ingest
+wearable readings (and often PRO responses) and apply threshold rules to
+detect trends that need attention -- a resting heart rate climbing steadily
+over several days, for instance. When an RPM algorithm crosses a defined
+threshold, it <code>TRIGGERS</code> an alert, which most commonly <code>SCHEDULES</code> a
+<strong>Telehealth Visit</strong>: a clinical encounter conducted remotely over live video
+or audio rather than in person. The Telehealth Visit closes the loop, turning
+a pattern detected in a data stream back into an actual conversation between
+patient and clinician.</p>
+<h4 id="diagram-remote-monitoring-data-flow-graph-model">Diagram: Remote Monitoring Data Flow Graph Model</h4>
+<iframe src="../../sims/remote-monitoring-data-flow-graph-model/main.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<details>
+<summary>Remote Monitoring Data Flow Graph Model</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> remote-monitoring-data-flow-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, classify<br/>
+Learning objective: Explain how patient-generated data (portal, PRO, wearable) flows through a remote patient monitoring process into a telehealth visit, and classify each node by whether it is patient-originated or system-generated.</p>
+<p>Purpose: Show learners the complete graph-model path from a patient's own devices and self-reports through an RPM algorithm to a scheduled telehealth visit, and the separate but related path through the patient portal.</p>
+<p>Node types to show (color-coded):
+1. Patient (pink circle) -- the central node
+2. Wearable Device (light blue square) -- properties: device_type, manufacturer
+3. Vital Sign / Biomarker Reading (small light blue circles, shown as a cluster of 3-4) -- properties: value, unit, timestamp
+4. RPM Algorithm (gray gear-shaped node) -- properties: threshold_rule, evaluation_frequency
+5. Alert (orange triangle) -- properties: severity, triggered_at
+6. Telehealth Visit (green circle) -- properties: scheduled_time, modality (video/audio)
+7. Patient-Reported Outcome (purple square) -- properties: instrument_name, score
+8. Patient Portal (dark blue hexagon) -- aggregates PRO and secure messaging</p>
+<p>Edge types to show:
+1. Patient --WEARS--&gt; Wearable Device
+2. Wearable Device --GENERATES--&gt; Vital Sign / Biomarker Reading (one edge per reading in the cluster)
+3. Vital Sign / Biomarker Reading --FEEDS--&gt; RPM Algorithm
+4. RPM Algorithm --TRIGGERS--&gt; Alert
+5. Alert --SCHEDULES--&gt; Telehealth Visit
+6. Patient --SUBMITS--&gt; Patient-Reported Outcome
+7. Patient --ACCESSES--&gt; Patient Portal
+8. Patient-Reported Outcome --VISIBLE_IN--&gt; Patient Portal (dashed, showing portal aggregates PRO data)</p>
+<p>Data Visibility Requirements:
+Stage 1: Show only the Patient node and the two paths branching from it unlabeled (toward Wearable Device and toward Patient Portal), so the learner first sees there are two distinct data origins.
+Stage 2: On clicking the Wearable Device node, reveal the GENERATES edges to 3-4 concrete Vital Sign / Biomarker Reading nodes with real example values (e.g., heart rate 72, 74, 118, 76 bpm across four timestamps).
+Stage 3: On clicking the RPM Algorithm node, show the actual threshold rule being evaluated (e.g., "alert if heart rate &gt; 100 bpm for 3 consecutive readings") applied against the visible readings, with the triggering reading highlighted.
+Stage 4: On clicking the Alert node, reveal the resulting Telehealth Visit node with its scheduled time, closing the loop back to a human encounter.
+Stage 5: On clicking the Patient Portal node, reveal its aggregation of the Patient-Reported Outcome node and a placeholder "secure messaging" property, showing the second, parallel path.</p>
+<p>Interactive controls:
+- Click any node: opens a side-panel infobox with the node's label, definition, and properties
+- Hover any edge: shows a tooltip naming the relationship type and a one-sentence description
+- Button: "Play data flow" -- animates a small pulse traveling from Wearable Device through to Telehealth Visit at a fixed pace, pausing at each node long enough for the infobox to display
+- Zoom and pan enabled</p>
+<p>Instructional Rationale: The objective is Understand-level (explain, classify), so per the interaction-pattern guidance this specification favors staged data reveal and concrete values over continuous animation. Showing the actual threshold rule and the specific reading that crosses it (Stage 3) is what lets a learner explain <em>why</em> an alert fired rather than simply seeing that one did, and separating the two origin paths (device vs. portal/PRO) supports the classification half of the objective.</p>
+<p>Implementation: vis-network JavaScript library with a two-branch layout radiating from the central Patient node; side panel rendered as fixed-position HTML updated via vis-network's click event.</p>
+</details>
+<h2 id="behavioral-health-neurodiversity-and-palliative-care">Behavioral Health, Neurodiversity, and Palliative Care</h2>
+<p>The final cluster of concepts in this chapter requires a different kind of
+care in modeling, because the categories involved carry real stakes for how
+patients are treated and how they see themselves. A <strong>Behavioral Health
+Condition</strong> is a diagnosed mental health or substance use condition -- major
+depressive disorder, generalized anxiety disorder, and similar diagnoses fall
+into this node type, modeled with the same rigor (diagnosis codes, onset
+date, severity) as any other Condition node from earlier chapters.</p>
+<p>Diagnosis rarely happens without a screening step first. A <strong>Mental Health
+Screening</strong> is a standardized instrument administered to a patient -- the
+PHQ-9 for depression, the GAD-7 for anxiety, or the AUDIT-C for risky alcohol
+use -- that produces a numeric <code>SCORE</code> property, which is compared against a
+published clinical threshold to determine a <code>POSITIVE</code> or <code>NEGATIVE</code> result.
+A screening node connects to the patient who took it and, when positive,
+typically <code>SCREENS_FOR</code> the specific Behavioral Health Condition it is
+designed to detect.</p>
+<p>The AUDIT-C screening result feeds directly into one specific condition
+category worth naming on its own: a <strong>Substance Use Disorder</strong> is a
+diagnosed pattern of impaired control over alcohol or drug use, and it is
+modeled as its own condition type -- both because it has its own clinical
+criteria and because it is subject to additional confidentiality protections
+under U.S. federal law (42 CFR Part 2) that do not apply to most other
+diagnoses, which affects how access to those nodes must be governed later in
+this book.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">A Screening Score Is Not a Label for a Person</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+It's tempting to treat a positive PHQ-9 or AUDIT-C result as equivalent to the diagnosis it screens for, but a screening score is only ever a signal that a fuller clinical evaluation is warranted -- model it as a separate node connected to, not merged with, the Behavioral Health Condition it may lead to.</p>
+</div>
+<p>Not every difference belongs in that diagnostic frame at all.
+<strong>Neurodiversity</strong> refers to conditions such as autism and ADHD that this
+book models as a distinct node category representing a different, not
+disordered, way of thinking and processing the world -- not as something
+requiring a positive/negative screening result the way a Behavioral Health
+Condition does. Keeping Neurodiversity structurally separate from the
+screening-and-diagnosis pathway is a deliberate modeling choice: it prevents
+a graph query from accidentally treating "autistic" the same way it treats
+"screened positive for depression," which would misrepresent both.</p>
+<p>Finally, a care model that runs in parallel to all of this, and applies to a
+much broader population than behavioral health alone, is <strong>Palliative
+Care</strong>: specialized medical care for a patient with a serious illness,
+focused on relief from symptoms, pain, and stress, and on improving quality
+of life for the patient and their family. Palliative Care is available at
+any stage of a serious illness, alongside curative treatment, and connects to
+a patient through its own care-team and goals-of-care nodes rather than
+through any screening or diagnosis pathway -- it answers a different question
+("what matters most to this patient right now?") than either a Behavioral
+Health Condition diagnosis or a Neurodiversity classification does.</p>
+<p>The comparison below summarizes how these four categories differ in what
+they represent and how they connect into the graph.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>What It Represents</th>
+<th>Modeled As</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Behavioral Health Condition</td>
+<td>A diagnosed mental health or substance use condition</td>
+<td>Condition node, reached via screening or clinical diagnosis</td>
+</tr>
+<tr>
+<td>Substance Use Disorder</td>
+<td>A diagnosed pattern of impaired substance control</td>
+<td>Condition node with additional confidentiality protections</td>
+</tr>
+<tr>
+<td>Neurodiversity</td>
+<td>A different, not disordered, way of thinking (e.g., autism, ADHD)</td>
+<td>Distinct node category, not a screened/diagnosed condition</td>
+</tr>
+<tr>
+<td>Palliative Care</td>
+<td>A parallel care model focused on comfort and quality of life</td>
+<td>Care-team and goals-of-care nodes, independent of diagnosis type</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">This Is Genuinely Hard to Model Well</p>
+<p><img alt="Sage cheering you on" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+If keeping these categories straight feels harder than the earlier graph diagrams in this book, that's because it is -- getting the data model right here means getting how real people are represented right. You're doing exactly the kind of careful thinking this field needs.</p>
+</div>
+<h4 id="diagram-behavioral-health-screening-graph-model">Diagram: Behavioral Health Screening Graph Model</h4>
+<iframe src="../../sims/behavioral-health-screening-graph-model/main.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<details>
+<summary>Behavioral Health Screening Graph Model</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> behavioral-health-screening-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, classify<br/>
+Learning objective: Differentiate a screened-and-diagnosed Behavioral Health Condition pathway from the structurally separate Neurodiversity and Palliative Care node categories, and classify each screening instrument by the condition it detects.</p>
+<p>Purpose: Show learners that standardized screening instruments feed specific behavioral health diagnoses through a SCREENS_FOR/SCORE/result pathway, while Neurodiversity and Palliative Care are modeled as deliberately separate branches that do not run through that same screening logic.</p>
+<p>Node types to show (color-coded):
+1. Patient (pink circle) -- central node
+2. PHQ-9 (light blue rounded rectangle) -- screening instrument, property: score (0-27)
+3. GAD-7 (light blue rounded rectangle) -- screening instrument, property: score (0-21)
+4. AUDIT-C (light blue rounded rectangle) -- screening instrument, property: score (0-12)
+5. Behavioral Health Condition: Depression (orange diamond)
+6. Behavioral Health Condition: Anxiety (orange diamond)
+7. Substance Use Disorder (orange diamond, slightly different border style to flag its extra confidentiality property)
+8. Neurodiversity: Autism (purple hexagon, visually separated from the orange cluster)
+9. Neurodiversity: ADHD (purple hexagon)
+10. Palliative Care (green hexagon, visually separated on the opposite side)</p>
+<p>Edge types to show:
+1. Patient --TAKES--&gt; each screening instrument
+2. Each screening instrument --SCREENS_FOR--&gt; its corresponding Behavioral Health Condition (or Substance Use Disorder for AUDIT-C), labeled with the SCORE property and a POSITIVE/NEGATIVE result flag
+3. Patient --HAS--&gt; each Neurodiversity node (dashed edge, styled differently to visually signal "no screening score attached")
+4. Patient --RECEIVES--&gt; Palliative Care (dashed edge, also styled without a score)</p>
+<p>Visual style: Three visually separated clusters radiating from the central Patient node -- a screening-and-diagnosis cluster (blue instruments -&gt; orange conditions), a Neurodiversity cluster (purple, dashed edges, no score), and a Palliative Care node (green, dashed edge, no score) -- so the structural separation described in the text is visible in the layout itself, not just in a legend.</p>
+<p>Color scheme: Light blue for screening instruments, orange for diagnosed behavioral health conditions (including Substance Use Disorder), purple for Neurodiversity, green for Palliative Care, pink for the Patient.</p>
+<p>Interactive controls:
+- Click a screening instrument node: opens an infobox showing its full name, what it screens for, its score range, and the clinical threshold that separates POSITIVE from NEGATIVE
+- Click a SCREENS_FOR edge: reveals a worked example with a sample score (e.g., "PHQ-9 score of 14 -&gt; POSITIVE, moderate depression range")
+- Click the Neurodiversity or Palliative Care nodes: opens an infobox explicitly stating why the edge has no score/threshold, reinforcing the differentiate objective
+- Toggle button: "Group by cluster" -- visually separates the three clusters further apart when enabled, and collapses them back near the Patient node when disabled, letting the learner compare the clustered/unclustered view
+- Zoom and pan enabled</p>
+<p>Instructional Rationale: This is an Analyze-level objective (differentiate, classify), so the specification is built around comparison rather than single-path exploration: the three-cluster layout, the deliberately different edge styling (scored vs. unscored), and the "Group by cluster" toggle all give the learner direct evidence for the structural claim made in the text -- that Neurodiversity and Palliative Care are not modeled through the same screening-and-diagnosis logic as a Behavioral Health Condition, even though all three connect to the same Patient node.</p>
+<p>Implementation: vis-network JavaScript library with a radial layout grouped by cluster; infobox rendered as a fixed side panel updated on node/edge click; edge dash pattern toggled via vis-network edge styling options.</p>
+</details>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You've Modeled the Full Patient Journey</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just worked through the surgical and post-operative pathway (Surgical Procedure, Post-Operative Care, Rehabilitation Plan, Discharge Summary, Care Transition, and Readmission Risk), the connected-patient cluster (Patient Portal, Patient-Reported Outcome, Wearable Device Data, Remote Patient Monitoring, and Telehealth Visit), and the behavioral health cluster (Behavioral Health Condition, Mental Health Screening, Substance Use Disorder, Neurodiversity, and Palliative Care). That completes the patient perspective this book set out to build.</p>
+</div>
+<p>Taken together, these sixteen concepts close the loop on modeling a single
+patient's experience: from an acute surgical episode, through recovery and
+care transition, into the continuous data streams of modern remote care, and
+finally through the more sensitive territory of behavioral health,
+neurodiversity, and palliative care -- each modeled with the structural
+precision the earlier chapters established, and each requiring the kind of
+careful, respectful category choices this chapter emphasized.
+<a href="../12-provider-organizations-networks-scheduling/">Chapter 12</a> turns
+the camera around, leaving the patient's point of view behind to model the
+provider organizations, networks, and scheduling systems that make all of
+this care possible in the first place.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../10-patient-care-plans-chronic-disease/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 10. Patient Care Plans and Chronic Disease Management">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                10. Patient Care Plans and Chronic Disease Management
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../12-provider-organizations-networks-scheduling/" class="md-footer__link md-footer__link--next" aria-label="Next: 12. Provider Organizations, Networks, and Scheduling">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                12. Provider Organizations, Networks, and Scheduling
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

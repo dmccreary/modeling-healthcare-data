@@ -1,0 +1,23 @@
+{
+  "title": "Security Incident Response Lifecycle",
+  "description": "Given a description of a detected security event affecting a healthcare graph database, the learner can sequence the five incident response stages and explain what each stage accomplishes.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "security-incident-response-lifecycle",
+  "library": "Mermaid",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "explain, sequence<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 26,
+  "chapter_title": "Advanced Security Operations and Incident Response",
+  "chapter_dir": "26-advanced-security-operations-incident-response",
+  "chapter_rel_dir": "chapters/26-advanced-security-operations-incident-response"
+}

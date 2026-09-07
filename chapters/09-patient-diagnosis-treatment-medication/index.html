@@ -1,0 +1,2997 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models the clinical core of a patient encounter as a graph -- symptoms, diagnoses, treatment plans, prescriptions, and medication-safety relationships.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/09-patient-diagnosis-treatment-medication/">
+      
+      
+        <link rel="prev" href="../08-healthcare-interoperability-care-coordination/">
+      
+      
+        <link rel="next" href="../10-patient-care-plans-chronic-disease/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Patient Diagnosis, Treatment, and Medication - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Patient Diagnosis, Treatment, and Medication - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models the clinical core of a patient encounter as a graph -- symptoms, diagnoses, treatment plans, prescriptions, and medication-safety relationships." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/09-patient-diagnosis-treatment-medication/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/09-patient-diagnosis-treatment-medication/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Patient Diagnosis, Treatment, and Medication - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models the clinical core of a patient encounter as a graph -- symptoms, diagnoses, treatment plans, prescriptions, and medication-safety relationships." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/09-patient-diagnosis-treatment-medication/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#patient-diagnosis-treatment-and-medication" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Patient Diagnosis, Treatment, and Medication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-patient-record-as-a-connected-subgraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Patient Record as a Connected Subgraph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Patient Record as a Connected Subgraph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-clinical-context-subgraph-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Clinical Context Subgraph Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symptoms-disease-and-the-diagnostic-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms, Disease, and the Diagnostic Web
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symptoms, Disease, and the Diagnostic Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-symptom-disease-diagnostic-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Symptom-Disease Diagnostic Network
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-differential-to-diagnosis-ranking-candidate-explanations" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Differential to Diagnosis: Ranking Candidate Explanations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Differential to Diagnosis: Ranking Candidate Explanations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bayesian-diagnostic-reasoning-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Bayesian Diagnostic Reasoning MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#treatment-plans-prescriptions-and-medication-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Treatment Plans, Prescriptions, and Medication Safety
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Treatment Plans, Prescriptions, and Medication Safety">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-medication-safety-network-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Medication Safety Network Interactive Infographic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#immunization-and-the-vaccination-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immunization and the Vaccination Schedule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-patient-record-as-a-connected-subgraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Patient Record as a Connected Subgraph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Patient Record as a Connected Subgraph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-clinical-context-subgraph-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Clinical Context Subgraph Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symptoms-disease-and-the-diagnostic-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms, Disease, and the Diagnostic Web
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symptoms, Disease, and the Diagnostic Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-symptom-disease-diagnostic-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Symptom-Disease Diagnostic Network
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-differential-to-diagnosis-ranking-candidate-explanations" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Differential to Diagnosis: Ranking Candidate Explanations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Differential to Diagnosis: Ranking Candidate Explanations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bayesian-diagnostic-reasoning-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Bayesian Diagnostic Reasoning MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#treatment-plans-prescriptions-and-medication-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Treatment Plans, Prescriptions, and Medication Safety
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Treatment Plans, Prescriptions, and Medication Safety">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-medication-safety-network-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Medication Safety Network Interactive Infographic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#immunization-and-the-vaccination-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immunization and the Vaccination Schedule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/09-patient-diagnosis-treatment-medication/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="patient-diagnosis-treatment-and-medication">Patient Diagnosis, Treatment, and Medication</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter begins the patient-centric perspective with the clinical concepts at the heart of an encounter: symptoms, diagnosis, differential diagnosis, and treatment planning. It covers prescriptions, medication dosing, drug interactions, adverse events, allergies, and immunization schedules. These concepts form the core patient-record node types used to build the patient-centric graph model.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 17 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Patient Record</td>
+<td>156</td>
+</tr>
+<tr>
+<td>Patient ID</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Patient History</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Disease</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Medical Condition</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Symptom</td>
+<td>46</td>
+</tr>
+<tr>
+<td>Diagnosis</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Differential Diagnosis</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Treatment Plan</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Prescription</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Medication</td>
+<td>41</td>
+</tr>
+<tr>
+<td>Dosage</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Drug Interaction</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Adverse Event</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Allergy</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Immunization</td>
+<td>36</td>
+</tr>
+<tr>
+<td>Vaccination Schedule</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../07-healthcare-economics-medical-coding/">Chapter 7: Healthcare Economics and Medical Coding Systems</a></li>
+<li><a href="../08-healthcare-interoperability-care-coordination/">Chapter 8: Healthcare Interoperability and Care Coordination</a></li>
+</ul>
+<hr />
+<p>Chapters 7 and 8 modeled how care is coded, billed, and exchanged across
+systems. This chapter turns inward, toward the clinical substance of a
+single encounter: what is wrong with the patient, what a clinician decides
+to do about it, and what medication or immunization follows from that
+decision. Every concept below becomes a small cluster of nodes and edges
+hanging off a single <code>Patient</code> node — the exact cluster a graph query
+returns when a clinician or an AI system asks for "this patient's record."</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Where the Patient's Story Lives</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+This chapter is where a patient's clinical story finally gets modeled in full: symptoms, diagnoses, treatment plans, medications, and immunizations, all wired together as a graph. Let's connect the dots!</p>
+</div>
+<h2 id="the-patient-record-as-a-connected-subgraph">The Patient Record as a Connected Subgraph</h2>
+<p>Every healthcare graph in this book radiates outward from one anchor: the
+<code>Patient</code> node. In a relational system, a <strong>patient record</strong> is scattered
+across a dozen tables — demographics in one, diagnoses in another,
+medications in a third — reassembled only when a report runs. In a labeled
+property graph, the patient record is not a join result at all; it is the
+literal set of nodes and edges reachable by walking outward a few hops from
+a single <code>Patient</code> node. Ask "what is this patient's record?" and a graph
+database answers by traversing, not reconstructing.</p>
+<p>That anchor node needs a way to be found again across every system that
+touches it. A <strong>Patient ID</strong> is the unique identifier — commonly a medical
+record number (MRN) — stored as a property on the <code>Patient</code> node (for
+example, <code>patient_id: "MRN-77291"</code>) that lets every other part of the system
+reference the same person unambiguously across encounters, providers, and
+even payer systems. Chapter 8's discussion of matching patients across
+interoperable systems depended on exactly this property existing and being
+trustworthy.</p>
+<p>Identity resolution becomes a real engineering problem the moment two
+systems disagree about who a patient is. If Riverside Clinic assigns Sarah
+Johnson <code>patient_id: "MRN-77291"</code> while a hospital across town independently
+assigns her <code>MRN-40218</code> after an emergency visit, naively merging the two
+systems' graphs would create two separate <code>Patient</code> nodes for one real
+person. Healthcare organizations solve this with a master patient index: a
+matching service that links both identifiers to a single canonical node,
+typically by adding a <code>SAME_AS</code> edge between the two records once matching
+demographic fields — name, date of birth, and often a stronger identifier
+such as a Social Security number — are confirmed. Every downstream query
+that walks from <code>Patient</code> to diagnoses, medications, or encounters is only
+as correct as this identity-resolution step.</p>
+<p>Everything a patient has ever had done to them, or been found to have,
+accumulates as <strong>patient history</strong>: the growing set of past encounters,
+diagnoses, procedures, and medications connected to that <code>Patient</code> node over
+time. History is not a separate table of archived events copied out of the
+active record — it is simply every node still connected by an edge whose
+timestamp property lies in the past. A five-year-old diagnosis and a
+five-minute-old vital sign live in the same graph, distinguished only by the
+dates on their edges, not by which table happens to store them. Three ideas
+anchor everything a patient-centric graph does with this node:</p>
+<ul>
+<li>The <strong>Patient Record</strong> is the connected subgraph reachable from a <code>Patient</code> node, not a stored table</li>
+<li>The <strong>Patient ID</strong> is the property that lets that node be found again, consistently, across systems</li>
+<li><strong>Patient History</strong> is simply the subset of that subgraph whose edges carry a past timestamp</li>
+</ul>
+<p>That traversal-based definition of a record is not just a metaphor; it is
+executable. A Cypher-style query such as <code>MATCH (p:Patient {patient_id:
+"MRN-77291"})-[:HAS_DIAGNOSIS|TAKES|SEEN_BY|HAD_ENCOUNTER]-(n) RETURN p, n</code>
+returns exactly the nodes and edges that make up Sarah Johnson's record — no
+separate record table needed, and no risk of a report-writer forgetting to
+join in a category of data the query should have included.</p>
+<p>That same traversal pattern extends naturally to time. Asking "what did
+this patient's record look like as of March 1?" is simply the same
+traversal restricted to edges whose timestamp property falls on or before
+that date. Patient history, in other words, is not a separate audit log
+that needs reconstructing after the fact — it is the ordinary graph,
+queried with a temporal filter on the walk instead of an unrestricted one,
+which is precisely the property a later chapter relies on to reconstruct a
+chronic-disease timeline without maintaining two parallel copies of the
+same facts.</p>
+<p>Consider a single patient, Sarah Johnson, whose clinical-context subgraph
+the diagram below renders directly: her diagnoses, the medications she takes
+for them, the providers who see her, and her recent encounters, all one or
+two hops from her <code>Patient</code> node.</p>
+<h4 id="diagram-patient-clinical-context-subgraph-visualization">Diagram: Patient Clinical Context Subgraph Visualization</h4>
+<iframe src="../../sims/patient-clinical-context-subgraph-visualization/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<details>
+<summary>Patient Clinical Context Subgraph Visualization (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> patient-clinical-context-subgraph-visualization<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/patient-clinical-context-subgraph-visualization/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/patient-clinical-context-subgraph-visualization</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: identify, classify<br/>
+Learning objective: Given the clinical-context subgraph around a single patient, the learner can identify which edge types (HAS_DIAGNOSIS, TAKES, TREATS, SEEN_BY, HAD_ENCOUNTER) connect the Patient node to each category of surrounding node and explain why that connected neighborhood, not a separate record table, constitutes "the patient record."</p>
+<p>Purpose: Show that the patient record is a query result over a connected subgraph, not a row in a table, using patient Sarah Johnson as the running example.</p>
+<p>Node types shown (color-coded, radiating from the central Patient node):
+- Patient (center) — Sarah Johnson
+- Diagnosis nodes (red) — e.g., Type 2 Diabetes, Hypertension, Hyperlipidemia
+- Medication nodes (green) — e.g., Metformin, Lisinopril, Atorvastatin
+- Provider nodes (purple) — clinicians who see Sarah
+- Encounter nodes (orange) — recent visits</p>
+<p>Edge types shown:
+- HAS_DIAGNOSIS (Patient to Diagnosis)
+- TAKES (Patient to Medication)
+- TREATS (dashed, Medication back to the Diagnosis it addresses, e.g., Metformin to Diabetes)
+- SEEN_BY (Patient to Provider)
+- HAD_ENCOUNTER (Patient to Encounter)</p>
+<p>Interactive controls:
+- Drag any node to reposition it and observe the force-directed layout re-settle
+- Hover a node to see its label and properties in a tooltip
+- Click a node to highlight only its directly connected edges and dim the rest
+- Navigation buttons to zoom, pan, and re-fit the graph</p>
+<p>Instructional Rationale: An Understand-level objective (identify, classify) is best served by letting the learner trace real labeled edges outward from one familiar anchor rather than reading a description of the record; clicking to isolate a node's neighborhood makes the "record equals subgraph" claim something the learner discovers rather than something they are told.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">The Record Is the Query</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice there is no "patient record" node anywhere in that diagram — the record is just the neighborhood a query returns. Every relationship matters here: change which edges you traverse, and you change what counts as "the record."</p>
+</div>
+<h2 id="symptoms-disease-and-the-diagnostic-web">Symptoms, Disease, and the Diagnostic Web</h2>
+<p>A diagnosis rarely starts with certainty; it starts with a <strong>symptom</strong> — a
+specific, patient-reported or clinically observed indicator, such as "chest
+pain" or "shortness of breath," modeled as its own node connected to the
+patient by a <code>REPORTS</code> edge carrying properties like <code>onset_date</code> and
+<code>severity</code>. A single symptom node can connect to many patients (chest pain
+is common) and, more importantly, to many possible <strong>diseases</strong> — named,
+classifiable pathological processes such as myocardial infarction or
+pneumonia — through edges the diagnostic graph uses to reason backward from
+what is observed to what might be causing it.</p>
+<p>A concrete instance makes this modeling choice clear. Patient Robert Klein
+reports two symptom instances during a single visit: chest pain with
+<code>severity: "7/10"</code> and <code>onset_date: "2026-09-05"</code>, and dyspnea (shortness of
+breath) with <code>severity: "5/10"</code> and the same onset date. Each instance is
+its own node connected to Robert Klein by a <code>REPORTS</code> edge, even though both
+instances also connect to shared, reusable symptom-type nodes. That
+separation lets the graph distinguish "how badly did this specific patient
+describe this symptom, today" from "what does chest pain, as a general
+concept, tend to indicate" — the first fact belongs on the edge, the second
+belongs on the type node it points to. Symptoms also rarely arrive alone:
+when a set of symptom nodes recurs together often enough to be named as a
+unit, it can be modeled as its own syndrome node linking to the individual
+symptoms it groups, giving the diagnostic graph a coarser-grained pattern to
+match against candidate diseases in addition to the individual symptom
+edges.</p>
+<p>A <strong>disease</strong> and the everyday clinical term <strong>medical condition</strong> overlap but
+are not identical. Disease usually refers to the classified pathology
+itself, carrying a standard code from the ICD-10 systems introduced in
+Chapter 7, while medical condition is the broader, sometimes less formally
+coded state of health a patient is documented as having. The distinction
+matters when a graph needs to link a precisely coded billing diagnosis to a
+looser clinical note describing the same underlying reality.</p>
+<p>This coded-versus-uncoded distinction has real downstream consequences. A
+disease node tagged <code>icd10_code: "I21.9"</code> (acute myocardial infarction) can
+be aggregated, billed, and reported through the standardized coding
+infrastructure Chapter 7 introduced, while a medical condition node
+describing "possible early heart strain, per cardiologist's note" may never
+receive a billing code at all, yet still needs to remain visible to any
+clinician reviewing the graph. Keeping both node types available, and
+letting an edge connect one to the other once a coded diagnosis is later
+confirmed, avoids forcing every clinical observation into a billing code
+before it is ready for one. Neither node type, on its own, points reliably
+to a cause: no single symptom identifies one disease with certainty, and it
+is the pattern of several symptom edges converging on the same candidate
+that narrows things down, which is exactly what the diagram below lets you
+explore.</p>
+<h4 id="diagram-symptom-disease-diagnostic-network">Diagram: Symptom-Disease Diagnostic Network</h4>
+<iframe src="../../sims/symptom-disease-diagnostic-network/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<details>
+<summary>Symptom-Disease Diagnostic Network (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> symptom-disease-diagnostic-network<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/symptom-disease-diagnostic-network/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/symptom-disease-diagnostic-network</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Given a many-to-many network of reported symptom instances, symptom types, and candidate diseases with probability-labeled edges, the learner can examine which combination of symptom edges converges most strongly on a single disease and distinguish that pattern from any single symptom's weaker, non-specific connections.</p>
+<p>Purpose: Demonstrate that a pattern of symptom edges, not any single symptom, narrows a diagnosis, using chest pain, dyspnea, and fatigue converging on myocardial infarction (MI) as the running example.</p>
+<p>Node types shown:
+- Patient instance nodes (e.g., "Patient A")
+- Reported symptom instance nodes, each with severity and duration properties
+- General symptom type nodes (e.g., Chest Pain, Dyspnea, Fatigue)
+- Candidate disease nodes (e.g., Myocardial Infarction, Pneumonia, Anxiety)</p>
+<p>Edge types shown:
+- Patient to symptom instance (REPORTS)
+- Symptom instance to symptom type (INSTANCE_OF)
+- Symptom type to candidate disease, labeled with a probability value (SUGGESTS, e.g., 0.6)</p>
+<p>Data Visibility Requirements:
+Stage 1: Show Patient A connected to three reported symptom instances.
+Stage 2: Show each instance linked to its general symptom type.
+Stage 3: Show each symptom type fanning out to multiple candidate diseases with a probability label on each edge.
+Stage 4: On click of a disease node, highlight every incoming symptom edge that supports it and sum the labeled probabilities in a side panel.</p>
+<p>Interactive controls:
+- Click a disease node to highlight and total its supporting symptom edges
+- Hover any edge to see its probability label and definition
+- Drag nodes and use navigation buttons to reorganize the view</p>
+<p>Instructional Rationale: The Analyze-level objective (examine, distinguish) requires learners to compare the strength of converging evidence against isolated evidence, which a static list cannot show; letting the learner click a disease and see its supporting edges sum in real time makes the "pattern beats single symptom" claim measurable rather than asserted.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Look for the Pattern, Not the Symptom</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's the shortcut: never trust one edge. A pattern of several symptom edges converging on the same disease node is far more diagnostic than any single connection, which is exactly the convergence the diagram above lets you click through.</p>
+</div>
+<h2 id="from-differential-to-diagnosis-ranking-candidate-explanations">From Differential to Diagnosis: Ranking Candidate Explanations</h2>
+<p>Once a clinician commits to an explanation for a patient's symptoms, that
+conclusion is recorded as a <strong>diagnosis</strong> — typically a <code>HAS_DIAGNOSIS</code> edge
+from the <code>Patient</code> node to a <code>Condition</code> or <code>Disease</code> node, carrying a
+<code>diagnosis_date</code> and often a status property such as <code>provisional</code>,
+<code>confirmed</code>, or <code>ruled_out</code>. A diagnosis is rarely the very first thing
+written down, though. Before committing, a clinician typically maintains a
+<strong>differential diagnosis</strong>: an explicitly ranked list of candidate
+diagnoses, ordered from most to least likely given the current evidence,
+each one still open to being promoted, demoted, or eliminated as new
+findings arrive.</p>
+<p>A differential diagnosis is best understood not as a static list but as a
+live probability calculation. Each candidate condition starts with a
+<strong>prior probability</strong> set by clinical context — a 65-year-old with chest
+pain starts with a higher prior for myocardial infarction than a 20-year-old
+with the same complaint. Each new piece of evidence, such as a lab result or
+a risk factor, multiplies that prior by a <strong>likelihood ratio</strong>, and the
+results are renormalized into a posterior probability:</p>
+<p>[ P(\text{condition} \mid \text{evidence}) \propto P(\text{condition}) \times \text{LR}(\text{evidence}) ]</p>
+<p>Plugging in numbers makes the abstraction concrete. Suppose a 68-year-old
+patient's prior probability of myocardial infarction, given age and
+presentation, is estimated at 0.15. A troponin lab result comes back
+elevated, and elevated troponin carries a likelihood ratio of roughly 8 for
+myocardial infarction. The unnormalized score becomes ( 0.15 \times 8 =
+1.2 ), which, after renormalizing against the unnormalized scores of the
+other four candidate conditions, might resolve to a posterior of 0.72 —
+enough to promote myocardial infarction from a mid-ranked entry on the
+differential to the leading candidate, without yet being confirmed as the
+final diagnosis.</p>
+<p>The graph distinguishes these two moments explicitly. While a differential
+diagnosis is still open, each candidate is typically modeled as a
+<code>CONSIDERING</code> edge from <code>Patient</code> to a <code>Condition</code> node, carrying a <code>rank</code>
+or <code>posterior_probability</code> property that is expected to change as evidence
+accumulates. Once a clinician commits, a stable <code>HAS_DIAGNOSIS</code> edge is
+added, and the earlier candidate edges are usually retained rather than
+deleted, so the graph preserves a record of what was considered and ruled
+out along the way. The MicroSim below makes this concrete: toggle a piece
+of evidence on or off, and watch five candidate conditions re-rank
+themselves as their posterior probabilities update in real time.</p>
+<h4 id="diagram-bayesian-diagnostic-reasoning-microsim">Diagram: Bayesian Diagnostic Reasoning MicroSim</h4>
+<iframe src="../../sims/bayesian-diagnostic-reasoning/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<details>
+<summary>Bayesian Diagnostic Reasoning MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> bayesian-diagnostic-reasoning<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/bayesian-diagnostic-reasoning/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/bayesian-diagnostic-reasoning</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, demonstrate<br/>
+Learning objective: Apply Bayesian updating to a five-condition differential diagnosis by toggling evidence items and calculating how each item's likelihood ratio shifts prior probabilities into a re-ranked posterior distribution.</p>
+<p>Purpose: Show a differential diagnosis as a ranked, evidence-updated probability distribution rather than a single lookup, reusing the existing five-condition Bayesian reasoning MicroSim.</p>
+<p>Reused from the MicroSim catalog. Five candidate conditions (for example meningitis and brain tumor among them) start at prior probabilities set by a selected clinical context (low-risk clinic, emergency department, specialty referral). Checking an evidence item such as fever, stiff neck, or photophobia multiplies each condition's running probability by that item's likelihood ratio; the bars re-sort live as posteriors are renormalized, and a panel reports the likelihood ratios behind the most recent update. A Reset Evidence control returns all conditions to their prior probabilities.</p>
+<p>Data Visibility Requirements:
+Stage 1: Show five conditions as horizontal bars at their prior probabilities for the selected clinical context.
+Stage 2: On checking an evidence item, show the likelihood ratio applied to each condition in the side panel.
+Stage 3: Show the renormalized posterior probabilities and the bars re-sorting by new rank.
+Stage 4: Allow toggling multiple evidence items to compound updates, and unchecking to reverse them.</p>
+<p>Instructional Rationale: An Apply-level objective (calculate, demonstrate) is served by a parameter-exploration pattern rather than passive animation — the learner must choose evidence and observe the calculated consequence, which is precisely how a differential diagnosis is used in practice: as a working hypothesis updated by each new data point, not a single lookup performed once.</p>
+</details>
+<h2 id="treatment-plans-prescriptions-and-medication-safety">Treatment Plans, Prescriptions, and Medication Safety</h2>
+<p>A confirmed diagnosis leads to action. A <strong>treatment plan</strong> is the
+higher-level, often multi-step plan of care a clinician builds in response
+to one or more diagnoses. It might bundle physical therapy, dietary
+changes, follow-up visits, and one or more medications into a single
+coordinated structure whose <code>TREATS</code> relationship points back at the
+condition it addresses. A single treatment plan often coordinates orders
+across multiple specialties at once — an anticoagulation plan might pair a
+cardiology prescription with a referral to a dietitian, since dietary
+vitamin K interacts directly with how the anticoagulant works, tying the
+drug side of the plan to a non-drug intervention within the same
+coordinated structure. A <strong>prescription</strong> is the specific, actionable order
+within that plan: a relationship from <code>Patient</code> to a <code>Medication</code> node,
+authorizing a named drug, written by a specific provider, on a specific
+date, and belonging to the broader treatment plan that justified it.</p>
+<p>Every prescription carries a <strong>dosage</strong> — the amount, frequency, and route
+of administration, for example <code>500 mg, twice daily, oral</code> — stored as
+properties on the prescribing edge rather than on the medication node
+itself, since the same medication can be prescribed at very different doses
+to different patients. Dosage is also rarely fixed for the life of a
+prescription: an anticoagulant like Warfarin requires periodic
+recalibration based on blood-clotting lab results, so a prescribing edge
+often carries a dosage history rather than one static value — <code>5 mg once
+daily</code> starting on one date, revised to <code>7.5 mg once daily</code> weeks later
+after a lab result showed under-treatment. Modeling dosage as a property on
+the edge, rather than as a fixed attribute of the medication, is what makes
+this kind of longitudinal titration representable at all; the medication
+node itself never changes, only the edge connecting it to a specific
+patient at a specific time.</p>
+<p>A <strong>medication</strong> itself is the drug being prescribed, modeled as its own
+reusable node (<code>Warfarin</code>, <code>Aspirin</code>) so that its properties — generic name,
+drug class, standard interaction profile — are defined once and referenced
+by every patient who takes it, rather than duplicated inside each
+individual prescription. Medications also commonly belong to broader drug
+classes: Ibuprofen and Aspirin are both classified as nonsteroidal
+anti-inflammatory drugs (NSAIDs), for instance, and representing that class
+as its own node, connected to individual medications by an <code>IS_A</code> edge,
+lets a safety check reason about an entire category at once. A
+contraindication written once against "NSAIDs" for a patient with kidney
+disease then automatically covers every NSAID in the graph, without a
+separate contraindication edge needed for each one.</p>
+<p>Every new encounter is also a chance to reconcile this cluster of edges
+against reality: comparing the medications a patient reports actually
+taking with the prescriptions already on file in the graph catches both
+undocumented over-the-counter additions and prescriptions a patient has
+quietly stopped filling, closing the gap between the plan a clinician wrote
+and the regimen a patient is actually following. These four pieces click
+together into a single chain running from a diagnosis to a specific drug:</p>
+<ul>
+<li>A <strong>treatment plan</strong> sets the overall response to a diagnosis, drug and non-drug interventions alike</li>
+<li>A <strong>prescription</strong> is one authorized order within that plan, connecting a patient to a medication</li>
+<li>A <strong>dosage</strong> captures how much, how often, and how that amount changes over time</li>
+<li>A <strong>medication</strong> is the reusable drug node that the prescription and dosage both refer to</li>
+</ul>
+<p>A worked example threads all of these pieces together. Diane Okafor is
+diagnosed with atrial fibrillation, and her cardiologist builds a treatment
+plan that includes anticoagulation therapy: a prescription for Warfarin,
+dosed at <code>5 mg once daily, oral</code>, connected back to the atrial fibrillation
+diagnosis through a <code>TREATS</code> edge. Months later, Diane develops joint pain
+and begins taking over-the-counter Ibuprofen, then adds low-dose Aspirin at
+a friend's suggestion for heart health. Neither purchase passes through her
+cardiologist, so neither becomes a formal prescription edge, but if her
+pharmacy or a connected health app still records over-the-counter
+medications as <code>TAKES</code> edges, the graph has everything it needs to detect
+the danger forming.</p>
+<p>Two medication nodes can carry a documented <strong>drug interaction</strong> between
+them: a direct edge asserting that taking both together changes how one or
+both behave in the body, frequently by raising the risk of harm. Warfarin,
+Aspirin, and Ibuprofen each carry an <code>INTERACTS_WITH</code> edge to the other two,
+recording the shared mechanism — all three affect blood clotting through
+different pathways — and a <code>severity: "high"</code> rating. A traversal starting
+at Diane's <code>Patient</code> node, following her three <code>TAKES</code> edges out to their
+medication nodes, and checking for <code>INTERACTS_WITH</code> edges among that
+specific set of three, is exactly how an automated medication-safety check
+works, and exactly what the diagram below lets you trigger by clicking a
+single medication. When a drug interaction, an incorrect dosage, or an
+unanticipated reaction actually harms a patient, it is recorded as an
+<strong>adverse event</strong> — a distinct node capturing what happened, its severity,
+and the date it occurred. If Diane's combination goes undetected and she
+develops a gastrointestinal bleed, that outcome becomes an adverse event
+node dated to the bleed, connected to all three medications by a
+<code>CONTRIBUTED_TO</code> edge, with a severity property distinguishing a minor
+bruise from a hospitalization.</p>
+<p>A patient's own known intolerance to a substance is modeled separately as
+an <strong>allergy</strong>: an edge from <code>Patient</code> directly to the offending substance
+or drug class, meant to be checked <em>before</em> a prescription is ever written,
+not after an adverse event has already occurred. Suppose Diane also carries
+a documented <code>ALLERGIC_TO</code> edge to penicillin, with a
+<code>reaction_severity: "anaphylaxis"</code> property recorded from a childhood
+hospitalization. If a different provider, unaware of her full history,
+attempts to prescribe amoxicillin (a penicillin-class antibiotic) for an
+unrelated infection, a graph query checking the drug's class against her
+allergy edges — rather than relying on the provider to remember or re-ask —
+can block the prescription before it is signed. This is the same
+architectural principle as drug-interaction checking: push the safety check
+to the moment a new edge is about to be created, using edges that already
+exist, rather than trusting memory or a downstream review to catch the
+problem.</p>
+<p>The diagram below assembles all of these relationships around one patient's
+active medication list: drug pairs that interact, medications that are
+contraindicated against an existing condition, and medications correctly
+indicated for a condition they treat.</p>
+<h4 id="diagram-medication-safety-network-interactive-infographic">Diagram: Medication Safety Network Interactive Infographic</h4>
+<iframe src="../../sims/medication-safety-network-infographic/main.html" width="100%" height="638px" scrolling="no"></iframe>
+
+<details>
+<summary>Medication Safety Network Interactive Infographic (reused)</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> medication-safety-network-infographic<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/medication-safety-network-infographic/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/medication-safety-network-infographic</p>
+<p>Bloom Taxonomy: Evaluate<br/>
+Bloom Taxonomy Verb: assess, justify<br/>
+Learning objective: Given a patient's medication safety network, the learner can assess which relationships (drug-drug interaction, contraindication, or appropriate indication) apply to a selected medication and justify whether the patient's current regimen poses a safety risk.</p>
+<p>Purpose: Show how a graph traversal surfaces medication safety issues across a patient's active medications, drug-drug interactions, allergies, and existing conditions, using the Warfarin, Aspirin, and Ibuprofen bleeding-risk combination as the running example.</p>
+<p>Node groups shown:
+- Active medications (left) — e.g., Warfarin, Aspirin, Ibuprofen, Metformin
+- Existing conditions (right) — e.g., Atrial Fibrillation, Diabetes, Stage 3a Kidney Disease
+- Allergies (bottom)
+- Central patient safety indicator flagging whether a high-risk combination is present</p>
+<p>Edge types shown (color-coded):
+- Red solid lines: drug-drug interactions (e.g., Warfarin + Aspirin + Ibuprofen raising bleeding risk)
+- Blue dotted lines: contraindications against an existing condition (e.g., NSAIDs and Metformin against Stage 3a Kidney Disease)
+- Green solid lines: appropriate indications (e.g., Warfarin for Atrial Fibrillation, Metformin for Diabetes)</p>
+<p>Interactive controls:
+- Click a medication node to isolate and highlight only its relationships, dimming the rest of the network
+- Click the background to clear the selection and restore the full view
+- Hover any line to see the specific interaction, contraindication, or indication it represents</p>
+<p>Instructional Rationale: An Evaluate-level objective (assess, justify) requires the learner to weigh multiple relationship types against each other rather than simply naming them; isolating one medication's full relationship set on click supports the judgment call of whether a specific regimen is safe, which is the actual task a clinician or a clinical decision support system performs.</p>
+</details>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Don't Get Tangled in a Bad Combination</p>
+<p><img alt="Sage with a cautious arm raised" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Warfarin plus Aspirin plus Ibuprofen is a real tentacle-y problem: three edges that are each survivable alone compound into a serious bleeding risk together. A graph that surfaces interaction edges before a prescription is signed can catch exactly this kind of danger.</p>
+</div>
+<h2 id="immunization-and-the-vaccination-schedule">Immunization and the Vaccination Schedule</h2>
+<p>Not every edge from a patient to a medical intervention follows from a
+diagnosis. An <strong>immunization</strong> is a preventive event — the administration
+of a vaccine to a patient, modeled as an edge from <code>Patient</code> to an
+<code>Immunization</code> node carrying a <code>date_administered</code> property — given
+specifically to prevent a future disease rather than to treat a present
+one. Because prevention is time-sensitive, immunizations are governed by a
+<strong>vaccination schedule</strong>: a standardized set of rules specifying which
+vaccines are recommended at which patient ages or intervals, maintained by
+public health authorities and represented in the graph as reference nodes
+that a patient's actual immunization history can be checked against.</p>
+<p>Consider a worked example. The measles-mumps-rubella (MMR) vaccine is
+recommended at 12-15 months and again at 4-6 years, while the influenza
+vaccine is recommended annually for every patient over 6 months old. A
+graph model checks compliance by comparing a patient's actual immunization
+edges, each with its own <code>date_administered</code>, against the age-indexed nodes
+of the reference schedule, flagging, for instance, a 6-year-old whose graph
+shows only the first MMR dose and no second.</p>
+<p>The table below summarizes several common immunizations exactly as they
+would be modeled in the graph: one edge from <code>Patient</code> to an <code>Immunization</code>
+event node per dose, each edge dated by <code>date_administered</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Vaccine</th>
+<th>Recommended Ages / Interval</th>
+<th>Graph Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMR (Measles-Mumps-Rubella)</td>
+<td>12-15 months; booster at 4-6 years</td>
+<td>Two edges from <code>Patient</code> to two <code>Immunization</code> nodes, each carrying <code>date_administered</code></td>
+</tr>
+<tr>
+<td>Influenza</td>
+<td>Annually, from 6 months of age onward</td>
+<td>One new edge to a fresh <code>Immunization</code> node each flu season</td>
+</tr>
+<tr>
+<td>Tdap (Tetanus-Diphtheria-Pertussis)</td>
+<td>11-12 years; booster every 10 years</td>
+<td>One edge per dose; next-due date computed from the 10-year interval on the schedule node</td>
+</tr>
+<tr>
+<td>HPV (Human Papillomavirus)</td>
+<td>11-12 years, two-dose series</td>
+<td>Two edges to two <code>Immunization</code> nodes spaced 6-12 months apart</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">You're Building the Whole Clinical Picture</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+From a single symptom edge to a full medication-safety network, you've now got the vocabulary to model an entire clinical encounter as a graph. Trace the pathway with me into the next chapter, where these pieces link into ongoing care.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">The Clinical Core Is Now a Graph!</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just modeled the clinical heart of a patient encounter as a graph: patient records anchored by patient ID and patient history, symptoms and disease and medical condition converging on a diagnosis and differential diagnosis, treatment plans built from prescriptions, dosage, drug interactions, adverse events, and allergies, and immunizations tracked against a vaccination schedule.</p>
+</div>
+<p>Every relationship introduced in this chapter — a diagnosis, a prescription,
+an immunization — is a single clinical event captured at one point in time.
+Real patients, especially those managing chronic disease, need those
+isolated events strung into an ongoing plan that spans months or years.
+<a href="../10-patient-care-plans-chronic-disease/">Chapter 10</a> picks up
+exactly there, modeling care plans, goals, and the longitudinal tracking
+that turns a set of clinical facts into a coordinated course of care.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../08-healthcare-interoperability-care-coordination/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 8. Healthcare Interoperability and Care Coordination">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                8. Healthcare Interoperability and Care Coordination
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../10-patient-care-plans-chronic-disease/" class="md-footer__link md-footer__link--next" aria-label="Next: 10. Patient Care Plans and Chronic Disease Management">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                10. Patient Care Plans and Chronic Disease Management
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

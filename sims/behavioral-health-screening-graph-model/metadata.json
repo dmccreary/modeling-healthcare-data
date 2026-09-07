@@ -1,0 +1,23 @@
+{
+  "title": "Behavioral Health Screening Graph Model",
+  "description": "Differentiate a screened-and-diagnosed Behavioral Health Condition pathway from the structurally separate Neurodiversity and Palliative Care node categories, and classify each screening instrument by the condition it detects.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "behavioral-health-screening-graph-model",
+  "library": "vis-network",
+  "bloomLevel": "Analyze<br/>",
+  "bloomVerb": "differentiate, classify<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 11,
+  "chapter_title": "Specialty Care, Surgery, and Remote Monitoring",
+  "chapter_dir": "11-specialty-care-surgery-remote-monitoring",
+  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring"
+}

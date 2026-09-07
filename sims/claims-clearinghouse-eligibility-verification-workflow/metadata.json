@@ -1,0 +1,23 @@
+{
+  "title": "Claims Clearinghouse and Eligibility Verification Workflow",
+  "description": "Given the administrative claims infrastructure workflow, the learner can explain the role of a clearinghouse, an ERA, and eligibility verification, and summarize how the benefit accumulator connects to each.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "claims-clearinghouse-eligibility-verification-workflow",
+  "library": "Mermaid",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "explain, summarize<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 15,
+  "chapter_title": "Reimbursement, Health Plan Types, and Payer Contracts",
+  "chapter_dir": "15-reimbursement-health-plans-payer-contracts",
+  "chapter_rel_dir": "chapters/15-reimbursement-health-plans-payer-contracts"
+}

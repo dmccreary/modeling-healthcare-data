@@ -1,0 +1,23 @@
+{
+  "title": "PlanDefinition to ActivityDefinition Trigger Flow",
+  "description": "Given a patient's age and BMI values, the learner can apply a PlanDefinition's trigger criteria to determine whether its referenced ActivityDefinition fires for that patient.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "plandefinition-activitydefinition-trigger-flow",
+  "library": "vis-network",
+  "bloomLevel": "Apply<br/>",
+  "bloomVerb": "apply, demonstrate<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 22,
+  "chapter_title": "FHIR Resources and Levels of Knowledge Representation",
+  "chapter_dir": "22-fhir-resources-and-knowledge-representation",
+  "chapter_rel_dir": "chapters/22-fhir-resources-and-knowledge-representation"
+}

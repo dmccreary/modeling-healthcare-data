@@ -1,0 +1,2756 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models multidisciplinary care teams, the guideline-to-protocol hierarchy, provider performance, malpractice risk, care-coordination roles, and the provider staffing lifecycle as graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/13-clinical-guidelines-care-pathways-workforce/">
+      
+      
+        <link rel="prev" href="../12-provider-organizations-networks-scheduling/">
+      
+      
+        <link rel="next" href="../14-insurance-claims-coverage-pharmacy-benefits/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Clinical Guidelines, Care Pathways, and Provider Workforce - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Clinical Guidelines, Care Pathways, and Provider Workforce - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models multidisciplinary care teams, the guideline-to-protocol hierarchy, provider performance, malpractice risk, care-coordination roles, and the provider staffing lifecycle as graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/13-clinical-guidelines-care-pathways-workforce/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/13-clinical-guidelines-care-pathways-workforce/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Clinical Guidelines, Care Pathways, and Provider Workforce - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models multidisciplinary care teams, the guideline-to-protocol hierarchy, provider performance, malpractice risk, care-coordination roles, and the provider staffing lifecycle as graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/13-clinical-guidelines-care-pathways-workforce/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#clinical-guidelines-care-pathways-and-provider-workforce" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Clinical Guidelines, Care Pathways, and Provider Workforce
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinating-care-the-multidisciplinary-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coordinating Care: The Multidisciplinary Team
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coordinating Care: The Multidisciplinary Team">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-multidisciplinary-care-team-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Multidisciplinary Care Team Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-guideline-to-protocol-codifying-best-practice-as-a-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Guideline to Protocol: Codifying Best Practice as a Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Guideline to Protocol: Codifying Best Practice as a Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-protocol-workflow-chest-pain-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Protocol Workflow: Chest Pain Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-providers-performance-vs-rating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measuring Providers: Performance vs. Rating
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whos-on-the-case-case-managers-care-managers-nps-and-pas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who's on the Case: Case Managers, Care Managers, NPs, and PAs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-exposure-malpractice-risk-credentialing-and-the-provider-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Exposure: Malpractice Risk, Credentialing, and the Provider Directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keeping-the-workforce-staffed-the-provider-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keeping the Workforce Staffed: The Provider Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinating-care-the-multidisciplinary-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coordinating Care: The Multidisciplinary Team
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coordinating Care: The Multidisciplinary Team">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-multidisciplinary-care-team-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Multidisciplinary Care Team Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-guideline-to-protocol-codifying-best-practice-as-a-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Guideline to Protocol: Codifying Best Practice as a Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Guideline to Protocol: Codifying Best Practice as a Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-protocol-workflow-chest-pain-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical Protocol Workflow: Chest Pain Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-providers-performance-vs-rating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measuring Providers: Performance vs. Rating
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whos-on-the-case-case-managers-care-managers-nps-and-pas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who's on the Case: Case Managers, Care Managers, NPs, and PAs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-exposure-malpractice-risk-credentialing-and-the-provider-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Exposure: Malpractice Risk, Credentialing, and the Provider Directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keeping-the-workforce-staffed-the-provider-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keeping the Workforce Staffed: The Provider Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/13-clinical-guidelines-care-pathways-workforce/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="clinical-guidelines-care-pathways-and-provider-workforce">Clinical Guidelines, Care Pathways, and Provider Workforce</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers how providers coordinate care as teams and follow evidence-based practice: multidisciplinary care teams, provider performance, clinical guidelines, best practices, and care pathways. It also covers the practical workforce side of provider operations -- credentialing processes, malpractice risk, staffing models, and provider attrition. This closes out the provider perspective before the book turns to the payer perspective.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multidisciplinary Team</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Provider Performance</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Clinical Guideline</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Best Practice</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Evidence-Based Medicine</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Clinical Protocol</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Care Pathway</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Clinical Pathway Variance</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Provider Directory</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Credentialing Process</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Malpractice Risk</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Locum Tenens</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Nurse Practitioner</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Physician Assistant</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Care Manager</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Case Manager</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Provider Onboarding</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Staffing Model</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Shift Scheduling</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Provider Attrition</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../12-provider-organizations-networks-scheduling/">Chapter 12: Provider Organizations, Networks, and Scheduling</a></li>
+</ul>
+<hr />
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Eight Arms for One Care Team</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Coordinating a patient's care takes a whole team, and I happen to have eight arms for exactly that kind of coordination. In this chapter we graph the people who deliver care together, the guidelines that tell them what to do, and the staffing machinery that keeps them all in the building. Let's connect the dots!</p>
+</div>
+<h2 id="coordinating-care-the-multidisciplinary-team">Coordinating Care: The Multidisciplinary Team</h2>
+<p>Chapter 12 modeled the organizations and networks providers work within: hospitals, clinics, referral relationships, and the credentials that establish a provider's standing. This chapter turns to something graph databases represent unusually well: the fact that a single patient with several chronic conditions is rarely cared for by one provider working alone. A <strong>Multidisciplinary Team</strong> is a group of professionals from different clinical and allied-health disciplines who collaborate on one patient's care plan, each contributing domain-specific expertise that no single provider possesses alone. Coordinating that team well, so that a cardiologist's medication change reaches the pharmacist reconciling the patient's prescriptions, is one of the hardest operational problems in modern medicine, and it is fundamentally a graph problem: who is connected to whom, and through what kind of relationship.</p>
+<p>Consider Robert Alvarez, a 68-year-old patient managing three interacting chronic conditions at once: Type 2 diabetes, coronary artery disease, and chronic kidney disease. No single specialty owns his care. His primary care provider holds overall responsibility and connects to his patient node through a <code>MANAGES_CARE</code> edge. Three specialists, a cardiologist, an endocrinologist, and a nephrologist, each connect through a <code>CONSULT_FOR</code> edge, contributing bounded, condition-specific expertise. Four allied-health professionals, a care coordinator, a clinical pharmacist, a registered dietitian, and a medical social worker, connect through <code>SUPPORT</code> or <code>COORDINATE</code> edges, handling everything from medication reconciliation to transportation barriers. Every one of these nine professionals also carries a <code>WORKS_AT</code> edge to the facility where they see Robert, the same relationship type introduced in Chapter 1.</p>
+<p>A relational schema could store this same roster in a single <code>care_team_members</code> join table, but doing so would flatten every role into an undifferentiated row distinguished only by a <code>role</code> text column. A labeled property graph preserves the distinction that matters clinically: a <code>MANAGES_CARE</code> edge implies overall accountability for the care plan, a <code>CONSULT_FOR</code> edge implies bounded, condition-specific input, and a <code>SUPPORT</code> or <code>COORDINATE</code> edge implies logistics rather than diagnosis. That distinction is exactly what a case manager needs when triaging a new problem: "who owns this decision?" becomes a one-hop traversal filtered by edge label, not a business rule buried in application code.</p>
+<h4 id="diagram-multidisciplinary-care-team-graph-model">Diagram: Multidisciplinary Care Team Graph Model</h4>
+<iframe src="../../sims/multidisciplinary-care-team-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/multidisciplinary-care-team-graph-model/main.html">Run the Multidisciplinary Care Team Graph Model MicroSim Fullscreen</a></p>
+<details>
+<summary>Multidisciplinary Care Team Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> multidisciplinary-care-team-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/multidisciplinary-care-team-graph-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/multidisciplinary-care-team-graph-model</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, examine<br/>
+Learning objective: Given a rendered multidisciplinary-team graph for one complex patient, the learner can differentiate the accountability implied by a MANAGES_CARE edge from the bounded, condition-specific input of a CONSULT_FOR edge and the logistical role of a SUPPORT or COORDINATE edge.</p>
+<p>Reused from the MicroSim catalog. This radial vis-network graph places one complex patient (diabetes, coronary artery disease, chronic kidney disease) at the center, connected outward to a primary care provider who MANAGES_CARE, three specialists who CONSULT_FOR, and four allied-health professionals (care coordinator, pharmacist, dietitian, social worker) who SUPPORT or COORDINATE care; every professional also carries a WORKS_AT edge to a facility, color-coded green for the primary-care relationship, orange for specialist consults, purple for allied-health support, and gray for facilities. Hovering any node reveals its role and properties in a tooltip; clicking a node highlights every edge directly connected to it, letting the learner isolate, for example, everyone who touches the patient's care versus everyone that one specialist also treats elsewhere. Dragging nodes and using the navigation buttons rearranges the layout without losing the highlighted state.</p>
+<p>Instructional Rationale: An Analyze-level objective (differentiate, examine) is well served by a graph-model explorer because the whole point is discriminating between edge types that look superficially similar (all are lines from the patient) but carry different clinical meaning. Click-to-highlight lets the learner isolate one relationship type at a time and compare it against the others, which a static labeled diagram cannot support.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Eight Arms, Infinite Edges</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Eight arms taught me that more contributors doesn't have to mean more chaos, as long as every edge has a clear, distinct label. A team of nine people isn't intimidating in a graph; it's nine well-typed relationships you can traverse in a single query.</p>
+</div>
+<p>Real hospital systems scale this pattern well past nine people per patient; chronic-care management programs for high-acuity patients routinely coordinate a dozen or more distinct professionals. The advantage of storing this as a graph rather than a set of departmental spreadsheets is that one traversal, starting at a patient node and following every incoming <code>MANAGES_CARE</code>, <code>CONSULT_FOR</code>, <code>SUPPORT</code>, and <code>COORDINATE</code> edge, answers "who is on this patient's team right now" regardless of how many departments those professionals report to. Run the same traversal in reverse from a provider node, and it answers a different operational question: how many active patients is this specialist currently consulting on, a number that feeds directly into the provider-schedule and capacity models from Chapter 12.</p>
+<h2 id="from-guideline-to-protocol-codifying-best-practice-as-a-graph">From Guideline to Protocol: Codifying Best Practice as a Graph</h2>
+<p>Not every relationship in a healthcare graph connects two people or a person to a facility. Some of the most consequential edges connect a provider's actions to the accumulated evidence behind them. A <strong>Clinical Guideline</strong> is a formal, published recommendation, typically issued by a professional society or government body, that tells providers how to manage a specific condition or clinical situation, such as the American Heart Association's recommendations for evaluating chest pain. Guidelines are not invented from opinion; they are synthesized from <strong>Evidence-Based Medicine</strong>, the disciplined practice of grounding clinical decisions in the current best evidence from published clinical research rather than tradition or individual anecdote alone. When a specific recommendation within a guideline is consistently shown, across many studies and many patients, to produce measurably better outcomes than the alternatives, it earns the label <strong>Best Practice</strong>.</p>
+<p>A guideline and a best practice are still recommendations, written in prose for a human reader. Turning a recommendation into something a care team, or a graph, can execute requires two more layers of structure. A <strong>Care Pathway</strong> is a structured, multidisciplinary plan that lays out the expected sequence of steps, timing, and responsible roles for treating patients with a specific condition, translating a guideline's prose into an operational plan. A <strong>Clinical Protocol</strong> narrows that plan further: it is a specific, codified, step-by-step sequence of actions defined for one concrete clinical scenario, detailed enough that a provider, or a graph query, can follow it directly without additional interpretation. Put the whole chain together and you get a hierarchy: a Clinical Guideline expresses recommendations grounded in Evidence-Based Medicine, a Best Practice is the specific recommendation validated by that evidence, a Care Pathway operationalizes it into a multidisciplinary plan, and a Clinical Protocol is the executable, scenario-specific version of that pathway.</p>
+<p>The table below anchors the five terms to one running example before we look at the protocol itself.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What It Is</th>
+<th>Chest-Pain Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clinical Guideline</td>
+<td>Published recommendation from a professional body</td>
+<td>AHA/ACC chest-pain evaluation guideline</td>
+</tr>
+<tr>
+<td>Evidence-Based Medicine</td>
+<td>The research foundation behind the recommendation</td>
+<td>Validated studies establishing HEART score thresholds</td>
+</tr>
+<tr>
+<td>Best Practice</td>
+<td>The specific recommendation the evidence supports</td>
+<td>Risk-stratify every non-STEMI patient with the HEART score</td>
+</tr>
+<tr>
+<td>Care Pathway</td>
+<td>The multidisciplinary plan built from the best practice</td>
+<td>ED chest-pain evaluation pathway, from triage to disposition</td>
+</tr>
+<tr>
+<td>Clinical Protocol</td>
+<td>The scenario-specific, executable version of the pathway</td>
+<td>The exact ECG-then-HEART-score-then-troponin sequence below</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Don't Get Tangled in the Terminology</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a shortcut so you don't get tied in knots over these five terms. Guideline is the published recommendation, evidence-based medicine is why we trust it, best practice is the specific recommendation that earned that trust, care pathway is the multidisciplinary plan built from it, and protocol is that plan made concrete enough to execute for one scenario.</p>
+</div>
+<p>The example every emergency department knows by heart makes this hierarchy concrete: the evaluation of a patient presenting with chest pain. A <strong>12-lead ECG</strong> (a recording of the heart's electrical activity from twelve different vantage points) is the first step, because it can immediately identify <strong>STEMI</strong> (ST-elevation myocardial infarction), a severe, ongoing heart attack visible as a specific pattern on the ECG that demands the patient go straight to the <strong>cath lab</strong> (the catheterization laboratory where a blocked artery is mechanically reopened) with no further workup. Every patient without a STEMI pattern is instead risk-stratified using the <strong>HEART score</strong>, a validated point system combining History, ECG findings, Age, Risk factors, and an initial <strong>troponin</strong> level (a protein released into the blood when heart muscle is damaged) into a low-, moderate-, or high-risk category. A troponin result then splits the remaining patients into <strong>acute coronary syndrome (ACS)</strong>, meaning some form of reduced blood flow to the heart, versus a non-cardiac cause, before the patient's final disposition, meaning discharge, observation, or admission, is decided.</p>
+<h4 id="diagram-clinical-protocol-workflow-chest-pain-evaluation">Diagram: Clinical Protocol Workflow: Chest Pain Evaluation</h4>
+<iframe src="../../sims/clinical-protocol-workflow-chest-pain-evaluation/main.html" width="100%" height="731px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/clinical-protocol-workflow-chest-pain-evaluation/main.html">Run the Clinical Protocol Workflow Fullscreen</a></p>
+<details>
+<summary>Clinical Protocol Workflow: Chest Pain Evaluation (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> clinical-protocol-workflow-chest-pain-evaluation<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-protocol-workflow-chest-pain-evaluation/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/clinical-protocol-workflow-chest-pain-evaluation</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, classify<br/>
+Learning objective: Given the emergency-department chest-pain Clinical Protocol as a decision graph, the learner can explain how a 12-lead ECG, the HEART score, and a troponin result each branch the pathway, and classify a given patient scenario into the correct disposition.</p>
+<p>Reused from the MicroSim catalog. This Mermaid flowchart models the ED chest-pain protocol as a decision graph: a 12-lead ECG first separates the STEMI critical pathway (red, straight to the cath lab) from every other patient, who is then risk-stratified by HEART score into low- (green), moderate- (yellow), and high-risk (orange) pathways, with a troponin result splitting ACS from non-cardiac causes before final disposition. Every node and edge is clickable; clicking a step opens an infobox with the clinical detail, time target, and rationale behind that step, and clicking a branch edge explains the decision rule that sends a patient down it.</p>
+<p>Instructional Rationale: An Understand-level objective (explain, classify) calls for a clickable decision graph rather than a static flowchart image, because the learner must connect each branch point back to the clinical rule that produces it. Click-triggered infoboxes let the learner check their own classification of a hypothetical patient against the protocol's actual branching logic, one decision at a time.</p>
+</details>
+<p>A protocol only has value if the system can tell when reality departs from it. A <strong>Clinical Pathway Variance</strong> is a documented deviation between what actually happened during a patient's care and what the protocol expected to happen, such as a troponin sample drawn ninety minutes late. Because both the protocol and the patient's actual encounter are stored as graphs, detecting a variance becomes a comparison problem rather than a manual chart review: the system walks the patient's actual sequence of encounter edges, each carrying a timestamp property, and compares it against the protocol's expected sequence and time targets. Wherever an edge is missing, out of order, or outside its expected time window, the system flags a variance, which quality-improvement teams later aggregate to find where, and why, real-world care drifts from the evidence-based path.</p>
+<h2 id="measuring-providers-performance-vs-rating">Measuring Providers: Performance vs. Rating</h2>
+<p>Not every measurement of a provider is patient-facing. Chapter 12 introduced <strong>Provider Rating</strong>, the patient-facing satisfaction and experience scores drawn from post-visit surveys that show up in a provider directory listing. <strong>Provider Performance</strong> is a different, broader measurement: an internal composite of clinical-quality metrics, patient outcomes, cost efficiency, and adherence to the guidelines just defined, used by health systems for compensation decisions and quality-improvement programs rather than shown to patients directly. The two scores can diverge sharply: a surgeon with excellent outcomes and low cost per case can still receive middling satisfaction scores over a brusque bedside manner, and a graph that stored only one of the two properties would miss half the picture. See <a href="../12-provider-organizations-networks-scheduling/">Chapter 12</a> for how Provider Rating is captured and queried.</p>
+<p>Modeling Provider Performance as a graph property means storing several weighted inputs on, or computed near, the Provider node rather than a single imported number. A clinical-quality component is derived from <code>ADHERED_TO</code> edges linking a provider's encounters to the Clinical Guideline nodes they followed; an outcomes component aggregates documented complications from connected Patient encounters; a cost-efficiency component divides billed claims by episode; and a guideline-adherence component is simply the percentage of encounters following the protocol's Best Practice steps. A representative weighting, recalculated quarterly as new encounters close, is shown below.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Weight</th>
+<th>Graph Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clinical quality</td>
+<td>40%</td>
+<td><code>ADHERED_TO</code> edges to Clinical Guideline nodes</td>
+</tr>
+<tr>
+<td>Outcomes</td>
+<td>25%</td>
+<td>Complications recorded on connected Patient encounters</td>
+</tr>
+<tr>
+<td>Cost efficiency</td>
+<td>20%</td>
+<td>Billed cost per episode from claims data</td>
+</tr>
+<tr>
+<td>Guideline adherence</td>
+<td>15%</td>
+<td>Percentage of encounters following documented Best Practice steps</td>
+</tr>
+</tbody>
+</table>
+<p>Because every input is itself a traversal over relationships that already exist in the graph, rather than a value copied in from a spreadsheet, the composite score is recomputed, not re-entered, every time the underlying encounters, claims, or guideline links change.</p>
+<h2 id="whos-on-the-case-case-managers-care-managers-nps-and-pas">Who's on the Case: Case Managers, Care Managers, NPs, and PAs</h2>
+<p>Not every member of Robert Alvarez's care team is a physician, and not every coordinating role carries the same authority. A <strong>Case Manager</strong> is a professional, often a registered nurse or licensed social worker, responsible for coordinating a patient's overall care across settings and providers, especially for complex or high-cost cases like Robert's. In the graph, a case manager connects to a patient through a <code>MANAGES_CASE_FOR</code> edge that is distinct from any single specialist's <code>CONSULT_FOR</code> edge, because the case manager's job is not to treat one condition but to make sure every other edge on the patient node is actually being acted on. A useful graph query for a case-management program asks exactly that: find every patient with a <code>MANAGES_CASE_FOR</code> edge whose care plan has not been reviewed, meaning no <code>REVIEWED_CARE_PLAN</code> edge has been added, in the past ninety days, surfacing patients at risk of falling through the cracks before a costly readmission occurs.</p>
+<p>Three related roles are easy to confuse with a case manager, because all four titles involve the word "care" or "case" and all four sit close to the patient in the graph. A <strong>Care Manager</strong> performs a similar coordinating function but is typically employed by the payer rather than the provider organization, focusing on utilization and wellness outreach across a payer's membership rather than the clinical complexity of one case; the graph relationship is a <code>COORDINATES_CARE_FOR</code> edge running from a payer-side Care Manager node to the patient, a relationship this book returns to in the payer chapters ahead. A <strong>Nurse Practitioner</strong> is a licensed advanced-practice registered nurse who can diagnose conditions, order tests, and prescribe medications, independently in many states and collaboratively with a physician in others, connecting to a patient through a <code>PRESCRIBES_FOR</code> or <code>TREATS</code> edge much like a physician would. A <strong>Physician Assistant</strong> holds a comparable clinical scope, diagnosing and prescribing, but practices under a formal supervision or collaboration agreement with a physician, adding a <code>SUPERVISED_BY</code> edge to a Physician node alongside the same <code>PRESCRIBES_FOR</code> edge to the patient.</p>
+<p>Scope of practice for both advanced-practice roles is not a fixed clinical fact but a legal one that varies by state: some states grant Nurse Practitioners full independent practice authority, while others require a collaborating-physician agreement much like a Physician Assistant's. A graph that models this as a <code>requires_supervision</code> property on the <code>PRESCRIBES_FOR</code> edge, populated from the state where the encounter occurred, lets a single query answer a question that would otherwise require a lookup table maintained outside the graph entirely: can this specific provider, in this specific state, prescribe this specific medication without a co-signature?</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">A Real Tentacle-y Problem</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Four similar-sounding roles in one section is a real tentacle-y problem, I know. Anchor each one to its edge label instead of its job title, and the tangle sorts itself out.</p>
+</div>
+<p>The table below summarizes the comparison.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Scope of Practice</th>
+<th>Typical Graph Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Case Manager</td>
+<td>Coordinates one patient's care across settings and providers, provider-side</td>
+<td><code>MANAGES_CASE_FOR</code></td>
+</tr>
+<tr>
+<td>Care Manager</td>
+<td>Coordinates utilization and wellness outreach, payer-side</td>
+<td><code>COORDINATES_CARE_FOR</code></td>
+</tr>
+<tr>
+<td>Nurse Practitioner</td>
+<td>Diagnoses, orders tests, and prescribes, independently or collaboratively</td>
+<td><code>PRESCRIBES_FOR</code>, <code>TREATS</code></td>
+</tr>
+<tr>
+<td>Physician Assistant</td>
+<td>Diagnoses and prescribes under physician supervision or collaboration</td>
+<td><code>PRESCRIBES_FOR</code>, <code>SUPERVISED_BY</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="managing-exposure-malpractice-risk-credentialing-and-the-provider-directory">Managing Exposure: Malpractice Risk, Credentialing, and the Provider Directory</h2>
+<p>Coordinating care well reduces risk, but risk in medicine is never zero, and health systems need a way to quantify it before it becomes a claim. <strong>Malpractice Risk</strong> is the aggregated exposure, or estimated probability, that a provider or organization will face a malpractice claim, computed from factors like claims history, specialty, and the complexity of the patients a provider treats. Modeling it as a graph-computed property rather than a static underwriting number means the score updates as the underlying facts change: a provider's <code>prior_claims_count</code> is simply the count of <code>FILED_CLAIM_AGAINST</code> edges pointing at their node, a <code>specialty_risk_level</code> is a baseline property inherited from their Specialization node (neurosurgery and obstetrics sit structurally higher than family medicine), and a <code>case_mix_complexity</code> score is the weighted average of the documented condition complexity across every patient connected to them by a <code>TREATS</code> edge. A composite score of 0.62 out of 1.0, for instance, might combine two prior claims, a moderate specialty-risk baseline for general surgery, and a case-mix complexity in the 80th percentile, a combination that would flag the provider for proactive risk-management outreach well before any new claim is filed.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Correlation Is Not Fault</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A high case-mix complexity score means a provider treats harder cases, not that they practice worse medicine. Feed a raw malpractice-risk score into a compensation or credentialing decision without that context, and you'll quietly punish the specialists willing to take the hardest patients.</p>
+</div>
+<p>The following table breaks the composite score into its contributing factors.</p>
+<table>
+<thead>
+<tr>
+<th>Risk Factor</th>
+<th>Graph Representation</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prior claims</td>
+<td>Count of <code>FILED_CLAIM_AGAINST</code> edges</td>
+<td>Direct claims history is the strongest predictor of future claims</td>
+</tr>
+<tr>
+<td>Specialty risk level</td>
+<td>Property inherited from Specialization node</td>
+<td>Some specialties carry structurally higher liability exposure</td>
+</tr>
+<tr>
+<td>Case-mix complexity</td>
+<td>Weighted average of connected patients' condition complexity</td>
+<td>Normalizes risk so harder caseloads aren't penalized unfairly</td>
+</tr>
+</tbody>
+</table>
+<p>A malpractice-risk score does not exist in isolation; it feeds directly into two other workforce-management processes. The <strong>Credentialing Process</strong> is the verification workflow a provider must complete, primary-source verification of medical license, education, board certification, and malpractice history, before being granted privileges to practice within a hospital or network, typically modeled as a sequence of <code>CREDENTIALING_STEP</code> nodes attached to a Provider node and re-run for recredentialing every two to three years. The <strong>Provider Directory</strong> is the queryable, current list of credentialed, in-network providers that patients and payers actually search; in the graph it is less a stored table than a filtered view over Provider nodes joined by <code>IN_NETWORK_WITH</code> edges to a Payer node, restricted to providers whose credentialing status is active and whose malpractice-risk score sits below a review threshold. A provider can be highly rated and clinically excellent and still be temporarily absent from a directory if their credentialing has lapsed, which is precisely the kind of inconsistency a graph traversal, rather than a manually synchronized spreadsheet, is built to catch.</p>
+<h2 id="keeping-the-workforce-staffed-the-provider-lifecycle">Keeping the Workforce Staffed: The Provider Lifecycle</h2>
+<p>Behind every provider node in this book's graphs sits an entire workforce-operations lifecycle that has nothing to do with treating patients and everything to do with keeping enough qualified people in the building. The cycle runs from recruitment through onboarding, credentialing (covered above), scheduling, and eventually either retention or departure, and every stage leaves a trace that a graph can represent as an event or a state on the Provider node.</p>
+<p>Organizations rarely staff purely with permanent hires. A <strong>Locum Tenens</strong> provider is a temporary, contracted clinician brought in to fill a short-term staffing gap, such as covering a maternity leave or a rural emergency department's overnight shift; in the graph, a locum tenens assignment is modeled as a time-bounded <code>WORKS_AT</code> edge carrying start and end dates rather than the open-ended edge a permanent hire receives. Locum staffing illustrates the tradeoff at the center of every staffing model: a temporary provider fills a schedule gap immediately but arrives without the accumulated relationships, referral patterns, and local-protocol familiarity that a permanent hire builds up over months, which is why many staffing models cap the percentage of locum-covered shifts even when individual locum providers are well-qualified.</p>
+<p>Once any provider, permanent or locum, clears credentialing, <strong>Provider Onboarding</strong> is the structured process of integrating them into the organization's systems: granting electronic health record access, assigning them to care teams, and orienting them to local protocols, modeled as a checklist of <code>ONBOARDING_STEP</code> nodes that must all reach a completed state before the provider's <code>WORKS_AT</code> edge is marked active. An organization's overall <strong>Staffing Model</strong> is its plan for provider-to-patient ratios and skill mix across departments and shifts, the target that recruitment and onboarding are trying to fill; <strong>Shift Scheduling</strong> is the finer-grained assignment of specific providers to specific time blocks and locations that actually satisfies that model day to day, often computed as a constraint-satisfaction problem over the same provider-availability and capacity properties introduced in Chapter 12. Finally, <strong>Provider Attrition</strong> is the rate at which providers leave an organization or network, tracked over time so that staffing models can anticipate gaps before they become emergencies rather than reacting to them after a departure.</p>
+<p>Provider Attrition is particularly well suited to graph-based early warning, because burnout risk is itself a network phenomenon. A provider whose <code>WORKS_AT</code> schedule shows a rising share of overnight and on-call shifts, whose <code>CONSULT_FOR</code> load has grown without a corresponding increase in allied-health support connections, and whose tenure since onboarding remains short, presents a very different risk profile from a provider with a stable, well-supported caseload, even when both providers see the same number of patients. Health systems that track these signals as graph properties, rather than waiting for an exit interview, can intervene, by adjusting shift scheduling or adding case-manager support, months before a resignation letter arrives.</p>
+<p>The table below summarizes where each stage sits in the lifecycle and how it shows up on the graph.</p>
+<table>
+<thead>
+<tr>
+<th>Lifecycle Stage</th>
+<th>Concept</th>
+<th>Graph Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fill a gap</td>
+<td>Locum Tenens</td>
+<td>Time-bounded <code>WORKS_AT</code> edge with start/end dates</td>
+</tr>
+<tr>
+<td>Integrate</td>
+<td>Provider Onboarding</td>
+<td><code>ONBOARDING_STEP</code> checklist nodes gating an active <code>WORKS_AT</code> edge</td>
+</tr>
+<tr>
+<td>Plan capacity</td>
+<td>Staffing Model</td>
+<td>Target provider-to-patient ratios and skill mix by department</td>
+</tr>
+<tr>
+<td>Assign shifts</td>
+<td>Shift Scheduling</td>
+<td>Constraint-satisfaction assignment over availability and capacity properties</td>
+</tr>
+<tr>
+<td>Retain or lose</td>
+<td>Provider Attrition</td>
+<td>Departure events tracked as a rate over time on the Provider node</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">The Provider Perspective, Complete</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You've now modeled the full provider perspective: multidisciplinary teams, the guideline-to-protocol hierarchy, provider performance, malpractice risk, credentialing, case managers and advanced-practice roles, and the staffing lifecycle that keeps them all working. Two chapters, and the entire provider side of the graph, from a single referral to an entire hospital's workforce, is now yours.</p>
+</div>
+<p>Every concept in this chapter connected people, evidence, and operations back to the same underlying idea: a healthcare graph is only as useful as the relationships it makes explicit, whether that relationship is a nurse practitioner's <code>PRESCRIBES_FOR</code> edge, a protocol's expected sequence of timestamped steps, or a locum tenens provider's time-bounded <code>WORKS_AT</code> edge. With the provider perspective now fully modeled, <a href="../14-insurance-claims-coverage-pharmacy-benefits/">Chapter 14</a> turns to the payer side of the same transactions: how insurance coverage, claims, and pharmacy benefits attach to the patients and providers this chapter and the last one just built.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../12-provider-organizations-networks-scheduling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 12. Provider Organizations, Networks, and Scheduling">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                12. Provider Organizations, Networks, and Scheduling
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-footer__link md-footer__link--next" aria-label="Next: 14. Insurance Claims, Coverage, and Pharmacy Benefits">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                14. Insurance Claims, Coverage, and Pharmacy Benefits
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

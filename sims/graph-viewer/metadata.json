@@ -44,10 +44,11 @@
     "network"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of learning graph viewer",
-    "Apply learning graph viewer to solve problems",
-    "Visualize and interpret learning graph viewer relationships",
-    "Experiment with parameters to observe their effects on learning graph viewer"
+    "Identify a concept node in a learning graph using type-ahead search that reports each match's taxonomy group",
+    "Explain how the color-coded taxonomy categories, from Foundation through Algorithms, Paths, and Metrics, organize a learning graph",
+    "Predict how unchecking a taxonomy category changes the visible node count, edge count, and orphan count in the statistics panel",
+    "Distinguish an orphan node with no connections from a connected node, and explain why orphans signal a learning graph that needs editing",
+    "Explain why an edge is hidden whenever either of its endpoint nodes is filtered out"
   ],
   "pedagogical": {
     "pattern": "reference",

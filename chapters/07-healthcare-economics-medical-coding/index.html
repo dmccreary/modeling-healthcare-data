@@ -1,0 +1,2931 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Establishes the economic backdrop of U.S. healthcare -- cost, fee-for-service vs. value-based care, and the payer/provider/patient roles -- then introduces the ICD, CPT, HCPCS, NDC, LOINC, and SNOMED CT coding systems.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/07-healthcare-economics-medical-coding/">
+      
+      
+        <link rel="prev" href="../06-graph-embeddings-clustering-gnn/">
+      
+      
+        <link rel="next" href="../08-healthcare-interoperability-care-coordination/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Healthcare Economics and Medical Coding Systems - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Healthcare Economics and Medical Coding Systems - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Establishes the economic backdrop of U.S. healthcare -- cost, fee-for-service vs. value-based care, and the payer/provider/patient roles -- then introduces the ICD, CPT, HCPCS, NDC, LOINC, and SNOMED CT coding systems." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/07-healthcare-economics-medical-coding/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/07-healthcare-economics-medical-coding/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Healthcare Economics and Medical Coding Systems - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Establishes the economic backdrop of U.S. healthcare -- cost, fee-for-service vs. value-based care, and the payer/provider/patient roles -- then introduces the ICD, CPT, HCPCS, NDC, LOINC, and SNOMED CT coding systems." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/07-healthcare-economics-medical-coding/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#healthcare-economics-and-medical-coding-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Healthcare Economics and Medical Coding Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cost-problem-this-book-exists-to-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Cost Problem This Book Exists to Address
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Cost Problem This Book Exists to Address">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-per-person-healthcare-cost-comparison-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Per-Person Healthcare Cost Comparison Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-ways-to-pay-for-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Ways to Pay for Care
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-healthcare-system-and-its-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Healthcare System and Its Stakeholders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Healthcare System and Its Stakeholders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-ecosystem-stakeholder-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Ecosystem Stakeholder Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-electronic-health-record-where-provider-data-lives" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Electronic Health Record: Where Provider Data Lives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Electronic Health Record: Where Provider Data Lives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-integration-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Integration Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-shared-vocabulary-medical-coding-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Shared Vocabulary: Medical Coding Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Shared Vocabulary: Medical Coding Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-medical-coding-systems-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Medical Coding Systems Interactive Infographic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cost-problem-this-book-exists-to-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Cost Problem This Book Exists to Address
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Cost Problem This Book Exists to Address">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-per-person-healthcare-cost-comparison-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Per-Person Healthcare Cost Comparison Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-ways-to-pay-for-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Ways to Pay for Care
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-healthcare-system-and-its-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Healthcare System and Its Stakeholders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Healthcare System and Its Stakeholders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-ecosystem-stakeholder-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Ecosystem Stakeholder Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-electronic-health-record-where-provider-data-lives" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Electronic Health Record: Where Provider Data Lives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Electronic Health Record: Where Provider Data Lives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-integration-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Integration Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-shared-vocabulary-medical-coding-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Shared Vocabulary: Medical Coding Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Shared Vocabulary: Medical Coding Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-medical-coding-systems-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Medical Coding Systems Interactive Infographic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/07-healthcare-economics-medical-coding/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="healthcare-economics-and-medical-coding-systems">Healthcare Economics and Medical Coding Systems</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter opens the healthcare domain track by establishing the economic backdrop of the U.S. healthcare system: per-person cost, fee-for-service versus value-based care, and the three core stakeholder roles (payer, provider, patient). It then introduces the medical coding systems -- ICD, CPT, HCPCS, drug codes, LOINC, and SNOMED CT -- that give clinical data a shared, structured vocabulary. Students finish able to explain why these coding systems exist and how they will become node and edge properties in later chapters' graph models.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 18 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Healthcare System</td>
+<td>1120</td>
+</tr>
+<tr>
+<td>Healthcare Cost</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Per-Person Healthcare Cost</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Fee-For-Service Model</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Value-Based Care</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Healthcare Payer</td>
+<td>924</td>
+</tr>
+<tr>
+<td>Healthcare Provider</td>
+<td>192</td>
+</tr>
+<tr>
+<td>Healthcare Patient</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Electronic Health Record</td>
+<td>263</td>
+</tr>
+<tr>
+<td>Medical Coding System</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ICD Code</td>
+<td>348</td>
+</tr>
+<tr>
+<td>ICD-10-CM</td>
+<td>2</td>
+</tr>
+<tr>
+<td>CPT Code</td>
+<td>1</td>
+</tr>
+<tr>
+<td>HCPCS Code</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Drug Code</td>
+<td>1</td>
+</tr>
+<tr>
+<td>NDC Code</td>
+<td>343</td>
+</tr>
+<tr>
+<td>LOINC Code</td>
+<td>2</td>
+</tr>
+<tr>
+<td>SNOMED CT</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter assumes only the prerequisites listed in the <a href="../../course-description/">course description</a>.</p>
+<hr />
+<p>The first six chapters built a general-purpose toolkit: graph vocabulary,
+query languages, operations, algorithms, and embeddings that apply to any
+connected dataset. This chapter turns that toolkit toward its intended
+target — the U.S. healthcare system itself — starting with why it costs so
+much, who its major stakeholders are, and the coding systems that will
+become the node and edge properties in every graph model for the rest of
+this book.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Time to Speak Healthcare</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Let's connect the dots! Every graph algorithm you now know needs real data to chew on, and healthcare data comes with its own economics and its own alphabet soup of codes. By the end of this chapter you'll understand why U.S. healthcare costs what it does, who pays whom for what, and how ICD, CPT, and NDC codes will become the properties riding on every node in the graphs we build from here forward.</p>
+</div>
+<h2 id="the-cost-problem-this-book-exists-to-address">The Cost Problem This Book Exists to Address</h2>
+<p><strong>Healthcare cost</strong> refers to the total amount of money spent on medical
+care, insurance, and related services across the system. In the United
+States, this total is best understood not as a raw number but as a
+<strong>per-person healthcare cost</strong>: the average amount spent per resident per
+year, which allows fair comparison against other countries regardless of
+population size. By this measure, the United States spends dramatically
+more than any other developed nation — over \$12,900 per person annually as
+of 2021 — roughly double the average of comparable wealthy countries, and
+representing over 18% of the entire U.S. economy.</p>
+<p>This gap is not explained by Americans receiving more care overall; by most
+utilization measures (doctor visits per capita, hospital admission rates),
+the U.S. is average or below average compared to peer nations. Instead,
+health economists point to higher <em>prices</em> per service, more administrative
+overhead spent on billing and insurance complexity, and higher rates of
+avoidable chronic disease complications — each of which, notably, is a
+problem that better data connectivity can help address: administrative
+overhead shrinks when systems can exchange data cleanly (Chapter 8), and
+avoidable complications shrink when care teams can see a patient's full
+connected history rather than fragments of it (a running theme since
+Chapter 1's Maria Chen example).</p>
+<h4 id="diagram-per-person-healthcare-cost-comparison-chart">Diagram: Per-Person Healthcare Cost Comparison Chart</h4>
+<iframe src="../../sims/per-person-healthcare-cost-comparison-chart/main.html" width="100%" height="494px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/per-person-healthcare-cost-comparison-chart/main.html">Run the Per-Person Healthcare Cost Comparison Chart MicroSim Fullscreen</a></p>
+<details>
+<summary>Per-Person Healthcare Cost Comparison Chart (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> per-person-healthcare-cost-comparison-chart<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/per-person-healthcare-cost-comparison-chart/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/per-person-healthcare-cost-comparison-chart</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: interpret, compare<br/>
+Learning objective: Interpret a dual-axis chart to compare U.S. per-person healthcare spending, in both absolute dollars and as a share of GDP, against eight other developed nations.</p>
+<p>Reused from the MicroSim catalog. This 2021 OECD dataset chart shows the U.S. bar (\$12,914) roughly double the comparison-nation average, with a line overlay showing the U.S. also leads on healthcare spending as a share of GDP (18.3% versus 10-12% for peer nations). Hovering any country reveals its exact figures, giving concrete evidence for the outlier status this section's opening paragraph asserts.</p>
+</details>
+<h2 id="two-ways-to-pay-for-care">Two Ways to Pay for Care</h2>
+<p>Why the United States spends so much more is, in large part, a question of
+payment design. Under the <strong>fee-for-service model</strong>, providers are paid
+separately for each individual service rendered — every office visit,
+every test, every procedure generates its own bill — which creates a direct
+financial incentive to deliver <em>more</em> services, regardless of whether more
+services improve the patient's health. <strong>Value-based care</strong> inverts this
+incentive: providers are paid based on patient health outcomes and cost
+efficiency rather than volume of services, rewarding prevention, care
+coordination, and avoiding unnecessary procedures instead of rewarding
+sheer quantity of billed activity.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Fee-For-Service Model</th>
+<th>Value-Based Care</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What gets paid</td>
+<td>Each individual service performed</td>
+<td>Health outcomes and total cost efficiency</td>
+</tr>
+<tr>
+<td>Incentive created</td>
+<td>More services, more revenue</td>
+<td>Better outcomes, fewer unnecessary services</td>
+</tr>
+<tr>
+<td>Data demand</td>
+<td>Track individual transactions</td>
+<td>Track long-term outcomes across a full care journey</td>
+</tr>
+</tbody>
+</table>
+<p>A worked example makes the incentive difference concrete. Under
+fee-for-service, if Maria Chen's diabetes worsens and she is hospitalized
+for a preventable complication, the hospital bills separately for the
+admission, every test, and every procedure — the hospitalization actually
+<em>increases</em> provider revenue, even though it represents a failure of
+preventive care. Under a value-based care contract, that same
+hospitalization instead counts <em>against</em> the provider, since it signals
+the annual per-patient budget wasn't spent effectively on the preventive
+visits, medication management, and care coordination that could have
+avoided the complication in the first place — the same underlying clinical
+event, but with opposite financial consequences depending on which payment
+model governs the contract.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">This Is Where Graphs Become a Superpower</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that value-based care needs something fee-for-service never demanded: the ability to see a patient's <em>entire</em> connected care journey — every provider, every condition, every outcome — as one picture, not a pile of disconnected transactions. That's exactly what a graph database is built to do. Learning to model healthcare data as a graph isn't just an academic exercise — it's a genuine, real-world superpower behind the industry's shift away from fee-for-service, and that shift is one of the most promising paths to bringing U.S. healthcare costs back down to earth.</p>
+</div>
+<h2 id="the-healthcare-system-and-its-stakeholders">The Healthcare System and Its Stakeholders</h2>
+<p>Nearly every healthcare data question in this book concerns one of three
+roles operating inside a larger whole. The <strong>healthcare system</strong> is the
+entire interconnected network of organizations, professionals, and
+infrastructure involved in delivering and financing medical care — the
+umbrella term this book's title refers to, and the largest possible scope
+for any graph model we build. It is useful to think of the healthcare
+system as three overlapping subsystems: a <em>delivery</em> subsystem (hospitals,
+clinics, and the clinicians who actually treat patients), a <em>financing</em>
+subsystem (insurers, employers, and government programs that pay for care),
+and a <em>regulatory</em> subsystem (agencies like CMS and the FDA that set the
+rules both other subsystems must follow). A graph model built for a single
+health plan's fraud-detection team might scope itself to just the financing
+subsystem plus enough of the delivery subsystem to trace claims back to
+providers, deliberately excluding regulatory-agency data that a compliance
+team's graph, by contrast, would need to include — the same overall
+healthcare system, modeled with a different boundary depending on the
+question being asked.</p>
+<p>Within that system, three roles interact directly with nearly every unit of
+data this book will model. The <strong>healthcare payer</strong> is the organization
+responsible for financing care — a commercial insurance company like
+Aetna or UnitedHealthcare, an employer that self-funds its own health
+plan, or a government program like Medicare or Medicaid — that collects
+premiums or tax revenue and reimburses providers for services rendered.
+Payers differ substantially in how they set reimbursement rates: a
+commercial payer negotiates rates directly with each provider network,
+while Medicare publishes a fixed, nationally standardized fee schedule
+that every participating provider must accept, a distinction that later
+chapters on claims and reimbursement return to repeatedly. The <strong>healthcare
+provider</strong> is the organization or individual professional that actually
+delivers clinical care — a hospital, a clinic, or an individual physician
+like Dr. Patel from earlier chapters, each identified nationally by a
+unique National Provider Identifier (NPI) that, in a graph model, becomes
+the natural key linking a <code>Provider</code> node to every claim, encounter, and
+facility it touches. Finally, the <strong>healthcare patient</strong> is the individual
+receiving care, whose demographic, clinical, and financial data flows
+through both the provider and payer sides of every transaction — the
+central node type this entire book's patient-centric graph models are
+built around, beginning in earnest in Chapter 9. Unlike the payer and
+provider, whose relationship to the system is primarily institutional, a
+patient's relationship to the healthcare system is deeply personal and
+often spans decades and dozens of separate providers and payers over a
+lifetime — which is exactly why a single, connected patient identity that
+persists across every encounter, claim, and coverage change is one of the
+hardest and most valuable problems a healthcare graph model solves,
+foreshadowing the patient-identifier matching challenge Chapter 9 tackles
+directly.</p>
+<p>These three roles interact through well-defined, bidirectional relationship
+types that map directly onto the labeled property graph vocabulary from
+Chapter 1: a patient receives care from a provider and generates medical
+records; a provider submits claims to a payer and receives reimbursement; a
+payer collects premiums from a patient and grants coverage. Consider a
+concrete worked example of a payer relationship: if a health plan collects
+\$450 per member per month in premiums from 10,000 covered patients but
+pays out an average of \$380 per member per month in provider claims, the
+payer's monthly margin per patient is \$70 — a calculation that depends on
+being able to connect, for every patient, every claim paid to every provider
+who submitted it, exactly the multi-hop query pattern Chapter 2 showed a
+graph model answering far more cheaply than a relational join chain.</p>
+<p>A second worked example shows the provider side of the same ecosystem. A
+provider's clinical productivity is commonly measured in Relative Value
+Units (RVUs), where each CPT-coded procedure (introduced later in this
+chapter) carries a standardized RVU weight reflecting its complexity and
+resource cost. If Dr. Patel bills 20 office visits in a week, each worth
+1.3 RVUs, plus 5 minor procedures worth 2.1 RVUs each, his weekly
+productivity totals ( (20 \times 1.3) + (5 \times 2.1) = 26 + 10.5 = 36.5
+) RVUs — a single number a health system can compare across providers
+regardless of specialty, and one that depends on being able to connect
+every billed procedure code back to the specific provider who performed
+it, exactly the kind of <code>Provider</code>-to-<code>Procedure</code> edge a graph model
+represents directly rather than reconstructing through a claims join.</p>
+<h4 id="diagram-healthcare-ecosystem-stakeholder-diagram">Diagram: Healthcare Ecosystem Stakeholder Diagram</h4>
+<iframe src="../../sims/healthcare-ecosystem-stakeholder-diagram/main.html" width="100%" height="598px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/healthcare-ecosystem-stakeholder-diagram/main.html">Run the Healthcare Ecosystem Stakeholder Diagram MicroSim Fullscreen</a></p>
+<details>
+<summary>Healthcare Ecosystem Stakeholder Diagram (reused)</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> healthcare-ecosystem-stakeholder-diagram<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-ecosystem-stakeholder-diagram/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-ecosystem-stakeholder-diagram</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: identify, explain<br/>
+Learning objective: Identify the three primary healthcare stakeholders and explain the direction and purpose of the data and money flows connecting each pair, including satellite entities such as pharmacies and employers.</p>
+<p>Reused from the MicroSim catalog (exact topical fit — this is the canonical stakeholder model for the entire book). The central triangle's three thick bidirectional arrows — care and records between patient and provider, claims and reimbursement between provider and payer, coverage and premiums between payer and patient — are exactly the three relationships this section's worked example depends on, with satellite entities (pharmacy, lab, employer, government) showing how the wider ecosystem extends the core triangle.</p>
+</details>
+<h2 id="the-electronic-health-record-where-provider-data-lives">The Electronic Health Record: Where Provider Data Lives</h2>
+<p>The <strong>electronic health record</strong> (EHR) is the digital system a provider
+organization uses to capture and store a patient's clinical data — problem
+lists, medications, lab results, vital signs, and clinical notes — replacing
+the paper charts of an earlier era. An EHR is not itself a single unified
+database in most health systems; it typically integrates data streaming in
+from several separate source systems (a lab interface, a pharmacy system,
+an ordering system), all of which need to converge on a single, coherent
+view of one patient before that data becomes clinically useful, let alone
+analytically useful for value-based care reporting.</p>
+<p>A typical EHR organizes a patient's data into several standard modules,
+each of which maps naturally onto a distinct node or edge type in a
+healthcare graph model: a <strong>problem list</strong> (active and past diagnoses,
+using the ICD codes introduced later in this chapter), a <strong>medication
+list</strong> (active prescriptions, using NDC codes), a <strong>results</strong> module (lab
+and imaging results, using LOINC codes), a <strong>vitals</strong> module (blood
+pressure, heart rate, and other measurements recorded at each encounter),
+and free-text <strong>clinical notes</strong> written by providers during and after a
+visit. Consider a worked example of how these modules connect for one
+encounter: when Maria Chen visits Dr. Patel for her diabetes follow-up, the
+EHR simultaneously updates her problem list (confirming the Type 2 Diabetes
+diagnosis remains active), appends a new vitals entry (this visit's blood
+pressure and weight), and — if her hemoglobin A1c test comes back — adds a
+new entry to her results module linked to that same encounter. In a graph
+model, all of this becomes edges radiating outward from a single
+<code>Encounter</code> node: one <code>HAS_DIAGNOSIS</code> edge to a <code>Condition</code> node, one
+<code>RECORDED_VITALS</code> edge to a <code>Vitals</code> node, and one <code>HAS_RESULT</code> edge to a
+<code>LabResult</code> node — a structure Chapter 9 develops in full.</p>
+<h4 id="diagram-healthcare-data-integration-graph-model">Diagram: Healthcare Data Integration Graph Model</h4>
+<iframe src="../../sims/healthcare-data-integration-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/healthcare-data-integration-graph-model/main.html">Run the Healthcare Data Integration Graph Model MicroSim Fullscreen</a></p>
+<details>
+<summary>Healthcare Data Integration Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> healthcare-data-integration-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-integration-graph-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-data-integration-graph-model</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, relate<br/>
+Learning objective: Examine how a single master patient node connects to encounters sourced from separate systems (EHR, claims, lab, pharmacy), and relate this convergence to the definition of an electronic health record as an integration point rather than a single database.</p>
+<p>Reused from the MicroSim catalog. A single master patient record HAS_ENCOUNTER edges to office visits, ED visits, and hospitalizations, each SOURCED_FROM a different underlying system — directly illustrating that "the EHR" a clinician sees is often itself the product of graph-style integration across Epic, claims, lab, and pharmacy systems converging on one patient node.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">The EHR Is a Preview of Chapter 8</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a heads-up worth filing away: getting different systems' data to converge cleanly on one patient, the way the diagram above shows, is exactly the interoperability problem Chapter 8 tackles head-on with standards like HL7 FHIR. Keep this integration picture in mind — you'll see it again with real technical machinery attached.</p>
+</div>
+<h2 id="a-shared-vocabulary-medical-coding-systems">A Shared Vocabulary: Medical Coding Systems</h2>
+<p>None of the connections above are useful unless every system describing a
+diagnosis, a procedure, or a drug uses the same vocabulary to describe it. A
+<strong>medical coding system</strong> is a standardized set of codes used to represent
+clinical concepts — diagnoses, procedures, supplies, or drugs — consistently
+across every provider, payer, and system in the country, so that "Type 2
+diabetes" documented at one hospital means exactly the same thing as "Type 2
+diabetes" billed at another. In a graph model, these codes become properties
+on nodes and edges — the very properties Chapter 1 introduced — giving every
+<code>Condition</code>, <code>Procedure</code>, or <code>Medication</code> node a precise, machine-readable
+identity instead of a free-text string that might be spelled five different
+ways across five different systems.</p>
+<p>Each medical coding system is maintained by a specific governing body and
+updated on its own release schedule, which matters for anyone building a
+graph model that must stay current: the World Health Organization and the
+Centers for Disease Control and Prevention jointly maintain ICD-10-CM with
+annual updates each October, the American Medical Association owns and
+licenses CPT with annual updates each January, and CMS maintains HCPCS
+Level II. A graph model's <code>Condition</code> or <code>Procedure</code> nodes should therefore
+carry not just the code itself but the code system's version or effective
+date as a property, since the same alphanumeric string can occasionally be
+redefined or retired between annual code-set releases.</p>
+<p>The <strong>ICD Code</strong> — the International Classification of Diseases — is the
+coding system used to represent diagnoses and conditions. The version
+currently used for U.S. clinical diagnosis coding is <strong>ICD-10-CM</strong> (the
+Clinical Modification), which extends the World Health Organization's base
+ICD-10 codes with additional U.S.-specific detail. An ICD-10-CM code has
+clear internal structure worth decoding by hand: the code <code>E11.9</code> breaks
+into a category, <code>E11</code> (Type 2 diabetes mellitus), and a specifier after the
+decimal point, <code>.9</code> (without complications). Change that specifier to
+<code>E11.21</code> and the same category now means "with diabetic nephropathy" — the
+structure lets a single category capture dozens of clinically distinct
+variants without inventing an entirely new code for each one.</p>
+<p>A second example shows the same structure applied to an entirely different
+category. The code <code>I10</code> represents "essential (primary) hypertension" —
+here the category <code>I10</code> has no decimal specifier at all, since this
+particular condition needs no further subdivision. Compare that to <code>I21.3</code>,
+which decodes as category <code>I21</code> ("acute myocardial infarction") with
+specifier <code>.3</code> ("of unspecified site") — the same three-part structure
+(letter-prefixed category, optional decimal specifier) applies uniformly
+across ICD-10-CM's roughly 70,000 codes, which is precisely why a single
+<code>icd10_code</code> property, attached consistently to every <code>Condition</code> node in a
+graph model, can represent conditions as different as diabetes,
+hypertension, and a heart attack using one shared, machine-readable format.</p>
+<p>Diagnoses alone don't describe what was <em>done</em> for a patient. The <strong>CPT
+Code</strong> (Current Procedural Terminology) describes medical procedures and
+services performed by a physician — an office visit, a surgery, an
+X-ray — and is the code that actually drives most physician billing. CPT
+code <code>99213</code>, for example, represents a moderate-complexity established-
+patient office visit — exactly the kind of visit that would generate the
+RVU value used in the provider productivity example earlier in this
+chapter. The <strong>HCPCS Code</strong> (Healthcare Common Procedure Coding System)
+extends coverage beyond CPT to durable medical equipment, ambulance
+transport, and supplies that CPT doesn't address; HCPCS Level I is, in
+fact, identical to CPT, while HCPCS Level II covers everything CPT does
+not, using a distinct letter-plus-four-digit format such as <code>E0601</code>
+(a CPAP device), which Chapter 18's discussion of durable medical
+equipment fraud returns to.</p>
+<p>Prescribing a medication introduces its own coding challenge, since a
+"code" must uniquely identify not just a drug's active ingredient but its
+exact manufactured form. A <strong>drug code</strong> broadly refers to any standardized
+identifier for a specific medication, and this category actually spans
+several distinct systems used for different purposes: RxNorm (maintained
+by the National Library of Medicine) identifies a drug at the level of
+ingredient and clinical dose regardless of manufacturer, which is what a
+clinical decision support system checking for dangerous drug interactions
+typically queries against, while the most important drug code for U.S.
+<em>billing</em> purposes specifically is the <strong>NDC Code</strong> — the National Drug Code, a
+three-segment number assigned by the FDA that uniquely identifies a drug's
+labeler (manufacturer), specific product (ingredient, strength, and dosage
+form), and package size. A representative NDC code like <code>0069-0420-30</code>
+decodes as labeler <code>0069</code>, product <code>0420</code> (a specific drug, strength, and
+form from that labeler), and package <code>30</code> (a particular package size of
+that product) — three numbers that together uniquely identify not just
+"metformin" in the abstract, but one specific manufacturer's 500mg tablet
+sold in a bottle of 30.</p>
+<p>In practice, NDC codes carry a well-known data-quality wrinkle worth
+flagging before you encounter it in real data: the FDA allows the three
+segments to be published in more than one digit-length configuration (most
+commonly 5-4-2 or 5-3-2 digits), and different downstream systems sometimes
+pad these segments with leading zeros inconsistently, so the <em>same</em>
+physical product can appear as <code>00069-0420-30</code> in one data feed and
+<code>0069-420-30</code> in another. A graph model ingesting NDC codes from multiple
+source systems — a pharmacy feed and a claims feed, say — must normalize
+this formatting before treating two differently-formatted strings as the
+same <code>Medication</code> node, or it will silently create duplicate nodes for a
+single real-world drug product. This is a preview of the broader data
+quality theme Chapter 27 addresses in depth.</p>
+<h4 id="diagram-medical-coding-systems-interactive-infographic">Diagram: Medical Coding Systems Interactive Infographic</h4>
+<iframe src="../../sims/medical-coding-systems-infographic/main.html" width="100%" height="598px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/medical-coding-systems-infographic/main.html">Run the Medical Coding Systems Interactive Infographic MicroSim Fullscreen</a></p>
+<details>
+<summary>Medical Coding Systems Interactive Infographic (reused)</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> medical-coding-systems-infographic<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/medical-coding-systems-infographic/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/medical-coding-systems-infographic</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: classify, compare<br/>
+Learning objective: Classify a clinical or billing scenario by which of the six major coding systems (ICD-10, CPT, HCPCS, NDC, LOINC, SNOMED CT) applies, comparing each system's governing body, purpose, and code structure.</p>
+<p>Reused from the MicroSim catalog (exact topical fit). This hub-and-spoke infographic lets learners click any of the six coding systems just introduced in prose to see its governing body, code structure, and a worked example, with faint connectors showing real overlaps (HCPCS Level I is CPT; SNOMED is more granular than ICD) — reinforcing the division of labor this section's paragraphs just walked through in text.</p>
+</details>
+<p>Two remaining coding systems round out the picture, each covering ground
+none of the above touch. The <strong>LOINC Code</strong> (Logical Observation Identifiers
+Names and Codes) standardizes laboratory test and clinical observation
+results — a specific hemoglobin A1c test result reported by any lab in the
+country carries the same LOINC code (<code>4548-4</code>, for hemoglobin A1c as a
+percentage of total hemoglobin), letting a graph query aggregate lab
+results across facilities that would otherwise use inconsistent internal
+test names like "HbA1c," "A1C," or "Hemoglobin A1C %." <strong>SNOMED CT</strong>
+(Systematized Nomenclature of Medicine, Clinical Terms) is a far more
+granular clinical terminology than ICD, covering not just billable
+diagnoses but symptoms, findings, body structures, and procedures with
+fine-grained precision — where ICD-10-CM's <code>E11.9</code> broadly means "Type 2
+diabetes without complications," SNOMED CT might separately distinguish
+<code>44054006</code> (Type 2 diabetes mellitus) from dozens of more specific related
+concepts (a particular complication, a specific finding on examination)
+that ICD-10-CM would group under one billing code, which is why SNOMED is
+favored for clinical documentation and decision support while ICD remains
+the standard for billing.</p>
+<p>Bringing every coding system together, a single realistic encounter shows
+how they combine on one small piece of a graph model. When Maria Chen sees
+Dr. Patel for her diabetes and he orders a lab test and adjusts her
+prescription, the resulting <code>Encounter</code> node connects outward through
+several coded edges at once: a <code>HAS_DIAGNOSIS</code> edge to a <code>Condition</code> node
+carrying <code>icd10_code: "E11.9"</code>, a <code>BILLED_AS</code> edge to a <code>Procedure</code> node
+carrying <code>cpt_code: "99213"</code>, a <code>HAS_RESULT</code> edge to a <code>LabResult</code> node
+carrying <code>loinc_code: "4548-4"</code>, and a <code>PRESCRIBED</code> edge to a <code>Medication</code>
+node carrying <code>ndc_code: "0069-0420-30"</code>. No single coding system captures
+this entire encounter — each one covers exactly the slice of the clinical
+story it was designed for — but together, attached as properties on the
+nodes and edges this book has been building since Chapter 1, they give a
+graph query the precision to ask exactly the kind of cross-cutting question
+(which patients on this specific medication also carry this specific
+diagnosis, and what did their most recent lab result show?) that a
+value-based care program depends on answering reliably at scale.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Same Clinical Fact, Different Code, Different Purpose</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A classic near-miss: a screening colonoscopy is documented with an ICD-10-CM code for the <em>reason</em> (a screening indication), but billed with a CPT code for the <em>procedure itself</em> — two completely different code systems describing the same single clinical event. Always ask "am I coding the diagnosis, the procedure, or the drug?" before picking a coding system; that one question resolves most of these mix-ups instantly.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Now Speak the Language of Healthcare Data</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just connected the economic story — why U.S. healthcare costs so much and how value-based care aims to fix it — to the concrete stakeholders and coding systems every future graph model in this book will be built from. That's the last piece of vocabulary standing between you and modeling real patient, provider, and payer data.</p>
+</div>
+<p>This chapter grounded the graph and algorithm toolkit from Chapters 1
+through 6 in the economics and vocabulary of the actual domain this book
+models: the cost pressures driving a shift from fee-for-service to
+value-based care, the payer-provider-patient triangle every transaction
+flows through, and the ICD, CPT, HCPCS, NDC, LOINC, and SNOMED CT coding
+systems that will populate node and edge properties from here on. In
+<a href="../08-healthcare-interoperability-care-coordination/">Chapter 8</a>,
+we pick up the interoperability thread this chapter's EHR section opened,
+examining how standards let these coded, structured facts move reliably
+between the many separate systems a real health system depends on.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../06-graph-embeddings-clustering-gnn/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. Graph Embeddings, Clustering, and Graph Neural Networks">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                6. Graph Embeddings, Clustering, and Graph Neural Networks
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08-healthcare-interoperability-care-coordination/" class="md-footer__link md-footer__link--next" aria-label="Next: 8. Healthcare Interoperability and Care Coordination">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                8. Healthcare Interoperability and Care Coordination
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

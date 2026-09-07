@@ -1,0 +1,23 @@
+{
+  "title": "Healthcare Graph Anatomy Explorer",
+  "description": "Given a rendered labeled property graph, the learner can identify which visual elements are nodes and which are edges, and state the label and properties of each.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "healthcare-graph-anatomy-explorer",
+  "library": "vis-network",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "identify, classify<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "Foundations of Graph Structures",
+  "chapter_dir": "01-foundations-of-graph-structures",
+  "chapter_rel_dir": "chapters/01-foundations-of-graph-structures"
+}

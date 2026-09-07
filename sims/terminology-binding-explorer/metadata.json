@@ -1,0 +1,23 @@
+{
+  "title": "CodeSystem, ValueSet, and Terminology Binding Explorer",
+  "description": "Given a new clinical data element and a choice of binding strength, the learner can apply the CodeSystem-ValueSet-binding chain to determine which codes would and would not be considered valid.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "terminology-binding-explorer",
+  "library": "vis-network",
+  "bloomLevel": "Apply<br/>",
+  "bloomVerb": "apply, demonstrate<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 23,
+  "chapter_title": "Clinical Guideline Authoring and Clinical Quality Language",
+  "chapter_dir": "23-clinical-guideline-authoring-and-cql",
+  "chapter_rel_dir": "chapters/23-clinical-guideline-authoring-and-cql"
+}

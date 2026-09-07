@@ -108,18 +108,16 @@
     "timeline"
   ],
   "learningObjectives": [
-    "Understand the key concepts of patient encounter workflow",
-    "Explore patient encounter workflow through interactive visualization",
-    "Apply knowledge of patient encounter workflow to solve problems",
-    "Experiment with parameters to observe their effects on patient encounter workflow"
+    "Identify the four swimlanes of the encounter workflow: patient, clinical staff, clinical systems, and administrative systems",
+    "Trace the data flow from registration and eligibility verification through charge capture, claim adjudication, and payment posting",
+    "Explain how clinical documentation supplies the ICD-10 diagnosis codes and CPT procedure codes that drive billing",
+    "Identify the four decision points that branch the workflow and the conditions that select each path",
+    "Distinguish the roles of HL7 v2, FHIR, and X12 EDI 837/835/270-271 at their points of use in the encounter"
   ],
   "bloomsTaxonomy": [
-    "Remember",
     "Understand",
     "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
+    "Analyze"
   ],
   "pedagogical": {
     "pattern": "assessment",

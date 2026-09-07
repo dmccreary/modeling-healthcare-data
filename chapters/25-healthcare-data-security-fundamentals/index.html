@@ -1,0 +1,2773 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduces HIPAA and protected health information, data security versus data privacy, access control models (RBAC and ABAC), authentication and authorization, audit trails, de-identification, and encryption for securing healthcare graph data.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/25-healthcare-data-security-fundamentals/">
+      
+      
+        <link rel="prev" href="../24-cds-hooks-alerts-and-cms-cql-tooling/">
+      
+      
+        <link rel="next" href="../26-advanced-security-operations-incident-response/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Healthcare Data Security Fundamentals - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Healthcare Data Security Fundamentals - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Introduces HIPAA and protected health information, data security versus data privacy, access control models (RBAC and ABAC), authentication and authorization, audit trails, de-identification, and encryption for securing healthcare graph data." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/25-healthcare-data-security-fundamentals/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/25-healthcare-data-security-fundamentals/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Healthcare Data Security Fundamentals - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Introduces HIPAA and protected health information, data security versus data privacy, access control models (RBAC and ABAC), authentication and authorization, audit trails, de-identification, and encryption for securing healthcare graph data." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/25-healthcare-data-security-fundamentals/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#healthcare-data-security-fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Healthcare Data Security Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-privacy-and-data-security-a-goal-and-its-machinery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Privacy and Data Security: A Goal and Its Machinery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Privacy and Data Security: A Goal and Its Machinery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-protection-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Protection Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-and-protected-health-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA and Protected Health Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HIPAA and Protected Health Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hipaa-compliance-workflow-for-graph-database-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: HIPAA Compliance Workflow for Graph Database Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control-authentication-authorization-and-multi-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control: Authentication, Authorization, and Multi-Factor Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control: Authentication, Authorization, and Multi-Factor Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-authentication-vs-authorization-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Authentication vs Authorization Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-based-and-attribute-based-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role-Based and Attribute-Based Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Role-Based and Attribute-Based Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-rbac-graph-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare RBAC Graph Data Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit-trails-a-permanent-record-of-who-touched-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audit Trails: A Permanent Record of Who Touched What
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audit Trails: A Permanent Record of Who Touched What">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-audit-trail-analysis-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Audit Trail Analysis MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-identification-anonymization-and-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      De-Identification, Anonymization, and Encryption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="De-Identification, Anonymization, and Encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-de-identification-techniques-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: De-Identification Techniques Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-privacy-and-data-security-a-goal-and-its-machinery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Privacy and Data Security: A Goal and Its Machinery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Privacy and Data Security: A Goal and Its Machinery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-protection-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Protection Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hipaa-and-protected-health-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA and Protected Health Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HIPAA and Protected Health Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hipaa-compliance-workflow-for-graph-database-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: HIPAA Compliance Workflow for Graph Database Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control-authentication-authorization-and-multi-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control: Authentication, Authorization, and Multi-Factor Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control: Authentication, Authorization, and Multi-Factor Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-authentication-vs-authorization-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Authentication vs Authorization Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-based-and-attribute-based-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role-Based and Attribute-Based Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Role-Based and Attribute-Based Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-rbac-graph-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare RBAC Graph Data Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit-trails-a-permanent-record-of-who-touched-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audit Trails: A Permanent Record of Who Touched What
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audit Trails: A Permanent Record of Who Touched What">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-audit-trail-analysis-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Audit Trail Analysis MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-identification-anonymization-and-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      De-Identification, Anonymization, and Encryption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="De-Identification, Anonymization, and Encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-de-identification-techniques-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: De-Identification Techniques Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/25-healthcare-data-security-fundamentals/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="healthcare-data-security-fundamentals">Healthcare Data Security Fundamentals</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces healthcare data security, starting with HIPAA and the definition of protected health information. It covers access control models (role-based and attribute-based), authentication and authorization, multi-factor authentication, audit trails, and de-identification, concluding with the encryption techniques (at rest and in transit) used to protect healthcare data.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIPAA</td>
+<td>105</td>
+</tr>
+<tr>
+<td>Protected Health Information</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Data Privacy</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data Security</td>
+<td>77</td>
+</tr>
+<tr>
+<td>Access Control</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Role-Based Access Control</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Attribute-Based Access Control</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Multi-Factor Authentication</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Audit Trail</td>
+<td>20</td>
+</tr>
+<tr>
+<td>De-Identification</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Data Anonymization</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data Encryption</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Encryption At Rest</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../07-healthcare-economics-medical-coding/">Chapter 7: Healthcare Economics and Medical Coding Systems</a></li>
+<li><a href="../09-patient-diagnosis-treatment-medication/">Chapter 9: Patient Diagnosis, Treatment, and Medication</a></li>
+</ul>
+<hr />
+<p>Every graph we have built so far in this book has quietly assumed an answer to one question: who is allowed to see it? Maria Chen's Type 2 Diabetes diagnosis, her encounter history with Dr. Patel, and the claims Riverside Clinic submits to her payer are exactly the kind of richly connected data a graph database represents so well — and exactly the kind of data federal law protects. This chapter turns from <em>modeling</em> healthcare data to <em>protecting</em> it: the legal framework that governs who may touch it, the access control mechanisms that enforce those rules inside a running system, and the techniques that let researchers and analysts use the data without exposing the people behind it.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Time to Batten Down the Hatches</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Hey there — Sage here, ready to wade into a topic that's serious business but doesn't have to be a serious drag: healthcare data security. We've spent twenty-four chapters building rich, connected graphs of patients, providers, and claims, and now it's time to protect them. By the end of this chapter you'll know exactly which locks go on which doors — and why a graph database can make those locks <em>stronger</em>, not weaker. Let's connect the dots!</p>
+</div>
+<h2 id="data-privacy-and-data-security-a-goal-and-its-machinery">Data Privacy and Data Security: A Goal and Its Machinery</h2>
+<p><strong>Data privacy</strong> is the principle that individuals have a right to control how information about them is collected, shared, and used. In healthcare this idea predates computing entirely — it is the same principle behind physician-patient confidentiality — but a graph database raises the stakes considerably. A relational system that stores diagnoses in one table and pharmacy fills in another still requires someone to deliberately write a join to connect them; a graph database can traverse from a <code>Patient</code> node through a <code>DIAGNOSED_WITH</code> edge to a <code>Condition</code> node and on through a <code>PRESCRIBED</code> edge to a <code>Medication</code> node in a single query. The very structural power that makes graphs valuable for clinical decision support and fraud detection throughout this book also means a privacy failure can expose far more, far faster, than an equivalent failure in a relational system.</p>
+<p><strong>Data security</strong> is the broader set of technical, administrative, and physical safeguards that make data privacy achievable in practice. Where privacy is a policy goal ("patients control their information"), security is the mechanism that enforces it ("only an authenticated, authorized user may read or write this node"). Security is usually organized as <strong>defense in depth</strong> — multiple independent layers of protection, so that a failure in any single layer does not expose the data underneath. Consider a request for Maria Chen's diagnosis arriving at a healthcare graph database from an unknown network address. A perimeter firewall first checks whether the request should reach the application at all; if it passes, the application layer requires the requester to authenticate; if authentication succeeds, an access-control layer checks whether this specific, now-identified user is authorized to read this specific node; and even if that check somehow passes incorrectly, the property holding Maria's diagnosis code may still be encrypted at the storage layer, unreadable without a separate decryption key the application never hands to an unauthorized caller. An attacker must defeat every layer, not just one, to reach the data — that redundancy is the entire point of defense in depth, and it is the organizing idea behind every remaining topic in this chapter.</p>
+<p>Before we look at how these layers stack together, let's be precise about what a "layer" means here. Each layer in a defense-in-depth architecture is an independent checkpoint that specializes in one kind of failure: a firewall stops network-level intrusions, identity and access management stops impersonation, database-level controls stop authorized users from overreaching their role, and encryption stops a stolen disk or intercepted packet from being readable at all. None of the sections that follow — access control, audit trails, de-identification, encryption — makes sense as an isolated technique. Each is one ring of the same onion.</p>
+<h4 id="diagram-healthcare-data-protection-layers">Diagram: Healthcare Data Protection Layers</h4>
+<iframe src="../../sims/healthcare-data-protection-layers-diagram/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<details>
+<summary>Healthcare Data Protection Layers (reused)</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> healthcare-data-protection-layers-diagram<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-protection-layers-diagram/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-data-protection-layers-diagram</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: classify, explain<br/>
+Learning objective: Given the concentric-ring defense-in-depth diagram, the learner can classify a named control (firewall, MFA, RBAC, field-level encryption) by which layer it belongs to and explain why an attacker must defeat every ring to reach PHI.</p>
+<p>Reused from the MicroSim catalog. This diagram presents defense-in-depth as concentric onion layers — perimeter security on the outside, then application security, identity and access management, database security, and data protection wrapped around the protected health information at the core. Hovering any ring emphasizes it and shows its specific controls (firewalls and IDS/IPS at the perimeter; MFA and RBAC for identity; encryption and node-level security at the database; field-level encryption and tokenization for the data itself) in a side panel — directly reinforcing the "every layer must fail before PHI is exposed" idea introduced in the preceding paragraphs.</p>
+</details>
+<h2 id="hipaa-and-protected-health-information">HIPAA and Protected Health Information</h2>
+<p>The legal backbone of U.S. healthcare data security is the <strong>Health Insurance Portability and Accountability Act</strong>, universally known by its acronym, <strong>HIPAA</strong>. Passed in 1996 and substantially expanded by later rules, HIPAA sets binding national standards for how healthcare providers, insurers, and their business partners must protect patient information. HIPAA is organized into several rules that matter for this book: the <strong>Privacy Rule</strong>, which defines what information is protected and who may access it; the <strong>Security Rule</strong>, which specifies the administrative, physical, and technical safeguards covered organizations must implement; and the <strong>Breach Notification Rule</strong>, which we return to in Chapter 26 when we cover what happens after a safeguard fails.</p>
+<p>HIPAA protects a specific, carefully defined category of data: <strong>protected health information</strong>, abbreviated <strong>PHI</strong>. PHI is any information that (1) relates to a person's past, present, or future physical or mental health condition, the provision of healthcare to them, or payment for that healthcare, and (2) can be linked to a specific individual, either directly (a name, a medical record number) or indirectly (a combination of details specific enough to identify someone even without a name). Maria Chen's diabetes diagnosis is PHI. Her date of birth is PHI <em>when it appears alongside her diagnosis</em>, because the combination identifies her — but the same date of birth in an anonymous population statistic, disconnected from any individual record, is not. This distinction — identifiable versus de-identified — becomes central later in the chapter.</p>
+<p>A concrete worked example makes HIPAA's practical bite clear. Suppose a data analyst at Riverside Clinic wants to study which medications are most commonly prescribed for Type 2 Diabetes across the clinic's patient population. Under HIPAA, the analyst cannot simply query the production graph and export every <code>Patient</code>-<code>PRESCRIBED</code>-<code>Medication</code> path with names attached — that would disclose PHI without a valid basis. Instead, the request must satisfy one of HIPAA's permitted uses: treatment, payment, healthcare operations, or a specific patient authorization, and even then only the <strong>minimum necessary</strong> information should be disclosed (a concept Chapter 26 covers formally). In practice, this means the analyst's query runs against a de-identified or aggregated view of the graph — one where individual <code>Patient</code> nodes have been stripped of direct identifiers before the medication-frequency counts are computed. The law does not forbid the analytics; it constrains exactly how the underlying identifiable data may be touched to produce them.</p>
+<p>Because HIPAA violations carry real financial and legal consequences — civil penalties that scale with the severity and duration of noncompliance, and potential criminal charges for willful violations — every technique in the rest of this chapter exists to satisfy some specific HIPAA obligation. Access control and audit trails satisfy the Security Rule's requirement to restrict and monitor access; de-identification and encryption satisfy the Privacy Rule's requirement to protect information from unauthorized disclosure. Reading the rest of the chapter as "compliance mechanics for HIPAA" rather than "generic security best practices" will make the <em>why</em> behind each technique much clearer.</p>
+<p>Before examining the workflow diagram below, one more term needs defining. A <strong>covered entity</strong> under HIPAA is a healthcare provider, health plan, or healthcare clearinghouse that directly handles PHI; a <strong>business associate</strong> is any vendor — including the company that hosts a graph database on their behalf — that handles PHI on a covered entity's behalf under a signed agreement. Both are bound by HIPAA, which is why the graph-database operations shown below apply equally whether the database is run in-house or by a cloud vendor.</p>
+<h4 id="diagram-hipaa-compliance-workflow-for-graph-database-operations">Diagram: HIPAA Compliance Workflow for Graph Database Operations</h4>
+<iframe src="../../sims/hipaa-compliance-workflow-graph-database-operations/main.html" width="100%" height="1171px" scrolling="no"></iframe>
+
+<details>
+<summary>HIPAA Compliance Workflow for Graph Database Operations (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> hipaa-compliance-workflow-graph-database-operations<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/hipaa-compliance-workflow-graph-database-operations/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/hipaa-compliance-workflow-graph-database-operations</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: demonstrate, examine<br/>
+Learning objective: Given a PHI access request to a graph database, the learner can trace which HIPAA-mandated checkpoint (authentication, authorization, minimum-necessary filtering, audit logging) a request must pass through, and identify where an invalid request is denied.</p>
+<p>Reused from the MicroSim catalog. This flowchart shows every compliance checkpoint a PHI access request must pass in a healthcare graph database: authentication (MFA required), authorization against role and need-to-know, row-level-security graph query execution, minimum-necessary result filtering, watermarking, and immutable audit logging before display, with an enforced session timeout. Hovering any step reveals the specific HIPAA control it enforces; the two yellow decision diamonds show how invalid authentication or insufficient permissions both route to a logged denial rather than silently failing.</p>
+</details>
+<h2 id="access-control-authentication-authorization-and-multi-factor-authentication">Access Control: Authentication, Authorization, and Multi-Factor Authentication</h2>
+<p><strong>Access control</strong> is the general term for any mechanism that decides whether a specific request to read or modify data should be allowed. Every technique in this section is a specialized answer to that one question, and getting the vocabulary precise matters, because these terms are among the most frequently confused in security discussions.</p>
+<p><strong>Authentication</strong> answers "who are you?" It is the process of verifying that a user is who they claim to be, typically through a password, a cryptographic token, or a biometric scan. <strong>Authorization</strong> answers a different question: "what are you allowed to do?" Authorization happens <em>after</em> authentication succeeds, and it determines which specific nodes, edges, or properties an already-verified user may read or write. Dr. Patel logging into the graph database with her hospital credentials is authentication; the system subsequently permitting her to view Maria Chen's chart because she has an active <code>TREATED_BY</code> relationship with that patient — but not permitting her to view an unrelated patient's chart — is authorization. Confusing the two is a genuinely common early mistake: a system can authenticate a user perfectly and still deny nearly everything they try to do, because authentication only proves identity, not permission.</p>
+<p><strong>Multi-factor authentication</strong>, or <strong>MFA</strong>, strengthens the authentication step by requiring two or more independent types of evidence instead of one. Security practice groups authentication factors into three categories: something you <em>know</em> (a password or PIN), something you <em>have</em> (a phone receiving a one-time code, or a hardware security key), and something you <em>are</em> (a fingerprint or facial scan). A stolen password alone is no longer sufficient to authenticate if the system also requires a one-time code from a device the attacker does not possess — which is precisely why the HIPAA compliance workflow above lists MFA as the very first gate a PHI request must pass.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Three Factors, One Easy Trick</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Want an easy way to keep the three MFA factor types straight? Say them out loud as "know, have, are" — password (know), phone (have), fingerprint (are). If a login step doesn't fit one of those three buckets, it probably isn't actually a second factor.</p>
+</div>
+<p>The diagram below makes the authentication-versus-authorization distinction concrete by walking through the same clinician's request twice: once through the authentication lens (proving identity) and once through the authorization lens (checking what that identity may do).</p>
+<h4 id="diagram-authentication-vs-authorization-comparison">Diagram: Authentication vs Authorization Comparison</h4>
+<iframe src="../../sims/authentication-authorization-comparison-infographic/main.html" width="100%" height="528px" scrolling="no"></iframe>
+
+<details>
+<summary>Authentication vs Authorization Comparison (reused)</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> authentication-authorization-comparison-infographic<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/authentication-authorization-comparison-infographic/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/authentication-authorization-comparison-infographic</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: contrast, differentiate<br/>
+Learning objective: Given the two-panel infographic, the learner can contrast the question each process answers and the mechanisms each relies on, and correctly sequence authentication before authorization.</p>
+<p>Reused from the MicroSim catalog. This split-screen infographic compares authentication (blue panel: "who are you?", verified through passwords, MFA tokens, or biometrics) against authorization (green panel: "what can you do?", decided by role, department, treatment relationship, and data sensitivity), using a worked Dr. Chen example that authenticates once but is authorized differently for different records. The panels are clickable to expand each method with a short explanation, reinforcing that authentication always precedes authorization.</p>
+</details>
+<h2 id="role-based-and-attribute-based-access-control">Role-Based and Attribute-Based Access Control</h2>
+<p>Once a user is authenticated, a system needs a concrete policy for deciding what they may access. The most widely used policy in healthcare systems is <strong>role-based access control</strong>, or <strong>RBAC</strong>: permissions are attached to roles (<code>Physician</code>, <code>Nurse</code>, <code>Billing Clerk</code>) rather than to individual users, and a user gains permissions by being assigned one or more roles. RBAC scales well because adding a new employee only requires assigning an existing role, not re-deriving a custom permission set from scratch, and roles can inherit from more general roles — a <code>Cardiologist</code> role can inherit everything a <code>Physician</code> role grants, then add cardiology-specific permissions on top.</p>
+<p>In a graph database, RBAC has an elegant native representation: a user node connects to a role node through a <code>HAS_ROLE</code> edge, a role node connects to a more general role through an <code>INHERITS_FROM</code> edge, and a role connects to a permission through a <code>GRANTS</code> edge. Answering "can Dr. Chen write orders?" becomes a graph traversal — follow <code>HAS_ROLE</code> from Dr. Chen, follow zero or more <code>INHERITS_FROM</code> edges up the hierarchy, and check whether any role reached along the way has a <code>GRANTS</code> edge to the "write orders" permission. This is a direct, practical payoff of the graph vocabulary from Chapter 1: a policy question becomes a path-existence question.</p>
+<p><strong>Attribute-based access control</strong>, or <strong>ABAC</strong>, generalizes this idea further. Instead of checking only a user's assigned role, ABAC evaluates a rule against any combination of attributes of the user, the resource, and the context of the request — for example, "allow read access if the requester's department matches the patient's admitting department, AND the request occurs during the requester's scheduled shift, AND the patient has not opted out of data sharing." RBAC answers "what role do you hold?"; ABAC answers "do the current facts about you, the data, and the situation satisfy this rule?" ABAC is more expressive and can encode exactly the kind of relationship-aware, situational rules healthcare access often needs, but that expressiveness comes at the cost of more complex policies to write, test, and audit. Most production healthcare systems use RBAC as the default policy and layer ABAC-style rules on top for edge cases — exactly the pattern the earlier HIPAA workflow diagram showed with its care-relationship check layered on top of a basic role check.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Decision Basis</th>
+<th>Healthcare Example</th>
+<th>Trade-off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RBAC</td>
+<td>Assigned role</td>
+<td>"Physicians may write orders"</td>
+<td>Simple to administer, less situational</td>
+</tr>
+<tr>
+<td>ABAC</td>
+<td>Combination of attributes</td>
+<td>"Allow if department matches AND shift is active AND patient hasn't opted out"</td>
+<td>Highly expressive, harder to audit</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Don't Mix Up 'Role' and 'Relationship'</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A common trap: assuming a role alone is enough to grant access to <em>every</em> patient. In practice, most healthcare RBAC systems also require an active care relationship — a <code>TREATS</code> or <code>REFERRED_BY</code> edge — before a Physician role can view a specific chart. Role answers "what kind of user is this?"; the relationship answers "does this user have a legitimate reason to see <em>this</em> patient?" Skip the second check and you've built a system where any physician can browse any patient's record — a HIPAA minimum-necessary violation waiting to happen.</p>
+</div>
+<h4 id="diagram-healthcare-rbac-graph-data-model">Diagram: Healthcare RBAC Graph Data Model</h4>
+<iframe src="../../sims/healthcare-rbac-graph-data-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<details>
+<summary>Healthcare RBAC Graph Data Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> healthcare-rbac-graph-data-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-rbac-graph-data-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-rbac-graph-data-model</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: demonstrate, trace<br/>
+Learning objective: Given a user-role-permission graph, the learner can trace the HAS_ROLE, INHERITS_FROM, and GRANTS edges to determine whether a specific user holds a specific permission.</p>
+<p>Reused from the MicroSim catalog. This graph models RBAC exactly as a graph database stores it: users are assigned roles, roles inherit permissions from more general roles (Cardiologist inherits from Physician; ICU Nurse inherits from Nurse), and roles grant specific permissions. Clicking a user node highlights the full inheritance path to its granted permissions, letting learners verify by direct traversal — rather than by reading a static permission table — that Dr. Chen's Cardiologist role grants read, order-writing, and lab permissions while a Billing Clerk role grants only billing access.</p>
+</details>
+<h2 id="audit-trails-a-permanent-record-of-who-touched-what">Audit Trails: A Permanent Record of Who Touched What</h2>
+<p>Access control decides who <em>may</em> act; an <strong>audit trail</strong> records who <em>did</em> act. An audit trail is an immutable, append-only log of every access to sensitive data — who requested it, what they requested, when, and whether the request was granted or denied. HIPAA's Security Rule requires covered entities to maintain audit controls precisely because access control alone cannot catch every misuse: a nurse with a legitimate role and a legitimate general permission to view patient charts could still misuse that permission to browse a celebrity patient's record out of curiosity, a violation no RBAC or ABAC rule would prevent in the moment, but one an audit trail can detect after the fact.</p>
+<p>Graph databases make a particular kind of audit analysis unusually easy: <strong>access pattern analysis</strong>, where the audit log itself is modeled as a graph of <code>User</code>-<code>ACCESSED</code>-<code>Patient</code> edges and queried for anomalies. Consider a worked example: Riverside Clinic organizes patients into wards, and access within a user's own ward is expected and authorized. A nurse who works Ward A but who has recently accessed dozens of patient records in Ward B — patients with whom she has no scheduled care relationship — creates a distinctive graph pattern: a single user node with an unusually large fan of edges crossing ward boundaries. A relational audit log stores exactly the same facts as rows, but finding this pattern requires an analyst to know in advance to group by user and count cross-ward accesses; a graph query surfaces the fan-out pattern directly through structure, without the analyst first guessing what to look for.</p>
+<h4 id="diagram-audit-trail-analysis-microsim">Diagram: Audit Trail Analysis MicroSim</h4>
+<iframe src="../../sims/audit-trail-analysis-microsim/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<details>
+<summary>Audit Trail Analysis MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> audit-trail-analysis-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/audit-trail-analysis-microsim/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/audit-trail-analysis-microsim</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, identify<br/>
+Learning objective: Given a graph of user access edges spanning two wards, the learner can identify which user's access pattern indicates a likely privacy violation ("snooping").</p>
+<p>Reused from the MicroSim catalog. Users (squares, colored by risk) access patient records (circles) grouped into two wards; access within a user's own ward is authorized (green edges), while cross-ward access is unusual (red edges). Clicking any user isolates their access edges and reports their total and cross-ward access counts, letting the learner directly verify which user's fan-out pattern flags a likely privacy violation — the concrete graph-query payoff described in the preceding worked example.</p>
+</details>
+<h2 id="de-identification-anonymization-and-encryption">De-Identification, Anonymization, and Encryption</h2>
+<p>The final set of techniques in this chapter protects data by transforming it, rather than by restricting who can query it. <strong>De-identification</strong> is the process of removing or altering direct and indirect identifiers from a dataset so that the remaining information can no longer reasonably be linked back to a specific person. HIPAA recognizes two accepted paths to de-identification: the <em>Safe Harbor</em> method, which requires removing eighteen specific categories of identifier (names, dates more specific than a year, medical record numbers, and so on), and the <em>Expert Determination</em> method, where a qualified statistician certifies that the re-identification risk is very small. <strong>Data anonymization</strong> is closely related but stricter: it aims to make re-identification not just unlikely but effectively impossible, typically by irreversibly generalizing or perturbing values rather than merely masking them. The practical distinction matters — de-identified data can sometimes be re-linked to the source patient by an authorized party holding the missing key, while properly anonymized data cannot be re-linked by anyone, including the original data holder.</p>
+<p>The table below compares several de-identification techniques on exactly this privacy-versus-utility trade-off, reinforcing the point that no single technique is universally "best" — the right choice depends on whether the resulting data still needs to support individual-level research or only aggregate analysis.</p>
+<h4 id="diagram-de-identification-techniques-comparison">Diagram: De-Identification Techniques Comparison</h4>
+<iframe src="../../sims/de-identification-techniques-comparison-table/main.html" width="100%" height="528px" scrolling="no"></iframe>
+
+<details>
+<summary>De-Identification Techniques Comparison (reused)</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> de-identification-techniques-comparison-table<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/de-identification-techniques-comparison-table/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/de-identification-techniques-comparison-table</p>
+<p>Bloom Taxonomy: Evaluate<br/>
+Bloom Taxonomy Verb: assess, justify<br/>
+Learning objective: Given a use case's privacy and utility requirements, the learner can justify which de-identification technique best satisfies both constraints.</p>
+<p>Reused from the MicroSim catalog. This table compares six de-identification techniques — including identifier removal, pseudonymization, geographic and value generalization, and noise injection — on privacy strength versus data utility, reversibility, and best-fit use case. Hovering a row highlights it and expands the trade-off, letting learners see directly why reversible pseudonymization suits internal research that may need re-linking while irreversible generalization suits public release.</p>
+</details>
+<p>The last layer of protection does not depend on removing or transforming identifying values at all — it depends on making the raw data unreadable to anyone without the right key. <strong>Data encryption</strong> is the process of mathematically transforming data using an algorithm and a secret key so that it appears as meaningless ciphertext to anyone who does not hold the corresponding decryption key. Even if an attacker bypasses every access control layer and copies raw data directly off a disk, encryption ensures what they obtain is unusable without the key, which is typically stored and managed separately from the data itself. <strong>Encryption at rest</strong> specifically protects data while it is stored — on disk, in a backup, or in a database file — as opposed to while it is moving across a network, which Chapter 26 covers as encryption in transit. A graph database applying encryption at rest typically encrypts either the entire data files at the storage-engine level or specific sensitive properties (Maria Chen's diagnosis code, but perhaps not her generic account-creation timestamp) at the field level, trading a small amount of query performance for a strong guarantee that a stolen hard drive reveals nothing.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Encryption Doesn't Replace Access Control — It Backstops It</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that encryption at rest solves a completely different failure mode than RBAC or ABAC. Access control assumes the system is running normally and simply decides who's allowed to ask for what. Encryption assumes something has already gone wrong — a stolen backup tape, a misconfigured cloud bucket — and asks whether the data is still safe even then. That's why defense in depth needs both: one guards the front door, the other protects what's inside the safe even if someone walks off with it.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You've Locked Down the Basics!</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Nice work — you now know the full vocabulary of healthcare data security: HIPAA and PHI, defense in depth, authentication versus authorization, RBAC and ABAC, audit trails, and de-identification versus encryption. That's a genuinely dense set of ideas, and you handled all of it. Every relationship matters — including the ones between you and your newly locked-down graph!</p>
+</div>
+<p>This chapter established the vocabulary that every remaining security topic in this book depends on: data privacy is the goal, data security is the machinery, and HIPAA is the legal framework that specifies exactly what that machinery must accomplish. Access control — implemented as authentication followed by RBAC or ABAC-driven authorization — decides who may act; audit trails record who did act; and de-identification, anonymization, and encryption protect the data itself when access control is not enough on its own. In <a href="../26-advanced-security-operations-incident-response/">Chapter 26</a>, we build directly on this foundation, moving from these fundamentals into the operational side of security: consent management, encryption in transit, zero trust architecture, and how organizations respond when a safeguard fails.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 24. CDS Hooks, Care Alerts, and CMS CQL Tooling">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../26-advanced-security-operations-incident-response/" class="md-footer__link md-footer__link--next" aria-label="Next: 26. Advanced Security Operations and Incident Response">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                26. Advanced Security Operations and Incident Response
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

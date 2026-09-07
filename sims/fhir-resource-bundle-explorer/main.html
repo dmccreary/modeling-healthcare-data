@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- microsim-scaffold-stub -->
+    <title>FHIR Resource Bundle Explorer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>FHIR Resource Bundle Explorer</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> fhir-resource-bundle-explorer</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Analyze<br/></p>
+            <p><strong>Learning Objective:</strong> Given a rendered FHIR Bundle, the learner can examine which JSON reference fields correspond to which graph edges, and differentiate the six core resource types by the fields each one carries.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** fhir-resource-bundle-explorer<br/>
+    **Library:** vis-network<br/>
+    **Status:** Specified
+    
+    Bloom Taxonomy: Analyze<br/>
+    Bloom Taxonomy Verb: examine, differentiate<br/>
+    Learning objective: Given a rendered FHIR Bundle, the learner can examine which JSON reference fields correspond to which graph edges, and differentiate the six core resource types by the fields each one carries.
+    
+    Purpose: Render the Maria Chen FHIR Bundle above as an interactive node-and-edge graph so the learner directly experiences a FHIR Bundle as a labeled property graph rather than as abstract JSON.
+    
+    Node types to show (color-coded by resourceType, exact data from the Bundle above):
+    - `Patient` (pink circle) — maria-chen
+    - `Encounter` (gray square) — enc-1, Annual Physical
+    - `Condition` (orange diamond) — cond-1, Type 2 Diabetes (E11.9)
+    - `Observation` (yellow circle) — obs-1, HbA1c 8.2%
+    - `MedicationRequest` (purple hexagon) — med-1, Metformin 500mg
+    - `CarePlan` (green triangle) — cp-1, Quarterly HbA1c monitoring
+    
+    Edge types to show (labeled by the FHIR field name they came from):
+    - `subject` (Condition, Encounter, Observation, MedicationRequest, CarePlan → Patient)
+    - `encounter` (Observation → Encounter)
+    - `addresses` (CarePlan → Condition)
+    - `requester` (MedicationRequest → Practitioner, shown as an unresolved reference badge if Practitioner is not loaded in this bundle)
+    
+    Interactive controls:
+    - Click any node to open a side panel showing the exact raw JSON for that resource
+    - Hover any edge to see a tooltip naming the FHIR field that produced it (e.g., "this edge came from the `addresses` field")
+    - Toggle: "JSON View" vs "Graph View" that shows the same Bundle as raw formatted JSON side by side with the rendered graph, so the learner can match a specific JSON reference field to its corresponding edge
+    
+    Instructional Rationale: A toggle between JSON and graph views directly targets the Analyze-level objective, requiring the learner to map specific document fields onto specific graph structures rather than accepting the JSON-equals-graph claim in prose alone.
+    
+    Implementation: vis-network JavaScript library; responsive width, 550px height.
+    -->
+</body>
+</html>

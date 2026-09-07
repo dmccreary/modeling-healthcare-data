@@ -1,0 +1,2738 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The HL7 FHIR standard, its core clinical resources, and the Four Levels of Knowledge Representation used to author computable clinical guidelines.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/22-fhir-resources-and-knowledge-representation/">
+      
+      
+        <link rel="prev" href="../21-responsible-ai-and-agentic-systems/">
+      
+      
+        <link rel="next" href="../23-clinical-guideline-authoring-and-cql/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>FHIR Resources and Levels of Knowledge Representation - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="FHIR Resources and Levels of Knowledge Representation - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="The HL7 FHIR standard, its core clinical resources, and the Four Levels of Knowledge Representation used to author computable clinical guidelines." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/22-fhir-resources-and-knowledge-representation/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/22-fhir-resources-and-knowledge-representation/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="FHIR Resources and Levels of Knowledge Representation - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="The HL7 FHIR standard, its core clinical resources, and the Four Levels of Knowledge Representation used to author computable clinical guidelines." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/22-fhir-resources-and-knowledge-representation/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fhir-resources-and-levels-of-knowledge-representation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FHIR Resources and Levels of Knowledge Representation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-fhir-standard-resources-as-the-unit-of-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      The FHIR Standard: Resources as the Unit of Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The FHIR Standard: Resources as the Unit of Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-fhir-restful-api-request-response-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: FHIR RESTful API Request-Response Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-tour-of-core-fhir-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Tour of Core FHIR Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Tour of Core FHIR Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-fhir-resource-bundle-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: FHIR Resource Bundle Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-guidelines-to-executable-logic-plandefinition-and-activitydefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Guidelines to Executable Logic: PlanDefinition and ActivityDefinition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Guidelines to Executable Logic: PlanDefinition and ActivityDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-plandefinition-to-activitydefinition-trigger-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: PlanDefinition to ActivityDefinition Trigger Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-levels-of-knowledge-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Levels of Knowledge Representation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Levels of Knowledge Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-knowledge-representation-levels-by-functional-tier-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Knowledge Representation Levels by Functional Tier Matrix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-fhir-standard-resources-as-the-unit-of-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      The FHIR Standard: Resources as the Unit of Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The FHIR Standard: Resources as the Unit of Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-fhir-restful-api-request-response-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: FHIR RESTful API Request-Response Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-tour-of-core-fhir-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Tour of Core FHIR Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Tour of Core FHIR Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-fhir-resource-bundle-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: FHIR Resource Bundle Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-guidelines-to-executable-logic-plandefinition-and-activitydefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Guidelines to Executable Logic: PlanDefinition and ActivityDefinition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Guidelines to Executable Logic: PlanDefinition and ActivityDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-plandefinition-to-activitydefinition-trigger-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: PlanDefinition to ActivityDefinition Trigger Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-levels-of-knowledge-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Levels of Knowledge Representation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Levels of Knowledge Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-knowledge-representation-levels-by-functional-tier-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Knowledge Representation Levels by Functional Tier Matrix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/22-fhir-resources-and-knowledge-representation/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="fhir-resources-and-levels-of-knowledge-representation">FHIR Resources and Levels of Knowledge Representation</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter opens the book's clinical decision support unit by introducing the HL7 FHIR standard and its core resources -- Patient, Condition, Observation, MedicationRequest, Encounter, CarePlan, and the PlanDefinition/ActivityDefinition resources used to represent clinical logic. It then introduces the Four Levels of Knowledge Representation (Narrative, Semi-Structured, Structured, and Executable) and the three Tiers of Functionality (Data, Logic, and Forms/UI) that classify how clinical knowledge is authored and consumed. Students finish able to classify a clinical decision support artifact by its representation level and functional tier.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FHIR Standard</td>
+<td>167</td>
+</tr>
+<tr>
+<td>FHIR Resource</td>
+<td>4</td>
+</tr>
+<tr>
+<td>FHIR Server</td>
+<td>1</td>
+</tr>
+<tr>
+<td>FHIR RESTful API</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Patient Resource</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Condition Resource</td>
+<td>158</td>
+</tr>
+<tr>
+<td>Observation Resource</td>
+<td>2</td>
+</tr>
+<tr>
+<td>MedicationRequest Resource</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Encounter Resource</td>
+<td>2</td>
+</tr>
+<tr>
+<td>CarePlan Resource</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PlanDefinition Resource</td>
+<td>153</td>
+</tr>
+<tr>
+<td>ActivityDefinition Resource</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Knowledge Representation Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Narrative Level</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Semi-Structured Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Structured Level</td>
+<td>143</td>
+</tr>
+<tr>
+<td>Executable Level</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Tiers Of Functionality</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data Tier</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Logic Tier</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../08-healthcare-interoperability-care-coordination/">Chapter 8: Healthcare Interoperability and Care Coordination</a></li>
+<li><a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/">Chapter 20: AI, LLMs, and Knowledge Graphs for Healthcare</a></li>
+</ul>
+<hr />
+<p>Every clinical decision support system needs two things before it can reason about a patient at all: an agreed-upon shape for clinical data, and an agreed-upon way to classify how "computable" a piece of clinical knowledge actually is. This chapter introduces both. We return to Maria Chen, the patient from Chapter 1, and see her graph of diagnoses, providers, and treatments re-expressed in the vocabulary the healthcare industry actually uses to exchange this information: HL7 FHIR.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Same Graph, New Vocabulary</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Hi there! Get ready to meet FHIR — the standard that lets every hospital, app, and clinical system speak the same clinical language. Good news: you already know most of the underlying idea from Chapter 1, since a FHIR resource bundle is basically a graph wearing a slightly fancier outfit. Let's connect the dots!</p>
+</div>
+<h2 id="the-fhir-standard-resources-as-the-unit-of-interoperability">The FHIR Standard: Resources as the Unit of Interoperability</h2>
+<p>The <strong>FHIR Standard</strong> (Fast Healthcare Interoperability Resources, pronounced "fire") is the HL7 specification that defines a common data format and a common web-based exchange protocol for clinical and administrative healthcare information. FHIR exists to solve a problem this book has referenced since Chapter 1: healthcare data is scattered across many independently built systems, and without a shared standard, every pair of systems that need to exchange data would need its own custom, hand-built integration. FHIR replaces those countless custom integrations with a single, consistent format that any conformant system can read and write.</p>
+<p>The basic unit of FHIR data is a <strong>FHIR resource</strong>: a self-contained, typed unit of clinical or administrative data — a patient, a diagnosis, a lab result — represented as structured JSON or XML with a defined set of fields specific to that resource type. Every resource carries a <code>resourceType</code> field, a unique <code>id</code>, and, in most clinical resources, a <code>subject</code> or <code>patient</code> field that references the patient the resource is about. That reference field is the detail worth pausing on, because it is the exact same idea as an edge in a labeled property graph: a <code>Condition</code> resource's <code>subject</code> reference to a <code>Patient</code> resource is structurally identical to the <code>DIAGNOSED_WITH</code> edge from Chapter 1, just expressed as a JSON pointer (<code>"subject": {"reference": "Patient/maria-chen"}</code>) instead of a drawn arrow.</p>
+<p>FHIR resources are exchanged over the web using the <strong>FHIR RESTful API</strong>: a standardized set of HTTP operations — <code>GET</code> to read a resource, <code>POST</code> to create one, <code>PUT</code> to update one, <code>DELETE</code> to remove one — applied to predictable URL patterns such as <code>GET /Patient/maria-chen</code> or <code>GET /Condition?patient=maria-chen</code>. A <strong>FHIR server</strong> is the software system that implements this RESTful API, storing resources and answering these HTTP requests — every certified EHR vendor now ships a FHIR server, which is precisely what allows a third-party app to request "give me this patient's active conditions" using one standard URL pattern regardless of which EHR vendor is running underneath.</p>
+<p>FHIR is not the industry's first attempt at a healthcare data standard, and understanding what it replaced explains why it looks the way it does. Its predecessors — HL7 Version 2 messaging (a pipe-delimited text format from the 1980s) and the Clinical Document Architecture (CDA, an XML document format for whole clinical notes) — were built around exchanging entire messages or entire documents as a single unit, which made it hard for an application to request just one specific fact. FHIR's resource-per-concept design and its use of ordinary REST and JSON, the same web technologies powering most consumer mobile apps, was a deliberate choice to lower the barrier to entry: any developer who already knows how to call a REST API can start building FHIR-based healthcare software without first learning a healthcare-specific message format.</p>
+<p>A worked example makes the request-response cycle concrete: an app requesting Maria Chen's active conditions sends <code>GET https://fhir.riversideclinic.org/Condition?patient=maria-chen&amp;clinical-status=active</code> to the clinic's FHIR server. The server looks up all <code>Condition</code> resources whose <code>subject</code> reference matches <code>Patient/maria-chen</code> and whose <code>clinicalStatus</code> field is <code>active</code>, and returns them as a <code>Bundle</code> — a FHIR resource type that simply wraps a list of other resources — in JSON. No custom code specific to Riverside Clinic's internal database is required on the requesting app's side; the same request format works against any FHIR server, anywhere. Writing data back follows the identical pattern in reverse: to record a new blood pressure reading, the app sends <code>POST /Observation</code> with the new resource's JSON body, and the server assigns it an <code>id</code> and stores it, immediately queryable by the same kind of <code>GET</code> request. A FHIR server also publishes a special resource called a <code>CapabilityStatement</code> describing exactly which resource types, search parameters, and operations it supports, so a client app can check compatibility before attempting to query it — a detail this book returns to under the name FHIR Implementation Guide in Chapter 24.</p>
+<h4 id="diagram-fhir-restful-api-request-response-flow">Diagram: FHIR RESTful API Request-Response Flow</h4>
+<iframe src="../../sims/fhir-restful-api-request-response-flow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>FHIR RESTful API Request-Response Flow</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> fhir-restful-api-request-response-flow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, summarize<br/>
+Learning objective: Given a client application's request for patient data, the learner can explain how the FHIR RESTful API and FHIR server together turn an HTTP request into a returned Bundle of resources.</p>
+<p>Purpose: Show the full request-response cycle between a client app and a FHIR server, grounding the abstract "resources are exchanged over REST" idea in one concrete, traceable request.</p>
+<p>Components to show (Mermaid sequence-style flowchart):
+- Node "Client App" (blue) — sends the request
+- Node "HTTP GET Request" (gray) — shows the literal URL: <code>GET /Condition?patient=maria-chen&amp;clinical-status=active</code>
+- Node "FHIR Server" (orange) — receives the request, looks up matching resources
+- Node "Internal Data Store" (gray, dashed border) — the EHR vendor's own database, translated into FHIR shape by the server
+- Node "Bundle Response" (green) — a <code>Bundle</code> resource wrapping the matched <code>Condition</code> resources as JSON
+- Node "Client App Renders Result" (blue) — the app displays Maria Chen's active conditions</p>
+<p>Connections: Client App → HTTP GET Request → FHIR Server → Internal Data Store → back to FHIR Server → Bundle Response → Client App Renders Result, arrows labeled with each transition's action</p>
+<p>Interactive controls:
+- Click directive on every node opening an infobox with that step's detail, including the literal JSON of the returned Bundle at the "Bundle Response" node
+- Dropdown to swap the CRUD operation shown (GET / POST / PUT / DELETE) and see how the flow and HTTP verb change while the overall five-step shape stays the same</p>
+<p>Instructional Rationale: A clickable sequence flowchart matches the Understand-level objective by letting the learner trace one concrete request end to end and inspect the actual returned JSON, rather than only reading an abstract description of "REST operations."</p>
+<p>Implementation: Mermaid flowchart with click handlers; responsive width.</p>
+</details>
+<h2 id="a-tour-of-core-fhir-resources">A Tour of Core FHIR Resources</h2>
+<p>FHIR defines well over a hundred resource types, but a small handful account for most of what a clinical decision support system needs to reason about a single patient encounter. The <strong>Patient resource</strong> holds demographic data — name, birth date, administrative gender, identifiers — and serves as the hub that most other clinical resources reference via a <code>subject</code> field, exactly as the <code>Patient</code> node served as the hub of Chapter 1's labeled property graph. The <strong>Condition resource</strong> represents a diagnosis, problem, or health concern, carrying a coded <code>code</code> field (typically ICD-10 or SNOMED CT) and a <code>clinicalStatus</code> (active, resolved, remission). The <strong>Observation resource</strong> represents a single measured or asserted clinical fact — a lab result, a vital sign, an assessment score — carrying a <code>code</code> identifying what was measured and a <code>value</code> holding the result. The <strong>MedicationRequest resource</strong> represents an order for a medication, carrying the drug (coded, typically via RxNorm), dosage instructions, and the prescribing provider. The <strong>Encounter resource</strong> represents an interaction between a patient and the healthcare system — an office visit, an emergency department stay, a hospital admission — and many other resources reference the specific encounter during which they were recorded. The <strong>CarePlan resource</strong> represents an intended set of actions to manage one or more of a patient's health conditions over time, referencing the conditions it addresses and the activities (appointments, medications, goals) planned to address them.</p>
+<p>The Condition resource deserves a closer look, since it carries more clinical nuance than its short definition above suggests and because so many other resources and downstream analytics ultimately hang off of it. Beyond the <code>code</code> and <code>clinicalStatus</code> fields already mentioned, a Condition resource also carries a <code>verificationStatus</code> (provisional, confirmed, refuted, entered-in-error — distinguishing a suspected diagnosis from a confirmed one), a <code>severity</code> (mild, moderate, severe), an <code>onsetDateTime</code> recording when the condition began, and a <code>category</code> distinguishing a formally tracked <code>problem-list-item</code> from a one-time <code>encounter-diagnosis</code> noted only for a single visit. The <code>code</code> field itself typically carries two parallel codings rather than one: an ICD-10-CM code for billing purposes (E11.9, as in the example above) and a corresponding SNOMED CT code for clinical and analytic purposes, since ICD-10-CM was designed for reimbursement granularity while SNOMED CT was designed for clinical precision and better supports the kind of graph traversal and similarity queries this book has emphasized throughout. A Condition resource whose <code>verificationStatus</code> is still <code>provisional</code> should generally not trigger the same downstream clinical decision support logic as one marked <code>confirmed</code> — a distinction a naive implementation that reads only the <code>code</code> field would miss entirely, and a common enough oversight that it is worth calling out explicitly here.</p>
+<p>These six resource types are best understood together, not in isolation, because a single clinical encounter typically produces one of each, all cross-referencing one another. Consider Maria Chen's annual physical from Chapter 1, re-expressed as a small FHIR Bundle:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bundle&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;entry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maria-chen&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maria Chen&quot;</span><span class="p">}],</span><span class="w"> </span><span class="nt">&quot;birthDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1985-03-12&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;gender&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;female&quot;</span><span class="p">}},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Encounter&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enc-1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient/maria-chen&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Annual Physical&quot;</span><span class="p">}]}},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Condition&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cond-1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient/maria-chen&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;coding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ICD-10&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E11.9&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Type 2 Diabetes&quot;</span><span class="p">}]},</span>
+<span class="w">      </span><span class="nt">&quot;clinicalStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">}},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Observation&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;obs-1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient/maria-chen&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;encounter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Encounter/enc-1&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hemoglobin A1c&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;valueQuantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;%&quot;</span><span class="p">}}},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MedicationRequest&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;med-1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient/maria-chen&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;medicationCodeableConcept&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Metformin 500mg&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;requester&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Practitioner/dr-patel&quot;</span><span class="p">}}},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CarePlan&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cp-1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient/maria-chen&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;addresses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Condition/cond-1&quot;</span><span class="p">}],</span>
+<span class="w">      </span><span class="nt">&quot;activity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Quarterly HbA1c monitoring&quot;</span><span class="p">}}]}}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Notice that every non-Patient resource references <code>Patient/maria-chen</code>, the Observation additionally references the specific <code>Encounter</code> it was recorded during, and the CarePlan references the <code>Condition</code> it addresses — a small web of cross-references that is, once again, exactly a labeled property graph: resources are nodes, and <code>reference</code> fields are directed edges. This is not a coincidence or a loose analogy; several production graph databases ingest FHIR Bundles directly by mapping each resource to a node and each reference field to an edge, with no intermediate transformation step required.</p>
+<h4 id="diagram-fhir-resource-bundle-explorer">Diagram: FHIR Resource Bundle Explorer</h4>
+<iframe src="../../sims/fhir-resource-bundle-explorer/main.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<details>
+<summary>FHIR Resource Bundle Explorer</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> fhir-resource-bundle-explorer<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, differentiate<br/>
+Learning objective: Given a rendered FHIR Bundle, the learner can examine which JSON reference fields correspond to which graph edges, and differentiate the six core resource types by the fields each one carries.</p>
+<p>Purpose: Render the Maria Chen FHIR Bundle above as an interactive node-and-edge graph so the learner directly experiences a FHIR Bundle as a labeled property graph rather than as abstract JSON.</p>
+<p>Node types to show (color-coded by resourceType, exact data from the Bundle above):
+- <code>Patient</code> (pink circle) — maria-chen
+- <code>Encounter</code> (gray square) — enc-1, Annual Physical
+- <code>Condition</code> (orange diamond) — cond-1, Type 2 Diabetes (E11.9)
+- <code>Observation</code> (yellow circle) — obs-1, HbA1c 8.2%
+- <code>MedicationRequest</code> (purple hexagon) — med-1, Metformin 500mg
+- <code>CarePlan</code> (green triangle) — cp-1, Quarterly HbA1c monitoring</p>
+<p>Edge types to show (labeled by the FHIR field name they came from):
+- <code>subject</code> (Condition, Encounter, Observation, MedicationRequest, CarePlan → Patient)
+- <code>encounter</code> (Observation → Encounter)
+- <code>addresses</code> (CarePlan → Condition)
+- <code>requester</code> (MedicationRequest → Practitioner, shown as an unresolved reference badge if Practitioner is not loaded in this bundle)</p>
+<p>Interactive controls:
+- Click any node to open a side panel showing the exact raw JSON for that resource
+- Hover any edge to see a tooltip naming the FHIR field that produced it (e.g., "this edge came from the <code>addresses</code> field")
+- Toggle: "JSON View" vs "Graph View" that shows the same Bundle as raw formatted JSON side by side with the rendered graph, so the learner can match a specific JSON reference field to its corresponding edge</p>
+<p>Instructional Rationale: A toggle between JSON and graph views directly targets the Analyze-level objective, requiring the learner to map specific document fields onto specific graph structures rather than accepting the JSON-equals-graph claim in prose alone.</p>
+<p>Implementation: vis-network JavaScript library; responsive width, 550px height.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">FHIR Resources Were a Graph All Along</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice what just happened: a <code>reference</code> field in a FHIR resource is nothing more than an edge with a fancy JSON syntax. Every FHIR Bundle you will ever see is secretly a small labeled property graph wearing a REST API costume. Once you see it, you can't unsee it.</p>
+</div>
+<h2 id="from-guidelines-to-executable-logic-plandefinition-and-activitydefinition">From Guidelines to Executable Logic: PlanDefinition and ActivityDefinition</h2>
+<p>Most of the resources above describe facts about a patient. Two more specialized resources instead describe clinical <em>logic</em> — what should happen, not what already happened. The <strong>PlanDefinition resource</strong> represents a reusable, shareable definition of a clinical protocol, order set, or guideline as a structured sequence of triggers, conditions, and actions — it is the FHIR-native way to encode "if a patient meets these criteria, recommend these actions" as data rather than as narrative prose. The <strong>ActivityDefinition resource</strong> represents a single reusable, executable definition of one specific action a PlanDefinition can trigger — order this lab test, prescribe this medication, schedule this referral — independent of any particular patient, so the same ActivityDefinition can be invoked by many different PlanDefinitions.</p>
+<p>A worked example connects the two. A diabetes-screening guideline is authored as a PlanDefinition: "if patient age is 35-70 AND BMI is 25 or greater AND no active diabetes diagnosis exists, then perform the action defined by ActivityDefinition/order-hba1c-test." At runtime, a clinical reasoning engine evaluates the PlanDefinition's trigger criteria against a specific patient's FHIR resources (a Patient resource's <code>birthDate</code> and an Observation resource holding BMI), and if the criteria are satisfied, instantiates the referenced ActivityDefinition — "order-hba1c-test" — as an actual, patient-specific order. The PlanDefinition is written once by a knowledge engineer and reused across every patient it applies to; the ActivityDefinition it references is written once and reused across every PlanDefinition that needs to trigger that same action. This separation — reusable logic definitions that reference reusable action definitions, evaluated against patient-specific data at runtime — is what makes a guideline authored as FHIR resources directly executable rather than merely readable, and it is the exact resource pair the next two chapters build on when introducing Clinical Quality Language and the Clinical Reasoning Module.</p>
+<p>A PlanDefinition rarely expresses its trigger criteria as inline structured fields the way the simplified example above suggests; in a real deployment, the <code>action.condition</code> field instead holds an expression written in Clinical Quality Language and the <code>library</code> field points to a separate CQL Library resource containing the full logic — a forward reference Chapter 23 develops in depth. PlanDefinition actions also support several distinct <code>trigger</code> types beyond a simple always-check-on-demand pattern: a <code>named-event</code> trigger fires whenever a specific event occurs in the workflow (such as "medication-order-select"), while a <code>periodic</code> trigger fires on a schedule (such as nightly, to sweep an entire patient panel for anyone newly eligible for screening). Choosing the right trigger type is itself a design decision — an always-on periodic sweep finds newly eligible patients proactively but consumes computing resources continuously, while an event trigger is cheaper but only catches patients at the moment a relevant workflow event happens to occur.</p>
+<h4 id="diagram-plandefinition-to-activitydefinition-trigger-flow">Diagram: PlanDefinition to ActivityDefinition Trigger Flow</h4>
+<iframe src="../../sims/plandefinition-activitydefinition-trigger-flow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>PlanDefinition to ActivityDefinition Trigger Flow</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> plandefinition-activitydefinition-trigger-flow<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: apply, demonstrate<br/>
+Learning objective: Given a patient's age and BMI values, the learner can apply a PlanDefinition's trigger criteria to determine whether its referenced ActivityDefinition fires for that patient.</p>
+<p>Purpose: Let the learner test different patient ages and BMI values against the diabetes-screening PlanDefinition's criteria and see, in real time, whether the ActivityDefinition action would be triggered.</p>
+<p>Components to show:
+- Node "PlanDefinition: Diabetes Screening Guideline" (blue box) — displays its trigger criteria as readable text (age 35-70, BMI &gt;= 25, no active diabetes diagnosis)
+- Node "Patient Data Inputs" (pink box) — sliders for age (18-90) and BMI (15-45), and a toggle for "has active diabetes diagnosis"
+- Node "Evaluation Result" (yellow diamond) — shows TRUE/FALSE based on current slider values
+- Node "ActivityDefinition: Order HbA1c Test" (green box) — highlights and animates only when Evaluation Result is TRUE, showing the generated patient-specific order</p>
+<p>Connections: Patient Data Inputs → Evaluation Result (labeled "criteria checked against"); Evaluation Result → ActivityDefinition (labeled "triggers, if true")</p>
+<p>Interactive controls:
+- Sliders for age and BMI, toggle for existing diabetes diagnosis, all live-updating the Evaluation Result node
+- Click on the PlanDefinition node to see its full trigger-criteria text; click the ActivityDefinition node (when triggered) to see the resulting patient-specific order as JSON</p>
+<p>Instructional Rationale: Live sliders that immediately re-evaluate the trigger condition match the Apply-level objective, requiring the learner to test specific input combinations and observe the resulting pass/fail outcome rather than only reading the criteria as static text.</p>
+<p>Implementation: vis-network for the node layout combined with p5.js-style slider controls; responsive width.</p>
+</details>
+<h2 id="the-four-levels-of-knowledge-representation">The Four Levels of Knowledge Representation</h2>
+<p>Not every clinical guideline is equally "computable." A guideline written as a paragraph of prose in a PDF and a guideline compiled into an executable PlanDefinition represent the same clinical knowledge at very different points on a spectrum, and FHIR gives that spectrum a formal name: the <strong>Knowledge Representation Level</strong> — a classification of how computable a piece of clinical knowledge is, ranging across four defined levels, each trading off ease of authorship and broad shareability against how directly a computer can act on the content.</p>
+<p>At the <strong>Narrative Level</strong>, clinical guidelines are expressed as plain narrative text — the paragraphs a guideline committee writes and publishes, readable by any clinician but requiring a human to interpret before any computer system can act on it. Narrative-level knowledge is authored by guideline developers (physicians, researchers) specifically because it demands no specialized computing expertise to write or to read, which is exactly why it remains the level at which the vast majority of clinical guidelines are still published worldwide. A cardiology society's published statement that "adults with LDL cholesterol persistently above 190 mg/dL and no contraindication should be considered for high-intensity statin therapy" is a textbook Narrative-level artifact: authoritative, broadly shareable across every specialty and every EHR vendor on earth, and entirely dependent on a clinician reading and applying it correctly.</p>
+<p>At the <strong>Semi-Structured Level</strong>, the same knowledge is organized into flowcharts, decision tables, personas, and user stories — still authored by clinical experts rather than programmers, but arranged into a consistent, partially formal shape that a knowledge engineer can more easily translate into code later. A decision table listing "if LDL &gt; 190 AND no statin allergy, recommend high-intensity statin" in table-row form is semi-structured: more computable than a paragraph, but still not directly executable, since "no statin allergy" still requires a human (or, eventually, a knowledge engineer) to decide precisely which coded allergy entries in a patient's chart count as satisfying that condition.</p>
+<p>At the <strong>Structured Level</strong>, knowledge is expressed in computer-interpretable, coded formats using standard terminologies — a FHIR PlanDefinition whose trigger criteria reference actual SNOMED CT and LOINC codes rather than free-text descriptions. Structured-level knowledge requires a knowledge engineer to author (someone fluent in both the clinical content and the coding formats), but it achieves both high computability and broad shareability, since any FHIR-conformant system can parse the same structured resource identically. Continuing the statin example, a Structured-level version binds "LDL cholesterol" to the specific LOINC code 2089-1, binds "statin allergy" to a specific ValueSet of RxNorm ingredient codes, and expresses the full trigger as a PlanDefinition action referencing both — still platform-neutral (any FHIR-conformant clinical reasoning engine can parse it identically), but now unambiguous in exactly which coded data elements it depends on.</p>
+<p>At the <strong>Executable Level</strong>, knowledge is coded directly for a specific clinical decision support system for direct runtime execution — a compiled rule ready to run inside one particular EHR vendor's rules engine, with no remaining ambiguity or interpretation left for a human or a general-purpose parser. Finishing the statin example: the Structured-level PlanDefinition is compiled into the Expression Logical Model (ELM) format Chapter 23 introduces, and that compiled ELM is loaded into a specific hospital's specific CDS engine, where it runs automatically every time a qualifying patient's chart is opened. Executable-level artifacts trade away some of the Structured level's platform-neutral shareability in exchange for being immediately runnable, which is precisely the trade-off Chapter 23's discussion of Clinical Quality Language and its compiled Expression Logical Model will explore in depth.</p>
+<p>Tracing this single statin recommendation across all four levels also reveals a consistent pattern in <em>who</em> authors each level and how much specialized expertise that authorship requires: a guideline developer needs only clinical expertise to write the Narrative level; a clinical expert (sometimes the same person) needs enough structure-mindedness to build the Semi-Structured decision table; a knowledge engineer needs both clinical fluency and familiarity with coding systems to produce the Structured level; and a platform-specific developer needs to understand one particular vendor's execution environment to finish the Executable level. Computability increases monotonically down this list, while the pool of people qualified to author each level shrinks at every step — which is exactly why most clinical knowledge in the world still lives at the Narrative level, and why the transformation pipeline this book's final CDS chapters describe is so valuable: it lets a narrow team of knowledge engineers make Narrative-level expertise executable at scale, instead of requiring every guideline author to also become a software developer.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Remember the Order With 'N-S-S-E'</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a memory shortcut: Narrative, Semi-Structured, Structured, Executable — each level trades a little more human readability for a little more machine runnability. If you can place any artifact on that N-S-S-E line, you've correctly classified its knowledge representation level.</p>
+</div>
+<p>These four levels intersect with a second, independent classification: the <strong>Tiers of Functionality</strong>, which sort a clinical knowledge artifact by <em>what kind</em> of content it carries rather than by how computable it is. The <strong>Data Tier</strong> covers the concepts and data elements a piece of knowledge refers to — which codes, which value sets, which patient attributes. The <strong>Logic Tier</strong> covers the business and process rules — the actual "if this, then that" reasoning. A third tier, the Forms/UI Tier, covers user interface and interaction design; it is developed fully in the next chapter, since guideline authoring artifacts like decision tables and user stories belong to that tier.</p>
+<p>Crossing the four levels against the tiers of functionality produces a matrix that classifies any clinical knowledge artifact by two independent dimensions at once — for example, a PlanDefinition's trigger criteria are Structured-level Logic Tier content, while the same PlanDefinition's reference to a specific LOINC lab code is Structured-level Data Tier content.</p>
+<h4 id="diagram-knowledge-representation-levels-by-functional-tier-matrix">Diagram: Knowledge Representation Levels by Functional Tier Matrix</h4>
+<iframe src="../../sims/knowledge-representation-levels-tier-matrix/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>Knowledge Representation Levels by Functional Tier Matrix</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> knowledge-representation-levels-tier-matrix<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: classify, examine<br/>
+Learning objective: Given a description of a clinical knowledge artifact, the learner can classify it by both its knowledge representation level (Narrative, Semi-Structured, Structured, Executable) and its functional tier (Data, Logic, Forms/UI) using the matrix.</p>
+<p>Purpose: Give the learner a single reference grid, built from FHIR's own CQF Recommendations implementation guide, showing a concrete example artifact in each of the twelve level-by-tier cells, with the Data and Logic Tier columns fully detailed for this chapter and the Forms/UI column marked as a forward reference to Chapters 23 and 24, where the Forms/UI Tier concept itself and its Structured/Executable-level artifacts are covered.</p>
+<p>Grid layout: 4 rows (Narrative, Semi-Structured, Structured, Executable) by 3 columns (Data Tier, Logic Tier, Forms/UI Tier)</p>
+<p>Example cell contents (click to reveal full text; shown abbreviated on the grid):
+- Narrative x Data: "LDL cholesterol mentioned in guideline prose"
+- Narrative x Logic: "'Consider a statin for elevated LDL' (prose recommendation)"
+- Narrative x Forms/UI: "Guideline PDF's patient handout section (detailed in Ch. 23)"
+- Semi-Structured x Data: "Decision table column: 'LDL value'"
+- Semi-Structured x Logic: "Decision table row: IF LDL &gt; 190 THEN recommend statin"
+- Semi-Structured x Forms/UI: "Clinical user story describing the counseling conversation (Ch. 23)"
+- Structured x Data: "FHIR ValueSet binding LDL to LOINC code 2089-1"
+- Structured x Logic: "PlanDefinition trigger: LDL Observation &gt; 190 mg/dL"
+- Structured x Forms/UI: "FHIR Questionnaire item definition (Ch. 24)"
+- Executable x Data: "Compiled ELM data requirement for LOINC 2089-1"
+- Executable x Logic: "Compiled ELM expression evaluated by the CDS engine"
+- Executable x Forms/UI: "Rendered CDS Hooks card in the EHR UI (Ch. 24)"</p>
+<p>Interactive controls:
+- Click any cell to open an infobox with the full example text and a one-sentence explanation of why it belongs at that level and tier
+- Hover a row header (a level name) to highlight that entire row and show the level's definition in a side panel
+- Hover a column header (a tier name) to highlight that entire column and show the tier's definition in a side panel
+- Data Tier and Logic Tier cells rendered in full color; Forms/UI Tier cells rendered in a muted gray with a "Chapter 23/24" badge, signaling they are previewed here but taught fully later</p>
+<p>Instructional Rationale: A clickable grid matches the Analyze-level classification objective directly — the learner must locate the correct row and column for a new artifact rather than recall a linear list, which is the actual cognitive task the chapter's culminating learning outcome requires.</p>
+<p>Implementation: p5.js grid rendering with click and hover event handling; responsive width, fixed 4x3 aspect ratio.</p>
+</details>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Structured Is Not the Same as Executable</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A common mix-up: assuming a Structured-level FHIR resource is already runnable. It isn't quite yet — Structured means computer-<em>interpretable</em> using standard codes and formats, but Executable means compiled and ready for one specific platform to run without further translation. The next chapter's Expression Logical Model is exactly that translation step.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Classify Any Clinical Knowledge Artifact</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Look at what just clicked into place: FHIR resources as a REST-exchanged graph, the six core resources that describe a single encounter, PlanDefinition and ActivityDefinition as executable logic, and the full Narrative-to-Executable spectrum crossed with the tiers of functionality. That is the entire foundation clinical decision support is built on.</p>
+</div>
+<p>This chapter established the vocabulary FHIR uses to represent clinical data (resources, exchanged over a RESTful API, hosted on a FHIR server) and the vocabulary it uses to classify clinical <em>knowledge</em> by how computable it is (the four Knowledge Representation Levels) and by what kind of content it carries (the Tiers of Functionality). Maria Chen's patient record, first drawn as a bare graph in Chapter 1, is now a FHIR Bundle of cross-referencing resources, and a diabetes-screening guideline is now a PlanDefinition capable of triggering a specific, patient-tested ActivityDefinition. The next chapter picks up exactly where the Structured and Executable levels leave off, introducing Clinical Quality Language as the human-readable authoring format that compiles into the machine-executable logic these levels describe. Continue to <a href="../23-clinical-guideline-authoring-and-cql/">Chapter 23: Clinical Guideline Authoring and Clinical Quality Language</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../21-responsible-ai-and-agentic-systems/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 21. Responsible AI and Agentic Systems">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                21. Responsible AI and Agentic Systems
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../23-clinical-guideline-authoring-and-cql/" class="md-footer__link md-footer__link--next" aria-label="Next: 23. Clinical Guideline Authoring and Clinical Quality Language">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                23. Clinical Guideline Authoring and Clinical Quality Language
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

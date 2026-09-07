@@ -1,0 +1,23 @@
+{
+  "title": "Remote Monitoring Data Flow Graph Model",
+  "description": "Explain how patient-generated data (portal, PRO, wearable) flows through a remote patient monitoring process into a telehealth visit, and classify each node by whether it is patient-originated or system-generated.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "remote-monitoring-data-flow-graph-model",
+  "library": "vis-network",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "explain, classify<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 11,
+  "chapter_title": "Specialty Care, Surgery, and Remote Monitoring",
+  "chapter_dir": "11-specialty-care-surgery-remote-monitoring",
+  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring"
+}

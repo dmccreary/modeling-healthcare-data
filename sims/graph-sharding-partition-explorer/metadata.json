@@ -1,0 +1,23 @@
+{
+  "title": "Graph Sharding Partition Explorer",
+  "description": "Given a patient graph partitioned across three shards, the learner can distinguish same-shard edges from cross-shard edges and examine why cross-shard traversal costs more.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "graph-sharding-partition-explorer",
+  "library": "vis-network",
+  "bloomLevel": "Analyze<br/>",
+  "bloomVerb": "examine, distinguish<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "Graph Database Scalability and Operations",
+  "chapter_dir": "04-graph-database-scalability-operations",
+  "chapter_rel_dir": "chapters/04-graph-database-scalability-operations"
+}

@@ -1,0 +1,2546 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models provider network fraud rings, fraud risk scoring, investigation workflows, and the regulatory compliance apparatus -- the False Claims Act, recovery audits, and exclusion lists -- used to act on detected fraud.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/19-fraud-investigation-and-compliance/">
+      
+      
+        <link rel="prev" href="../18-healthcare-fraud-patterns-and-detection/">
+      
+      
+        <link rel="next" href="../20-ai-llms-and-knowledge-graphs-for-healthcare/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Fraud Investigation and Compliance - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Fraud Investigation and Compliance - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models provider network fraud rings, fraud risk scoring, investigation workflows, and the regulatory compliance apparatus -- the False Claims Act, recovery audits, and exclusion lists -- used to act on detected fraud." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/19-fraud-investigation-and-compliance/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/19-fraud-investigation-and-compliance/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Fraud Investigation and Compliance - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models provider network fraud rings, fraud risk scoring, investigation workflows, and the regulatory compliance apparatus -- the False Claims Act, recovery audits, and exclusion lists -- used to act on detected fraud." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/19-fraud-investigation-and-compliance/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fraud-investigation-and-compliance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fraud Investigation and Compliance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-network-fraud-and-structural-rings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Network Fraud and Structural Rings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Network Fraud and Structural Rings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-network-centrality-analysis-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Network Centrality Analysis Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#individual-fraud-patterns-worth-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Individual Fraud Patterns Worth Naming
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-and-investigating-suspicious-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scoring and Investigating Suspicious Activity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scoring and Investigating Suspicious Activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-network-fraud-detection-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Network Fraud Detection Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regulatory-and-compliance-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regulatory and Compliance Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-network-fraud-and-structural-rings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Network Fraud and Structural Rings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Network Fraud and Structural Rings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-network-centrality-analysis-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Network Centrality Analysis Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#individual-fraud-patterns-worth-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Individual Fraud Patterns Worth Naming
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-and-investigating-suspicious-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scoring and Investigating Suspicious Activity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scoring and Investigating Suspicious Activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-network-fraud-detection-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Network Fraud Detection Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regulatory-and-compliance-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regulatory and Compliance Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/19-fraud-investigation-and-compliance/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="fraud-investigation-and-compliance">Fraud Investigation and Compliance</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter continues the fraud track into investigation and compliance: provider network fraud, identity theft, pill mills, and collusion rings, along with the fraud risk scoring and investigation workflows used to act on suspicious activity. It covers the regulatory and compliance side -- the False Claims Act, recovery audit contractors, and sanctioned provider lists -- and concludes with fraud analytics dashboards and graph-based fraud ring detection.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provider Network Fraud</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Identity Theft Fraud</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Pill Mill</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Collusion Ring</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Outlier Billing Pattern</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Fraud Risk Score</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Fraud Investigation Workflow</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Suspicious Activity Report</td>
+<td>1</td>
+</tr>
+<tr>
+<td>False Claims Act</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Recovery Audit Contractor</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Sanctioned Provider List</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Exclusion List Screening</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Fraud Analytics Dashboard</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Graph-Based Fraud Ring</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Shell Company Detection</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../18-healthcare-fraud-patterns-and-detection/">Chapter 18: Healthcare Fraud Patterns and Detection</a></li>
+</ul>
+<hr />
+<p>Chapter 18 answered "is this pattern suspicious?" This chapter answers "what happens next?" A flagged pattern is only the beginning: it must be scored, routed to a human investigator, corroborated with evidence, and — if substantiated — acted on through the legal and regulatory machinery built specifically to recover fraudulent payments and prevent sanctioned individuals from billing the system again. This chapter follows that path from a single suspicious cluster in a provider network, through fraud risk scoring and investigation, to the compliance infrastructure that closes the loop.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">From Suspicion to Case File</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Welcome back! Chapter 18 taught us to spot the patterns — now we follow one all the way to a resolution. We'll build a fraud ring out of individual suspicious signals, score it, route it to an investigator, and trace it through the actual laws and lists that keep bad actors from billing the system again. Let's connect the dots, arm by arm.</p>
+</div>
+<h2 id="provider-network-fraud-and-structural-rings">Provider Network Fraud and Structural Rings</h2>
+<p>Individual fraud patterns from Chapter 18 become far more damaging, and far more detectable, when several providers coordinate. <strong>Provider network fraud</strong> describes fraud schemes that operate across a connected group of providers rather than a single one — a scheme is fundamentally a network problem, not an individual one, the moment payment for fraudulent care is being split, laundered, or coordinated across more than one billing entity. This distinction matters practically as well as analytically: a lone bad actor is contained the moment that one provider is excluded from billing, while a network scheme simply reroutes its fraudulent volume through whichever ring member has not yet been caught, unless the <em>entire</em> ring is identified and addressed together — which is precisely the case for the graph-native detection techniques this section builds toward.</p>
+<p>A <strong>collusion ring</strong> is the general term for such a coordinating group: multiple providers, suppliers, or facilities knowingly cooperating to submit or support fraudulent claims, sharing in the resulting proceeds. When that ring's structure is specifically visible as a distinctive shape in a claims or referral graph — a dense, isolated cluster with unusually reciprocal or one-directional connections unlike anything in the surrounding legitimate network — analysts refer to it as a <strong>graph-based fraud ring</strong>, the structural, graph-native counterpart to the legal concept of a collusion ring. The two terms describe the same underlying scheme from two different vantage points: "collusion ring" is how a prosecutor or compliance officer names the coordinated behavior, while "graph-based fraud ring" is how that same behavior appears once claims, referrals, and ownership records are all loaded into a single connected graph.</p>
+<p>Rings frequently launder proceeds through <strong>shell company detection</strong> targets: a shell company is a business entity with no genuine operations, employees, or physical presence, created solely to receive and redistribute fraudulent payments while obscuring the ultimate beneficiary from a cursory ownership check. A billing entity registered days before submitting its first claim, with a residential mailing address and no verifiable staff, is a textbook candidate for shell-company screening — precisely the kind of fact that a graph query linking corporate registration data, provider enrollment records, and claims volume can surface automatically, long before a manual audit would ever stumble onto it.</p>
+<h4 id="diagram-provider-network-centrality-analysis-dashboard">Diagram: Provider Network Centrality Analysis Dashboard</h4>
+<iframe src="../../sims/provider-network-centrality-analysis-dashboard/main.html" width="100%" height="795px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/provider-network-centrality-analysis-dashboard/main.html">Run the Provider Network Centrality Analysis Dashboard Fullscreen</a></p>
+<details>
+<summary>Provider Network Centrality Analysis Dashboard (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> provider-network-centrality-analysis-dashboard<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/provider-network-centrality-analysis-dashboard/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/provider-network-centrality-analysis-dashboard</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, examine<br/>
+Learning objective: Given degree, betweenness, and PageRank centrality rankings for a provider referral network, the learner can differentiate what each measure captures and identify which kind of "important" node is most relevant to detecting a coordinating ring.</p>
+<p>Reused from this book's MicroSim library. Switching between Degree, Betweenness, and PageRank re-ranks 16 providers and reshapes the distribution histogram, while the fixed Degree-vs-PageRank scatter shows the two measures diverge -- a provider central to a ring by connection count is not automatically the provider other trusted nodes route through, a distinction directly relevant to identifying which member of a collusion ring is its actual organizer versus a peripheral participant.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Rings Are a Centrality Problem in Disguise</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Here's a mental model worth keeping from Chapter 5: finding the organizer of a fraud ring is really a centrality question. The provider with the most connections isn't necessarily the ringleader — sometimes the ringleader is the one every other node quietly routes through, which is exactly the distinction between degree and betweenness centrality.</p>
+</div>
+<h2 id="individual-fraud-patterns-worth-naming">Individual Fraud Patterns Worth Naming</h2>
+<p>Not every fraud pattern requires a multi-provider ring. <strong>Identity theft fraud</strong> occurs when a stolen patient or provider identity — a member ID, a Social Security number, or a National Provider Identifier — is used to submit fraudulent claims, meaning the billed care may be entirely fabricated against a real person's identity who never received it and may not even know a claim was filed until an EOB from Chapter 15 arrives for care they never received. Graph analytics catches identity theft partly through geography: a member's claims suddenly appearing from a provider hundreds of miles from every prior claim on that same identity is a pattern a simple distance calculation across the member's claim history surfaces immediately. A <strong>pill mill</strong> is a clinic or prescriber that issues controlled-substance prescriptions, typically opioids, with little or no legitimate medical evaluation, functioning less as a medical practice and more as a distribution point — a pattern that graph analytics detects through prescribing-volume outliers combined with an unusually narrow, repetitive diagnosis pattern across an implausibly large patient panel, often reinforced by patients traveling unusually long distances specifically to reach that single prescriber, bypassing dozens of closer alternatives.</p>
+<p>Both of these, along with the fraud patterns from Chapter 18, are frequently first surfaced as an <strong>outlier billing pattern</strong> — any billing statistic (claim volume, average reimbursement per patient, prescribing rate) that falls well outside the normal distribution for a provider's specialty and geography. An outlier billing pattern is deliberately a broader, more provisional signal than any of the named fraud types above: it is simply a statistical starting point, not an accusation, that routes a provider into the fraud risk scoring process covered next.</p>
+<h2 id="scoring-and-investigating-suspicious-activity">Scoring and Investigating Suspicious Activity</h2>
+<p>A single detection technique from Chapter 18 rarely triggers an investigation on its own; production systems instead combine many signals into a single <strong>fraud risk score</strong> — a composite numeric rating, typically produced by weighting the outputs of several detection algorithms (anomaly detection, community detection, referral network analysis, outlier billing patterns) together, that ranks providers or claims by their relative likelihood of involving fraud. Because a fraud risk score is a composite, examining its individual components matters as much as the final number: two providers with an identical overall score can carry entirely different underlying risk profiles, one driven by billing-volume anomalies and the other by network position, which materially changes how an investigator should approach each case — a network-position-driven score points an investigator toward mapping a ring's other members first, while a volume-driven score points toward auditing a stack of individual claims.</p>
+<p>Once a provider's fraud risk score crosses an organization's threshold, it enters the <strong>fraud investigation workflow</strong> — the structured process (typically encompassing case creation, evidence gathering, provider outreach, and a final disposition) that takes a statistical flag and determines whether genuine fraud occurred. This is where the fraud-versus-waste-versus-abuse distinction from Chapter 18 finally gets resolved with real evidence rather than a statistical guess: an investigator might pull medical records, interview patients named on suspicious claims, or request the provider's own billing documentation, none of which any graph algorithm alone can substitute for. If an investigation substantiates likely criminal fraud, the organization typically files a <strong>suspicious activity report (SAR)</strong> — a formal filing to a financial regulator or law enforcement agency documenting the suspicious transaction pattern, a reporting obligation shared with the banking industry, in the healthcare context adapted to describe fraudulent billing rather than money laundering. Every step of this process, from the initial risk score through the SAR filing, is typically monitored through a <strong>fraud analytics dashboard</strong> — a consolidated operational view that a fraud program's leadership uses to track total exposure, investigation throughput, and recovered dollars across every open case at once, rather than reviewing individual cases one at a time, turning what would otherwise be dozens of disconnected case files into a single measurable program.</p>
+<h4 id="diagram-provider-network-fraud-detection-dashboard">Diagram: Provider Network Fraud Detection Dashboard</h4>
+<iframe src="../../sims/provider-network-fraud-detection-dashboard/main.html" width="100%" height="750px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/provider-network-fraud-detection-dashboard/main.html">Run the Provider Network Fraud Detection Dashboard Fullscreen</a></p>
+<details>
+<summary>Provider Network Fraud Detection Dashboard (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> provider-network-fraud-detection-dashboard<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/provider-network-fraud-detection-dashboard/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/provider-network-fraud-detection-dashboard</p>
+<p>Bloom Taxonomy: Evaluate<br/>
+Bloom Taxonomy Verb: assess, justify<br/>
+Learning objective: Given ranked provider risk scores, a rising-indicator trend line, algorithm precision/recall comparisons, and a financial-impact breakdown, the learner can assess overall program performance and justify why a combined detection model outperforms any single algorithm.</p>
+<p>Reused from this book's MicroSim library. This four-panel dashboard summarizes $128.5M in billing with an estimated 24% fraud rate across a provider network, ranking top providers by composite fraud risk score, tracking indicator trends over 24 months, comparing detection-algorithm precision and recall, and breaking down estimated fraud, dollars recovered, and clean billing -- exactly the consolidated operational view a fraud analytics dashboard is meant to provide, tying the individual risk-scoring concepts above into one program-level picture.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">A Fast Way to Read Any Fraud Dashboard</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+When you land on an unfamiliar fraud dashboard, look for the precision-versus-recall comparison first. It tells you, in one glance, whether the underlying detection system is tuned to catch more fraud (higher recall) or to waste less investigator time on false alarms (higher precision) — and that single trade-off explains most of the dashboard's other numbers.</p>
+</div>
+<h2 id="regulatory-and-compliance-response">Regulatory and Compliance Response</h2>
+<p>Substantiated healthcare fraud in the United States is prosecuted primarily under the <strong>False Claims Act</strong>, a federal law imposing civil (and, in serious cases, criminal) liability on any person or organization that knowingly submits a false claim for government payment — including Medicare and Medicaid claims — with penalties that can include treble damages, meaning three times the fraudulently obtained amount, on top of the original recovery. The Act also includes a distinctive qui tam provision, letting a private whistleblower (often an employee with inside knowledge of the scheme) file suit on the government's behalf and collect a percentage of whatever is ultimately recovered — a structure that has made whistleblower tips one of the most productive sources of fraud cases the government pursues, independent of any graph-based detection at all.</p>
+<p>A related enforcement mechanism operates continuously rather than only after a whistleblower or investigation triggers it: a <strong>recovery audit contractor (RAC)</strong> is a third-party auditor, under contract with a government payer, that reviews already-paid claims specifically to identify improper payments — including but not limited to fraud, since a RAC audit also catches honest coding errors and waste — and recoups the improper amount directly from the provider. RACs are typically compensated on a contingency basis, earning a percentage of whatever they successfully recover, which aligns their incentives with aggressive claim review but also means their findings are not automatically evidence of fraud in the stricter, intent-based sense defined in Chapter 18.</p>
+<p>Prevention operates alongside prosecution and recovery. A <strong>sanctioned provider list</strong> — most prominently the Office of Inspector General's List of Excluded Individuals/Entities (LEIE), alongside the federal SAM.gov exclusion list and individual state Medicaid exclusion lists — names providers and individuals barred from participating in federal healthcare programs, typically following a fraud conviction, license revocation, or serious patient-safety violation. <strong>Exclusion list screening</strong> is the compliance process of checking every provider, employee, and vendor an organization pays against these lists, on hire and on an ongoing basis, since knowingly billing federal programs for services involving an excluded individual is itself a separate compliance violation regardless of whether any new fraud occurs. The table below reinforces the sanctioned-list ecosystem a comprehensive exclusion-screening program must check.</p>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Maintained By</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List of Excluded Individuals/Entities (LEIE)</td>
+<td>HHS Office of Inspector General</td>
+<td>Federal healthcare program exclusions nationwide</td>
+</tr>
+<tr>
+<td>SAM.gov Exclusion List</td>
+<td>General Services Administration</td>
+<td>All federal contracting and program exclusions</td>
+</tr>
+<tr>
+<td>State Medicaid Exclusion Lists</td>
+<td>Individual state Medicaid agencies</td>
+<td>State-specific Medicaid program exclusions</td>
+</tr>
+</tbody>
+</table>
+<p>Modeled as a graph, exclusion list screening is a straightforward but continuously repeated traversal: every <code>Provider</code> node checked against an <code>EXCLUDED_ON</code> edge to any current sanctioned-list entry, re-run on a schedule rather than once at hiring, since a provider can be added to a list years into an existing employment or contracting relationship.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">The Regulatory Alphabet Soup Is Normal to Find Overwhelming</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+False Claims Act, RACs, LEIE, SAM.gov — that is a genuine wall of acronyms to absorb in one sitting, and feeling a little overwhelmed by it is a completely normal reaction, not a sign you're behind. Focus on the pattern underneath them: one law punishes fraud after the fact, one auditor recovers money already paid, and the lists prevent known bad actors from getting paid again in the first place. The specific names will stick with a little repetition.</p>
+</div>
+<p>Prosecution, recovery, and exclusion together close the loop this chapter opened with a single suspicious cluster in a provider network: detection routes a case to investigation, investigation determines whether the law applies, and the resulting compliance apparatus keeps a confirmed bad actor from simply reappearing under a new billing number.</p>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Follow Fraud From Suspicion to Resolution</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just traced the entire back half of the fraud lifecycle — provider network rings, fraud risk scoring, investigation workflows, and the False Claims Act, recovery audits, and exclusion lists that make prosecution and prevention possible. Combined with Chapter 18, you now have a complete, end-to-end model of healthcare fraud, from a single suspicious claim to a resolved case file.</p>
+</div>
+<p>This chapter completed the fraud track by modeling what happens after a pattern from Chapter 18 is flagged: provider network fraud and collusion rings reveal themselves as graph-based fraud rings and shell companies, individual patterns like identity theft and pill mills feed into fraud risk scoring, and substantiated cases move through a fraud investigation workflow, a suspicious activity report, and — when warranted — prosecution under the False Claims Act, recovery through a RAC audit, and prevention through exclusion list screening. With patient, provider, payer, and fraud perspectives all now modeled, <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/">Chapter 20</a> turns to how AI, large language models, and knowledge graphs build on everything covered so far.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 18. Healthcare Fraud Patterns and Detection">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                18. Healthcare Fraud Patterns and Detection
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-footer__link md-footer__link--next" aria-label="Next: 20. AI, LLMs, and Knowledge Graphs for Healthcare">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                20. AI, LLMs, and Knowledge Graphs for Healthcare
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

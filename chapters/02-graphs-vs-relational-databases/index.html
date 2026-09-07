@@ -1,0 +1,2835 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/02-graphs-vs-relational-databases/">
+      
+      
+        <link rel="prev" href="../01-foundations-of-graph-structures/">
+      
+      
+        <link rel="next" href="../03-graph-query-languages-pattern-matching/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>2. Data Modeling: Graphs vs. Relational Databases - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="2. Data Modeling: Graphs vs. Relational Databases - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/02-graphs-vs-relational-databases/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/02-graphs-vs-relational-databases/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="2. Data Modeling: Graphs vs. Relational Databases - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/02-graphs-vs-relational-databases/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-modeling-graphs-vs-relational-databases" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Data Modeling: Graphs vs. Relational Databases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-relational-toolkit-briefly-revisited" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Relational Toolkit, Briefly Revisited
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-models-the-same-domain-two-different-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Models: The Same Domain, Two Different Shapes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Models: The Same Domain, Two Different Shapes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-relational-vs-graph-data-model-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Relational vs. Graph Data Model Side-by-Side
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-on-write-vs-schema-on-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema-On-Write vs. Schema-On-Read
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-graph-model-precisely" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the Graph Model Precisely
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-property-graphs-other-graph-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond Property Graphs: Other Graph Formats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-query-the-payoff-of-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Query: The Payoff of the Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Query: The Payoff of the Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-performance-vs-relationship-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Performance vs. Relationship Depth
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-relational-toolkit-briefly-revisited" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Relational Toolkit, Briefly Revisited
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-models-the-same-domain-two-different-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Models: The Same Domain, Two Different Shapes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Models: The Same Domain, Two Different Shapes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-relational-vs-graph-data-model-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Relational vs. Graph Data Model Side-by-Side
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-on-write-vs-schema-on-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema-On-Write vs. Schema-On-Read
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-graph-model-precisely" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the Graph Model Precisely
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-property-graphs-other-graph-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond Property Graphs: Other Graph Formats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-query-the-payoff-of-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Query: The Payoff of the Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Query: The Payoff of the Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-performance-vs-relationship-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Performance vs. Relationship Depth
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/02-graphs-vs-relational-databases/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<hr />
+<p>title: Data Modeling: Graphs vs. Relational Databases
+description: Contrasts graph data modeling with relational database concepts (schemas, normalization, foreign keys, joins) and introduces schema-on-read, the property graph model, and alternative graph formats.
+generated_by: claude skill chapter-content-generator
+date: 2026-09-07 14:08:39
+version: 1.10</p>
+<hr />
+<h1 id="data-modeling-graphs-vs-relational-databases">Data Modeling: Graphs vs. Relational Databases</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter contrasts graph data modeling with the relational database concepts most students already know, including schemas, normalization, foreign keys, and joins. It introduces schema-on-read versus schema-on-write design, the property graph model, and alternative graph formats such as RDF triple stores and multigraphs. Students finish this chapter able to articulate why graph databases handle deeply interconnected data more naturally than relational tables.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Graph Query</td>
+<td>531</td>
+</tr>
+<tr>
+<td>Relational Database</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Database Schema</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data Model</td>
+<td>52</td>
+</tr>
+<tr>
+<td>Entity-Relationship Model</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Normalization</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Foreign Key</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Join Operation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Schema-On-Read</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Schema-On-Write</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Graph Data Model</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Property Graph Model</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RDF Triple Store</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Multigraph</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Graph Serialization</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-foundations-of-graph-structures/">Chapter 1: Foundations of Graph Structures</a></li>
+</ul>
+<hr />
+<p>Chapter 1 gave you the vocabulary of nodes, edges, and properties. Before you
+can appreciate why that vocabulary matters, you need a clear picture of the
+alternative most of you already know: the relational database. This chapter
+puts the two data modeling approaches side by side — table by table, join by
+join — so that the advantages of a labeled property graph stop being an
+assertion and become something you can demonstrate for yourself.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Two Ways to Draw the Same Data</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Let's connect the dots! In this chapter we take the same handful of healthcare facts and model them two different ways — first as tables, then as a graph — so you can watch, side by side, why one of them starts creaking under the weight of real clinical data. By the end, you will be able to explain exactly where that creaking comes from.</p>
+</div>
+<h2 id="the-relational-toolkit-briefly-revisited">The Relational Toolkit, Briefly Revisited</h2>
+<p>Since this course assumes prior database knowledge, this section is a quick
+refresher rather than an introduction. A <strong>relational database</strong> organizes
+data into tables of rows and columns, where each row represents one record
+and each column represents one attribute of that record. A <code>Patients</code> table
+might have columns for <code>patient_id</code>, <code>name</code>, and <code>date_of_birth</code>, with one
+row per patient. The rules that define what tables exist, what columns each
+table has, and what data types those columns accept make up the database's
+<strong>database schema</strong> — a contract the database enforces on every row written
+to it.</p>
+<p>Designers typically start from an <strong>entity-relationship model</strong>, a diagram
+notation that identifies the real-world "entities" a database must track
+(such as <code>Patient</code>, <code>Provider</code>, and <code>Encounter</code>) and the relationships
+between them, before translating that diagram into actual tables. An
+entity-relationship diagram for our running example would show <code>Patient</code>,
+<code>Provider</code>, and <code>Facility</code> as boxes, connected by lines labeled with the
+relationship's meaning and cardinality (one patient can have many
+encounters, but each encounter belongs to exactly one patient).</p>
+<p>To keep data consistent and avoid storing the same fact in two places
+that could drift out of sync, relational designers apply <strong>normalization</strong>:
+a set of design rules that split data into multiple related tables so that
+each fact is stored exactly once. Consider a naive <code>Encounters</code> table that
+repeats the provider's full name and specialty on every single row for that
+provider — if Dr. Patel changes specialties, every encounter row must be
+updated, and a missed row leaves the data inconsistent. Normalization fixes
+this by moving provider details into their own <code>Providers</code> table and
+referencing it from <code>Encounters</code> using an ID, so the specialty is stored
+once and read many times.</p>
+<p>Working through the standard normal forms on a concrete table makes the
+payoff measurable rather than abstract. Suppose an unnormalized
+<code>Encounters</code> table has one row per visit with columns <code>patient_name</code>,
+<code>provider_name</code>, <code>provider_specialty</code>, and <code>diagnosis_codes</code> — and that
+last column stores a comma-separated list like <code>"E11.9, I10"</code> whenever a
+visit addresses more than one condition. <strong>First normal form (1NF)</strong>
+requires every column to hold a single, atomic value, so the comma-separated
+diagnosis list must move into its own <code>Encounter_Diagnoses</code> table with one
+row per encounter-diagnosis pair. <strong>Second normal form (2NF)</strong> requires
+every non-key column to depend on the <em>entire</em> primary key, not just part of
+it; if <code>Encounters</code> has a composite key of <code>(patient_id, visit_date)</code> but
+<code>provider_specialty</code> only depends on which provider saw the patient, not on
+the visit date, it must move out. <strong>Third normal form (3NF)</strong> goes further,
+requiring non-key columns to depend on nothing <em>but</em> the key — since
+<code>provider_specialty</code> depends on <code>provider_id</code> rather than directly on the
+encounter, it belongs in <code>Providers</code>, not <code>Encounters</code>. Three passes, three
+new tables, and the single fact "Dr. Patel specializes in Internal
+Medicine" now lives in exactly one row instead of being copied across every
+encounter he has ever recorded.</p>
+<p>That reference is called a <strong>foreign key</strong>: a column in one table that holds
+the primary-key value of a row in another table, establishing a link between
+them without duplicating data. The <code>Encounters</code> table's <code>provider_id</code> column
+is a foreign key pointing at the <code>Providers</code> table's <code>provider_id</code> primary
+key. Foreign keys are how relational databases represent relationships at
+all — there is no separate "relationship" object, only a column value that
+happens to match a row elsewhere.</p>
+<p>Reconstructing that relationship at query time requires a <strong>join
+operation</strong>, which combines rows from two or more tables based on matching
+key values. To list every encounter along with the treating provider's name,
+a query joins <code>Encounters</code> to <code>Providers</code> on <code>provider_id</code>. Written out, the
+query looks like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">visit_date</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">specialty</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Encounters</span><span class="w"> </span><span class="n">e</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">Providers</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">provider_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">provider_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">patient_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;MRN-48213&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>The <code>JOIN ... ON</code> clause is the database engine's instruction to match every
+<code>Encounters</code> row's <code>provider_id</code> value against the <code>Providers</code> table's
+<code>provider_id</code> primary key, row by row, before it can return a single
+combined result. One join like this is cheap. The trouble starts when a
+question requires several joins chained together, which is exactly what the
+rest of this chapter investigates.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Normalization Trades Storage for Joins</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice the trade Normalization makes: it eliminates duplicate, inconsistent data, but the price is that any question spanning multiple entities now needs a join to reassemble the facts. The more thoroughly a schema is normalized, the more joins its typical questions require — a direct, measurable cost of the very design discipline that keeps the data clean.</p>
+</div>
+<h2 id="data-models-the-same-domain-two-different-shapes">Data Models: The Same Domain, Two Different Shapes</h2>
+<p>A <strong>data model</strong> is an abstract specification of how information is
+organized, named, and related — independent of any specific database
+product. It answers three questions: what kinds of things exist, what
+attributes describe them, and how they relate to each other. Crucially, the
+<em>same</em> real-world domain can be captured by more than one data model, and
+the model you choose determines which questions are cheap to answer and
+which are expensive.</p>
+<p>Consider our familiar scenario: Maria Chen is treated by Dr. Patel, who
+works at Riverside Clinic, and Maria has been diagnosed with Type 2
+Diabetes. A relational data model captures this as four tables — <code>Patients</code>,
+<code>Providers</code>, <code>Facilities</code>, and <code>Diagnoses</code> — linked by foreign keys: an
+<code>encounter_id</code> bridging <code>Patients</code> and <code>Providers</code>, a <code>facility_id</code> on the
+<code>Providers</code> row, and a <code>diagnosis_id</code> bridging <code>Patients</code> and <code>Diagnoses</code>. A
+<strong>graph data model</strong> captures the identical facts as four nodes and three
+edges, exactly as Chapter 1 introduced them — no bridging tables, because
+the relationship itself is a stored, first-class edge rather than a matched
+pair of key values.</p>
+<p>The difference is not cosmetic. In the relational model, "which facility
+does Maria Chen's provider work at?" requires the query engine to locate
+matching rows across three tables before it can answer. In the graph model,
+the same question is answered by starting at the <code>Maria Chen</code> node and
+following two edges outward — no matching, no reconstruction, just pointers
+already in place. Both models are internally consistent and correct; they
+simply make different bets about which operations should be fast.</p>
+<p>A more formal way to state this trade-off is in terms of how each model's
+query cost grows with the number of relationships, or <em>hops</em>, a question
+must traverse. If a relational schema requires one join per hop, and each
+join scans a table of ( n ) rows, a chain of ( h ) joins costs roughly
+( O(h \cdot n) ) in the worst case, and can be worse if the query planner
+cannot use an index at every step. A graph model that stores each
+relationship as a direct edge costs ( O(h) ) instead — the traversal cost
+depends only on the number of hops, not on how large the surrounding
+database has grown. This is the same asymmetry Chapter 1 called index-free
+adjacency, now stated as a general property of the <em>data model</em> rather than
+of any one query.</p>
+<p>A second worked example shows the same asymmetry outside the patient-visit
+scenario. Suppose a payer needs to resolve a claims dispute: which
+providers submitted claims that were denied for the same denial reason as a
+disputed claim, filed under the same policy? A relational data model
+answers this with a <code>Claims</code> table joined to a <code>Denial_Reasons</code> table,
+joined again to <code>Claims</code> a second time (a self-join) to find other claims
+sharing that reason, joined once more to <code>Policies</code> to confirm the shared
+policy — three joins, one of them a self-join most SQL students find
+genuinely awkward to write correctly. A graph data model expresses the
+identical question as a short traversal: start at the disputed <code>Claim</code>
+node, follow its <code>DENIED_FOR</code> edge to the <code>Denial_Reason</code> node, follow that
+edge backward to every other <code>Claim</code> sharing the same reason, and filter to
+the ones connected to the same <code>Policy</code> node — no self-join construct
+needed, because following an edge backward is just as natural as following
+it forward.</p>
+<p>Before looking at the two models side by side, one more distinction is worth
+naming precisely: a data model describes structure and relationships in the
+abstract, while a specific database schema is one <em>implementation</em> of a
+chosen data model in a particular product. Two different graph databases
+might both implement the same graph data model but store it with different
+internal file formats — the data model is the blueprint, the schema is the
+building built from it in a specific product.</p>
+<h4 id="diagram-relational-vs-graph-data-model-side-by-side">Diagram: Relational vs. Graph Data Model Side-by-Side</h4>
+<iframe src="../../sims/relational-vs-graph-data-model-comparison/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>Relational vs. Graph Data Model Side-by-Side</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> relational-vs-graph-data-model-comparison<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, compare<br/>
+Learning objective: Given the same four healthcare facts modeled two ways, the learner can differentiate how a relational schema and a graph data model each represent an identical relationship, and can trace the extra steps the relational version requires.</p>
+<p>Purpose: Show the Maria Chen / Dr. Patel / Riverside Clinic / Type 2 Diabetes scenario rendered simultaneously as (left) four normalized tables with foreign keys and (right) a four-node labeled property graph, so learners can click a fact in either representation and watch its counterpart highlight in the other.</p>
+<p>Canvas layout:</p>
+<ul>
+<li>Left half: four small table grids (Patients, Providers, Facilities, Diagnoses) with visible foreign-key columns highlighted in orange</li>
+<li>Right half: the four-node graph (Patient, Provider, Facility, Condition) with labeled directed edges, matching the color scheme from Chapter 1's Healthcare Graph Anatomy Explorer</li>
+</ul>
+<p>Data Visibility Requirements:
+Stage 1: Show both representations at rest, tables on the left fully populated with sample rows, graph on the right fully drawn with all labels visible.
+Stage 2: Click a foreign-key cell (e.g., <code>provider_id</code> in the Encounters row) on the left; the corresponding edge on the right graph highlights in gold, and a caption reads "This foreign key IS this edge."
+Stage 3: Click an edge on the right graph; the two foreign-key cells that would need to be joined to reconstruct that same fact highlight on the left, with a caption showing the SQL join clause required.
+Stage 4: A "Count the Hops" button runs the "which payer bills for the facility where Maria Chen's specialist works" question on both sides simultaneously, incrementing a join counter on the left and a hop counter on the right as each step completes.</p>
+<p>Interactive controls:</p>
+<ul>
+<li>Click-to-highlight on both table cells and graph edges (bidirectional)</li>
+<li>"Count the Hops" button that animates both traversals step by step</li>
+<li>Reset button</li>
+</ul>
+<p>Instructional Rationale: An Analyze-level objective (differentiate, compare) requires the learner to see structural correspondence, not just read a description of it. Bidirectional click-to-highlight lets the learner build the mapping in either direction — from foreign key to edge, or from edge to foreign key — which is the exact skill needed to translate between the two data models later in the course.</p>
+<p>Layout: Two-column split, responsive to window resize (stacks vertically below 700px width)
+Canvas size: responsive width, 520px height</p>
+<p>Implementation: p5.js with two side-by-side rendering regions and a shared highlight-state object</p>
+</details>
+<h2 id="schema-on-write-vs-schema-on-read">Schema-On-Write vs. Schema-On-Read</h2>
+<p>Relational databases enforce their schema at the moment of writing: <strong>schema-on-write</strong> means every row must conform to the table's column definitions before the database accepts it, catching errors early but requiring a formal migration whenever the shape of the data changes. Adding a new fact about patients — say, a preferred language — means altering the <code>Patients</code> table for every existing row, even ones for which the language is unknown. In practice this means running an <code>ALTER TABLE Patients ADD COLUMN preferred_language VARCHAR(50)</code> statement that locks the table (briefly or for a long time, depending on its size) and back-fills every existing row with a default value such as <code>NULL</code>, whether or not that patient's language is actually known.</p>
+<p>Graph databases, and the labeled property graph model in particular, favor <strong>schema-on-read</strong>: the structure of the data is validated (if at all) when it is queried, not when it is written. A new <code>Patient</code> node can carry a <code>preferred_language</code> property the moment that fact is known, without touching any other <code>Patient</code> node that doesn't yet have it. There is no migration step, no table lock, and no need to invent a placeholder value for the 90% of existing patients whose preferred language was never recorded — those nodes simply omit the property entirely, and a query that reads it treats "missing" as its own valid state. This is not "no schema" — most production graph databases support optional constraints, as Chapter 4 covers — but the default posture inverts the relational one, trading some write-time safety for the flexibility that fast-moving clinical and claims data demands.</p>
+<h2 id="naming-the-graph-model-precisely">Naming the Graph Model Precisely</h2>
+<p>Chapter 1 already showed you a labeled property graph in action; this
+section gives the surrounding vocabulary its formal names. <strong>Graph data
+model</strong> is the umbrella term for any data model built from nodes and edges
+rather than rows and columns — it is the graph-world counterpart to "the
+relational model." Under that umbrella sits a specific, widely implemented
+variant: the <strong>property graph model</strong>, in which both nodes and edges carry a
+type label and an arbitrary set of key-value properties. Neo4j, TigerGraph,
+and Amazon Neptune (in property-graph mode) all implement this same
+underlying model, even though their query languages and storage engines
+differ. When this book says "graph database" without further qualification,
+it means a database implementing the property graph model.</p>
+<p>The practical benefit of naming this precisely shows up the moment
+requirements change. Suppose a hospital's fraud-review team asks for a way
+to flag a claim as <code>under_review</code> mid-investigation. Under the graph data
+model, this is a one-line change: add an <code>under_review: true</code> property to
+the specific <code>Claim</code> nodes currently being investigated, leaving every other
+<code>Claim</code> node — and the schema as a whole — untouched. Under a relational
+data model built to third normal form, the same request typically means
+adding a new column to the <code>Claims</code> table (a schema-on-write migration) or,
+if the team wants to avoid altering a large production table, creating an
+entirely new <code>Claims_Under_Review</code> join table just to track which claim IDs
+are flagged — extra structure invented solely to work around the rigidity
+Normalization enforces everywhere else in the schema.</p>
+<h2 id="beyond-property-graphs-other-graph-formats">Beyond Property Graphs: Other Graph Formats</h2>
+<p>The property graph model is not the only way to serialize connected data,
+and recognizing its alternatives helps you understand tooling you will
+encounter outside this book. An <strong>RDF triple store</strong> represents every fact
+as a subject-predicate-object triple — for example, the single fact "Maria
+Chen is diagnosed with Type 2 Diabetes" is written as three separate parts:
+subject <code>MariaChen</code>, predicate <code>diagnosedWith</code>, object <code>Type2Diabetes</code>, with
+every fact in the entire store reduced to this same rigid three-part shape.
+A property graph edge, by contrast, can carry additional detail directly on
+the relationship itself (a <code>diagnosis_date</code> property on the edge, say); a
+pure RDF triple cannot, and typically needs an extra layer (RDF reification,
+or the related RDF-star extension) bolted on to attach properties to a
+relationship, which is one practical reason property graphs have become more
+popular for operational systems even though RDF triple stores remain
+common in biomedical ontologies such as SNOMED CT's published releases. A
+<strong>multigraph</strong> is any
+graph that permits more than one edge between the same pair of nodes — for
+instance, Maria Chen might have two separate <code>TREATED_BY</code> edges to Dr.
+Patel, one per encounter date, rather than a single edge that overwrites the
+date each visit. Most property graph databases are multigraphs by default.
+Finally, <strong>graph serialization</strong> refers to the file formats used to export
+or exchange graph data outside a live database — common examples include
+GraphML, JSON-based node/edge lists, and RDF's own Turtle syntax — which
+matters whenever you need to move a graph between tools or archive it.</p>
+<p>The following table reinforces how these formats relate to the property
+graph model this book uses throughout.</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Relationship Representation</th>
+<th>Typical Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Property Graph</td>
+<td>Typed edge with properties</td>
+<td>Operational graph databases (Neo4j, TigerGraph)</td>
+</tr>
+<tr>
+<td>RDF Triple Store</td>
+<td>Subject-predicate-object triple</td>
+<td>Biomedical ontologies, Semantic Web data</td>
+</tr>
+<tr>
+<td>Multigraph</td>
+<td>Multiple parallel edges allowed</td>
+<td>Modeling repeated events (visits, claims) between the same two nodes</td>
+</tr>
+<tr>
+<td>Serialization Format</td>
+<td>File-based export (GraphML, JSON, Turtle)</td>
+<td>Moving graph data between tools or archiving it</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Don't Confuse the Format With the Database</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A common early mix-up is treating "RDF" and "graph database" as synonyms — they're not! RDF is one serialization format among several, and most production graph databases you'll meet in this course use the property graph model instead. If someone hands you a <code>.ttl</code> file, that's RDF; if they hand you a Neo4j database, that's a property graph.</p>
+</div>
+<h2 id="graph-query-the-payoff-of-the-model">Graph Query: The Payoff of the Model</h2>
+<p>Every design decision in this chapter exists to answer one practical
+question well: given a question about connected data, how expensive is it to
+answer? A <strong>graph query</strong> is a request that asks the database to find nodes,
+edges, or paths matching some pattern — the graph-world counterpart to a SQL
+<code>SELECT</code>. Chapter 3 covers the specific languages used to write these
+queries; this section establishes why the underlying model makes them so
+much cheaper to answer for connected questions.</p>
+<p>Return to the four-hop question from Chapter 1: <em>which payer is billed for
+the facility where Maria Chen's specialist works?</em> Expressed relationally,
+answering this means writing a query that joins <code>Patients</code> to an encounters
+table, that table to <code>Providers</code>, <code>Providers</code> to <code>Facilities</code>, and
+<code>Facilities</code> to a <code>Payer_Contracts</code> table — four separate join operations,
+each one requiring the database to match key values across potentially
+millions of rows. Expressed as a graph query, the same question is a single
+pattern: start at the <code>Patient</code> node, follow <code>TREATED_BY</code>, <code>WORKS_AT</code>, and
+<code>BILLS</code> edges in sequence, and return whatever node sits at the end. The
+graph engine never performs a join in the relational sense, because the
+"join" was already materialized as an edge back when the data was written.</p>
+<p>A second worked example shows that the advantage holds even for questions
+that summarize data rather than just retrieve it. Suppose a payer wants to
+know: how many distinct facilities does each of its network providers work
+at? Relationally, this means joining <code>Providers</code> to a <code>Provider_Facilities</code>
+bridge table, joining that to <code>Facilities</code>, and grouping the result by
+provider — a join followed by a <code>GROUP BY</code> and a <code>COUNT</code>, with the join
+still required before any aggregation can happen. As a graph query, the same
+question needs no join at all: for each <code>Provider</code> node, count the distinct
+<code>Facility</code> nodes reachable by a single <code>WORKS_AT</code> edge. The aggregation
+(<code>COUNT</code>) is identical in spirit to the relational version, but it operates
+directly on edges already present in the graph rather than on rows
+reconstructed by a join — which is precisely why Chapter 3 introduces
+aggregate queries as a native, first-class category of graph query rather
+than an add-on bolted onto joined results.</p>
+<p>This gap is not a rounding error. As the chart below shows, relational join
+performance degrades sharply as the number of chained joins grows, while
+graph traversal performance grows only modestly, because each additional hop
+costs the same small, constant amount of work regardless of how large the
+overall database is.</p>
+<h4 id="diagram-query-performance-vs-relationship-depth">Diagram: Query Performance vs. Relationship Depth</h4>
+<iframe src="../../sims/query-performance-comparison-chart-rdbms-graph/main.html" width="100%" height="454px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/query-performance-comparison-chart-rdbms-graph/main.html">Run the Query Performance: RDBMS vs Graph MicroSim Fullscreen</a></p>
+<details>
+<summary>Query Performance vs. Relationship Depth (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> query-performance-comparison-chart-rdbms-graph<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-comparison-chart-rdbms-graph/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/query-performance-comparison-chart-rdbms-graph</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, compare<br/>
+Learning objective: Examine how relational join cost and graph traversal cost each scale as the number of chained relationships (hops) increases, and explain the source of the gap in terms of joins versus stored edges.</p>
+<p>Reused from the MicroSim catalog. This log-scale line chart plots relational join time against graph traversal time as the number of relationship hops grows from one to six. The relational line climbs exponentially (each additional join multiplies the rows scanned) while the graph line stays nearly flat (each hop follows an already-stored pointer). It gives concrete numbers to the abstract argument this section just made about the four-hop payer question, directly connecting the Foreign Key / Join Operation discussion earlier in the chapter to the Graph Query concept that closes it.</p>
+</details>
+<p>A graph query, then, is not simply "a different syntax for the same
+question." It reflects a different underlying cost model — one where
+connection-following is cheap by design rather than reconstructed at
+runtime. Everything this chapter has covered, from normalization's
+join-multiplying side effect to the property graph's edges-as-first-class-
+objects design, exists to explain why that cost model differs, and why
+deeply interconnected healthcare data is exactly the case where the
+difference matters most.</p>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Compare the Two Worlds</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just learned to translate fluently between relational and graph data models — normalization, foreign keys, and joins on one side; nodes, edges, and traversal on the other — and you can explain in concrete terms why the graph side wins as relationship depth grows. That comparison is the foundation for everything we build for the rest of this book.</p>
+</div>
+<p>This chapter reframed material you already knew — schemas, normalization,
+foreign keys, joins — as one specific set of design choices, not the only
+possible ones. A graph data model, and the property graph model in
+particular, makes a different set of choices: relationships are stored
+directly as edges, schema is enforced (if at all) on read rather than on
+write, and a query that would require several joins in a relational schema
+becomes a short traversal instead. In
+<a href="../03-graph-query-languages-pattern-matching/">Chapter 3</a>, we put
+this vocabulary to work by learning the actual query languages — Cypher,
+GQL, and GSQL — used to write the traversals this chapter has only
+described in prose.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-foundations-of-graph-structures/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Foundations of Graph Structures">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1. Foundations of Graph Structures
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-graph-query-languages-pattern-matching/" class="md-footer__link md-footer__link--next" aria-label="Next: 3. Graph Query Languages and Pattern Matching">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3. Graph Query Languages and Pattern Matching
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2817 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models the payer perspective on healthcare data -- insurance policies, benefit plans, cost-sharing, the claims lifecycle, and pharmacy benefit management -- as graph structures.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/14-insurance-claims-coverage-pharmacy-benefits/">
+      
+      
+        <link rel="prev" href="../13-clinical-guidelines-care-pathways-workforce/">
+      
+      
+        <link rel="next" href="../15-reimbursement-health-plans-payer-contracts/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Insurance Claims, Coverage, and Pharmacy Benefits - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Insurance Claims, Coverage, and Pharmacy Benefits - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models the payer perspective on healthcare data -- insurance policies, benefit plans, cost-sharing, the claims lifecycle, and pharmacy benefit management -- as graph structures." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/14-insurance-claims-coverage-pharmacy-benefits/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/14-insurance-claims-coverage-pharmacy-benefits/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Insurance Claims, Coverage, and Pharmacy Benefits - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models the payer perspective on healthcare data -- insurance policies, benefit plans, cost-sharing, the claims lifecycle, and pharmacy benefit management -- as graph structures." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/14-insurance-claims-coverage-pharmacy-benefits/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#insurance-claims-coverage-and-pharmacy-benefits" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Insurance Claims, Coverage, and Pharmacy Benefits
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling-the-payer-policies-coverage-and-benefit-plans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modeling the Payer: Policies, Coverage, and Benefit Plans
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modeling the Payer: Policies, Coverage, and Benefit Plans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-insurance-policy-and-benefit-plan-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Insurance Policy and Benefit Plan Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paying-for-care-cost-sharing-and-the-out-of-pocket-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paying for Care: Cost-Sharing and the Out-of-Pocket Maximum
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paying for Care: Cost-Sharing and the Out-of-Pocket Maximum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cost-sharing-calculation-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cost-Sharing Calculation MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-life-of-an-insurance-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Life of an Insurance Claim
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Life of an Insurance Claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-claims-lifecycle-workflow-with-graph-database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Claims Lifecycle Workflow with Graph Database Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pharmacy-benefits-formularies-and-the-pharmacy-benefit-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pharmacy Benefits: Formularies and the Pharmacy Benefit Manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pharmacy Benefits: Formularies and the Pharmacy Benefit Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-formulary-management-and-step-therapy-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Formulary Management and Step Therapy Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gatekeeping-care-prior-authorization-utilization-review-and-medical-necessity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gatekeeping Care: Prior Authorization, Utilization Review, and Medical Necessity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gatekeeping Care: Prior Authorization, Utilization Review, and Medical Necessity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-prior-authorization-decision-tree-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Prior Authorization Decision Tree MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling-the-payer-policies-coverage-and-benefit-plans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modeling the Payer: Policies, Coverage, and Benefit Plans
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modeling the Payer: Policies, Coverage, and Benefit Plans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-insurance-policy-and-benefit-plan-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Insurance Policy and Benefit Plan Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paying-for-care-cost-sharing-and-the-out-of-pocket-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paying for Care: Cost-Sharing and the Out-of-Pocket Maximum
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paying for Care: Cost-Sharing and the Out-of-Pocket Maximum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cost-sharing-calculation-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cost-Sharing Calculation MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-life-of-an-insurance-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Life of an Insurance Claim
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Life of an Insurance Claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-claims-lifecycle-workflow-with-graph-database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Claims Lifecycle Workflow with Graph Database Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pharmacy-benefits-formularies-and-the-pharmacy-benefit-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pharmacy Benefits: Formularies and the Pharmacy Benefit Manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pharmacy Benefits: Formularies and the Pharmacy Benefit Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-formulary-management-and-step-therapy-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Formulary Management and Step Therapy Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gatekeeping-care-prior-authorization-utilization-review-and-medical-necessity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gatekeeping Care: Prior Authorization, Utilization Review, and Medical Necessity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gatekeeping Care: Prior Authorization, Utilization Review, and Medical Necessity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-prior-authorization-decision-tree-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Prior Authorization Decision Tree MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/14-insurance-claims-coverage-pharmacy-benefits/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="insurance-claims-coverage-and-pharmacy-benefits">Insurance Claims, Coverage, and Pharmacy Benefits</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces the payer perspective, starting with how an insurance claim moves through processing, adjudication, denial, and dispute. It covers insurance policies, coverage, benefit plans, copayments, and deductibles, then turns to pharmacy benefit management: formularies, brand versus generic drugs, prior authorization, and utilization review. Students learn the claims-processing vocabulary that underlies most payer-side graph analytics.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insurance Claim</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Claim Processing</td>
+<td>52</td>
+</tr>
+<tr>
+<td>Claim Adjudication</td>
+<td>51</td>
+</tr>
+<tr>
+<td>Claim Denial</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Claim Dispute</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Insurance Policy</td>
+<td>65</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Benefit Plan</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Copayment</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Deductible</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Out-Of-Pocket Maximum</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Premium</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Formulary</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Formulary Rule</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Brand Drug</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Generic Drug</td>
+<td>55</td>
+</tr>
+<tr>
+<td>Pharmacy Benefit Manager</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Prior Authorization</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Utilization Review</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Medical Necessity</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../07-healthcare-economics-medical-coding/">Chapter 7: Healthcare Economics and Medical Coding Systems</a></li>
+<li><a href="../12-provider-organizations-networks-scheduling/">Chapter 12: Provider Organizations, Networks, and Scheduling</a></li>
+</ul>
+<hr />
+<p>Every earlier chapter modeled healthcare from the patient's or the provider's point of view: diagnoses, treatments, schedules, and referral networks. Behind every one of those encounters sits a third stakeholder who rarely appears in the exam room but decides how much anyone actually gets paid — the payer. This chapter opens the payer perspective of the book by modeling the insurance policies and benefit plans that determine what a service costs before a claim is ever filed, then follows a claim through processing, adjudication, denial, and dispute. Chapter 7 introduced the billing codes (ICD-10, CPT, HCPCS) that identify what happened during an encounter; this chapter models what happens <em>next</em> — how a coded encounter becomes a claim, and how a benefit plan decides what that claim is worth.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to the Payer's Side of the Graph</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Hi again — we've spent a lot of chapters following patients and providers around, and now it's time to follow the money. Insurance claims, formularies, and benefit plans might sound dry on paper, but they hide some genuinely tentacle-y graph structures once you look closely. By the end of this chapter you'll be able to model a claim's entire journey from submission to payment as a graph traversal. Let's connect the dots!</p>
+</div>
+<h2 id="modeling-the-payer-policies-coverage-and-benefit-plans">Modeling the Payer: Policies, Coverage, and Benefit Plans</h2>
+<p>An <strong>insurance policy</strong> is a legal contract between a payer and a policyholder that obligates the payer to pay for defined healthcare costs in exchange for a periodic payment, called a <strong>premium</strong> — the fixed amount the policyholder pays (typically monthly) simply to keep the policy active, regardless of how much care is used that month. A policy is never designed from scratch; it is always built on top of a reusable <strong>benefit plan</strong>, a named package of rules (such as "Meridian Gold PPO") that specifies what is covered, at what cost-sharing level, and under what conditions. Many different policies, held by many different members, can all reference the exact same benefit plan — which is precisely why a graph model separates the two: the plan is a template node, and each policy is an instance that points back to it.</p>
+<p>A benefit plan's central job is to define <strong>coverage</strong>: a yes-or-no determination of whether a category of care is paid for at all. Coverage is assigned per category — hospital inpatient care, outpatient visits, prescription drugs, mental health services, durable medical equipment — and a plan can cover one category generously while excluding another entirely. Historically, many U.S. benefit plans covered physical health categories but sharply limited or excluded mental and behavioral health coverage, a gap that federal parity laws have narrowed but not eliminated. Modeling coverage explicitly as its own node, rather than as a buried flag on the plan, is what lets a graph query answer "is this specific category covered?" with a single traversal instead of a lookup table.</p>
+<p>Let's continue the running example from Chapter 1: Maria Chen, our patient, is a member enrolled in a policy issued by Meridian Health Payer. That policy is based on the "Meridian Gold PPO" benefit plan, which covers four categories: hospital inpatient, outpatient visits, prescription drugs, and mental health. As a graph, this reads as a chain of four node types connected by three edge types: a <code>Member</code> node is <code>ENROLLED_IN</code> a <code>Policy</code> node, which is <code>BASED_ON</code> a <code>BenefitPlan</code> node, which <code>COVERS</code> one or more <code>CoverageCategory</code> nodes. Answering "does Maria's plan cover mental health visits?" is a two-hop traversal from Maria to her policy, from her policy to the plan, and from the plan to the coverage category — no different in structure from the provider-lookup traversals in Chapter 1, just with different node labels.</p>
+<p>Before looking at the rendered graph, notice that a payer, such as Meridian Health Payer, typically <code>OFFERS</code> several benefit plans at once — commonly following the ACA marketplace's Bronze, Silver, Gold, and Platinum metal-tier naming, which roughly indicates the split between what the plan pays and what the member pays out of pocket over a year (a Bronze plan pays a smaller share and charges a lower premium; a Platinum plan pays a larger share for a higher premium). Every one of those plans is a separate <code>BenefitPlan</code> node with its own set of <code>COVERS</code> edges. This is exactly the flexible-schema advantage from Chapter 1: two benefit plans can cover overlapping but different sets of categories without forcing every plan into identical table columns. Suppose a second member, James Okafor, enrolls under a Silver HMO plan from the same payer that covers hospital inpatient and outpatient visits but excludes mental health entirely. Both members' policies point to the same <code>Payer</code> node, but each policy's <code>BASED_ON</code> edge leads to a structurally different <code>BenefitPlan</code> node — the graph represents this real-world variation without any schema change, whereas a relational design would need either a sparse, mostly-<code>NULL</code> coverage table or a separate coverage-exception table just to express the same fact.</p>
+<p>Separating <code>Policy</code> from <code>BenefitPlan</code> as two distinct node types, rather than collapsing coverage details directly onto each policy, also pays off at scale: a large payer might administer two million individual policies built on only a few hundred distinct benefit-plan designs. Storing the coverage rules once on the shared <code>BenefitPlan</code> node and letting every policy simply point to it means that updating a coverage rule for open enrollment touches one node instead of two million rows — the same deduplication principle that motivates normalized design in a relational schema, applied naturally to a graph.</p>
+<h4 id="diagram-insurance-policy-and-benefit-plan-graph-model">Diagram: Insurance Policy and Benefit Plan Graph Model</h4>
+<iframe src="../../sims/insurance-policy-benefit-plan-graph-model/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/insurance-policy-benefit-plan-graph-model/main.html">Run the Insurance Policy and Benefit Plan Graph Model MicroSim Fullscreen</a></p>
+<details>
+<summary>Insurance Policy and Benefit Plan Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> insurance-policy-benefit-plan-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/insurance-policy-benefit-plan-graph-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/insurance-policy-benefit-plan-graph-model</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: identify, classify<br/>
+Learning objective: Given a rendered payer/plan/policy graph, the learner can identify the OFFERS, COVERS, BASED_ON, and ENROLLED_IN edges and trace the two-hop path from a member to a specific coverage category.</p>
+<p>Reused from this book's MicroSim library. This graph models a payer that OFFERS one or more benefit plans; each plan COVERS several coverage categories (hospital inpatient, prescription drugs, mental health); a policy is BASED_ON a plan; and members are ENROLLED_IN a policy. Dragging nodes and comparing the Gold PPO and Silver HMO plans lets the learner see that two plans from the same payer can cover different category sets while sharing the same graph shape — directly reinforcing the coverage and benefit-plan definitions above.</p>
+</details>
+<h2 id="paying-for-care-cost-sharing-and-the-out-of-pocket-maximum">Paying for Care: Cost-Sharing and the Out-of-Pocket Maximum</h2>
+<p>Coverage tells us <em>whether</em> a category of care is paid for; cost-sharing terms tell us <em>how much of the bill the member pays versus the payer</em>. A <strong>deductible</strong> is the amount a member must pay out of pocket for covered services before the plan begins paying its share at all — until the deductible is met, the member is effectively self-insured for routine care. Family plans typically model this with two deductible accumulators rather than one: an aggregate family deductible that any combination of family members can satisfy together, and often a lower individual deductible that lets a single family member with heavy utilization trigger plan payments before the whole family total is reached. A <strong>copayment</strong> (or copay) is a fixed dollar amount the member pays for a specific service, such as $30 for a primary-care visit, regardless of what the provider actually charged. Coinsurance, a closely related term, is a percentage split (such as 80/20) applied after the deductible is met, rather than a flat dollar amount.</p>
+<p>A <strong>premium</strong> is the periodic payment — usually monthly — that keeps a policy active, and it is charged regardless of whether the member uses any care that month at all. For an employer-sponsored policy, the employer typically pays a large share of the premium directly to the payer and deducts the remainder from the employee's paycheck; for an individual marketplace policy, the member pays the full premium, sometimes reduced by a government subsidy tied to income. Premiums fund the payer's ability to pay claims across its entire membership pool, which is why a payer's premium pricing depends heavily on the collective risk of everyone enrolled — a connection Chapter 17 returns to when it models financial risk pools directly.</p>
+<p>None of these cost-sharing amounts can grow without bound, because every plan caps a member's total annual exposure with an <strong>out-of-pocket maximum (OOP max)</strong> — the single dollar amount beyond which the plan pays 100% of covered costs for the remainder of the plan year, no exceptions. The out-of-pocket maximum is the concept that ties every other cost-sharing term together into one enforceable ceiling, which is why it carries the highest Concept Impact Score in this group: a graph model of cost-sharing is really a model of one running total (the member's year-to-date accumulated spending) being compared, service by service, against the deductible threshold and then the OOP max threshold.</p>
+<p>Consider Maria Chen's plan year. Her benefit plan sets a $1,500 deductible, a $30 copay for primary-care visits, 20% coinsurance after the deductible, and a $6,000 OOP maximum. Her first visit of the year costs $200; because she hasn't met her deductible, she pays the full $200 (deductible accumulator: $200 of $1,500). Later, a $4,000 outpatient procedure pushes her past the deductible — she pays the remaining $1,300 to satisfy it, then 20% coinsurance on the remaining $2,700 ($540), for a total of $1,840 on that claim (deductible accumulator: $1,500 of $1,500; OOP accumulator: $2,040 of $6,000). This pattern — accumulate against the deductible first, then apply coinsurance, then check the running total against the OOP max — can be written as a simple decision rule:</p>
+<p>[ \text{Member Owes} = \min\big(\text{Remaining Deductible} + \text{Coinsurance Share},\ \text{OOP Max} - \text{YTD Accumulated}\big) ]</p>
+<p>The formula makes explicit what the MicroSim below animates: the deductible and the OOP maximum are both running totals attached to the member for the plan year, and every new claim updates both simultaneously.</p>
+<p>Later that same year, Maria has a $15,000 hospital stay. Her deductible is already satisfied, so coinsurance applies immediately: 20% of $15,000 is $3,000, but her OOP accumulator is already at $2,040 from the earlier claims, and only $3,960 of room remains before the $6,000 cap ($6,000 − $2,040). Because $3,000 is less than that remaining room, she pays the full $3,000 coinsurance share, bringing her OOP accumulator to $5,040. If a fourth claim arrived later for another $2,000 of coinsurance-eligible charges, the plan would cap her contribution at the remaining $960 and pay 100% of everything beyond that point for the rest of the plan year — the OOP maximum doing exactly the job its name promises. Federal law caps how high an ACA-compliant plan's OOP maximum can be set each year, which is precisely why this single accumulator, more than the deductible or any individual copay, is the number that determines a member's worst-case financial exposure.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Why the OOP Max Is the 'Real' Ceiling</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that a deductible and a copay are just intermediate speed bumps — the OOP max is the actual promise a plan makes to a member. If you're ever modeling cost-sharing in a graph, that year-to-date accumulator is the property that has to update on every single claim, no exceptions.</p>
+</div>
+<h4 id="diagram-cost-sharing-calculation-microsim">Diagram: Cost-Sharing Calculation MicroSim</h4>
+<iframe src="../../sims/cost-sharing-calculation-microsim/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/cost-sharing-calculation-microsim/main.html">Run the Cost-Sharing Calculation MicroSim Fullscreen</a></p>
+<details>
+<summary>Cost-Sharing Calculation MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> cost-sharing-calculation-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/cost-sharing-calculation-microsim/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/cost-sharing-calculation-microsim</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, demonstrate<br/>
+Learning objective: Given a deductible, coinsurance rate, and out-of-pocket maximum, the learner can calculate a member's share of a sequence of services and predict when the OOP maximum caps further spending.</p>
+<p>Reused from this book's MicroSim library. Adjusting the deductible, OOP maximum, and coinsurance sliders and adding services from the dropdown lets the learner watch the deductible and OOP-maximum progress bars fill in real time, exactly matching the worked Maria Chen example above, and see the milestone the moment the OOP maximum caps the member's spending for the rest of the year.</p>
+</details>
+<h2 id="the-life-of-an-insurance-claim">The Life of an Insurance Claim</h2>
+<p>Once care is delivered and coded, the provider (or the provider's billing system) submits an <strong>insurance claim</strong>: a formal, structured request for payment that packages the coded diagnosis and procedure information from Chapter 7 with the patient's identity, the provider's identity, and the dates of service. In practice, a claim is transmitted electronically in a standardized EDI format — the 837 transaction set, professional or institutional — carrying structured fields for the member identifier, the billing and rendering provider's National Provider Identifier (NPI), one or more ICD-10 diagnosis codes, one or more CPT or HCPCS procedure codes with units and a billed charge amount, and the dates of service. A claim is the single most important node type in the payer's graph, because nearly every downstream financial concept in this book — reimbursement, denial rates, fraud detection — is computed by traversing patterns of claims, and every field listed above becomes either a property on the <code>Claim</code> node or an edge to another node (<code>SUBMITTED_BY</code> a provider, <code>FOR_MEMBER</code> a member, <code>DIAGNOSED_AS</code> one or more conditions).</p>
+<p>A submitted claim does not simply get paid; it passes through <strong>claim processing</strong>, the administrative pipeline that validates the claim's format, confirms the member's eligibility on the date of service, checks whether the billed provider is in-network, and verifies that the billed service is covered under the member's benefit plan. Processing also runs front-end "edits" — automated rules that catch malformed claims before they ever reach a human or an adjudication engine, such as a procedure code that does not exist, a diagnosis code inconsistent with the patient's age or sex, or a missing required field. Only after processing succeeds does the claim reach <strong>claim adjudication</strong> — the payer's actual coverage-and-payment decision, in which the adjudication engine checks the claim against the coverage categories from the previous section, any prior authorization requirements introduced later in this chapter, and the member's remaining deductible and OOP-max accumulators from the previous section, then calculates exactly what the payer will pay and what the member owes. Processing asks "is this claim valid and eligible?"; adjudication asks "what should be paid, and how much?" — two distinct steps that are easy to conflate but that a graph-based claims engine implements as two separate traversal stages over two different parts of the graph.</p>
+<p>Every one of the eligibility, network, coverage, and accumulator checks embedded in processing and adjudication is naturally expressed as a graph traversal rather than a table lookup: "is this member eligible?" follows the <code>ENROLLED_IN</code> edge from the claim's member to their policy and checks an <code>effective_date</code> property; "is this provider in-network?" follows an edge from the provider to the payer's contracted-provider list; "is this service covered?" retraces the <code>BASED_ON</code> → <code>COVERS</code> path from the previous section; "how much of the deductible remains?" reads a property directly off the member's accumulator node updated by every prior claim this year. Behind the scenes, most claims never travel directly from provider to payer at all — they pass through a claims clearinghouse, an intermediary that translates and validates the 837 transaction before routing it onward, a piece of the infrastructure Chapter 15 covers in detail once we widen our view to the full payer-contract ecosystem.</p>
+<p>Walking through a concrete adjudication with several line items makes the pipeline's arithmetic concrete. Maria's cardiologist bills a single claim with three line items: an office visit, an EKG, and a blood draw. The table below shows how the adjudication engine resolves each line once eligibility, network status, and coverage have already passed.</p>
+<table>
+<thead>
+<tr>
+<th>Line Item</th>
+<th>Billed Charge</th>
+<th>Coverage Category</th>
+<th>Coinsurance Rate</th>
+<th>Member Owes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Office visit (CPT 99214)</td>
+<td>$250</td>
+<td>Outpatient visits</td>
+<td>20%</td>
+<td>$50</td>
+</tr>
+<tr>
+<td>EKG (CPT 93000)</td>
+<td>$120</td>
+<td>Outpatient visits</td>
+<td>20%</td>
+<td>$24</td>
+</tr>
+<tr>
+<td>Blood draw (CPT 36415)</td>
+<td>$30</td>
+<td>Outpatient visits</td>
+<td>20%</td>
+<td>$6</td>
+</tr>
+</tbody>
+</table>
+<p>Because Maria's deductible was already satisfied earlier in the year, coinsurance applies to every line item independently, and adjudication sums the three member-owed amounts ($80 total) into a single patient-responsibility figure reported back on the claim — even though the underlying check ("is this covered? what's the coinsurance rate? has the deductible been met?") is identical logic re-applied once per line item. This table simplifies one detail Chapter 15 restores: payers rarely calculate coinsurance against the full billed charge shown here, but against a lower, contractually negotiated allowed amount instead.</p>
+<p>When any single check in this pipeline fails, adjudication produces a <strong>claim denial</strong> — a payer decision not to pay all or part of a claim, always tied to a specific reason code. Payers use a standardized X12 code set called Claim Adjustment Reason Codes (CARCs) to communicate exactly why a claim was denied or reduced, which matters enormously for graph-based analytics because it turns "why was this claim denied?" into a queryable property rather than free text. The table below reinforces four denial reasons already implied by the workflow diagram below, connecting each to the processing or adjudication stage that produces it.</p>
+<table>
+<thead>
+<tr>
+<th>Denial Reason</th>
+<th>Lifecycle Stage</th>
+<th>Example Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Invalid or incomplete claim format</td>
+<td>Claim Processing</td>
+<td>A required field, such as the rendering provider's NPI, is missing</td>
+</tr>
+<tr>
+<td>Member ineligible on date of service</td>
+<td>Claim Processing</td>
+<td>The policy's <code>effective_date</code> had already lapsed when care was delivered</td>
+</tr>
+<tr>
+<td>Service not covered under the plan</td>
+<td>Claim Adjudication</td>
+<td>The billed category has no <code>COVERS</code> edge from the member's benefit plan</td>
+</tr>
+<tr>
+<td>Missing required prior authorization</td>
+<td>Claim Adjudication</td>
+<td>The service required prior authorization (see later in this chapter) that was never obtained</td>
+</tr>
+</tbody>
+</table>
+<p>A denial is not necessarily final: a provider or member who believes a denial was issued in error can file a <strong>claim dispute</strong>, a formal request for the payer to re-review the adjudication decision, typically by submitting additional clinical documentation or correcting the disputed field. Most payers implement disputes in two tiers — an internal reconsideration handled by the payer's own claims staff, followed, if the member is still dissatisfied, by an external review conducted by an independent third party outside the payer's control — each level bound by strict filing and response deadlines (commonly 180 days for a member to file, and 30-60 days for the payer to respond) so that a denial cannot simply sit unresolved indefinitely. Suppose the earlier missing-prior-authorization denial happened because Maria's specialist's office simply forgot to submit the request, even though the MRI itself was clearly medically necessary; the specialist's office files a claim dispute with the missing authorization documentation attached retroactively, and the payer's reconsideration team reverses the original denial without the case ever needing to escalate to external review.</p>
+<p>It is worth distinguishing a denial from an outright claim rejection, a term some payers reserve for claims that never even complete processing because of a data or format error — a rejected claim is simply corrected and resubmitted as a new claim, while a denied claim has already been adjudicated and requires a formal dispute, not a resubmission, to be revisited. Both denial reason codes (CARCs) and a companion set of remark codes (RARCs, Remittance Advice Remark Codes) travel with every adjudicated claim regardless of outcome, giving payers, providers, and — as later chapters show — fraud analysts a structured, queryable vocabulary for exactly what happened to every single claim in the graph. Chapter 15 picks up exactly what happens to a claim that <em>does</em> get paid — the allowed amount, the reimbursement, and the explanation of benefits sent back to the member.</p>
+<h4 id="diagram-claims-lifecycle-workflow-with-graph-database-integration">Diagram: Claims Lifecycle Workflow with Graph Database Integration</h4>
+<iframe src="../../sims/claims-lifecycle-workflow-graph-database-integration/main.html" width="100%" height="1716px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/claims-lifecycle-workflow-graph-database-integration/main.html">Run the Claims Lifecycle Workflow MicroSim Fullscreen</a></p>
+<details>
+<summary>Claims Lifecycle Workflow with Graph Database Integration (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> claims-lifecycle-workflow-graph-database-integration<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/claims-lifecycle-workflow-graph-database-integration/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/claims-lifecycle-workflow-graph-database-integration</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Given the claims lifecycle flowchart, the learner can distinguish processing gates from adjudication gates and identify which specific gate failure produces which claim denial reason.</p>
+<p>Reused from this book's MicroSim library. This flowchart follows a claim from submission through adjudication to payment, marking every graph-database traversal (eligibility, network/coverage, prior authorization, accumulators) in green. Hovering each step reveals what it checks, and every failing gate routes to a denied outcome tied to one specific reason — letting the learner trace, node by node, the exact difference between a processing failure and an adjudication failure described in the prose above, then follow the "happy path" all the way to a paid claim written back into the graph.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">A Shortcut for Remembering Processing vs. Adjudication</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a trick: processing asks yes/no questions ("Is this claim even valid?"), while adjudication does arithmetic ("What dollar amount gets paid?"). If a step involves a calculation against a deductible or coinsurance rate, it's adjudication, not processing.</p>
+</div>
+<h2 id="pharmacy-benefits-formularies-and-the-pharmacy-benefit-manager">Pharmacy Benefits: Formularies and the Pharmacy Benefit Manager</h2>
+<p>Prescription drug coverage runs through its own specialized graph structure, managed by a <strong>pharmacy benefit manager (PBM)</strong> — a third-party organization that negotiates drug prices and rebates with manufacturers, builds and maintains formularies on behalf of payers, and processes pharmacy claims in real time at the point of sale, all within the few seconds a patient stands at the pharmacy counter. That real-time pharmacy claim is, structurally, the same processing-then-adjudication pipeline covered earlier in this chapter — eligibility, formulary coverage, and accumulator checks all run before the pharmacist ever sees a price — just compressed into a single interactive transaction instead of a batch submitted after the fact. Beyond formulary design, PBMs also operate mail-order and specialty pharmacy networks for high-cost or hard-to-handle drugs, and they profit partly through manufacturer rebates and partly through the spread between what they charge a payer and what they reimburse a pharmacy — a pricing structure that has drawn regulatory scrutiny and is itself a recurring subject of the fraud, waste, and abuse analytics covered in Chapters 18 and 19.</p>
+<p>The PBM's central artifact is the <strong>formulary</strong>: a payer-approved list of covered drugs, organized into cost tiers that determine a member's copay. A typical formulary uses four or five tiers, reinforced in the table below, moving from the cheapest generics to the most expensive specialty biologics.</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Typical Contents</th>
+<th>Typical Member Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tier 1</td>
+<td>Preferred generics</td>
+<td>$5-$15 copay</td>
+</tr>
+<tr>
+<td>Tier 2</td>
+<td>Preferred brand drugs</td>
+<td>$30-$60 copay</td>
+</tr>
+<tr>
+<td>Tier 3</td>
+<td>Non-preferred brand drugs</td>
+<td>$60-$100 copay or coinsurance</td>
+</tr>
+<tr>
+<td>Tier 4/5</td>
+<td>Specialty drugs (biologics, injectables)</td>
+<td>20-30% coinsurance, often with a separate cap</td>
+</tr>
+</tbody>
+</table>
+<p>Every drug on a formulary falls into one of two categories. A <strong>brand drug</strong> is a medication still protected by patent or marketing exclusivity, sold under a manufacturer's trademarked name at a price the manufacturer sets largely without competition. A <strong>generic drug</strong> is a bioequivalent version of a brand drug, manufactured and sold once the original patent expires — often triggering a "patent cliff" where multiple manufacturers enter simultaneously — typically priced 80-85% below the brand at a fraction of the original cost. Concretely, brand-name Lipitor might cost a payer $450 for a 30-day supply, while generic atorvastatin costs closer to $12 for the same supply; across a plan with tens of thousands of members on a statin, that difference compounds into millions of dollars a year, which is exactly why Generic Drug carries a Concept Impact Score nearly as high as Insurance Policy in this chapter. Nearly every pharmacy benefit rule that follows — formulary tier design, step therapy, PBM cost containment — exists specifically to steer prescribing toward generics wherever a clinically equivalent option is available.</p>
+<p>That steering is implemented through <strong>formulary rules</strong> — the conditions attached to a drug's coverage beyond simply being on the list, most commonly <strong>step therapy</strong>, which requires a member to try (and fail) a lower-cost drug before the plan will cover a more expensive alternative. Continuing our worked example: Maria Chen's cardiologist wants to prescribe brand-name Lipitor for elevated cholesterol. Her formulary places generic atorvastatin (the bioequivalent generic for Lipitor) at Tier 1 with a $10 copay, and Lipitor itself at Tier 3 with a $75 copay — but only after a formulary rule requiring atorvastatin be tried first. As a graph, this is a <code>STEP_THERAPY_BEFORE</code> edge running from the generic drug node to the brand drug node, layered on top of a <code>MEMBER_OF</code> edge connecting both drugs to the same therapeutic class (statins) and an <code>ALTERNATIVE_TO</code> edge marking them as clinically interchangeable. If Maria's cardiologist has a clinical reason she cannot tolerate the generic — a documented allergy, for instance — the prescriber can submit a formulary exception request, asking the PBM to waive the step-therapy rule for this specific member; approval turns that single <code>STEP_THERAPY_BEFORE</code> edge into an override property on Maria's claim rather than a change to the underlying formulary graph itself.</p>
+<h4 id="diagram-formulary-management-and-step-therapy-graph-model">Diagram: Formulary Management and Step Therapy Graph Model</h4>
+<iframe src="../../sims/formulary-management-step-therapy-graph-model/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/formulary-management-step-therapy-graph-model/main.html">Run the Formulary Management and Step Therapy Graph Model MicroSim Fullscreen</a></p>
+<details>
+<summary>Formulary Management and Step Therapy Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> formulary-management-step-therapy-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/formulary-management-step-therapy-graph-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/formulary-management-step-therapy-graph-model</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Given a formulary graph, the learner can distinguish a plan's formulary tier assignment from its step-therapy requirement and trace why a generic drug must be tried before an associated brand drug is covered.</p>
+<p>Reused from this book's MicroSim library. A benefit plan USES_FORMULARY, the formulary INCLUDES drugs at various tiers, and every drug is a MEMBER_OF a therapeutic class; a red STEP_THERAPY_BEFORE edge requires the Tier 1 generic (atorvastatin) be tried before the Tier 3 brand (Lipitor) is covered. Dragging nodes to trace this exact path reinforces the worked Maria Chen example above.</p>
+</details>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Don't Confuse the Formulary With the Rule</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A common mix-up: the formulary is just the <em>list</em> of covered drugs and their tiers. A formulary rule (like step therapy or prior authorization) is a <em>condition</em> layered on top of that list. Two plans can share the exact same formulary and still behave completely differently if one attaches step-therapy rules and the other doesn't.</p>
+</div>
+<h2 id="gatekeeping-care-prior-authorization-utilization-review-and-medical-necessity">Gatekeeping Care: Prior Authorization, Utilization Review, and Medical Necessity</h2>
+<p>Some services and drugs require the payer's approval <em>before</em> they are delivered, not just adjudication after the fact. <strong>Prior authorization</strong> is the requirement that a provider obtain payer approval before performing a specific procedure or filling a specific prescription, used for costly or high-risk services where the payer wants to confirm appropriateness in advance rather than deny payment afterward. The broader administrative process this belongs to is <strong>utilization review</strong>, which comes in three flavors depending on timing: prospective review evaluates a request before care is delivered (prior authorization is simply prospective review applied to a single service); concurrent review re-evaluates an ongoing treatment course while it is still happening, such as a case manager checking daily whether a hospital inpatient stay is still medically necessary; and retrospective review audits care after the fact, once claims have already been paid — the same retrospective lens that Chapters 18 and 19 apply at much larger scale to detect fraud and billing abuse.</p>
+<p>Both prior authorization and utilization review are decided against a single governing standard: <strong>medical necessity</strong>, the clinical judgment that a requested service is appropriate, evidence-based, and required to diagnose or treat a member's condition, as opposed to being convenient, experimental, or elective. Payers typically license a standardized, evidence-based criteria set — such as InterQual or MCG — rather than leaving medical-necessity decisions purely to individual reviewer judgment, which keeps the standard consistent across thousands of daily requests and, not incidentally, makes it possible to encode as machine-checkable rules in a graph-based rules engine. A prior authorization request for an MRI is not approved or denied on cost grounds alone — it is checked against documented medical-necessity criteria, such as red-flag symptoms, whether conservative treatment was tried first, and whether the request aligns with published clinical guidelines. If an initial request is denied, the ordering physician can often request a peer-to-peer review — a direct phone conversation with the payer's own medical director to present additional clinical context before the decision is finalized, exactly the "peer-review" outcome branch shown in the decision tree below. This is the same medical-necessity standard that later determines whether a claim denial for lack of prior authorization can succeed on dispute.</p>
+<h4 id="diagram-prior-authorization-decision-tree-microsim">Diagram: Prior Authorization Decision Tree MicroSim</h4>
+<iframe src="../../sims/prior-authorization-decision-tree-microsim/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/prior-authorization-decision-tree-microsim/main.html">Run the Prior Authorization Decision Tree MicroSim Fullscreen</a></p>
+<details>
+<summary>Prior Authorization Decision Tree MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> prior-authorization-decision-tree-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/prior-authorization-decision-tree-microsim/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/prior-authorization-decision-tree-microsim</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: apply, practice<br/>
+Learning objective: Given a clinical case and a set of medical-necessity checkpoints, the learner can apply a prior-authorization decision tree to reach and justify an approve, deny, pend, or peer-review outcome.</p>
+<p>Reused from this book's MicroSim library. This MicroSim turns an MRI-brain-for-headache prior-authorization policy into an interactive decision tree, with checkpoints for red-flag symptoms, conservative treatment, symptom persistence, documentation adequacy, and guideline alignment. Working through the five pre-loaded cases gives the learner hands-on practice applying the medical-necessity standard defined above, with immediate feedback on whether their reasoning reached the clinically correct outcome.</p>
+</details>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">If This Section Feels Like a Lot, That's Normal</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Prior authorization, utilization review, and medical necessity can feel like three names for the same fuzzy idea at first. That's a completely normal reaction — most people need to see a couple of real cases (like the ones in the MicroSim above) before the distinctions click into place. Give it a second pass if you need one.</p>
+</div>
+<p>Together, these gatekeeping mechanisms close the loop on the claims-and-coverage vocabulary this chapter set out to build: every service a member receives now has a defined coverage status, a cost-sharing calculation, a place in the claims lifecycle, and, where applicable, an approval requirement checked against medical necessity before care is even delivered.</p>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Model the Payer's Side of a Claim</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Look at everything you just connected: benefit plans and coverage, deductibles and out-of-pocket maximums, the full claims lifecycle from submission to denial, and formularies with step therapy. That's the entire skeleton of payer-side data modeling — and you built it as a graph, not a stack of tables. Nicely done!</p>
+</div>
+<p>This chapter modeled the payer's core vocabulary as a graph: policies built on benefit plans, benefit plans defining coverage, cost-sharing terms all bounded by the out-of-pocket maximum, claims moving through processing and adjudication toward payment or denial, and pharmacy benefits governed by formularies, tiers, and step therapy. Every one of these concepts becomes a node type or an edge type — which is exactly the modeling habit this book has been building since Chapter 1. In <a href="../15-reimbursement-health-plans-payer-contracts/">Chapter 15</a>, we follow a paid claim the rest of the way: how the payer calculates the allowed amount, reimburses the provider, and connects to the broader ecosystem of health plan types and payer contracts.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 13. Clinical Guidelines, Care Pathways, and Provider Workforce">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                13. Clinical Guidelines, Care Pathways, and Provider Workforce
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-footer__link md-footer__link--next" aria-label="Next: 15. Reimbursement, Health Plan Types, and Payer Contracts">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                15. Reimbursement, Health Plan Types, and Payer Contracts
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

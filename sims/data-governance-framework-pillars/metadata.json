@@ -1,0 +1,23 @@
+{
+  "title": "Data Governance Framework Pillars",
+  "description": "Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "data-governance-framework-pillars",
+  "library": "p5.js",
+  "bloomLevel": "Analyze<br/>",
+  "bloomVerb": "differentiate, examine<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 27,
+  "chapter_title": "Data Governance and Metadata Management",
+  "chapter_dir": "27-data-governance-and-metadata-management",
+  "chapter_rel_dir": "chapters/27-data-governance-and-metadata-management"
+}

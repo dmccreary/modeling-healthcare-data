@@ -1,0 +1,23 @@
+{
+  "title": "CDS Hooks Request-Response Cycle",
+  "description": "Given a clinical scenario, the learner can examine which CDS Hooks hook type would fire and differentiate the roles of context, prefetch, and the returned card in producing a correctly timed alert.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "cds-hooks-request-response-cycle",
+  "library": "Mermaid",
+  "bloomLevel": "Analyze<br/>",
+  "bloomVerb": "examine, differentiate<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 24,
+  "chapter_title": "CDS Hooks, Care Alerts, and CMS CQL Tooling",
+  "chapter_dir": "24-cds-hooks-alerts-and-cms-cql-tooling",
+  "chapter_rel_dir": "chapters/24-cds-hooks-alerts-and-cms-cql-tooling"
+}

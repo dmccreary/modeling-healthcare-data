@@ -1,0 +1,2760 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduces metadata management, data lineage and provenance, data governance frameworks, master data management, and explainability and transparency as governance concerns for healthcare graph data.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/27-data-governance-and-metadata-management/">
+      
+      
+        <link rel="prev" href="../26-advanced-security-operations-incident-response/">
+      
+      
+        <link rel="next" href="../28-data-quality-stewardship-and-compliance/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Data Governance and Metadata Management - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Data Governance and Metadata Management - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Introduces metadata management, data lineage and provenance, data governance frameworks, master data management, and explainability and transparency as governance concerns for healthcare graph data." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/27-data-governance-and-metadata-management/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/27-data-governance-and-metadata-management/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Data Governance and Metadata Management - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Introduces metadata management, data lineage and provenance, data governance frameworks, master data management, and explainability and transparency as governance concerns for healthcare graph data." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/27-data-governance-and-metadata-management/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-governance-and-metadata-management" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Governance and Metadata Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata-management-data-about-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Management: Data About Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Management: Data About Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-integration-flow-with-source-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Data Integration Flow with Source Metadata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-lineage-data-provenance-and-data-traceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lineage, Data Provenance, and Data Traceability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Lineage, Data Provenance, and Data Traceability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-lineage-graph-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Lineage Graph Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-governance-framework-the-organizational-backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Governance Framework: The Organizational Backbone
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Governance Framework: The Organizational Backbone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-governance-framework-pillars" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Data Governance Framework Pillars
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explainability-and-transparency-governance-for-the-ai-era" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explainability and Transparency: Governance for the AI Era
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explainability and Transparency: Governance for the AI Era">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-explainable-ai-recommendation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Explainable AI Recommendation Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-catalog-data-dictionary-and-the-golden-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Catalog, Data Dictionary, and the Golden Record
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Catalog, Data Dictionary, and the Golden Record">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-integration-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Integration Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata-management-data-about-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Management: Data About Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Management: Data About Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-integration-flow-with-source-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Data Integration Flow with Source Metadata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-lineage-data-provenance-and-data-traceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lineage, Data Provenance, and Data Traceability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Lineage, Data Provenance, and Data Traceability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-lineage-graph-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Lineage Graph Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-governance-framework-the-organizational-backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Governance Framework: The Organizational Backbone
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Governance Framework: The Organizational Backbone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-governance-framework-pillars" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Data Governance Framework Pillars
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explainability-and-transparency-governance-for-the-ai-era" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explainability and Transparency: Governance for the AI Era
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explainability and Transparency: Governance for the AI Era">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-explainable-ai-recommendation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Explainable AI Recommendation Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-catalog-data-dictionary-and-the-golden-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Catalog, Data Dictionary, and the Golden Record
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Catalog, Data Dictionary, and the Golden Record">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-data-integration-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Data Integration Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/27-data-governance-and-metadata-management/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="data-governance-and-metadata-management">Data Governance and Metadata Management</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces data governance, beginning with metadata management, data lineage, and data provenance -- the record of where data came from and how it changed. It covers data quality, traceability, and the master data management and data stewardship practices that keep an organization's data trustworthy, concluding with explainability and transparency as governance concerns in their own right.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metadata Management</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Data Lineage</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Data Provenance</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data Quality</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Data Traceability</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data Governance Framework</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Master Data Management</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Data Stewardship</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Explainability</td>
+<td>22</td>
+</tr>
+<tr>
+<td>Transparency</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data Catalog</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Data Dictionary</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Reference Data Management</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Golden Record</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Entity Resolution</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../02-graphs-vs-relational-databases/">Chapter 2: Data Modeling: Graphs vs. Relational Databases</a></li>
+<li><a href="../25-healthcare-data-security-fundamentals/">Chapter 25: Healthcare Data Security Fundamentals</a></li>
+</ul>
+<hr />
+<p>Securing a healthcare graph, as the last two chapters covered, answers "who may touch this data?" This chapter asks a different but equally essential question: "can we trust what this data actually says?" A perfectly access-controlled graph is worthless if nobody can tell where a value came from, whether it has been quietly corrected since yesterday, or which of three conflicting patient records is the real one. <strong>Data governance</strong> is the organizational discipline that answers these questions systematically, and it depends on a foundation of <strong>metadata</strong> — data about data — that this chapter builds from the ground up.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Meet Your Data's Paper Trail</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Hi again — Sage here, and this chapter is one of my favorites, because it's basically detective work. Every fact in a healthcare graph has a story: where it came from, who touched it, and why it looks the way it does today. Learn to trace that story and you'll never again have to just <em>trust</em> a number on a dashboard — you'll be able to prove it. Let's connect the dots!</p>
+</div>
+<h2 id="metadata-management-data-about-data">Metadata Management: Data About Data</h2>
+<p><strong>Metadata management</strong> is the practice of systematically capturing, organizing, and making available <em>data about data</em> — not Maria Chen's diagnosis itself, but facts like which system originally recorded that diagnosis, how frequently that system updates, what format the diagnosis code is stored in, and who is authorized to change it. Metadata sounds abstract until you notice how often you already rely on it: a file's "last modified" timestamp, a column's data type in a database schema, and a photo's embedded camera settings are all metadata. In a healthcare graph spanning EHR systems, claims databases, lab interfaces, and pharmacy systems, metadata is what tells an engineer or an analyst what a given node or edge actually represents before they build anything on top of it.</p>
+<p>Metadata in a well-run healthcare data platform typically falls into three overlapping categories: <strong>technical metadata</strong> (a property's data type, its source table, the ETL job that populated it), <strong>business metadata</strong> (a plain-language definition of what a field means to a clinician or biller, and who owns that definition), and <strong>operational metadata</strong> (how often a source refreshes, how long a pipeline took to run, how many records it touched). A worked example ties these together: suppose an analyst notices that Maria Chen's <code>Patient</code> node has a <code>risk_score</code> property. Technical metadata tells the analyst this property is a floating-point number populated nightly by a specific machine learning pipeline; business metadata tells them the score represents 12-month hospital readmission risk, on a 0-to-1 scale, as defined by the clinical analytics team; and operational metadata tells them the last successful refresh was six hours ago, with zero pipeline failures in the past thirty days. Without all three, the analyst has a number with no context — and a number with no context is a number nobody should trust for a clinical decision.</p>
+<p>The table below reinforces the three-category breakdown with the <code>risk_score</code> example, showing how each category answers a different question about the same single property.</p>
+<table>
+<thead>
+<tr>
+<th>Metadata Category</th>
+<th>Question It Answers</th>
+<th>Example for <code>risk_score</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technical</td>
+<td>What format and lineage does this field have?</td>
+<td>Float, populated nightly by the readmission-risk ML pipeline</td>
+</tr>
+<tr>
+<td>Business</td>
+<td>What does this field mean in plain language?</td>
+<td>12-month readmission risk, 0-to-1 scale, owned by clinical analytics</td>
+</tr>
+<tr>
+<td>Operational</td>
+<td>Is this field's data current and reliable right now?</td>
+<td>Last refreshed 6 hours ago; zero pipeline failures in 30 days</td>
+</tr>
+</tbody>
+</table>
+<p>Well-governed organizations store this metadata itself as structured, queryable records — often in the data catalog covered later in this chapter — rather than in scattered spreadsheets or a single engineer's memory. That queryability matters enormously at scale: a healthcare graph with thousands of properties across dozens of source systems cannot rely on any one person remembering what each one means, which is precisely why metadata management is treated as a discipline in its own right rather than an informal habit.</p>
+<p>The interactive diagram below makes exactly this kind of metadata visible across eight real source systems feeding a healthcare knowledge graph, each with its own update frequency and integration pattern — metadata about the sources themselves, one layer up from metadata about individual fields.</p>
+<h4 id="diagram-data-integration-flow-with-source-metadata">Diagram: Data Integration Flow with Source Metadata</h4>
+<iframe src="../../sims/data-integration-flow-infographic/main.html" width="100%" height="636px" scrolling="no"></iframe>
+
+<details>
+<summary>Data Integration Flow with Source Metadata (reused)</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> data-integration-flow-infographic<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/data-integration-flow-infographic/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/data-integration-flow-infographic</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: classify, summarize<br/>
+Learning objective: Given eight source systems feeding a healthcare knowledge graph, the learner can classify each by its operational metadata (update frequency, integration pattern) and summarize why that metadata matters for interpreting the data downstream.</p>
+<p>Reused from the MicroSim catalog. This infographic shows a central healthcare knowledge graph fed by eight source systems, each using a different integration pattern: real-time change-data-capture and Kafka streams for clinical events, nightly batches for claims, APIs for pharmacy and reference data, HL7 messages for lab results, federated queries for FHIR resources, and manual upload for social-services data. Hovering any source system reveals exactly the operational metadata described above — what data it provides, how often it updates, and which pattern moves it — directly illustrating why metadata about a source is as important as the data the source provides.</p>
+</details>
+<h2 id="data-lineage-data-provenance-and-data-traceability">Data Lineage, Data Provenance, and Data Traceability</h2>
+<p>Once metadata establishes <em>what</em> a piece of data is, three closely related concepts establish <em>where it has been</em>. <strong>Data lineage</strong> is the end-to-end map of a data element's journey — every system, transformation, and pipeline it passed through from its original source to its current form. <strong>Data provenance</strong> is a narrower, more legally and scientifically flavored cousin: the documented origin and custody history of a specific piece of data, often required to establish that a value is trustworthy enough to support a clinical or regulatory decision. <strong>Data traceability</strong> is the practical ability to actually follow that lineage on demand — to start at a dashboard number and walk backward, hop by hop, to the exact source record that produced it.</p>
+<p>These three ideas map almost perfectly onto a graph structure, which is why graph databases have become a natural fit for lineage tracking. Each transformation step becomes a node, and a <code>DERIVED_FROM</code> or <code>TRANSFORMED_BY</code> edge connects it to whatever fed into it — turning "where did this number come from?" into the same kind of traversal question Chapter 1 introduced for clinical relationships.</p>
+<p>A worked example separates the three terms cleanly. Suppose a population-health dashboard reports that 18% of Riverside Clinic's diabetic patients are overdue for an eye exam. Data lineage is the full map: raw encounter records flowed from Epic EHR into a nightly ETL job, were joined against a diagnosis-code reference table, and were aggregated into the dashboard's summary metric. Data provenance narrows in on a single contested value within that map — perhaps one patient's diagnosis date, which provenance records show was entered by Dr. Osei on a specific date, sourced directly from a lab result rather than a clinician's manual note, which matters if that date is later challenged in an audit. Data traceability is what makes both of the above <em>actionable</em> rather than theoretical: an analyst who doubts the 18% figure can actually click through the dashboard, hop by hop, back to the individual encounter records responsible for it, rather than trusting the number on faith.</p>
+<p>The diagram below traces exactly this kind of path, from an Epic EHR record through entity resolution to a graph entity and finally to a downstream risk model.</p>
+<h4 id="diagram-healthcare-data-lineage-graph-visualization">Diagram: Healthcare Data Lineage Graph Visualization</h4>
+<iframe src="../../sims/healthcare-data-lineage-graph-visualization/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<details>
+<summary>Healthcare Data Lineage Graph Visualization (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> healthcare-data-lineage-graph-visualization<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-lineage-graph-visualization/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-data-lineage-graph-visualization</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: trace, demonstrate<br/>
+Learning objective: Given a dashboard metric produced by a healthcare analytics pipeline, the learner can trace its lineage path backward through transformations to its originating source system.</p>
+<p>Reused from the MicroSim catalog. This graph traces data lineage through five stages, left to right: source systems (Epic EHR, lab, pharmacy), the raw tables they populate, the transformations that clean and resolve them, the graph entities they become, and the analytics that consume them. Clicking any downstream node highlights the full lineage path back to its source, letting the learner directly verify a chain such as Epic EHR to PATIENT_MASTER to Entity Resolution to Patient to Risk Model — the same "walk backward, hop by hop" traceability described in the preceding paragraph.</p>
+</details>
+<p>Data lineage and provenance are not ends in themselves — they exist in service of <strong>data quality</strong>, the degree to which data is accurate, complete, consistent, and fit for its intended use. A dashboard's risk score is only as trustworthy as the weakest link in its lineage chain; Chapter 28 develops data quality into a full measurement discipline, but for now, hold onto the connection: lineage tells you <em>where</em> a number came from, and quality tells you <em>whether you should believe it</em> once you know.</p>
+<h2 id="data-governance-framework-the-organizational-backbone">Data Governance Framework: The Organizational Backbone</h2>
+<p>A <strong>data governance framework</strong> is the formal structure of policies, roles, standards, and decision rights an organization establishes to manage its data as a strategic asset rather than an accidental byproduct of running systems. Where metadata management and lineage are largely technical capabilities, a governance framework is organizational: it defines who is accountable when data quality slips, what standards a new data source must meet before it is trusted for clinical use, and how conflicting definitions of the same term (does "readmission" mean within 30 days or 90?) get resolved once and for all rather than argued about in every meeting.</p>
+<p>A useful way to see a governance framework is as a set of interlocking pillars, each answering a different accountability question: a <strong>policy pillar</strong> (what rules govern data use, retention, and sharing), a <strong>roles pillar</strong> (who owns which data domain, covered fully as data stewardship below and expanded into councils and steward roles in Chapter 28), a <strong>quality pillar</strong> (what standards data must meet before it is trusted), a <strong>security pillar</strong> (built directly on the access control and encryption mechanisms from Chapters 25 and 26), and a <strong>compliance pillar</strong> (how the organization demonstrates it is meeting HIPAA and other regulatory obligations). A worked example shows why all five pillars must work together: suppose Riverside Clinic's analytics team wants to add a new wearable-device vendor's heart-rate data to the patient graph. The policy pillar determines whether the clinic's data-sharing agreements even permit ingesting this data; the roles pillar identifies which data steward must approve the new source; the quality pillar sets thresholds the incoming data must meet before it feeds any clinical dashboard; the security pillar determines what access controls apply to it; and the compliance pillar confirms the whole arrangement satisfies HIPAA. Skip any one pillar, and the new data source becomes a governance blind spot no matter how well the other four are handled.</p>
+<p>The table below summarizes each pillar's accountability question alongside its concrete role in the wearable-device scenario just described, reinforcing which pillar owns which decision before you explore the interactive version.</p>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Accountability Question</th>
+<th>Role in the Wearable-Device Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy</td>
+<td>What rules govern data use, retention, and sharing?</td>
+<td>Confirms the vendor's data-sharing agreement permits ingestion</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>Who owns this data domain and approves changes to it?</td>
+<td>Identifies the data steward who must sign off on the new source</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>What standard must this data meet before it is trusted?</td>
+<td>Sets accuracy and completeness thresholds before dashboard use</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>What access controls and protections apply?</td>
+<td>Applies the RBAC and encryption controls from Chapters 25-26</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>Does this arrangement satisfy regulatory obligations?</td>
+<td>Verifies the integration meets HIPAA requirements</td>
+</tr>
+</tbody>
+</table>
+<p>A governance framework only works if these pillars are backed by real organizational authority rather than existing on paper alone — a policy nobody enforces, or a steward role with no actual decision rights, provides the illusion of governance without its substance. That authority question is exactly why Chapter 28 introduces the data governance council: a standing body with the actual power to resolve the cross-pillar conflicts a framework like this one will inevitably surface.</p>
+<h4 id="diagram-data-governance-framework-pillars">Diagram: Data Governance Framework Pillars</h4>
+<iframe src="../../sims/data-governance-framework-pillars/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Data Governance Framework Pillars</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> data-governance-framework-pillars<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, examine<br/>
+Learning objective: Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact.</p>
+<p>Purpose: Make the five interlocking pillars of a data governance framework concrete using the wearable-device data source scenario from the preceding worked example.</p>
+<p>Components to show: Five vertical pillar shapes arranged side by side, each labeled: Policy, Roles, Quality, Security, Compliance. A horizontal beam across the top labeled "Trusted, Governed Data" rests on all five pillars.</p>
+<p>Data Visibility Requirements:
+Stage 1: Show the five pillars unlabeled with only their names, beam resting on top.
+Stage 2: On click of a pillar, show that pillar's accountability question (e.g., Policy: "What rules govern data use, retention, and sharing?") and the specific wearable-device-vendor decision it governs from the worked example, in a side panel.
+Stage 3: On click of the "Remove a Pillar" toggle for any single pillar, animate that pillar sliding out and the beam visibly tilting/dropping on that side, illustrating a governance blind spot.</p>
+<p>Interactive controls:</p>
+<ul>
+<li>Click each pillar to reveal its accountability question and worked-example decision</li>
+<li>Toggle button per pillar: "Remove this pillar" to visually demonstrate what happens when that governance function is missing</li>
+<li>Reset button to restore all five pillars</li>
+</ul>
+<p>Instructional Rationale: The Analyze-level objective (differentiate, examine) is served by letting learners actively remove a pillar and see the structural consequence, rather than just reading a labeled diagram — this mirrors the "skip any one pillar" claim in the preceding prose and lets the learner verify it interactively rather than take it on faith.</p>
+<p>Layout: Horizontal row of five pillars, responsive width, fixed height, reflows pillar spacing on window resize.</p>
+<p>Color scheme: Each pillar a distinct color (policy blue, roles teal, quality green, security orange, compliance purple); the beam is gray and turns red when tilted.</p>
+<p>Implementation: p5.js with simple physics-free tilt animation triggered by button state.</p>
+</details>
+<p>Two remaining organizational concepts round out the picture. <strong>Master data management</strong>, or <strong>MDM</strong>, is the discipline of establishing a single, authoritative version of core business entities — patients, providers, facilities — that every system in the organization references rather than maintaining its own separate, potentially conflicting copy. <strong>Data stewardship</strong> assigns clear human accountability for a specific data domain: a data steward for "patient demographics" is the person responsible for that domain's quality, definitions, and access decisions, acting as the practical, human face of the roles pillar described above. Chapter 28 returns to data stewardship in depth, covering the specific steward role and the governance council that coordinates stewards across domains.</p>
+<h2 id="explainability-and-transparency-governance-for-the-ai-era">Explainability and Transparency: Governance for the AI Era</h2>
+<p>Governance concerns extend beyond the raw data pipeline into how that data is <em>used</em>, especially once machine learning and graph-based AI models start recommending clinical actions. <strong>Explainability</strong> is the property of a system that lets a human understand <em>why</em> it produced a specific output — not just that a model recommended a particular medication for Maria Chen, but which specific facts in her patient subgraph (a lab value, a drug interaction, a comorbidity) drove that recommendation. <strong>Transparency</strong> is the closely related but broader organizational commitment to make a system's data sources, methods, and limitations visible and available for scrutiny, even before any single output needs explaining.</p>
+<p>Explainability matters enormously in healthcare governance because a clinician (and a patient) are entitled to understand the reasoning behind a recommendation before acting on it — a black-box suggestion is much harder to trust, audit, or catch a mistake in than one accompanied by a traceable chain of evidence. Graph structures again offer a natural mechanism: because a clinical knowledge graph already represents facts as nodes and relationships as edges, an explanation can be built directly from the specific path of nodes and edges the recommendation engine actually traversed, rather than from an opaque statistical summary. Compare this to a traditional machine learning model trained on tabular data, which typically must reach for a separate post-hoc technique — ranking which input features mattered most to a prediction, without any guarantee that ranking reflects genuine clinical reasoning. A graph-native explanation, by contrast, <em>is</em> the reasoning: "recommend Metformin because Maria Chen's HbA1c edge exceeds the diagnostic threshold, she has no CONTRAINDICATED_WITH edge to Metformin, and her INSURANCE_COVERS edge confirms formulary coverage" is both the answer and its own audit trail.</p>
+<p>Transparency operates at a higher, more organizational level than any single explanation. A transparent healthcare AI program publishes documentation — sometimes called a model card or algorithmic impact statement — describing what data trained a clinical model, what populations it was validated against, and what its known limitations are, so that an adopting clinic can judge for itself whether the model is appropriate for its own patient population before ever seeing an individual recommendation. Explainability answers "why did the system say this?" for one output; transparency answers "should we trust this system at all?" for the system as a whole. Governance programs need both, because a perfectly explainable individual recommendation from a model trained on a demographically unrepresentative population is still a governance failure — the explanation would faithfully describe flawed reasoning.</p>
+<h4 id="diagram-explainable-ai-recommendation-workflow">Diagram: Explainable AI Recommendation Workflow</h4>
+<iframe src="../../sims/explainable-ai-recommendation-workflow/main.html" width="100%" height="991px" scrolling="no"></iframe>
+
+<details>
+<summary>Explainable AI Recommendation Workflow (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> explainable-ai-recommendation-workflow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/explainable-ai-recommendation-workflow/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/explainable-ai-recommendation-workflow</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Given a graph-based clinical recommendation, the learner can distinguish the inference step that generates the recommendation from the separate explanation-graph step that makes it interpretable, and identify where a low-confidence case is instead routed to human review.</p>
+<p>Reused from the MicroSim catalog. This flowchart shows how a graph-based clinical decision support system produces an explainable medication recommendation: the patient's subgraph and the clinical knowledge graph converge in an inference engine that scores options, and — when confidence is high — the system builds a distinct explanation graph before presenting the recommendation with its reasoning and logging the access. Hovering any step reveals its function; the low-confidence branch flags a case for human review instead of forcing a recommendation, directly illustrating that explainability is a design choice, not an automatic byproduct of a model producing an answer.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Explainability Is a Feature, Not a Side Effect</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice in the diagram above that building the explanation graph is a separate, deliberate step — it doesn't happen automatically just because the recommendation exists. That's the mental shift worth holding onto: a system can be highly accurate and still be ungoverned if nobody designed a way to explain its reasoning. Transparency and explainability have to be built in on purpose.</p>
+</div>
+<h2 id="data-catalog-data-dictionary-and-the-golden-record">Data Catalog, Data Dictionary, and the Golden Record</h2>
+<p>The remaining concepts describe the practical tools a governance program actually uses day to day. A <strong>data catalog</strong> is a searchable inventory of every data asset an organization holds — tables, graph node and edge types, dashboards, and pipelines — along with the metadata described earlier in this chapter, so an analyst can discover what data exists and who owns it without having to ask around. A worked example shows the catalog's payoff directly: a new analyst joining Riverside Clinic's data team needs to know whether a "30-day readmission" metric already exists before building one from scratch. Without a catalog, she asks around Slack and hopes someone remembers; with a catalog, she searches "readmission" and finds an existing <code>readmission_30day</code> graph property, its owning data steward, its last-refreshed timestamp, and a link to the dashboard that already uses it — turning a scavenger hunt into a ten-second lookup. This search-and-discover capability is precisely what separates a data catalog from a governance framework's paper policies: the catalog is the searchable, living record those policies actually point to.</p>
+<p>A <strong>data dictionary</strong> is narrower and more precise than a catalog: a formal reference defining the exact meaning, format, and valid values of each specific field or property, so that "readmission_flag" means exactly one thing — perhaps "boolean, true if any inpatient admission occurred within 30 days of a prior discharge for the same patient" — across every system that uses it, rather than one team's 30-day definition silently colliding with another team's 90-day definition. <strong>Reference data management</strong> governs a related but distinct category: shared lookup values used consistently across systems, such as the standardized list of U.S. states, the ICD-10 diagnosis code set from Chapter 7, or the facility-type classifications used throughout this book's provider chapters. Where a data dictionary defines what a field <em>means</em>, reference data management governs the actual <em>permitted values</em> a field may take — the difference between defining "diagnosis_code" as a concept and maintaining the literal, versioned list of every valid ICD-10 code that field may hold.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Catalog, Dictionary, or Reference Data? Ask What You're Looking For</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+These three are easy to blur together, so ask yourself which question you're actually asking. "Does this data exist, and who owns it?" is the catalog; "what exactly does this field mean?" is the dictionary; "what values is this field even allowed to hold?" is reference data management. Three different questions, three different tools.</p>
+</div>
+<p>Finally, three concepts address what happens when the same real-world entity — a patient, most often — appears differently across multiple source systems. <strong>Entity resolution</strong> is the process of determining that two or more records from different systems actually refer to the same underlying person, despite differences in how their name, address, or identifiers were recorded. Once entity resolution identifies a match, <strong>master data management</strong> (introduced above) uses that result to construct a <strong>golden record</strong>: a single, merged, authoritative representation of that entity that reconciles conflicting field values (perhaps keeping the most recently updated address, and the most complete phone number) into one trusted record every downstream system can reference. The healthcare data integration graph below shows exactly this convergence — multiple encounters from different source systems all resolving onto one unified patient record.</p>
+<h4 id="diagram-healthcare-data-integration-graph-model">Diagram: Healthcare Data Integration Graph Model</h4>
+<iframe src="../../sims/healthcare-data-integration-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<details>
+<summary>Healthcare Data Integration Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> healthcare-data-integration-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-integration-graph-model/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-data-integration-graph-model</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, illustrate<br/>
+Learning objective: Given records from multiple source systems for the same patient, the learner can explain how entity resolution and master data management combine to produce a single golden record.</p>
+<p>Reused from the MicroSim catalog. This graph shows how a graph database integrates fragmented healthcare data into one unified patient view: a single master patient record has encounters for office visits, ED visits, and hospitalizations, each sourced from a different system (Epic EHR, claims database, lab interface, pharmacy), with diagnoses attached to each encounter. Clicking the central master patient node highlights every source-system edge converging on it, making concrete how entity resolution and MDM together produce one golden record from many fragmented originals.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">One Quick Question Settles Golden Record vs. Entity Resolution</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+If you ever mix up entity resolution and the golden record, ask: "Is this the <em>matching</em> step or the <em>merging</em> step?" Entity resolution is matching — deciding two records are the same person. The golden record is merging — building the one trusted record out of what matched. Matching comes first, merging comes second.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Trace Any Fact Back to Its Source</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+That's data governance mastered — metadata, lineage, provenance, governance frameworks, explainability, and golden records all connected. You now know not just what a data point says, but where it came from and whether it deserves your trust. That's a genuine analytical superpower.</p>
+</div>
+<p>This chapter built the vocabulary for trusting healthcare data rather than just securing it: metadata tells you what a value is, lineage and provenance tell you where it came from, and a data governance framework assigns organizational accountability for keeping all of it trustworthy. Master data management, entity resolution, and the golden record solve the specific problem of one patient appearing in many systems, while explainability and transparency extend governance into how AI-driven recommendations justify themselves. In <a href="../28-data-quality-stewardship-and-compliance/">Chapter 28</a>, we turn from these governance foundations to the day-to-day mechanics of running a governance program: measuring data quality, assigning ownership, and reporting compliance.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../26-advanced-security-operations-incident-response/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 26. Advanced Security Operations and Incident Response">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                26. Advanced Security Operations and Incident Response
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../28-data-quality-stewardship-and-compliance/" class="md-footer__link md-footer__link--next" aria-label="Next: 28. Data Quality, Stewardship, and Compliance">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                28. Data Quality, Stewardship, and Compliance
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

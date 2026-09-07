@@ -1,0 +1,23 @@
+{
+  "title": "Healthcare Data Sensitivity Classification Levels",
+  "description": "Given a sample healthcare data element, the learner can classify it into the correct sensitivity tier (Public, Internal, Confidential, Restricted) and identify the access control consequence of that classification.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "data-sensitivity-classification-levels",
+  "library": "p5.js",
+  "bloomLevel": "Apply<br/>",
+  "bloomVerb": "classify, demonstrate<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 28,
+  "chapter_title": "Data Quality, Stewardship, and Compliance",
+  "chapter_dir": "28-data-quality-stewardship-and-compliance",
+  "chapter_rel_dir": "chapters/28-data-quality-stewardship-and-compliance"
+}

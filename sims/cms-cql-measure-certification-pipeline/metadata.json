@@ -1,0 +1,23 @@
+{
+  "title": "CMS CQL Measure Development and Certification Pipeline",
+  "description": "Given the names of the CMS-sponsored authoring, testing, and certification tools, the learner can sequence them correctly along the measure development pipeline and summarize what role each plays.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "cms-cql-measure-certification-pipeline",
+  "library": "vis-timeline",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "summarize, sequence<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 24,
+  "chapter_title": "CDS Hooks, Care Alerts, and CMS CQL Tooling",
+  "chapter_dir": "24-cds-hooks-alerts-and-cms-cql-tooling",
+  "chapter_rel_dir": "chapters/24-cds-hooks-alerts-and-cms-cql-tooling"
+}

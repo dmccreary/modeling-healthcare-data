@@ -1,0 +1,3120 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduces the graph algorithms used to analyze structure and importance -- shortest path, centrality measures, similarity measures, cycle detection, and link prediction -- the analytical toolkit for fraud detection and recommendation.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/05-graph-algorithms-centrality-similarity/">
+      
+      
+        <link rel="prev" href="../04-graph-database-scalability-operations/">
+      
+      
+        <link rel="next" href="../06-graph-embeddings-clustering-gnn/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Graph Algorithms, Centrality, and Similarity Measures - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Graph Algorithms, Centrality, and Similarity Measures - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Introduces the graph algorithms used to analyze structure and importance -- shortest path, centrality measures, similarity measures, cycle detection, and link prediction -- the analytical toolkit for fraud detection and recommendation." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/05-graph-algorithms-centrality-similarity/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/05-graph-algorithms-centrality-similarity/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Graph Algorithms, Centrality, and Similarity Measures - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Introduces the graph algorithms used to analyze structure and importance -- shortest path, centrality measures, similarity measures, cycle detection, and link prediction -- the analytical toolkit for fraud detection and recommendation." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/05-graph-algorithms-centrality-similarity/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#graph-algorithms-centrality-and-similarity-measures" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Graph Algorithms, Centrality, and Similarity Measures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-graph-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Graph Algorithm?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is a Graph Algorithm?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-graph-algorithm-family-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Graph Algorithm Family Map
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centrality-many-definitions-of-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Centrality: Many Definitions of "Important"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Centrality: Many Definitions of "Important"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-centrality-measures-comparison-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Centrality Measures Comparison MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectivity-cycles-and-suspicious-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connectivity, Cycles, and Suspicious Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connectivity, Cycles, and Suspicious Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cycle-detection-and-pattern-explorer-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cycle Detection and Pattern Explorer MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similarity-how-alike-are-two-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Similarity: How Alike Are Two Nodes?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Similarity: How Alike Are Two Nodes?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-vector-embedding-similarity-visualization-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Vector Embedding Similarity Visualization MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-prediction-guessing-the-next-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Prediction: Guessing the Next Edge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Link Prediction: Guessing the Next Edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-link-prediction-scoring-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Link Prediction Scoring MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-structure-to-numbers-graph-and-node-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Structure to Numbers: Graph and Node Embeddings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Structure to Numbers: Graph and Node Embeddings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-node-embedding-explorer-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Node Embedding Explorer MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-graph-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Graph Algorithm?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is a Graph Algorithm?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-graph-algorithm-family-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Graph Algorithm Family Map
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centrality-many-definitions-of-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Centrality: Many Definitions of "Important"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Centrality: Many Definitions of "Important"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-centrality-measures-comparison-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Centrality Measures Comparison MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectivity-cycles-and-suspicious-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connectivity, Cycles, and Suspicious Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connectivity, Cycles, and Suspicious Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cycle-detection-and-pattern-explorer-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cycle Detection and Pattern Explorer MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similarity-how-alike-are-two-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Similarity: How Alike Are Two Nodes?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Similarity: How Alike Are Two Nodes?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-vector-embedding-similarity-visualization-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Vector Embedding Similarity Visualization MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-prediction-guessing-the-next-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Prediction: Guessing the Next Edge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Link Prediction: Guessing the Next Edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-link-prediction-scoring-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Link Prediction Scoring MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-structure-to-numbers-graph-and-node-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Structure to Numbers: Graph and Node Embeddings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Structure to Numbers: Graph and Node Embeddings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-node-embedding-explorer-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Node Embedding Explorer MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/05-graph-algorithms-centrality-similarity/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="graph-algorithms-centrality-and-similarity-measures">Graph Algorithms, Centrality, and Similarity Measures</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces the graph algorithms used to analyze structure and importance within a graph: shortest path algorithms, centrality measures (PageRank, betweenness, degree, closeness, eigenvector), and similarity measures such as Jaccard and cosine similarity. It also covers connected components, cycle detection, and link prediction. These algorithms are the analytical toolkit used throughout the rest of the book for tasks like fraud detection and recommendation.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Graph Algorithm</td>
+<td>429</td>
+</tr>
+<tr>
+<td>Shortest Path Algorithm</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Centrality Measure</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PageRank Algorithm</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Betweenness Centrality</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Degree Centrality</td>
+<td>424</td>
+</tr>
+<tr>
+<td>Closeness Centrality</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Eigenvector Centrality</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Clustering Coefficient</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Connected Components</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Strongly Connected Component</td>
+<td>419</td>
+</tr>
+<tr>
+<td>Cycle Detection</td>
+<td>52</td>
+</tr>
+<tr>
+<td>Graph Pattern Recognition</td>
+<td>51</td>
+</tr>
+<tr>
+<td>Similarity Measure</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Jaccard Similarity</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cosine Similarity</td>
+<td>364</td>
+</tr>
+<tr>
+<td>Link Prediction</td>
+<td>241</td>
+</tr>
+<tr>
+<td>Graph Embedding</td>
+<td>240</td>
+</tr>
+<tr>
+<td>Node Embedding</td>
+<td>62</td>
+</tr>
+<tr>
+<td>Edge Embedding</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-foundations-of-graph-structures/">Chapter 1: Foundations of Graph Structures</a></li>
+<li><a href="../03-graph-query-languages-pattern-matching/">Chapter 3: Graph Query Languages and Pattern Matching</a></li>
+</ul>
+<hr />
+<p>Every chapter so far has treated the graph as a place to store and retrieve
+facts: model the data, query the pattern, get the answer back. This chapter
+asks a different kind of question — not "what is connected to what" but
+"what does the <em>shape</em> of those connections tell us." Which provider is the
+most important hub in a referral network? Which two patients have similar
+enough symptom profiles to suggest the same diagnosis? Which claims form a
+suspicious closed loop? These are graph algorithm questions, and they are
+the analytical engine behind fraud detection, clinical recommendation, and
+population health work in every chapter that follows.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Reading the Shape of the Graph</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Let's connect the dots! This chapter is where graphs stop being just storage and start being a lens — the same connections you've been drawing can reveal the most influential provider in a network, a hidden fraud ring, or the next referral a patient is likely to need. Eight arms, infinite edges, and now, finally, the tools to make sense of all of them.</p>
+</div>
+<h2 id="what-is-a-graph-algorithm">What Is a Graph Algorithm?</h2>
+<p>A <strong>graph algorithm</strong> is a well-defined, step-by-step procedure that takes a
+graph as input and computes some property of its structure — a distance, a
+ranking, a grouping, or a prediction — as output. What separates a graph
+algorithm from an ordinary query is that a query retrieves data that is
+already explicit in the graph (a stored edge, a stored property), while a
+graph algorithm <em>derives</em> new information purely from the graph's
+connectivity pattern, information that was never stored anywhere as a
+property.</p>
+<p>The most familiar graph algorithm family answers a <strong>shortest path
+algorithm</strong> question: given a start node and an end node, what is the
+lowest-cost route between them, where "cost" might be the number of hops,
+a distance in miles, or a referral-processing delay in days? Consider a
+small weighted referral network: Dr. Patel refers to Dr. Osei (a 3-day wait)
+and to Dr. Nguyen (a 6-day wait); Dr. Osei can further refer to Dr. Nguyen
+(1 day) or directly to Dr. Reyes (2 days); Dr. Nguyen refers to Dr. Reyes in
+1 day. A shortest path algorithm systematically compares every route from
+Dr. Patel to Dr. Reyes — Patel→Osei→Reyes costs ( 3+2=5 ) days,
+Patel→Osei→Nguyen→Reyes costs ( 3+1+1=5 ) days, and Patel→Nguyen→Reyes
+costs ( 6+1=7 ) days — and returns the minimum, 5 days, along with the
+winning route (here, two routes tie). Doing this by hand for three routes is
+easy; doing it for a referral network with thousands of providers and
+millions of possible routes is exactly the kind of exhaustive-but-systematic
+work a graph algorithm automates.</p>
+<p>The specific algorithm that automates this comparison efficiently, without
+enumerating every possible route by brute force, is <strong>Dijkstra's
+algorithm</strong>. It maintains a running "best known cost so far" for every node
+(initialized to infinity except the start node, which is 0), and repeatedly
+selects the unvisited node with the lowest known cost, checks whether
+reaching its neighbors through it beats their current best-known cost, and
+updates those neighbors accordingly. Tracing it on the referral network
+above: starting from Dr. Patel (cost 0), the algorithm first visits Dr.
+Osei (cost 3, the lowest among Patel's neighbors), then checks Osei's
+neighbors — Dr. Nguyen's cost improves from 6 (direct) to (3+1=4) through
+Osei, and Dr. Reyes's cost is tentatively set to (3+2=5). Visiting Dr.
+Nguyen next (now the lowest unvisited cost at 4), the algorithm checks
+whether reaching Dr. Reyes through Nguyen beats the existing tentative cost:
+(4+1=5), a tie with the existing 5, so the cost stays at 5. Every node has
+now been visited, and the algorithm terminates having examined each edge at
+most once — a systematic, provably correct alternative to the manual
+route-by-route comparison performed earlier, and the reason shortest path
+queries remain fast even on referral networks far too large to trace by
+hand. In terms of computational cost, Dijkstra's algorithm runs in
+( O((n + e)\log n) ) time for a graph with ( n ) nodes and ( e )
+edges — far better than the exponential cost of literally comparing every
+possible route, which grows unmanageable after only a handful of nodes.</p>
+<p>Before looking at the taxonomy diagram below, note that graph algorithms
+generally fall into a handful of families based on the <em>kind</em> of question
+they answer: distance questions (shortest path), importance questions
+(centrality, covered next), grouping questions (connected components and
+clustering), and prediction questions (similarity and link prediction,
+covered later in this chapter).</p>
+<h4 id="diagram-graph-algorithm-family-map">Diagram: Graph Algorithm Family Map</h4>
+<iframe src="../../sims/graph-algorithm-family-map/main.html" width="100%" height="480px" scrolling="no"></iframe>
+
+<details>
+<summary>Graph Algorithm Family Map</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> graph-algorithm-family-map<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: classify, summarize<br/>
+Learning objective: Classify a graph algorithm by the type of question it answers (distance, importance, grouping, or prediction) and summarize one example algorithm per family.</p>
+<p>Purpose: Give learners a mental map of this chapter before diving into individual algorithms, so each new algorithm they meet has an obvious "home" in the taxonomy.</p>
+<p>Structure: A Mermaid flowchart with a root node "Graph Algorithm" branching into four family nodes: "Distance Questions", "Importance Questions", "Grouping Questions", "Prediction Questions". Each family node branches to 2-3 example algorithm leaf nodes:</p>
+<ul>
+<li>Distance Questions → Shortest Path Algorithm</li>
+<li>Importance Questions → Degree Centrality, Betweenness Centrality, PageRank Algorithm</li>
+<li>Grouping Questions → Connected Components, Strongly Connected Component, Clustering Coefficient</li>
+<li>Prediction Questions → Similarity Measure, Link Prediction</li>
+</ul>
+<p>Every node must have a <code>click</code> directive that opens an infobox with a one-sentence plain-language definition of that family or algorithm (e.g., clicking "Importance Questions" shows "Which nodes matter most, and by what definition of 'matters'?"; clicking "Degree Centrality" shows its formal one-line definition).</p>
+<p>Color scheme: root node gray, family nodes blue, leaf nodes colored by family (distance=green, importance=orange, grouping=purple, prediction=teal)</p>
+<p>Interactivity requirement: every node clickable with an infobox; the diagram title bar includes a "this chapter's tour" reset button that collapses back to the four family nodes.</p>
+<p>Implementation: Mermaid flowchart with <code>click NodeId call showInfo("id")</code> directives wired to a small JavaScript infobox panel below the diagram, responsive to window resize.</p>
+</details>
+<h2 id="centrality-many-definitions-of-important">Centrality: Many Definitions of "Important"</h2>
+<p>The most immediately useful family of graph algorithms answers a deceptively
+simple question: which nodes matter most? A <strong>centrality measure</strong> is any
+graph algorithm that assigns a numeric importance score to each node based
+on its position in the graph's structure — and the phrase "any" is doing a
+lot of work, because there is no single correct definition of importance.
+Different centrality measures capture genuinely different notions of what
+makes a node matter, and choosing the wrong one for a question gives a
+misleading answer.</p>
+<p><strong>Degree centrality</strong> is the simplest measure: it counts how many edges
+connect directly to a node, optionally normalized by the maximum possible
+degree in the graph. Formally, for a node ( v ) in a graph with ( n )
+nodes, degree centrality is</p>
+<p>[ C_D(v) = \frac{\deg(v)}{n - 1} ]</p>
+<p>Consider a five-provider referral network where Dr. Patel receives referrals
+from four other providers and Dr. Osei receives referrals from only one.
+With ( n = 5 ), Dr. Patel's degree centrality is ( \frac{4}{4} = 1.0 )
+(connected to everyone), while Dr. Osei's is ( \frac{1}{4} = 0.25 ). Degree
+centrality answers "who has the most direct connections" — useful for
+finding busy hub providers, but blind to a very different kind of
+importance: a provider with only two connections who happens to be the
+<em>only</em> bridge between two otherwise-separate hospital networks. That second
+kind of importance is what <strong>betweenness centrality</strong> measures — how often
+a node sits on the shortest path between other pairs of nodes — and it can
+rank that low-degree bridge provider above Dr. Patel entirely, because
+removing the bridge would disconnect large parts of the network while
+removing Dr. Patel would not.</p>
+<p>Three more centrality measures round out the toolkit. <strong>Closeness
+centrality</strong> scores a node by how short its average shortest path is to
+every other node in the graph — a provider embedded near the "center" of
+the referral network, quick to reach anyone, scores high even with modest
+degree. <strong>Eigenvector centrality</strong> scores a node higher if it connects to
+<em>other</em> highly-connected nodes, capturing the intuition that being connected
+to one influential provider matters more than being connected to five
+peripheral ones. The <strong>PageRank algorithm</strong>, originally built to rank web
+pages by link importance, is a refinement of eigenvector centrality that
+adds a damping factor to prevent artificially inflated scores in tightly
+looped subgraphs — the same algorithm, repurposed here to rank providers by
+influence within a referral network rather than web pages by influence
+across the internet. Formally, PageRank score is computed recursively:</p>
+<p>[ PR(v) = \frac{1-d}{n} + d \sum_{u \in N_{in}(v)} \frac{PR(u)}{\deg_{out}(u)} ]</p>
+<p>where ( d ) (typically 0.85) is the damping factor, ( N_{in}(v) ) is the
+set of nodes with an edge pointing to ( v ), and ( \deg_{out}(u) ) is how
+many outgoing edges node ( u ) has. In plain language: a provider's
+PageRank score is boosted by every provider who refers to them, weighted by
+how much influence that referring provider has to spread around, and
+divided among however many other providers that referring provider also
+refers to — a provider who refers to only one specialist passes along all
+of their influence, while one who refers broadly to twenty specialists
+passes along only a small fraction to each.</p>
+<p>The full five-provider network makes the contrast between degree and the
+other three measures concrete in one table. Suppose the referral network
+consists of a hub (Dr. Patel, degree 4), a bridge (Dr. Osei, degree 2, but
+the only connection between two otherwise-separate provider clusters), and
+three peripheral providers (Dr. Nguyen, Dr. Reyes, Dr. Kim, each degree 1).</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Degree Centrality</th>
+<th>Betweenness Centrality (rank)</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dr. Patel</td>
+<td>1.00 (highest)</td>
+<td>Low</td>
+<td>Directly connects to everyone, but removing Dr. Patel doesn't disconnect the network</td>
+</tr>
+<tr>
+<td>Dr. Osei</td>
+<td>0.50</td>
+<td>Highest</td>
+<td>Only two connections, but the sole bridge linking two clusters</td>
+</tr>
+<tr>
+<td>Dr. Nguyen, Reyes, Kim</td>
+<td>0.25 each</td>
+<td>Lowest</td>
+<td>Peripheral, single connection, no bridging role</td>
+</tr>
+</tbody>
+</table>
+<p>This table is the numeric backbone behind the earlier claim that
+betweenness can crown a low-degree node above a high-degree hub — Dr. Osei
+wins on betweenness despite having half of Dr. Patel's degree, precisely
+because the network's overall connectivity depends on that one bridge in a
+way it does not depend on any single connection to Dr. Patel.</p>
+<h4 id="diagram-centrality-measures-comparison-microsim">Diagram: Centrality Measures Comparison MicroSim</h4>
+<iframe src="../../sims/centrality-measures-comparison/main.html" width="100%" height="508px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/centrality-measures-comparison/main.html">Run the Centrality Measures Comparison MicroSim Fullscreen</a></p>
+<details>
+<summary>Centrality Measures Comparison MicroSim (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> centrality-measures-comparison<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/centrality-measures-comparison/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/centrality-measures-comparison</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: compare, distinguish<br/>
+Learning objective: Compare degree, betweenness, closeness, and PageRank centrality computed on the identical provider referral network, and distinguish which node each measure ranks highest and why.</p>
+<p>Reused from the MicroSim catalog (exact topical fit). Switching the centrality measure dropdown recomputes node size and shading live on the same network, and the top-5 ranking panel updates — directly demonstrating the claim in the preceding paragraphs that a low-degree bridge node can outrank a high-degree hub under betweenness, and that PageRank's damping slider changes how much influence propagates through highly-connected neighbors.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">There's No Single 'Most Important' Node</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that four different, mathematically valid measures can each crown a <em>different</em> provider as "most important" in the exact same network. That's not a bug — it means the question "who matters most?" is incomplete until you specify <em>for what purpose</em>. Finding a busy hub, a critical bridge, and an influence-broker are three different jobs, and now you have three different tools for them.</p>
+</div>
+<p>A closely related but more local measure, the <strong>clustering coefficient</strong>,
+asks a narrower structural question: of a node's neighbors, what fraction
+are also connected to each other? A patient's care team where every provider
+also consults directly with every other provider has a clustering
+coefficient of 1.0 (fully interconnected); a patient whose providers never
+communicate with each other has a clustering coefficient of 0.0, a useful
+early warning signal for care coordination gaps. Formally, for a node with
+( k ) neighbors, the clustering coefficient divides the number of edges
+that actually exist among those neighbors by the maximum possible,
+( \binom{k}{2} ): a patient with three providers where only one pair of
+those providers consults directly has a clustering coefficient of
+( \frac{1}{3} ), since only 1 of the 3 possible provider-to-provider
+connections exists.</p>
+<h2 id="connectivity-cycles-and-suspicious-patterns">Connectivity, Cycles, and Suspicious Patterns</h2>
+<p>Centrality ranks nodes within a graph that is already known to be connected.
+A more basic structural question asks whether a graph is connected at all.
+<strong>Connected components</strong> are the maximal groups of nodes reachable from one
+another by following edges in either direction, ignoring direction entirely
+— a healthcare graph with two hospital systems that have never shared a
+patient or referral would show up as two separate connected components, a
+useful data-quality signal that two supposedly integrated data sources
+haven't actually connected yet. Finding connected components is
+computationally cheap: a single breadth-first or depth-first traversal
+(Chapter 1's two traversal strategies) starting from an arbitrary
+unvisited node will find every node in that node's component before it
+terminates, and repeating the process from any remaining unvisited node
+finds the next component, until every node in the graph has been assigned
+to exactly one component.</p>
+<p>When edge direction <em>does</em> matter, the relevant concept is the <strong>strongly
+connected component</strong>: a maximal group of nodes where every node can reach
+every other node by following directed edges <em>in the required direction</em> —
+not just any direction. In a directed referral network, a strongly connected
+component means Dr. A can reach Dr. B by referral, and Dr. B can also reach
+Dr. A by referral, and the same holds for every pair in the group. Because a
+strongly connected component requires this two-way reachability, its
+existence is a direct signature of a <strong>cycle</strong>: a strongly connected
+component containing more than one node necessarily contains at least one
+directed cycle, and finding one is equivalent to finding the other.</p>
+<p>Consider a concrete four-provider example: Dr. A refers to Dr. B, Dr. B
+refers to Dr. C, Dr. C refers back to Dr. A, and Dr. D refers to Dr. A but
+receives no referrals from anyone. Providers A, B, and C form a strongly
+connected component of size three, since each can reach the other two by
+following referral edges forward — A→B→C→A is a complete loop. Dr. D is
+<em>not</em> part of that component: although D can reach A (and therefore B and
+C) by referral, no path leads back to D, so the two-way reachability
+requirement fails for D. Algorithms that find strongly connected
+components, such as Tarjan's algorithm, work by running a single
+depth-first traversal (the exact traversal strategy Chapter 1 introduced)
+while tracking each node's earliest-reachable ancestor, identifying a
+complete component the moment a traversal path loops back to a node already
+on the current search stack — that loop-back moment is precisely a cycle
+being detected in real time, which is why strongly connected components and
+cycle detection are computed by nearly the same algorithmic pass.</p>
+<p><strong>Cycle detection</strong> is the graph algorithm task of finding these closed
+loops in a directed graph, and it matters far beyond mathematical curiosity.
+Chapter 1 noted that referral networks are ideally modeled as directed
+acyclic graphs so that traversal always terminates — cycle detection is the
+tool that verifies a real referral network actually has that property, and
+flags it when it doesn't. A simple depth-first cycle check maintains two
+sets of "seen" nodes: nodes fully finished processing, and nodes currently
+on the active recursion path. If a traversal ever reaches a node that is
+already on the <em>active path</em> (not merely previously visited), a cycle has
+been found — in the A→B→C→A example, the traversal reaches C, follows its
+edge back to A, finds A still on the active path, and immediately reports
+the cycle A→B→C→A without needing to explore the rest of the graph first.</p>
+<p>More consequentially, an unexpected cycle in a <em>financial</em> relationship
+graph — Provider A refers to Provider B, who refers to Provider C, who
+refers back to Provider A, with kickback payments following the same loop —
+is a classic fraud signature. Detecting the cycle is the first step;
+recognizing that the cycle overlaps a financial relationship is an instance
+of the broader skill this section closes with: <strong>graph pattern
+recognition</strong>, the task of searching a graph for a specific, meaningful
+subgraph shape (a triangle of referrals, a star of shared addresses, a
+cycle with matching financial edges) rather than computing a single number
+for the whole graph. Where cycle detection asks a yes-or-no structural
+question ("does a loop exist?"), pattern recognition asks a more targeted
+question ("does <em>this specific, meaningful shape</em> exist, and where?") —
+searching, for instance, specifically for a 3-node cycle in which every
+edge is <em>also</em> duplicated by a <code>FINANCIAL_RELATIONSHIP</code> edge, a much more
+precise fraud signal than an unadorned referral cycle by itself.</p>
+<h4 id="diagram-cycle-detection-and-pattern-explorer-microsim">Diagram: Cycle Detection and Pattern Explorer MicroSim</h4>
+<iframe src="../../sims/cycle-detection-pattern-explorer/main.html" width="100%" height="508px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/cycle-detection-pattern-explorer/main.html">Run the Cycle Detection and Pattern Explorer MicroSim Fullscreen</a></p>
+<details>
+<summary>Cycle Detection and Pattern Explorer MicroSim (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> cycle-detection-pattern-explorer<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/cycle-detection-pattern-explorer/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/cycle-detection-pattern-explorer</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Examine a directed provider referral network to locate 3-cycles and 4-cycles (evidence of strongly connected components), and distinguish a benign coordination loop from a cycle that overlaps a financial-relationship pattern.</p>
+<p>Reused from the MicroSim catalog. Most REFERS_TO edges flow forward through the network, but a seeded 3-cycle and 4-cycle close into loops, and some of the same providers also carry FINANCIAL_RELATIONSHIP edges. Selecting "financial loops" highlights exactly the cycle-plus-financial-overlap pattern this section describes as a fraud signature — the concrete example that turns cycle detection and graph pattern recognition from abstract definitions into a specific, checkable structural signal.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">A Cycle Alone Isn't Proof of Fraud</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a shortcut worth remembering: a referral cycle by itself can be perfectly innocent — specialists legitimately co-manage complex patients back and forth. The real signal is a cycle that <em>overlaps</em> another relationship type, like shared finances or shared addresses. Always ask "a cycle in what, combined with what?" before treating any single pattern as evidence.</p>
+</div>
+<h2 id="similarity-how-alike-are-two-nodes">Similarity: How Alike Are Two Nodes?</h2>
+<p>Centrality and cycle detection describe a node's or a group's position
+within a single graph. A different, equally important question compares two
+nodes to each other: how similar are they? A <strong>similarity measure</strong> is any
+function that produces a score describing how alike two nodes are, based on
+either their shared connections or their properties.</p>
+<p><strong>Jaccard similarity</strong> compares two nodes by the <em>sets</em> of neighbors they
+share: it is the size of their neighbor sets' intersection divided by the
+size of their union.</p>
+<p>[ J(A, B) = \frac{|N(A) \cap N(B)|}{|N(A) \cup N(B)|} ]</p>
+<p>If Dr. Patel refers to {Dr. Osei, Dr. Nguyen, Dr. Reyes} and Dr. Kim refers
+to {Dr. Osei, Dr. Reyes, Dr. Lin}, their shared referral targets are
+{Dr. Osei, Dr. Reyes} (2 providers) out of a combined total of {Dr. Osei,
+Dr. Nguyen, Dr. Reyes, Dr. Lin} (4 providers), giving ( J = \frac{2}{4} =
+0.5 ) — Dr. Patel and Dr. Kim refer similarly half the time, a useful
+signal for a "providers like this one" recommendation.</p>
+<p><strong>Cosine similarity</strong> takes a different approach entirely, comparing two
+nodes as numeric vectors rather than sets of neighbors, measuring the cosine
+of the angle between them — a value of 1 means the vectors point in
+identical directions (maximally similar), and 0 means they are unrelated.</p>
+<p>[ \cos(\theta) = \frac{A \cdot B}{\lVert A \rVert \lVert B \rVert} ]</p>
+<p>Suppose two patients' symptom-severity profiles are represented as vectors
+( A = (3, 1, 0) ) and ( B = (2, 2, 0) ) across three symptoms (fatigue,
+joint pain, fever). The dot product is ( (3)(2) + (1)(2) + (0)(0) = 8 ),
+and the magnitudes are ( \lVert A \rVert = \sqrt{9+1+0} = 3.16 ) and
+( \lVert B \rVert = \sqrt{4+4+0} = 2.83 ), giving
+( \cos(\theta) = \frac{8}{3.16 \times 2.83} \approx 0.894 ) — a high
+similarity score suggesting these two patients' symptom profiles point in
+nearly the same direction, even though their raw severity numbers differ.
+Cosine similarity is the workhorse metric behind clinical decision support
+systems that retrieve "similar past cases," and it becomes even more
+powerful once nodes are represented as learned vectors, which is exactly
+where this chapter is headed next.</p>
+<p>Cosine similarity's key advantage over a more obvious alternative — plain
+Euclidean distance between the two vectors — is that it measures <em>direction</em>
+rather than <em>magnitude</em>. Consider a third patient with a symptom vector
+( C = (6, 2, 0) ): note that ( C ) points in exactly the same direction
+as ( A = (3, 1, 0) ), just scaled up (twice the severity on every
+symptom). Cosine similarity between ( A ) and ( C ) is a perfect 1.0,
+correctly recognizing that these two patients share an identical symptom
+<em>pattern</em> even though one reports twice the severity of the other. Euclidean
+distance, by contrast, would treat ( A ) and ( C ) as fairly far apart,
+simply because their raw numbers differ — the wrong answer for a clinical
+question that cares about <em>pattern</em> of symptoms more than raw intensity,
+which is exactly why cosine similarity, not Euclidean distance, is the
+standard choice for comparing clinical profiles and embeddings throughout
+this book.</p>
+<h4 id="diagram-vector-embedding-similarity-visualization-microsim">Diagram: Vector Embedding Similarity Visualization MicroSim</h4>
+<iframe src="../../sims/vector-embedding-similarity-visualization-microsim/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/vector-embedding-similarity-visualization-microsim/main.html">Run the Vector Embedding Similarity Visualization MicroSim Fullscreen</a></p>
+<details>
+<summary>Vector Embedding Similarity Visualization MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> vector-embedding-similarity-visualization-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/vector-embedding-similarity-visualization-microsim/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/vector-embedding-similarity-visualization-microsim</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, demonstrate<br/>
+Learning objective: Apply cosine similarity to retrieve the clinical concepts nearest a query vector in a 2-D projected embedding space, and demonstrate how adjusting the similarity threshold changes the result set.</p>
+<p>Reused from the MicroSim catalog. Twenty medical conditions are projected into two dimensions and colored by category; selecting a clinical query like "Chest pain and dyspnea" draws lines to its nearest concepts by cosine similarity, with exact percentage scores listed. This is the by-hand calculation above, scaled up to twenty real concepts and made interactively explorable.</p>
+</details>
+<h2 id="link-prediction-guessing-the-next-edge">Link Prediction: Guessing the Next Edge</h2>
+<p>Similarity measures compare two <em>existing</em> nodes. <strong>Link prediction</strong> turns
+that comparison into a forecast: given the graph's current structure, which
+edge is most likely to form next? The same Jaccard similarity formula used
+above for comparing providers can be repurposed directly as a link
+prediction score — two providers with high Jaccard similarity in their
+referral targets, but who have never referred to <em>each other</em>, are natural
+candidates for a predicted future referral relationship, since they clearly
+serve overlapping patient populations.</p>
+<p>A refinement called <strong>Adamic-Adar</strong> improves on plain Jaccard by weighting
+shared neighbors unequally: a shared connection to a rare, narrowly-focused
+specialist counts for more evidence of similarity than a shared connection
+to a generalist that half the network refers to anyway. Its formula sums,
+over every shared neighbor ( w ), the inverse log of that neighbor's own
+degree:</p>
+<p>[ AA(A, B) = \sum_{w \in N(A) \cap N(B)} \frac{1}{\log \lvert N(w) \rvert} ]</p>
+<p>Suppose Dr. Patel and Dr. Kim (from the Jaccard example above) share two
+referral targets: Dr. Osei, who receives referrals from 15 other providers
+network-wide, and Dr. Reyes, a rare pediatric subspecialist who receives
+referrals from only 3 providers total. Adamic-Adar computes
+( \frac{1}{\log 15} + \frac{1}{\log 3} \approx \frac{1}{2.71} +
+\frac{1}{1.10} \approx 0.37 + 0.91 = 1.28 ) — the rare shared connection to
+Dr. Reyes contributes roughly two and a half times as much weight as the
+common shared connection to Dr. Osei, reflecting the intuition that sharing
+a narrow, unusual referral target is stronger evidence of genuine similarity
+than sharing a popular one that almost everyone refers to.</p>
+<p>Link prediction has direct value beyond simple recommendation. Provider
+network teams use it to identify likely-but-undocumented referral
+relationships worth verifying; population health teams use it to predict
+which patients are likely to need a specific specialist next based on
+similar patients' care paths; fraud teams use an inverted version of the
+same logic to flag a <em>newly formed</em> edge that looks statistically unlikely
+given the rest of the network, such as a sudden referral relationship
+between two providers with almost no shared patient population.</p>
+<h4 id="diagram-link-prediction-scoring-microsim">Diagram: Link Prediction Scoring MicroSim</h4>
+<iframe src="../../sims/link-prediction-scoring/main.html" width="100%" height="568px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/link-prediction-scoring/main.html">Run the Link Prediction Scoring MicroSim Fullscreen</a></p>
+<details>
+<summary>Link Prediction Scoring MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> link-prediction-scoring<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/link-prediction-scoring/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/link-prediction-scoring</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, rank<br/>
+Learning objective: Calculate Common Neighbors, Jaccard, and Adamic-Adar link-prediction scores over a provider referral network and rank which non-existent referral edge is most likely to form next.</p>
+<p>Reused from the MicroSim catalog. Selecting a scoring metric ranks candidate provider pairs by predicted-edge likelihood, and clicking a pair shows the shared-neighbor set and the exact formula with real numbers substituted — the same Jaccard calculation worked out by hand above, now computed live across an entire network and compared against two alternative scoring metrics.</p>
+</details>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Embeddings Are the Hardest Idea in This Chapter — That's Normal</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+If turning a graph's structure into a list of numbers feels like a leap, that's completely normal — most people need to see it happen step by step before it clicks. You've already succeeded at the hard part: understanding <em>why</em> structural similarity matters. The next section just shows one concrete way to compute it automatically.</p>
+</div>
+<h2 id="from-structure-to-numbers-graph-and-node-embeddings">From Structure to Numbers: Graph and Node Embeddings</h2>
+<p>Every similarity and link-prediction calculation so far has depended on
+someone manually deciding what to compare — shared neighbors, or a hand-built
+symptom vector. A <strong>graph embedding</strong> is a technique that instead <em>learns</em>
+a numeric vector representation for elements of a graph automatically, by
+training on the graph's own structure, such that nodes playing similar
+structural roles end up with similar vectors — exactly the property cosine
+similarity needs to be useful. A <strong>node embedding</strong> is a graph embedding
+applied specifically to individual nodes (as opposed to an <strong>edge
+embedding</strong>, the less common case of learning a vector for each edge, used
+when the relationship itself, not just its endpoints, needs to be compared
+against other relationships). Edge embeddings matter when the <em>type</em> of a
+relationship carries meaning that comparing endpoints alone would miss — for
+example, distinguishing a <code>REFERRED_TO</code> edge reflecting routine specialty
+care from one reflecting an urgent, high-risk transfer, even between the
+same two providers, by learning a separate vector for the edge itself
+rather than relying only on the two nodes it connects.</p>
+<p>The dominant technique behind node embeddings is <strong>message passing</strong>: each
+node repeatedly updates its own vector by averaging it together with its
+neighbors' vectors, so that after several rounds, a node's vector reflects
+not just its own properties but the properties of everything nearby in the
+graph. Formally, one round of message passing updates node ( v )'s vector
+( h_v ) as:</p>
+<p>[ h_v^{(k+1)} = \frac{1}{|N(v)|+1} \left( h_v^{(k)} + \sum_{u \in N(v)} h_u^{(k)} \right) ]</p>
+<p>which simply says: the new vector is the average of the node's own current
+vector and all of its neighbors' current vectors. Tracing this by hand on a
+tiny 3-node chain — Patient X connected only to Patient Y, and Patient Y
+also connected to Patient Z — started with initial 1-dimensional vectors
+( h_X^{(0)} = 1.0 ), ( h_Y^{(0)} = 5.0 ), ( h_Z^{(0)} = 9.0 ): after
+one round, ( h_X^{(1)} = \frac{1.0+5.0}{2} = 3.0 ) (X has only neighbor Y),
+( h_Y^{(1)} = \frac{5.0+1.0+9.0}{3} \approx 5.0 ) (Y has both X and Z as
+neighbors, so it stays near the middle), and ( h_Z^{(1)} = \frac{9.0+5.0}{2}
+= 7.0 ). Notice that X and Z, originally 8.0 apart (1.0 versus 9.0), moved
+to 3.0 and 7.0 — 4.0 apart — after a single round, each pulled toward the
+other through their shared neighbor Y. A second round would pull them even
+closer together, since each now carries a little of the other's influence
+already baked into its vector from round one. Two patients who share many
+of the same providers and diagnoses will, after a few rounds of this
+averaging, end up with numerically similar vectors — not because anyone
+told the algorithm they were similar, but because their shared neighborhood
+pulled their vectors toward each other automatically. This is the same
+underlying mechanism used by <strong>graph neural networks</strong>, which Chapter 6
+covers in depth.</p>
+<h4 id="diagram-node-embedding-explorer-microsim">Diagram: Node Embedding Explorer MicroSim</h4>
+<iframe src="../../sims/node-embedding-explorer/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/node-embedding-explorer/main.html">Run the Node Embedding Explorer MicroSim Fullscreen</a></p>
+<details>
+<summary>Node Embedding Explorer MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> node-embedding-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/node-embedding-explorer/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/node-embedding-explorer</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, interpret<br/>
+Learning objective: Explain how repeated rounds of neighbor-averaging (message passing) cause structurally similar nodes to converge toward similar embedding vectors, interpreting the rising cohort-separation score as evidence of this convergence.</p>
+<p>Reused from the MicroSim catalog. A patient graph on the left is linked to its 2-D embedding space on the right; stepping through message-passing rounds (round 0 is a random cloud) shows three latent cohorts progressively separating as each round averages a node's vector with its neighbors', with a numeric separation score climbing each step — direct, step-through evidence for the averaging mechanism just described in prose, satisfying the Understand-level requirement for concrete, inspectable data over passive animation.</p>
+</details>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You've Built a Full Graph Analytics Toolkit</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just went from shortest paths to centrality to cycle detection to similarity, link prediction, and embeddings — the exact analytical stack that powers fraud detection, referral recommendation, and clinical similarity search later in this book. That's a lot of new tools in one chapter, and you've earned every one of them.</p>
+</div>
+<p>This chapter reframed the graph not just as storage but as a source of
+derived insight: shortest path algorithms find efficient routes,
+centrality measures rank nodes by different definitions of importance,
+cycle detection and pattern recognition surface suspicious structures,
+similarity measures and link prediction compare and forecast relationships,
+and embeddings turn all of that structural information into numeric vectors
+a machine-learning model can use directly. In
+<a href="../06-graph-embeddings-clustering-gnn/">Chapter 6</a>, we build on the
+embedding concept introduced here to reach graph neural networks and the
+clustering algorithms that group similar nodes automatically at scale.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04-graph-database-scalability-operations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4. Graph Database Scalability and Operations">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4. Graph Database Scalability and Operations
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06-graph-embeddings-clustering-gnn/" class="md-footer__link md-footer__link--next" aria-label="Next: 6. Graph Embeddings, Clustering, and Graph Neural Networks">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                6. Graph Embeddings, Clustering, and Graph Neural Networks
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

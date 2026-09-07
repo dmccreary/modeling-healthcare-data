@@ -1,0 +1,2909 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Extends patient graphs into longitudinal care -- lab data and biomarkers, versioned care plans, chronic disease management, outcomes, and diagnostic reports.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/10-patient-care-plans-chronic-disease/">
+      
+      
+        <link rel="prev" href="../09-patient-diagnosis-treatment-medication/">
+      
+      
+        <link rel="next" href="../11-specialty-care-surgery-remote-monitoring/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Patient Care Plans and Chronic Disease Management - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Patient Care Plans and Chronic Disease Management - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Extends patient graphs into longitudinal care -- lab data and biomarkers, versioned care plans, chronic disease management, outcomes, and diagnostic reports." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/10-patient-care-plans-chronic-disease/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/10-patient-care-plans-chronic-disease/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Patient Care Plans and Chronic Disease Management - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Extends patient graphs into longitudinal care -- lab data and biomarkers, versioned care plans, chronic disease management, outcomes, and diagnostic reports." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/10-patient-care-plans-chronic-disease/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#patient-care-plans-and-chronic-disease-management" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Patient Care Plans and Chronic Disease Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-tests-lab-results-and-the-biomarkers-they-measure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Tests, Lab Results, and the Biomarkers They Measure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Tests, Lab Results, and the Biomarkers They Measure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-vital-signs-trend-visualization-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Vital Signs Trend Visualization MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patient-care-plans-treatment-timelines-and-the-patient-journey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patient Care Plans, Treatment Timelines, and the Patient Journey
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patient Care Plans, Treatment Timelines, and the Patient Journey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-treatment-timeline-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Treatment Timeline Workflow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chronic-disease-management-and-preventive-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chronic Disease Management and Preventive Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chronic Disease Management and Preventive Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-preventive-care-gap-closure-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Preventive Care Gap Closure MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-outcomes-and-quality-of-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measuring Outcomes and Quality of Life
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Outcomes and Quality of Life">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-outcome-metrics-dashboard-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Outcome Metrics Dashboard Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling-patient-risk-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modeling Patient Risk Factors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostic-reports-imaging-radiology-and-pathology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Reports: Imaging, Radiology, and Pathology
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-tests-lab-results-and-the-biomarkers-they-measure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Tests, Lab Results, and the Biomarkers They Measure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Tests, Lab Results, and the Biomarkers They Measure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-vital-signs-trend-visualization-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Vital Signs Trend Visualization MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patient-care-plans-treatment-timelines-and-the-patient-journey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patient Care Plans, Treatment Timelines, and the Patient Journey
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patient Care Plans, Treatment Timelines, and the Patient Journey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-treatment-timeline-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Treatment Timeline Workflow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chronic-disease-management-and-preventive-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chronic Disease Management and Preventive Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chronic Disease Management and Preventive Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-preventive-care-gap-closure-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Preventive Care Gap Closure MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-outcomes-and-quality-of-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measuring Outcomes and Quality of Life
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Outcomes and Quality of Life">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-patient-outcome-metrics-dashboard-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Patient Outcome Metrics Dashboard Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling-patient-risk-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modeling Patient Risk Factors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostic-reports-imaging-radiology-and-pathology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Reports: Imaging, Radiology, and Pathology
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/10-patient-care-plans-chronic-disease/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="patient-care-plans-and-chronic-disease-management">Patient Care Plans and Chronic Disease Management</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter extends the patient perspective from a single encounter into an ongoing care relationship. It covers lab tests and results, vital signs, care plans, and treatment timelines, then moves into chronic disease management, preventive care, and outcome measurement. Students learn how a patient's journey through the healthcare system accumulates into a rich, time-sequenced graph of clinical events.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 17 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lab Test</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Lab Result</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Vital Sign</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Patient Care Plan</td>
+<td>31</td>
+</tr>
+<tr>
+<td>Treatment Timeline</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Patient Journey</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Chronic Disease Management</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Preventive Care</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Patient Outcome</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Quality Of Life Metric</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Comorbidity</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Family History</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Genetic Marker</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Biomarker</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Imaging Study</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Radiology Report</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Pathology Report</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../09-patient-diagnosis-treatment-medication/">Chapter 9: Patient Diagnosis, Treatment, and Medication</a></li>
+</ul>
+<hr />
+<p>A single encounter graph, like the one Chapter 9 built around a diagnosis
+and a prescription, captures a moment. Chronic disease does not live in a
+moment — it lives in the space between visits, in the drift of a lab value
+over six months, in whether a patient actually reached the treatment goal
+her care team set for her. This chapter stretches the patient graph across
+time: from individual lab tests and vital-sign readings, up through a
+structured care plan, the ongoing loop of chronic disease management and
+preventive screening, and finally the outcome measures that tell a graph,
+and a care team, whether any of it worked.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">From One Visit to a Lifetime of Data</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Welcome back — this chapter is where the patient graph really starts to breathe, growing new nodes every time a lab comes back or a goal gets checked off. We'll follow Maria Chen's diabetes care across a full year of measurements, plans, and outcomes. Let's connect the dots!</p>
+</div>
+<h2 id="lab-tests-lab-results-and-the-biomarkers-they-measure">Lab Tests, Lab Results, and the Biomarkers They Measure</h2>
+<p>Every chronic-disease chart starts with raw measurement. A <strong>lab test</strong> is
+an ordered laboratory procedure — a request that a specific analyte or
+property be measured from a patient specimen, such as blood or urine.
+Ordering the test creates one kind of clinical fact; the test coming back
+creates another. A <strong>lab result</strong> is the value that a lab test returns,
+always anchored to a timestamp, a unit, and a reference range. In a property
+graph, this pair of facts is naturally two connected nodes:
+<code>(:Patient)-[:HAS_LAB_RESULT]-&gt;(:LabResult {test: "Hemoglobin A1c", value:
+8.4, unit: "%", date: "2024-01-15"})</code>. The edge answers "whose result is
+this," while the node's properties answer "what was measured, when, and how
+much." For Maria Chen, an HbA1c of 8.4% is well above the diagnostic and
+treatment thresholds for Type 2 Diabetes, which is exactly why this single
+lab result becomes the trigger for the care plan built later in this
+chapter.</p>
+<p>Not every measurement comes from a laboratory. A <strong>vital sign</strong> is a
+specific, routinely measured type of biomarker — blood pressure, heart
+rate, respiratory rate, temperature, and oxygen saturation are the five most
+common — typically captured at the bedside or during a routine visit rather
+than sent out to a lab. Vital signs share the same graph shape as lab
+results (a dated, valued measurement attached to a patient) but are usually
+recorded far more frequently, which makes them well suited to trend analysis
+rather than single-point diagnosis.</p>
+<p><strong>Lab Test</strong>, <strong>Lab Result</strong>, and <strong>Vital Sign</strong> readings are all specific
+instances of a broader idea: a <strong>biomarker</strong> is any measurable indicator of
+a biological state or process — a signal, drawn from blood, urine, tissue,
+or a blood-pressure cuff, that stands in for something happening inside the
+body that cannot be observed directly. HbA1c is a biomarker for average
+blood glucose over roughly three months; systolic blood pressure is a
+biomarker for cardiovascular strain. Modeling biomarkers generically, rather
+than creating a separate node type for every possible lab and vital sign, is
+a deliberate schema decision: a shared measurement pattern can carry a
+<code>type</code> property — <code>"HbA1c"</code>, <code>"Systolic BP"</code>, <code>"Heart Rate"</code> — so that a
+single query can retrieve every measurement of a given kind across a
+patient's entire history, regardless of whether it originated as a formal
+lab test or a vital-sign check-in. That is exactly the query a
+chronic-disease dashboard needs: return every HbA1c reading for Maria Chen,
+ordered by date, so a clinician — or a graph — can see whether the trend is
+improving. The MicroSim below plots this kind of biomarker trend directly:
+blood pressure and heart rate over six months, for five different patients,
+with the background shaded to mark clinical thresholds.</p>
+<h4 id="diagram-vital-signs-trend-visualization-microsim">Diagram: Vital Signs Trend Visualization MicroSim</h4>
+<iframe src="../../sims/vital-signs-trend-visualization-microsim/main.html" width="100%" height="578px" scrolling="no"></iframe>
+
+<details>
+<summary>Vital Signs Trend Visualization MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> vital-signs-trend-visualization-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/vital-signs-trend-visualization-microsim/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/vital-signs-trend-visualization-microsim</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: interpret, classify<br/>
+Learning objective: Given six months of blood pressure and heart rate readings for five patients, the learner can interpret the trend and classify each reading against normal, elevated, and hypertensive zones.</p>
+<p>Purpose: Provide the worked example and diagram for Biomarker by plotting Vital Sign readings (a specific, routinely-measured type of biomarker) over time, built from the same underlying Lab Test / Lab Result measurement pattern.</p>
+<p>Reused from the MicroSim catalog. Systolic and diastolic blood pressure are plotted as lines against a shaded background split into normal, elevated, and hypertensive zones, with heart rate plotted on a secondary axis. A dropdown lets the learner switch between five patient profiles with different clinical trajectories, checkboxes isolate individual vital signs, and hovering any point on a line reveals the exact value and date of that measurement.</p>
+<p>Implementation: p5.js line chart with dropdown patient selector, checkbox series toggles, and hover tooltips.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Don't Confuse the Category with the Instance</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+A handy shortcut: if a measurement has a formal order and a turnaround time, it is probably a lab result; if it is checked at nearly every visit with no lab order at all, it is probably a vital sign. Both are biomarkers underneath — the label just tells you how the number got onto the chart.</p>
+</div>
+<p>Once a biomarker crosses a threshold — as Maria Chen's HbA1c did — the graph
+needs a way to represent not just what was measured, but what the care team
+decided to do about it.</p>
+<h2 id="patient-care-plans-treatment-timelines-and-the-patient-journey">Patient Care Plans, Treatment Timelines, and the Patient Journey</h2>
+<p>A <strong>patient care plan</strong> is a structured, versioned set of goals,
+interventions, and target dates that coordinates how a patient's condition
+will be managed going forward. For Maria Chen, the care plan created after
+the HbA1c result above might include a goal (<code>target: "HbA1c &lt; 7.0%"</code>, <code>by:
+"2024-12-01"</code>), an intervention (<code>"Start metformin 500mg twice daily"</code>), and
+a monitoring instruction (<code>"Repeat HbA1c every 3 months"</code>). Modeled as a
+graph, a care plan is not a single node holding a paragraph of text — it is
+a small subgraph: <code>(:Patient)-[:HAS_CARE_PLAN]-&gt;(:CarePlan)-[:HAS_GOAL]
+-&gt;(:Goal)</code>, with additional edges from the <code>CarePlan</code> node to <code>Intervention</code>
+and <code>Medication</code> nodes. Splitting the plan into separate goal, intervention,
+and monitoring nodes — rather than one flat text field — is what lets later
+queries ask "how many of Maria's active goals has she met" without parsing
+free text. Care plans are also rarely static: when a goal is missed or a lab
+result changes, a new version of the plan is created rather than
+overwriting the old one, so a traversal can always answer not just what the
+current plan says, but what it used to say six months ago. That versioning
+matters clinically as much as technically — a specialist picking up the case
+mid-year needs to see the plan that was active on a given date, not only the
+most recent one.</p>
+<p>Executing a care plan generates a <strong>treatment timeline</strong> — the chronological
+sequence of dated events that records how the plan actually unfolded: the
+diagnosis date, the day metformin was started, the visit where the dose was
+increased, and the date the HbA1c goal was finally met. Where the care plan
+is the intent (what should happen), the treatment timeline is the record
+(what did happen), and the graph keeps both because they frequently diverge
+— a patient may miss a refill, or a dose increase may be delayed by a side
+effect. Every event on the timeline is simply a dated node connected back to
+the patient, which is why a single traversal ordered by date can reconstruct
+an entire year of care without a dedicated timeline table.</p>
+<p>Zoom out past a single condition's timeline and you reach the <strong>patient
+journey</strong>: the complete, longitudinal path a patient takes through the
+healthcare system across every encounter, diagnosis, and care plan over the
+entire relationship, not just one disease. Maria Chen's patient journey
+includes her diabetes treatment timeline, but also her annual physicals, any
+unrelated injuries, and every referral she has ever received. A treatment
+timeline is therefore a filtered slice of the broader patient journey —
+scoped to one care plan — while the journey itself is the unfiltered
+traversal across everything the patient node connects to. The MicroSim below
+traces exactly this kind of journey for a single condition, letting you
+hover over each month to see the underlying graph pattern behind the event.</p>
+<h4 id="diagram-patient-treatment-timeline-workflow-diagram">Diagram: Patient Treatment Timeline Workflow Diagram</h4>
+<iframe src="../../sims/patient-treatment-timeline-workflow-diagram/main.html" width="100%" height="613px" scrolling="no"></iframe>
+
+<details>
+<summary>Patient Treatment Timeline Workflow Diagram (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> patient-treatment-timeline-workflow-diagram<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/patient-treatment-timeline-workflow-diagram/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/patient-treatment-timeline-workflow-diagram</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: interpret, summarize<br/>
+Learning objective: Given a 12-month Type 2 Diabetes treatment timeline, the learner can interpret how diagnosis, medication changes, and lab results appear as dated nodes and edges, and summarize how a patient care plan drives the sequence of events.</p>
+<p>Purpose: Provide the worked example and diagram for Patient Care Plan, Treatment Timeline, and Patient Journey by tracing one patient's dated path through diagnosis, treatment, and goal achievement.</p>
+<p>Reused from the MicroSim catalog. Every month-node on the timeline is clickable and colored by phase — diagnosis (blue), initial treatment (orange), dose adjustment (yellow), stabilization (green), and goal achievement (dark green) — and clicking a node opens an infobox with that month's clinical status, lab values, treatment changes, and the exact graph pattern used to store the event, e.g. <code>(:Patient)-[:HAS_CARE_PLAN]-&gt;(:CarePlan)-[:RECORDS_EVENT]-&gt;(:TimelineEvent {date: "2024-04-01"})</code>. Tracing the full 12 months shows the treatment timeline (the record of what happened) executing the intent set by the care plan, within the broader patient journey the timeline is a scoped slice of.</p>
+<p>Implementation: Mermaid flowchart with click directives on every node, each bound to an infobox callback.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">One Diagram, Two Kinds of Time</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice that every month in the timeline above is a real graph node with its own date property, not just a label on a picture. That is what lets a query ask "what changed between month 3 and month 9" and get a precise answer instead of a guess.</p>
+</div>
+<h2 id="chronic-disease-management-and-preventive-care">Chronic Disease Management and Preventive Care</h2>
+<p><strong>Chronic disease management</strong> is the ongoing, cyclical work of monitoring,
+adjusting, and re-measuring a condition that will not resolve on its own —
+Type 2 Diabetes, hypertension, and asthma are typical examples. Unlike an
+acute encounter, which ends when the immediate problem is treated, chronic
+disease management has no natural endpoint: the care plan, the treatment
+timeline that records it, and the recurring biomarker trend from the
+previous sections all feed back into each other in a loop that repeats for
+years. In graph terms, chronic disease management is not a single node type
+at all — it is the pattern formed when a care plan, a treatment timeline,
+and a recurring biomarker measurement are all attached to the same condition
+node and kept in sync over time.</p>
+<p><strong>Preventive care</strong> takes the opposite temporal stance: rather than
+managing a condition after diagnosis, it consists of services delivered to
+prevent a condition from starting or from progressing to a complication —
+vaccinations, cancer screenings, and, for a diabetic patient like Maria
+Chen, an annual diabetic retinopathy eye exam. Preventive care is modeled
+the same way a lab test is — an ordered service tied to a patient and a
+date — but a population-health query typically asks the opposite question:
+not "what did this patient's last screening show," but "which eligible
+patients have no recent screening at all." That second question, a gap
+query, is what the MicroSim below simulates.</p>
+<h4 id="diagram-preventive-care-gap-closure-microsim">Diagram: Preventive Care Gap Closure MicroSim</h4>
+<iframe src="../../sims/preventive-care-gap-closure/main.html" width="100%" height="588px" scrolling="no"></iframe>
+
+<details>
+<summary>Preventive Care Gap Closure MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> preventive-care-gap-closure<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/preventive-care-gap-closure/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/preventive-care-gap-closure</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: apply, execute<br/>
+Learning objective: Given a 40-patient panel and a chosen preventive service, the learner can apply an eligibility filter followed by a recency filter to identify open preventive-care gaps, and execute a simulated outreach step to observe its effect on the gap-closure rate.</p>
+<p>Purpose: Provide an applied, second worked example for Preventive Care and Chronic Disease Management by turning a screening guideline into a population-health gap query.</p>
+<p>Reused from the MicroSim catalog. A synthetic 40-patient panel is filtered in two visible stages — first by eligibility (age, sex, condition), then by recency (whether the last relevant service falls outside the lookback window) — with eligible-but-overdue patients rendered orange, recently-served patients green, and ineligible patients dimmed. A dropdown selects the preventive service (Mammography, for example, restricts eligibility to women aged 40-74), a slider sets the lookback window, a "Run gap query" button applies both filters and reports the eligible count, open-gap count, and closure rate, and a "Simulate outreach" button closes roughly half of the open gaps so the learner can watch the closure rate rise.</p>
+<p>Implementation: p5.js panel visualization with dropdown, slider, and two action buttons driving a two-stage filter animation.</p>
+</details>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Population Queries Take Practice</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+If chaining an eligibility filter and a recency filter feels like a lot at once, that's normal — population-health gap queries are genuinely one of the more layered patterns in this book, and you just watched one work step by step.</p>
+</div>
+<h2 id="measuring-outcomes-and-quality-of-life">Measuring Outcomes and Quality of Life</h2>
+<p>None of this — the care plan, the timeline, the preventive screening — means
+anything without a way to check whether it worked. A <strong>patient outcome</strong> is
+a measured result of care: a clinical improvement, a complication avoided,
+a hospitalization that did or did not happen, over a defined window of
+time. Outcomes are what turn chronic disease management from a set of good
+intentions into an evaluable process, and in a graph they are modeled as
+their own dated, valued nodes — often literally reusing the biomarker
+pattern from earlier in the chapter, since "HbA1c fell from 8.4% to 6.9%
+over twelve months" is both a biomarker trend and a patient outcome,
+depending on which question you are asking of the same data. Other outcomes
+are event counts rather than lab values: emergency-room visits per year,
+hospital admissions per year, or whether a specific complication was ever
+diagnosed. The chart below compares exactly this kind of population-level
+outcome across roughly a thousand patients per arm, six separate measures at
+once. Because a comparison like this is drawn from observational care data
+rather than a randomized trial, a careful query also has to account for how
+sick each population was to begin with, or an improvement can look larger —
+or smaller — than it really is.</p>
+<p>Not every outcome is a lab value or an event count. A <strong>quality of life
+metric</strong> is a patient-reported measure of functional or psychological
+well-being — how much pain interferes with daily activity, how confident a
+patient feels managing their own condition — collected through standardized
+instruments like the EQ-5D or PROMIS surveys rather than pulled from a lab
+system. Quality of life metrics are a distinct outcome type precisely
+because they cannot be derived from claims or lab data at all; the only way
+such a node gets a value is if the patient reports it directly, which is why
+these metrics are typically attached to the patient through a dated survey
+edge. Tracking quality of life alongside clinical biomarkers is part of what
+distinguishes mature chronic disease management from a program that only
+watches lab numbers.</p>
+<h4 id="diagram-patient-outcome-metrics-dashboard-chart">Diagram: Patient Outcome Metrics Dashboard Chart</h4>
+<iframe src="../../sims/patient-outcome-metrics-dashboard-chart/main.html" width="100%" height="496px" scrolling="no"></iframe>
+
+<details>
+<summary>Patient Outcome Metrics Dashboard Chart (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> patient-outcome-metrics-dashboard-chart<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/patient-outcome-metrics-dashboard-chart/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/patient-outcome-metrics-dashboard-chart</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: compare, examine<br/>
+Learning objective: Given six 12-month diabetes outcome measures for traditional versus graph-enhanced care coordination, the learner can compare the two arms and examine which measures reflect chronic-disease-management quality versus reduced utilization.</p>
+<p>Purpose: Provide the worked example and diagram for Patient Outcome, reinforcing Quality of Life Metric and Chronic Disease Management by comparing outcome measures between two coordination models.</p>
+<p>Reused from the MicroSim catalog. A grouped bar chart compares traditional care against graph-enhanced care coordination across six outcome measures, including retinopathy screening rate (a preventive-care outcome, rising from 38% to 79%) and ER visits per 100 patients (a utilization outcome, falling 46%). Hovering any bar reveals its exact value, and the tooltip flags which measures are "higher is better" versus "lower is better."</p>
+<p>Implementation: Chart.js grouped bar chart with hover tooltips and a labeled legend distinguishing the two care-coordination arms.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Better Numbers, or a Healthier Population?</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Every bar in that chart moved the right direction, but here's a tentacle-y question: did graph-coordinated care cause the improvement, or did a healthier group of patients simply end up in that arm? Untangling correlation from causation is exactly the kind of knot a good risk-adjustment analysis has to work through.</p>
+</div>
+<h2 id="modeling-patient-risk-factors">Modeling Patient Risk Factors</h2>
+<p>A chronic disease rarely travels alone, and a care team's decisions depend
+heavily on what else is true about the patient. A <strong>comorbidity</strong> is an
+additional chronic condition present alongside the primary one being
+managed — Maria Chen's hypertension, diagnosed the same year as her
+diabetes, is a comorbidity that changes which medications are safe to
+prescribe. <strong>Family history</strong> captures conditions documented among a
+patient's relatives rather than the patient herself — Maria's mother's Type
+2 Diabetes diagnosis is recorded as family history, not as Maria's own
+condition, but it still informs her risk profile and screening schedule. A
+<strong>genetic marker</strong> goes a level deeper still: a specific, lab-confirmed DNA
+variant statistically associated with disease risk, such as a TCF7L2
+variant linked to Type 2 Diabetes susceptibility. All three are risk
+factors, but they differ in how directly they connect to the patient node
+and how confidently they predict anything — a lab-confirmed genetic marker
+is a much stronger, but far rarer, signal than a family history entry based
+on a patient's own recollection. The table below summarizes how each risk
+factor attaches to the patient graph.</p>
+<table>
+<thead>
+<tr>
+<th>Risk Factor</th>
+<th>What It Represents</th>
+<th>Graph Modeling Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comorbidity</td>
+<td>An additional chronic condition present alongside the primary diagnosis</td>
+<td>Second <code>(:Patient)-[:HAS_CONDITION]-&gt;(:Condition)</code> edge on the same patient node</td>
+</tr>
+<tr>
+<td>Family History</td>
+<td>A condition documented in a relative, not the patient</td>
+<td><code>(:Patient)-[:HAS_FAMILY_HISTORY_OF {relation: "mother"}]-&gt;(:Condition)</code></td>
+</tr>
+<tr>
+<td>Genetic Marker</td>
+<td>A lab-confirmed DNA variant associated with disease risk</td>
+<td><code>(:Patient)-[:HAS_GENETIC_MARKER]-&gt;(:GeneticMarker {gene: "TCF7L2", risk_allele: "T"})</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Handle This Data with Extra Care</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Genetic markers and family history are some of the most sensitive properties a patient graph can hold — they reveal information about relatives who never consented to being in the database at all. We won't untangle the legal details until the security chapters, but keep that discomfort in mind now.</p>
+</div>
+<h2 id="diagnostic-reports-imaging-radiology-and-pathology">Diagnostic Reports: Imaging, Radiology, and Pathology</h2>
+<p>Chronic disease management also generates a steady stream of diagnostic
+reports, each following the same basic shape but drawing from a different
+specialty. An <strong>imaging study</strong> is a structured record of an imaging
+procedure — its modality (X-ray, CT, MRI, or, for Maria's diabetic eye
+exam, retinal photography), the body part examined, and the date performed
+— modeled as a node connected to the ordering encounter. A <strong>radiology
+report</strong> is the radiologist's narrative interpretation of that imaging
+study, typically returned within 24-48 hours and coded using RadLex for
+anatomical and procedural terms or LOINC for the report type itself, so
+that "diabetic retinopathy screening result" means the same thing across
+every facility in a network. A <strong>pathology report</strong> plays the equivalent
+role for tissue and specimen analysis rather than imaging — a biopsy result,
+for example — and is coded predominantly in SNOMED CT, which captures
+fine-grained clinical findings that a purely anatomical code system cannot
+express. Turnaround time differs sharply between the two: a radiology
+report is often available same-day, while a pathology report frequently
+takes several days to a week because it depends on physical tissue
+processing rather than image capture. The table below lays out the three
+report types side by side.</p>
+<table>
+<thead>
+<tr>
+<th>Report Type</th>
+<th>Typical Specimen / Modality</th>
+<th>Typical Turnaround</th>
+<th>Standard Coding System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Imaging Study</td>
+<td>X-ray, CT, MRI, retinal photography</td>
+<td>Minutes to hours to capture</td>
+<td>RadLex (procedure/anatomy)</td>
+</tr>
+<tr>
+<td>Radiology Report</td>
+<td>Interpretation of an imaging study</td>
+<td>24-48 hours</td>
+<td>RadLex / LOINC</td>
+</tr>
+<tr>
+<td>Pathology Report</td>
+<td>Biopsy or other tissue specimen</td>
+<td>Several days to a week</td>
+<td>SNOMED CT</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<p>Over the course of this chapter, Maria Chen's graph grew from a single
+diagnosis into a full year of longitudinal care: lab results and vital
+signs feeding biomarker trends, a versioned care plan driving a dated
+treatment timeline within her broader patient journey, chronic disease
+management and preventive screening running as parallel ongoing loops,
+outcome and quality-of-life measures closing the feedback loop, and risk
+factors and diagnostic reports enriching the picture around her. None of
+this required a new kind of node — only dates, properties, and edges,
+applied patiently over time.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">A Full Year of Care, Modeled as a Graph</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just mastered lab tests, lab results, vital signs, biomarkers, patient care plans, treatment timelines, patient journeys, chronic disease management, preventive care, patient outcomes, quality of life metrics, comorbidity, family history, genetic markers, imaging studies, radiology reports, and pathology reports. Every one of them turned out to be a node, an edge, or a property you already knew how to build.</p>
+</div>
+<p><a href="../11-specialty-care-surgery-remote-monitoring/">Chapter 11</a> carries
+this same longitudinal thinking into specialty care, surgical episodes, and
+remote patient monitoring, where the "dated node attached to a patient"
+pattern you just used for labs and outcomes reappears for surgical events
+and continuous device-generated data streams.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../09-patient-diagnosis-treatment-medication/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 9. Patient Diagnosis, Treatment, and Medication">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                9. Patient Diagnosis, Treatment, and Medication
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-footer__link md-footer__link--next" aria-label="Next: 11. Specialty Care, Surgery, and Remote Monitoring">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                11. Specialty Care, Surgery, and Remote Monitoring
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

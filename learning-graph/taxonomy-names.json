@@ -1,15 +1,16 @@
 {
   "FOUND": "Foundation Concepts",
   "GTECH": "Graph Technologies",
-  "HCARE": "Healthcare Domain",
-  "PAT": "Patient Data",
+  "ANAL": "Graph Analytics and Algorithms",
+  "HCARE": "Healthcare Domain Fundamentals",
+  "PAT": "Patient Data and Clinical Concepts",
   "PROV": "Provider Operations",
-  "PAYER": "Payer & Insurance",
-  "FIN": "Financial & Business",
-  "FRAUD": "Fraud & Compliance",
-  "ANAL": "Graph Analytics",
-  "AI": "AI & Machine Learning",
-  "SEC": "Security & Privacy",
+  "PAYER": "Payer and Insurance",
+  "FIN": "Financial and Business Operations",
+  "FRAUD": "Fraud, Waste, and Abuse",
+  "AI": "AI and Machine Learning",
+  "CDS": "Clinical Decision Support, FHIR and CQL",
+  "SEC": "Security and Privacy",
   "GOV": "Data Governance",
-  "CAP": "Capstone & Career"
+  "CAP": "Capstone and Career"
 }

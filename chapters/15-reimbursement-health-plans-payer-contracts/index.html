@@ -1,0 +1,2677 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models how paid claims are reimbursed to providers, surveys the major health plan types and government programs, and covers the payer-provider contracting infrastructure that connects them.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/15-reimbursement-health-plans-payer-contracts/">
+      
+      
+        <link rel="prev" href="../14-insurance-claims-coverage-pharmacy-benefits/">
+      
+      
+        <link rel="next" href="../16-healthcare-revenue-and-cost-analysis/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Reimbursement, Health Plan Types, and Payer Contracts - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Reimbursement, Health Plan Types, and Payer Contracts - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models how paid claims are reimbursed to providers, surveys the major health plan types and government programs, and covers the payer-provider contracting infrastructure that connects them." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/15-reimbursement-health-plans-payer-contracts/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/15-reimbursement-health-plans-payer-contracts/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Reimbursement, Health Plan Types, and Payer Contracts - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models how paid claims are reimbursed to providers, surveys the major health plan types and government programs, and covers the payer-provider contracting infrastructure that connects them." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/15-reimbursement-health-plans-payer-contracts/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reimbursement-health-plan-types-and-payer-contracts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reimbursement, Health Plan Types, and Payer Contracts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-allowed-amount-and-reimbursement" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Allowed Amount and Reimbursement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Allowed Amount and Reimbursement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-allowed-amount-and-reimbursement-breakdown-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Allowed Amount and Reimbursement Breakdown Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-plan-types-hmo-ppo-pos-and-hdhp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Plan Types: HMO, PPO, POS, and HDHP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medicare-medicaid-and-dual-eligibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medicare, Medicaid, and Dual Eligibility
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks-and-payer-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networks and Payer Contracts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-administrative-layer-clearinghouses-remittance-and-eligibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Administrative Layer: Clearinghouses, Remittance, and Eligibility
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Administrative Layer: Clearinghouses, Remittance, and Eligibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-claims-clearinghouse-and-eligibility-verification-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Claims Clearinghouse and Eligibility Verification Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-allowed-amount-and-reimbursement" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Allowed Amount and Reimbursement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Allowed Amount and Reimbursement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-allowed-amount-and-reimbursement-breakdown-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Allowed Amount and Reimbursement Breakdown Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-plan-types-hmo-ppo-pos-and-hdhp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Plan Types: HMO, PPO, POS, and HDHP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medicare-medicaid-and-dual-eligibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medicare, Medicaid, and Dual Eligibility
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks-and-payer-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networks and Payer Contracts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-administrative-layer-clearinghouses-remittance-and-eligibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Administrative Layer: Clearinghouses, Remittance, and Eligibility
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Administrative Layer: Clearinghouses, Remittance, and Eligibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-claims-clearinghouse-and-eligibility-verification-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Claims Clearinghouse and Eligibility Verification Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/15-reimbursement-health-plans-payer-contracts/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="reimbursement-health-plan-types-and-payer-contracts">Reimbursement, Health Plan Types, and Payer Contracts</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter completes the payer perspective by covering how claims are paid: allowed amounts, reimbursement, explanation of benefits, and coordination of benefits. It surveys the major health plan types (HMO, PPO, POS, high-deductible plans, Medicare, and Medicaid) and the operational infrastructure -- payer contracts, network adequacy, clearinghouses, and eligibility verification -- that connects payers to providers. This closes the three-perspective (patient, provider, payer) foundation of the book.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allowed Amount</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Reimbursement</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Explanation Of Benefits</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Coordination Of Benefits</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Subrogation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Health Maintenance Organization</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Preferred Provider Organization</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Point Of Service Plan</td>
+<td>1</td>
+</tr>
+<tr>
+<td>High-Deductible Health Plan</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Medicare</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Medicaid</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Dual Eligibility</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Payer Contract</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Network Adequacy</td>
+<td>2</td>
+</tr>
+<tr>
+<td>In-Network Provider</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Out-Of-Network Provider</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Claims Clearinghouse</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Electronic Remittance Advice</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Eligibility Verification</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Benefit Accumulator</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../14-insurance-claims-coverage-pharmacy-benefits/">Chapter 14: Insurance Claims, Coverage, and Pharmacy Benefits</a></li>
+</ul>
+<hr />
+<p>Chapter 14 left a claim in adjudication, coinsurance calculated against a billed charge. That was a simplification — payers almost never pay a percentage of what a provider actually billed. This chapter fills in the missing piece: the contractually negotiated amount a claim is really paid against, how that payment reaches the provider, and the surrounding infrastructure of health plan types, government programs, and provider networks that make the whole payer ecosystem work. By the end of this chapter, the three-perspective foundation of this book — patient, provider, payer — is complete, and every later chapter builds financial and fraud analytics on top of it.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Following the Money All the Way Home</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Welcome back! Last chapter we adjudicated a claim; this chapter we actually pay it. We'll trace the real dollar amount a payer reimburses a provider, tour the health plan alphabet soup (HMO, PPO, POS, HDHP), and wire up the contracts and clearinghouses connecting payers to providers behind the scenes. Every arm on this octopus is pointing at money today — let's connect the dots!</p>
+</div>
+<h2 id="the-allowed-amount-and-reimbursement">The Allowed Amount and Reimbursement</h2>
+<p>When a provider joins a payer's network, they sign a contract fixing, for every procedure code, the maximum amount the payer will recognize as payable — the <strong>allowed amount</strong>. The allowed amount is almost always lower than the provider's billed charge, because the billed charge is closer to a list price while the allowed amount is a negotiated rate; a $500 billed office visit might have an allowed amount of only $320. Crucially, cost-sharing calculations from Chapter 14 — deductibles, copays, coinsurance — are always applied against the allowed amount, never the billed charge, and the gap between the two (here, $180) is written off by the in-network provider as a <strong>contractual adjustment</strong> that the patient can never be billed for. This single substitution — allowed amount in place of billed charge — is what actually makes network membership valuable to a patient, and it is the reason "in-network" and "out-of-network" (covered later in this chapter) produce such different financial outcomes for identical care.</p>
+<p>Allowed amounts themselves are not invented from scratch in every contract negotiation; most commercial payer contracts anchor their fee schedule to a public benchmark, most commonly a percentage of the Medicare fee schedule (such as "140% of Medicare"), which Chapter 16 revisits when it models a hospital's charge master and billing codes directly. <strong>Reimbursement</strong> is the actual dollar amount the payer pays the provider once the allowed amount, coinsurance, and any remaining deductible have all been netted out. Reimbursement is the graph's terminal financial edge for a claim: <code>Claim -[REIMBURSED]-&gt; Provider</code>, carrying a <code>paid_amount</code> property, closing the loop that began with <code>Claim -[SUBMITTED_BY]-&gt; Provider</code> back in Chapter 14. Extending the multi-line claim from Chapter 14 with allowed amounts makes the full picture concrete.</p>
+<table>
+<thead>
+<tr>
+<th>Line Item</th>
+<th>Billed Charge</th>
+<th>Allowed Amount</th>
+<th>Coinsurance (20%)</th>
+<th>Payer Reimburses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Office visit (CPT 99214)</td>
+<td>$250</td>
+<td>$180</td>
+<td>$36</td>
+<td>$144</td>
+</tr>
+<tr>
+<td>EKG (CPT 93000)</td>
+<td>$120</td>
+<td>$75</td>
+<td>$15</td>
+<td>$60</td>
+</tr>
+<tr>
+<td>Blood draw (CPT 36415)</td>
+<td>$30</td>
+<td>$18</td>
+<td>$3.60</td>
+<td>$14.40</td>
+</tr>
+</tbody>
+</table>
+<p>Notice the member's total coinsurance ($54.60) is now calculated against $273 of allowed amount rather than $400 of billed charge — a meaningfully smaller number for Maria, and the difference between what she actually owes and what an uninsured, out-of-network patient facing full billed charges would owe.</p>
+<p>Once reimbursement is calculated, the payer must tell both parties what happened. An <strong>explanation of benefits (EOB)</strong> is the statement a payer sends to a member after a claim is adjudicated, itemizing the billed charge, the allowed amount, what the plan paid, and what the member owes — an EOB is explicitly <em>not</em> a bill, a distinction that confuses many patients seeing one for the first time, since the two documents often arrive within days of each other quoting different numbers for what looks like the same visit. Reading Maria's EOB for the office-visit claim above, she would see four lines matching the table's columns almost exactly: "Amount Billed: $400," "Plan Discount: $107," "Amount Covered: $239.40," and "You May Owe: $54.60" — the EOB's job is simply to make the graph traversal from billed charge to allowed amount to reimbursement to patient-responsibility legible to a human reader. The equivalent document sent to the provider, covered later in this chapter as the electronic remittance advice, reports the identical calculation from the opposite side of the transaction.</p>
+<p>Two further complications arise when a member's coverage isn't as simple as one policy paying one claim. <strong>Coordination of benefits (COB)</strong> is the process that determines payment order when a member is covered by more than one policy at once — a child covered under both parents' employer plans, for instance — designating one policy as primary (pays first, against its own allowed amount) and the other as secondary (pays some or all of the remaining balance, up to its own allowed amount, never exceeding 100% of the total cost of care). Payers commonly apply a standardized rule for exactly this dependent-child scenario, nicknamed the "birthday rule": whichever parent's birthday falls earlier in the calendar year holds the primary policy, a simple, auditable tiebreaker that a graph model can encode directly as a property comparison between the two parents' <code>Member</code> nodes rather than a manually adjudicated judgment call. <strong>Subrogation</strong> is a related but distinct right: when a payer pays a claim for an injury actually caused by a liable third party — a car accident, for example — the payer can recover its payment directly from that third party or their insurer, typically by placing a legal lien against any settlement the injured member later receives, rather than absorbing the cost of care it never should have had to cover in the first place.</p>
+<h4 id="diagram-allowed-amount-and-reimbursement-breakdown-chart">Diagram: Allowed Amount and Reimbursement Breakdown Chart</h4>
+<iframe src="../../sims/allowed-amount-reimbursement-breakdown-chart/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Allowed Amount and Reimbursement Breakdown Chart</summary>
+<p>Type: chart
+<strong>sim-id:</strong> allowed-amount-reimbursement-breakdown-chart<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, demonstrate<br/>
+Learning objective: Given a billed charge and a contracted allowed amount, the learner can calculate the contractual adjustment, the member's coinsurance share, and the payer's reimbursement for a set of sample claims.</p>
+<p>Purpose: Make visible, for several sample claims, the four-way split between billed charge, contractual write-off, member coinsurance, and payer reimbursement -- the calculation chain the preceding worked table walks through by hand.</p>
+<p>Chart type: Stacked horizontal bar chart</p>
+<p>X-axis: Dollar amount (0 to $500)
+Y-axis: Claim line item (Office Visit, EKG, Blood Draw, plus a fourth "MRI (Out-of-Network)" bar contrasted against the same MRI billed in-network)</p>
+<p>Data series (stacked segments per bar, left to right):</p>
+<ul>
+<li>Payer Reimbursement (dark blue)</li>
+<li>Member Coinsurance (orange)</li>
+<li>Contractual Adjustment / Write-Off (light gray, hatched pattern to indicate "not owed by anyone")</li>
+</ul>
+<p>Default data:</p>
+<ul>
+<li>Office Visit: billed $250, allowed $180, reimbursement $144, coinsurance $36, write-off $70</li>
+<li>EKG: billed $120, allowed $75, reimbursement $60, coinsurance $15, write-off $45</li>
+<li>Blood Draw: billed $30, allowed $18, reimbursement $14.40, coinsurance $3.60, write-off $12</li>
+<li>MRI (In-Network): billed $1,800, allowed $900, reimbursement $720, coinsurance $180, write-off $900</li>
+<li>MRI (Out-of-Network): billed $1,800, allowed $900 (plan still recognizes only $900), reimbursement $450, member balance-bills remaining $900 (shown as a fourth, red "Balance Bill" segment with no equivalent in the in-network bars)</li>
+</ul>
+<p>Interactive controls:</p>
+<ul>
+<li>Hover over any segment to see its exact dollar value and a one-sentence definition of that segment's term (Allowed Amount, Reimbursement, Coinsurance, Write-Off, or Balance Bill)</li>
+<li>Toggle button: "Show billed charge line" -- overlays a thin vertical marker at the original billed-charge position on each bar so the learner can see how far the allowed amount already reduced the number before cost-sharing was even applied</li>
+<li>Click the MRI (Out-of-Network) bar to open a callout comparing it directly against MRI (In-Network), highlighting that the out-of-network patient pays coinsurance on the allowed amount AND the full gap between billed and allowed as a balance bill</li>
+</ul>
+<p>Instructional Rationale: A stacked bar makes the Apply-level calculation chain (billed to allowed to coinsurance to reimbursement) directly visible and comparable across claims, and pairing an in-network MRI against an identical out-of-network MRI gives a concrete, quantifiable answer to "why does network status matter?" before the chapter's later section defines in-network and out-of-network providers formally.</p>
+<p>Color scheme: dark blue (reimbursement), orange (coinsurance), light gray hatch (write-off), red (balance bill, out-of-network only)</p>
+<p>Implementation: Chart.js horizontal stacked bar chart with a custom tooltip callback and a click handler for the comparison callout</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Allowed Amount Is the Real Price Tag</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Here's the mental model worth keeping: a billed charge is closer to a sticker price than an actual transaction. Every cost-sharing calculation in this book — deductibles, copays, coinsurance — runs against the allowed amount instead. Once that clicks, half of healthcare billing suddenly makes a lot more sense.</p>
+</div>
+<h2 id="health-plan-types-hmo-ppo-pos-and-hdhp">Health Plan Types: HMO, PPO, POS, and HDHP</h2>
+<p>Health plans differ most visibly in how tightly they restrict a member's choice of provider in exchange for a lower premium. A <strong>health maintenance organization (HMO)</strong> requires members to select a primary care provider who coordinates all care and must issue a referral before the member sees a specialist, and it generally does not cover out-of-network care at all except in emergencies — the tightest restriction of the group, paired with the lowest typical premium. A <strong>preferred provider organization (PPO)</strong> relaxes both restrictions: no referral is required to see a specialist, and out-of-network care is covered, just at a higher coinsurance rate, in exchange for a higher premium than a comparable HMO. A <strong>point-of-service plan (POS)</strong> sits between the two, requiring a primary care provider and referrals like an HMO but allowing (at a cost) out-of-network care like a PPO. A <strong>high-deductible health plan (HDHP)</strong> is defined not by network structure at all but by cost-sharing structure: a deductible set high enough (a minimum set annually by federal rule) to qualify the plan for pairing with a tax-advantaged Health Savings Account, trading a lower premium for substantially higher up-front out-of-pocket exposure before the plan begins paying its share.</p>
+<p>The table below reinforces these four plan types along the two dimensions that most affect a member day to day: whether a referral is required, and whether out-of-network care is covered at all.</p>
+<table>
+<thead>
+<tr>
+<th>Plan Type</th>
+<th>Requires PCP Referral?</th>
+<th>Out-of-Network Coverage</th>
+<th>Typical Premium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HMO</td>
+<td>Yes</td>
+<td>Emergency only</td>
+<td>Lowest</td>
+</tr>
+<tr>
+<td>PPO</td>
+<td>No</td>
+<td>Yes, at higher coinsurance</td>
+<td>Highest</td>
+</tr>
+<tr>
+<td>POS</td>
+<td>Yes</td>
+<td>Yes, at higher coinsurance</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>HDHP</td>
+<td>Varies (independent dimension)</td>
+<td>Varies (independent dimension)</td>
+<td>Low, paired with high deductible</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose Maria Chen's employer offers both an HMO and a PPO built on the same underlying benefit-plan coverage categories from Chapter 14, with the HMO's premium set $150 per month lower. Under the HMO, Maria's primary care provider must first issue a referral before her cardiology visit is covered at all — the graph traversal for "is this claim payable?" now includes an additional required edge, <code>REFERRED_BY</code>, from the specialist claim back to an approved referral record, absent from the PPO's traversal entirely. If Maria skips that referral step and sees the cardiologist directly, the HMO can deny the claim outright regardless of medical necessity, purely on the missing referral — a distinct denial pathway from anything covered in Chapter 14's adjudication section. Choosing between the two plans is really a choice about how much of that gatekeeping graph structure a member is willing to navigate in exchange for $1,800 a year in premium savings.</p>
+<p>These four plan types also interact with, rather than replace, the ACA metal tiers from Chapter 14: a marketplace listing might offer a "Bronze HMO" and a "Gold PPO" side by side, meaning the metal tier sets the overall cost-sharing generosity (Bronze pays less of the bill; Gold pays more) while the plan type independently sets the network and referral rules layered on top. A benefit-plan node in the graph therefore carries both properties — a <code>metal_tier</code> and a <code>plan_type</code> — as fully independent dimensions, not a single combined category.</p>
+<h2 id="medicare-medicaid-and-dual-eligibility">Medicare, Medicaid, and Dual Eligibility</h2>
+<p>Alongside employer-sponsored and marketplace plans, two federal programs insure a large share of the U.S. population directly. <strong>Medicare</strong> is the federal health insurance program primarily for people age 65 and older (and some younger people with qualifying disabilities), funded through payroll taxes and premiums, and administered uniformly under federal rules regardless of which state a beneficiary lives in. Medicare itself is split into distinct parts modeled as separate <code>BenefitPlan</code> nodes sharing one <code>Payer</code> node: Part A covers hospital inpatient stays, Part B covers outpatient and physician services (much like the coverage categories from Chapter 14), Part C ("Medicare Advantage") lets a beneficiary instead enroll in a private HMO- or PPO-style plan that administers all of Parts A and B together, and Part D covers prescription drugs through the same formulary structure introduced in Chapter 14. <strong>Medicaid</strong> is the joint federal-and-state health insurance program for low-income individuals and families; unlike Medicare, each state administers its own Medicaid program within federal guidelines, which means covered benefits, provider payment rates, and even basic eligibility thresholds all vary meaningfully from state to state — a detail that matters enormously for any graph model built to operate across multiple states, since a <code>BenefitPlan</code> node's <code>COVERS</code> edges for a Medicaid plan in Texas may differ substantially from the equivalent plan in New York even though both nodes carry the same <code>Medicaid</code> label and the same federal program name.</p>
+<p>Some individuals qualify for both programs at once — a status called <strong>dual eligibility</strong>, typically covering low-income Medicare beneficiaries who also meet their state's Medicaid income and asset limits. For a dual-eligible member, Medicare acts as the primary payer for most medical services, and Medicaid acts as the secondary payer, picking up Medicare's cost-sharing (deductibles and coinsurance) that would otherwise fall to the member — exactly the coordination-of-benefits pattern introduced earlier in this chapter, just with two government programs instead of two commercial policies. Concretely, if a dual-eligible beneficiary has a $1,200 Medicare Part A hospital claim with a $200 Medicare deductible and 20% coinsurance on the remainder, Medicare pays $800 and the beneficiary's apparent $400 responsibility (the deductible plus coinsurance) is picked up entirely by Medicaid as secondary payer, leaving the beneficiary with $0 out of pocket — the outcome dual eligibility exists to guarantee. Modeling a dual-eligible member therefore requires two separate <code>ENROLLED_IN</code> edges from the same <code>Member</code> node — one to a Medicare policy, one to a Medicaid policy — with a <code>COORDINATES_WITH</code> edge between the two policies carrying a <code>primary_payer</code> property set to Medicare.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Spotting a Dual-Eligible Member in the Graph</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Want a fast way to query for dual-eligible members? Look for any <code>Member</code> node with two <code>ENROLLED_IN</code> edges pointing to policies of different program types. No special flag needed — the graph structure itself already encodes the status.</p>
+</div>
+<h2 id="networks-and-payer-contracts">Networks and Payer Contracts</h2>
+<p>Every allowed amount discussed earlier in this chapter exists because of a <strong>payer contract</strong>: a negotiated agreement between a payer and a provider that fixes reimbursement rates, defines covered services, and sets administrative requirements (such as timely filing deadlines and claim-submission formats) governing their relationship. These negotiations increasingly go beyond a flat fee schedule to include quality- and volume-based terms — a higher rate tied to meeting readmission-rate or patient-satisfaction targets, for instance — a thread Chapter 16 picks back up when it models provider compensation and value-based payment directly. A provider who has signed such a contract with a given payer is an <strong>in-network provider</strong> for that payer — the provider agrees to accept the contracted allowed amount as payment in full and cannot bill the patient for the contractual write-off. A provider with no such contract is an <strong>out-of-network provider</strong>: the payer has no negotiated rate to enforce, so the provider is generally free to bill the patient for the full difference between their charge and whatever the payer decides to recognize — a practice called balance billing, illustrated by the red segment in the chart earlier in this chapter. Note that "in-network" and "out-of-network" are properties of a specific provider-payer <em>pair</em>, not of the provider alone: the same cardiologist can be in-network for Meridian Health Payer while simultaneously out-of-network for a different payer entirely, which is exactly why the graph models this as a property of the <code>Payer Contract</code> edge rather than a flag on the <code>Provider</code> node itself. A federal law, the No Surprises Act, now blocks balance billing entirely for emergency care and for certain out-of-network specialists (such as an anesthesiologist) working at an in-network facility, treating those specific situations as if the provider were in-network regardless of the actual contract status.</p>
+<p>Because network membership so directly shapes what a member actually pays, payers face <strong>network adequacy</strong> requirements — regulatory standards, usually set at the state level, mandating that a payer's network include enough in-network providers, of enough specialties, within a reasonable travel distance or wait time, that members can actually access covered care without being forced out-of-network. A payer that under-builds its network to cut contracting costs can run afoul of network adequacy rules even if every individual contract it does have is perfectly sound — the requirement is about network <em>shape</em>, not any single relationship, which is precisely the kind of property that a graph query (count providers per specialty within N miles of every member's home ZIP code) answers far more naturally than a relational report.</p>
+<p>Returning to Maria Chen: suppose her cardiologist leaves Meridian Health Payer's network mid-year. Her next visit to that same physician, for identical care, now runs through a completely different edge in the graph — no <code>Payer Contract</code> node connects the provider to Meridian, so there is no negotiated allowed amount to apply, and Maria may face a balance bill for hundreds of dollars more than she would have paid a week earlier, despite nothing about her own coverage having changed at all.</p>
+<h2 id="the-administrative-layer-clearinghouses-remittance-and-eligibility">The Administrative Layer: Clearinghouses, Remittance, and Eligibility</h2>
+<p>A great deal of the machinery that makes claims processing and reimbursement work at scale is invisible to both patients and providers. A <strong>claims clearinghouse</strong> is an intermediary that receives a claim from a provider's billing system, checks it for formatting and coding errors, translates it into the format a specific payer requires, and routes it onward — most providers submit claims to dozens of different payers, each with slightly different formatting quirks, and a clearinghouse spares each provider from having to integrate directly with every payer's own system. This "claim scrubbing" step catches a meaningful share of the format-related processing failures from Chapter 14 before they ever reach the payer at all, which is why clearinghouse rejection rates are themselves a data quality signal healthcare organizations track closely. Once a claim is adjudicated, the payer sends the provider (rather than the member) an <strong>electronic remittance advice (ERA)</strong>, standardized as the X12 835 transaction — the provider-facing counterpart to the member's explanation of benefits, itemizing exactly which claims were paid, at what amount, and which were denied and why, formatted so that a provider's billing system can automatically post the payment without manual re-entry.</p>
+<p>Before any of this can happen, a provider typically performs <strong>eligibility verification</strong> — a real-time check, run before or at the time of service, confirming that a patient's coverage is currently active and that the specific service being planned is covered under their benefit plan. This is the same <code>ENROLLED_IN</code> → <code>BASED_ON</code> → <code>COVERS</code> traversal from Chapter 14, just run proactively by the provider's front desk rather than reactively during claims processing (using the X12 270/271 eligibility-request and eligibility-response transactions), catching an eligibility problem before care is delivered rather than after a claim is denied. Every one of these checks reads or writes a member's <strong>benefit accumulator</strong> — the running year-to-date total, introduced in Chapter 14 as the deductible and out-of-pocket-maximum progress bars, that must be current and accurate at the moment eligibility is verified for the cost-sharing estimate to mean anything. Accumulators create a genuinely tricky data-modeling problem when a member switches jobs, and therefore policies, mid-year: a new payer has no visibility into the deductible dollars a member already accumulated under their old policy, so many employer transitions require the new payer to manually import a prior accumulator balance — a one-time data migration problem that looks small until you realize it must happen correctly for every single member switching plans on every renewal date, across the entire industry, every year.</p>
+<h4 id="diagram-claims-clearinghouse-and-eligibility-verification-workflow">Diagram: Claims Clearinghouse and Eligibility Verification Workflow</h4>
+<iframe src="../../sims/claims-clearinghouse-eligibility-verification-workflow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Claims Clearinghouse and Eligibility Verification Workflow</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> claims-clearinghouse-eligibility-verification-workflow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, summarize<br/>
+Learning objective: Given the administrative claims infrastructure workflow, the learner can explain the role of a clearinghouse, an ERA, and eligibility verification, and summarize how the benefit accumulator connects to each.</p>
+<p>Purpose: Show how a claim's administrative "plumbing" -- eligibility verification, clearinghouse routing, and remittance -- surrounds the processing and adjudication pipeline covered in Chapter 14, all reading from or writing to the same benefit accumulator.</p>
+<p>Visual style: Left-to-right flowchart with two parallel swimlanes: "Before the Visit" and "After the Visit"</p>
+<p>Steps (Before the Visit swimlane):</p>
+<ol>
+<li>"Front Desk Initiates Eligibility Check" -- Click text: "Provider's system queries the payer in real time before the appointment, using the X12 270 eligibility-request transaction."</li>
+<li>"Query Member -&gt; Policy -&gt; BenefitPlan -&gt; Coverage Graph" -- Click text: "The same ENROLLED_IN -&gt; BASED_ON -&gt; COVERS traversal from Chapter 14, run proactively."</li>
+<li>"Return Active Coverage + Current Accumulator Balances" -- Click text: "The payer's X12 271 response reports deductible-met and OOP-max-remaining amounts so the front desk can estimate the patient's cost before care is delivered."</li>
+</ol>
+<p>Steps (After the Visit swimlane):</p>
+<ol>
+<li>"Provider Submits Claim (837)" -- Click text: "The coded claim from Chapter 14 leaves the provider's billing system."</li>
+<li>"Claims Clearinghouse Validates and Routes" -- Click text: "The clearinghouse checks formatting, translates to the payer's required format, and forwards the claim -- sparing the provider from integrating with every payer directly."</li>
+<li>"Payer Processes and Adjudicates" -- Click text: "The full pipeline from Chapter 14 runs here."</li>
+<li>"Benefit Accumulator Updated" -- Click text: "The member's deductible and OOP-max running totals are updated with this claim's result, which the NEXT eligibility check (back in the other swimlane) will read."</li>
+<li>"Electronic Remittance Advice (ERA / X12 835) Sent to Provider" -- Click text: "The provider-facing counterpart to the member's EOB, itemizing what was paid, denied, and why, formatted for automatic posting."</li>
+</ol>
+<p>Connections: A dashed feedback arrow from step 7 ("Benefit Accumulator Updated") back to step 3 ("Return Active Coverage + Current Accumulator Balances"), visually closing the loop between the two swimlanes.</p>
+<p>Color coding:</p>
+<ul>
+<li>Blue: real-time query/graph-traversal steps (1, 2, 3, 7)</li>
+<li>Orange: document/transaction steps (4, 8)</li>
+<li>Gray: intermediary/processing steps (5, 6)</li>
+</ul>
+<p>Implementation: Mermaid flowchart with <code>click</code> directives on every node opening an infobox with that node's click text</p>
+</details>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">The Administrative Layer Feels Invisible -- That's the Point</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+If clearinghouses and remittance advice feel like background noise compared to claims and coverage, that's a completely reasonable reaction — they're deliberately built to be invisible when everything works. Just remember they're the plumbing that makes every other concept in this chapter actually flow end to end.</p>
+</div>
+<p>That plumbing is also the last piece needed to call the payer perspective complete: every claim now has a documented path from eligibility check through clearinghouse routing, adjudication, and remittance, with a running benefit accumulator tying each step back to the member's coverage.</p>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">The Payer Perspective Is Complete</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just closed the loop on the payer's side of the graph — allowed amounts, reimbursement, the full plan-type alphabet (HMO, PPO, POS, HDHP), Medicare and Medicaid, and the network contracts and administrative plumbing tying it all together. Patient, provider, and payer: all three perspectives are now on the table!</p>
+</div>
+<p>This chapter turned a coinsurance calculation from Chapter 14 into a complete financial round trip: an allowed amount replaces the billed charge, reimbursement pays the provider, and an EOB and ERA report the outcome to member and provider alike, with coordination of benefits and subrogation handling the edge cases where more than one payer is involved. Health plan types (HMO, PPO, POS, HDHP) and government programs (Medicare, Medicaid, dual eligibility) determine the rules each member operates under, while payer contracts, network adequacy, and the clearinghouse-and-remittance infrastructure make the whole system operate at scale. With patient, provider, and payer perspectives now all modeled as graphs, <a href="../16-healthcare-revenue-and-cost-analysis/">Chapter 16</a> turns to what all of this data means financially for a healthcare organization — revenue, cost, and profitability.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 14. Insurance Claims, Coverage, and Pharmacy Benefits">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                14. Insurance Claims, Coverage, and Pharmacy Benefits
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: 16. Healthcare Revenue and Cost Analysis">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                16. Healthcare Revenue and Cost Analysis
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

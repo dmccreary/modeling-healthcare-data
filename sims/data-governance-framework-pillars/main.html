@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- microsim-scaffold-stub -->
+    <title>Data Governance Framework Pillars</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Data Governance Framework Pillars</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> data-governance-framework-pillars</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Analyze<br/></p>
+            <p><strong>Learning Objective:</strong> Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: infographic
+    **sim-id:** data-governance-framework-pillars<br/>
+    **Library:** p5.js<br/>
+    **Status:** Specified
+    
+    Bloom Taxonomy: Analyze<br/>
+    Bloom Taxonomy Verb: differentiate, examine<br/>
+    Learning objective: Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact.
+    
+    Purpose: Make the five interlocking pillars of a data governance framework concrete using the wearable-device data source scenario from the preceding worked example.
+    
+    Components to show: Five vertical pillar shapes arranged side by side, each labeled: Policy, Roles, Quality, Security, Compliance. A horizontal beam across the top labeled "Trusted, Governed Data" rests on all five pillars.
+    
+    Data Visibility Requirements:
+    Stage 1: Show the five pillars unlabeled with only their names, beam resting on top.
+    Stage 2: On click of a pillar, show that pillar's accountability question (e.g., Policy: "What rules govern data use, retention, and sharing?") and the specific wearable-device-vendor decision it governs from the worked example, in a side panel.
+    Stage 3: On click of the "Remove a Pillar" toggle for any single pillar, animate that pillar sliding out and the beam visibly tilting/dropping on that side, illustrating a governance blind spot.
+    
+    Interactive controls:
+    
+    - Click each pillar to reveal its accountability question and worked-example decision
+    - Toggle button per pillar: "Remove this pillar" to visually demonstrate what happens when that governance function is missing
+    - Reset button to restore all five pillars
+    
+    Instructional Rationale: The Analyze-level objective (differentiate, examine) is served by letting learners actively remove a pillar and see the structural consequence, rather than just reading a labeled diagram — this mirrors the "skip any one pillar" claim in the preceding prose and lets the learner verify it interactively rather than take it on faith.
+    
+    Layout: Horizontal row of five pillars, responsive width, fixed height, reflows pillar spacing on window resize.
+    
+    Color scheme: Each pillar a distinct color (policy blue, roles teal, quality green, security orange, compliance purple); the beam is gray and turns red when tilted.
+    
+    Implementation: p5.js with simple physics-free tilt animation triggered by button state.
+    -->
+</body>
+</html>

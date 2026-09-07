@@ -1,0 +1,23 @@
+{
+  "title": "Graph Algorithm Family Map",
+  "description": "Classify a graph algorithm by the type of question it answers (distance, importance, grouping, or prediction) and summarize one example algorithm per family.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "graph-algorithm-family-map",
+  "library": "Mermaid",
+  "bloomLevel": "Understand<br/>",
+  "bloomVerb": "classify, summarize<br/>",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "Graph Algorithms, Centrality, and Similarity Measures",
+  "chapter_dir": "05-graph-algorithms-centrality-similarity",
+  "chapter_rel_dir": "chapters/05-graph-algorithms-centrality-similarity"
+}

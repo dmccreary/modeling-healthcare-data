@@ -54,9 +54,21 @@
     
       <link rel="stylesheet" href="../css/extra.css">
     
+      <link rel="stylesheet" href="../css/mascot.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
     
     
@@ -467,27 +479,119 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -623,6 +727,8 @@
       
         
           
+        
+      
         
       
         
@@ -1519,7 +1625,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/course-description.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/course-description.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1536,7 +1642,9 @@
 <p>This course teaches students to model complex healthcare data from multiple perspectives, including the patient, provider, and payer viewpoints. We begin with a review of the many challenges of modeling complex interconnected clinical data. We discuss why tabular relational structures are poorly suited for clinical data and how graph databases excel at this task. We introduce key concepts including graph algorithms, graph data science, embeddings, and graph neural networks.</p>
 <p>The course starts with a patient-centric graph data model that places the patient record at the center of our graph, including modeling patient attributes such as demographics, diseases, conditions, prescriptions, diagnoses, treatments, symptoms, procedures, providers, and care plans. We then expand to include the provider perspective, which encompasses modeling individual providers, hospitals, clinics, schedules, claims, costs, revenue, and profitability. Next, we examine the payer perspective, which includes claims processing, fraud detection, waste and abuse prevention, provider networks, policies, coverage, disputes, population analytics, and profitability analysis.</p>
 <p>The core of our course examines how graph databases support analytics, clinical rules engines, recommendation systems, and data quality initiatives within healthcare. We take a close look at vector stores used in conjunction with AI and large language models (LLMs).</p>
-<p>We then focus on the types of analytics used by each stakeholder perspective and discuss operational reporting, key performance indicators (KPIs), and real-time clinical discovery applications that benefit from graph databases. Finally, we conclude with advanced topics including security, HIPAA compliance, role-based access control (RBAC), metadata management, data governance, lineage tracking, traceability, explainability, and the use of machine learning and LLMs to create precise care path recommendations that combine quality with explainability.</p>
+<p>We then focus on the types of analytics used by each stakeholder perspective and discuss operational reporting, key performance indicators (KPIs), and real-time clinical discovery applications that benefit from graph databases.</p>
+<p>A dedicated unit examines the modeling of healthcare clinical decision support (CDS) systems using the HL7 FHIR standard. Students learn the Four Levels of Knowledge Representation in FHIR: Level 1 (Narrative), where clinical guidelines are expressed as plain narrative text authored by guideline developers for broad shareability but limited computer interpretation; Level 2 (Semi-Structured), where knowledge is organized into flowcharts, decision tables, personas, and user stories authored by clinical experts for moderate computability; Level 3 (Structured), where knowledge is expressed in computer-interpretable, coded formats using standard terminologies authored by knowledge engineers for high computability and broad shareability; and Level 4 (Executable), where knowledge is coded directly for CDS systems for direct runtime execution on specific platforms. Each of these representation levels is examined across three Tiers of Functionality: the Data Tier (concepts and data elements), the Logic Tier (business and process rules), and the Forms/UI Tier (user interface and user interactions). We also introduce Clinical Quality Language (CQL), a high-level, human-readable and machine-executable language used to author CDS rules, Clinical Quality Measures (CQMs), and health information exchange logic. Students learn how CQL separates clinical logic from data models and platforms, how CQL's human-readable authoring format compiles into the Expression Logical Model (ELM), the machine-friendly XML/JSON representation that EHR systems and execution engines actually run, and how FHIR resources supply the data structure that CQL logic reasons over to drive clinical decisions. Students also survey the CMS-sponsored tools used to author, test, and certify CQL-based measures: MADiE, the modern web-based tool that combines measure authoring and dynamic testing; CQL Runner, an interactive tool for quick ad hoc CQL testing; Bonnie, the legacy synthetic-patient testing tool; and Cypress, the open-source certification tool used to validate that EHR systems correctly execute compiled CQL/eCQM logic.</p>
+<p>Finally, we conclude with advanced topics including security, HIPAA compliance, role-based access control (RBAC), metadata management, data governance, lineage tracking, traceability, explainability, and the use of machine learning and LLMs to create precise care path recommendations that combine quality with explainability.</p>
 <h2 id="main-topics-covered">Main Topics Covered</h2>
 <ul>
 <li>Annual Costs</li>
@@ -1603,6 +1711,24 @@
 <li>Clinical Decision</li>
 <li>Clinical Decision Support</li>
 <li>Clinical Discovery</li>
+<li>FHIR</li>
+<li>Knowledge Representation Level</li>
+<li>Narrative Level</li>
+<li>Semi-Structured Level</li>
+<li>Structured Level</li>
+<li>Executable Level</li>
+<li>Tiers of Functionality</li>
+<li>Data Tier</li>
+<li>Logic Tier</li>
+<li>Forms/UI Tier</li>
+<li>Clinical Quality Language</li>
+<li>Expression Logical Model</li>
+<li>Clinical Quality Measure</li>
+<li>CMS CQL Tooling</li>
+<li>MADiE</li>
+<li>CQL Runner</li>
+<li>Bonnie</li>
+<li>Cypress</li>
 <li>Operational Reporting</li>
 <li>Key Performance Indicator</li>
 <li>AI</li>
@@ -1655,6 +1781,8 @@
 <li>Identify the main components of a labeled property graph (nodes, edges, properties).</li>
 <li>List the major data entities in healthcare (patients, providers, payers, claims, treatments, encounters).</li>
 <li>Recall common graph query languages (Cypher, GSQL, GQL) and their basic syntax.</li>
+<li>Recall the Four Levels of Knowledge Representation in FHIR: Narrative, Semi-Structured, Structured, and Executable.</li>
+<li>Identify the three Tiers of Functionality (Data, Logic, Forms/UI) used to classify clinical knowledge artifacts.</li>
 </ul>
 <h3 id="understand">Understand</h3>
 <p><em>Constructing meaning from instructional messages, including oral, written, and graphic communication.</em></p>
@@ -1664,6 +1792,8 @@
 <li>Summarize how graph algorithms can support clinical decision support and fraud detection.</li>
 <li>Interpret how metadata, lineage, and traceability improve healthcare data governance.</li>
 <li>Discuss how AI and LLMs can be integrated with vector stores and graph data for advanced analytics.</li>
+<li>Explain how each FHIR knowledge representation level trades off computability against shareability and authorship expertise.</li>
+<li>Describe how Clinical Quality Language (CQL) separates clinical logic from underlying data models and platforms.</li>
 </ul>
 <h3 id="apply">Apply</h3>
 <p><em>Carrying out or using a procedure in a given situation.</em></p>
@@ -1673,6 +1803,7 @@
 <li>Use graph algorithms (e.g., shortest path, community detection) to find clinical insights.</li>
 <li>Apply role-based access control (RBAC) concepts to secure healthcare graph data.</li>
 <li>Demonstrate integration of AI tools or vector stores to query and reason over graph data.</li>
+<li>Author simple clinical logic expressions in CQL (e.g., age or condition checks) and trace how they compile into the Expression Logical Model (ELM).</li>
 </ul>
 <h3 id="analyze">Analyze</h3>
 <p><em>Breaking material into constituent parts and determining how the parts relate to one another and to an overall structure or purpose.</em></p>
@@ -1682,6 +1813,7 @@
 <li>Examine how data from multiple systems (EHR, claims, pharmacy, behavioral health) connect through shared identifiers.</li>
 <li>Evaluate trade-offs between different graph modeling strategies for scalability, query speed, and explainability.</li>
 <li>Assess how data quality and completeness impact graph analytics outcomes.</li>
+<li>Classify a given clinical decision support artifact by its FHIR knowledge representation level and functional tier (Data, Logic, Forms/UI).</li>
 </ul>
 <h3 id="evaluate">Evaluate</h3>
 <p><em>Making judgments based on criteria and standards through checking and critiquing.</em></p>
@@ -1691,6 +1823,7 @@
 <li>Evaluate the ethical and privacy implications of patient graph data under HIPAA standards.</li>
 <li>Compare the business value of graph-based analytics versus traditional relational approaches in healthcare.</li>
 <li>Assess the explainability and transparency of AI-driven clinical recommendations derived from graph data.</li>
+<li>Evaluate the trade-offs of authoring clinical decision support logic at different FHIR knowledge representation levels versus encoding it directly in CQL/ELM for runtime execution.</li>
 </ul>
 <h3 id="create">Create</h3>
 <p><em>Putting elements together to form a coherent or functional whole; reorganizing elements into a new pattern or structure.</em></p>
@@ -1701,6 +1834,7 @@
 <ul>
 <li><strong>Fraud detection</strong> using claims graph analytics</li>
 <li><strong>Clinical decision support</strong> using rule-based reasoning and embeddings</li>
+<li><strong>FHIR-based CDS modeling</strong> that maps a clinical guideline across the four knowledge representation levels and expresses its core logic in CQL</li>
 <li><strong>Provider network optimization</strong> through community and referral graph analysis</li>
 <li><strong>Patient journey visualization</strong> using time-sequenced graph queries</li>
 </ul>
@@ -1723,6 +1857,8 @@
   
 
 
+
+  
 
 
 
@@ -1767,13 +1903,13 @@
         
         
           
-          <a href="../chapters/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../chapters/" class="md-footer__link md-footer__link--next" aria-label="Next: List of Chapters">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                List of Chapters
               </div>
             </div>
             <div class="md-footer__button md-icon">

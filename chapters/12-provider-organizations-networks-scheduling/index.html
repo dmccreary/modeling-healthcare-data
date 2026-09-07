@@ -1,0 +1,3154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Models the provider side of the healthcare graph -- care settings, provider networks, referrals, credentialing, ratings, and scheduling capacity.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/12-provider-organizations-networks-scheduling/">
+      
+      
+        <link rel="prev" href="../11-specialty-care-surgery-remote-monitoring/">
+      
+      
+        <link rel="next" href="../13-clinical-guidelines-care-pathways-workforce/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Provider Organizations, Networks, and Scheduling - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Provider Organizations, Networks, and Scheduling - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Models the provider side of the healthcare graph -- care settings, provider networks, referrals, credentialing, ratings, and scheduling capacity." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/12-provider-organizations-networks-scheduling/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/12-provider-organizations-networks-scheduling/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Provider Organizations, Networks, and Scheduling - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Models the provider side of the healthcare graph -- care settings, provider networks, referrals, credentialing, ratings, and scheduling capacity." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/12-provider-organizations-networks-scheduling/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#provider-organizations-networks-and-scheduling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Provider Organizations, Networks, and Scheduling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-care-providers-and-the-care-setting-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Care Providers and the Care Setting Hierarchy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Care Providers and the Care Setting Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-delivery-network-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Delivery Network Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#care-settings-by-acuity-from-emergency-department-to-inpatient-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Care Settings by Acuity: From Emergency Department to Inpatient Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Care Settings by Acuity: From Emergency Department to Inpatient Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-care-setting-acuity-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Care Setting Acuity Flow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-networks-and-the-referral-relationships-that-define-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Networks and the Referral Relationships That Define Them
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Networks and the Referral Relationships That Define Them">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-referral-network-analysis-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Referral Network Analysis MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credentialing-the-data-that-establishes-a-providers-standing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentialing: The Data That Establishes a Provider's Standing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-provider-quality-provider-rating-and-specialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measuring Provider Quality: Provider Rating and Specialization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Provider Quality: Provider Rating and Specialization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-performance-comparison-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Performance Comparison MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turning-capacity-into-appointments-schedule-capacity-and-the-appointment-itself" class="md-nav__link">
+    <span class="md-ellipsis">
+      Turning Capacity into Appointments: Schedule, Capacity, and the Appointment Itself
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turning Capacity into Appointments: Schedule, Capacity, and the Appointment Itself">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-capacity-utilization-dashboard-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Capacity Utilization Dashboard Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-matters-beyond-the-classroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters Beyond the Classroom
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-responsible-ai-and-agentic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-care-providers-and-the-care-setting-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Care Providers and the Care Setting Hierarchy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Care Providers and the Care Setting Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-healthcare-delivery-network-graph-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Healthcare Delivery Network Graph Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#care-settings-by-acuity-from-emergency-department-to-inpatient-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Care Settings by Acuity: From Emergency Department to Inpatient Care
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Care Settings by Acuity: From Emergency Department to Inpatient Care">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-care-setting-acuity-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Care Setting Acuity Flow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-networks-and-the-referral-relationships-that-define-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Networks and the Referral Relationships That Define Them
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Networks and the Referral Relationships That Define Them">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-referral-network-analysis-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Referral Network Analysis MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credentialing-the-data-that-establishes-a-providers-standing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentialing: The Data That Establishes a Provider's Standing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-provider-quality-provider-rating-and-specialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measuring Provider Quality: Provider Rating and Specialization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Provider Quality: Provider Rating and Specialization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-performance-comparison-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Performance Comparison MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turning-capacity-into-appointments-schedule-capacity-and-the-appointment-itself" class="md-nav__link">
+    <span class="md-ellipsis">
+      Turning Capacity into Appointments: Schedule, Capacity, and the Appointment Itself
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turning Capacity into Appointments: Schedule, Capacity, and the Appointment Itself">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-provider-capacity-utilization-dashboard-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Provider Capacity Utilization Dashboard Chart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-matters-beyond-the-classroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters Beyond the Classroom
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/12-provider-organizations-networks-scheduling/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="provider-organizations-networks-and-scheduling">Provider Organizations, Networks, and Scheduling</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces the provider perspective, modeling the organizations and relationships that deliver care: primary care and specialist providers, hospitals, clinics, and care settings from outpatient to emergency departments. It covers provider networks, scheduling, appointments, referrals, and the credentialing data (licenses, board certification) that establishes a provider's standing. Students learn to model the provider side of the healthcare graph alongside the patient side built in prior chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Care Provider</td>
+<td>190</td>
+</tr>
+<tr>
+<td>Specialist Provider</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Hospital</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Clinic</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Outpatient Facility</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Inpatient Care</td>
+<td>185</td>
+</tr>
+<tr>
+<td>Emergency Department</td>
+<td>122</td>
+</tr>
+<tr>
+<td>Provider Network</td>
+<td>121</td>
+</tr>
+<tr>
+<td>Provider Schedule</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Appointment</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Referral</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Referral Inference</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Provider Credential</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Medical License</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Board Certification</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Provider Rating</td>
+<td>55</td>
+</tr>
+<tr>
+<td>Provider Capacity</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Provider Specialization</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Hospital Department</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Care Team</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../07-healthcare-economics-medical-coding/">Chapter 7: Healthcare Economics and Medical Coding Systems</a></li>
+</ul>
+<hr />
+<p>Every patient journey in this book eventually runs into a provider — and every
+provider sits inside an organization that shapes what they can do, whom they
+can see, and how fast they can see them. Chapters 9 through 11 modeled the
+patient side of the graph: diagnoses, treatments, care plans, and specialty
+services. This chapter builds the other half of that same graph — the
+organizations, networks, and scheduling structures that deliver care — so
+that a <code>TREATED_BY</code> edge from a patient always lands on a fully modeled
+<code>Provider</code> node, and a <code>WORKS_AT</code> edge always lands on a fully modeled
+facility.</p>
+<p>That provider side turns out to be unusually rich in structure. A single
+physician might be a PCP for one insurer's network and an out-of-network
+specialist referral target for another; a single hospital might own one
+outpatient facility outright while merely partnering with a dozen affiliated
+clinics; a single patient encounter might begin in an emergency department
+and end, hours later, in a very different part of the building entirely.
+Twenty concepts make up this chapter, more than any other in the book, and
+that is not accidental — everything payers, fraud analysts, and clinical
+guideline authors do in later chapters assumes the provider graph built here
+is already in place.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Building the Provider Side of the Graph</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Welcome back! This chapter is where we build out the provider side of the graph -- clinics, hospitals, networks, referrals, and schedules -- and it happens to be the biggest one yet, because so much of the rest of the book leans on it. Let's connect the dots!</p>
+</div>
+<h2 id="primary-care-providers-and-the-care-setting-hierarchy">Primary Care Providers and the Care Setting Hierarchy</h2>
+<p>The most frequently traversed node type on the provider side of a healthcare
+graph is the <strong>Primary Care Provider</strong>, commonly abbreviated PCP: a
+physician, nurse practitioner, or physician assistant who serves as a
+patient's first point of contact and coordinates referrals to other care. In
+graph terms, a PCP is a <code>Provider</code> node distinguished by a <code>role</code> or
+<code>provider_type</code> property (<code>"Primary Care"</code>) and is the target of an
+<code>ATTRIBUTED_TO</code> edge from every patient on their panel — the roster of
+patients for whom that PCP is responsible for coordinating care. That
+attribution edge is not decorative; it is the anchor point value-based care
+contracts use to assign financial responsibility for a patient's total cost
+of care, a topic that resurfaces when this book turns to payer contracts in
+Chapter 15.</p>
+<p>Consider a concrete worked example. Dr. Amara Okafor is a PCP at Riverside
+Clinic with an active patient panel of 1,800 patients — each connected to
+her <code>Provider</code> node by its own <code>ATTRIBUTED_TO</code> edge. A payer running a
+value-based contract with Riverside Clinic queries that panel once a
+quarter to compute the total cost of care per attributed patient, compare it
+against a risk-adjusted benchmark, and determine whether Dr. Okafor's
+patients cost the system more or less than expected. None of that
+computation requires a join across a <code>patients</code> table and a
+<code>provider_assignments</code> table with a <code>current_flag</code> column, the typical
+relational pattern; it is a single traversal outward from her <code>Provider</code>
+node across every <code>ATTRIBUTED_TO</code> edge. If Dr. Okafor leaves Riverside
+Clinic, the graph model also makes panel <em>reassignment</em> explicit: each
+<code>ATTRIBUTED_TO</code> edge can carry its own <code>start_date</code> and <code>end_date</code>, so a
+patient's attribution history is preserved rather than overwritten the
+moment a new PCP takes over the panel.</p>
+<p>A PCP rarely treats every condition alone. When a patient's needs exceed
+primary care's scope, the PCP's graph neighborhood extends outward to a
+<strong>Specialist Provider</strong> — a physician whose practice is narrowed to a
+specific body system, disease category, or procedure type (cardiology,
+dermatology, orthopedic surgery). Structurally, a specialist is the same
+<code>Provider</code> node type as a PCP, but with a different <code>provider_type</code> value and
+typically one or more <code>Specialty</code> property values or relationships attached.
+Both PCPs and specialists need somewhere to practice, and healthcare graphs
+distinguish several kinds of care settings by the <code>Facility</code> node types they
+connect to:</p>
+<ul>
+<li><strong>Hospital</strong> — a licensed institution providing 24-hour inpatient care, emergency services, and surgical capacity; modeled as a <code>Facility</code> node with <code>facility_type: "Hospital"</code> and properties like <code>bed_count</code> and <code>trauma_level</code>.</li>
+<li><strong>Clinic</strong> — a lower-acuity outpatient practice site, often the physical location where a PCP or small group of specialists sees scheduled patients; modeled as <code>facility_type: "Clinic"</code>.</li>
+<li><strong>Outpatient Facility</strong> — any site delivering care without an overnight stay, ranging from an imaging center to an ambulatory surgical center; modeled as <code>facility_type: "Outpatient"</code> with a more specific <code>service_line</code> property (e.g., <code>"Imaging"</code>, <code>"Ambulatory Surgery"</code>).</li>
+<li><strong>Hospital Department</strong> — a functional subdivision inside a hospital (Cardiology, Radiology, the Emergency Department) modeled as its own node connected to the parent <code>Hospital</code> node by a <code>PART_OF</code> edge, so that capacity and staffing can be tracked per department rather than only at the whole-hospital level.</li>
+</ul>
+<p>These four settings are not interchangeable labels on the same node — they
+are distinct node types (or distinct <code>facility_type</code> values) precisely
+because the questions a graph needs to answer differ by setting: a hospital
+query cares about bed capacity and trauma level; a clinic query cares about
+which PCPs practice there; an outpatient facility query cares about service
+line and same-day scheduling. A large health system's graph typically shows
+a hospital <code>OPERATES</code> its own emergency department and one or more
+outpatient facilities (an imaging center, a surgical center), while
+independent clinics are <code>AFFILIATED_WITH</code> that hospital without being owned
+by it — a distinction that matters enormously for referral leakage analysis
+later in this chapter, since an affiliated clinic's referrals are far more
+likely to stay in-network than an unaffiliated one's.</p>
+<p>Take Riverside Regional, a mid-sized hospital, as a worked example of that
+ownership structure. Riverside Regional <code>OPERATES</code> its Emergency Department,
+its Cardiology Hospital Department, and a same-day surgical outpatient
+facility across town — all three trace an unbroken chain of ownership back
+to the hospital's <code>Facility</code> node, so a single query starting at Riverside
+Regional and following every <code>OPERATES</code> edge returns the hospital's entire
+owned footprint. Riverside Clinic, where Dr. Okafor practices, is a
+separate legal entity connected to Riverside Regional only by an
+<code>AFFILIATED_WITH</code> edge carrying a <code>contract_type</code> property such as
+<code>"Clinically Integrated Network"</code> — close enough for shared referral
+pathways and shared quality metrics, but not close enough that the hospital
+appears in the clinic's ownership chain. Losing that distinction in a graph
+model is not a cosmetic error: hospital system executives use exactly this
+ownership-versus-affiliation traversal to decide where capital investment
+dollars can be directed without triggering separate corporate approval.</p>
+<p>Finally, no single provider delivers modern care alone. A <strong>Care Team</strong> is
+the modeled group of providers — physician, nurse, pharmacist, social worker,
+care coordinator — who share responsibility for one patient's care, typically
+represented as a <code>CareTeam</code> node connected by <code>MEMBER_OF</code> edges to each
+participating <code>Provider</code> node and by a <code>CARES_FOR</code> edge to the <code>Patient</code>
+node. For Maria Chen managing Type 2 Diabetes, that team might include Dr.
+Okafor as the coordinating PCP, an endocrinologist for specialist oversight,
+a diabetes educator, and a pharmacist managing her medication regimen — four
+<code>MEMBER_OF</code> edges into a single <code>CareTeam</code> node, each carrying a <code>role</code>
+property so the graph distinguishes "coordinating provider" from
+"consulting specialist." Chapter 13 develops care teams further as a
+workforce and coordination concept; here, the important structural point is
+that a care team is a <em>grouping</em> node, not a property of any single
+provider, precisely because its membership changes independently of any one
+provider's other relationships — swapping out the pharmacist does not
+require touching the endocrinologist's record at all.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Node Type or Property Value?</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+A recurring design choice in this chapter is whether something becomes its own node type (like Hospital Department) or just a property value on an existing node (like a specialist's provider_type). The rule of thumb: if you need to traverse <em>to</em> it, query <em>about</em> it independently, or attach its own properties and relationships, give it a node. If it only ever describes an existing node, keep it a property.</p>
+</div>
+<p>The diagram below lets you explore exactly this hierarchy in a small regional
+delivery network: a hospital that operates an emergency department and two
+outpatient facilities, clinics affiliated with (but not owned by) that
+hospital, providers working at those clinics, and patients attributed to a
+PCP.</p>
+<h4 id="diagram-healthcare-delivery-network-graph-model">Diagram: Healthcare Delivery Network Graph Model</h4>
+<iframe src="../../sims/healthcare-delivery-network-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
+
+<details>
+<summary>Healthcare Delivery Network Graph Model (reused)</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> healthcare-delivery-network-graph-model<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/healthcare-delivery-network-graph-model</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: classify, identify<br/>
+Learning objective: Given a rendered regional delivery network graph, the learner can classify each facility node by care setting (Hospital, Clinic, Outpatient Facility, Hospital Department) and identify which providers are attributed as a patient's PCP versus a specialist.</p>
+<p>Reused from the MicroSim catalog. The model shows a Hospital node that OPERATES an Emergency Department node and two Outpatient Facility nodes (a surgical center and an imaging center); several Clinic nodes connected to the hospital by AFFILIATED_WITH edges rather than OPERATES, making the ownership distinction visible; Provider nodes connected to clinics by WORKS_AT edges, tagged as either Primary Care Provider or Specialist Provider; clinics and outpatient facilities connected to each other by REFER_TO edges; and Patient nodes connected to their PCP by an ATTRIBUTED_TO edge. Clicking any node opens a side panel with its label, type-specific properties, and a plain-language definition of that node type; clicking an edge shows its label and any properties (such as REFER_TO volume). Hovering highlights the immediate neighborhood so the learner can visually trace the difference between OPERATES (ownership) and AFFILIATED_WITH (looser partnership).</p>
+<p>Interactive controls:
+- Click any node to open its detail panel and highlight its edges
+- Hover to preview a node's type without opening the panel
+- Legend toggle to filter the view down to one facility type at a time (Hospital, Clinic, Outpatient Facility only)
+- Reset/re-fit button to recenter the layout</p>
+<p>Implementation: vis-network JavaScript library</p>
+</details>
+<h2 id="care-settings-by-acuity-from-emergency-department-to-inpatient-care">Care Settings by Acuity: From Emergency Department to Inpatient Care</h2>
+<p>The Hospital, Clinic, Outpatient Facility, and Hospital Department nodes
+introduced above describe <em>where</em> care happens; the two concepts in this
+section describe <em>how urgently</em> it happens, and urgency turns out to drive
+an entirely separate set of graph relationships layered on top of the
+facility structure already in place. These settings differ not only by
+ownership and specialty but by how urgently and how long a patient needs to
+stay. <strong>Emergency Department</strong> (ED) care is
+unscheduled, acute care delivered to patients who present without an
+appointment, typically triaged by severity within minutes of arrival. In the
+graph, an ED visit is modeled as an <code>Encounter</code> node with
+<code>encounter_type: "Emergency"</code>, connected by a <code>TREATED_AT</code> edge to the
+Hospital Department node representing that hospital's emergency department
+(recall from the previous section that departments are their own nodes,
+<code>PART_OF</code> a parent Hospital). <strong>Inpatient Care</strong> is the broader category of
+care delivered to a patient who has been formally admitted and occupies a
+hospital bed overnight or longer, modeled as an <code>Encounter</code> node with
+<code>encounter_type: "Inpatient"</code> and properties like <code>length_of_stay_days</code> and
+<code>admitting_department</code>.</p>
+<p>The relationship between these two concepts is not just "both are acute
+care" — it is a <em>pathway</em>. Most inpatient stays begin as an ED visit that
+escalates, and the graph needs to capture that escalation explicitly rather
+than treating ED and inpatient encounters as unrelated records. Hospitals
+use a standardized five-point scale, the Emergency Severity Index (ESI),
+to record how urgently a patient needs care at triage: ESI 1 means
+immediate, life-threatening need, while ESI 5 is the least urgent. That ESI
+level is stored as a property on the triage step and becomes one of the key
+inputs to the admit-or-discharge decision that follows.</p>
+<p>Walk through a single patient to see why the pathway matters more than the
+individual encounter labels. Maria Chen — the same patient introduced in
+Chapter 1 — arrives at Riverside Regional's Emergency Department with chest
+pain. Triage assigns her <code>esi_level: 2</code>, the second-most-urgent tier,
+recorded on an <code>EDVisit</code> node with <code>arrival_time: "14:02"</code>. Twenty-two
+minutes later, an attending physician records an <code>Admit Decision</code> node with
+<code>decision: "Admit"</code> and <code>decision_time: "14:24"</code>, and Maria is assigned to
+the Telemetry unit — a Hospital Department that monitors cardiac rhythm
+continuously. Because no telemetry bed is immediately free, the edge from
+her Admit Decision to the Telemetry Hospital Department carries
+<code>boarding_time_hours: 3.5</code>: three and a half hours spent occupying an ED bay
+while waiting for the inpatient bed to open. Only once that edge resolves
+does her <code>length_of_stay_days</code> property on the Inpatient Care encounter
+begin accumulating. Every one of those numbers — the ESI level, the
+decision time, the boarding time, the length of stay — is a property sitting
+on a specific node or edge in a specific pathway, which is exactly what lets
+a hospital operations team later ask "which ESI-2 cardiac patients boarded
+longer than three hours last month, and which department caused the delay?"
+as a single graph query instead of a multi-table reconciliation project.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Why Model the Pathway, Not Just the Encounter?</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+If you only stored a flat <code>encounter_type</code> field, you could never answer "how many ESI-2 patients ended up boarding in the ED for over four hours because no ICU bed was open?" That question requires traversing a chain of nodes -- triage, admit decision, unit assignment -- each carrying its own timestamps and properties, which is exactly what a graph is built to represent.</p>
+</div>
+<p>The diagram below traces that chain directly: a triage node carrying an ESI
+level, an admit-decision node, and its two possible outcomes — discharge
+home or admission to a specific inpatient unit, sub-typed by hospital
+department (ICU, Med-Surg, Telemetry). Watch in particular for the
+<code>boarding_time_hours</code> property on the edge between the admit decision and
+the inpatient unit — this is the number of hours a patient waits in the ED
+for an inpatient bed to open, and it is one of the most closely watched
+capacity-strain metrics in hospital operations.</p>
+<h4 id="diagram-care-setting-acuity-flow-diagram">Diagram: Care Setting Acuity Flow Diagram</h4>
+<iframe src="../../sims/care-setting-acuity-flow-diagram/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>Care Setting Acuity Flow Diagram</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> care-setting-acuity-flow-diagram<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, differentiate<br/>
+Learning objective: Given a patient's triage acuity level and the resulting admit decision, the learner can differentiate Emergency Department care from Inpatient Care by tracing the decision path and examining how boarding time reflects capacity strain.</p>
+<p>Purpose: Show how a single patient encounter moves through the graph from ED triage to either discharge or a specific inpatient unit, making the ED-versus-inpatient distinction concrete as a traversal rather than an abstract label, and surfacing capacity strain (ED boarding) as a directly observable edge property.</p>
+<p>Components to show:
+- "ED Triage" node — properties: <code>esi_level</code> (1-5, editable via control), <code>arrival_time</code>
+- "Admit Decision" node — properties: <code>decision_time</code>, <code>decision</code> (Admit / Discharge)
+- "Discharge Home" terminal node
+- "Inpatient Unit" node, sub-typed by Hospital Department: ICU, Med-Surg, Telemetry (three selectable variants shown as a small cluster)
+- "Discharge" terminal node reached after the inpatient stay</p>
+<p>Connections:
+- ED Triage → Admit Decision (edge property: <code>time_to_decision_minutes</code>)
+- Admit Decision → Discharge Home (only when decision = Discharge)
+- Admit Decision → Inpatient Unit (edge property: <code>boarding_time_hours</code> — the wait for a bed to open; only when decision = Admit)
+- Inpatient Unit → Discharge (edge property: <code>length_of_stay_days</code>)</p>
+<p>Style: Left-to-right workflow diagram with a decision diamond at "Admit Decision" and rectangular process nodes elsewhere; the three Inpatient Unit sub-types shown as parallel branches so the learner can compare them side by side.</p>
+<p>Data Visibility Requirements:
+Stage 1: Show the ED Triage node with a visible esi_level value (default 3) and arrival_time.
+Stage 2: On click of Admit Decision, show the decision_time and the resulting branch (Admit or Discharge) highlighted.
+Stage 3: If Admit, show the boarding_time_hours value on the edge into the chosen Inpatient Unit, color-coded (green under 2 hours, amber 2-4, red over 4) so capacity strain is visible at a glance.
+Stage 4: Show the final length_of_stay_days on the edge into Discharge, differentiated by which Inpatient Unit sub-type was selected (ICU stays trend longer than Med-Surg).</p>
+<p>Interactive controls:
+- Slider: ESI level (1-5) — changes the likelihood and color emphasis of the Admit branch to reflect that lower ESI numbers (more severe) more often lead to admission
+- Click on any node: opens an infobox with that node's definition, typical volumes (e.g., "roughly 130 million ED visits occur annually in the U.S., with about 12% resulting in admission"), and typical timeframes
+- Toggle: switch the Inpatient Unit branch between ICU, Med-Surg, and Telemetry to compare typical length_of_stay_days and boarding_time_hours for each
+- Reset button to return to default ESI level 3</p>
+<p>Instructional Rationale: An Analyze-level objective (differentiate, examine) requires the learner to trace a decision path and compare branches, not just recall a definition. A clickable workflow with a color-coded, editable boarding_time_hours property makes capacity strain -- an abstract operations concept -- into something the learner can directly manipulate and observe, which supports the differentiate/examine verbs far better than a static description of "ED vs. inpatient care" ever could.</p>
+<p>Color scheme: Blue for ED-side nodes, green for discharge outcomes, orange/red gradient for boarding_time_hours severity, purple for Inpatient Unit sub-types</p>
+<p>Implementation: vis-network JavaScript library with a hierarchical left-to-right layout; click handlers open a side infobox rather than a modal so the diagram stays visible while reading</p>
+</details>
+<h2 id="provider-networks-and-the-referral-relationships-that-define-them">Provider Networks and the Referral Relationships That Define Them</h2>
+<p>Every payer contract, every in-network cost estimate, and every referral
+authorization in this book's later payer chapters depends on one structural
+concept: the <strong>Provider Network</strong> — the defined set of providers and
+facilities that have contracted with a payer (or that a health system has
+organized into a coordinated delivery structure) to deliver care under
+agreed terms. In the graph, a provider network is most naturally modeled as
+its own node — a <code>Network</code> node — connected to member <code>Provider</code> and
+<code>Facility</code> nodes by <code>IN_NETWORK</code> edges that carry properties like
+<code>effective_date</code> and <code>contract_tier</code>. A provider can belong to more than one
+network simultaneously, which is exactly why network membership needs to be
+an edge rather than a simple property on the provider: a property can only
+hold one value cleanly, while an edge can be repeated once for every network
+a provider joins.</p>
+<p>Regulators care about provider networks for the same structural reason
+graph databases do: network adequacy rules, which require a payer to
+demonstrate that its network includes enough in-network PCPs and specialists
+within a reasonable driving distance or wait time of every enrolled member,
+are fundamentally graph questions. Answering "does every member within this
+ZIP code have an in-network cardiologist within 30 miles?" means traversing
+outward from each member's location through the <code>Network</code> node to every
+<code>IN_NETWORK</code> cardiologist and checking a distance property on the result —
+the same weighted-graph distance calculation introduced in Chapter 1's
+discussion of weighted edges, now applied at the scale of an entire
+regional network.</p>
+<p>Providers connect to each other, not just to networks, through the
+<strong>Referral</strong> relationship: an explicit clinical order from one provider
+directing a patient to another provider or facility for evaluation or
+treatment. A referral is modeled as its own <code>Referral</code> node (not merely an
+edge) because a referral carries enough independent data — <code>referral_date</code>,
+<code>reason_code</code>, <code>status</code> (pending, scheduled, completed, expired), and
+<code>urgency</code> — that reducing it to a single edge would lose information a
+health system genuinely needs to track. That <code>Referral</code> node connects to the
+referring provider by a <code>REFERRED_BY</code> edge, to the specialist by a
+<code>REFERRED_TO</code> edge, and to the patient by a <code>FOR_PATIENT</code> edge.</p>
+<p>Referral data reveals something a network membership list alone cannot:
+whether referrals are actually staying inside the network they are supposed
+to. When a PCP refers a patient to a specialist who is <em>not</em> part of the
+same contracted network, that referral is called <strong>leakage</strong> — care (and its
+revenue) leaking out to an out-of-network provider, which typically means
+higher costs for the patient and lost revenue for the network's
+value-based contracts. Suppose Dr. Okafor sends out 120 referrals in a
+quarter: a graph query that follows every <code>REFERRED_BY</code> edge from her
+<code>Provider</code> node to the resulting <code>Referral</code> nodes, then checks whether the
+<code>REFERRED_TO</code> specialist shares an <code>IN_NETWORK</code> edge to the same <code>Network</code>
+node Dr. Okafor belongs to, might find that only 96 of those 120 land on an
+in-network specialist. That is a 20% leakage rate for one PCP alone — a
+number a network manager can compute for every PCP in the network with the
+same traversal pattern, then rank to find which referral relationships are
+costing the network the most.</p>
+<p>Sometimes an explicit <code>Referral</code> node does not exist
+in the source data at all — a patient simply shows up at a specialist's
+office with no referral order on file, but their claims or encounter records
+show the same PCP and specialist treating the same patient within a short
+window. Inferring an implicit referral relationship from that co-occurrence
+pattern, in the absence of an explicit referral order, is called <strong>Referral
+Inference</strong>, and it matters because payers and health systems that only
+count explicit referrals routinely undercount true referral volume and
+therefore underestimate leakage. A typical inference rule flags a candidate
+referral whenever the same patient sees both providers within a 30- to
+60-day window and the specialist visit's diagnosis code plausibly follows
+from the PCP visit's diagnosis — a heuristic, not a certainty, which is why
+inferred referrals are usually stored with a <code>confidence_score</code> property
+and a <code>source: "inferred"</code> tag so downstream queries can distinguish them
+from explicit, physician-ordered referrals.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Don't Let Leakage Hide in the Gaps</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+If your graph only stores explicit Referral nodes, you'll miss every patient who self-referred or whose referral order was never entered into the system -- and that's exactly where leakage tends to hide. Referral Inference closes that gap, but it's a real tentacle-y problem: infer too aggressively and you'll manufacture referrals that never happened.</p>
+</div>
+<p>The MicroSim below renders a bipartite referral network — PCPs on the left,
+specialists on the right — sized by referral volume, with out-of-network
+specialists and their leaking edges drawn in red so the leakage pattern is
+visible at a glance rather than buried in a spreadsheet.</p>
+<h4 id="diagram-provider-referral-network-analysis-microsim">Diagram: Provider Referral Network Analysis MicroSim</h4>
+<iframe src="../../sims/provider-referral-network-analysis-microsim/main.html" width="100%" height="618px" scrolling="no"></iframe>
+
+<details>
+<summary>Provider Referral Network Analysis MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> provider-referral-network-analysis-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/provider-referral-network-analysis-microsim</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Given a bipartite referral network, the learner can distinguish in-network from out-of-network (leaking) referral relationships and examine how a minimum-volume filter changes the visible leakage pattern.</p>
+<p>Reused from the MicroSim catalog. PCPs are drawn on the left, sized by total referrals sent; specialists are drawn on the right, sized by total referrals received. Out-of-network specialists are colored red, and every edge leading to one is highlighted as "leakage." A slider filters the displayed edges by minimum referral volume, letting the learner strip away noise and focus on high-volume referral relationships. An analytics panel reports the overall leakage percentage, the top referrer, and the busiest specialist, updating live as the filter changes. Clicking any PCP or specialist node highlights only that node's referral edges and opens a small detail panel with its referral counts.</p>
+<p>Interactive controls:
+- Slider: minimum referral volume filter
+- Click node: isolate and highlight that provider's referral edges
+- Live analytics panel: leakage %, top referrer, busiest specialist</p>
+<p>Implementation: p5.js</p>
+</details>
+<h2 id="credentialing-the-data-that-establishes-a-providers-standing">Credentialing: The Data That Establishes a Provider's Standing</h2>
+<p>Before a provider can join a network or accept a referral, a health system
+must verify that the provider is legally and professionally qualified to
+practice — a process called credentialing. Three concepts make up the
+credentialing data every <code>Provider</code> node needs behind it, and all three
+share the same graph pattern: a <code>Provider</code> node connected by a <code>HOLDS</code> edge
+to a credential-type node, with <code>issue_date</code> and <code>expiration_date</code> properties
+on the edge itself (not on the credential node), because the same physical
+license or certificate is issued once but its validity window is what a
+graph query actually needs to check at query time.</p>
+<p>A <strong>Provider Credential</strong> is the general category for any formal
+qualification a provider holds — license, certification, or specialty
+training documentation — while a <strong>Medical License</strong> is the specific,
+state-issued legal authorization to practice medicine, and a <strong>Board
+Certification</strong> is a voluntary, specialty-specific credential awarded by a
+medical specialty board (such as the American Board of Internal Medicine)
+attesting to advanced competency beyond the minimum required to hold a
+license. The table below summarizes how each is modeled and renewed.</p>
+<table>
+<thead>
+<tr>
+<th>Credential Type</th>
+<th>Issuing Body</th>
+<th>What It Verifies</th>
+<th>Typical Renewal Cycle</th>
+<th>Graph Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Medical License</td>
+<td>State medical board</td>
+<td>Legal authorization to practice medicine in that state</td>
+<td>1-2 years</td>
+<td><code>Provider -[:HOLDS {issue_date, expiration_date}]-&gt; MedicalLicense</code></td>
+</tr>
+<tr>
+<td>Board Certification</td>
+<td>Specialty board (e.g., ABIM, ABS)</td>
+<td>Advanced competency in a specific specialty beyond licensure</td>
+<td>6-10 years (varies by board)</td>
+<td><code>Provider -[:HOLDS {issue_date, expiration_date}]-&gt; BoardCertification</code></td>
+</tr>
+<tr>
+<td>Provider Credential (general)</td>
+<td>Hospital credentialing committee, payer, or accrediting body</td>
+<td>Overall eligibility to practice at a facility or join a network</td>
+<td>Typically re-verified every 2-3 years</td>
+<td><code>Provider -[:HOLDS {issue_date, expiration_date}]-&gt; ProviderCredential</code></td>
+</tr>
+</tbody>
+</table>
+<p>Modeling <code>expiration_date</code> as an edge property rather than burying it inside
+a <code>status</code> string is what lets a graph query answer "which providers in this
+network have a license expiring in the next 30 days?" with a single
+traversal filtered on that property — a query that a credentialing team
+would otherwise have to run manually against a spreadsheet.</p>
+<p>Dr. Okafor's own credentialing record illustrates why all three rows matter
+together, not just individually. Her <code>Provider</code> node holds a <code>HOLDS</code> edge to
+a Medical License issued by the state board with <code>expiration_date:
+"2027-03-01"</code>, a second <code>HOLDS</code> edge to a Board Certification in Internal
+Medicine expiring in 2031, and a third <code>HOLDS</code> edge to a general Provider
+Credential issued by Riverside Regional's own credentialing committee,
+re-verified every two years. If any one of those three edges lapses — say,
+her state license expires while renewal paperwork is still pending — a
+health system's compliance query needs to catch it before she sees another
+patient, because practicing on an expired license exposes both the provider
+and the organization to malpractice and licensure risk. That single
+<code>Provider -[:HOLDS]-&gt; Credential</code> pattern, repeated once per credential
+type, is also what makes it trivial to add a fourth or fifth credential type
+later (a DEA registration, a state-specific telehealth license) without
+touching the schema for the other three — a flexibility the next chapter's
+workforce-management concepts depend on directly.</p>
+<h2 id="measuring-provider-quality-provider-rating-and-specialization">Measuring Provider Quality: Provider Rating and Specialization</h2>
+<p>Network membership and clean credentials establish that a provider is
+<em>eligible</em> to practice — they say nothing about how well that provider
+actually performs. <strong>Provider Rating</strong> captures measured or reported
+performance across dimensions such as patient satisfaction, clinical
+quality outcomes, and cost efficiency, typically modeled as a <code>Rating</code> node
+or a set of properties on the <code>Provider</code> node itself (<code>satisfaction_score</code>,
+<code>quality_score</code>, <code>cost_efficiency_score</code>), each tied to a <code>measurement_period</code>
+so that ratings can be tracked and compared over time rather than treated as
+a single permanent number. Ratings are most useful when read alongside a
+provider's declared <strong>Provider Specialization</strong> — the specific clinical
+domain or sub-domain a provider focuses on (general cardiology versus
+interventional cardiology, for example) — because a raw quality score means
+little without knowing which patient population and procedure mix produced
+it; comparing a primary care panel's cost efficiency directly against a
+transplant surgeon's would be misleading without that context.</p>
+<p>Return once more to Dr. Okafor: suppose her <code>Rating</code> node for the most
+recent <code>measurement_period</code> shows <code>satisfaction_score: 4.6</code> (out of 5),
+<code>quality_score: 82</code> (a composite of preventive-screening and chronic-disease
+control measures), and <code>cost_efficiency_score: 91</code> (relative to a
+risk-adjusted peer benchmark, where higher means lower unnecessary spend).
+Read in isolation, an 82 on quality might look mediocre next to a
+specialist colleague's 95 — until her <code>Provider Specialization</code> property
+shows she carries an unusually complex panel of patients with multiple
+chronic conditions, a population where a quality score in the 80s is
+actually a strong result. This is precisely why a graph model keeps rating
+and specialization as separate but directly connected pieces of data: a
+query can filter or benchmark providers within the same specialization
+before ever comparing their raw scores, avoiding exactly the apples-to-oranges
+comparison a flat leaderboard would invite.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Three Numbers, One Provider</p>
+<p><img alt="Sage cheering encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Don't worry if juggling three different quality metrics at once feels like a lot -- that's exactly why the next diagram plots them on a single quadrant chart instead of three separate tables. Every relationship matters, and so does every metric.</p>
+</div>
+<p>The quadrant scatter plot below plots PCPs by two selectable metrics at a
+time (satisfaction, clinical quality, cost efficiency), sizing each point by
+patient panel size and coloring it green, amber, or red by quadrant, so a
+network manager can spot which providers combine strong quality with strong
+efficiency — and which combine neither.</p>
+<h4 id="diagram-provider-performance-comparison-microsim">Diagram: Provider Performance Comparison MicroSim</h4>
+<iframe src="../../sims/provider-performance-comparison-microsim/main.html" width="100%" height="593px" scrolling="no"></iframe>
+
+<details>
+<summary>Provider Performance Comparison MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> provider-performance-comparison-microsim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/provider-performance-comparison-microsim</p>
+<p>Bloom Taxonomy: Evaluate<br/>
+Bloom Taxonomy Verb: assess, justify<br/>
+Learning objective: Given a quadrant scatter plot of provider performance, the learner can assess which providers combine high clinical quality with high cost efficiency and justify a recommendation using panel size as supporting evidence.</p>
+<p>Reused from the MicroSim catalog. PCPs are plotted on a quadrant scatter chart using two selectable metrics at a time (satisfaction, clinical quality, cost efficiency) from dropdown axis selectors. Each point is sized by patient panel size and colored by quadrant (green = high/high, red = low/low, amber = mixed). Clicking a point locks open a detail panel showing that provider's full rating profile, specialization, and panel size; clicking elsewhere unlocks it.</p>
+<p>Interactive controls:
+- Dropdown x2: choose which metric drives each axis
+- Click-to-lock detail panel per provider
+- Quadrant color legend</p>
+<p>Implementation: p5.js</p>
+</details>
+<h2 id="turning-capacity-into-appointments-schedule-capacity-and-the-appointment-itself">Turning Capacity into Appointments: Schedule, Capacity, and the Appointment Itself</h2>
+<p>The final piece connects a provider's availability to an actual patient
+visit. A <strong>Provider Schedule</strong> is the calendar structure defining the time
+blocks a provider has made available for patient visits — modeled as a
+<code>Schedule</code> node (or a series of <code>Slot</code> nodes) connected to the <code>Provider</code> by
+a <code>HAS_SCHEDULE</code> edge, each slot carrying a <code>start_time</code>, <code>duration</code>, and
+<code>status</code> (open, booked, blocked). An <strong>Appointment</strong> is what happens when a
+specific slot is claimed: a booked visit modeled as an <code>Appointment</code> node
+connecting a <code>Patient</code>, a <code>Provider</code>, and a specific time via <code>SCHEDULED_FOR</code>
+and <code>WITH_PROVIDER</code> edges, carrying properties like <code>appointment_type</code> and
+<code>status</code> (scheduled, completed, no-show, cancelled).</p>
+<p>Both concepts only matter operationally in the context of a ceiling: a
+provider's <strong>Provider Capacity</strong> is the maximum patient volume that
+provider's schedule can absorb in a given period, given slot length, hours
+worked, and no-show rates. When scheduled appointments consistently run
+close to that ceiling, a network faces exactly the access problem that
+shows up as long new-patient wait times — the same signal payers use to
+evaluate whether a network's provider directory is meaningfully adequate or
+just a list of names.</p>
+<p>Put numbers on the stack to see how the three concepts constrain each other.
+Suppose a cardiologist's Provider Schedule offers eight clinic hours a day
+in 30-minute slots, four days a week — 128 slots per week of theoretical
+Provider Capacity. Historical no-show data trims that to roughly 115
+realistically fillable slots once average no-show rates are applied. If the
+Appointment nodes booked against that schedule already fill 113 of those
+115 slots, the resulting utilization rate — booked slots divided by
+realistic capacity — is about 98%, which is exactly the Cardiology figure
+the chart below displays. A network running at 98% utilization has almost
+no slack to absorb same-week urgent requests, which is precisely why new
+patients calling that cardiologist's office are quoted a 23-day wait: every
+slot for the next several weeks is already spoken for before the request
+even arrives.</p>
+<p>The combo chart below makes that ceiling concrete: bars show appointment
+capacity, scheduled, and completed counts by specialty, while a line tracks
+utilization rate against an 85% target — the threshold above which most
+networks start seeing real access strain, illustrated here by Cardiology
+running at 98% utilization alongside a 23-day new-patient wait.</p>
+<h4 id="diagram-provider-capacity-utilization-dashboard-chart">Diagram: Provider Capacity Utilization Dashboard Chart</h4>
+<iframe src="../../sims/provider-capacity-utilization-dashboard-chart/main.html" width="100%" height="508px" scrolling="no"></iframe>
+
+<details>
+<summary>Provider Capacity Utilization Dashboard Chart (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> provider-capacity-utilization-dashboard-chart<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/provider-capacity-utilization-dashboard-chart</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: calculate, demonstrate<br/>
+Learning objective: Given capacity, scheduled, and completed appointment counts by specialty, the learner can calculate utilization rate and demonstrate how it relates to new-patient wait time.</p>
+<p>Reused from the MicroSim catalog. A combo chart shows appointment capacity, scheduled count, and completed count as grouped bars per specialty, with a utilization-rate line overlaid against a fixed 85% target line. Cardiology is shown at 98% utilization with a 23-day new-patient wait annotation, illustrating the access-strain scenario described in the surrounding text. Hovering any bar or line point reveals the exact counts and computed utilization percentage in a tooltip.</p>
+<p>Interactive controls:
+- Hover: tooltip with exact values per specialty
+- Toggle legend items to show/hide capacity, scheduled, completed, or the utilization line
+- Specialty filter dropdown</p>
+<p>Implementation: Chart.js</p>
+</details>
+<p>Together, Provider Schedule, Appointment, and Provider Capacity form a
+three-layer stack: the schedule defines what is theoretically possible, the
+appointment records what actually gets booked, and capacity is the ceiling
+that tells a network manager whether the first two numbers are converging on
+a problem.</p>
+<h2 id="why-this-matters-beyond-the-classroom">Why This Matters Beyond the Classroom</h2>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A Real-World Superpower</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Here's the honest pitch: closing referral leakage and rightsizing provider networks -- exactly what you just modeled -- are the kind of graph-native analytics that make value-based care contracts actually work. U.S. healthcare is slowly shifting from paying for volume (fee-for-service) to paying for outcomes at a lower total cost (value-based care), and a network that can trace every referral, every credential, and every capacity number as a connected graph has a real edge in making that shift pay off. This is graph modeling with a genuine shot at bending the cost curve.</p>
+</div>
+<p>The concepts in this chapter are not independent trivia; they compose. A
+<code>Referral</code> node connects a <code>Provider</code> to another <code>Provider</code> through a
+<code>Network</code>, and whether that referral counts as leakage depends on both
+providers' <code>IN_NETWORK</code> edges. A <code>Provider</code>'s capacity to accept that
+referral depends on their <code>Schedule</code>, and whether they <em>should</em> accept it
+depends on their <code>Rating</code> and <code>Specialization</code>. None of these questions can
+be answered by looking at a single table or a single node — every one of
+them requires walking a chain of relationships, which is precisely the
+capability a labeled property graph was built to provide.</p>
+<p>Put the whole chapter's worth of concepts into a single traversal and the
+payoff becomes obvious: starting from a <code>Network</code> node, follow <code>IN_NETWORK</code>
+to every member <code>Provider</code>, filter to those whose <code>HOLDS</code> edges show no
+expired credentials, follow their outgoing <code>REFERRED_BY</code> edges to find which
+referrals leaked to an out-of-network <code>Specialist Provider</code>, then cross
+that leaking specialist's <code>Rating</code> and open <code>Schedule</code> capacity against the
+in-network alternatives who could have absorbed the same referral. That is
+one connected question, answerable in one traversal, and it is exactly the
+kind of question a health system's network-adequacy and network-optimization
+teams ask every single quarter.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">The Provider Graph Is Built</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Take a bow -- you've just modeled Primary Care and Specialist Providers, the full care-setting hierarchy from Clinic to Hospital Department, the Emergency Department-to-Inpatient Care pathway, Provider Networks and Referrals (including inferred ones), the credentialing cluster, Provider Rating and Capacity, Schedules, Appointments, and Care Teams. That's the entire provider side of the graph!</p>
+</div>
+<p>With providers, networks, and schedules now fully modeled, <a href="../13-clinical-guidelines-care-pathways-workforce/">Chapter
+13</a> turns to how
+those providers coordinate as teams and follow evidence-based guidelines and
+care pathways — along with the workforce realities of credentialing
+pipelines, staffing models, and provider attrition that keep a provider
+network actually staffed.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11. Specialty Care, Surgery, and Remote Monitoring">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                11. Specialty Care, Surgery, and Remote Monitoring
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-footer__link md-footer__link--next" aria-label="Next: 13. Clinical Guidelines, Care Pathways, and Provider Workforce">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                13. Clinical Guidelines, Care Pathways, and Provider Workforce
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

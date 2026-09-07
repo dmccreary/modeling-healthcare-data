@@ -54,9 +54,21 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
     
     
@@ -317,27 +329,119 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -473,6 +577,8 @@
       
         
           
+        
+      
         
       
         
@@ -1752,7 +1858,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/master/docs/prompts/14-ch-13.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/prompts/14-ch-13.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1764,7 +1870,7 @@
 
 <p>▗ ▗   ▖ ▖  Claude Code v2.0.36
            Sonnet 4.5 · Claude Pro
-  ▘▘ ▝▝    /Users/danmccreary/Documents/ws/claude-skills</p>
+  ▘▘ ▝▝    /Users/danmccreary/Documents/ws/ibook-skills</p>
 <blockquote>
 <p>run the generate-chapter-content skill for  docs/chapters/13-dev-tools-version-control-deployment/index.md Chapter 13 
   ⎿  Session limit reached ∙ resets 9pm
@@ -1853,7 +1959,7 @@
          80 +        /docs
          81 +          /chapters
          82 +            /01-intro-ai-intelligent-textbooks
-         83 +            /02-getting-started-claude-skills
+         83 +            /02-getting-started-ibook-skills
          84 +            (etc.)
          85 +          /sims
          86 +          /learning-graph
@@ -2256,7 +2362,7 @@
         457 +  │   ├── chapters/
         458 +  │   │   ├── 01-intro-ai-intelligent-textbooks/
         459 +  │   │   │   └── index.md
-        460 +  │   │   ├── 02-getting-started-claude-skills/
+        460 +  │   │   ├── 02-getting-started-ibook-skills/
         461 +  │   │   │   └── index.md
         462 +  │   │   └── (more chapters...)
         463 +  │   ├── sims/
@@ -2273,7 +2379,7 @@
         474 +  │   ├── faq.md
         475 +  │   └── index.md
         476 +  ├── scripts/
-        477 +  │   ├── install-claude-skills.sh
+        477 +  │   ├── install-ibook-skills.sh
         478 +  │   └── list-skills.sh
         479 +  ├── .claude/
         480 +  │   ├── skills/
@@ -2576,7 +2682,7 @@
         771 +<br />
         772 +  ### Example: Installing Claude Skills
         773 +<br />
-        774 +  The <code>install-claude-skills.sh</code> script creates symbolic links from the project's skills directory to the global 
+        774 +  The <code>install-ibook-skills.sh</code> script creates symbolic links from the project's skills directory to the global 
             + Claude skills directory:
         775 +<br />
         776 +  <code>bash
@@ -2697,8 +2803,8 @@
         890 +  File permissions are displayed by <code>ls -l</code>:
         891 +<br />
         892 +  <code>bash
-        893 +  $ ls -l scripts/install-claude-skills.sh
-        894 +  -rwxr-xr-x  1 username  staff  512 Jan 15 10:30 install-claude-skills.sh
+        893 +  $ ls -l scripts/install-ibook-skills.sh
+        894 +  -rwxr-xr-x  1 username  staff  512 Jan 15 10:30 install-ibook-skills.sh
         895 +</code>
         896 +<br />
         897 +  The permission string <code>-rwxr-xr-x</code> breaks down as:
@@ -2739,27 +2845,27 @@
         934 +<br />
         935 +  <code>bash
         936 +  # Add execute permission for owner
-        937 +  chmod +x scripts/install-claude-skills.sh
+        937 +  chmod +x scripts/install-ibook-skills.sh
         938 +  
         939 +  # Add execute permission for everyone
-        940 +  chmod a+x scripts/install-claude-skills.sh
+        940 +  chmod a+x scripts/install-ibook-skills.sh
         941 +  
         942 +  # Set specific permissions using numeric notation
-        943 +  chmod 755 scripts/install-claude-skills.sh
+        943 +  chmod 755 scripts/install-ibook-skills.sh
         944 +</code>
         945 +<br />
         946 +  After setting execute permissions, the script can be run directly:
         947 +<br />
         948 +  <code>bash
         949 +  # Run with full path
-        950 +  ./scripts/install-claude-skills.sh
+        950 +  ./scripts/install-ibook-skills.sh
         951 +  
         952 +  # Run with relative path
         953 +  cd scripts
-        954 +  ./install-claude-skills.sh
+        954 +  ./install-ibook-skills.sh
         955 +  
         956 +  # Run from anywhere if in PATH
-        957 +  install-claude-skills.sh
+        957 +  install-ibook-skills.sh
         958 +</code>
         959 +<br />
         960 +  <details markdown="1">
@@ -2850,23 +2956,23 @@
        1046 +<br />
        1047 +  <strong>Error: "Permission denied"</strong>
        1048 +  <code>bash
-       1049 +  $ ./scripts/install-claude-skills.sh
-       1050 +  -bash: ./scripts/install-claude-skills.sh: Permission denied
+       1049 +  $ ./scripts/install-ibook-skills.sh
+       1050 +  -bash: ./scripts/install-ibook-skills.sh: Permission denied
        1051 +</code>
        1052 +  <strong>Solution:</strong> Add execute permission
        1053 +  <code>bash
-       1054 +  chmod +x scripts/install-claude-skills.sh
+       1054 +  chmod +x scripts/install-ibook-skills.sh
        1055 +</code>
        1056 +<br />
        1057 +  <strong>Error: "No such file or directory" when script exists</strong>
        1058 +  <code>bash
-       1059 +  $ ./scripts/install-claude-skills.sh
-       1060 +  -bash: ./scripts/install-claude-skills.sh: No such file or directory
+       1059 +  $ ./scripts/install-ibook-skills.sh
+       1060 +  -bash: ./scripts/install-ibook-skills.sh: No such file or directory
        1061 +</code>
        1062 +  <strong>Cause:</strong> Incorrect shebang line (e.g., Windows line endings)
        1063 +  <strong>Solution:</strong> Convert line endings to Unix format
        1064 +  <code>bash
-       1065 +  dos2unix scripts/install-claude-skills.sh
+       1065 +  dos2unix scripts/install-ibook-skills.sh
        1066 +</code>
        1067 +<br />
        1068 +  ## Symlink Creation
@@ -2960,7 +3066,7 @@
        1151 +  <strong>Global skills (<code>~/.claude/skills/</code>):</strong>
        1152 +  - Available to all projects
        1153 +  - Ideal for stable, mature skills used across multiple textbooks
-       1154 +  - Installed via <code>scripts/install-claude-skills.sh</code>
+       1154 +  - Installed via <code>scripts/install-ibook-skills.sh</code>
        1155 +<br />
        1156 +  <strong>Project-local skills (<code>.claude/skills/</code>):</strong>
        1157 +  - Available only to the current project
@@ -3026,7 +3132,7 @@
        1217 +        │       ├── SKILL.md
        1218 +        │       └── scripts/
        1219 +        └── scripts/
-       1220 +            └── install-claude-skills.sh
+       1220 +            └── install-ibook-skills.sh
        1221 +</code>
        1222 +<br />
        1223 +      - Global skills directory (center):
@@ -3043,7 +3149,7 @@
        1235 +<br />
        1236 +      Connections:
        1237 +      - Dashed arrows from global skills to project skills (labeled "symlink")
-       1238 +      - Solid arrow from install-claude-skills.sh to global skills (labeled "creates")
+       1238 +      - Solid arrow from install-ibook-skills.sh to global skills (labeled "creates")
        1239 +      - Solid arrow from Claude Code to global skills (labeled "reads from")
        1240 +<br />
        1241 +      Annotations:
@@ -3523,6 +3629,8 @@
   
 
 
+
+  
 
 
 

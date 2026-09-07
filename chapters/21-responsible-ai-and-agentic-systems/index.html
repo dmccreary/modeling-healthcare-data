@@ -1,0 +1,2843 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Evaluating, governing, and deploying AI responsibly in healthcare -- fine-tuning, bias, explainability, clinical NLP, drift detection, and multi-agent systems.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/chapters/21-responsible-ai-and-agentic-systems/">
+      
+      
+        <link rel="prev" href="../20-ai-llms-and-knowledge-graphs-for-healthcare/">
+      
+      
+        <link rel="next" href="../22-fhir-resources-and-knowledge-representation/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Responsible AI and Agentic Systems - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Responsible AI and Agentic Systems - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="Evaluating, governing, and deploying AI responsibly in healthcare -- fine-tuning, bias, explainability, clinical NLP, drift detection, and multi-agent systems." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/21-responsible-ai-and-agentic-systems/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/chapters/21-responsible-ai-and-agentic-systems/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Responsible AI and Agentic Systems - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="Evaluating, governing, and deploying AI responsibly in healthcare -- fine-tuning, bias, explainability, clinical NLP, drift detection, and multi-agent systems." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/chapters/21-responsible-ai-and-agentic-systems/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#responsible-ai-and-agentic-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Responsible AI and Agentic Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-foundations-of-graph-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Foundations of Graph Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-graphs-vs-relational-databases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Data Modeling: Graphs vs. Relational Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-graph-query-languages-pattern-matching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Graph Query Languages and Pattern Matching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-graph-database-scalability-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Graph Database Scalability and Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-graph-algorithms-centrality-similarity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Graph Algorithms, Centrality, and Similarity Measures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-graph-embeddings-clustering-gnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Graph Embeddings, Clustering, and Graph Neural Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-healthcare-economics-medical-coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Healthcare Economics and Medical Coding Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-healthcare-interoperability-care-coordination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Healthcare Interoperability and Care Coordination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-patient-diagnosis-treatment-medication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Patient Diagnosis, Treatment, and Medication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-patient-care-plans-chronic-disease/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Patient Care Plans and Chronic Disease Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-specialty-care-surgery-remote-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Specialty Care, Surgery, and Remote Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-provider-organizations-networks-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Provider Organizations, Networks, and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clinical-guidelines-care-pathways-workforce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Clinical Guidelines, Care Pathways, and Provider Workforce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-insurance-claims-coverage-pharmacy-benefits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Insurance Claims, Coverage, and Pharmacy Benefits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-reimbursement-health-plans-payer-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Reimbursement, Health Plan Types, and Payer Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-healthcare-revenue-and-cost-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Healthcare Revenue and Cost Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-healthcare-financial-forecasting-and-risk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Healthcare Financial Forecasting and Risk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-healthcare-fraud-patterns-and-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Healthcare Fraud Patterns and Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-fraud-investigation-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Fraud Investigation and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. AI, LLMs, and Knowledge Graphs for Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    21. Responsible AI and Agentic Systems
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-models-for-clinical-use-training-features-and-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing Models for Clinical Use: Training, Features, and Evaluation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing Models for Clinical Use: Training, Features, and Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-predictive-model-performance-traditional-vs-graph-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Predictive Model Performance: Traditional vs Graph-Based
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-models-go-wrong-hallucination-and-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Models Go Wrong: Hallucination and Bias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explainability-governance-and-keeping-humans-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explainability, Governance, and Keeping Humans in the Loop
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explainability, Governance, and Keeping Humans in the Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bayesian-diagnostic-reasoning-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Bayesian Diagnostic Reasoning MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-explainable-ai-recommendation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Explainable AI Recommendation Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-clinical-language-nlp-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Clinical Language: NLP Pipelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Clinical Language: NLP Pipelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-nlp-pipeline-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical NLP Pipeline Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forecasting-and-detecting-change-time-series-and-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forecasting and Detecting Change: Time Series and Drift
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Forecasting and Detecting Change: Time Series and Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-model-drift-detection-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Model Drift Detection Monitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agentic-systems-tools-multiple-agents-and-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agentic Systems: Tools, Multiple Agents, and Conversation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agentic Systems: Tools, Multiple Agents, and Conversation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-agentic-clinical-workflow-orchestrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Agentic Clinical Workflow Orchestrator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-fhir-resources-and-knowledge-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. FHIR Resources and Levels of Knowledge Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-clinical-guideline-authoring-and-cql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Clinical Guideline Authoring and Clinical Quality Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-cds-hooks-alerts-and-cms-cql-tooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24. CDS Hooks, Care Alerts, and CMS CQL Tooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-healthcare-data-security-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25. Healthcare Data Security Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-advanced-security-operations-incident-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    26. Advanced Security Operations and Incident Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-data-governance-and-metadata-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27. Data Governance and Metadata Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-data-quality-stewardship-and-compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28. Data Quality, Stewardship, and Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-capstone-projects-and-career-development/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    29. Capstone Projects and Career Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../appendicies/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-models-for-clinical-use-training-features-and-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing Models for Clinical Use: Training, Features, and Evaluation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing Models for Clinical Use: Training, Features, and Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-predictive-model-performance-traditional-vs-graph-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Predictive Model Performance: Traditional vs Graph-Based
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-models-go-wrong-hallucination-and-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Models Go Wrong: Hallucination and Bias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explainability-governance-and-keeping-humans-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explainability, Governance, and Keeping Humans in the Loop
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explainability, Governance, and Keeping Humans in the Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bayesian-diagnostic-reasoning-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Bayesian Diagnostic Reasoning MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram-explainable-ai-recommendation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Explainable AI Recommendation Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-clinical-language-nlp-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Clinical Language: NLP Pipelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Clinical Language: NLP Pipelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clinical-nlp-pipeline-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Clinical NLP Pipeline Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forecasting-and-detecting-change-time-series-and-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forecasting and Detecting Change: Time Series and Drift
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Forecasting and Detecting Change: Time Series and Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-model-drift-detection-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Model Drift Detection Monitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agentic-systems-tools-multiple-agents-and-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agentic Systems: Tools, Multiple Agents, and Conversation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agentic Systems: Tools, Multiple Agents, and Conversation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-agentic-clinical-workflow-orchestrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Agentic Clinical Workflow Orchestrator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/chapters/21-responsible-ai-and-agentic-systems/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="responsible-ai-and-agentic-systems">Responsible AI and Agentic Systems</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers the practical and responsible-AI side of applying machine learning in healthcare: fine-tuning, model evaluation, model hallucination, and model bias. It introduces natural language processing techniques (named entity recognition, text classification, sentiment analysis) alongside explainable AI and AI governance. The chapter concludes with agentic workflows, multi-agent systems, and conversational AI interfaces, equipping students to evaluate AI systems critically rather than adopt them uncritically.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 22 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fine-Tuning</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Model Hallucination</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Model Evaluation Metric</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Natural Language Processing</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Named Entity Recognition</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Text Classification</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Feature Engineering</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Training Dataset</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Model Bias</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Explainable AI</td>
+<td>2</td>
+</tr>
+<tr>
+<td>AI Governance</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Agentic Workflow</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Multi-Agent System</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Tool-Using Agent</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Chatbot Interface</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Conversational AI</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Clinical NLP Pipeline</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Sentiment Analysis</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Time Series Forecasting</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Anomaly Scoring Model</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Model Drift Detection</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Human-In-The-Loop Review</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/">Chapter 20: AI, LLMs, and Knowledge Graphs for Healthcare</a></li>
+</ul>
+<hr />
+<p>Chapter 20 showed what AI, LLMs, and knowledge graphs can do together. This chapter asks the harder question: how do you know whether to trust any of it? A model can look impressive in a demo and still be biased, hallucinating, or quietly drifting out of accuracy in production. This chapter builds the evaluation and governance vocabulary that separates a responsibly deployed healthcare AI system from a liability.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Time to Put AI on Trial</p>
+<p><img alt="Sage waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Welcome back! Last chapter we got excited about everything AI can do. This chapter, we put on our skeptic hats and ask the tougher questions — is it fair, can we explain it, and can we actually trust it with patient care? Don't worry, we'll have fun doing it. Let's connect the dots!</p>
+</div>
+<h2 id="preparing-models-for-clinical-use-training-features-and-evaluation">Preparing Models for Clinical Use: Training, Features, and Evaluation</h2>
+<p>Before any machine learning model reaches a patient, it must be trained, and training starts with data. A <strong>training dataset</strong> is the collection of historical, labeled examples a supervised model learns from — a table of past ICU stays, each row labeled with whether that patient developed sepsis. Raw data rarely arrives in a form a model can use directly, which is why <strong>feature engineering</strong> — the process of transforming raw data into the specific input variables (features) a model actually consumes, such as converting a raw timestamped vital-signs stream into a single "rate of change over the last four hours" number — remains one of the most labor-intensive and consequential steps in building a clinical model, since a poorly engineered feature can hide a signal a model would otherwise have learned to use.</p>
+<p>Rather than train a model from scratch, many healthcare AI systems start from a general-purpose model already trained on a huge, non-clinical dataset and adapt it to a narrower task. <strong>Fine-tuning</strong> is this process of continuing to train an existing model on a smaller, task-specific dataset so it specializes without needing millions of clinical examples — a general-purpose language model fine-tuned on ten thousand de-identified discharge summaries becomes noticeably better at discharge-summary-specific tasks than the original general model, at a fraction of the cost of training a clinical model from nothing.</p>
+<p>Once a model is trained, it needs an objective way to be judged. A <strong>model evaluation metric</strong> is a quantitative measure of how well a model's predictions match reality — accuracy, sensitivity, specificity, and area under the receiver operating characteristic curve (AUROC) are the most common in clinical prediction, each capturing a different aspect of performance (AUROC, for instance, measures how well a model ranks patients from highest to lowest risk across every possible decision threshold at once, rather than just at one chosen cutoff). Choosing the right metric matters: a model that predicts "no sepsis" for every patient can still score 95% accuracy if only 5% of patients actually develop sepsis, which is exactly why sensitivity (the fraction of true sepsis cases correctly caught) is usually the metric that matters more in a screening context like this one, even though its raw accuracy number looks worse.</p>
+<p>A worked example ties training data size directly to evaluation metric performance. Consider three model families predicting thirty-day hospital readmission: logistic regression, random forest, and a graph neural network that can exploit relational context (referral patterns, shared providers, care-team overlap) unavailable to the other two. As the training dataset grows from 100 records to one million, logistic regression's AUROC climbs quickly but plateaus around 0.78; random forest plateaus higher, around 0.83; the graph neural network keeps improving past 0.93 because more data means more relational structure for it to exploit. The lesson generalizes: model evaluation metrics are only meaningful in the context of how much training data produced them, and a fair comparison between model families must control for that.</p>
+<h4 id="diagram-predictive-model-performance-traditional-vs-graph-based">Diagram: Predictive Model Performance: Traditional vs Graph-Based</h4>
+<iframe src="../../sims/predictive-model-performance-traditional-graph-based/main.html" height="504" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/predictive-model-performance-traditional-graph-based/main.html">Run the Predictive Model Performance: Traditional vs Graph-Based MicroSim Fullscreen</a></p>
+<details>
+<summary>Predictive Model Performance: Traditional vs Graph-Based (reused)</summary>
+<p>Type: chart
+<strong>sim-id:</strong> predictive-model-performance-traditional-graph-based<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/predictive-model-performance-traditional-graph-based/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/predictive-model-performance-traditional-graph-based</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, compare<br/>
+Learning objective: Given AUROC curves for three model families plotted against training dataset size, the learner can examine how evaluation metric performance depends on both model choice and training data volume, and compare where a graph-based model's advantage emerges.</p>
+<p>Reused from the MicroSim catalog. A line chart plots AUROC for logistic regression, random forest, and a graph neural network as training data grows from 100 to 1,000,000 patient records on a log scale, with a dashed line marking random-chance performance (0.50). Hovering any point reveals the exact AUROC and confidence interval, the direct visual evidence for the readmission-prediction worked example above.</p>
+</details>
+<h2 id="when-models-go-wrong-hallucination-and-bias">When Models Go Wrong: Hallucination and Bias</h2>
+<p>Two failure modes deserve special attention because they can look identical to a correct answer until someone checks. <strong>Model hallucination</strong>, introduced in the previous chapter as a risk of ungrounded LLMs, is any output a model presents with confidence that does not correspond to reality — a fabricated citation, a drug interaction that does not exist, or a lab value the model invented because it was never actually retrieved. Hallucination is a property of generative models producing free text; it has no equivalent in a simple classifier that only ever outputs a probability, which is one reason grounding an LLM in a graph (Chapter 20's RAG pattern) is such an effective mitigation.</p>
+<p><strong>Model bias</strong> is a systematic, unfair skew in a model's predictions across a group defined by a protected or sensitive characteristic — race, sex, age, insurance type — that arises when training data underrepresents or misrepresents that group. Bias is not a hypothetical risk in healthcare AI; a widely cited 2019 study found a commercial algorithm used to identify patients for extra care management assigned lower risk scores to Black patients than to equally sick white patients, because the model was trained to predict healthcare <em>cost</em> rather than healthcare <em>need</em>, and historical spending patterns reflected unequal access to care rather than unequal illness. The bias was not intentional, but it was real, and it went undetected until an independent audit examined outcomes by subgroup rather than trusting the model's aggregate accuracy score.</p>
+<p>A worked mitigation example shows how bias is addressed once found. Suppose an audit of a readmission-risk model finds it correctly flags 82% of high-risk patients in the majority group but only 61% in a minority subgroup — a 21-point gap. Three standard mitigation strategies apply, and choosing among them requires weighing accuracy against fairness and practicality.</p>
+<table>
+<thead>
+<tr>
+<th>Mitigation Strategy</th>
+<th>What It Does</th>
+<th>Trade-off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rebalance training data</td>
+<td>Add or reweight minority-group examples so the model sees them proportionally</td>
+<td>Requires collecting more representative data, which takes time</td>
+</tr>
+<tr>
+<td>Fairness-constrained training</td>
+<td>Add a penalty term during training that punishes subgroup accuracy gaps</td>
+<td>Can slightly reduce overall accuracy to close the gap</td>
+</tr>
+<tr>
+<td>Subgroup-specific thresholds</td>
+<td>Use a different decision threshold for each subgroup so flagging rates equalize</td>
+<td>Easiest to implement, but is a bandage over the underlying data problem</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Fair to the Population Is Not the Same as Fair to Every Patient</p>
+<p><img alt="Sage thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Notice something subtle here: a model can be 90% accurate overall and still fail one subgroup badly, because the aggregate number averages the failure away. Whenever you evaluate a healthcare model, ask "accurate for whom?" before you ask "how accurate?"</p>
+</div>
+<h2 id="explainability-governance-and-keeping-humans-in-the-loop">Explainability, Governance, and Keeping Humans in the Loop</h2>
+<p>A model that cannot explain itself is hard to trust with a clinical decision, which is why <strong>explainable AI</strong> (XAI) — the set of techniques that make a model's prediction interpretable to a human, by showing which input features drove the output or by generating a plain-language rationale — has become a required feature rather than a nice-to-have in clinical AI. The RAG-grounded recommendation from Chapter 20 is itself a form of explainability: citing the specific guideline passage a recommendation was based on lets a clinician verify the reasoning rather than accept a bare probability score on faith.</p>
+<p><strong>AI governance</strong> is the set of organizational policies, review processes, and accountability structures that decide which AI systems an organization is allowed to deploy, how they are monitored after deployment, and who is responsible when they fail — the healthcare-AI analog of a hospital's pharmacy and therapeutics committee, but for algorithms instead of drugs. Strong AI governance requires a human somewhere in the loop by design: <strong>human-in-the-loop review</strong> is the practice of routing a model's output through a qualified person before it takes effect on patient care, rather than letting the model act autonomously — a sepsis-risk model that generates an alert for a nurse to evaluate is human-in-the-loop; a model that automatically titrates a medication dose with no clinician review is not, and very few clinical systems are built that way for exactly this reason.</p>
+<p>Bayesian diagnostic reasoning is a particularly clear illustration of explainability in practice, because every step of its logic is visible rather than hidden inside a neural network's weights. Instead of a single opaque probability, a Bayesian model starts from a prior probability for each candidate diagnosis, and each new piece of evidence multiplies those priors by a known likelihood ratio to produce an updated, explainable posterior probability — a clinician can see exactly which piece of evidence moved the diagnosis and by how much, which is the essence of what explainable AI is trying to achieve even in more opaque model architectures.</p>
+<h4 id="diagram-bayesian-diagnostic-reasoning-microsim">Diagram: Bayesian Diagnostic Reasoning MicroSim</h4>
+<iframe src="../../sims/bayesian-diagnostic-reasoning/main.html" height="618" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/bayesian-diagnostic-reasoning/main.html">Run the Bayesian Diagnostic Reasoning MicroSim Fullscreen</a></p>
+<details>
+<summary>Bayesian Diagnostic Reasoning MicroSim (reused)</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> bayesian-diagnostic-reasoning<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/bayesian-diagnostic-reasoning/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/bayesian-diagnostic-reasoning</p>
+<p>Bloom Taxonomy: Understand<br/>
+Bloom Taxonomy Verb: explain, interpret<br/>
+Learning objective: Given prior probabilities and a set of toggleable evidence items, the learner can explain how each piece of evidence updates a differential diagnosis and interpret why explainable reasoning steps build more clinical trust than an opaque final score alone.</p>
+<p>Reused from the MicroSim catalog. Five candidate conditions start at prior probabilities set by clinical context (low-risk clinic, emergency department, specialty referral); toggling evidence items such as fever or stiff neck multiplies each condition's prior by that evidence's likelihood ratio, renormalizes to a posterior, and re-sorts the bars, with a panel showing the exact likelihood ratios behind the most recent update.</p>
+</details>
+<p>Explainability and governance both work best paired with a concrete escalation workflow showing exactly where a human reviews the AI's output. That is precisely what the recommendation workflow from Chapter 20 demonstrates when viewed through a governance lens: a low-confidence case is routed to human review instead of being auto-approved, and the clinician's accept-or-reject decision is logged and fed back — an audit trail that satisfies both the explainability requirement (why did it recommend this?) and the governance requirement (who was accountable for the final decision?).</p>
+<h4 id="diagram-explainable-ai-recommendation-workflow">Diagram: Explainable AI Recommendation Workflow</h4>
+<iframe src="../../sims/explainable-ai-recommendation-workflow/main.html" height="991" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/explainable-ai-recommendation-workflow/main.html">Run the Explainable AI Recommendation Workflow MicroSim Fullscreen</a></p>
+<details>
+<summary>Explainable AI Recommendation Workflow (reused)</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> explainable-ai-recommendation-workflow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> https://dmccreary.github.io/modeling-healthcare-data/sims/explainable-ai-recommendation-workflow/<br/>
+<strong>Source Repo:</strong> https://github.com/dmccreary/modeling-healthcare-data/tree/main/docs/sims/explainable-ai-recommendation-workflow</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, distinguish<br/>
+Learning objective: Given a five-layer explainable AI workflow, the learner can examine where human-in-the-loop review is inserted and distinguish the governance role of the audit-logging step from the explanation-generation step.</p>
+<p>Reused from the MicroSim catalog. A five-layer flowchart traces patient data and clinical knowledge converging in an inference engine, branching to either an explanation-and-presentation path (high confidence) or a flagged-for-human-review path (low confidence), with clinician accept/reject decisions logged and fed back to improve future recommendations. Hovering any step reveals its function within the five color-coded layers.</p>
+</details>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Ask for the Receipt</p>
+<p><img alt="Sage pointing at a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Here's a habit worth building: before trusting any AI-generated clinical recommendation, ask it to show its receipt — which patient facts and which guideline passage it used. If it can't produce one, that's your cue to treat the output as a hypothesis, not an answer.</p>
+</div>
+<h2 id="understanding-clinical-language-nlp-pipelines">Understanding Clinical Language: NLP Pipelines</h2>
+<p>A large fraction of clinical documentation — progress notes, discharge summaries, radiology reports — is free text, not structured fields, which makes <strong>natural language processing</strong> (NLP) essential to healthcare AI: NLP is the field of techniques for extracting structured information and meaning from unstructured human language. A <strong>clinical NLP pipeline</strong> chains several NLP techniques together in sequence to turn a raw clinical note into structured, usable data, typically in three stages. <strong>Named entity recognition</strong> (NER) first locates and labels the clinically relevant spans of text — identifying "metformin" as a medication, "500mg" as a dosage, and "type 2 diabetes" as a condition within a sentence. <strong>Text classification</strong> then assigns a category to a larger unit of text, such as classifying an entire radiology report as "positive finding" or "negative finding" for a specific condition. <strong>Sentiment analysis</strong>, a specialized form of text classification, scores the emotional tone of text — used in healthcare to flag a patient's written feedback or portal message as urgent, distressed, or routine, helping route messages to the right level of clinical attention.</p>
+<p>A worked example threads all three stages together. A clinical note reads: "Patient reports worsening shortness of breath over the past three days, denies chest pain. Started on 20mg furosemide daily." A clinical NLP pipeline first runs NER to extract entities: <code>SYMPTOM: shortness of breath (worsening)</code>, <code>SYMPTOM: chest pain (denied)</code>, <code>MEDICATION: furosemide</code>, <code>DOSAGE: 20mg</code>, <code>FREQUENCY: daily</code>. It then runs text classification on the note as a whole, labeling it <code>ACUITY: moderate</code> based on the combination of a worsening symptom and a new medication order. A sentiment analysis pass, if the source were a patient portal message rather than a clinician's note, might separately flag the tone as <code>CONCERNED</code> rather than routine — each stage narrower in scope than the last, and each one turning a small piece of the free text into a structured fact a downstream graph or rules engine can act on.</p>
+<p>Clinical text poses two challenges general-purpose NLP rarely faces. First, clinical writing is dense with abbreviations and shorthand that shift meaning by specialty ("MS" means multiple sclerosis to a neurologist and morphine sulfate to a nurse charting medications), so a clinical NLP pipeline typically needs a domain-specific vocabulary layer rather than a general-English one. Second, negation is pervasive and easy to get wrong: the worked example's note explicitly "denies chest pain," and a pipeline that failed to detect that negation would incorrectly extract a <code>SYMPTOM: chest pain</code> entity as present rather than absent — a mistake serious enough that dedicated negation-detection logic is a standard stage in most production clinical NLP pipelines, sitting between named entity recognition and text classification.</p>
+<p>Before looking at the pipeline diagram, note that these extracted entities do not stay as isolated labels — they typically become new nodes and edges in the patient's graph (a <code>furosemide</code> <code>PRESCRIBED_FOR</code> edge, for instance), which is exactly how unstructured clinical text becomes queryable, structured knowledge over time.</p>
+<h4 id="diagram-clinical-nlp-pipeline-explorer">Diagram: Clinical NLP Pipeline Explorer</h4>
+<iframe src="../../sims/clinical-nlp-pipeline-explorer/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Clinical NLP Pipeline Explorer</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> clinical-nlp-pipeline-explorer<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Apply<br/>
+Bloom Taxonomy Verb: demonstrate, apply<br/>
+Learning objective: Given a raw clinical note, the learner can demonstrate how a clinical NLP pipeline applies named entity recognition, text classification, and sentiment analysis in sequence, and can apply the same sequence to a new note.</p>
+<p>Purpose: Let the learner step a sample clinical note through a three-stage NLP pipeline and see the structured output produced at each stage, reinforcing that unstructured text becomes graph-ready facts through a sequence of narrowing extraction steps.</p>
+<p>Components to show (Mermaid flowchart, left to right):
+- Node A: "Raw Clinical Note" (gray) — the example sentence about shortness of breath and furosemide
+- Node B: "Named Entity Recognition" (blue) — extracts SYMPTOM, MEDICATION, DOSAGE, FREQUENCY spans
+- Node C: "Text Classification" (green) — assigns an ACUITY label to the note as a whole
+- Node D: "Sentiment Analysis" (orange) — assigns a tone label when the source is patient-authored text
+- Node E: "Structured Output" (purple) — the final extracted facts, shown as a small property list ready to become graph nodes/edges</p>
+<p>Connections: A → B → C → D → E, straight left-to-right flow with labeled arrows describing what transforms at each step ("extracts spans", "labels acuity", "labels tone", "assembles facts")</p>
+<p>Data Visibility Requirements:
+Stage 1: Show the full raw sentence as plain text in Node A's expanded panel.
+Stage 2: On click of Node B, show the exact extracted entity list with span highlighting color-coded by entity type.
+Stage 3: On click of Node C, show the acuity label and a one-sentence justification referencing which entities drove the classification.
+Stage 4: On click of Node D, show the sentiment/tone label with its justification.
+Stage 5: On click of Node E, show the final structured JSON-like fact list, and a callout noting these facts become new graph nodes and edges.</p>
+<p>Interactive controls:
+- Click directive on every Mermaid node (<code>click A call showInfo(...)</code> etc.) opening an infobox with that stage's detailed output
+- Dropdown to swap in a second example clinical note and re-run the same five-stage walkthrough</p>
+<p>Instructional Rationale: A step-through, click-to-reveal flowchart matches the Apply-level objective by requiring the learner to actively trigger each stage's transformation and inspect concrete extracted values, rather than watching a passive animation that would obscure exactly what each NLP stage contributes.</p>
+<p>Implementation: Mermaid flowchart with click handlers routed to a JavaScript infobox panel; responsive width, fixed step order.</p>
+</details>
+<h2 id="forecasting-and-detecting-change-time-series-and-drift">Forecasting and Detecting Change: Time Series and Drift</h2>
+<p>Not every healthcare prediction concerns a single patient at a single point in time. <strong>Time series forecasting</strong> is the practice of predicting a future value from a sequence of past values ordered in time — forecasting next week's ICU bed demand from the last twelve months of daily admission counts, for example. A closely related but distinct technique, <strong>anomaly scoring</strong>, assigns each new observation a score reflecting how unusual it is relative to the pattern the model has learned, rather than predicting a specific future value; an <strong>anomaly scoring model</strong> applied to a hospital's daily claims volume might flag a sudden, unexplained spike in a rarely billed procedure code as worth investigating, long before a human auditor would have noticed it by chance.</p>
+<p>A concrete anomaly-scoring worked example clarifies how it differs from forecasting a specific number. Suppose a hospital's average daily count of a rarely billed spinal-fusion procedure code is 2, with historical day-to-day variation described by a standard deviation of 1. An anomaly scoring model typically expresses how unusual a new observation is in standard-deviation units — a z-score. A day with 9 such procedures billed produces a z-score of ( (9 - 2) / 1 = 7 ), seven standard deviations above normal, an extreme enough deviation that most anomaly scoring models would flag it automatically for review long before a human auditor scanning routine reports would notice a single code's volume spike buried among thousands of other line items.</p>
+<p>Every deployed model eventually faces a problem forecasting and anomaly detection share: the world it was trained on changes. <strong>Model drift detection</strong> is the ongoing practice of monitoring a deployed model's inputs and outputs over time to detect when its performance is degrading because the real-world data distribution has shifted away from its training data — a readmission model trained before a hospital changed its discharge-planning protocol may quietly become less accurate afterward, even though nothing about the model's code changed at all.</p>
+<p>A worked example shows drift detection in action. A sepsis early-warning model is deployed with an AUROC of 0.88 measured at launch. A monitoring dashboard recomputes AUROC against a rolling window of the most recent 500 outcomes every week. For the first four months, the rolling AUROC stays between 0.86 and 0.89 — normal variation. In month five, following a change in the hospital's lab vendor that subtly altered how white blood cell counts are reported, the rolling AUROC drops to 0.79 and keeps falling. A drift detection system configured to alert whenever rolling AUROC falls more than two standard deviations below its baseline would have flagged this in week two of the decline, giving the data science team weeks of head start on retraining before clinicians noticed the model quietly under-performing.</p>
+<h4 id="diagram-model-drift-detection-monitor">Diagram: Model Drift Detection Monitor</h4>
+<iframe src="../../sims/model-drift-detection-monitor/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Model Drift Detection Monitor</summary>
+<p>Type: chart
+<strong>sim-id:</strong> model-drift-detection-monitor<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: examine, differentiate<br/>
+Learning objective: Given a rolling-window AUROC line chart with a drift-alert threshold, the learner can examine where a deployed model's performance degrades over time and differentiate normal fluctuation from a genuine drift event.</p>
+<p>Purpose: Show how a monitored performance metric drifts downward after a real-world data change, and how a statistical threshold triggers a timely alert.</p>
+<p>Chart type: Line chart with a shaded alert-threshold band</p>
+<p>X-axis: Week number (0 to 26)
+Y-axis: Rolling AUROC (0.5 to 1.0)</p>
+<p>Data series:
+1. Rolling AUROC (blue line): starts at 0.88, fluctuates narrowly between 0.86-0.89 through week 16, then declines steadily to 0.79 by week 22 (simulating the lab-vendor change), staying low through week 26
+2. Baseline AUROC (dashed gray horizontal line at 0.88)
+3. Alert threshold (shaded red band below 0.84, representing two standard deviations below baseline)</p>
+<p>Annotations:
+- Vertical marker at week 18 labeled "Lab vendor change (unrelated to model)"
+- Callout at week 20 where the blue line first enters the red band: "Drift alert fires here"</p>
+<p>Interactive features:
+- Hover any point on the blue line to see the exact week and AUROC value in a tooltip
+- Toggle button to show/hide the baseline and threshold reference lines
+- Click the week-18 marker to open an infobox explaining that model drift often originates outside the model itself (a changed upstream data source), not from a bug in the model's code</p>
+<p>Instructional Rationale: A line chart with an explicit alert band and a clickable root-cause annotation matches the Analyze-level objective, letting the learner trace cause (external data change) to effect (metric decline) to consequence (alert timing) rather than only observing that the line goes down.</p>
+<p>Implementation: Chart.js line chart with annotation plugin for threshold band and markers; responsive width.</p>
+</details>
+<h2 id="agentic-systems-tools-multiple-agents-and-conversation">Agentic Systems: Tools, Multiple Agents, and Conversation</h2>
+<p>The most autonomous category of AI system extends an LLM beyond generating text into taking action. An <strong>agentic workflow</strong> is a pattern in which an LLM plans and executes a sequence of steps toward a goal, deciding at each step what to do next rather than following a fixed script — instead of a human manually running three separate queries to answer a complex question, an agentic system might decide on its own that it needs to query the graph, then check a guideline, then draft a summary, in that order. A <strong>tool-using agent</strong> is the specific mechanism that makes this possible: an LLM given access to a defined set of callable functions ("tools" — a graph query function, a drug-interaction checker, a calculator) that it can invoke mid-reasoning and read the results of before deciding its next step, rather than being limited to whatever knowledge is baked into its training.</p>
+<p>A worked example shows a tool-using agent in action. A care coordinator asks, "Which of Dr. Patel's diabetic patients are overdue for an eye exam and also have a transportation barrier on file?" A tool-using agent breaks this into steps: it calls a <code>query_graph</code> tool to find diabetic patients overdue for an eye exam, then calls the same tool again filtered to patients with a documented transportation barrier, then calls a <code>format_report</code> tool to assemble the final list — three tool calls chained automatically, with the agent deciding the query sequence itself rather than a human pre-writing each step.</p>
+<p>When a task is complex enough to benefit from specialization, a single agent can be split into several cooperating ones. A <strong>multi-agent system</strong> coordinates two or more agents, each with a narrower role, that communicate to solve a task no single agent handles well alone — one agent specialized in graph querying, a second specialized in clinical guideline interpretation, and a third that reviews the first two agents' combined output for safety before it reaches a clinician. This division of labor mirrors good human team design: narrower responsibility per agent tends to produce more reliable behavior than one generalist agent trying to do everything.</p>
+<p>Two related but distinct terms describe how these systems reach the end user. A <strong>chatbot interface</strong> is simply the conversational front end — the chat window a clinician or patient types into. <strong>Conversational AI</strong> is the broader capability behind that interface: maintaining context across multiple turns of dialogue, understanding follow-up questions that refer back to earlier ones, and producing natural, coherent responses turn after turn, whether or not any agentic tool-calling happens behind the scenes.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Agentic Systems Feel Like a Lot — That's Normal</p>
+<p><img alt="Sage giving encouragement" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+If agentic workflows and multi-agent systems feel like the most abstract topic in this chapter, you're not alone — most people need to trace through one concrete example twice before it clicks. Go back to the care-coordinator worked example above and follow each tool call one at a time; the concept gets much less tangled once you see the individual steps.</p>
+</div>
+<h4 id="diagram-agentic-clinical-workflow-orchestrator">Diagram: Agentic Clinical Workflow Orchestrator</h4>
+<iframe src="../../sims/agentic-clinical-workflow-orchestrator/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Agentic Clinical Workflow Orchestrator</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> agentic-clinical-workflow-orchestrator<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Taxonomy: Analyze<br/>
+Bloom Taxonomy Verb: differentiate, deconstruct<br/>
+Learning objective: Given a multi-agent clinical workflow diagram, the learner can deconstruct the task into the individual tool calls and agent roles involved, and differentiate a single tool-using agent's behavior from a coordinated multi-agent system's behavior.</p>
+<p>Purpose: Visualize the care-coordinator worked example (diabetic patients overdue for an eye exam with a transportation barrier) as it flows through a chatbot interface, a tool-using query agent, a guideline-checking agent, and a human-in-the-loop reviewer.</p>
+<p>Components to show (Mermaid flowchart with swimlanes):
+- Swimlane "Care Coordinator": Start node "Asks question in chat" and end node "Receives final report"
+- Swimlane "Chatbot Interface / Conversational AI": Node "Parses question, maintains context"
+- Swimlane "Query Agent (Tool-Using)": Nodes "Call query_graph (overdue exams)", "Call query_graph (transportation barrier filter)"
+- Swimlane "Guideline Agent": Node "Check eye-exam interval against clinical guideline"
+- Swimlane "Review Agent": Node "Safety check combined list before release"
+- Swimlane "Human-in-the-Loop": Node "Coordinator reviews and confirms outreach list"</p>
+<p>Connections: Sequential flow across swimlanes in the order listed, with each agent handing its output to the next; a feedback arrow from the Human-in-the-Loop node back to the Chatbot Interface node labeled "asks follow-up question"</p>
+<p>Color coding: Blue for interface/conversational steps, orange for tool-calling steps, green for the guideline-checking step, red for the safety review step, purple for the human review step</p>
+<p>Interactive controls:
+- Click directive on every node opening an infobox describing exactly what that agent does and why it is a separate role rather than folded into a single agent
+- Toggle: "Single-Agent Mode" vs "Multi-Agent Mode" that collapses all agent swimlanes into one generic "Agent" lane, so the learner can compare the two architectures directly</p>
+<p>Instructional Rationale: Swimlanes with a single-vs-multi-agent toggle match the Analyze-level objective by letting the learner directly compare the decomposed multi-agent version against a collapsed single-agent version of the identical task, making the specialization trade-off visible rather than asserted in prose.</p>
+<p>Implementation: Mermaid flowchart with subgraphs as swimlanes and click handlers; responsive width.</p>
+</details>
+<div class="admonition mascot-warning">
+<p class="admonition-title">An Agent That Can Act Needs a Human Who Can Stop It</p>
+<p><img alt="Sage raising a cautious arm" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A common trap with agentic systems: giving an agent tools powerful enough to write to the patient record or place an order, with no human-in-the-loop checkpoint before the action executes. The fix is the same governance principle from earlier in this chapter — a tool-using agent should recommend, and a qualified human should confirm, whenever the action could affect patient safety.</p>
+</div>
+<h2 id="chapter-summary">Chapter Summary</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You Can Now Evaluate AI Like a Skeptic, Not a Fan</p>
+<p><img alt="Sage celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Look at what you just built: the vocabulary to evaluate training and fine-tuning, catch bias and hallucination, demand explainability, read clinical text with NLP, spot model drift, and reason about agentic systems responsibly. That is exactly the critical eye this technology needs from the people building it.</p>
+</div>
+<p>This chapter turned a critical eye on the AI capabilities introduced in Chapter 20: how models are trained, fine-tuned, and evaluated; how they fail through hallucination and bias, and how those failures are audited and mitigated; how explainability and human-in-the-loop review keep AI accountable to clinicians; how clinical NLP pipelines turn free text into structured graph facts; how drift detection catches a model quietly degrading in production; and how agentic and multi-agent systems extend an LLM from a text generator into an autonomous, tool-using collaborator. With both the capabilities and the guardrails now in place, the book turns next to a specific, high-stakes application of structured clinical knowledge: the HL7 FHIR standard and the levels of knowledge representation that make clinical decision support computable in the first place. Continue to <a href="../22-fhir-resources-and-knowledge-representation/">Chapter 22: FHIR Resources and Levels of Knowledge Representation</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../20-ai-llms-and-knowledge-graphs-for-healthcare/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 20. AI, LLMs, and Knowledge Graphs for Healthcare">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                20. AI, LLMs, and Knowledge Graphs for Healthcare
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../22-fhir-resources-and-knowledge-representation/" class="md-footer__link md-footer__link--next" aria-label="Next: 22. FHIR Resources and Levels of Knowledge Representation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                22. FHIR Resources and Levels of Knowledge Representation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

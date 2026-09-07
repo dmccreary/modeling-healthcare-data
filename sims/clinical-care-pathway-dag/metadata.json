@@ -45,10 +45,11 @@
     "map"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of clinical care pathway dag",
-    "Apply clinical care pathway dag to solve problems",
-    "Visualize and interpret clinical care pathway dag relationships",
-    "Experiment with parameters to observe their effects on clinical care pathway dag"
+    "Explain why a Directed Acyclic Graph contains no path that returns a traversal to its starting node",
+    "Trace the eight care stages from Patient Admission through Initial Assessment, Diagnostic Testing, Treatment Administration, and Discharge Planning",
+    "Distinguish the solid main pathway edges from the dotted optional retest edge and explain why the retest path does not create a cycle",
+    "Identify each CareStage node's properties, including stage_number, duration_estimate, and responsible_role, using hover tooltips and the detail sidebar",
+    "Explain how a DAG's directed edges encode temporal ordering and dependencies between clinical workflow stages"
   ],
   "pedagogical": {
     "pattern": "demonstration",

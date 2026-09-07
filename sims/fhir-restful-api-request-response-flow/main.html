@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- microsim-scaffold-stub -->
+    <title>FHIR RESTful API Request-Response Flow</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>FHIR RESTful API Request-Response Flow</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> fhir-restful-api-request-response-flow</p>
+            <p><strong>Library:</strong> Mermaid</p>
+            <p><strong>Bloom Level:</strong> Understand<br/></p>
+            <p><strong>Learning Objective:</strong> Given a client application's request for patient data, the learner can explain how the FHIR RESTful API and FHIR server together turn an HTTP request into a returned Bundle of resources.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: workflow
+    **sim-id:** fhir-restful-api-request-response-flow<br/>
+    **Library:** Mermaid<br/>
+    **Status:** Specified
+    
+    Bloom Taxonomy: Understand<br/>
+    Bloom Taxonomy Verb: explain, summarize<br/>
+    Learning objective: Given a client application's request for patient data, the learner can explain how the FHIR RESTful API and FHIR server together turn an HTTP request into a returned Bundle of resources.
+    
+    Purpose: Show the full request-response cycle between a client app and a FHIR server, grounding the abstract "resources are exchanged over REST" idea in one concrete, traceable request.
+    
+    Components to show (Mermaid sequence-style flowchart):
+    - Node "Client App" (blue) — sends the request
+    - Node "HTTP GET Request" (gray) — shows the literal URL: `GET /Condition?patient=maria-chen&clinical-status=active`
+    - Node "FHIR Server" (orange) — receives the request, looks up matching resources
+    - Node "Internal Data Store" (gray, dashed border) — the EHR vendor's own database, translated into FHIR shape by the server
+    - Node "Bundle Response" (green) — a `Bundle` resource wrapping the matched `Condition` resources as JSON
+    - Node "Client App Renders Result" (blue) — the app displays Maria Chen's active conditions
+    
+    Connections: Client App → HTTP GET Request → FHIR Server → Internal Data Store → back to FHIR Server → Bundle Response → Client App Renders Result, arrows labeled with each transition's action
+    
+    Interactive controls:
+    - Click directive on every node opening an infobox with that step's detail, including the literal JSON of the returned Bundle at the "Bundle Response" node
+    - Dropdown to swap the CRUD operation shown (GET / POST / PUT / DELETE) and see how the flow and HTTP verb change while the overall five-step shape stays the same
+    
+    Instructional Rationale: A clickable sequence flowchart matches the Understand-level objective by letting the learner trace one concrete request end to end and inspect the actual returned JSON, rather than only reading an abstract description of "REST operations."
+    
+    Implementation: Mermaid flowchart with click handlers; responsive width.
+    -->
+</body>
+</html>
