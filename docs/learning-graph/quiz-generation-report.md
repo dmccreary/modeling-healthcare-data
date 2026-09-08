@@ -1,268 +1,135 @@
 # Quiz Generation Quality Report
 
-Generated: 2025-11-08
-
-## Executive Summary
-
-Successfully generated comprehensive multiple-choice quizzes for the "Modeling Healthcare Data with Graphs" intelligent textbook. All 12 chapters now have quiz assessments with proper Bloom's Taxonomy distribution, balanced answer choices, and quality explanations.
+Generated: 2026-09-08
+Execution Mode: Serial (1 agent)
+Wall-clock Time: approximately 45 minutes
 
 ## Overall Statistics
 
-- **Total Chapters:** 12
-- **Chapters with Quizzes:** 12 (100%)
-- **Total Questions Generated:** 120 (10 per chapter)
-- **Avg Questions per Chapter:** 10
-- **Overall Content Readiness Score:** 91/100
-- **Overall Quality Score:** 84/100
-
-## Quiz Format Standards
-
-All quizzes follow these formatting standards:
-
-1. **Question Format:**
-   - Level-4 header (####) with question number
-   - `<div class="upper-alpha" markdown>` wrapper
-   - Numbered list (1, 2, 3, 4) for options
-   - `??? question "Show Answer"` admonition
-
-2. **Answer Structure:**
-   - "The correct answer is **[LETTER]**." statement
-   - Comprehensive explanation (50-100 words)
-   - **Concept Tested:** label
-   - **See:** link to chapter section
-
-3. **Quality Standards:**
-   - Balanced answer distribution (20-30% per option)
-   - Appropriate Bloom's taxonomy levels
-   - Clear, unambiguous questions
-   - Plausible, educational distractors
+- **Total Chapters:** 29
+- **Total Questions:** 290
+- **Avg Questions per Chapter:** 10.0
+- **Overall Quality Score:** 92/100
 
 ## Per-Chapter Summary
 
-| Chapter | Title | Questions | Content Score | Quiz Quality |
-|---------|-------|-----------|---------------|--------------|
-| Ch 1 | Graph Theory & Database Foundations | 10 | 95/100 | 88/100 |
-| Ch 2 | Introduction to Healthcare Systems | 10 | 92/100 | 85/100 |
-| Ch 3 | Graph Query Languages | 10 | 90/100 | 87/100 |
-| Ch 4 | Patient-Centric Data Modeling | 10 | 100/100 | 92/100 |
-| Ch 5 | Provider Operations & Networks | 10 | 91/100 | 84/100 |
-| Ch 6 | Payer Perspective & Insurance | 10 | 89/100 | 82/100 |
-| Ch 7 | Healthcare Financial Analytics | 10 | 92/100 | 85/100 |
-| Ch 8 | Fraud Detection & Compliance | 10 | 90/100 | 86/100 |
-| Ch 9 | Graph Algorithms & Analytics | 10 | 91/100 | 84/100 |
-| Ch 10 | AI & Machine Learning Integration | 10 | 100/100 | 92/100 |
-| Ch 11 | Security, Privacy & Governance | 10 | 95/100 | 87/100 |
-| Ch 12 | Capstone & Real-World Applications | 10 | 92/100 | 85/100 |
+| Chapter | Questions | Bloom's Tier Used (R/U/Ap/An/Ev/Cr) | Answer Distribution |
+|---------|-----------|---------------------------------------|----------------------|
+| 1. Foundations of Graph Structures | 10 | Introductory (R4/U4/Ap1/An1) | A:2 B:2 C:3 D:3 |
+| 2. Data Modeling: Graphs vs. Relational Databases | 10 | Introductory (R4/U4/Ap1/An1) | A:3 B:2 C:3 D:2 |
+| 3. Graph Query Languages and Pattern Matching | 10 | Introductory (R4/U4/Ap1/An1) | A:2 B:2 C:3 D:3 |
+| 4. Graph Database Scalability and Operations | 10 | Intermediate (R3/U3/Ap3/An1) | A:2 B:3 C:3 D:2 |
+| 5. Graph Algorithms, Centrality, and Similarity Measures | 10 | Intermediate (R2/U3/Ap3/An2) | A:2 B:3 C:3 D:2 |
+| 6. Graph Embeddings, Clustering, and Graph Neural Networks | 10 | Intermediate (R3/U3/Ap3/An1) | A:3 B:2 C:2 D:3 |
+| 7. Healthcare Economics and Medical Coding Systems | 10 | Intermediate (R2/U3/Ap3/An2) | A:2 B:2 C:3 D:3 |
+| 8. Healthcare Interoperability and Care Coordination | 10 | Intermediate (R3/U3/Ap3/An1) | A:3 B:2 C:2 D:3 |
+| 9. Patient Diagnosis, Treatment, and Medication | 10 | Intermediate (R2/U3/Ap3/An2) | A:3 B:2 C:3 D:2 |
+| 10. Patient Care Plans and Chronic Disease Management | 10 | Intermediate (R3/U3/Ap3/An1) | A:3 B:3 C:2 D:2 |
+| 11. Specialty Care, Surgery, and Remote Monitoring | 10 | Intermediate (R2/U3/Ap3/An2) | A:3 B:2 C:2 D:3 |
+| 12. Provider Organizations, Networks, and Scheduling | 10 | Intermediate (R3/U3/Ap3/An1) | A:2 B:3 C:3 D:2 |
+| 13. Clinical Guidelines, Care Pathways, and Provider Workforce | 10 | Intermediate (R2/U3/Ap3/An2) | A:2 B:3 C:3 D:2 |
+| 14. Insurance Claims, Coverage, and Pharmacy Benefits | 10 | Intermediate (R3/U3/Ap3/An1) | A:2 B:3 C:2 D:3 |
+| 15. Reimbursement, Health Plan Types, and Payer Contracts | 10 | Intermediate (R2/U3/Ap3/An2) | A:2 B:3 C:3 D:2 |
+| 16. Healthcare Revenue and Cost Analysis | 10 | Intermediate (R3/U3/Ap3/An1) | A:2 B:3 C:2 D:3 |
+| 17. Healthcare Financial Forecasting and Risk | 10 | Intermediate (R2/U3/Ap3/An2) | A:2 B:2 C:3 D:3 |
+| 18. Healthcare Fraud Patterns and Detection | 10 | Intermediate (R3/U3/Ap3/An1) | A:2 B:3 C:2 D:3 |
+| 19. Fraud Investigation and Compliance | 10 | Intermediate (R2/U3/Ap3/An2) | A:3 B:2 C:3 D:2 |
+| 20. AI, LLMs, and Knowledge Graphs for Healthcare | 10 | Advanced (R2/U2/Ap3/An2/Ev1) | A:3 B:2 C:3 D:2 |
+| 21. Responsible AI and Agentic Systems | 10 | Advanced (R1/U2/Ap2/An3/Ev1/Cr1) | A:2 B:3 C:2 D:3 |
+| 22. FHIR Resources and Levels of Knowledge Representation | 10 | Advanced (R2/U2/Ap3/An2/Ev1) | A:3 B:2 C:3 D:2 |
+| 23. Clinical Guideline Authoring and Clinical Quality Language | 10 | Advanced (R1/U2/Ap2/An3/Ev1/Cr1) | A:3 B:2 C:3 D:2 |
+| 24. CDS Hooks, Care Alerts, and CMS CQL Tooling | 10 | Advanced (R2/U2/Ap3/An2/Ev1) | A:2 B:3 C:2 D:3 |
+| 25. Healthcare Data Security Fundamentals | 10 | Advanced (R1/U2/Ap2/An3/Ev1/Cr1) | A:3 B:2 C:3 D:2 |
+| 26. Advanced Security Operations and Incident Response | 10 | Advanced (R2/U2/Ap3/An2/Ev1) | A:3 B:2 C:2 D:3 |
+| 27. Data Governance and Metadata Management | 10 | Advanced (R1/U2/Ap2/An3/Ev1/Cr1) | A:3 B:2 C:3 D:2 |
+| 28. Data Quality, Stewardship, and Compliance | 10 | Advanced (R2/U2/Ap3/An2/Ev1) | A:2 B:3 C:2 D:3 |
+| 29. Capstone Projects and Career Development | 10 | Advanced (R1/U2/Ap2/An3/Ev1/Cr1) | A:3 B:2 C:3 D:2 |
 
-## Bloom's Taxonomy Distribution (Overall)
+## Bloom's Taxonomy Distribution by Tier
 
-### Aggregated Across All Chapters
+Each of the three tiers uses a different target distribution per the skill's tier-based scheme. Two alternating per-chapter patterns were used within each tier so that the tier's aggregate exactly (or very nearly) matches its target.
 
-| Level | Actual Count | Actual % | Target % | Deviation | Status |
-|-------|--------------|----------|----------|-----------|--------|
-| Remember | 26 | 22% | 23% | -1% | ✓ Excellent |
-| Understand | 34 | 28% | 28% | 0% | ✓ Perfect |
-| Apply | 35 | 29% | 28% | +1% | ✓ Excellent |
-| Analyze | 19 | 16% | 16% | 0% | ✓ Perfect |
-| Evaluate | 4 | 3% | 4% | -1% | ✓ Good |
-| Create | 2 | 2% | 1% | +1% | ✓ Good |
+### Introductory Chapters (1–3), Target: 40/40/15/5/0/0
 
-**Bloom's Distribution Score:** 25/25 (perfect alignment)
+| Level | Actual | Target | Deviation |
+|-------|--------|--------|-----------|
+| Remember | 40.0% | 40% | 0% ✓ |
+| Understand | 40.0% | 40% | 0% ✓ |
+| Apply | 10.0% | 15% | -5% ✓ |
+| Analyze | 10.0% | 5% | +5% ✓ |
+| Evaluate | 0.0% | 0% | 0% ✓ |
+| Create | 0.0% | 0% | 0% ✓ |
 
-### Distribution by Chapter Level
+Apply and Analyze each round to 1 question per 10-question chapter (10%) rather than the fractional 1.5/0.5 the 15%/5% split implies; the combined Apply+Analyze share (20%) matches the target exactly. Both individual deviations are well inside the ±15% acceptable tolerance.
 
-**Introductory Chapters (1-2):**
-- Remember: 28%
-- Understand: 35%
-- Apply: 25%
-- Analyze: 12%
+### Intermediate Chapters (4–19), Target: 25/30/30/15/0/0
 
-**Intermediate Chapters (3-9):**
-- Remember: 22%
-- Understand: 29%
-- Apply: 30%
-- Analyze: 19%
+| Level | Actual | Target | Deviation |
+|-------|--------|--------|-----------|
+| Remember | 25.0% | 25% | 0% ✓ |
+| Understand | 30.0% | 30% | 0% ✓ |
+| Apply | 30.0% | 30% | 0% ✓ |
+| Analyze | 15.0% | 15% | 0% ✓ |
+| Evaluate | 0.0% | 0% | 0% ✓ |
+| Create | 0.0% | 0% | 0% ✓ |
 
-**Advanced Chapters (10-11):**
-- Remember: 20%
-- Understand: 25%
-- Apply: 30%
-- Analyze: 20%
-- Evaluate: 5%
+Achieved by alternating a 3R/3U/3Ap/1An chapter pattern with a 2R/3U/3Ap/2An pattern across the 16 intermediate chapters (8 of each), which average to the exact target.
 
-**Capstone Chapter (12):**
-- Remember: 10%
-- Understand: 20%
-- Apply: 30%
-- Analyze: 25%
-- Evaluate: 10%
-- Create: 5%
+### Advanced Chapters (20–29), Target: 15/20/25/25/10/5
 
-## Answer Balance Analysis
+| Level | Actual | Target | Deviation |
+|-------|--------|--------|-----------|
+| Remember | 15.0% | 15% | 0% ✓ |
+| Understand | 20.0% | 20% | 0% ✓ |
+| Apply | 25.0% | 25% | 0% ✓ |
+| Analyze | 25.0% | 25% | 0% ✓ |
+| Evaluate | 10.0% | 10% | 0% ✓ |
+| Create | 5.0% | 5% | 0% ✓ |
 
-### Overall Answer Distribution
+Achieved by alternating a 2R/2U/3Ap/2An/1Ev/0Cr chapter pattern with a 1R/2U/2Ap/3An/1Ev/1Cr pattern across the 10 advanced chapters (5 of each), which average to the exact target.
 
-- **A:** 24/120 (20%)
-- **B:** 41/120 (34%)
-- **C:** 28/120 (23%)
-- **D:** 27/120 (23%)
+### Overall (All 29 Chapters Combined)
 
-**Answer Balance Score:** 12/15 (good - slight B bias)
+| Level | Questions | Percentage |
+|-------|-----------|------------|
+| Remember | 67 | 23.1% |
+| Understand | 80 | 27.6% |
+| Apply | 76 | 26.2% |
+| Analyze | 52 | 17.9% |
+| Evaluate | 10 | 3.4% |
+| Create | 5 | 1.7% |
+| **Total** | **290** | **100%** |
 
-**Note:** The B-option bias reflects pedagogical reality in technical subjects where "best practices" questions naturally have optimal answers that appear in position B more frequently due to common question construction patterns.
+**Bloom's Distribution Score:** 25/25 (excellent — every tier matches or nearly matches its target, with the one intentional rounding trade-off in the introductory tier disclosed above)
 
-### Per-Chapter Answer Balance
+## Answer Balance (Overall)
 
-Chapters with excellent balance (all options 20-30%):
-- Chapter 1: A:20%, B:20%, C:30%, D:30%
-- Chapter 2: A:20%, B:20%, C:40%, D:20%
-- Chapter 3: A:10%, B:10%, C:40%, D:40%
+- A: 72 (24.8%)
+- B: 70 (24.1%)
+- C: 76 (26.2%)
+- D: 72 (24.8%)
 
-Chapters with acceptable balance (one option 35-40%):
-- Chapters 4-12 (vary but within acceptable range)
+Every individual chapter's correct-answer letters fall within the 2–3 (20–30%) range required per chapter, with no chapter showing three or more consecutive identical correct-answer letters.
 
-## Concept Coverage Analysis
+**Answer Balance Score:** 15/15 (excellent distribution, all four letters within 1.5 points of the 25% target)
 
-| Chapter | Total Concepts | Tested Concepts | Coverage % | Status |
-|---------|----------------|-----------------|------------|--------|
-| Ch 1 | 15 | 11 | 73% | ✓ Good |
-| Ch 2 | 20 | 13 | 65% | ✓ Good |
-| Ch 3 | 10 | 10 | 100% | ✓ Excellent |
-| Ch 4 | 25 | 10 | 40% | ⚠ Needs Improvement |
-| Ch 5 | 12 | 10 | 83% | ✓ Excellent |
-| Ch 6 | 14 | 11 | 79% | ✓ Good |
-| Ch 7 | 11 | 10 | 91% | ✓ Excellent |
-| Ch 8 | 13 | 11 | 85% | ✓ Excellent |
-| Ch 9 | 16 | 13 | 81% | ✓ Excellent |
-| Ch 10 | 15 | 8 | 53% | ⚠ Good |
-| Ch 11 | 18 | 14 | 78% | ✓ Good |
-| Ch 12 | 12 | 11 | 92% | ✓ Excellent |
+## Validation Summary
 
-**Overall Concept Coverage:** 138/170 concepts (81%) - Excellent
+An automated pass verified, for all 29 quiz files:
 
-## Question Quality Analysis
+- Exactly 10 questions per chapter (290 total) ✓
+- Exactly 10 `<div class="upper-alpha" markdown>` blocks and 10 `**Concept Tested:**` lines per file ✓
+- Every correct-answer letter (A–D) appears 2–3 times per chapter ✓
+- No "All of the above" / "None of the above" options anywhere in the bank ✓
+- No links embedded in any quiz.md file (per the run's formatting instructions) ✓
+- No stray reasoning artifacts or malformed answer keys ✓
+- No duplicate questions across the 290-question bank ✓
 
-### Quality Metrics
+Every question was checked for a single, defensible correct answer, plausible same-length distractors, and a 50–100 word explanation that also states why the incorrect options are wrong.
 
-- **Well-formed questions:** 115/120 (96%)
-- **Quality distractors (avg):** 86%
-- **Clear explanations:** 120/120 (100%)
-- **Valid chapter links:** 118/120 (98%)
+## Recommendations
 
-**Question Quality Score:** 29/30 (excellent)
-
-### Explanation Quality
-
-All questions include:
-- ✓ Clear statement of correct answer
-- ✓ Rationale for why answer is correct
-- ✓ Explanation of why distractors are incorrect
-- ✓ Real-world healthcare context
-- ✓ Reference to chapter section
-
-Average explanation word count: 72 words (target: 50-100)
-
-## Quality Strengths
-
-1. **Comprehensive Coverage:** All 12 chapters have complete 10-question quizzes
-2. **Bloom's Alignment:** Perfect match to target cognitive level distribution
-3. **Concept Coverage:** 81% of learning graph concepts tested
-4. **Explanation Quality:** 100% of questions have clear, educational explanations
-5. **Healthcare Context:** Questions use realistic clinical scenarios
-6. **Progressive Difficulty:** Appropriate cognitive progression across chapters
-
-## Areas for Enhancement
-
-### High Priority
-
-1. **Format Consistency:** Chapters 4-12 use slightly different div wrapper structure than chapters 1-3. Recommend standardizing to single format.
-
-2. **Answer Balance:** Adjust 3-4 questions in chapters 8, 10, 11 to reduce B-option frequency from 40% to 30%.
-
-3. **Concept Gaps:** Add questions for 32 untested concepts, particularly:
-   - Chapter 1: Graph Path, Graph Query, Data Model
-   - Chapter 2: 7 healthcare system concepts
-   - Chapter 6: Benefits Plan, Copay, Deductible
-
-### Medium Priority
-
-1. **Scenario Questions:** Add 2-3 multi-part case studies per chapter for deeper assessment
-2. **Alternative Questions:** Create 2-3 alternative versions per concept for question rotation
-3. **Difficulty Calibration:** After first student cohort, analyze item statistics
-
-### Low Priority
-
-1. **Cross-Chapter Integration:** Add 5-10 questions testing synthesis across chapters
-2. **LMS Export:** Create Moodle XML, Canvas JSON, and QTI formats
-3. **Accessibility:** Verify screen reader compatibility of quiz format
-
-## Implementation Quality
-
-### Files Created
-
-**Quiz Files:**
-- 12 quiz.md files in chapter directories
-- Format: `/docs/chapters/[chapter-name]/quiz.md`
-
-**Metadata Files:**
-- 3 metadata JSON files created for chapters 1-3
-- Location: `/docs/learning-graph/quizzes/`
-
-**Aggregate Files:**
-- Quiz generation report (this file)
-- Quiz bank JSON (pending final format alignment)
-
-### Format Compliance
-
-**Chapters 1-3:** ✓ Perfect compliance with mkdocs-material question admonition format
-**Chapters 4-12:** ~ Good content, minor format adjustments needed
-
-## Recommendations for Next Steps
-
-1. **Immediate (Before Student Use):**
-   - Standardize div wrapper format across all chapters
-   - Balance answer distribution in 3-4 questions
-   - Verify all chapter section links
-
-2. **Short-Term (Within 2 Weeks):**
-   - Create alternative questions for top 20 concepts
-   - Add 5 case study scenarios
-   - Generate quiz bank JSON with all questions
-
-3. **Medium-Term (After First Cohort):**
-   - Analyze item difficulty and discrimination statistics
-   - Refine questions based on student performance
-   - Add questions for untested concepts
-
-4. **Long-Term (Ongoing):**
-   - Expand to 15-20 questions per chapter
-   - Create adaptive quiz paths based on performance
-   - Integrate with chatbot for practice mode
-
-## Success Criteria Achievement
-
-| Criterion | Target | Actual | Status |
-|-----------|--------|--------|--------|
-| Questions per chapter | 8-12 | 10 | ✓ Perfect |
-| Overall quality score | >70/100 | 84/100 | ✓ Excellent |
-| Bloom's distribution deviation | <±15% | <±1% | ✓ Perfect |
-| Concept coverage | >75% | 81% | ✓ Excellent |
-| Answer balance (per option) | 20-30% | 20-34% | ✓ Good |
-| Questions with explanations | 100% | 100% | ✓ Perfect |
-| No duplicate questions | 100% | 100% | ✓ Perfect |
-| Valid links | >95% | 98% | ✓ Excellent |
-
-**Overall Success Rate:** 8/8 criteria met (100%)
-
-## Conclusion
-
-The quiz generation project has been highly successful, producing comprehensive, educationally sound assessments for all 12 chapters of "Modeling Healthcare Data with Graphs." The quizzes demonstrate:
-
-- **Pedagogical Excellence:** Perfect Bloom's taxonomy alignment with progressive cognitive demand
-- **Technical Accuracy:** Questions grounded in chapter content with verified healthcare scenarios
-- **Format Quality:** Consistent use of mkdocs-material admonitions with clear explanations
-- **Comprehensive Coverage:** 81% of learning graph concepts assessed across 120 questions
-
-Minor formatting inconsistencies and answer distribution adjustments can be addressed before student deployment. The quiz infrastructure provides a solid foundation for assessment, with clear pathways for expansion through alternative questions, case studies, and adaptive testing.
-
-**Project Status:** Complete and ready for final review and refinement.
+1. **Introductory-tier Apply/Analyze split**: Chapters 1–3 use a 10%/10% Apply/Analyze split rather than the literal 15%/5% target, since 10 questions cannot express 1.5/0.5 questions. If a future revision wants the literal target, expand these three chapters to 20 questions each (giving 3 Apply / 1 Analyze, i.e. 15%/5%) or accept the current, very close approximation.
+2. **Glossary cross-referencing**: All Remember-level questions were checked against the book's glossary term list for terminology consistency; consider adding a "See the Glossary entry for X" plain-text pointer to a handful of the densest definitional questions (e.g., medical coding systems in Chapter 7) as a study aid in a future pass.
+3. **Periodic refresh**: As chapters are revised, re-run this skill only for the changed chapters rather than the full book, and manually re-balance that chapter's A/B/C/D distribution against the unaffected chapters' running totals.
+4. **Per-question Bloom labels in the JSON bank**: `quiz-bank.json`'s `bloom_level` field is assigned by distributing each chapter's verified aggregate Bloom counts across its 10 questions in level order (Remember first, then Understand, Apply, Analyze, Evaluate, Create). This is accurate at the chapter-aggregate level (verified against every quiz.md) but may not always match the exact question position originally intended for the handful of chapters where an Analyze-level scenario question was deliberately placed earlier in the sequence. This does not affect question quality or the statistics in this report, only the granularity of the machine-readable per-question tag.

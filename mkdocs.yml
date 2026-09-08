@@ -13,35 +13,93 @@ nav:
 
   - Chapters:
     - List of Chapters: chapters/index.md
-    - "1. Foundations of Graph Structures": chapters/01-foundations-of-graph-structures/index.md
-    - "2. Data Modeling: Graphs vs. Relational Databases": chapters/02-graphs-vs-relational-databases/index.md
-    - "3. Graph Query Languages and Pattern Matching": chapters/03-graph-query-languages-pattern-matching/index.md
-    - "4. Graph Database Scalability and Operations": chapters/04-graph-database-scalability-operations/index.md
-    - "5. Graph Algorithms, Centrality, and Similarity Measures": chapters/05-graph-algorithms-centrality-similarity/index.md
-    - "6. Graph Embeddings, Clustering, and Graph Neural Networks": chapters/06-graph-embeddings-clustering-gnn/index.md
-    - "7. Healthcare Economics and Medical Coding Systems": chapters/07-healthcare-economics-medical-coding/index.md
-    - "8. Healthcare Interoperability and Care Coordination": chapters/08-healthcare-interoperability-care-coordination/index.md
-    - "9. Patient Diagnosis, Treatment, and Medication": chapters/09-patient-diagnosis-treatment-medication/index.md
-    - "10. Patient Care Plans and Chronic Disease Management": chapters/10-patient-care-plans-chronic-disease/index.md
-    - "11. Specialty Care, Surgery, and Remote Monitoring": chapters/11-specialty-care-surgery-remote-monitoring/index.md
-    - "12. Provider Organizations, Networks, and Scheduling": chapters/12-provider-organizations-networks-scheduling/index.md
-    - "13. Clinical Guidelines, Care Pathways, and Provider Workforce": chapters/13-clinical-guidelines-care-pathways-workforce/index.md
-    - "14. Insurance Claims, Coverage, and Pharmacy Benefits": chapters/14-insurance-claims-coverage-pharmacy-benefits/index.md
-    - "15. Reimbursement, Health Plan Types, and Payer Contracts": chapters/15-reimbursement-health-plans-payer-contracts/index.md
-    - "16. Healthcare Revenue and Cost Analysis": chapters/16-healthcare-revenue-and-cost-analysis/index.md
-    - "17. Healthcare Financial Forecasting and Risk": chapters/17-healthcare-financial-forecasting-and-risk/index.md
-    - "18. Healthcare Fraud Patterns and Detection": chapters/18-healthcare-fraud-patterns-and-detection/index.md
-    - "19. Fraud Investigation and Compliance": chapters/19-fraud-investigation-and-compliance/index.md
-    - "20. AI, LLMs, and Knowledge Graphs for Healthcare": chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/index.md
-    - "21. Responsible AI and Agentic Systems": chapters/21-responsible-ai-and-agentic-systems/index.md
-    - "22. FHIR Resources and Levels of Knowledge Representation": chapters/22-fhir-resources-and-knowledge-representation/index.md
-    - "23. Clinical Guideline Authoring and Clinical Quality Language": chapters/23-clinical-guideline-authoring-and-cql/index.md
-    - "24. CDS Hooks, Care Alerts, and CMS CQL Tooling": chapters/24-cds-hooks-alerts-and-cms-cql-tooling/index.md
-    - "25. Healthcare Data Security Fundamentals": chapters/25-healthcare-data-security-fundamentals/index.md
-    - "26. Advanced Security Operations and Incident Response": chapters/26-advanced-security-operations-incident-response/index.md
-    - "27. Data Governance and Metadata Management": chapters/27-data-governance-and-metadata-management/index.md
-    - "28. Data Quality, Stewardship, and Compliance": chapters/28-data-quality-stewardship-and-compliance/index.md
-    - "29. Capstone Projects and Career Development": chapters/29-capstone-projects-and-career-development/index.md
+    - "1. Foundations of Graph Structures":
+      - Content: chapters/01-foundations-of-graph-structures/index.md
+      - Quiz: chapters/01-foundations-of-graph-structures/quiz.md
+    - "2. Data Modeling: Graphs vs. Relational Databases":
+      - Content: chapters/02-graphs-vs-relational-databases/index.md
+      - Quiz: chapters/02-graphs-vs-relational-databases/quiz.md
+    - "3. Graph Query Languages and Pattern Matching":
+      - Content: chapters/03-graph-query-languages-pattern-matching/index.md
+      - Quiz: chapters/03-graph-query-languages-pattern-matching/quiz.md
+    - "4. Graph Database Scalability and Operations":
+      - Content: chapters/04-graph-database-scalability-operations/index.md
+      - Quiz: chapters/04-graph-database-scalability-operations/quiz.md
+    - "5. Graph Algorithms, Centrality, and Similarity Measures":
+      - Content: chapters/05-graph-algorithms-centrality-similarity/index.md
+      - Quiz: chapters/05-graph-algorithms-centrality-similarity/quiz.md
+    - "6. Graph Embeddings, Clustering, and Graph Neural Networks":
+      - Content: chapters/06-graph-embeddings-clustering-gnn/index.md
+      - Quiz: chapters/06-graph-embeddings-clustering-gnn/quiz.md
+    - "7. Healthcare Economics and Medical Coding Systems":
+      - Content: chapters/07-healthcare-economics-medical-coding/index.md
+      - Quiz: chapters/07-healthcare-economics-medical-coding/quiz.md
+    - "8. Healthcare Interoperability and Care Coordination":
+      - Content: chapters/08-healthcare-interoperability-care-coordination/index.md
+      - Quiz: chapters/08-healthcare-interoperability-care-coordination/quiz.md
+    - "9. Patient Diagnosis, Treatment, and Medication":
+      - Content: chapters/09-patient-diagnosis-treatment-medication/index.md
+      - Quiz: chapters/09-patient-diagnosis-treatment-medication/quiz.md
+    - "10. Patient Care Plans and Chronic Disease Management":
+      - Content: chapters/10-patient-care-plans-chronic-disease/index.md
+      - Quiz: chapters/10-patient-care-plans-chronic-disease/quiz.md
+    - "11. Specialty Care, Surgery, and Remote Monitoring":
+      - Content: chapters/11-specialty-care-surgery-remote-monitoring/index.md
+      - Quiz: chapters/11-specialty-care-surgery-remote-monitoring/quiz.md
+    - "12. Provider Organizations, Networks, and Scheduling":
+      - Content: chapters/12-provider-organizations-networks-scheduling/index.md
+      - Quiz: chapters/12-provider-organizations-networks-scheduling/quiz.md
+    - "13. Clinical Guidelines, Care Pathways, and Provider Workforce":
+      - Content: chapters/13-clinical-guidelines-care-pathways-workforce/index.md
+      - Quiz: chapters/13-clinical-guidelines-care-pathways-workforce/quiz.md
+    - "14. Insurance Claims, Coverage, and Pharmacy Benefits":
+      - Content: chapters/14-insurance-claims-coverage-pharmacy-benefits/index.md
+      - Quiz: chapters/14-insurance-claims-coverage-pharmacy-benefits/quiz.md
+    - "15. Reimbursement, Health Plan Types, and Payer Contracts":
+      - Content: chapters/15-reimbursement-health-plans-payer-contracts/index.md
+      - Quiz: chapters/15-reimbursement-health-plans-payer-contracts/quiz.md
+    - "16. Healthcare Revenue and Cost Analysis":
+      - Content: chapters/16-healthcare-revenue-and-cost-analysis/index.md
+      - Quiz: chapters/16-healthcare-revenue-and-cost-analysis/quiz.md
+    - "17. Healthcare Financial Forecasting and Risk":
+      - Content: chapters/17-healthcare-financial-forecasting-and-risk/index.md
+      - Quiz: chapters/17-healthcare-financial-forecasting-and-risk/quiz.md
+    - "18. Healthcare Fraud Patterns and Detection":
+      - Content: chapters/18-healthcare-fraud-patterns-and-detection/index.md
+      - Quiz: chapters/18-healthcare-fraud-patterns-and-detection/quiz.md
+    - "19. Fraud Investigation and Compliance":
+      - Content: chapters/19-fraud-investigation-and-compliance/index.md
+      - Quiz: chapters/19-fraud-investigation-and-compliance/quiz.md
+    - "20. AI, LLMs, and Knowledge Graphs for Healthcare":
+      - Content: chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/index.md
+      - Quiz: chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/quiz.md
+    - "21. Responsible AI and Agentic Systems":
+      - Content: chapters/21-responsible-ai-and-agentic-systems/index.md
+      - Quiz: chapters/21-responsible-ai-and-agentic-systems/quiz.md
+    - "22. FHIR Resources and Levels of Knowledge Representation":
+      - Content: chapters/22-fhir-resources-and-knowledge-representation/index.md
+      - Quiz: chapters/22-fhir-resources-and-knowledge-representation/quiz.md
+    - "23. Clinical Guideline Authoring and Clinical Quality Language":
+      - Content: chapters/23-clinical-guideline-authoring-and-cql/index.md
+      - Quiz: chapters/23-clinical-guideline-authoring-and-cql/quiz.md
+    - "24. CDS Hooks, Care Alerts, and CMS CQL Tooling":
+      - Content: chapters/24-cds-hooks-alerts-and-cms-cql-tooling/index.md
+      - Quiz: chapters/24-cds-hooks-alerts-and-cms-cql-tooling/quiz.md
+    - "25. Healthcare Data Security Fundamentals":
+      - Content: chapters/25-healthcare-data-security-fundamentals/index.md
+      - Quiz: chapters/25-healthcare-data-security-fundamentals/quiz.md
+    - "26. Advanced Security Operations and Incident Response":
+      - Content: chapters/26-advanced-security-operations-incident-response/index.md
+      - Quiz: chapters/26-advanced-security-operations-incident-response/quiz.md
+    - "27. Data Governance and Metadata Management":
+      - Content: chapters/27-data-governance-and-metadata-management/index.md
+      - Quiz: chapters/27-data-governance-and-metadata-management/quiz.md
+    - "28. Data Quality, Stewardship, and Compliance":
+      - Content: chapters/28-data-quality-stewardship-and-compliance/index.md
+      - Quiz: chapters/28-data-quality-stewardship-and-compliance/quiz.md
+    - "29. Capstone Projects and Career Development":
+      - Content: chapters/29-capstone-projects-and-career-development/index.md
+      - Quiz: chapters/29-capstone-projects-and-career-development/quiz.md
 
 
   - Stories:
