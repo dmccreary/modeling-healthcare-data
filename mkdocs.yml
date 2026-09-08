@@ -16,90 +16,119 @@ nav:
     - "1. Foundations of Graph Structures":
       - Content: chapters/01-foundations-of-graph-structures/index.md
       - Quiz: chapters/01-foundations-of-graph-structures/quiz.md
+      - Annotated References: chapters/01-foundations-of-graph-structures/references.md
     - "2. Data Modeling: Graphs vs. Relational Databases":
       - Content: chapters/02-graphs-vs-relational-databases/index.md
       - Quiz: chapters/02-graphs-vs-relational-databases/quiz.md
+      - Annotated References: chapters/02-graphs-vs-relational-databases/references.md
     - "3. Graph Query Languages and Pattern Matching":
       - Content: chapters/03-graph-query-languages-pattern-matching/index.md
       - Quiz: chapters/03-graph-query-languages-pattern-matching/quiz.md
+      - Annotated References: chapters/03-graph-query-languages-pattern-matching/references.md
     - "4. Graph Database Scalability and Operations":
       - Content: chapters/04-graph-database-scalability-operations/index.md
       - Quiz: chapters/04-graph-database-scalability-operations/quiz.md
+      - Annotated References: chapters/04-graph-database-scalability-operations/references.md
     - "5. Graph Algorithms, Centrality, and Similarity Measures":
       - Content: chapters/05-graph-algorithms-centrality-similarity/index.md
       - Quiz: chapters/05-graph-algorithms-centrality-similarity/quiz.md
+      - Annotated References: chapters/05-graph-algorithms-centrality-similarity/references.md
     - "6. Graph Embeddings, Clustering, and Graph Neural Networks":
       - Content: chapters/06-graph-embeddings-clustering-gnn/index.md
       - Quiz: chapters/06-graph-embeddings-clustering-gnn/quiz.md
+      - Annotated References: chapters/06-graph-embeddings-clustering-gnn/references.md
     - "7. Healthcare Economics and Medical Coding Systems":
       - Content: chapters/07-healthcare-economics-medical-coding/index.md
       - Quiz: chapters/07-healthcare-economics-medical-coding/quiz.md
+      - Annotated References: chapters/07-healthcare-economics-medical-coding/references.md
     - "8. Healthcare Interoperability and Care Coordination":
       - Content: chapters/08-healthcare-interoperability-care-coordination/index.md
       - Quiz: chapters/08-healthcare-interoperability-care-coordination/quiz.md
+      - Annotated References: chapters/08-healthcare-interoperability-care-coordination/references.md
     - "9. Patient Diagnosis, Treatment, and Medication":
       - Content: chapters/09-patient-diagnosis-treatment-medication/index.md
       - Quiz: chapters/09-patient-diagnosis-treatment-medication/quiz.md
+      - Annotated References: chapters/09-patient-diagnosis-treatment-medication/references.md
     - "10. Patient Care Plans and Chronic Disease Management":
       - Content: chapters/10-patient-care-plans-chronic-disease/index.md
       - Quiz: chapters/10-patient-care-plans-chronic-disease/quiz.md
+      - Annotated References: chapters/10-patient-care-plans-chronic-disease/references.md
     - "11. Specialty Care, Surgery, and Remote Monitoring":
       - Content: chapters/11-specialty-care-surgery-remote-monitoring/index.md
       - Quiz: chapters/11-specialty-care-surgery-remote-monitoring/quiz.md
+      - Annotated References: chapters/11-specialty-care-surgery-remote-monitoring/references.md
     - "12. Provider Organizations, Networks, and Scheduling":
       - Content: chapters/12-provider-organizations-networks-scheduling/index.md
       - Quiz: chapters/12-provider-organizations-networks-scheduling/quiz.md
+      - Annotated References: chapters/12-provider-organizations-networks-scheduling/references.md
     - "13. Clinical Guidelines, Care Pathways, and Provider Workforce":
       - Content: chapters/13-clinical-guidelines-care-pathways-workforce/index.md
       - Quiz: chapters/13-clinical-guidelines-care-pathways-workforce/quiz.md
+      - Annotated References: chapters/13-clinical-guidelines-care-pathways-workforce/references.md
     - "14. Insurance Claims, Coverage, and Pharmacy Benefits":
       - Content: chapters/14-insurance-claims-coverage-pharmacy-benefits/index.md
       - Quiz: chapters/14-insurance-claims-coverage-pharmacy-benefits/quiz.md
+      - Annotated References: chapters/14-insurance-claims-coverage-pharmacy-benefits/references.md
     - "15. Reimbursement, Health Plan Types, and Payer Contracts":
       - Content: chapters/15-reimbursement-health-plans-payer-contracts/index.md
       - Quiz: chapters/15-reimbursement-health-plans-payer-contracts/quiz.md
+      - Annotated References: chapters/15-reimbursement-health-plans-payer-contracts/references.md
     - "16. Healthcare Revenue and Cost Analysis":
       - Content: chapters/16-healthcare-revenue-and-cost-analysis/index.md
       - Quiz: chapters/16-healthcare-revenue-and-cost-analysis/quiz.md
+      - Annotated References: chapters/16-healthcare-revenue-and-cost-analysis/references.md
     - "17. Healthcare Financial Forecasting and Risk":
       - Content: chapters/17-healthcare-financial-forecasting-and-risk/index.md
       - Quiz: chapters/17-healthcare-financial-forecasting-and-risk/quiz.md
+      - Annotated References: chapters/17-healthcare-financial-forecasting-and-risk/references.md
     - "18. Healthcare Fraud Patterns and Detection":
       - Content: chapters/18-healthcare-fraud-patterns-and-detection/index.md
       - Quiz: chapters/18-healthcare-fraud-patterns-and-detection/quiz.md
+      - Annotated References: chapters/18-healthcare-fraud-patterns-and-detection/references.md
     - "19. Fraud Investigation and Compliance":
       - Content: chapters/19-fraud-investigation-and-compliance/index.md
       - Quiz: chapters/19-fraud-investigation-and-compliance/quiz.md
+      - Annotated References: chapters/19-fraud-investigation-and-compliance/references.md
     - "20. AI, LLMs, and Knowledge Graphs for Healthcare":
       - Content: chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/index.md
       - Quiz: chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/quiz.md
+      - Annotated References: chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/references.md
     - "21. Responsible AI and Agentic Systems":
       - Content: chapters/21-responsible-ai-and-agentic-systems/index.md
       - Quiz: chapters/21-responsible-ai-and-agentic-systems/quiz.md
+      - Annotated References: chapters/21-responsible-ai-and-agentic-systems/references.md
     - "22. FHIR Resources and Levels of Knowledge Representation":
       - Content: chapters/22-fhir-resources-and-knowledge-representation/index.md
       - Quiz: chapters/22-fhir-resources-and-knowledge-representation/quiz.md
+      - Annotated References: chapters/22-fhir-resources-and-knowledge-representation/references.md
     - "23. Clinical Guideline Authoring and Clinical Quality Language":
       - Content: chapters/23-clinical-guideline-authoring-and-cql/index.md
       - Quiz: chapters/23-clinical-guideline-authoring-and-cql/quiz.md
+      - Annotated References: chapters/23-clinical-guideline-authoring-and-cql/references.md
     - "24. CDS Hooks, Care Alerts, and CMS CQL Tooling":
       - Content: chapters/24-cds-hooks-alerts-and-cms-cql-tooling/index.md
       - Quiz: chapters/24-cds-hooks-alerts-and-cms-cql-tooling/quiz.md
+      - Annotated References: chapters/24-cds-hooks-alerts-and-cms-cql-tooling/references.md
     - "25. Healthcare Data Security Fundamentals":
       - Content: chapters/25-healthcare-data-security-fundamentals/index.md
       - Quiz: chapters/25-healthcare-data-security-fundamentals/quiz.md
+      - Annotated References: chapters/25-healthcare-data-security-fundamentals/references.md
     - "26. Advanced Security Operations and Incident Response":
       - Content: chapters/26-advanced-security-operations-incident-response/index.md
       - Quiz: chapters/26-advanced-security-operations-incident-response/quiz.md
+      - Annotated References: chapters/26-advanced-security-operations-incident-response/references.md
     - "27. Data Governance and Metadata Management":
       - Content: chapters/27-data-governance-and-metadata-management/index.md
       - Quiz: chapters/27-data-governance-and-metadata-management/quiz.md
+      - Annotated References: chapters/27-data-governance-and-metadata-management/references.md
     - "28. Data Quality, Stewardship, and Compliance":
       - Content: chapters/28-data-quality-stewardship-and-compliance/index.md
       - Quiz: chapters/28-data-quality-stewardship-and-compliance/quiz.md
+      - Annotated References: chapters/28-data-quality-stewardship-and-compliance/references.md
     - "29. Capstone Projects and Career Development":
       - Content: chapters/29-capstone-projects-and-career-development/index.md
       - Quiz: chapters/29-capstone-projects-and-career-development/quiz.md
+      - Annotated References: chapters/29-capstone-projects-and-career-development/references.md
 
 
   - Stories:
