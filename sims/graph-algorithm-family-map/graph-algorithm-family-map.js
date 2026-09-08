@@ -1,5 +1,5 @@
 // Graph Algorithm Family Map — classify by the question an algorithm answers.
-// CANVAS_HEIGHT: 940
+// CANVAS_HEIGHT: 1100
 'use strict';
 const families={distance:['shortest'],importance:['degree','between','pagerank'],grouping:['components','strong','clustering'],prediction:['similarity','link']};
 const info={
@@ -25,7 +25,7 @@ main.innerHTML=`<h1>Graph Algorithm Family Map</h1><p class="intro">Select a fam
 <div class="legend"><span>Gray: root</span><span>Blue: families</span><span>Green: distance</span><span>Orange: importance</span><span>Purple: grouping</span><span>Teal: prediction</span></div>
 <div id="diagram" aria-label="Graph algorithm taxonomy"></div><div id="info" class="mermaid-info info" aria-live="polite"><h2>Start with a question</h2><p>Which family would you use to find a short referral path?</p></div>`;
 let expanded=new Set(Object.keys(families));let revision=0;let current='root';
-mermaid.initialize({startOnLoad:false,securityLevel:'loose',theme:'base',themeVariables:{fontFamily:'Arial',fontSize:'16px'},flowchart:{htmlLabels:true,useMaxWidth:false,nodeSpacing:16,rankSpacing:35,curve:'basis'}});
+mermaid.initialize({startOnLoad:false,securityLevel:'loose',theme:'base',themeVariables:{fontFamily:'Arial',fontSize:'18px'},flowchart:{htmlLabels:true,useMaxWidth:false,nodeSpacing:12,rankSpacing:22,padding:8,curve:'basis'}});
 function definition(id){return `<h2>${info[id][0]}</h2><p>${info[id][1]}</p>${examples[id]?'<p>'+examples[id]+'</p>':''}`;}
 window.showInfo=function(id){
   if(!info[id])return;current=id;document.getElementById('info').innerHTML=definition(id);
@@ -40,7 +40,7 @@ async function renderMap(){
   Object.entries(families).forEach(([family,leaves])=>{
     visible.push(family);code+=`${family}["${info[family][0].replace(' ','<br/>')}"]:::familyStyle\nroot --> ${family}\n`;
     if(expanded.has(family))leaves.forEach(id=>{
-      visible.push(id);const label=info[id][0].replace('Centrality','<br/>Centrality').replace('Algorithm','<br/>Algorithm').replace('Connected Component','Connected<br/>Component');
+      visible.push(id);const label=info[id][0].replace('Centrality','<br/>Centrality').replace('Algorithm','<br/>Algorithm').replace('Strongly Connected Component','Strongly<br/>Connected<br/>Component').replace('Connected Components','Connected<br/>Components').replace('Clustering Coefficient','Clustering<br/>Coefficient').replace('Similarity Measure','Similarity<br/>Measure').replace('Link Prediction','Link<br/>Prediction');
       code+=`${id}["${label}"]:::${family}Style\n${family} --> ${id}\n`;
     });
   });
@@ -60,3 +60,10 @@ async function renderMap(){
 document.getElementById('tour').addEventListener('click',()=>{expanded.clear();current='root';document.getElementById('info').innerHTML='<h2>This chapter’s tour</h2><p>Choose a question family to reveal its algorithms. Distance, importance, grouping, and prediction provide four starting points.</p>';renderMap();});
 document.getElementById('all').addEventListener('click',()=>{expanded=new Set(Object.keys(families));renderMap();});
 renderMap();
+
+// Use content bounds (not viewport height) to avoid a resize feedback loop.
+new ResizeObserver(() => {
+  if (window.parent !== window) {
+    window.parent.postMessage({type:'microsim-resize',height:Math.ceil(document.querySelector('main').getBoundingClientRect().height)+2}, '*');
+  }
+}).observe(document.querySelector('main'));

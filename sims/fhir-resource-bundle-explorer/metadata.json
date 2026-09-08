@@ -1,23 +1,51 @@
 {
   "title": "FHIR Resource Bundle Explorer",
-  "description": "Given a rendered FHIR Bundle, the learner can examine which JSON reference fields correspond to which graph edges, and differentiate the six core resource types by the fields each one carries.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Render a FHIR Bundle as a node-and-edge graph and match every drawn edge to the JSON reference field that produced it.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "FHIR",
+    "labeled property graph",
+    "healthcare interoperability",
+    "resource references",
+    "data modeling"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "fhir-resource-bundle-explorer",
-  "library": "vis-network",
-  "bloomLevel": "Analyze<br/>",
-  "bloomVerb": "examine, differentiate<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 22,
-  "chapter_title": "FHIR Resources and Levels of Knowledge Representation",
-  "chapter_dir": "22-fhir-resources-and-knowledge-representation",
-  "chapter_rel_dir": "chapters/22-fhir-resources-and-knowledge-representation"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/fhir-resource-bundle-explorer/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a rendered FHIR Bundle, the learner can examine which JSON reference fields correspond to which graph edges, and differentiate the six core resource types by the fields each one carries."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerbs": [
+      "examine",
+      "differentiate"
+    ],
+    "duration": "12-18 minutes",
+    "prerequisites": [
+      "Nodes, edges, and labels",
+      "JSON object structure"
+    ],
+    "concepts": [
+      "FHIR Bundle",
+      "resource reference",
+      "unresolved reference",
+      "resource types",
+      "graph edges from document fields"
+    ]
+  },
+  "technical": {
+    "library": "vis-network",
+    "canvasHeight": 850,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "22-fhir-resources-and-knowledge-representation"
 }

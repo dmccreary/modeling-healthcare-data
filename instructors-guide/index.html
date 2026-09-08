@@ -1,0 +1,4831 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A complete guide for instructors teaching with Modeling Healthcare Data with Graphs, with a deep focus on integrating the book's 127 interactive MicroSims into undergraduate classes.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/instructors-guide/">
+      
+      
+        <link rel="prev" href="../prompts/41-ch-4-quiz/">
+      
+      
+        <link rel="next" href="../book-metrics/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Instructor's Guide - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+      <link rel="stylesheet" href="../css/mascot.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Instructor's Guide - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="A complete guide for instructors teaching with Modeling Healthcare Data with Graphs, with a deep focus on integrating the book's 127 interactive MicroSims into undergraduate classes." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/instructors-guide/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/instructors-guide/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Instructor's Guide - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="A complete guide for instructors teaching with Modeling Healthcare Data with Graphs, with a deep focus on integrating the book's 127 interactive MicroSims into undergraduate classes." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/instructors-guide/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instructors-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../img/mascot/welcome.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instructor's Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../img/mascot/welcome.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../appendices/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-interactive-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This Interactive Intelligent Textbook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About This Interactive Intelligent Textbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an Intelligent Textbook?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-five-levels-of-intelligent-textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Five Levels of Intelligent Textbooks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-this-book-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      What This Book Contains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience-and-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience and Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-this-textbook-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Makes This Textbook Different
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-chapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Chapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Chapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-chapter-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Chapter Contains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-length-and-pacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Length and Pacing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-classroom-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested Classroom Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the MicroSims
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the MicroSims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a MicroSim?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-microsims-matter-in-this-particular-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why MicroSims Matter in This Particular Course
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-microsims-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where the MicroSims Live
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-of-a-microsim-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anatomy of a MicroSim Page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-built-in-three-move-lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Built-In Three-Move Lesson Plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-inventory-by-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Inventory by Chapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#six-classroom-patterns-for-integrating-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Six Classroom Patterns for Integrating MicroSims
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Six Classroom Patterns for Integrating MicroSims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-whole-class-predictobserveexplain-1012-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 1: Whole-Class Predict–Observe–Explain (10–12 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-thinkpairshare-on-a-shared-parameter-1215-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 2: Think–Pair–Share on a Shared Parameter (12–15 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-station-rotation-or-jigsaw-3045-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 3: Station Rotation or Jigsaw (30–45 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-4-flipped-pre-class-exploration-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 4: Flipped Pre-Class Exploration Ticket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-5-guided-inquiry-lab-worksheet-4575-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 5: Guided Inquiry Lab Worksheet (45–75 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-6-exit-ticket-and-formative-assessment-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 6: Exit Ticket and Formative Assessment (5 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-worked-session-plans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Worked Session Plans
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two Worked Session Plans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-50-minute-session-chapter-2-graphs-vs-relational-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 50-minute session: Chapter 2, Graphs vs. Relational Databases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-75-minute-session-chapter-18-healthcare-fraud-patterns-and-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 75-minute session: Chapter 18, Healthcare Fraud Patterns and Detection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-you-have-less-time-than-the-book-has-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      When You Have Less Time Than the Book Has MicroSims
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matching-microsims-to-blooms-taxonomy-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matching MicroSims to Bloom's Taxonomy Levels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding-microsims-in-your-lms-or-course-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding MicroSims in Your LMS or Course Site
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-microsims-without-internet-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running MicroSims Without Internet Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#having-students-build-their-own-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Having Students Build Their Own MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessing-microsim-based-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessing MicroSim-Based Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-and-device-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility and Device Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Glossary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Glossary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the Glossary?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-the-glossary-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using the Glossary in Class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the FAQ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the FAQ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-the-faq-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using the FAQ in Class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Quizzes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Quizzes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Are the Quizzes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-quizzes-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Quizzes Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-quizzes-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using Quizzes in Class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Are the References?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-references-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using References in Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-about-link-rot" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Note About Link Rot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Learning Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Learning Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Learning Graph?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-instructors-can-use-the-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Instructors Can Use the Learning Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sage-your-pedagogical-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sage: Your Pedagogical Agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sage: Your Pedagogical Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-pedagogical-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Pedagogical Agent?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meet-sage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet Sage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-sage-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Sage Appears
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Instructors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reporting-issues-and-suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting Issues and Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-github-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a GitHub Issue?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-submit-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Submit Feedback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback-that-is-especially-welcome" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback That Is Especially Welcome
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the License
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the License">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-creative-commons-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Creative Commons License?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#this-textbooks-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      This Textbook's License
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You CAN Do
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You CANNOT Do
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-your-own-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Your Own Version
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Your Own Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-technical-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Technical Terms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create a GitHub Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-fork-or-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Fork or Clone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-make-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Make Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-preview-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Preview Locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-publish-your-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Publish Your Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-web-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Web Analytics?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-your-own-google-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up Your Own Google Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-analytics-can-tell-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Analytics Can Tell You
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xapi-monitoring-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      xAPI Monitoring (Advanced)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-for-instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference for Instructors
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-interactive-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This Interactive Intelligent Textbook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About This Interactive Intelligent Textbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-intelligent-textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an Intelligent Textbook?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-five-levels-of-intelligent-textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Five Levels of Intelligent Textbooks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-this-book-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      What This Book Contains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience-and-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience and Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-this-textbook-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Makes This Textbook Different
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-chapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Chapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Chapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-chapter-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Chapter Contains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-length-and-pacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Length and Pacing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested-classroom-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested Classroom Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the MicroSims
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the MicroSims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a MicroSim?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-microsims-matter-in-this-particular-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why MicroSims Matter in This Particular Course
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-microsims-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where the MicroSims Live
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-of-a-microsim-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anatomy of a MicroSim Page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-built-in-three-move-lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Built-In Three-Move Lesson Plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-inventory-by-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Inventory by Chapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#six-classroom-patterns-for-integrating-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Six Classroom Patterns for Integrating MicroSims
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Six Classroom Patterns for Integrating MicroSims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-whole-class-predictobserveexplain-1012-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 1: Whole-Class Predict–Observe–Explain (10–12 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-thinkpairshare-on-a-shared-parameter-1215-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 2: Think–Pair–Share on a Shared Parameter (12–15 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-station-rotation-or-jigsaw-3045-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 3: Station Rotation or Jigsaw (30–45 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-4-flipped-pre-class-exploration-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 4: Flipped Pre-Class Exploration Ticket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-5-guided-inquiry-lab-worksheet-4575-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 5: Guided Inquiry Lab Worksheet (45–75 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-6-exit-ticket-and-formative-assessment-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 6: Exit Ticket and Formative Assessment (5 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-worked-session-plans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Worked Session Plans
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two Worked Session Plans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-50-minute-session-chapter-2-graphs-vs-relational-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 50-minute session: Chapter 2, Graphs vs. Relational Databases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-75-minute-session-chapter-18-healthcare-fraud-patterns-and-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 75-minute session: Chapter 18, Healthcare Fraud Patterns and Detection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-you-have-less-time-than-the-book-has-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      When You Have Less Time Than the Book Has MicroSims
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matching-microsims-to-blooms-taxonomy-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matching MicroSims to Bloom's Taxonomy Levels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding-microsims-in-your-lms-or-course-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding MicroSims in Your LMS or Course Site
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-microsims-without-internet-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running MicroSims Without Internet Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#having-students-build-their-own-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Having Students Build Their Own MicroSim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessing-microsim-based-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessing MicroSim-Based Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-and-device-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility and Device Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroSim Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Glossary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Glossary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the Glossary?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-the-glossary-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using the Glossary in Class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the FAQ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the FAQ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-the-faq-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using the FAQ in Class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Quizzes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Quizzes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Are the Quizzes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-quizzes-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Quizzes Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-quizzes-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using Quizzes in Class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Are the References?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-using-references-in-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using References in Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-about-link-rot" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Note About Link Rot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Learning Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Learning Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Learning Graph?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-instructors-can-use-the-learning-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Instructors Can Use the Learning Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sage-your-pedagogical-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sage: Your Pedagogical Agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sage: Your Pedagogical Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-pedagogical-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Pedagogical Agent?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meet-sage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet Sage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-sage-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Sage Appears
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Instructors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reporting-issues-and-suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting Issues and Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-github-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a GitHub Issue?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-submit-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Submit Feedback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback-that-is-especially-welcome" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback That Is Especially Welcome
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the License
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the License">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-creative-commons-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Creative Commons License?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#this-textbooks-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      This Textbook's License
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You CAN Do
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You CANNOT Do
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-your-own-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing Your Own Version
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Your Own Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-technical-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Technical Terms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create a GitHub Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-fork-or-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Fork or Clone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-make-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Make Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-preview-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Preview Locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-publish-your-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Publish Your Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-web-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Web Analytics?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-your-own-google-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up Your Own Google Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-analytics-can-tell-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Analytics Can Tell You
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xapi-monitoring-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      xAPI Monitoring (Advanced)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-for-instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference for Instructors
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/instructors-guide/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="instructors-guide">Instructor's Guide</h1>
+<p>Welcome to the instructor's guide for <em>Modeling Healthcare Data with Graphs</em>.
+This guide explains every feature of the textbook, how to use it in an
+undergraduate classroom, and how to customize it for your own students. <strong>No
+prior technical knowledge is assumed</strong> — every technical term is defined before
+it is used.</p>
+<p>The centerpiece of this guide is the section on
+<a href="#using-the-microsims">Using the MicroSims</a>, because the interactive
+simulations are what separate this book from a PDF. If you read only one
+section, read that one.</p>
+<hr />
+<h2 id="about-this-interactive-intelligent-textbook">About This Interactive Intelligent Textbook</h2>
+<h3 id="what-is-an-intelligent-textbook">What is an Intelligent Textbook?</h3>
+<p>An <strong>intelligent textbook</strong> is a digital textbook that goes beyond static text
+and images. It includes interactive simulations, self-check quizzes, a
+searchable glossary, and a structured map of how concepts depend on each other.
+The goal is to give students a richer, more engaging learning experience than a
+printed textbook can offer.</p>
+<h3 id="the-five-levels-of-intelligent-textbooks">The Five Levels of Intelligent Textbooks</h3>
+<p>Not all digital textbooks are created equal. Intelligent textbooks fall into
+five levels based on how interactive and adaptive they are:</p>
+<iframe src="https://dmccreary.github.io/intelligent-textbooks/sims/book-levels/main.html" height="500px" scrolling="no"
+  style="overflow: hidden;"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level 1</strong></td>
+<td>Static Digital</td>
+<td>A PDF or basic web version of a print textbook</td>
+<td>Text and images only, no interactivity</td>
+</tr>
+<tr>
+<td><strong>Level 2</strong></td>
+<td>Interactive</td>
+<td>Adds simulations, quizzes, and searchable glossaries</td>
+<td>MicroSims, self-check quizzes, concept search</td>
+</tr>
+<tr>
+<td><strong>Level 3</strong></td>
+<td>Adaptive</td>
+<td>Adjusts content based on student performance</td>
+<td>Personalized learning paths, difficulty adjustment</td>
+</tr>
+<tr>
+<td><strong>Level 4</strong></td>
+<td>AI-Assisted</td>
+<td>Includes an AI tutor that answers student questions</td>
+<td>Chatbot integration, automated feedback</td>
+</tr>
+<tr>
+<td><strong>Level 5</strong></td>
+<td>Fully Adaptive AI</td>
+<td>Continuously learns from student interactions</td>
+<td>Real-time content generation, predictive analytics</td>
+</tr>
+</tbody>
+</table>
+<p><strong>This textbook is a Level 2 Intelligent Textbook.</strong> It is unusually rich for
+Level 2: the interactive layer is not a handful of decorative widgets but 127
+purpose-built simulations, most of which carry their own written lesson plan.</p>
+<h3 id="what-this-book-contains">What This Book Contains</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chapters</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr>
+<td>MicroSims (interactive simulations)</td>
+<td style="text-align: right;">127</td>
+</tr>
+<tr>
+<td>MicroSims embedded directly in chapter text</td>
+<td style="text-align: right;">108</td>
+</tr>
+<tr>
+<td>MicroSims with a built-in lesson plan</td>
+<td style="text-align: right;">119</td>
+</tr>
+<tr>
+<td>Concepts in the learning graph</td>
+<td style="text-align: right;">513</td>
+</tr>
+<tr>
+<td>Concept dependencies (prerequisite links)</td>
+<td style="text-align: right;">552</td>
+</tr>
+<tr>
+<td>Glossary terms</td>
+<td style="text-align: right;">515</td>
+</tr>
+<tr>
+<td>FAQ questions</td>
+<td style="text-align: right;">201</td>
+</tr>
+<tr>
+<td>Quiz questions (10 per chapter)</td>
+<td style="text-align: right;">290</td>
+</tr>
+<tr>
+<td>Annotated references</td>
+<td style="text-align: right;">232</td>
+</tr>
+</tbody>
+</table>
+<h3 id="target-audience-and-prerequisites">Target Audience and Prerequisites</h3>
+<p>The book is written for <strong>college undergraduates</strong>. The only stated
+prerequisite is <strong>knowledge of databases</strong> — students should be comfortable
+with the idea of tables, rows, columns, primary keys, and foreign keys, and
+should have seen a <code>SELECT</code> statement before. No prior exposure to graph
+theory, graph databases, healthcare, or machine learning is assumed; the book
+builds all of that from scratch.</p>
+<p>This makes the book suitable for:</p>
+<ul>
+<li>A junior/senior elective in a computer science, data science, or information
+  systems program</li>
+<li>A health informatics or healthcare analytics course</li>
+<li>A graduate-level survey course for students entering healthcare IT</li>
+<li>Professional and continuing-education cohorts already working in healthcare</li>
+</ul>
+<h3 id="what-makes-this-textbook-different">What Makes This Textbook Different</h3>
+<ul>
+<li><strong>Interactive MicroSims</strong> let students manipulate healthcare data models
+  directly in the browser — no software installation, no database server, no
+  license keys.</li>
+<li><strong>Three-perspective structure</strong> — the same data is modeled from the
+  <strong>patient</strong>, <strong>provider</strong>, and <strong>payer</strong> viewpoints, so students learn that a
+  data model is always a model <em>of someone's</em> view of the world.</li>
+<li><strong>A real economic motivation</strong> — the book is framed around the highest
+  per-person healthcare costs in the world and the shift from fee-for-service
+  to value-based care. Graph modeling is presented as a lever on a real
+  problem, not an academic exercise.</li>
+<li><strong>Learning graph</strong> — a visual map showing how all 513 concepts connect and
+  build on each other.</li>
+<li><strong>Sage the Octopus</strong> — a friendly mascot (a "pedagogical agent") who guides
+  students through each chapter with tips, encouragement, and warnings.</li>
+<li><strong>Completely free and open source</strong> — licensed under Creative Commons for
+  non-commercial use.</li>
+</ul>
+<hr />
+<h2 id="using-the-chapters">Using the Chapters</h2>
+<h3 id="chapter-sequence">Chapter Sequence</h3>
+<p>The 29 chapters are ordered deliberately: each one assumes the concepts from
+the ones before it. Students should generally work through them in order,
+though the topic blocks below can be resequenced if your course has a different
+emphasis.</p>
+<table>
+<thead>
+<tr>
+<th>Chapters</th>
+<th>Topic Area</th>
+<th>Note for instructors</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–6</td>
+<td><strong>Graph foundations and technology</strong> — structures, graphs vs. relational, query languages, scalability, algorithms, embeddings and GNNs</td>
+<td>The technical core. Skippable in part if students arrive with graph database experience.</td>
+</tr>
+<tr>
+<td>7–8</td>
+<td><strong>Healthcare domain foundations</strong> — economics, medical coding, interoperability, care coordination</td>
+<td>The domain core. Do <em>not</em> skip these for CS-heavy cohorts; they are where the vocabulary comes from.</td>
+</tr>
+<tr>
+<td>9–13</td>
+<td><strong>Patient and provider perspectives</strong> — diagnosis, treatment, care plans, chronic disease, specialty care, provider organizations, clinical guidelines</td>
+<td>The largest and most modeling-intensive block.</td>
+</tr>
+<tr>
+<td>14–17</td>
+<td><strong>Payer perspective and finance</strong> — claims, coverage, pharmacy benefits, reimbursement, revenue and cost, forecasting and risk</td>
+<td>Naturally paired with a spreadsheet or SQL comparison assignment.</td>
+</tr>
+<tr>
+<td>18–19</td>
+<td><strong>Fraud, waste, and abuse</strong> — fraud patterns, detection, investigation, compliance</td>
+<td>The single most engaging block for most students. Good place for a mid-term project.</td>
+</tr>
+<tr>
+<td>20–21</td>
+<td><strong>AI, LLMs, and knowledge graphs</strong> — RAG, explainability, agentic systems, responsible AI</td>
+<td>Pairs well with a current-events discussion.</td>
+</tr>
+<tr>
+<td>22–24</td>
+<td><strong>FHIR and clinical decision support</strong> — FHIR resources, knowledge representation levels, CQL, CDS Hooks, CMS tooling</td>
+<td>The most standards-heavy block; budget extra time.</td>
+</tr>
+<tr>
+<td>25–28</td>
+<td><strong>Security, governance, and data quality</strong> — HIPAA, RBAC, incident response, metadata, lineage, stewardship</td>
+<td>Often compressed; see the pacing notes below.</td>
+</tr>
+<tr>
+<td>29</td>
+<td><strong>Capstone projects and career development</strong></td>
+<td>Assign early, not late — see below.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-each-chapter-contains">What Each Chapter Contains</h3>
+<p>Every chapter follows a consistent structure:</p>
+<ol>
+<li><strong>YAML front matter</strong> — metadata at the top of the file (title, description,
+   generation date, version). Students never see this; it feeds search engines
+   and the site builder.</li>
+<li><strong>Summary</strong> — a short overview of what the chapter covers.</li>
+<li><strong>Concepts Covered</strong> — a numbered list of the specific concepts from the
+   learning graph that this chapter addresses. This is your alignment map: use
+   it to check the chapter against your own syllabus outcomes.</li>
+<li><strong>Prerequisites</strong> — links to the earlier chapters that should be completed
+   first.</li>
+<li><strong>Welcome from Sage</strong> — a mascot admonition introducing the chapter topic.</li>
+<li><strong>Main content</strong> — the instructional material, with tables, worked
+   healthcare examples, and embedded MicroSims.</li>
+<li><strong>MicroSims with expandable specifications</strong> — each simulation is followed
+   by a collapsible block containing its full design specification (see
+   <a href="#anatomy-of-a-microsim-page">Anatomy of a MicroSim page</a>).</li>
+<li><strong>Mascot admonitions</strong> — Sage appears a handful of times per chapter (fewer
+   than ten, and fewer in shorter chapters) to highlight key insights
+   (thinking), offer practical tips (tip), encourage students through harder
+   material (encourage), and warn about common mistakes (warning).</li>
+<li><strong>Chapter Summary</strong> — the key takeaways, preceded by a celebration from
+   Sage.</li>
+</ol>
+<h3 id="chapter-length-and-pacing">Chapter Length and Pacing</h3>
+<p>Chapters range from roughly 2,700 to 6,300 words, with an average near 4,200.
+At an undergraduate reading pace of about 200 words per minute for technical
+prose, a chapter is a <strong>20–30 minute reading assignment</strong> before MicroSim
+exploration is added.</p>
+<p>Suggested pacing for common course formats:</p>
+<table>
+<thead>
+<tr>
+<th>Course format</th>
+<th>Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>15-week semester, 3 credits</strong></td>
+<td>~2 chapters per week. Use the topic blocks above as units, with a project checkpoint at the end of each block.</td>
+</tr>
+<tr>
+<td><strong>15-week semester, project-heavy</strong></td>
+<td>Cover chapters 1–19 in depth (~1.5/week), treat 20–28 as assigned reading with in-class MicroSim demos only, and run chapter 29 as the project scaffold from week 4 onward.</td>
+</tr>
+<tr>
+<td><strong>10-week quarter</strong></td>
+<td>3 chapters per week; drop the deep dives in blocks 22–24 and 25–28 to survey level.</td>
+</tr>
+<tr>
+<td><strong>Bootcamp / short course</strong></td>
+<td>Chapters 1, 2, 3, 7, 9, 14, 18, 20 form a coherent 8-session arc that touches every stakeholder perspective.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="suggested-classroom-use">Suggested Classroom Use</h3>
+<ul>
+<li><strong>Before class</strong>: assign the chapter as reading. Tell students explicitly to
+  <em>play with</em> the MicroSims while reading, not just scroll past them — see the
+  <a href="#pattern-4-flipped-pre-class-exploration-ticket">pre-class exploration ticket</a>.</li>
+<li><strong>During class</strong>: use the MicroSims on the projector for whole-class
+  demonstration and prediction. Do not re-lecture the chapter text.</li>
+<li><strong>After class</strong>: assign the quiz for the chapter as a self-check, and the
+  chapter's reference list for students who want to go deeper.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">A note on chapter 29</p>
+<p>Chapter 29 (Capstone Projects and Career Development) is written as an
+end-of-book chapter, but it works far better assigned <strong>early</strong> — around
+week 3 or 4. Students who know what their capstone will be read chapters
+5–28 with a purpose. The Capstone Project Architecture Template MicroSim in
+that chapter is a usable project-scoping tool from day one.</p>
+</div>
+<hr />
+<h2 id="using-the-microsims">Using the MicroSims</h2>
+<p>This is the section that matters most. Everything below is about turning 127
+simulations into class time that works.</p>
+<h3 id="what-is-a-microsim">What is a MicroSim?</h3>
+<p>A <strong>MicroSim</strong> (short for "micro-simulation") is a small, self-contained
+interactive simulation that runs directly in a web browser. Students do not
+install software, create accounts, or configure a database. MicroSims work on
+any device with a modern browser — Chrome, Firefox, Safari, or Edge — including
+phones and Chromebooks.</p>
+<p>Each MicroSim lets students manipulate one or more variables (with sliders,
+buttons, dropdowns, or by clicking directly on a diagram) and immediately see
+how the model responds. This "learn by doing" approach builds intuition for
+abstract concepts far faster than a static diagram can.</p>
+<p>A MicroSim is deliberately <em>micro</em>: it teaches <strong>one idea</strong>. It is not a lab
+environment, not a full application, and not a substitute for hands-on work
+with a real graph database. Its job is to make one concept concrete in about
+ten minutes.</p>
+<h3 id="why-microsims-matter-in-this-particular-course">Why MicroSims Matter in This Particular Course</h3>
+<p>Healthcare data modeling has an unusual teaching problem: the interesting
+structures are <strong>too large to draw and too abstract to describe</strong>. A provider
+referral network with 400 nodes cannot be put on a slide. A claim's path
+through eligibility checking, adjudication, and remittance has a dozen decision
+points. The difference between a five-table SQL join and a two-hop graph
+traversal is invisible until you watch both run.</p>
+<p>MicroSims solve this. They let students:</p>
+<ul>
+<li><strong>See scale</strong> — watch a centrality algorithm rank 200 providers at once</li>
+<li><strong>Change one variable at a time</strong> — move a fraud detection threshold and
+  watch true positives and false positives trade off against each other</li>
+<li><strong>Trace a path</strong> — step through a claim, a care pathway, or a CDS Hooks
+  request-response cycle one stage at a time</li>
+<li><strong>Compare two models side by side</strong> — the relational and graph versions of
+  the same healthcare question, with the same data</li>
+</ul>
+<h3 id="where-the-microsims-live">Where the MicroSims Live</h3>
+<p>There are three ways to reach them:</p>
+<ol>
+<li><strong>Embedded in chapters</strong> — 108 MicroSim embeds appear inline in the chapter
+   text, right next to the concept they illustrate. This is where students
+   normally meet them.</li>
+<li><strong>The MicroSim gallery</strong> — the <a href="../sims/">MicroSims</a> page in the
+   left navigation shows all 127 as a thumbnail grid with one-line
+   descriptions. Use this when you want to browse for a demo.</li>
+<li><strong>Their own standalone pages</strong> — every MicroSim has its own page with a
+   description, a lesson plan, an embed snippet, and a full specification. This
+   is the page you want when planning a lesson.</li>
+</ol>
+<h3 id="anatomy-of-a-microsim-page">Anatomy of a MicroSim Page</h3>
+<p>Open any MicroSim page — for example the
+<a href="../sims/healthcare-graph-anatomy-explorer/">Healthcare Graph Anatomy Explorer</a>
+— and you will find a consistent structure. Knowing this structure is the
+single biggest time-saver in lesson prep.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What it gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The running simulation</strong></td>
+<td>The MicroSim itself, plus a <strong>Run MicroSim in Fullscreen</strong> button for projecting</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Two or three sentences on what the controls do</td>
+</tr>
+<tr>
+<td><strong>Lesson Plan</strong></td>
+<td>Audience, time estimate, prerequisites, a stated learning objective, a three-step activity, and an assessment prompt</td>
+</tr>
+<tr>
+<td><strong>Embed This MicroSim</strong></td>
+<td>A copy-paste <code>&lt;iframe&gt;</code> snippet for your LMS or course site</td>
+</tr>
+<tr>
+<td><strong>Quality Checks</strong></td>
+<td>For validated MicroSims: the date it was browser-tested, at what screen widths, and its completeness score</td>
+</tr>
+<tr>
+<td><strong>Specification</strong></td>
+<td>The full design specification — node types, edge types, interaction stages, controls, layout, and instructional rationale</td>
+</tr>
+</tbody>
+</table>
+<p>Inside the chapter text, that same specification is available in the
+collapsible block directly beneath each simulation. Click the summary line to
+expand it.</p>
+<h3 id="the-built-in-three-move-lesson-plan">The Built-In Three-Move Lesson Plan</h3>
+<p><strong>119 of the 127 MicroSims carry a written lesson plan</strong>, and they all follow
+the same three moves. Learning this pattern once means you can teach any
+MicroSim in the book without writing a lesson from scratch.</p>
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>What students do</th>
+<th>Cognitive purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Explore</strong></td>
+<td>Manipulate specific controls and record specific observations; make a prediction, then test it</td>
+<td>Builds a concrete referent before any abstraction</td>
+</tr>
+<tr>
+<td><strong>2. Explain</strong></td>
+<td>Put the mechanism into their own words, distinguishing the general rule from this instance</td>
+<td>Forces articulation — the step students skip on their own</td>
+</tr>
+<tr>
+<td><strong>3. Transfer</strong></td>
+<td>Sketch a <em>different</em> healthcare example using the same concept, and name one modeling assumption</td>
+<td>Checks whether the idea generalized or stayed stuck to the demo</td>
+</tr>
+</tbody>
+</table>
+<p>Each lesson plan ends with an <strong>assessment</strong> paragraph telling you what a
+complete response contains. Those paragraphs are written to be used verbatim as
+exit-ticket rubrics.</p>
+<p>Here is the pattern in the wild, from the Healthcare Graph Anatomy Explorer:</p>
+<blockquote>
+<p><strong>Explore:</strong> Inspect Patient, Provider, and TREATED_BY. Record one label and
+one property for each. Predict which edges will highlight when you select
+Provider, then test your prediction.</p>
+<p><strong>Explain:</strong> Explain why Patient is a label, <code>patient_id</code> is a property key,
+and <code>MRN-48213</code> is a property value.</p>
+<p><strong>Transfer:</strong> Sketch a different healthcare example using the same concept
+and explain one modeling assumption.</p>
+</blockquote>
+<p>Notice what the Explore step does <em>not</em> say: it does not say "explore freely."
+Unstructured exploration is the most common way MicroSim time gets wasted.
+Always give students a specific thing to record.</p>
+<h3 id="microsim-inventory-by-chapter">MicroSim Inventory by Chapter</h3>
+<p>Use this table to plan which sessions get a live demo. Chapters with five or
+six MicroSims can support an entire lab period; chapters with two are better
+served by a single focused demo.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Ch</th>
+<th>Chapter</th>
+<th style="text-align: right;">Sims</th>
+<th>Anchor MicroSim to demo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Foundations of Graph Structures</td>
+<td style="text-align: right;">2</td>
+<td>Healthcare Graph Anatomy Explorer</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Graphs vs. Relational Databases</td>
+<td style="text-align: right;">2</td>
+<td>Relational vs. Graph Data Model Side-by-Side</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Graph Query Languages and Pattern Matching</td>
+<td style="text-align: right;">5</td>
+<td>Cypher Query Components Infographic</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Graph Database Scalability and Operations</td>
+<td style="text-align: right;">2</td>
+<td>Graph Sharding Partition Explorer</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Graph Algorithms, Centrality, and Similarity</td>
+<td style="text-align: right;">6</td>
+<td>Centrality Measures Comparison</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Graph Embeddings, Clustering, and GNNs</td>
+<td style="text-align: right;">2</td>
+<td>Node Embedding Explorer</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Healthcare Economics and Medical Coding</td>
+<td style="text-align: right;">4</td>
+<td>Per-Person Healthcare Cost Comparison Chart</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Healthcare Interoperability and Care Coordination</td>
+<td style="text-align: right;">3</td>
+<td>Clinical Encounter Workflow</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Patient Diagnosis, Treatment, and Medication</td>
+<td style="text-align: right;">4</td>
+<td>Bayesian Diagnostic Reasoning</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Patient Care Plans and Chronic Disease</td>
+<td style="text-align: right;">4</td>
+<td>Preventive Care Gap Closure</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Specialty Care, Surgery, Remote Monitoring</td>
+<td style="text-align: right;">3</td>
+<td>Post-Surgical Care Transition Workflow</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Provider Organizations, Networks, Scheduling</td>
+<td style="text-align: right;">5</td>
+<td>Provider Referral Network Analysis</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>Clinical Guidelines, Care Pathways, Workforce</td>
+<td style="text-align: right;">2</td>
+<td>Clinical Protocol Workflow: Chest Pain</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>Insurance Claims, Coverage, Pharmacy Benefits</td>
+<td style="text-align: right;">5</td>
+<td>Cost-Sharing Calculation</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>Reimbursement, Health Plans, Payer Contracts</td>
+<td style="text-align: right;">2</td>
+<td>Allowed Amount and Reimbursement Breakdown</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>Healthcare Revenue and Cost Analysis</td>
+<td style="text-align: right;">6</td>
+<td>Service Line Profitability Analysis</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>Healthcare Financial Forecasting and Risk</td>
+<td style="text-align: right;">3</td>
+<td>Value-Based Payment Shared-Savings</td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>Healthcare Fraud Patterns and Detection</td>
+<td style="text-align: right;">6</td>
+<td>Anomaly Score Threshold Explorer</td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>Fraud Investigation and Compliance</td>
+<td style="text-align: right;">2</td>
+<td>Provider Network Fraud Detection Dashboard</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>AI, LLMs, and Knowledge Graphs</td>
+<td style="text-align: right;">5</td>
+<td>Yin-Yang LLM vs Knowledge Graph</td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>Responsible AI and Agentic Systems</td>
+<td style="text-align: right;">6</td>
+<td>Model Drift Detection Monitor</td>
+</tr>
+<tr>
+<td style="text-align: right;">22</td>
+<td>FHIR Resources and Knowledge Representation</td>
+<td style="text-align: right;">4</td>
+<td>Knowledge Representation Levels by Tier Matrix</td>
+</tr>
+<tr>
+<td style="text-align: right;">23</td>
+<td>Clinical Guideline Authoring and CQL</td>
+<td style="text-align: right;">4</td>
+<td>CQL-to-ELM Compilation Pipeline</td>
+</tr>
+<tr>
+<td style="text-align: right;">24</td>
+<td>CDS Hooks, Alerts, and CMS CQL Tooling</td>
+<td style="text-align: right;">3</td>
+<td>CDS Hooks Request-Response Cycle</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>Healthcare Data Security Fundamentals</td>
+<td style="text-align: right;">6</td>
+<td>Healthcare RBAC Graph Data Model</td>
+</tr>
+<tr>
+<td style="text-align: right;">26</td>
+<td>Advanced Security Operations and Incident Response</td>
+<td style="text-align: right;">2</td>
+<td>Security Incident Response Lifecycle</td>
+</tr>
+<tr>
+<td style="text-align: right;">27</td>
+<td>Data Governance and Metadata Management</td>
+<td style="text-align: right;">5</td>
+<td>Healthcare Data Lineage Graph Visualization</td>
+</tr>
+<tr>
+<td style="text-align: right;">28</td>
+<td>Data Quality, Stewardship, and Compliance</td>
+<td style="text-align: right;">3</td>
+<td>Data Quality Impact Analysis</td>
+</tr>
+<tr>
+<td style="text-align: right;">29</td>
+<td>Capstone Projects and Career Development</td>
+<td style="text-align: right;">2</td>
+<td>Capstone Project Architecture Template</td>
+</tr>
+</tbody>
+</table>
+<h3 id="six-classroom-patterns-for-integrating-microsims">Six Classroom Patterns for Integrating MicroSims</h3>
+<p>These six patterns cover nearly every way a MicroSim earns its class time. Pick
+one per session; mixing more than two in a single class period tends to feel
+frantic.</p>
+<h4 id="pattern-1-whole-class-predictobserveexplain-1012-minutes">Pattern 1: Whole-Class Predict–Observe–Explain (10–12 minutes)</h4>
+<p>The highest-value use of a MicroSim, and the one to default to.</p>
+<ol>
+<li><strong>Set up (1 min).</strong> Project the MicroSim with all controls at their default
+   values. Name what the students are looking at, but do not yet explain the
+   mechanism.</li>
+<li><strong>Predict (2 min).</strong> Announce exactly which control you are about to change
+   and in which direction. Ask every student to write down a prediction —
+   on paper, in a chat window, or on a poll. <em>Writing it down is the load-bearing
+   step.</em> A prediction that stays in a student's head costs nothing to abandon.</li>
+<li><strong>Poll (1 min).</strong> Show the split. Disagreement is the goal; if 95% agree,
+   your prediction question was too easy.</li>
+<li><strong>Observe (2 min).</strong> Make the change. Say nothing while it runs.</li>
+<li><strong>Explain (4 min).</strong> Ask a student who predicted correctly <em>and</em> a student
+   who predicted incorrectly to each explain the result. The incorrect
+   prediction is usually the more instructive one.</li>
+<li><strong>Generalize (2 min).</strong> State the rule the MicroSim just demonstrated, and
+   connect it to the chapter's Concepts Covered list.</li>
+</ol>
+<p><strong>Worked example — Chapter 18, Anomaly Score Threshold Explorer.</strong> Prediction
+question: <em>"I am going to lower the anomaly score threshold. What happens to
+the number of fraud cases we catch, and what happens to the number of clean
+providers we wrongly investigate?"</em> Nearly every student gets the first half
+right and underestimates the second. The tradeoff between detection rate and
+investigation capacity is the whole lesson, and it lands in ninety seconds of
+slider movement.</p>
+<h4 id="pattern-2-thinkpairshare-on-a-shared-parameter-1215-minutes">Pattern 2: Think–Pair–Share on a Shared Parameter (12–15 minutes)</h4>
+<p>Best for MicroSims with a genuine judgment call rather than a single right
+answer.</p>
+<ol>
+<li>Give every pair the same scenario and a <strong>constraint</strong> — "your fraud unit
+   can investigate 40 cases per month," "this practice has 12 open appointment
+   slots per day."</li>
+<li>Each student works the MicroSim alone for 4 minutes and writes down a
+   recommended setting plus one sentence of justification.</li>
+<li>Pairs compare, and must converge on a single recommendation.</li>
+<li>Three pairs report out. Ask specifically for <em>disagreements they resolved</em>,
+   not final answers.</li>
+</ol>
+<p>Strong candidates: Anomaly Score Threshold Explorer (Ch 18), Payer Mix and
+Contract Negotiation (Ch 16), Risk Adjustment and Capitation Calculator
+(Ch 16), Prior Authorization Decision Tree (Ch 14), Appointment Scheduling and
+No-Show Simulator (Ch 12).</p>
+<h4 id="pattern-3-station-rotation-or-jigsaw-3045-minutes">Pattern 3: Station Rotation or Jigsaw (30–45 minutes)</h4>
+<p>Use in chapters with five or six MicroSims — chapters 5, 12, 14, 16, 18, 21,
+and 25 are built for this.</p>
+<ol>
+<li>Divide the class into as many groups as the chapter has MicroSims.</li>
+<li>Each group gets <strong>one</strong> MicroSim and works its built-in Explore / Explain /
+   Transfer lesson plan (10–15 minutes).</li>
+<li>Each group prepares a <strong>90-second</strong> teach-back: what the sim shows, what
+   surprised them, and one question it raised.</li>
+<li>Rotate through the teach-backs. The whole chapter's interactive content gets
+   covered in half the time it would take to demo each one yourself.</li>
+</ol>
+<p><strong>Worked example — Chapter 25, Healthcare Data Security Fundamentals.</strong> Six
+groups take Healthcare Data Protection Layers, HIPAA Compliance Workflow,
+Authentication vs Authorization, Healthcare RBAC Graph Data Model, Audit Trail
+Analysis, and De-Identification Techniques Comparison. The teach-backs
+naturally assemble into the layered security story the chapter is telling —
+and students construct that story themselves rather than receiving it.</p>
+<h4 id="pattern-4-flipped-pre-class-exploration-ticket">Pattern 4: Flipped Pre-Class Exploration Ticket</h4>
+<p>Assign before class so that class time starts at the Explain step rather than
+the Explore step.</p>
+<p>Give students this four-line ticket, due at the start of class:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>MicroSim: ______________________________
+1. One setting I changed, and the exact value I changed it to:
+2. What I expected to happen:
+3. What actually happened:
+4. One question this raised that the chapter text did not answer:
+</code></pre></div></td></tr></table></div>
+<p>Line 4 is the payload. Collect the tickets, scan them for two minutes before
+class, and open the session with the three most common questions. This turns
+"did you do the reading?" into a class period that is visibly built out of the
+students' own confusion.</p>
+<h4 id="pattern-5-guided-inquiry-lab-worksheet-4575-minutes">Pattern 5: Guided Inquiry Lab Worksheet (45–75 minutes)</h4>
+<p>For lab or studio sections. Chain three or four MicroSims from the <em>same</em> topic
+block into a single investigation with one driving question.</p>
+<p><strong>Worked example — "Where does the money go?" (Chapters 14–16).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>MicroSim</th>
+<th>Question students answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Insurance Policy and Benefit Plan Graph Model</td>
+<td>What entities does a benefit plan connect, and where does the member sit?</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cost-Sharing Calculation</td>
+<td>For a \$4,200 procedure, what does the member owe under three different plan designs?</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Allowed Amount and Reimbursement Breakdown</td>
+<td>Where did the rest of the charge go — and what is a contractual write-off?</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Service Line Profitability Analysis</td>
+<td>Given all of the above, which service lines actually make money?</td>
+</tr>
+</tbody>
+</table>
+<p>Students finish with a defensible answer to a question no single chapter
+answers, and they have crossed three chapters to get there.</p>
+<h4 id="pattern-6-exit-ticket-and-formative-assessment-5-minutes">Pattern 6: Exit Ticket and Formative Assessment (5 minutes)</h4>
+<p>Every lesson plan's <strong>assessment</strong> paragraph is already written as an exit
+ticket. Project the MicroSim, put the Explain prompt on the board, and collect
+one paragraph.</p>
+<p>Because the lesson plans state what a complete response contains — typically
+"names the relevant graph elements, traces the displayed evidence, and
+distinguishes a modeling assumption from a general claim" — these are fast to
+grade on a 0/1/2 scale and give you a real read on the room.</p>
+<h3 id="two-worked-session-plans">Two Worked Session Plans</h3>
+<h4 id="a-50-minute-session-chapter-2-graphs-vs-relational-databases">A 50-minute session: Chapter 2, Graphs vs. Relational Databases</h4>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td>Recap: nodes, edges, labels, properties (from Chapter 1). No slides.</td>
+</tr>
+<tr>
+<td>5–17</td>
+<td><strong>Pattern 1</strong> on <em>Relational vs. Graph Data Model Side-by-Side</em>. Prediction: "How many tables does the relational side need to answer 'which providers has this patient seen?' — and how many hops does the graph side need?"</td>
+</tr>
+<tr>
+<td>17–27</td>
+<td><strong>Pattern 1</strong> on <em>Query Performance: RDBMS vs Graph</em>. Prediction: "What happens to each side's response time as we go from 2 hops to 5 hops?" This is the chapter's central claim; let them watch it.</td>
+</tr>
+<tr>
+<td>27–42</td>
+<td><strong>Pattern 2</strong>: pairs argue for relational <em>or</em> graph for a specific scenario you supply (a billing ledger — where relational usually wins). The point is that graph is not always the answer.</td>
+</tr>
+<tr>
+<td>42–50</td>
+<td>Debrief and assign the Chapter 2 quiz as a self-check.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="a-75-minute-session-chapter-18-healthcare-fraud-patterns-and-detection">A 75-minute session: Chapter 18, Healthcare Fraud Patterns and Detection</h4>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–8</td>
+<td>Open with a real published fraud case from the chapter's reference list.</td>
+</tr>
+<tr>
+<td>8–20</td>
+<td><strong>Pattern 1</strong> on <em>Healthcare Fraud Scheme Network Visualization</em>. Prediction: "Which of these providers is the ringleader, and what in the picture tells you?"</td>
+</tr>
+<tr>
+<td>20–35</td>
+<td><strong>Pattern 1</strong> on <em>Anomaly Score Threshold Explorer</em>, using the threshold/capacity tradeoff described above.</td>
+</tr>
+<tr>
+<td>35–60</td>
+<td><strong>Pattern 2</strong> with the constraint "your unit can investigate 40 cases per month." Pairs pick a threshold and defend it.</td>
+</tr>
+<tr>
+<td>60–70</td>
+<td>Report-outs. Push on the ethical dimension: every false positive is a real clinician under investigation.</td>
+</tr>
+<tr>
+<td>70–75</td>
+<td>Assign: <em>DME Fraud Pattern Detector</em> and <em>Behavioral Health Fraud Network</em> as the pre-class ticket for the next session.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-you-have-less-time-than-the-book-has-microsims">When You Have Less Time Than the Book Has MicroSims</h3>
+<p>You will not demo 127 simulations, and you should not try. Three triage rules:</p>
+<ol>
+<li><strong>One anchor demo per chapter.</strong> The "Anchor MicroSim" column in the
+   <a href="#microsim-inventory-by-chapter">inventory table</a> is a defensible default.
+   Everything else becomes assigned exploration.</li>
+<li><strong>Prefer the 27 validated MicroSims for live demos.</strong> These have been
+   browser-tested at 400, 800, and 1200 pixels wide with no JavaScript errors,
+   and each carries a complete lesson plan. They are listed at the top of the
+   <a href="../sims/">MicroSims gallery</a> with their validation dates. A demo
+   that fails in front of the class costs more than the demo was worth.</li>
+<li><strong>Demo the ones that show a <em>process</em>; assign the ones that show a
+   <em>structure</em>.</strong> Workflows, pipelines, and thresholds benefit from a shared
+   narration. Graph models and comparison tables read fine alone.</li>
+</ol>
+<h3 id="matching-microsims-to-blooms-taxonomy-levels">Matching MicroSims to Bloom's Taxonomy Levels</h3>
+<p>Each MicroSim's specification block names the <strong>Bloom's Taxonomy level</strong> it
+targets. Bloom's Taxonomy classifies thinking skills from simple to complex:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>What it means</th>
+<th>In a MicroSim, this looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Remember</td>
+<td>Recall facts and definitions</td>
+<td>Reading labels off a rendered diagram</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Understand</td>
+<td>Explain concepts in your own words</td>
+<td>Hovering to reveal properties, then articulating label vs. property</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Apply</td>
+<td>Use concepts to solve problems</td>
+<td>Computing a cost share for a given plan design</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Analyze</td>
+<td>Break down and examine relationships</td>
+<td>Comparing centrality measures to find the structurally important provider</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Evaluate</td>
+<td>Make judgments against criteria</td>
+<td>Choosing a fraud threshold given investigation capacity</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Create</td>
+<td>Produce original work</td>
+<td>Designing a graph model for a new healthcare scenario</td>
+</tr>
+</tbody>
+</table>
+<p>The book's MicroSims cluster at <strong>L2–L5</strong>. There is no MicroSim at L6 — by
+design. L6 is what the <a href="../chapters/29-capstone-projects-and-career-development/">capstone project</a>
+is for, and it is where "have students build their own MicroSim" (below) comes
+in.</p>
+<h3 id="embedding-microsims-in-your-lms-or-course-site">Embedding MicroSims in Your LMS or Course Site</h3>
+<p>Every MicroSim can be dropped into any web page you control — Canvas,
+Blackboard, Moodle, Brightspace, Google Sites, a WordPress blog, or a plain
+HTML file.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Sage's Tip: Embed MicroSims Anywhere!</p>
+<p><img alt="Sage shares a tip" class="mascot-admonition-img" src="../img/mascot/tip.png" />
+You can put any MicroSim on <strong>any</strong> web page you control — one line of HTML
+and your students have an interactive simulation right inside your LMS.
+Every MicroSim page has a ready-made snippet under <strong>Embed This MicroSim</strong>,
+so you never have to type the URL by hand. Let's connect the dots!</p>
+</div>
+<p>The snippet looks like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-graph-anatomy-explorer/main.html&quot;</span>
+    <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;962px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Three things to know:</p>
+<ol>
+<li><strong>Replace the sim name</strong> with any MicroSim's directory name from the
+   <a href="../sims/">MicroSims gallery</a> — the last path segment of its URL.</li>
+<li><strong>The height matters.</strong> MicroSims in this book range from about 445px to
+   1880px tall, and the height is tuned per simulation. Copy the height from
+   the MicroSim's own <strong>Embed This MicroSim</strong> section rather than guessing; a
+   height that is too small clips the controls, and clipped controls are the
+   number-one cause of "the MicroSim is broken" emails.</li>
+<li><strong><code>scrolling="no"</code> is intentional.</strong> It prevents a scrollbar from appearing
+   inside the frame.</li>
+</ol>
+<p><strong>LMS-specific notes:</strong></p>
+<ul>
+<li><strong>Canvas</strong> — use the Rich Content Editor's HTML view (`` icon) and paste
+  the iframe. Canvas permits iframes from external HTTPS sources by default.</li>
+<li><strong>Blackboard / Brightspace</strong> — some institutions restrict iframe sources. If
+  the frame renders blank, ask your LMS administrator to allow
+  <code>dmccreary.github.io</code>.</li>
+<li><strong>Google Sites</strong> — use <strong>Insert → Embed → Embed code</strong> and paste the iframe.</li>
+<li><strong>Anywhere iframes are blocked</strong> — link to the MicroSim's fullscreen URL
+  instead. Every MicroSim page has a <strong>Run MicroSim in Fullscreen</strong> button, and
+  that URL (ending in <code>/main.html</code>) opens standalone in a new tab.</li>
+</ul>
+<h3 id="running-microsims-without-internet-access">Running MicroSims Without Internet Access</h3>
+<p>MicroSims are static HTML and JavaScript, so a local copy of the site works
+offline for everything except MicroSims that load a library from a CDN. To run
+the whole book locally:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dmccreary/modeling-healthcare-data.git
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div></td></tr></table></div>
+<p>Then open <code>http://127.0.0.1:8000/modeling-healthcare-data/</code>. If your classroom
+network is fully air-gapped, test the specific MicroSims you plan to use
+beforehand — the ones built on p5.js, vis-network, and Chart.js load those
+libraries from a content delivery network and will need it available the first
+time.</p>
+<h3 id="having-students-build-their-own-microsim">Having Students Build Their Own MicroSim</h3>
+<p>This is the book's best capstone-adjacent assignment, and the material for it
+is already in the repository.</p>
+<p>Every MicroSim in a chapter is followed by a collapsible <strong>specification</strong> — a
+complete design document naming the node types, edge types, interaction stages,
+controls, layout, canvas size, legend, and the instructional rationale for each
+choice. Beyond that, the repository contains <strong>118 specifications for MicroSims
+that have not been built yet</strong>, in <code>docs/sims/TODO/</code>. Each is a JSON file with
+a learning objective, a target Bloom level, a suggested library, and the full
+specification text.</p>
+<p>Three assignment shapes, in increasing difficulty:</p>
+<ol>
+<li><strong>Critique a specification (L4–L5, one week).</strong> Give each student a built
+   MicroSim and its specification. Ask: does the implementation satisfy the
+   stated learning objective? Which design choice would you change, and what
+   would that cost pedagogically? No coding required — this works in a
+   non-programming section.</li>
+<li><strong>Write a specification (L6, two weeks).</strong> Students pick a concept from the
+   <a href="../learning-graph/">learning graph</a> that has no MicroSim and write
+   a full specification in the book's format: learning objective, Bloom level
+   and verb, node and edge types, interaction stages, controls, layout,
+   instructional rationale. Grade the rationale, not the aesthetics.</li>
+<li><strong>Build one (L6, three to four weeks).</strong> Students implement an unbuilt
+   specification from <code>docs/sims/TODO/</code> using p5.js, vis-network, or Chart.js.
+   The specification tells them exactly what to build, which removes scope
+   negotiation from the assignment and leaves the actual engineering. Strong
+   student work can be contributed back to the book via a pull request.</li>
+</ol>
+<p>Suggested rubric for assignments 2 and 3:</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align: right;">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learning objective is specific, measurable, and matched to a real Bloom level</td>
+<td style="text-align: right;">25%</td>
+</tr>
+<tr>
+<td>Every interactive control serves the objective (no decorative controls)</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr>
+<td>Healthcare content is accurate and uses correct terminology</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr>
+<td>Instructional rationale explains <em>why</em> these interactions teach this idea</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr>
+<td>Works in a browser at 400, 800, and 1200 pixels wide with no console errors</td>
+<td style="text-align: right;">15%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="assessing-microsim-based-work">Assessing MicroSim-Based Work</h3>
+<p>A simple, fast 0–3 scale that pairs with the built-in lesson plans:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Score</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>No engagement, or restates the chapter text without reference to the simulation</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Describes what was observed but not why</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Explains the mechanism correctly using the sim's evidence</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Explains the mechanism <em>and</em> transfers it to a new healthcare scenario, naming at least one modeling assumption</td>
+</tr>
+</tbody>
+</table>
+<p>The jump from 2 to 3 is the one worth grading for. Students who can only reach
+2 have learned the simulation; students who reach 3 have learned the concept.</p>
+<h3 id="accessibility-and-device-notes">Accessibility and Device Notes</h3>
+<ul>
+<li><strong>Screen size.</strong> The validated MicroSims are tested at 400, 800, and 1200
+  pixels wide, so they work on phones. Complex network visualizations (Chapter
+  5, 12, 18, 19) are genuinely hard to read on a phone — for those sessions,
+  ask students to bring a laptop or tablet.</li>
+<li><strong>Keyboard access.</strong> Several MicroSims, including the Healthcare Graph
+  Anatomy Explorer, support keyboard element selection. Coverage is not yet
+  universal; if you have a student who navigates by keyboard, check the
+  specific MicroSims for a session in advance and pair the student with a
+  partner for any that are mouse-only.</li>
+<li><strong>Color.</strong> Several MicroSims encode meaning in color. When you demo, say the
+  category name aloud rather than pointing at "the orange one."</li>
+<li><strong>Motion.</strong> A few simulations animate continuously. Students sensitive to
+  motion can use the fullscreen link and pause or reset rather than watching a
+  looping frame embedded in a page of text.</li>
+</ul>
+<h3 id="microsim-troubleshooting">MicroSim Troubleshooting</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blank rectangle where the sim should be</td>
+<td>Library blocked by a school firewall or content filter</td>
+<td>Try the fullscreen <code>main.html</code> URL; if that also fails, ask IT to allow <code>cdnjs.cloudflare.com</code> and <code>dmccreary.github.io</code></td>
+</tr>
+<tr>
+<td>Controls cut off at the bottom</td>
+<td>Iframe height too small for the embedding page</td>
+<td>Copy the exact height from the MicroSim's <strong>Embed This MicroSim</strong> section</td>
+</tr>
+<tr>
+<td>Sim renders but nothing responds to clicks</td>
+<td>JavaScript error, often from a stale cached file</td>
+<td>Hard-refresh (Ctrl+Shift+R / Cmd+Shift+R)</td>
+</tr>
+<tr>
+<td>Looks wrong on a projector</td>
+<td>Projector is rendering at a narrow effective width</td>
+<td>Use the fullscreen button rather than the embedded frame when projecting</td>
+</tr>
+<tr>
+<td>Works for you, not for a student</td>
+<td>Very old browser</td>
+<td>The MicroSims require a browser from the last few years; Chrome, Firefox, Safari, and Edge all work</td>
+</tr>
+</tbody>
+</table>
+<p>If a MicroSim is genuinely broken, please report it — see
+<a href="#feedback">Feedback</a> below. Include the MicroSim name, your browser, and what
+you clicked.</p>
+<hr />
+<h2 id="using-the-glossary">Using the Glossary</h2>
+<h3 id="what-is-the-glossary">What is the Glossary?</h3>
+<p>The <a href="../glossary/">glossary</a> is an alphabetical list of <strong>515 key terms</strong>
+used in the book, each with a precise, concise definition. Definitions follow
+the ISO 11179 metadata registry standard: each one states what the term <em>is</em>
+without using the term in its own definition and without embedding
+implementation details.</p>
+<p>For a course that spans graph theory, clinical vocabulary, insurance
+terminology, and AI, a shared glossary is not a convenience — it is the thing
+that keeps a class discussion from quietly splitting into two conversations.</p>
+<h3 id="tips-for-using-the-glossary-in-class">Tips for Using the Glossary in Class</h3>
+<ul>
+<li><strong>Vocabulary preview.</strong> Before starting a chapter, have students look up the
+  terms from the Concepts Covered list. Five minutes here saves fifteen later.</li>
+<li><strong>Definition matching.</strong> A warm-up in which students match definitions to
+  terms, with two distractors drawn from an adjacent chapter.</li>
+<li><strong>Student-generated definitions.</strong> After a chapter, have students write their
+  own definition of a term, then compare to the glossary and explain the gap.
+  The gap is where the learning is.</li>
+<li><strong>Terminology drift.</strong> Healthcare vocabulary is full of near-synonyms that
+  mean different things to different stakeholders — <em>encounter</em> vs. <em>visit</em>,
+  <em>claim</em> vs. <em>bill</em>, <em>provider</em> vs. <em>practitioner</em>. Ask students to find two
+  such pairs in the glossary and explain the distinction. This is exactly the
+  skill data modeling requires.</li>
+</ul>
+<hr />
+<h2 id="using-the-faq">Using the FAQ</h2>
+<h3 id="what-is-the-faq">What is the FAQ?</h3>
+<p>The <a href="../faq/">FAQ</a> contains <strong>201 questions</strong> with clear, concise answers
+written at the same reading level as the chapters, organized by topic.</p>
+<h3 id="tips-for-using-the-faq-in-class">Tips for Using the FAQ in Class</h3>
+<ul>
+<li><strong>Discussion starters.</strong> Open class with two or three FAQ questions before
+  revealing the answers.</li>
+<li><strong>Homework support.</strong> Point students here first when they are stuck outside
+  class hours; it answers most of what students ask by email.</li>
+<li><strong>Extension reading.</strong> The FAQ often covers angles the chapter text does not,
+  making it good enrichment for students who finish early.</li>
+<li><strong>Exam review.</strong> Students can use the FAQ as a structured study guide.</li>
+</ul>
+<hr />
+<h2 id="using-the-quizzes">Using the Quizzes</h2>
+<h3 id="what-are-the-quizzes">What Are the Quizzes?</h3>
+<p>Each of the 29 chapters has a <strong>quiz page</strong> with <strong>10 multiple-choice
+questions</strong> — 290 in total. Each question is aligned to a specific concept from
+the learning graph, and each answer includes an explanation of why the correct
+answer is correct <em>and</em> why each distractor is wrong.</p>
+<h3 id="how-quizzes-work">How Quizzes Work</h3>
+<ul>
+<li>Reach a quiz from the <strong>Quiz</strong> link under each chapter in the left
+  navigation.</li>
+<li>Each question is followed by a collapsible <strong>Show Answer</strong> block. Students
+  click to reveal after attempting.</li>
+<li>Each answer names the <strong>Concept Tested</strong>, which links the question back to
+  the learning graph.</li>
+<li>Quizzes are <strong>not auto-graded</strong>. They are formative self-checks, not
+  summative assessments.</li>
+</ul>
+<h3 id="tips-for-using-quizzes-in-class">Tips for Using Quizzes in Class</h3>
+<ul>
+<li><strong>Exit tickets.</strong> Assign three of the ten questions at the end of a period.</li>
+<li><strong>Pre-reading diagnostic.</strong> Assign the quiz <em>before</em> the chapter to surface
+  what students already believe. Wrong answers before reading are useful data,
+  not failures.</li>
+<li><strong>Collaborative quizzing.</strong> Pairs must agree on an answer <em>and</em> state why
+  each distractor is wrong before revealing. The distractor explanations in
+  this book are written to support exactly this.</li>
+<li><strong>Custom assessments.</strong> The questions are openly licensed — use them as a
+  bank for your own graded tests. Because students can see the answers, use the
+  bank as a <em>model</em> for writing parallel items rather than copying items
+  verbatim onto an exam.</li>
+</ul>
+<hr />
+<h2 id="using-the-references">Using the References</h2>
+<h3 id="what-are-the-references">What Are the References?</h3>
+<p>Each chapter has an <strong>Annotated References</strong> page — 232 references across the
+book. Each entry includes:</p>
+<ul>
+<li><strong>Title</strong> — the name of the source</li>
+<li><strong>URL</strong> — a clickable link</li>
+<li><strong>Relevance</strong> — why this source is useful and how it connects to the chapter</li>
+</ul>
+<p>References prioritize Wikipedia for accessibility and stable URLs, supplemented
+by authoritative books, standards documents (HL7 FHIR, CMS), and research
+papers.</p>
+<h3 id="tips-for-using-references-in-class">Tips for Using References in Class</h3>
+<ul>
+<li><strong>Assign one reference per student</strong> from a chapter's list, with a two-minute
+  report-out. Twelve students cover the chapter's whole bibliography.</li>
+<li><strong>Source evaluation.</strong> Ask students to rank three references from the same
+  chapter by authority and explain the ranking. Healthcare is a field where
+  distinguishing a standards body from a vendor blog post is a professional
+  skill.</li>
+</ul>
+<h3 id="a-note-about-link-rot">A Note About Link Rot</h3>
+<p><strong>Link rot</strong> is when a URL stops working because a page moved or was deleted.
+If you or your students hit a broken link:</p>
+<ol>
+<li>Search for the article title on the source website.</li>
+<li>Try the <a href="https://web.archive.org/">Wayback Machine</a> for an archived copy.</li>
+<li>Report it via GitHub Issues (see <a href="#feedback">Feedback</a>).</li>
+</ol>
+<hr />
+<h2 id="the-learning-graph">The Learning Graph</h2>
+<h3 id="what-is-a-learning-graph">What is a Learning Graph?</h3>
+<p>A <strong>learning graph</strong> is a map of how the book's concepts depend on each other.
+It is a <strong>DAG</strong> (Directed Acyclic Graph) — a diagram where arrows point from a
+prerequisite concept to the concept that needs it, and no chain of arrows ever
+loops back on itself.</p>
+<p>This book's learning graph contains <strong>513 concepts</strong> connected by <strong>552
+dependency edges</strong>. The interactive
+<a href="../sims/graph-viewer/">Learning Graph Viewer</a> lets you search,
+filter, and explore it.</p>
+<h3 id="how-instructors-can-use-the-learning-graph">How Instructors Can Use the Learning Graph</h3>
+<ul>
+<li><strong>Syllabus alignment.</strong> Compare the concept list to your existing syllabus to
+  find coverage gaps in either direction.</li>
+<li><strong>Prerequisite checking.</strong> Before teaching a concept, verify that its
+  prerequisites have been covered. The graph makes chains visible that a table
+  of contents hides.</li>
+<li><strong>Remediation.</strong> When a student is stuck on a concept, trace backward along
+  its incoming edges to find the actual gap. It is rarely the concept in front
+  of them.</li>
+<li><strong>Resequencing.</strong> If you plan to reorder chapters, check the graph first —
+  it will show you which dependencies you are about to break.</li>
+<li><strong>Enrichment.</strong> Advanced students can follow the graph forward from a concept
+  they have mastered.</li>
+</ul>
+<p>Supporting reports in the <strong>Learning Graph</strong> section of the navigation include
+the concept list, concept taxonomy, taxonomy distribution, quality metrics,
+glossary and FAQ quality reports, and the MicroSim coverage report — the last
+of which shows which concepts do and do not yet have an interactive simulation.</p>
+<hr />
+<h2 id="sage-your-pedagogical-agent">Sage: Your Pedagogical Agent</h2>
+<h3 id="what-is-a-pedagogical-agent">What is a Pedagogical Agent?</h3>
+<p>A <strong>pedagogical agent</strong> is a character who appears throughout a textbook to
+guide students. Research on the <strong>persona effect</strong> finds that a consistent,
+friendly character improves student engagement and their perception of how much
+they are learning.</p>
+<h3 id="meet-sage">Meet Sage</h3>
+<p><strong>Sage</strong> is a deep-blue octopus with small round glasses and orange-accented
+arms. Sage's catchphrase is <em>"Let's connect the dots!"</em></p>
+<p>The octopus was chosen deliberately: eight arms radiating from a central body
+are a living picture of edges radiating from a node, and an octopus's
+distributed nervous system — neurons spread through the arms rather than
+centralized in one brain — echoes the graph neural network material in Chapter
+6. Sage's voice is warm, playful, and fond of graph puns, and returns often to
+the idea that these skills are a real lever on healthcare costs.</p>
+<h3 id="how-sage-appears">How Sage Appears</h3>
+<p>Sage appears as colored callout boxes (called <strong>admonitions</strong>) throughout each
+chapter:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Purpose</th>
+<th>Typical frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>Introduces the chapter</td>
+<td>Once, at each chapter opening</td>
+</tr>
+<tr>
+<td>Thinking</td>
+<td>Highlights a key insight</td>
+<td>1–4 per chapter</td>
+</tr>
+<tr>
+<td>Tip</td>
+<td>Shares practical advice</td>
+<td>As the material warrants</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>Flags a common mistake</td>
+<td>As the material warrants</td>
+</tr>
+<tr>
+<td>Encourage</td>
+<td>Supports students through hard material</td>
+<td>Where students tend to struggle</td>
+</tr>
+<tr>
+<td>Celebration</td>
+<td>Marks progress</td>
+<td>Once, at each chapter close</td>
+</tr>
+<tr>
+<td>Neutral</td>
+<td>General notes</td>
+<td>Rarely</td>
+</tr>
+</tbody>
+</table>
+<p>Sage appears fewer than ten times in any chapter, less often in shorter
+chapters, and never in back-to-back boxes.</p>
+<h3 id="tips-for-instructors">Tips for Instructors</h3>
+<ul>
+<li><strong>Read Sage's tips aloud.</strong> They are written conversationally and work well
+  spoken.</li>
+<li><strong>Use the thinking boxes as discussion prompts.</strong> They mark the insights the
+  chapter most wants students to carry away.</li>
+<li><strong>Point struggling students to the encourage boxes.</strong> They are placed exactly
+  where students historically get stuck.</li>
+<li><strong>Do not skip the mascot when teaching adults.</strong> Professional and graduate
+  students sometimes roll their eyes at a cartoon octopus for about one
+  chapter, and then start quoting it.</li>
+</ul>
+<hr />
+<h2 id="feedback">Feedback</h2>
+<h3 id="reporting-issues-and-suggestions">Reporting Issues and Suggestions</h3>
+<p>This textbook is an open-source project hosted on <strong>GitHub</strong>, a website where
+projects are developed collaboratively. You do not need to know how to program
+to report a problem.</p>
+<h3 id="what-is-a-github-issue">What is a GitHub Issue?</h3>
+<p>A <strong>GitHub Issue</strong> is like a support ticket — a way to report a bug, suggest an
+improvement, or ask a question. Each issue gets a number and can be discussed
+publicly.</p>
+<h3 id="how-to-submit-feedback">How to Submit Feedback</h3>
+<ol>
+<li>Go to <a href="https://github.com/dmccreary/modeling-healthcare-data">dmccreary/modeling-healthcare-data</a>.</li>
+<li>Click the <strong>Issues</strong> tab.</li>
+<li>Click <strong>New issue</strong>.</li>
+<li>Give it a clear title — "Broken link in Chapter 5 references" or "MicroSim
+   controls clipped in Canvas."</li>
+<li>In the description, include the page or chapter, what you expected versus
+   what happened, and your browser and device.</li>
+<li>Click <strong>Submit new issue</strong>.</li>
+</ol>
+<p>A free GitHub account is required. If you prefer not to create one, use the
+<a href="../contact/">Contact</a> page.</p>
+<h3 id="feedback-that-is-especially-welcome">Feedback That Is Especially Welcome</h3>
+<ul>
+<li><strong>Classroom experience reports</strong> — what worked, what fell flat, and how long
+  it actually took. Timing estimates in this guide improve only with real data.</li>
+<li><strong>MicroSim bugs</strong> — anything that fails to load or behaves unexpectedly.</li>
+<li><strong>Factual errors</strong> in the healthcare, coding, or standards material.</li>
+<li><strong>Accessibility issues</strong> — anything hard to read or navigate.</li>
+<li><strong>Missing MicroSims</strong> — a concept you had to explain by hand that a
+  simulation would have carried.</li>
+</ul>
+<hr />
+<h2 id="understanding-the-license">Understanding the License</h2>
+<h3 id="what-is-a-creative-commons-license">What is a Creative Commons License?</h3>
+<p>A <strong>license</strong> is a legal document explaining what others may do with a work. A
+<strong>Creative Commons (CC)</strong> license is a standardized, plain-language license
+used widely for educational content.</p>
+<h3 id="this-textbooks-license">This Textbook's License</h3>
+<p>This textbook uses <strong>CC BY-NC-SA 4.0</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Full Name</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CC</strong></td>
+<td>Creative Commons</td>
+<td>A standard open license</td>
+</tr>
+<tr>
+<td><strong>BY</strong></td>
+<td>Attribution</td>
+<td>You must credit the original author</td>
+</tr>
+<tr>
+<td><strong>NC</strong></td>
+<td>Non-Commercial</td>
+<td>You may not use the material to make money</td>
+</tr>
+<tr>
+<td><strong>SA</strong></td>
+<td>Share-Alike</td>
+<td>Modified versions must carry the same license</td>
+</tr>
+<tr>
+<td><strong>4.0</strong></td>
+<td>Version 4.0</td>
+<td>The current standard version</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-you-can-do">What You CAN Do</h3>
+<ul>
+<li><strong>Copy</strong> the whole book or individual chapters for your students</li>
+<li><strong>Share</strong> the link with colleagues, students, or parents</li>
+<li><strong>Print</strong> chapters for classroom use</li>
+<li><strong>Modify</strong> the content — add examples, cut sections, reorder chapters</li>
+<li><strong>Translate</strong> it into other languages</li>
+<li><strong>Embed</strong> the MicroSims in your own course pages</li>
+<li><strong>Reuse the quiz questions</strong> in your own assessments</li>
+<li><strong>Create derivative works</strong> — build your own version of the book</li>
+</ul>
+<h3 id="what-you-cannot-do">What You CANNOT Do</h3>
+<ul>
+<li><strong>Sell</strong> the book or charge students for access to it</li>
+<li><strong>Remove attribution</strong> — Dan McCreary must be credited</li>
+<li><strong>Relicense</strong> — derivative works must remain CC BY-NC-SA 4.0</li>
+<li><strong>Claim it as your own work</strong></li>
+</ul>
+<p>The non-commercial clause deserves one clarification for instructors: teaching a
+course at a tuition-charging institution is not what "commercial use" targets.
+Selling the book, or a course pack built from it, as a product is. If you are
+unsure about a specific case, consult your institution's counsel.</p>
+<p>For the full legal text, see the <a href="../license/">License</a> page.</p>
+<hr />
+<h2 id="customizing-your-own-version">Customizing Your Own Version</h2>
+<p>You can create your own customized version of this textbook. This section
+explains how, step by step.</p>
+<h3 id="key-technical-terms">Key Technical Terms</h3>
+<ul>
+<li><strong>Repository (repo)</strong> — a folder on GitHub containing all of a project's
+  files.</li>
+<li><strong>Git</strong> — a version control tool that tracks changes to files.</li>
+<li><strong>Clone</strong> — making a copy of a repository on your own computer.</li>
+<li><strong>Fork</strong> — making a copy of a repository under your own GitHub account.</li>
+<li><strong>MkDocs</strong> — the software that turns the book's markdown files into a
+  website.</li>
+<li><strong>Markdown</strong> — a simple text formatting language. <code>**bold**</code> makes <strong>bold</strong>,
+  <code># Heading</code> makes a heading, <code>-</code> makes a bullet.</li>
+<li><strong>mkdocs.yml</strong> — the main configuration file: site title, navigation,
+  colors, and features.</li>
+</ul>
+<h3 id="step-1-create-a-github-account">Step 1: Create a GitHub Account</h3>
+<p>Go to <a href="https://github.com">github.com</a> and create a free account.</p>
+<h3 id="step-2-fork-or-clone">Step 2: Fork or Clone</h3>
+<p><strong>Option A — Fork (easier, stays on GitHub)</strong></p>
+<ol>
+<li>Go to <a href="https://github.com/dmccreary/modeling-healthcare-data">dmccreary/modeling-healthcare-data</a></li>
+<li>Click <strong>Fork</strong> in the upper right</li>
+<li>You now have your own editable copy</li>
+</ol>
+<p><strong>Option B — Clone (more control, works on your computer)</strong></p>
+<p>Install <a href="https://git-scm.com/">Git</a>, then run:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dmccreary/modeling-healthcare-data.git
+</code></pre></div></td></tr></table></div>
+<h3 id="step-3-make-changes">Step 3: Make Changes</h3>
+<p>All content lives in the <code>docs/</code> folder as markdown files.</p>
+<p><strong>Change the title and author</strong> — edit these lines in <code>mkdocs.yml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Your</span><span class="nv"> </span><span class="s">Custom</span><span class="nv"> </span><span class="s">Textbook</span><span class="nv"> </span><span class="s">Title&quot;</span>
+<span class="nt">site_description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Your</span><span class="nv"> </span><span class="s">description</span><span class="nv"> </span><span class="s">here&quot;</span>
+<span class="nt">site_author</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Your</span><span class="nv"> </span><span class="s">Name&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Change the colors</strong> — in <code>mkdocs.yml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;orange&#39;</span><span class="w">   </span><span class="c1"># change to: blue, red, purple, teal, green, indigo...</span>
+<span class="w">    </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;blue&#39;</span>
+</code></pre></div></td></tr></table></div>
+<p>MkDocs Material supports: red, pink, purple, deep purple, indigo, blue, light
+blue, cyan, teal, green, light green, lime, yellow, amber, orange, deep orange,
+brown, grey, blue grey.</p>
+<p><strong>Change the logo</strong> — replace <code>docs/img/mascot/welcome.png</code>, or point
+<code>theme.logo</code> at a different file.</p>
+<p><strong>Reorder or remove chapters</strong> — edit the <code>nav:</code> block in <code>mkdocs.yml</code>. Check
+the <a href="../learning-graph/">learning graph</a> first to see which
+prerequisites you would be breaking.</p>
+<p><strong>Add your own chapter</strong> — create <code>docs/chapters/30-your-topic/index.md</code> and
+add it to <code>nav:</code>.</p>
+<h3 id="step-4-preview-locally">Step 4: Preview Locally</h3>
+<p>Install Python 3.8 or newer, then:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div></td></tr></table></div>
+<p>Open <code>http://127.0.0.1:8000/modeling-healthcare-data/</code>. The server watches for
+file changes and refreshes the page as you save.</p>
+<h3 id="step-5-publish-your-version">Step 5: Publish Your Version</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div></td></tr></table></div>
+<p>This builds the site and publishes it to
+<code>https://YOUR-USERNAME.github.io/modeling-healthcare-data/</code>, usually within a
+couple of minutes.</p>
+<hr />
+<h2 id="analytics">Analytics</h2>
+<h3 id="what-is-web-analytics">What is Web Analytics?</h3>
+<p><strong>Web analytics</strong> measures how visitors use a website — which pages they visit,
+how long they stay, where they came from. For a textbook, it tells you which
+chapters students actually read and which MicroSims they actually open.</p>
+<h3 id="setting-up-your-own-google-analytics">Setting Up Your Own Google Analytics</h3>
+<p>The published version of this book uses Google Analytics. If you fork it, point
+it at your own property:</p>
+<ol>
+<li>Go to <a href="https://analytics.google.com/">analytics.google.com</a> and sign in.</li>
+<li>Create a new <strong>property</strong> for your site.</li>
+<li>Google issues a <strong>Measurement ID</strong> shaped like <code>G-XXXXXXXXXX</code>.</li>
+<li>In <code>mkdocs.yml</code>, replace the existing ID:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">extra</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">analytics</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google</span>
+<span class="w">    </span><span class="nt">property</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">G-YOUR-MEASUREMENT-ID</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Rebuild and deploy. Data appears within 24–48 hours.</li>
+</ol>
+<p>Do not leave the original author's Measurement ID in a fork — your students'
+traffic would be reported into someone else's property, and you would see
+nothing.</p>
+<h3 id="what-analytics-can-tell-you">What Analytics Can Tell You</h3>
+<ul>
+<li>Which chapters are most and least visited — where students are skipping</li>
+<li>Average time on page — engagement, or confusion</li>
+<li>Device breakdown — how many students are reading on a phone</li>
+<li>Which MicroSim pages get opened directly, which is a good proxy for which
+  ones students found worth revisiting</li>
+</ul>
+<h3 id="xapi-monitoring-advanced">xAPI Monitoring (Advanced)</h3>
+<p><strong>xAPI</strong> (Experience API, also called "Tin Can API") is a standard for tracking
+detailed learning activities — not just page views but specific interactions
+like "student moved the threshold slider to 0.72."</p>
+<p>An <strong>LRS</strong> (Learning Record Store) is the database that stores xAPI records.</p>
+<p><strong>Before collecting student-level learning data, understand the regulations:</strong></p>
+<ul>
+<li><strong>FERPA</strong> — U.S. federal law protecting student education records. Data that
+  can identify individual students falls under FERPA.</li>
+<li><strong>COPPA</strong> — U.S. federal law covering children under 13.</li>
+<li><strong>State student-privacy laws</strong> — many U.S. states add their own requirements.</li>
+<li><strong>GDPR</strong> — EU law applying to any student located in the EU.</li>
+</ul>
+<p><strong>Recommendation:</strong> the Google Analytics setup above is anonymous and aggregate
+by default, which is the safest starting point. If you want individual student
+tracking through an LRS, involve your institution's data privacy officer before
+you start, not after.</p>
+<hr />
+<h2 id="quick-reference-for-instructors">Quick Reference for Instructors</h2>
+<table>
+<thead>
+<tr>
+<th>I want to...</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browse every simulation</td>
+<td><a href="../sims/">MicroSims gallery</a></td>
+</tr>
+<tr>
+<td>Find a MicroSim's lesson plan</td>
+<td>That MicroSim's own page, <strong>Lesson Plan</strong> section</td>
+</tr>
+<tr>
+<td>Get iframe code for my LMS</td>
+<td>That MicroSim's own page, <strong>Embed This MicroSim</strong> section</td>
+</tr>
+<tr>
+<td>See which concepts a chapter covers</td>
+<td>The chapter's <strong>Concepts Covered</strong> list</td>
+</tr>
+<tr>
+<td>Check prerequisites before resequencing</td>
+<td><a href="../sims/graph-viewer/">Learning Graph Viewer</a></td>
+</tr>
+<tr>
+<td>Find a definition</td>
+<td><a href="../glossary/">Glossary</a> (515 terms)</td>
+</tr>
+<tr>
+<td>Find student questions to open class with</td>
+<td><a href="../faq/">FAQ</a> (201 questions)</td>
+</tr>
+<tr>
+<td>Get a self-check for a chapter</td>
+<td>That chapter's <strong>Quiz</strong> page (10 questions)</td>
+</tr>
+<tr>
+<td>Find further reading</td>
+<td>That chapter's <strong>Annotated References</strong> page</td>
+</tr>
+<tr>
+<td>See unbuilt MicroSim specs for student projects</td>
+<td><code>docs/sims/TODO/</code> in the repository</td>
+</tr>
+<tr>
+<td>Report a problem</td>
+<td><a href="https://github.com/dmccreary/modeling-healthcare-data/issues">GitHub Issues</a></td>
+</tr>
+<tr>
+<td>Reach the author</td>
+<td><a href="../contact/">Contact</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../prompts/41-ch-4-quiz/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quiz ch 4">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Quiz ch 4
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../book-metrics/" class="md-footer__link md-footer__link--next" aria-label="Next: Book Metrics">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Book Metrics
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../js/extra.js"></script>
+      
+    
+  </body>
+</html>

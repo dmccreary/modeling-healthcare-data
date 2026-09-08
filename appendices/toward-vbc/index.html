@@ -1,0 +1,2291 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An undergraduate textbook on modeling healthcare data using graphs.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/appendices/toward-vbc/">
+      
+      
+        <link rel="prev" href="../case-studies/">
+      
+      
+        <link rel="next" href="../../learning-graph/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Toward Value-Based Care in the US - Modeling Healthcare Data with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Y8QRX24SGF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Y8QRX24SGF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Y8QRX24SGF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Toward Value-Based Care in the US - Modeling Healthcare Data with Graphs" >
+      
+        <meta  property="og:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/appendices/toward-vbc/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/modeling-healthcare-data/appendices/toward-vbc/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Toward Value-Based Care in the US - Modeling Healthcare Data with Graphs" >
+      
+        <meta  name="twitter:description"  content="An undergraduate textbook on modeling healthcare data using graphs." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/appendices/toward-vbc/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#toward-value-based-care-in-the-us" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/mascot/welcome.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modeling Healthcare Data with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Toward Value-Based Care in the US
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
+      
+  <img src="../../img/mascot/welcome.png" alt="logo">
+
+    </a>
+    Modeling Healthcare Data with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/modeling-healthcare-data" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Appendices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-studies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case Studies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Toward Value-Based Care in the US
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Toward Value-Based Care in the US
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-sided-fairness-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Three-Sided Fairness Problem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-graph-model-for-value-based-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Graph Model for Value-Based Care
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-1-risk-adjusted-capitation-that-resists-gaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Risk-Adjusted Capitation That Resists Gaming
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-attributing-shared-savings-across-a-care-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Attributing Shared Savings Across a Care Team
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3-attributing-quality-outcomes-to-the-right-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3: Attributing Quality Outcomes to the Right Provider
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-4-total-cost-of-care-across-a-multi-payor-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4: Total Cost of Care Across a Multi-Payor Network
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-5-fair-peer-benchmarks-through-graph-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 5: Fair Peer Benchmarks Through Graph Clustering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-6-social-risk-without-penalizing-the-provider-or-the-patient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 6: Social Risk Without Penalizing the Provider or the Patient
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example-a-fair-shared-savings-settlement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked Example: A Fair Shared-Savings Settlement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-keeping-the-incentives-honest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardrails: Keeping the Incentives Honest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-sided-fairness-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Three-Sided Fairness Problem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-graph-model-for-value-based-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Graph Model for Value-Based Care
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-1-risk-adjusted-capitation-that-resists-gaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Risk-Adjusted Capitation That Resists Gaming
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-attributing-shared-savings-across-a-care-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Attributing Shared Savings Across a Care Team
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3-attributing-quality-outcomes-to-the-right-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3: Attributing Quality Outcomes to the Right Provider
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-4-total-cost-of-care-across-a-multi-payor-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4: Total Cost of Care Across a Multi-Payor Network
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-5-fair-peer-benchmarks-through-graph-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 5: Fair Peer Benchmarks Through Graph Clustering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-6-social-risk-without-penalizing-the-provider-or-the-patient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 6: Social Risk Without Penalizing the Provider or the Patient
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example-a-fair-shared-savings-settlement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked Example: A Fair Shared-Savings Settlement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-keeping-the-incentives-honest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardrails: Keeping the Incentives Honest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/modeling-healthcare-data/blob/main/docs/appendices/toward-vbc/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="toward-value-based-care-in-the-us">Toward Value-Based Care in the US</h1>
+<p>The healthcare system in the US is by far the most expensive
+healthcare system in the world, yet it does not produce outcomes to
+match that spending. A large share of the gap comes from how care is
+paid for: <strong>fee-for-service</strong> reimburses every test, visit, and
+procedure as a separate billable event, which rewards volume even
+when volume does not improve health. <strong>Value-based care (VBC)</strong>
+reverses that incentive by tying payment to the cost and quality of
+an entire patient's care over time rather than to the count of
+services delivered.</p>
+<p>The idea is not new — capitation, shared savings, and bundled
+payments (introduced in <a href="../../chapters/16-healthcare-revenue-and-cost-analysis/">Chapter 16</a>
+and <a href="../../chapters/17-healthcare-financial-forecasting-and-risk/">Chapter 17</a>)
+have existed for decades. What has kept value-based care from
+scaling past a minority of US healthcare spending is not the
+economic theory — it is a <strong>data modeling problem</strong>. Paying fairly
+for outcomes requires connecting facts that fee-for-service billing
+never had to connect: which provider actually influenced which
+outcome, how sick a patient really was before treatment started, how
+much of a patient's total cost of care happened outside the practice
+that is being measured, and whether a cost or quality number is
+being compared to a fair peer benchmark. Every one of those
+questions is a graph traversal question — "follow this patient
+across every provider, claim, and condition they touched, then
+compare the result to a fair peer group" — and every one of them is
+awkward or impossible to answer from billing tables designed to
+process one claim at a time.</p>
+<p>This appendix works through concrete examples of the graph
+structures that make value-based care computable, auditable, and —
+critically — <strong>fair to all three parties who have to accept the
+result</strong>: the providers being paid, the patients receiving care, and
+the payors financing it.</p>
+<h2 id="the-three-sided-fairness-problem">The Three-Sided Fairness Problem</h2>
+<p>Every value-based payment model has to answer the same question for
+three different audiences at once, and a model that satisfies only
+one of them collapses:</p>
+<ul>
+<li><strong>Fair to providers</strong> means a provider is not penalized for
+  factors outside their control — a sicker-than-average patient
+  panel, a patient's non-adherence, a complication caused by another
+  clinician in the care team, or a poor social environment the
+  provider cannot change. Providers who see this happen stop
+  participating in value-based contracts, which is exactly what
+  slowed VBC adoption through the 2010s.</li>
+<li><strong>Fair to patients</strong> means the drive to control cost does not
+  translate into under-treatment, denied referrals, or a system that
+  quietly avoids sicker and more complex patients because they are
+  expensive to manage well.</li>
+<li><strong>Fair to payors</strong> means the payments made under the contract
+  actually reflect the risk and cost being managed — not risk scores
+  inflated by upcoding, savings claimed for cost reductions that
+  would have happened anyway, or quality measures satisfied on
+  paper without a matching clinical improvement.</li>
+</ul>
+<p>A relational, claim-by-claim data warehouse can report volume and
+unit price well, which is why it was good enough for
+fee-for-service. It struggles with all three fairness questions
+above, because each one requires walking a chain of relationships —
+patient to condition to risk category, provider to care team to
+attributed outcome, claim to episode to benchmark peer group — that
+a foreign-key join can express but that becomes slow and unreadable
+once the chain gets more than two or three hops long. A graph model
+makes those chains the primary unit of query, which is what turns
+"fairness" from a contract negotiation into something that can
+actually be computed and audited.</p>
+<h2 id="a-graph-model-for-value-based-care">A Graph Model for Value-Based Care</h2>
+<p>The examples in this appendix build on a small set of node and
+relationship types layered on top of the claims and provider graph
+already developed in
+<a href="../../chapters/14-insurance-claims-coverage-pharmacy-benefits/">Chapter 14</a>,
+<a href="../../chapters/15-reimbursement-health-plans-payer-contracts/">Chapter 15</a>,
+and <a href="../../chapters/16-healthcare-revenue-and-cost-analysis/">Chapter 16</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Represents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Patient</code></td>
+<td>An individual receiving care</td>
+</tr>
+<tr>
+<td><code>Condition</code></td>
+<td>A diagnosed clinical condition, mapped to an ICD-10 code</td>
+</tr>
+<tr>
+<td><code>HCCCategory</code></td>
+<td>A Hierarchical Condition Category used for risk scoring</td>
+</tr>
+<tr>
+<td><code>Provider</code> / <code>ProviderGroup</code></td>
+<td>An individual clinician or the organization they bill under</td>
+</tr>
+<tr>
+<td><code>CareTeamRole</code></td>
+<td>A provider's specific role (attending, consulting, post-acute) within one patient's episode</td>
+</tr>
+<tr>
+<td><code>Episode</code></td>
+<td>A bounded period of care for one clinical event (a surgery, a pregnancy, a chronic-disease year)</td>
+</tr>
+<tr>
+<td><code>Claim</code></td>
+<td>A billed service, as modeled in Chapter 14</td>
+</tr>
+<tr>
+<td><code>QualityMetric</code></td>
+<td>A measured clinical outcome (readmission, HbA1c control, screening completion)</td>
+</tr>
+<tr>
+<td><code>SocialDeterminant</code></td>
+<td>A non-clinical risk factor (housing instability, food insecurity, transportation access)</td>
+</tr>
+<tr>
+<td><code>Contract</code></td>
+<td>A value-based agreement between a <code>Payor</code> and a <code>ProviderGroup</code></td>
+</tr>
+<tr>
+<td><code>PeerCohort</code></td>
+<td>A cluster of patients or providers judged comparable for benchmarking</td>
+</tr>
+</tbody>
+</table>
+<p>And the relationships that connect them:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">DIAGNOSED_WITH</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Condition</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">Condition</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">MAPS_TO</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">HCCCategory</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">HAS_RISK_FACTOR</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">SocialDeterminant</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">PART_OF</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Episode</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">Provider</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">HAS_ROLE</span><span class="w"> </span><span class="p">{</span><span class="n">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Attending&quot;</span><span class="p">}</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">CareTeamRole</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">IN_EPISODE</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Episode</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">Claim</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">BELONGS_TO</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Episode</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">Episode</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">MEASURED_BY</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">QualityMetric</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">ProviderGroup</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">PARTY_TO</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Contract</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="k">WITH</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Payor</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">BENCHMARKED_AGAINST</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">PeerCohort</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Nothing here replaces the claims and eligibility graph from earlier
+chapters — it extends it with the handful of node types a
+value-based contract actually needs to settle: risk, attribution,
+episode boundaries, and peer comparison.</p>
+<h2 id="example-1-risk-adjusted-capitation-that-resists-gaming">Example 1: Risk-Adjusted Capitation That Resists Gaming</h2>
+<p>Chapter 16 introduced risk adjustment as scaling a capitated PMPM
+payment by a patient panel's average HCC risk score. The fairness
+problem is what happens <em>between</em> that clean summary number and the
+individual diagnosis codes that produced it: a provider group under
+financial pressure has a direct incentive to document additional
+HCC-qualifying conditions (a practice payors call upcoding) even
+when the clinical evidence for them is thin, which overpays that
+group at every other stakeholder's expense.</p>
+<p>A graph model makes the evidence chain behind every risk-adjusted
+dollar traceable rather than trusting the diagnosis code alone. Each
+<code>Condition</code> used to compute an HCC score is connected not just to
+the <code>Patient</code> but to the clinical evidence that supports it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(:</span><span class="n">Condition</span><span class="w"> </span><span class="p">{</span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;E11.22&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;T2 Diabetes w/ CKD&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">SUPPORTED_BY</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">LabResult</span><span class="w"> </span><span class="p">{</span><span class="n">test</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eGFR&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="m">42</span><span class="p">})</span>
+<span class="p">(:</span><span class="n">Condition</span><span class="w"> </span><span class="p">{</span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;E11.22&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">SUPPORTED_BY</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Medication</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Metformin&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">active</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">})</span>
+</code></pre></div></td></tr></table></div>
+<p>A condition contributing to a risk score with no connected
+<code>LabResult</code>, <code>Medication</code>, or prior-year recurrence edge is exactly
+the pattern a payor's auditors want surfaced automatically:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">DIAGNOSED_WITH</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="n">Condition</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">MAPS_TO</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">:</span><span class="n">HCCCategory</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">SUPPORTED_BY</span><span class="o">]-&gt;</span><span class="p">()</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">patient_id</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">category</span>
+</code></pre></div></td></tr></table></div>
+<p>This traversal is fair to all three parties at once: it protects the
+<strong>payor</strong> from paying inflated capitation on unsupported diagnoses,
+it protects <strong>patients</strong> because it keeps the incentive pointed at
+real disease management rather than documentation volume, and it
+protects <strong>honest providers</strong> by making the audit selective —
+instead of every provider group facing suspicion, only the specific
+patient-condition pairs lacking supporting evidence surface for
+review.</p>
+<h2 id="example-2-attributing-shared-savings-across-a-care-team">Example 2: Attributing Shared Savings Across a Care Team</h2>
+<p>Bundled payments and shared-savings programs pay a single amount for
+an entire episode, but the episode is rarely delivered by one
+provider. A hip replacement <code>Episode</code> might involve a surgeon, an
+anesthesiologist, the hospital facility, a physical therapist, and a
+skilled nursing facility for post-acute recovery. Fee-for-service
+never had to decide how much of a savings (or overrun) each of them
+caused, because each billed and was paid independently. Shared
+savings has to decide exactly that, or the incentive to manage cost
+collapses for anyone whose contribution can't be seen.</p>
+<p>A graph model attaches each contributor to the episode with a
+weighted edge reflecting their share of cost and their share of
+control over that cost:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(:</span><span class="n">Provider</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Dr. Osei&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Surgeon&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">CONTRIBUTED_TO</span><span class="w"> </span><span class="p">{</span><span class="n">cost_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">35</span><span class="p">,</span><span class="w"> </span><span class="n">control_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">55</span><span class="p">}</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Episode</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;EP-48213&quot;</span><span class="p">})</span>
+<span class="p">(:</span><span class="n">Provider</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Dr. Patel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Anesthesiologist&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">CONTRIBUTED_TO</span><span class="w"> </span><span class="p">{</span><span class="n">cost_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">control_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">10</span><span class="p">}</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Episode</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;EP-48213&quot;</span><span class="p">})</span>
+<span class="p">(:</span><span class="n">Facility</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Riverside SNF&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">CONTRIBUTED_TO</span><span class="w"> </span><span class="p">{</span><span class="n">cost_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">control_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">30</span><span class="p">}</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Episode</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;EP-48213&quot;</span><span class="p">})</span>
+<span class="p">(:</span><span class="n">Facility</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Northside Hospital&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">CONTRIBUTED_TO</span><span class="w"> </span><span class="p">{</span><span class="n">cost_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">control_share</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">05</span><span class="p">}</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Episode</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;EP-48213&quot;</span><span class="p">})</span>
+</code></pre></div></td></tr></table></div>
+<p>Distributing savings by <code>cost_share</code> alone would be fair in a purely
+accounting sense but unfair operationally: the skilled nursing
+facility represents 40% of the episode's cost, but a surgeon who
+chose a technique that shortened the hospital stay and avoided a
+SNF placement altogether exercised far more <em>control</em> over whether
+that cost happened at all. Weighting the savings distribution toward
+<code>control_share</code>, or blending both weights, rewards the decisions
+that actually drove the outcome rather than the party that happened
+to hold the largest line item — which is precisely the distinction a
+flat percentage split cannot make and a weighted graph traversal
+can.</p>
+<h2 id="example-3-attributing-quality-outcomes-to-the-right-provider">Example 3: Attributing Quality Outcomes to the Right Provider</h2>
+<p>Readmission penalties are a common flashpoint for provider
+fairness complaints: a patient discharged after surgery who is
+readmitted two weeks later because a primary-care follow-up never
+happened should not count against the surgeon, but a naive quality
+measure that simply asks "was this patient readmitted within 30 days
+of this provider's procedure?" attributes the outcome to whoever
+performed the procedure regardless of who actually failed to close
+the loop.</p>
+<p>A <code>CareTeamRole</code> graph lets the quality-attribution query walk
+forward from the discharge event to find who held responsibility for
+the specific failure that caused the readmission, rather than
+defaulting to the most visible provider on the claim:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="n">Episode</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">MEASURED_BY</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">q</span><span class="p">:</span><span class="n">QualityMetric</span><span class="w"> </span><span class="p">{</span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;30-Day Readmission&quot;</span><span class="p">})</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">IN_EPISODE</span><span class="o">]-</span><span class="p">(:</span><span class="n">CareTeamRole</span><span class="w"> </span><span class="p">{</span><span class="n">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Follow-Up Coordination&quot;</span><span class="p">})</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">HAS_ROLE</span><span class="o">]-</span><span class="p">(</span><span class="n">responsible</span><span class="p">:</span><span class="n">Provider</span><span class="p">)</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">IN_EPISODE</span><span class="o">]-</span><span class="p">(:</span><span class="n">CareTeamRole</span><span class="w"> </span><span class="p">{</span><span class="n">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Surgeon&quot;</span><span class="p">})</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">HAS_ROLE</span><span class="o">]-</span><span class="p">(</span><span class="n">surgeon</span><span class="p">:</span><span class="n">Provider</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">responsible</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">accountable_for_followup</span><span class="p">,</span><span class="w"> </span><span class="n">surgeon</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">performed_procedure</span>
+</code></pre></div></td></tr></table></div>
+<p>This is not a technicality — it changes real behavior. When the
+graph can show that the follow-up-coordination role, not the
+surgical role, is where a specific readmission originated, the
+health system's improvement effort (and the compensation impact) can
+target the actual point of failure. Surgeons who see readmissions
+attributed accurately, instead of automatically, are far more likely
+to stay engaged with a value-based contract instead of viewing it as
+an arbitrary tax on their most complex cases.</p>
+<h2 id="example-4-total-cost-of-care-across-a-multi-payor-network">Example 4: Total Cost of Care Across a Multi-Payor Network</h2>
+<p>A primary-care group managing a patient's total cost of care under a
+shared-savings contract is only measured fairly if the "total"
+actually includes care the patient received outside that group's own
+walls — a specialist visit billed to a different payor, an ER visit
+at a hospital with no financial relationship to the group, or a
+prescription filled through a separate pharmacy benefit manager.
+Health systems call the portion of care that happens outside the
+attributed network <strong>referral leakage</strong>, and in a claims warehouse
+scoped to a single payor's own data, leaked care is often invisible
+by construction — the group looks artificially efficient simply
+because its most expensive patients received care nobody measured.</p>
+<p>The <code>Patient</code> node itself is the natural join point for stitching
+this together, because it is the one entity every payor's claims
+data shares:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">PART_OF</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="n">Episode</span><span class="p">)</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">BELONGS_TO</span><span class="o">]-</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="n">Claim</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">PAID_BY</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">payor</span><span class="p">:</span><span class="n">Payor</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">patient_id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;PT-90210&quot;</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">payor</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">allowed_amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_cost</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">claim_count</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_cost</span><span class="w"> </span><span class="k">DESC</span>
+</code></pre></div></td></tr></table></div>
+<p>Run across an entire attributed panel, the same pattern reveals
+which portion of total cost of care originated outside the
+contracted <code>ProviderGroup</code>'s own claims — the leakage a
+single-payor report would never show. This protects <strong>payors</strong> from
+paying shared-savings bonuses calculated on an incomplete cost
+picture, and it protects <strong>providers</strong> by giving them visibility
+into exactly where their patients' spending is actually happening,
+which is the first step toward redirecting referrals into
+higher-value parts of the network instead of being blamed for costs
+they never saw coming.</p>
+<h2 id="example-5-fair-peer-benchmarks-through-graph-clustering">Example 5: Fair Peer Benchmarks Through Graph Clustering</h2>
+<p>Value-based contracts almost always compare a provider's cost or
+quality against a benchmark, and the benchmark is where a great deal
+of provider distrust originates: comparing a rural family-medicine
+practice with an older, sicker, socioeconomically disadvantaged
+panel against a national average dominated by urban and suburban
+practices produces a benchmark that no amount of good clinical
+management can meet. It is not a data problem in the sense of
+missing information — it is a <strong>cohort-selection</strong> problem, and
+cohort selection is exactly what the clustering algorithms from
+<a href="../../chapters/06-graph-embeddings-clustering-gnn/">Chapter 6</a>
+are built to solve.</p>
+<p>Rather than benchmarking every provider against one national number,
+patients (or providers) are first clustered into a <code>PeerCohort</code> using
+similarity across risk score, geography, and comorbidity profile —
+the same graph clustering and node-similarity techniques introduced
+in <a href="../../chapters/05-graph-algorithms-centrality-similarity/">Chapter 5</a>
+for finding structurally similar nodes:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(:</span><span class="n">Patient</span><span class="w"> </span><span class="p">{</span><span class="n">risk_score</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="p">.</span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rural-South&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">comorbidity_count</span><span class="p">:</span><span class="w"> </span><span class="m">4</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">BENCHMARKED_AGAINST</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">PeerCohort</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rural-High-Complexity&quot;</span><span class="p">})</span>
+<span class="p">(:</span><span class="n">Patient</span><span class="w"> </span><span class="p">{</span><span class="n">risk_score</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">.</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Urban-Northeast&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">comorbidity_count</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="p">})</span>
+<span class="w">  </span><span class="o">-[</span><span class="p">:</span><span class="n">BENCHMARKED_AGAINST</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">PeerCohort</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Urban-Low-Complexity&quot;</span><span class="p">})</span>
+</code></pre></div></td></tr></table></div>
+<p>A provider's cost and quality results are then compared only against
+the <code>PeerCohort</code> their actual patient mix belongs to:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">ATTRIBUTED_TO</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">pg</span><span class="p">:</span><span class="n">ProviderGroup</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PG-4471&quot;</span><span class="p">})</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">BENCHMARKED_AGAINST</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">cohort</span><span class="p">:</span><span class="n">PeerCohort</span><span class="p">)</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">peer</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">BENCHMARKED_AGAINST</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">cohort</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">cohort</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">avg</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">total_cost</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">group_avg</span><span class="p">,</span><span class="w"> </span><span class="n">avg</span><span class="p">(</span><span class="n">peer</span><span class="p">.</span><span class="n">total_cost</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cohort_avg</span>
+</code></pre></div></td></tr></table></div>
+<p>This turns "beat the benchmark" from a demographic accident into a
+genuine measure of care management, which is the difference between
+a value-based contract that health systems trust enough to sign and
+one they treat as a lottery weighted against them.</p>
+<h2 id="example-6-social-risk-without-penalizing-the-provider-or-the-patient">Example 6: Social Risk Without Penalizing the Provider or the Patient</h2>
+<p>Clinical risk scores like HCC categories capture disease burden well
+but say nothing about a patient's <strong>social determinants</strong> — housing
+instability, food insecurity, or lack of transportation — even
+though these factors are strongly predictive of cost and outcomes.
+Leaving them out of the model creates unfairness in both directions
+at once: providers serving disadvantaged populations are held to
+cost and quality targets that do not account for barriers outside
+their control, and patients in that same population can end up
+under-treated if a plan quietly avoids enrolling members it expects
+to be expensive.</p>
+<p>Modeling <code>SocialDeterminant</code> as its own node type, connected to the
+patient alongside — never merged into — clinical conditions, lets an
+adjusted risk score be computed transparently instead of folding
+social risk invisibly into a clinical code (a practice that
+misrepresents <em>why</em> a patient is high-risk and makes the number
+impossible to audit):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(:</span><span class="n">Patient</span><span class="w"> </span><span class="p">{</span><span class="n">patient_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PT-55210&quot;</span><span class="p">})</span><span class="o">-[</span><span class="p">:</span><span class="n">HAS_RISK_FACTOR</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">SocialDeterminant</span><span class="w"> </span><span class="p">{</span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Housing Instability&quot;</span><span class="p">})</span>
+<span class="p">(:</span><span class="n">Patient</span><span class="w"> </span><span class="p">{</span><span class="n">patient_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PT-55210&quot;</span><span class="p">})</span><span class="o">-[</span><span class="p">:</span><span class="n">HAS_RISK_FACTOR</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">SocialDeterminant</span><span class="w"> </span><span class="p">{</span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Transportation Access&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">severity</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Limited&quot;</span><span class="p">})</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Patient</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">DIAGNOSED_WITH</span><span class="o">]-&gt;</span><span class="p">(:</span><span class="n">Condition</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">MAPS_TO</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">:</span><span class="n">HCCCategory</span><span class="p">)</span>
+<span class="k">OPTIONAL</span><span class="w"> </span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">HAS_RISK_FACTOR</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">sdoh</span><span class="p">:</span><span class="n">SocialDeterminant</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">patient_id</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">weight</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">clinical_risk</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">sdoh</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">social_risk_factors</span>
+</code></pre></div></td></tr></table></div>
+<p>Keeping the two risk sources separate but queryable together means a
+contract can adjust the cost benchmark for documented social risk
+without ever touching the clinical HCC score itself — the provider's
+clinical risk adjustment stays auditable against lab and medication
+evidence exactly as in Example 1, while the social adjustment layer
+is auditable on its own terms against a completely different kind of
+evidence (a case-management referral, a housing-assistance
+enrollment). Separating the two is what keeps either one from being
+gamed by inflating the other.</p>
+<h2 id="worked-example-a-fair-shared-savings-settlement">Worked Example: A Fair Shared-Savings Settlement</h2>
+<p>Bringing several of these pieces together: a <code>ProviderGroup</code>
+manages a <code>PeerCohort</code>-benchmarked panel of 500 capitated lives at a
+base PMPM of $45 with an average HCC risk score of 1.2 (computed and
+audited as in Example 1), for a risk-adjusted annual capitation
+revenue of $324,000 (<code>$45 × 1.2 × 500 × 12</code>). The graph's total cost
+of care query (Example 4) — which, unlike a single-payor claims
+report, includes leaked-out specialist and ER spending — finds
+actual annual cost across the panel of $290,000, appropriately
+compared against the group's correct <code>Rural-High-Complexity</code> peer
+cohort (Example 5) rather than a national average.</p>
+<p>That produces a raw surplus of $34,000. Before distribution, the
+contract requires the panel's quality metrics (Example 3) to clear
+a threshold; two of three quality measures pass, and the contract
+specifies a 90% quality multiplier when one measure narrowly misses,
+yielding a final shared-savings pool of $30,600. Because the episode
+graph (Example 2) shows this group's savings were driven jointly by
+a primary-care physician (<code>control_share: 0.6</code>) and a care-management
+nurse coordinator (<code>control_share: 0.4</code>), the pool splits
+$18,360 / $12,240 between them — a distribution that traces back,
+edge by edge, to auditable clinical evidence, correctly scoped cost
+data, a fair peer comparison, and a documented quality result. A
+provider group, a health plan's actuarial team, and a state
+regulator reviewing the same contract can all replay this exact
+traversal and arrive at the same number, which is what "fair" has to
+mean when three parties with different incentives are settling a
+single payment.</p>
+<h2 id="guardrails-keeping-the-incentives-honest">Guardrails: Keeping the Incentives Honest</h2>
+<p>Every mechanism above creates a new incentive, and every new
+incentive can be gamed if the graph that enforces it is not itself
+monitored. The same anomaly-detection patterns developed in
+<a href="../../chapters/18-healthcare-fraud-patterns-and-detection/">Chapter 18</a>
+and <a href="../../chapters/19-fraud-investigation-and-compliance/">Chapter 19</a>
+for fraud rings apply directly here: a sudden spike in a provider
+group's average risk score with no matching change in lab or
+medication evidence (Example 1), an episode whose <code>CONTRIBUTED_TO</code>
+weights shift suspiciously toward whichever provider is negotiating
+the next contract, or a <code>PeerCohort</code> that a provider group has
+somehow been re-assigned into right before a benchmarking cycle are
+all traversal patterns a compliance graph can flag automatically.
+Value-based care only stays fair over time if the graph modeling the
+incentives is audited with the same rigor as the graph modeling the
+care itself.</p>
+<h2 id="summary">Summary</h2>
+<p>Fee-for-service billing only ever had to answer "what was done, and
+what does it cost?" — a question relational tables answer well.
+Value-based care asks a fundamentally different question: "given
+everything that happened to this patient, across every provider and
+every payor involved, who is responsible for the outcome, and what
+is a fair price for it?" That question is a multi-hop graph
+traversal by nature, and the six examples in this appendix — audited
+risk adjustment, weighted episode attribution, correct quality
+attribution, network-wide total cost of care, peer-cohort
+benchmarking, and separately modeled social risk — are what turn
+"value-based care" from a payment philosophy into a system precise
+enough that providers, patients, and payors can all audit the same
+number and agree it is fair. Chapter 20's treatment of
+<a href="../../chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/">AI, LLMs, and Knowledge Graphs for Healthcare</a>
+picks up directly from here, since these same attribution and
+benchmarking graphs are exactly the structured, auditable substrate
+that keeps an AI-assisted value-based care system explainable rather
+than a black box.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../case-studies/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Case Studies">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Case Studies
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../learning-graph/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

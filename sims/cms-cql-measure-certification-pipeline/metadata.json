@@ -1,23 +1,51 @@
 {
   "title": "CMS CQL Measure Development and Certification Pipeline",
-  "description": "Given the names of the CMS-sponsored authoring, testing, and certification tools, the learner can sequence them correctly along the measure development pipeline and summarize what role each plays.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Sequence the CMS authoring, testing, compilation, and certification tools a quality measure passes through, and see which legacy tools they replaced.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "CMS tooling",
+    "MADiE",
+    "Cypress certification",
+    "eCQM",
+    "quality reporting"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "cms-cql-measure-certification-pipeline",
-  "library": "vis-timeline",
-  "bloomLevel": "Understand<br/>",
-  "bloomVerb": "summarize, sequence<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 24,
-  "chapter_title": "CDS Hooks, Care Alerts, and CMS CQL Tooling",
-  "chapter_dir": "24-cds-hooks-alerts-and-cms-cql-tooling",
-  "chapter_rel_dir": "chapters/24-cds-hooks-alerts-and-cms-cql-tooling"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/cms-cql-measure-certification-pipeline/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given the names of the CMS-sponsored authoring, testing, and certification tools, the learner can sequence them correctly along the measure development pipeline and summarize what role each plays."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerbs": [
+      "summarize",
+      "sequence"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "CQL and ELM",
+      "Clinical quality measure populations"
+    ],
+    "concepts": [
+      "MADiE",
+      "CQL Runner",
+      "CQL-to-ELM compilation",
+      "Cypress certification",
+      "Quality Reporting Architecture"
+    ]
+  },
+  "technical": {
+    "library": "vis-timeline",
+    "canvasHeight": 445,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "24-cds-hooks-alerts-and-cms-cql-tooling"
 }

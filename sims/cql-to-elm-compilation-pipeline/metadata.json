@@ -1,23 +1,51 @@
 {
   "title": "CQL-to-ELM Compilation Pipeline",
-  "description": "Given a CQL define statement, the learner can explain each stage of its compilation into ELM and translate between the CQL authoring format and its corresponding ELM fragment.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Read one define statement as authored CQL and as compiled ELM, then watch a reasoning engine evaluate it against two patients with opposite results.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "Clinical Quality Language",
+    "Expression Logical Model",
+    "clinical reasoning",
+    "quality measures",
+    "FHIR"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "cql-to-elm-compilation-pipeline",
-  "library": "Mermaid",
-  "bloomLevel": "Understand<br/>",
-  "bloomVerb": "explain, translate<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 23,
-  "chapter_title": "Clinical Guideline Authoring and Clinical Quality Language",
-  "chapter_dir": "23-clinical-guideline-authoring-and-cql",
-  "chapter_rel_dir": "chapters/23-clinical-guideline-authoring-and-cql"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/cql-to-elm-compilation-pipeline/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a CQL define statement, the learner can explain each stage of its compilation into ELM and translate between the CQL authoring format and its corresponding ELM fragment."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerbs": [
+      "explain",
+      "translate"
+    ],
+    "duration": "12-18 minutes",
+    "prerequisites": [
+      "FHIR Condition resources",
+      "Value sets and code systems"
+    ],
+    "concepts": [
+      "CQL library",
+      "CQL compiler",
+      "Expression Logical Model",
+      "clinical reasoning module",
+      "value set reference"
+    ]
+  },
+  "technical": {
+    "library": "Mermaid",
+    "canvasHeight": 1006,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "23-clinical-guideline-authoring-and-cql"
 }

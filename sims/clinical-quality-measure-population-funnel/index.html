@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Given initial population, denominator exclusion, and numerator counts, the learner can calculate a Clinical Quality Measure's reported rate and demonstrate how changing an exclusion count changes the final rate.">
+        <meta name="description" content="Compute a quality measure's reported rate from four populations, and watch the rate move when only the exclusion count changes.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-quality-measure-population-funnel/">
       
       
+        <link rel="prev" href="../clinical-protocol-workflow-chest-pain-evaluation/">
+      
+      
+        <link rel="next" href="../cms-cql-measure-certification-pipeline/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -73,7 +77,7 @@
       
         <meta  property="og:title"  content="Clinical Quality Measure Population Funnel - Modeling Healthcare Data with Graphs" >
       
-        <meta  property="og:description"  content="Given initial population, denominator exclusion, and numerator counts, the learner can calculate a Clinical Quality Measure's reported rate and demonstrate how changing an exclusion count changes the final rate." >
+        <meta  property="og:description"  content="Compute a quality measure's reported rate from four populations, and watch the rate move when only the exclusion count changes." >
       
         <meta  property="og:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/sims/clinical-quality-measure-population-funnel/index.png" >
       
@@ -89,7 +93,7 @@
       
         <meta  name="twitter:title"  content="Clinical Quality Measure Population Funnel - Modeling Healthcare Data with Graphs" >
       
-        <meta  name="twitter:description"  content="Given initial population, denominator exclusion, and numerator counts, the learner can calculate a Clinical Quality Measure's reported rate and demonstrate how changing an exclusion count changes the final rate." >
+        <meta  name="twitter:description"  content="Compute a quality measure's reported rate from four populations, and watch the rate move when only the exclusion count changes." >
       
         <meta  name="twitter:image"  content="https://dmccreary.github.io/modeling-healthcare-data/assets/images/social/sims/clinical-quality-measure-population-funnel/index.png" >
       
@@ -103,7 +107,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -130,7 +134,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-header__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
       
-  <img src="../../img/logo.png" alt="logo">
+  <img src="../../img/mascot/welcome.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -236,7 +240,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Modeling Healthcare Data with Graphs" class="md-nav__button md-logo" aria-label="Modeling Healthcare Data with Graphs" data-md-component="logo">
       
-  <img src="../../img/logo.png" alt="logo">
+  <img src="../../img/mascot/welcome.png" alt="logo">
 
     </a>
     Modeling Healthcare Data with Graphs
@@ -330,119 +334,61 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
     
@@ -532,7 +478,13 @@
     
       
         
+          
+        
       
+        
+      
+        
+          
         
       
     
@@ -548,7 +500,7 @@
         
   
   
-    <a href="../../appendicies/index.md" class="md-nav__link">
+    <a href="../../appendices/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -642,442 +594,3533 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../" class="md-nav__link">
+    
+    
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     MicroSims
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            MicroSims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-clinical-workflow-orchestrator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agentic Clinical Workflow Orchestrator
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
   
 
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-ml-taxonomy-healthcare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI / ML / Deep Learning Taxonomy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-ml-taxonomy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI and ML Taxonomy in Healthcare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allowed-amount-reimbursement-breakdown-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allowed Amount and Reimbursement Breakdown Chart
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anomaly-score-threshold-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anomaly Score Threshold Explorer MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appointment-no-show-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appointment Scheduling and No-Show Simulator MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audit-trail-analysis-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Trail Analysis MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication-authorization-comparison-infographic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication vs Authorization Comparison Infographic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-healthcare-graph-model-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Healthcare Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bayesian-diagnostic-reasoning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bayesian Diagnostic Reasoning MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../behavioral-health-fraud-network-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behavioral Health Fraud Network Interactive MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../behavioral-health-screening-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behavioral Health Screening Graph Model
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capstone-project-architecture-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capstone Project Architecture Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../care-pathway-comparison-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Care Pathway Comparison Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../care-pathway-shortest-path-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Care Pathway Shortest Path Interactive MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../care-setting-acuity-flow-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Care Setting Acuity Flow Diagram
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cds-hooks-request-response-cycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CDS Hooks Request-Response Cycle
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../centrality-measures-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Centrality Measures Comparison MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../charge-master-billing-code-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Charge Master and Billing Code Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claims-clearinghouse-eligibility-verification-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claims Clearinghouse and Eligibility Verification Workflow
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claims-lifecycle-workflow-graph-database-integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claims Lifecycle Workflow with Graph Database Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical-care-pathway-dag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clinical Care Pathway DAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical-decision-support-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clinical Decision Support Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical-discovery-pipeline-timeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clinical Discovery Pipeline Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical-encounter-workflow-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clinical Encounter Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical-nlp-pipeline-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clinical NLP Pipeline Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical-protocol-workflow-chest-pain-evaluation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Clinical Quality Measure Population Funnel
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Clinical Quality Measure Population Funnel
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embed-this-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embed This MicroSim
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Checks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cms-cql-measure-certification-pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CMS CQL Measure Development and Certification Pipeline
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Codes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminology-binding-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CodeSystem, ValueSet, and Terminology Binding Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comparison-graph-db-llm-integrated-system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison: Graph DB vs LLM vs Integrated System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cost-sharing-calculation-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cost-Sharing Calculation Interactive MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql-to-elm-compilation-pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CQL-to-ELM Compilation Pipeline
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cycle-detection-pattern-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cycle Detection and Pattern Explorer MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cypher-query-components-infographic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cypher Query Components Interactive Infographic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-governance-framework-pillars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Governance Framework Pillars
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-integration-flow-infographic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Integration Flow Interactive Infographic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-dashboard-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Quality Dashboard Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-impact-analysis-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Quality Impact Analysis MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../de-identification-techniques-comparison-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    De-Identification Techniques Comparison Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../denial-reasons-analysis-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Denial Reasons Analysis Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../directed-acyclic-graph-care-pathway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Directed Acyclic Graph Example: Care Pathway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dme-fraud-pattern-detector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DME Fraud Pattern Detector MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evolution-graph-query-languages-timeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evolution of Graph Query Languages Timeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explainable-ai-recommendation-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Explainable AI Recommendation Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fhir-resource-bundle-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FHIR Resource Bundle Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fhir-restful-api-request-response-flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FHIR RESTful API Request-Response Flow
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../formulary-management-step-therapy-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Formulary Management and Step Therapy Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-algorithm-family-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Algorithm Family Map
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-rbac-workflow-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph RBAC Workflow Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-sharding-partition-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Sharding Partition Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-traversal-visualization-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Traversal Visualization MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-based-fraud-detection-algorithm-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph-Based Fraud Detection Algorithm Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gsql-accumulator-pattern-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GSQL Accumulator Pattern MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guideline-authoring-artifacts-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guideline Authoring Artifacts Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-analytics-platform-architecture-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Analytics Platform Architecture Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-data-integration-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Data Integration Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-data-lineage-graph-visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Data Lineage Graph Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-data-model-implementation-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Data Model Implementation Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-data-protection-layers-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Data Protection Layers Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-sensitivity-classification-levels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Data Sensitivity Classification Levels
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-delivery-network-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Delivery Network Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-ecosystem-stakeholder-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Ecosystem Stakeholder Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-fraud-scheme-network-visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Fraud Scheme Network Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-graph-anatomy-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Graph Anatomy Explorer
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-graph-database-job-roles-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Graph Database Job Roles and Skills Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-graph-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Graph Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-graph-pattern-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Graph Pattern Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-labeled-property-graph-visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Labeled Property Graph Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-payment-model-comparison-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Payment Model Comparison MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-rbac-graph-data-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare RBAC Graph Data Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare-revenue-cycle-workflow-graph-analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Healthcare Revenue Cycle Workflow with Graph Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hipaa-compliance-workflow-graph-database-operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HIPAA Compliance Workflow for Graph Database Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../insurance-policy-benefit-plan-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Insurance Policy and Benefit Plan Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-representation-levels-tier-matrix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Knowledge Representation Levels by Functional Tier Matrix
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link-prediction-scoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Link Prediction Scoring MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-code-classifier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Medical Code System Classifier MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-coding-systems-infographic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Medical Coding Systems Interactive Infographic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-knowledge-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Medical Knowledge Graph Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medication-effectiveness-comparison-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Medication Effectiveness Comparison MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medication-safety-network-infographic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Medication Safety Network Interactive Infographic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration-strategy-comparison-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration Strategy Comparison Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-drift-detection-monitor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Drift Detection Monitor
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multidisciplinary-care-team-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multidisciplinary Care Team Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-community-detection-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Community Detection Interactive Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-embedding-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Embedding Explorer MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patient-clinical-context-subgraph-visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patient Clinical Context Subgraph Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patient-demographics-sdoh-profile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patient Demographics and SDOH Profile
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encounter-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patient Encounter Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patient-identifier-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patient Identifier Graph Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patient-journey-map-visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patient Journey Map Interactive Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patient-outcome-metrics-dashboard-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patient Outcome Metrics Dashboard Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patient-treatment-timeline-workflow-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patient Treatment Timeline Workflow Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payer-mix-contract-negotiation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Payer Mix and Contract Negotiation MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../per-person-healthcare-cost-comparison-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Per-Person Healthcare Cost Comparison Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plandefinition-activitydefinition-trigger-flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PlanDefinition to ActivityDefinition Trigger Flow
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-surgical-care-transition-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Post-Surgical Care Transition Workflow
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../predictive-model-performance-traditional-graph-based/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Predictive Model Performance: Traditional vs Graph-Based
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../presentation-effectiveness-rubric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentation Effectiveness Rubric
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preventive-care-gap-closure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Preventive Care Gap Closure MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prior-authorization-decision-tree-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prior Authorization Decision Tree Interactive MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-complexity-comparison-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Complexity Comparison Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-capacity-utilization-dashboard-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Capacity Utilization Dashboard Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-compensation-comparison-chart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Compensation Comparison Chart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-network-centrality-analysis-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Network Centrality Analysis Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-network-fraud-detection-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Network Fraud Detection Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-performance-comparison-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Performance Comparison MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-referral-network-analysis-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provider Referral Network Analysis MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-optimization-workflow-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query Optimization Workflow Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-performance-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query Performance Comparison: RDBMS vs Graph Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-performance-impact-indexing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query Performance Impact of Indexing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-performance-comparison-chart-rdbms-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query Performance: RDBMS vs Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rag-architecture-clinical-decision-support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Architecture for Clinical Decision Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relational-vs-graph-data-model-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relational vs. Graph Data Model Side-by-Side
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote-monitoring-data-flow-graph-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remote Monitoring Data Flow Graph Model
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-adjustment-capitation-calculator-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Risk Adjustment and Capitation Calculator MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-stratification-pyramid-intervention-strategies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Risk Stratification Pyramid with Intervention Strategies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security-incident-response-lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Incident Response Lifecycle
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--validated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service-line-profitability-analysis-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Line Profitability Analysis Interactive MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symptom-disease-diagnostic-network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symptom-Disease Diagnostic Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../value-based-payment-shared-savings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Value-Based Payment Shared-Savings MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector-embedding-similarity-visualization-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vector Embedding Similarity Visualization MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../view-hc-icons/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View Healthcare Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vital-signs-trend-visualization-microsim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vital Signs Trend Visualization MicroSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yin-yang-llm-kg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Yin-Yang LLM vs Knowledge Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1155,7 +4198,7 @@
       
   
   <span class="md-ellipsis">
-    Prompts
+    Sample Prompts
   </span>
   
 
@@ -1166,6 +4209,26 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1357,6 +4420,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embed-this-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embed This MicroSim
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Checks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#specification" class="md-nav__link">
     <span class="md-ellipsis">
       Specification
@@ -1369,6 +4468,15 @@
   <a href="#related-resources" class="md-nav__link">
     <span class="md-ellipsis">
       Related Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1398,9 +4506,27 @@
 
 
 <h1 id="clinical-quality-measure-population-funnel">Clinical Quality Measure Population Funnel</h1>
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="873px"></iframe>
 
 <p><a class="md-button md-button--primary" href="main.html">Run MicroSim in Fullscreen</a></p>
+<h2 id="description">Description</h2>
+<p>Four bars, each a subset of the one above it, and a rate computed from the last two. The number to keep an eye on is the divisor: the reported rate is the numerator over the <em>exclusion-adjusted</em> denominator, not over the initial population, and the panel shows both so the difference is visible rather than assumed. <strong>What if exclusions tripled?</strong> is the exercise worth running -- the numerator does not move, not one patient's HbA1c changes, and the reported rate still rises. That is why exclusion criteria are specified in executable logic rather than prose and why exclusion counts are audited: it is the one place where a defensible clinical judgment and a favorable reported number point in the same direction.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<p>Audience: undergraduate students and healthcare data practitioners. Allow 10-15 minutes. Prerequisites: a rate as a numerator over a denominator, and the idea of a defined patient cohort.</p>
+<p><strong>Learning objective:</strong> Given initial population, denominator exclusion, and numerator counts, the learner can calculate a Clinical Quality Measure's reported rate and demonstrate how changing an exclusion count changes the final rate.</p>
+<ol>
+<li><strong>Explore:</strong> Select each bar in turn and read its definition. Note that the initial population and the denominator coincide in this measure, and say what would have to differ for them to separate.</li>
+<li><strong>Explain:</strong> Run <strong>What if exclusions tripled?</strong>. Explain precisely which term in the rate changed and which did not, and why the result still counts as an improvement on paper.</li>
+<li><strong>Transfer:</strong> You are reviewing two clinics reporting 64.6% and 71.2% on this measure. Name two things you would want to see besides the rate before concluding one delivers better care.</li>
+</ol>
+<p>Assessment: use the Transfer prompt as an exit ticket. A complete response asks for the exclusion counts and the denominators, and explains why comparing rates without them is unsafe.</p>
+<h2 id="embed-this-microsim">Embed This MicroSim</h2>
+<p>Copy this iframe to your website:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-quality-measure-population-funnel/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;873px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a href="clinical-quality-measure-population-funnel.js">JavaScript source</a></p>
+<h2 id="quality-checks">Quality Checks</h2>
+<p><strong>Validated September 8, 2026.</strong> Completeness rubric: <strong>100/100</strong>, scored with the project's <code>calculate-quality-score.py</code> against the standardization checklist. Checked automatically in a browser at 400, 800, and 1200 px: the page loads with no JavaScript errors, no interactive control is clipped outside the viewport, and the document does not scroll horizontally. Controls, selections, and the reset path were exercised by hand during development at desktop width. The page reports its own height to the parent document, so the declared iframe height above serves only as a fallback.</p>
 <h2 id="specification">Specification</h2>
 <p>The full specification below is extracted from
 <a href="../../chapters/23-clinical-guideline-authoring-and-cql/">Chapter 23: Clinical Guideline Authoring and Clinical Quality Language</a>.</p>
@@ -1468,6 +4594,13 @@ Implementation: Chart.js horizontal bar chart with live-updating annotation text
 <ul>
 <li><a href="../../chapters/23-clinical-guideline-authoring-and-cql/">Chapter 23: Clinical Guideline Authoring and Clinical Quality Language</a></li>
 </ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="../../chapters/23-clinical-guideline-authoring-and-cql/">Source chapter</a> — supplied the learning objective and the worked example.</li>
+<li><a href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a> — scales, stacked bars, tooltips, and custom plugins (accessed September 8, 2026).</li>
+<li><a href="https://ecqi.healthit.gov/eCQMs">CMS electronic clinical quality measures</a> — the population structure this funnel follows (accessed September 8, 2026).</li>
+<li><a href="https://en.wikipedia.org/wiki/Health_care_quality">Wikipedia: Quality of care measurement</a> — background on measure-based payment programs.</li>
+</ul>
 
 
 
@@ -1503,6 +4636,44 @@ Implementation: Chart.js horizontal bar chart with live-updating annotation text
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../clinical-protocol-workflow-chest-pain-evaluation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cms-cql-measure-certification-pipeline/" class="md-footer__link md-footer__link--next" aria-label="Next: CMS CQL Measure Development and Certification Pipeline">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                CMS CQL Measure Development and Certification Pipeline
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

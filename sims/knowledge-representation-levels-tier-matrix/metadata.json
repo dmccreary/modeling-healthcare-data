@@ -1,23 +1,51 @@
 {
   "title": "Knowledge Representation Levels by Functional Tier Matrix",
-  "description": "Given a description of a clinical knowledge artifact, the learner can classify it by both its knowledge representation level (Narrative, Semi-Structured, Structured, Executable) and its functional tier (Data, Logic, Forms/UI) using the matrix.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Locate any clinical knowledge artifact by both its representation level and its functional tier in a twelve-cell reference grid.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "knowledge representation",
+    "FHIR",
+    "clinical guidelines",
+    "CQF Recommendations",
+    "clinical decision support"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "knowledge-representation-levels-tier-matrix",
-  "library": "p5.js",
-  "bloomLevel": "Analyze<br/>",
-  "bloomVerb": "classify, examine<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 22,
-  "chapter_title": "FHIR Resources and Levels of Knowledge Representation",
-  "chapter_dir": "22-fhir-resources-and-knowledge-representation",
-  "chapter_rel_dir": "chapters/22-fhir-resources-and-knowledge-representation"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/knowledge-representation-levels-tier-matrix/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a description of a clinical knowledge artifact, the learner can classify it by both its knowledge representation level (Narrative, Semi-Structured, Structured, Executable) and its functional tier (Data, Logic, Forms/UI) using the matrix."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerbs": [
+      "classify",
+      "examine"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "FHIR resources and value sets",
+      "CQL to ELM compilation"
+    ],
+    "concepts": [
+      "narrative level",
+      "semi-structured level",
+      "structured level",
+      "executable level",
+      "data, logic, and Forms/UI tiers"
+    ]
+  },
+  "technical": {
+    "library": "p5.js",
+    "canvasHeight": 762,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "22-fhir-resources-and-knowledge-representation"
 }

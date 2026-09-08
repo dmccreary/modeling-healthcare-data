@@ -1,23 +1,38 @@
 {
   "title": "Remote Monitoring Data Flow Graph Model",
-  "description": "Explain how patient-generated data (portal, PRO, wearable) flows through a remote patient monitoring process into a telehealth visit, and classify each node by whether it is patient-originated or system-generated.",
+  "description": "Step through concrete device readings, an illustrative alert rule, a telehealth visit, and a parallel patient-portal path.",
   "creator": "Modeling Healthcare Data with Graphs",
   "author": "Dan McCreary",
   "date": "2026-09-07",
-  "subject": [
-    "Modeling Healthcare Data with Graphs"
-  ],
+  "subject": ["Healthcare graph modeling", "Remote patient monitoring", "Patient-generated data"],
   "type": "Interactive Simulation",
   "format": "text/html",
   "language": "en",
   "rights": "CC BY-NC-SA 4.0",
   "identifier": "remote-monitoring-data-flow-graph-model",
   "library": "vis-network",
-  "bloomLevel": "Understand<br/>",
-  "bloomVerb": "explain, classify<br/>",
-  "completion_status": "scaffold",
+  "bloomLevel": "Understand",
+  "bloomVerb": "explain, classify",
+  "completion_status": "validated",
   "chapter_number": 11,
   "chapter_title": "Specialty Care, Surgery, and Remote Monitoring",
   "chapter_dir": "11-specialty-care-surgery-remote-monitoring",
-  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring"
+  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring",
+  "educational": {
+    "gradeLevel": "Undergraduate and professional",
+    "subjectArea": "Healthcare data modeling",
+    "topic": "Remote monitoring data flow",
+    "learningObjectives": ["Explain how patient-generated data flows through remote monitoring into a telehealth visit, and classify nodes by data origin."],
+    "duration": "10–15 minutes",
+    "prerequisites": ["Nodes and directed relationships", "Timestamps and threshold rules"]
+  },
+  "pedagogical": {
+    "bloomLevel": "Understand",
+    "interactionPattern": "Staged reveal with optional bounded playback",
+    "rationale": "Concrete readings and a step-through rule evaluation support explanation without relying on continuous animation.",
+    "assessment": "Explain the alert from the visible readings and classify the patient-originated and system-generated nodes."
+  },
+  "canvasHeight": 880,
+  "quality_score": 100,
+  "validated_date": "2026-09-07"
 }

@@ -1,23 +1,52 @@
 {
   "title": "Security Incident Response Lifecycle",
-  "description": "Given a description of a detected security event affecting a healthcare graph database, the learner can sequence the five incident response stages and explain what each stage accomplishes.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Sequence the five incident response stages against a running insider-threat scenario in a healthcare graph database.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "incident response",
+    "insider threat",
+    "healthcare security",
+    "graph database operations",
+    "audit logging"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "security-incident-response-lifecycle",
-  "library": "Mermaid",
-  "bloomLevel": "Understand<br/>",
-  "bloomVerb": "explain, sequence<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 26,
-  "chapter_title": "Advanced Security Operations and Incident Response",
-  "chapter_dir": "26-advanced-security-operations-incident-response",
-  "chapter_rel_dir": "chapters/26-advanced-security-operations-incident-response"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/security-incident-response-lifecycle/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a description of a detected security event affecting a healthcare graph database, the learner can sequence the five incident response stages and explain what each stage accomplishes."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerbs": [
+      "explain",
+      "sequence"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Role-based access control",
+      "Audit logging in graph databases"
+    ],
+    "concepts": [
+      "identify",
+      "contain",
+      "eradicate",
+      "recover",
+      "lessons learned",
+      "anomalous access detection"
+    ]
+  },
+  "technical": {
+    "library": "Mermaid",
+    "canvasHeight": 770,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "26-advanced-security-operations-incident-response"
 }

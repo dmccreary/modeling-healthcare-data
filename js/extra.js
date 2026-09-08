@@ -1,3 +1,23 @@
+// Let embedded MicroSims fit responsive content and expanded explanations.
+// Match the sending frame, and accept only finite, bounded height values.
+window.addEventListener("message", function (event) {
+    const data = event.data;
+    if (!data || data.type !== "microsim-resize" ||
+        typeof data.height !== "number" || !Number.isFinite(data.height) ||
+        data.height < 100 || data.height > 5000) return;
+    for (const frame of document.querySelectorAll("iframe")) {
+        if (frame.contentWindow === event.source) {
+            const style = getComputedStyle(frame);
+            const border = parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth);
+            const height = Math.ceil(data.height + border);
+            frame.style.boxSizing = "border-box";
+            frame.style.height = height + "px";
+            frame.setAttribute("height", height);
+            break;
+        }
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     // Find all admonitions with the "prompt" class
     document.querySelectorAll(".admonition.prompt").forEach((admonition) => {

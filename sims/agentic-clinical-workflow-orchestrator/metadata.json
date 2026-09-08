@@ -1,23 +1,51 @@
 {
   "title": "Agentic Clinical Workflow Orchestrator",
-  "description": "Given a multi-agent clinical workflow diagram, the learner can deconstruct the task into the individual tool calls and agent roles involved, and differentiate a single tool-using agent's behavior from a coordinated multi-agent system's behavior.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Trace one care-coordination task through a six-lane multi-agent workflow, then collapse it into a single agent to see what the decomposition buys.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "agentic systems",
+    "clinical decision support",
+    "care coordination",
+    "healthcare graphs",
+    "responsible AI"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "agentic-clinical-workflow-orchestrator",
-  "library": "Mermaid",
-  "bloomLevel": "Analyze<br/>",
-  "bloomVerb": "differentiate, deconstruct<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 21,
-  "chapter_title": "Responsible AI and Agentic Systems",
-  "chapter_dir": "21-responsible-ai-and-agentic-systems",
-  "chapter_rel_dir": "chapters/21-responsible-ai-and-agentic-systems"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/agentic-clinical-workflow-orchestrator/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a multi-agent clinical workflow diagram, the learner can deconstruct the task into the individual tool calls and agent roles involved, and differentiate a single tool-using agent's behavior from a coordinated multi-agent system's behavior."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerbs": [
+      "differentiate",
+      "deconstruct"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Tool calls and function calling",
+      "Cohort queries over a healthcare graph"
+    ],
+    "concepts": [
+      "multi-agent system",
+      "tool-using agent",
+      "human-in-the-loop",
+      "clinical guideline versioning",
+      "safety review"
+    ]
+  },
+  "technical": {
+    "library": "Mermaid",
+    "canvasHeight": 1498,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "21-responsible-ai-and-agentic-systems"
 }

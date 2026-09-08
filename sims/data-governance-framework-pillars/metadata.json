@@ -1,23 +1,50 @@
 {
   "title": "Data Governance Framework Pillars",
-  "description": "Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Remove any one of the five governance pillars and watch the beam it supports tilt, using a wearable-device data source as the running example.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "data governance",
+    "stewardship",
+    "data policy",
+    "healthcare compliance",
+    "data quality"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "data-governance-framework-pillars",
-  "library": "p5.js",
-  "bloomLevel": "Analyze<br/>",
-  "bloomVerb": "differentiate, examine<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 27,
-  "chapter_title": "Data Governance and Metadata Management",
-  "chapter_dir": "27-data-governance-and-metadata-management",
-  "chapter_rel_dir": "chapters/27-data-governance-and-metadata-management"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/data-governance-framework-pillars/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerbs": [
+      "differentiate",
+      "examine"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Onboarding a new data source"
+    ],
+    "concepts": [
+      "policy",
+      "roles and stewardship",
+      "data quality",
+      "security controls",
+      "regulatory compliance"
+    ]
+  },
+  "technical": {
+    "library": "p5.js",
+    "canvasHeight": 702,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "27-data-governance-and-metadata-management"
 }

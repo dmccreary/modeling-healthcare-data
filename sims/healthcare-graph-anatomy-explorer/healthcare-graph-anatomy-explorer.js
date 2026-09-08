@@ -74,3 +74,10 @@ document.getElementById('reset').addEventListener('click',()=>{
 });
 new ResizeObserver(fitView).observe(document.getElementById('network'));
 fitView();
+
+// Use content bounds (not viewport height) to avoid a resize feedback loop.
+new ResizeObserver(() => {
+  if (window.parent !== window) {
+    window.parent.postMessage({type:'microsim-resize',height:Math.ceil(document.querySelector('main').getBoundingClientRect().height)+2}, '*');
+  }
+}).observe(document.querySelector('main'));

@@ -1,23 +1,38 @@
 {
   "title": "Post-Surgical Care Transition Workflow",
-  "description": "Examine a post-surgical care workflow and differentiate which upstream, graph-visible factors feed the computed Readmission Risk score.",
+  "description": "Trace a surgical care transition and isolate the four graph-visible inputs feeding an illustrative readmission-risk result.",
   "creator": "Modeling Healthcare Data with Graphs",
   "author": "Dan McCreary",
   "date": "2026-09-07",
-  "subject": [
-    "Modeling Healthcare Data with Graphs"
-  ],
+  "subject": ["Healthcare graph modeling", "Care transitions", "Risk inputs"],
   "type": "Interactive Simulation",
   "format": "text/html",
   "language": "en",
   "rights": "CC BY-NC-SA 4.0",
   "identifier": "post-surgical-care-transition-workflow",
   "library": "vis-network",
-  "bloomLevel": "Analyze<br/>",
-  "bloomVerb": "examine, differentiate<br/>",
-  "completion_status": "scaffold",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "examine, differentiate",
+  "completion_status": "validated",
   "chapter_number": 11,
   "chapter_title": "Specialty Care, Surgery, and Remote Monitoring",
   "chapter_dir": "11-specialty-care-surgery-remote-monitoring",
-  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring"
+  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring",
+  "educational": {
+    "gradeLevel": "Undergraduate and professional",
+    "subjectArea": "Healthcare data modeling",
+    "topic": "Post-surgical care transition and computed risk inputs",
+    "learningObjectives": ["Examine a post-surgical care workflow and differentiate which upstream, graph-visible factors feed the computed readmission-risk score."],
+    "duration": "10–15 minutes",
+    "prerequisites": ["Directed workflows", "Node properties", "Computed features"]
+  },
+  "pedagogical": {
+    "bloomLevel": "Analyze",
+    "interactionPattern": "Graph tracing and subgraph isolation",
+    "rationale": "The focus control requires learners to compare the full workflow with the direct-input subgraph.",
+    "assessment": "Name the four direct risk inputs and distinguish them from contextual workflow nodes."
+  },
+  "canvasHeight": 880,
+  "quality_score": 100,
+  "validated_date": "2026-09-07"
 }

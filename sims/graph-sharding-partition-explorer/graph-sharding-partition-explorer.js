@@ -1,5 +1,5 @@
 // Graph Sharding Partition Explorer — synthetic sequential traversal cost model.
-// CANVAS_HEIGHT: 940
+// CANVAS_HEIGHT: 1390
 'use strict';
 const main=document.querySelector('main');main.className='wide';
 main.innerHTML=`<h1>Graph Sharding Partition Explorer</h1><p class="intro">Add referral edges between shards. Which relationships need a network round trip?</p>
@@ -25,8 +25,10 @@ const nodes=new vis.DataSet(nodeData);const edges=new vis.DataSet();
 const network=new vis.Network(document.getElementById('network'),{nodes,edges},{physics:false,layout:{improvedLayout:false},nodes:{font:{size:20,face:'Arial',color:'#203348'},borderWidth:2},edges:{arrows:{to:{enabled:true,scaleFactor:.65}},smooth:{enabled:true,type:'curvedCW',roundness:.15}},interaction:{hover:true,zoomView:false,dragView:false,dragNodes:false,navigationButtons:true,keyboard:{enabled:true,bindToWindow:false}}});
 network.on('beforeDrawing',ctx=>{
   ctx.save();['#e6eefb','#e4f2ea','#fff0db'].forEach((fill,s)=>{
-    ctx.fillStyle=fill;ctx.strokeStyle='#aab8c5';ctx.lineWidth=1;ctx.fillRect((s-1)*340-161,-330,322,610);ctx.strokeRect((s-1)*340-161,-330,322,610);
-    ctx.fillStyle='#203348';ctx.font='bold 23px Arial';ctx.textAlign='center';ctx.fillText(`Shard ${s+1}`,(s-1)*340,-296);
+    const narrow=document.getElementById('network').clientWidth<700;
+    const x=narrow?-185:(s-1)*340-161,y=narrow?(s-1)*220-100:-330,w=narrow?370:322,h=narrow?200:610;
+    ctx.fillStyle=fill;ctx.strokeStyle='#aab8c5';ctx.lineWidth=1;ctx.fillRect(x,y,w,h);ctx.strokeRect(x,y,w,h);
+    ctx.fillStyle='#203348';ctx.font=narrow?'bold 18px Arial':'bold 23px Arial';ctx.textAlign='center';ctx.fillText(`Shard ${s+1}`,x+w/2,y+28);
   });ctx.restore();
 });
 function latency(edge){return edge.type==='local'?'In-memory pointer traversal: ~0.01 ms':'Network round trip required: ~5–50 ms';}
@@ -50,6 +52,18 @@ network.on('click',event=>inspectEdge(event.edges[0]));
 document.getElementById('inspect').addEventListener('change',event=>inspectEdge(event.target.value));
 document.getElementById('count').addEventListener('input',updateEdges);
 // Reserve room for the background boundaries as well as node labels.
-function fitView(){const box=document.getElementById('network');network.moveTo({position:{x:0,y:-25},scale:Math.min((box.clientWidth-24)/1030,(box.clientHeight-65)/630),animation:false});}
+function fitView(){
+  const box=document.getElementById('network');const narrow=box.clientWidth<700;
+  const compact=[[-145,-25],[-80,-25],[-15,-25],[-145,45],[-80,45],[-15,45],[70,5],[145,5]];
+  nodes.update(nodeData.map((n,i)=>({id:n.id,x:narrow?compact[i%8][0]:n.x,y:narrow?(n.shard-1)*220+compact[i%8][1]:n.y,size:narrow?15:n.size,font:{size:narrow?15:20}})));
+  network.moveTo({position:{x:0,y:narrow?35:-25},scale:narrow?Math.min((box.clientWidth-18)/390,(box.clientHeight-110)/680):Math.min((box.clientWidth-24)/1030,(box.clientHeight-65)/630),animation:false});
+}
 document.getElementById('reset').addEventListener('click',()=>{document.getElementById('count').value=2;updateEdges();fitView();});
 new ResizeObserver(fitView).observe(document.getElementById('network'));updateEdges();fitView();
+
+// Use content bounds (not viewport height) to avoid a resize feedback loop.
+new ResizeObserver(() => {
+  if (window.parent !== window) {
+    window.parent.postMessage({type:'microsim-resize',height:Math.ceil(document.querySelector('main').getBoundingClientRect().height)+2}, '*');
+  }
+}).observe(document.querySelector('main'));

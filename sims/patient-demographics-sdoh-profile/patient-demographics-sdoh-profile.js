@@ -1,5 +1,5 @@
 // Patient Demographics and SDOH Profile — properties versus related concepts.
-// CANVAS_HEIGHT: 1180
+// CANVAS_HEIGHT: 1240
 'use strict';
 const demographics={age:39,sex:'F',race_ethnicity:'Asian',preferred_language:'English',address:'142 Oak St, Springfield'};
 const factors=[
@@ -67,3 +67,10 @@ document.getElementById('reset').addEventListener('click',()=>{
 });
 new ResizeObserver(fitView).observe(document.getElementById('network'));
 refreshGraph();showInfo('patient',false);selected='';fitView();
+
+// Use content bounds (not viewport height) to avoid a resize feedback loop.
+new ResizeObserver(() => {
+  if (window.parent !== window) {
+    window.parent.postMessage({type:'microsim-resize',height:Math.ceil(document.querySelector('main').getBoundingClientRect().height)+2}, '*');
+  }
+}).observe(document.querySelector('main'));

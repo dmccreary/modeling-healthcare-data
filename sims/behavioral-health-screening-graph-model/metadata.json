@@ -1,23 +1,38 @@
 {
   "title": "Behavioral Health Screening Graph Model",
-  "description": "Differentiate a screened-and-diagnosed Behavioral Health Condition pathway from the structurally separate Neurodiversity and Palliative Care node categories, and classify each screening instrument by the condition it detects.",
+  "description": "Compare scored behavioral-health screening paths with structurally separate neurodiversity and palliative-care branches.",
   "creator": "Modeling Healthcare Data with Graphs",
   "author": "Dan McCreary",
   "date": "2026-09-07",
-  "subject": [
-    "Modeling Healthcare Data with Graphs"
-  ],
+  "subject": ["Healthcare graph modeling", "Behavioral health screening"],
   "type": "Interactive Simulation",
   "format": "text/html",
   "language": "en",
   "rights": "CC BY-NC-SA 4.0",
   "identifier": "behavioral-health-screening-graph-model",
   "library": "vis-network",
-  "bloomLevel": "Analyze<br/>",
-  "bloomVerb": "differentiate, classify<br/>",
-  "completion_status": "scaffold",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "differentiate, classify",
+  "completion_status": "validated",
   "chapter_number": 11,
   "chapter_title": "Specialty Care, Surgery, and Remote Monitoring",
   "chapter_dir": "11-specialty-care-surgery-remote-monitoring",
-  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring"
+  "chapter_rel_dir": "chapters/11-specialty-care-surgery-remote-monitoring",
+  "educational": {
+    "gradeLevel": "Undergraduate and professional",
+    "subjectArea": "Healthcare data modeling",
+    "topic": "Behavioral health screening graph structure",
+    "learningObjectives": ["Differentiate scored screening paths from unscored neurodiversity and palliative-care branches, and classify each instrument by its screening target."],
+    "duration": "10–15 minutes",
+    "prerequisites": ["Nodes, edges, labels, and properties", "Screening versus diagnosis"]
+  },
+  "pedagogical": {
+    "bloomLevel": "Analyze",
+    "interactionPattern": "Comparison through node and edge inspection",
+    "rationale": "Cluster comparison and selective inspection provide direct evidence for classifying the different graph structures.",
+    "assessment": "Classify the instruments and cite visible features that distinguish scored and unscored relationships."
+  },
+  "canvasHeight": 880,
+  "quality_score": 100,
+  "validated_date": "2026-09-07"
 }

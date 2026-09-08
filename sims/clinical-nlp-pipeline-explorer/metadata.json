@@ -1,23 +1,51 @@
 {
   "title": "Clinical NLP Pipeline Explorer",
-  "description": "Given a raw clinical note, the learner can demonstrate how a clinical NLP pipeline applies named entity recognition, text classification, and sentiment analysis in sequence, and can apply the same sequence to a new note.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Step a clinical note through named entity recognition, classification, and sentiment analysis, inspecting the concrete output of each stage.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "clinical NLP",
+    "named entity recognition",
+    "text classification",
+    "unstructured data",
+    "healthcare graphs"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "clinical-nlp-pipeline-explorer",
-  "library": "Mermaid",
-  "bloomLevel": "Apply<br/>",
-  "bloomVerb": "demonstrate, apply<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 21,
-  "chapter_title": "Responsible AI and Agentic Systems",
-  "chapter_dir": "21-responsible-ai-and-agentic-systems",
-  "chapter_rel_dir": "chapters/21-responsible-ai-and-agentic-systems"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-nlp-pipeline-explorer/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a raw clinical note, the learner can demonstrate how a clinical NLP pipeline applies named entity recognition, text classification, and sentiment analysis in sequence, and can apply the same sequence to a new note."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerbs": [
+      "demonstrate",
+      "apply"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Nodes, edges, and properties",
+      "Structured versus unstructured data"
+    ],
+    "concepts": [
+      "named entity recognition",
+      "text classification",
+      "sentiment analysis",
+      "structured extraction",
+      "graph-ready facts"
+    ]
+  },
+  "technical": {
+    "library": "Mermaid",
+    "canvasHeight": 958,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "21-responsible-ai-and-agentic-systems"
 }

@@ -13,11 +13,32 @@
   "rights": "CC BY-NC-SA 4.0",
   "identifier": "patient-demographics-sdoh-profile",
   "library": "vis-network",
-  "bloomLevel": "Understand<br/>",
-  "bloomVerb": "classify, explain<br/>",
-  "completion_status": "scaffold",
+  "bloomLevel": "Understand",
+  "bloomVerb": "classify, explain",
+  "completion_status": "validated",
   "chapter_number": 8,
   "chapter_title": "Healthcare Interoperability and Care Coordination",
   "chapter_dir": "08-healthcare-interoperability-care-coordination",
-  "chapter_rel_dir": "chapters/08-healthcare-interoperability-care-coordination"
+  "chapter_rel_dir": "chapters/08-healthcare-interoperability-care-coordination",
+  "educational": {
+    "gradeLevel": "Undergraduate and professional",
+    "subjectArea": "Healthcare data modeling",
+    "topic": "Patient Demographics and SDOH Profile",
+    "learningObjectives": [
+      "Given a patient node with demographic properties and connected SDOHFactor nodes, the learner can classify each attribute as a demographic property versus a social determinant of health and explain why each is modeled differently in a labeled property graph."
+    ],
+    "duration": "10\u201315 minutes",
+    "prerequisites": [
+      "Nodes, edges, labels, and properties"
+    ]
+  },
+  "pedagogical": {
+    "bloomLevel": "Understand",
+    "interactionPattern": "Click-to-reveal exploration with editable connections",
+    "rationale": "The Understand-level verbs classify and explain require concrete demographic values and patient-specific relationship properties. Optional connections expose the modeling choice without animation.",
+    "assessment": "Explain why severity and risk_level belong to the patient\u2013factor relationship in this example. Explain why an unconnected factor does not prove the absence of a social need."
+  },
+  "canvasHeight": 1240,
+  "quality_score": 100,
+  "validated_date": "2026-09-07"
 }

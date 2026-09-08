@@ -1,23 +1,51 @@
 {
   "title": "Claims Clearinghouse and Eligibility Verification Workflow",
-  "description": "Given the administrative claims infrastructure workflow, the learner can explain the role of a clearinghouse, an ERA, and eligibility verification, and summarize how the benefit accumulator connects to each.",
-  "creator": "Modeling Healthcare Data with Graphs",
-  "author": "Dan McCreary",
-  "date": "2026-09-07",
+  "description": "Follow the administrative plumbing around claim adjudication -- eligibility verification, clearinghouse routing, and remittance -- and the benefit accumulator both halves share.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
   "subject": [
-    "Modeling Healthcare Data with Graphs"
+    "claims processing",
+    "eligibility verification",
+    "clearinghouse",
+    "X12 transactions",
+    "benefit accumulator"
   ],
   "type": "Interactive Simulation",
   "format": "text/html",
-  "language": "en",
+  "language": "en-US",
   "rights": "CC BY-NC-SA 4.0",
-  "identifier": "claims-clearinghouse-eligibility-verification-workflow",
-  "library": "Mermaid",
-  "bloomLevel": "Understand<br/>",
-  "bloomVerb": "explain, summarize<br/>",
-  "completion_status": "scaffold",
-  "chapter_number": 15,
-  "chapter_title": "Reimbursement, Health Plan Types, and Payer Contracts",
-  "chapter_dir": "15-reimbursement-health-plans-payer-contracts",
-  "chapter_rel_dir": "chapters/15-reimbursement-health-plans-payer-contracts"
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/claims-clearinghouse-eligibility-verification-workflow/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given the administrative claims infrastructure workflow, the learner can explain the role of a clearinghouse, an ERA, and eligibility verification, and summarize how the benefit accumulator connects to each."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerbs": [
+      "explain",
+      "summarize"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Claim adjudication pipeline",
+      "Member, Policy, BenefitPlan, and Coverage graph model"
+    ],
+    "concepts": [
+      "eligibility verification",
+      "clearinghouse",
+      "electronic remittance advice",
+      "benefit accumulator",
+      "X12 270/271/837/835"
+    ]
+  },
+  "technical": {
+    "library": "Mermaid",
+    "canvasHeight": 1427,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "15-reimbursement-health-plans-payer-contracts"
 }
