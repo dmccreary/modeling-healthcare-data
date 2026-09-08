@@ -1,6 +1,6 @@
 ---
-title: RAG Architecture for Clinical Decision Support
-description: Interactive p5.js MicroSim for rag architecture for clinical decision support.
+title: "RAG Architecture for Clinical Decision Support"
+description: "Interactive p5.js MicroSim for rag architecture for clinical decision support."
 image: /sims/rag-architecture-clinical-decision-support/rag-architecture-clinical-decision-support.png
 og:image: /sims/rag-architecture-clinical-decision-support/rag-architecture-clinical-decision-support.png
 twitter:image: /sims/rag-architecture-clinical-decision-support/rag-architecture-clinical-decision-support.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/rag-architecture-clinical-decision-support/main.html"
-        height="450px"
+        height="546px"
         width="100%"
         scrolling="no"></iframe>
 ```

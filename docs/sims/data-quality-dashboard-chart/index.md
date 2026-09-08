@@ -1,6 +1,6 @@
 ---
-title: Data Quality Dashboard Chart
-description: Interactive Chart.js MicroSim for data quality dashboard chart.
+title: "Data Quality Dashboard Chart"
+description: "Interactive Chart.js MicroSim for data quality dashboard chart."
 image: /sims/data-quality-dashboard-chart/data-quality-dashboard-chart.png
 og:image: /sims/data-quality-dashboard-chart/data-quality-dashboard-chart.png
 twitter:image: /sims/data-quality-dashboard-chart/data-quality-dashboard-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/data-quality-dashboard-chart/main.html"
-        height="450px"
+        height="770px"
         width="100%"
         scrolling="no"></iframe>
 ```

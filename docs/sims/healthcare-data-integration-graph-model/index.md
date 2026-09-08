@@ -1,6 +1,6 @@
 ---
-title: Healthcare Data Integration Graph Model
-description: Interactive vis-network MicroSim for healthcare data integration graph model.
+title: "Healthcare Data Integration Graph Model"
+description: "Interactive vis-network MicroSim for healthcare data integration graph model."
 image: /sims/healthcare-data-integration-graph-model/healthcare-data-integration-graph-model.png
 og:image: /sims/healthcare-data-integration-graph-model/healthcare-data-integration-graph-model.png
 twitter:image: /sims/healthcare-data-integration-graph-model/healthcare-data-integration-graph-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-integration-graph-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

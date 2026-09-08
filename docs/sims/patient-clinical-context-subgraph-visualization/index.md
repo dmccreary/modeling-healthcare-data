@@ -1,6 +1,6 @@
 ---
-title: Patient Clinical Context Subgraph Visualization
-description: Interactive vis-network MicroSim for patient clinical context subgraph visualization.
+title: "Patient Clinical Context Subgraph Visualization"
+description: "Interactive vis-network MicroSim for patient clinical context subgraph visualization."
 image: /sims/patient-clinical-context-subgraph-visualization/patient-clinical-context-subgraph-visualization.png
 og:image: /sims/patient-clinical-context-subgraph-visualization/patient-clinical-context-subgraph-visualization.png
 twitter:image: /sims/patient-clinical-context-subgraph-visualization/patient-clinical-context-subgraph-visualization.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/patient-clinical-context-subgraph-visualization/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,5 +1,7 @@
 ---
 quality_score: 62
+title: "query-performance-comparison"
+description: "Interactive MicroSim for query-performance-comparison."
 ---
 
 # Query Performance Comparison: RDBMS vs Graph Database

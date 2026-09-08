@@ -1,6 +1,6 @@
 ---
-title: Healthcare Data Model Implementation Workflow
-description: Interactive Mermaid MicroSim for healthcare data model implementation workflow.
+title: "Healthcare Data Model Implementation Workflow"
+description: "Interactive Mermaid MicroSim for healthcare data model implementation workflow."
 image: /sims/healthcare-data-model-implementation-workflow/healthcare-data-model-implementation-workflow.png
 og:image: /sims/healthcare-data-model-implementation-workflow/healthcare-data-model-implementation-workflow.png
 twitter:image: /sims/healthcare-data-model-implementation-workflow/healthcare-data-model-implementation-workflow.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-model-implementation-workflow/main.html"
-        height="450px"
+        height="1560px"
         width="100%"
         scrolling="no"></iframe>
 ```

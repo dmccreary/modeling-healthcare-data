@@ -121,7 +121,7 @@ The table below reinforces the four-tier scheme with concrete healthcare example
 
 #### Diagram: Healthcare Data Sensitivity Classification Levels
 
-<iframe src="../../sims/data-sensitivity-classification-levels/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/data-sensitivity-classification-levels/main.html" width="100%" height="802px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Healthcare Data Sensitivity Classification Levels</summary>

@@ -1,6 +1,6 @@
 ---
-title: Authentication vs Authorization Comparison Infographic
-description: Interactive p5.js MicroSim for authentication vs authorization comparison infographic.
+title: "Authentication vs Authorization Comparison Infographic"
+description: "Interactive p5.js MicroSim for authentication vs authorization comparison infographic."
 image: /sims/authentication-authorization-comparison-infographic/authentication-authorization-comparison-infographic.png
 og:image: /sims/authentication-authorization-comparison-infographic/authentication-authorization-comparison-infographic.png
 twitter:image: /sims/authentication-authorization-comparison-infographic/authentication-authorization-comparison-infographic.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/authentication-authorization-comparison-infographic/main.html"
-        height="450px"
+        height="528px"
         width="100%"
         scrolling="no"></iframe>
 ```

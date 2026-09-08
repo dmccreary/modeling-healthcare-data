@@ -1,6 +1,6 @@
 ---
-title: Provider Compensation Comparison Chart
-description: Interactive Chart.js MicroSim for provider compensation comparison chart.
+title: "Provider Compensation Comparison Chart"
+description: "Interactive Chart.js MicroSim for provider compensation comparison chart."
 image: /sims/provider-compensation-comparison-chart/provider-compensation-comparison-chart.png
 og:image: /sims/provider-compensation-comparison-chart/provider-compensation-comparison-chart.png
 twitter:image: /sims/provider-compensation-comparison-chart/provider-compensation-comparison-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/provider-compensation-comparison-chart/main.html"
-        height="450px"
+        height="494px"
         width="100%"
         scrolling="no"></iframe>
 ```

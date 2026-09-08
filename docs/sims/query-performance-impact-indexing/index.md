@@ -1,6 +1,6 @@
 ---
-title: Query Performance Impact of Indexing
-description: Interactive Chart.js MicroSim for query performance impact of indexing.
+title: "Query Performance Impact of Indexing"
+description: "Interactive Chart.js MicroSim for query performance impact of indexing."
 image: /sims/query-performance-impact-indexing/query-performance-impact-indexing.png
 og:image: /sims/query-performance-impact-indexing/query-performance-impact-indexing.png
 twitter:image: /sims/query-performance-impact-indexing/query-performance-impact-indexing.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-impact-indexing/main.html"
-        height="450px"
+        height="494px"
         width="100%"
         scrolling="no"></iframe>
 ```

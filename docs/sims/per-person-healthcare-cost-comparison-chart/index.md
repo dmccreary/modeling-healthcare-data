@@ -1,6 +1,6 @@
 ---
-title: Per-Person Healthcare Cost Comparison Chart
-description: Interactive Chart.js MicroSim for per-person healthcare cost comparison chart.
+title: "Per-Person Healthcare Cost Comparison Chart"
+description: "Interactive Chart.js MicroSim for per-person healthcare cost comparison chart."
 image: /sims/per-person-healthcare-cost-comparison-chart/per-person-healthcare-cost-comparison-chart.png
 og:image: /sims/per-person-healthcare-cost-comparison-chart/per-person-healthcare-cost-comparison-chart.png
 twitter:image: /sims/per-person-healthcare-cost-comparison-chart/per-person-healthcare-cost-comparison-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/per-person-healthcare-cost-comparison-chart/main.html"
-        height="450px"
+        height="494px"
         width="100%"
         scrolling="no"></iframe>
 ```

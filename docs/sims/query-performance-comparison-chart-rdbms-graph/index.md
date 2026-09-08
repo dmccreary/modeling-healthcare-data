@@ -1,6 +1,6 @@
 ---
-title: Query Performance: RDBMS vs Graph
-description: Interactive Chart.js MicroSim for query performance: rdbms vs graph.
+title: "Query Performance: RDBMS vs Graph"
+description: "Interactive Chart.js MicroSim for query performance: rdbms vs graph."
 image: /sims/query-performance-comparison-chart-rdbms-graph/query-performance-comparison-chart-rdbms-graph.png
 og:image: /sims/query-performance-comparison-chart-rdbms-graph/query-performance-comparison-chart-rdbms-graph.png
 twitter:image: /sims/query-performance-comparison-chart-rdbms-graph/query-performance-comparison-chart-rdbms-graph.png
@@ -31,7 +31,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/query-performance-comparison-chart-rdbms-graph/main.html"
-        height="450px"
+        height="454px"
         width="100%"
         scrolling="no"></iframe>
 ```

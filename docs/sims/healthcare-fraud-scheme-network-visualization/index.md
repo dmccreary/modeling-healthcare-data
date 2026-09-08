@@ -1,6 +1,6 @@
 ---
-title: Healthcare Fraud Scheme Network Visualization
-description: Interactive vis-network MicroSim for healthcare fraud scheme network visualization.
+title: "Healthcare Fraud Scheme Network Visualization"
+description: "Interactive vis-network MicroSim for healthcare fraud scheme network visualization."
 image: /sims/healthcare-fraud-scheme-network-visualization/healthcare-fraud-scheme-network-visualization.png
 og:image: /sims/healthcare-fraud-scheme-network-visualization/healthcare-fraud-scheme-network-visualization.png
 twitter:image: /sims/healthcare-fraud-scheme-network-visualization/healthcare-fraud-scheme-network-visualization.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-fraud-scheme-network-visualization/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

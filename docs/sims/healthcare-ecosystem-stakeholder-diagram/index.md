@@ -1,6 +1,6 @@
 ---
-title: Healthcare Ecosystem Stakeholder Diagram
-description: Interactive p5.js MicroSim for healthcare ecosystem stakeholder diagram.
+title: "Healthcare Ecosystem Stakeholder Diagram"
+description: "Interactive p5.js MicroSim for healthcare ecosystem stakeholder diagram."
 image: /sims/healthcare-ecosystem-stakeholder-diagram/healthcare-ecosystem-stakeholder-diagram.png
 og:image: /sims/healthcare-ecosystem-stakeholder-diagram/healthcare-ecosystem-stakeholder-diagram.png
 twitter:image: /sims/healthcare-ecosystem-stakeholder-diagram/healthcare-ecosystem-stakeholder-diagram.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-ecosystem-stakeholder-diagram/main.html"
-        height="450px"
+        height="598px"
         width="100%"
         scrolling="no"></iframe>
 ```

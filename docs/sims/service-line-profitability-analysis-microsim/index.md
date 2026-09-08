@@ -1,6 +1,6 @@
 ---
-title: Service Line Profitability Analysis Interactive MicroSim
-description: Interactive p5.js MicroSim for service line profitability analysis interactive microsim.
+title: "Service Line Profitability Analysis Interactive MicroSim"
+description: "Interactive p5.js MicroSim for service line profitability analysis interactive microsim."
 image: /sims/service-line-profitability-analysis-microsim/service-line-profitability-analysis-microsim.png
 og:image: /sims/service-line-profitability-analysis-microsim/service-line-profitability-analysis-microsim.png
 twitter:image: /sims/service-line-profitability-analysis-microsim/service-line-profitability-analysis-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/service-line-profitability-analysis-microsim/main.html"
-        height="450px"
+        height="636px"
         width="100%"
         scrolling="no"></iframe>
 ```

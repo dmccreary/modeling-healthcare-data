@@ -1,5 +1,7 @@
 ---
 quality_score: 47
+title: "graph-viewer"
+description: "Interactive MicroSim for graph-viewer."
 ---
 
 # Learning Graph Viewer

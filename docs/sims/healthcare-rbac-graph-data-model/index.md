@@ -1,6 +1,6 @@
 ---
-title: Healthcare RBAC Graph Data Model
-description: Interactive vis-network MicroSim for healthcare rbac graph data model.
+title: "Healthcare RBAC Graph Data Model"
+description: "Interactive vis-network MicroSim for healthcare rbac graph data model."
 image: /sims/healthcare-rbac-graph-data-model/healthcare-rbac-graph-data-model.png
 og:image: /sims/healthcare-rbac-graph-data-model/healthcare-rbac-graph-data-model.png
 twitter:image: /sims/healthcare-rbac-graph-data-model/healthcare-rbac-graph-data-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-rbac-graph-data-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

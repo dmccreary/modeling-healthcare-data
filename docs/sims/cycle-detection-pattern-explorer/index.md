@@ -1,6 +1,6 @@
 ---
-title: Cycle Detection and Pattern Explorer MicroSim
-description: Interactive vis-network MicroSim for cycle detection and pattern explorer microsim.
+title: "Cycle Detection and Pattern Explorer MicroSim"
+description: "Interactive vis-network MicroSim for cycle detection and pattern explorer microsim."
 image: /sims/cycle-detection-pattern-explorer/cycle-detection-pattern-explorer.png
 og:image: /sims/cycle-detection-pattern-explorer/cycle-detection-pattern-explorer.png
 twitter:image: /sims/cycle-detection-pattern-explorer/cycle-detection-pattern-explorer.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/cycle-detection-pattern-explorer/main.html"
-        height="450px"
+        height="508px"
         width="100%"
         scrolling="no"></iframe>
 ```

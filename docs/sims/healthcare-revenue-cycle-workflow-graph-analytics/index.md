@@ -1,6 +1,6 @@
 ---
-title: Healthcare Revenue Cycle Workflow with Graph Analytics
-description: Interactive Mermaid MicroSim for healthcare revenue cycle workflow with graph analytics.
+title: "Healthcare Revenue Cycle Workflow with Graph Analytics"
+description: "Interactive Mermaid MicroSim for healthcare revenue cycle workflow with graph analytics."
 image: /sims/healthcare-revenue-cycle-workflow-graph-analytics/healthcare-revenue-cycle-workflow-graph-analytics.png
 og:image: /sims/healthcare-revenue-cycle-workflow-graph-analytics/healthcare-revenue-cycle-workflow-graph-analytics.png
 twitter:image: /sims/healthcare-revenue-cycle-workflow-graph-analytics/healthcare-revenue-cycle-workflow-graph-analytics.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-revenue-cycle-workflow-graph-analytics/main.html"
-        height="450px"
+        height="1880px"
         width="100%"
         scrolling="no"></iframe>
 ```

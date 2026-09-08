@@ -60,7 +60,7 @@ The dollar amount a service is actually worth to deliver — as opposed to what 
 
 #### Diagram: Healthcare Revenue Cycle Workflow with Graph Analytics
 
-<iframe src="../../sims/healthcare-revenue-cycle-workflow-graph-analytics/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/healthcare-revenue-cycle-workflow-graph-analytics/main.html" width="100%" height="1880px" scrolling="no"></iframe>
 
 [Run the Healthcare Revenue Cycle Workflow MicroSim Fullscreen](../../sims/healthcare-revenue-cycle-workflow-graph-analytics/main.html){ .md-button }
 

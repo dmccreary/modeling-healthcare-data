@@ -1,6 +1,6 @@
 ---
-title: Graph Traversal Visualization MicroSim
-description: Interactive p5.js MicroSim for graph traversal visualization microsim.
+title: "Graph Traversal Visualization MicroSim"
+description: "Interactive p5.js MicroSim for graph traversal visualization microsim."
 image: /sims/graph-traversal-visualization-microsim/graph-traversal-visualization-microsim.png
 og:image: /sims/graph-traversal-visualization-microsim/graph-traversal-visualization-microsim.png
 twitter:image: /sims/graph-traversal-visualization-microsim/graph-traversal-visualization-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/graph-traversal-visualization-microsim/main.html"
-        height="450px"
+        height="638px"
         width="100%"
         scrolling="no"></iframe>
 ```

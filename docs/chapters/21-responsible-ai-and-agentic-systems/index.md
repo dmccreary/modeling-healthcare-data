@@ -175,7 +175,7 @@ Before looking at the pipeline diagram, note that these extracted entities do no
 
 #### Diagram: Clinical NLP Pipeline Explorer
 
-<iframe src="../../sims/clinical-nlp-pipeline-explorer/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/clinical-nlp-pipeline-explorer/main.html" width="100%" height="958px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Clinical NLP Pipeline Explorer</summary>
@@ -227,7 +227,7 @@ A worked example shows drift detection in action. A sepsis early-warning model i
 
 #### Diagram: Model Drift Detection Monitor
 
-<iframe src="../../sims/model-drift-detection-monitor/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/model-drift-detection-monitor/main.html" width="100%" height="780px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Model Drift Detection Monitor</summary>
@@ -282,7 +282,7 @@ Two related but distinct terms describe how these systems reach the end user. A 
 
 #### Diagram: Agentic Clinical Workflow Orchestrator
 
-<iframe src="../../sims/agentic-clinical-workflow-orchestrator/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/agentic-clinical-workflow-orchestrator/main.html" width="100%" height="1498px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Agentic Clinical Workflow Orchestrator</summary>

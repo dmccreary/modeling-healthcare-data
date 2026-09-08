@@ -75,7 +75,7 @@ Carrying a guideline through every stage of this process — narrative, decision
 
 #### Diagram: Guideline Authoring Artifacts Explorer
 
-<iframe src="../../sims/guideline-authoring-artifacts-explorer/main.html" width="100%" height="550px" scrolling="no"></iframe>
+<iframe src="../../sims/guideline-authoring-artifacts-explorer/main.html" width="100%" height="907px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Guideline Authoring Artifacts Explorer</summary>
@@ -121,7 +121,7 @@ A worked example threads CodeSystem, ValueSet, and binding strength together. Te
 
 #### Diagram: CodeSystem, ValueSet, and Terminology Binding Explorer
 
-<iframe src="../../sims/terminology-binding-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/terminology-binding-explorer/main.html" width="100%" height="1143px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>CodeSystem, ValueSet, and Terminology Binding Explorer</summary>
@@ -212,7 +212,7 @@ Notice that every piece of the original CQL — the retrieve, the `where` filter
 
 #### Diagram: CQL-to-ELM Compilation Pipeline
 
-<iframe src="../../sims/cql-to-elm-compilation-pipeline/main.html" width="100%" height="550px" scrolling="no"></iframe>
+<iframe src="../../sims/cql-to-elm-compilation-pipeline/main.html" width="100%" height="1006px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>CQL-to-ELM Compilation Pipeline</summary>
@@ -256,7 +256,7 @@ CQMs are further classified by what they measure: a *process measure* tracks whe
 
 #### Diagram: Clinical Quality Measure Population Funnel
 
-<iframe src="../../sims/clinical-quality-measure-population-funnel/main.html" width="100%" height="480px" scrolling="no"></iframe>
+<iframe src="../../sims/clinical-quality-measure-population-funnel/main.html" width="100%" height="873px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Clinical Quality Measure Population Funnel</summary>

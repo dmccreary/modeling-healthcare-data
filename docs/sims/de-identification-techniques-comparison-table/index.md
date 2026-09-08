@@ -1,6 +1,6 @@
 ---
-title: De-Identification Techniques Comparison Table
-description: Interactive p5.js MicroSim for de-identification techniques comparison table.
+title: "De-Identification Techniques Comparison Table"
+description: "Interactive p5.js MicroSim for de-identification techniques comparison table."
 image: /sims/de-identification-techniques-comparison-table/de-identification-techniques-comparison-table.png
 og:image: /sims/de-identification-techniques-comparison-table/de-identification-techniques-comparison-table.png
 twitter:image: /sims/de-identification-techniques-comparison-table/de-identification-techniques-comparison-table.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/de-identification-techniques-comparison-table/main.html"
-        height="450px"
+        height="528px"
         width="100%"
         scrolling="no"></iframe>
 ```

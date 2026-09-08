@@ -1,6 +1,6 @@
 ---
-title: Clinical Decision Support Workflow
-description: Interactive Mermaid MicroSim for clinical decision support workflow.
+title: "Clinical Decision Support Workflow"
+description: "Interactive Mermaid MicroSim for clinical decision support workflow."
 image: /sims/clinical-decision-support-workflow/clinical-decision-support-workflow.png
 og:image: /sims/clinical-decision-support-workflow/clinical-decision-support-workflow.png
 twitter:image: /sims/clinical-decision-support-workflow/clinical-decision-support-workflow.png
@@ -39,7 +39,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-decision-support-workflow/main.html"
-        height="450px"
+        height="1262px"
         width="100%"
         scrolling="no"></iframe>
 ```

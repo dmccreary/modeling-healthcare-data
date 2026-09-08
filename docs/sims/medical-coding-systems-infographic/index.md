@@ -1,6 +1,6 @@
 ---
-title: Medical Coding Systems Interactive Infographic
-description: Interactive p5.js MicroSim for medical coding systems interactive infographic.
+title: "Medical Coding Systems Interactive Infographic"
+description: "Interactive p5.js MicroSim for medical coding systems interactive infographic."
 image: /sims/medical-coding-systems-infographic/medical-coding-systems-infographic.png
 og:image: /sims/medical-coding-systems-infographic/medical-coding-systems-infographic.png
 twitter:image: /sims/medical-coding-systems-infographic/medical-coding-systems-infographic.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/medical-coding-systems-infographic/main.html"
-        height="450px"
+        height="598px"
         width="100%"
         scrolling="no"></iframe>
 ```

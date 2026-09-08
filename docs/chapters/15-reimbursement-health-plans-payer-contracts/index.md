@@ -73,7 +73,7 @@ Two further complications arise when a member's coverage isn't as simple as one 
 
 #### Diagram: Allowed Amount and Reimbursement Breakdown Chart
 
-<iframe src="../../sims/allowed-amount-reimbursement-breakdown-chart/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/allowed-amount-reimbursement-breakdown-chart/main.html" width="100%" height="780px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Allowed Amount and Reimbursement Breakdown Chart</summary>
@@ -167,7 +167,7 @@ Before any of this can happen, a provider typically performs **eligibility verif
 
 #### Diagram: Claims Clearinghouse and Eligibility Verification Workflow
 
-<iframe src="../../sims/claims-clearinghouse-eligibility-verification-workflow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/claims-clearinghouse-eligibility-verification-workflow/main.html" width="100%" height="1427px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Claims Clearinghouse and Eligibility Verification Workflow</summary>

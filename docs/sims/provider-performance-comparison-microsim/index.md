@@ -1,6 +1,6 @@
 ---
-title: Provider Performance Comparison MicroSim
-description: Interactive p5.js MicroSim for provider performance comparison microsim.
+title: "Provider Performance Comparison MicroSim"
+description: "Interactive p5.js MicroSim for provider performance comparison microsim."
 image: /sims/provider-performance-comparison-microsim/provider-performance-comparison-microsim.png
 og:image: /sims/provider-performance-comparison-microsim/provider-performance-comparison-microsim.png
 twitter:image: /sims/provider-performance-comparison-microsim/provider-performance-comparison-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/provider-performance-comparison-microsim/main.html"
-        height="450px"
+        height="593px"
         width="100%"
         scrolling="no"></iframe>
 ```

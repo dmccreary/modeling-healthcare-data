@@ -1,6 +1,6 @@
 ---
-title: Vector Embedding Similarity Visualization MicroSim
-description: Interactive p5.js MicroSim for vector embedding similarity visualization microsim.
+title: "Vector Embedding Similarity Visualization MicroSim"
+description: "Interactive p5.js MicroSim for vector embedding similarity visualization microsim."
 image: /sims/vector-embedding-similarity-visualization-microsim/vector-embedding-similarity-visualization-microsim.png
 og:image: /sims/vector-embedding-similarity-visualization-microsim/vector-embedding-similarity-visualization-microsim.png
 twitter:image: /sims/vector-embedding-similarity-visualization-microsim/vector-embedding-similarity-visualization-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/vector-embedding-similarity-visualization-microsim/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

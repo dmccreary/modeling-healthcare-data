@@ -1,6 +1,6 @@
 ---
-title: Clinical Discovery Pipeline Timeline
-description: Interactive vis-timeline MicroSim for clinical discovery pipeline timeline.
+title: "Clinical Discovery Pipeline Timeline"
+description: "Interactive vis-timeline MicroSim for clinical discovery pipeline timeline."
 image: /sims/clinical-discovery-pipeline-timeline/clinical-discovery-pipeline-timeline.png
 og:image: /sims/clinical-discovery-pipeline-timeline/clinical-discovery-pipeline-timeline.png
 twitter:image: /sims/clinical-discovery-pipeline-timeline/clinical-discovery-pipeline-timeline.png
@@ -37,7 +37,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-discovery-pipeline-timeline/main.html"
-        height="450px"
+        height="642px"
         width="100%"
         scrolling="no"></iframe>
 ```

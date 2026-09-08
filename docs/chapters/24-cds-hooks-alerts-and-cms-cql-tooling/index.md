@@ -88,7 +88,7 @@ Continuing the same worked example one step further shows how CDS Hooks connects
 
 #### Diagram: CDS Hooks Request-Response Cycle
 
-<iframe src="../../sims/cds-hooks-request-response-cycle/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/cds-hooks-request-response-cycle/main.html" width="100%" height="1118px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>CDS Hooks Request-Response Cycle</summary>
@@ -148,7 +148,7 @@ Not every data element a measure needs already exists as structured data inside 
 
 #### Diagram: CMS CQL Measure Development and Certification Pipeline
 
-<iframe src="../../sims/cms-cql-measure-certification-pipeline/main.html" width="100%" height="560px" scrolling="no"></iframe>
+<iframe src="../../sims/cms-cql-measure-certification-pipeline/main.html" width="100%" height="445px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>CMS CQL Measure Development and Certification Pipeline</summary>

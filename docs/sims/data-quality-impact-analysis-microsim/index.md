@@ -1,6 +1,6 @@
 ---
-title: Data Quality Impact Analysis MicroSim
-description: Interactive p5.js MicroSim for data quality impact analysis microsim.
+title: "Data Quality Impact Analysis MicroSim"
+description: "Interactive p5.js MicroSim for data quality impact analysis microsim."
 image: /sims/data-quality-impact-analysis-microsim/data-quality-impact-analysis-microsim.png
 og:image: /sims/data-quality-impact-analysis-microsim/data-quality-impact-analysis-microsim.png
 twitter:image: /sims/data-quality-impact-analysis-microsim/data-quality-impact-analysis-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/data-quality-impact-analysis-microsim/main.html"
-        height="450px"
+        height="656px"
         width="100%"
         scrolling="no"></iframe>
 ```

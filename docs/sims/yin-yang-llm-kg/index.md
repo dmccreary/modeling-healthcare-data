@@ -1,7 +1,7 @@
 ---
 quality_score: 95
-title: Yin-Yang LLM vs Knowledge Graph
-description: A MicroSim using the Yin-Yang symbol to illustrate the complementary characteristics of Large Language Models and Enterprise Knowledge Graphs.
+title: "Yin-Yang LLM vs Knowledge Graph"
+description: "A MicroSim using the Yin-Yang symbol to illustrate the complementary characteristics of Large Language Models and Enterprise Knowledge Graphs."
 image: /sims/yin-yang-llm-kg/yin-yang-llm-kg.png
 og:image: /sims/yin-yang-llm-kg/yin-yang-llm-kg.png
 twitter:image: /sims/yin-yang-llm-kg/yin-yang-llm-kg.png

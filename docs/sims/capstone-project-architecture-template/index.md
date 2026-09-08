@@ -1,6 +1,6 @@
 ---
-title: Capstone Project Architecture Template
-description: Interactive p5.js MicroSim for capstone project architecture template.
+title: "Capstone Project Architecture Template"
+description: "Interactive p5.js MicroSim for capstone project architecture template."
 image: /sims/capstone-project-architecture-template/capstone-project-architecture-template.png
 og:image: /sims/capstone-project-architecture-template/capstone-project-architecture-template.png
 twitter:image: /sims/capstone-project-architecture-template/capstone-project-architecture-template.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/capstone-project-architecture-template/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

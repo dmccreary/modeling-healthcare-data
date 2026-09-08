@@ -1,6 +1,6 @@
 ---
-title: Migration Strategy Comparison Chart
-description: Interactive Chart.js MicroSim for migration strategy comparison chart.
+title: "Migration Strategy Comparison Chart"
+description: "Interactive Chart.js MicroSim for migration strategy comparison chart."
 image: /sims/migration-strategy-comparison-chart/migration-strategy-comparison-chart.png
 og:image: /sims/migration-strategy-comparison-chart/migration-strategy-comparison-chart.png
 twitter:image: /sims/migration-strategy-comparison-chart/migration-strategy-comparison-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/migration-strategy-comparison-chart/main.html"
-        height="450px"
+        height="548px"
         width="100%"
         scrolling="no"></iframe>
 ```

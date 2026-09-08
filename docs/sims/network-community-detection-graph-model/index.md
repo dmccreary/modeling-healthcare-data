@@ -1,6 +1,6 @@
 ---
-title: Network Community Detection Interactive Graph Model
-description: Interactive vis-network MicroSim for network community detection interactive graph model.
+title: "Network Community Detection Interactive Graph Model"
+description: "Interactive vis-network MicroSim for network community detection interactive graph model."
 image: /sims/network-community-detection-graph-model/network-community-detection-graph-model.png
 og:image: /sims/network-community-detection-graph-model/network-community-detection-graph-model.png
 twitter:image: /sims/network-community-detection-graph-model/network-community-detection-graph-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/network-community-detection-graph-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

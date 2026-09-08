@@ -1,6 +1,6 @@
 ---
-title: Preventive Care Gap Closure MicroSim
-description: Interactive p5.js MicroSim for preventive care gap closure microsim.
+title: "Preventive Care Gap Closure MicroSim"
+description: "Interactive p5.js MicroSim for preventive care gap closure microsim."
 image: /sims/preventive-care-gap-closure/preventive-care-gap-closure.png
 og:image: /sims/preventive-care-gap-closure/preventive-care-gap-closure.png
 twitter:image: /sims/preventive-care-gap-closure/preventive-care-gap-closure.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/preventive-care-gap-closure/main.html"
-        height="450px"
+        height="588px"
         width="100%"
         scrolling="no"></iframe>
 ```

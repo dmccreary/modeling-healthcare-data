@@ -1,6 +1,6 @@
 ---
-title: Medical Code System Classifier MicroSim
-description: Interactive p5.js MicroSim for medical code system classifier microsim.
+title: "Medical Code System Classifier MicroSim"
+description: "Interactive p5.js MicroSim for medical code system classifier microsim."
 image: /sims/medical-code-classifier/medical-code-classifier.png
 og:image: /sims/medical-code-classifier/medical-code-classifier.png
 twitter:image: /sims/medical-code-classifier/medical-code-classifier.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/medical-code-classifier/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

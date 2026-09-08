@@ -1,5 +1,7 @@
 ---
 quality_score: 52
+title: "clinical-care-pathway-dag"
+description: "Interactive MicroSim for clinical-care-pathway-dag."
 ---
 
 # Clinical Care Pathway DAG

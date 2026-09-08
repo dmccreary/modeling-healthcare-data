@@ -1,6 +1,6 @@
 ---
-title: Prior Authorization Decision Tree Interactive MicroSim
-description: Interactive p5.js MicroSim for prior authorization decision tree interactive microsim.
+title: "Prior Authorization Decision Tree Interactive MicroSim"
+description: "Interactive p5.js MicroSim for prior authorization decision tree interactive microsim."
 image: /sims/prior-authorization-decision-tree-microsim/prior-authorization-decision-tree-microsim.png
 og:image: /sims/prior-authorization-decision-tree-microsim/prior-authorization-decision-tree-microsim.png
 twitter:image: /sims/prior-authorization-decision-tree-microsim/prior-authorization-decision-tree-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/prior-authorization-decision-tree-microsim/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

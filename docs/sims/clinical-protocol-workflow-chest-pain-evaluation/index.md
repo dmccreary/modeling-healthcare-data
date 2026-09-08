@@ -1,6 +1,6 @@
 ---
-title: Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department
-description: Interactive Mermaid MicroSim for clinical protocol workflow: chest pain evaluation in emergency department.
+title: "Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department"
+description: "Interactive Mermaid MicroSim for clinical protocol workflow: chest pain evaluation in emergency department."
 image: /sims/clinical-protocol-workflow-chest-pain-evaluation/clinical-protocol-workflow-chest-pain-evaluation.png
 og:image: /sims/clinical-protocol-workflow-chest-pain-evaluation/clinical-protocol-workflow-chest-pain-evaluation.png
 twitter:image: /sims/clinical-protocol-workflow-chest-pain-evaluation/clinical-protocol-workflow-chest-pain-evaluation.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-protocol-workflow-chest-pain-evaluation/main.html"
-        height="450px"
+        height="731px"
         width="100%"
         scrolling="no"></iframe>
 ```

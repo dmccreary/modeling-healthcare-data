@@ -268,7 +268,7 @@ capacity-strain metrics in hospital operations.
 
 #### Diagram: Care Setting Acuity Flow Diagram
 
-<iframe src="../../sims/care-setting-acuity-flow-diagram/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/care-setting-acuity-flow-diagram/main.html" width="100%" height="930px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Care Setting Acuity Flow Diagram</summary>

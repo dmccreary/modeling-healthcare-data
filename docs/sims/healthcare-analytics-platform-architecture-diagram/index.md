@@ -1,6 +1,6 @@
 ---
-title: Healthcare Analytics Platform Architecture Diagram
-description: Interactive p5.js MicroSim for healthcare analytics platform architecture diagram.
+title: "Healthcare Analytics Platform Architecture Diagram"
+description: "Interactive p5.js MicroSim for healthcare analytics platform architecture diagram."
 image: /sims/healthcare-analytics-platform-architecture-diagram/healthcare-analytics-platform-architecture-diagram.png
 og:image: /sims/healthcare-analytics-platform-architecture-diagram/healthcare-analytics-platform-architecture-diagram.png
 twitter:image: /sims/healthcare-analytics-platform-architecture-diagram/healthcare-analytics-platform-architecture-diagram.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-analytics-platform-architecture-diagram/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

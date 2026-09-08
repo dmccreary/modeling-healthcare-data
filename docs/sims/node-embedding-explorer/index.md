@@ -1,6 +1,6 @@
 ---
-title: Node Embedding Explorer MicroSim
-description: Interactive p5.js MicroSim for node embedding explorer microsim.
+title: "Node Embedding Explorer MicroSim"
+description: "Interactive p5.js MicroSim for node embedding explorer microsim."
 image: /sims/node-embedding-explorer/node-embedding-explorer.png
 og:image: /sims/node-embedding-explorer/node-embedding-explorer.png
 twitter:image: /sims/node-embedding-explorer/node-embedding-explorer.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/node-embedding-explorer/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

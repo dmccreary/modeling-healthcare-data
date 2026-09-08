@@ -1,6 +1,6 @@
 ---
-title: Healthcare Graph Pattern Examples
-description: Interactive p5.js MicroSim for healthcare graph pattern examples.
+title: "Healthcare Graph Pattern Examples"
+description: "Interactive p5.js MicroSim for healthcare graph pattern examples."
 image: /sims/healthcare-graph-pattern-examples/healthcare-graph-pattern-examples.png
 og:image: /sims/healthcare-graph-pattern-examples/healthcare-graph-pattern-examples.png
 twitter:image: /sims/healthcare-graph-pattern-examples/healthcare-graph-pattern-examples.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-graph-pattern-examples/main.html"
-        height="450px"
+        height="546px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Provider Network Centrality Analysis Dashboard
-description: Interactive Chart.js MicroSim for provider network centrality analysis dashboard.
+title: "Provider Network Centrality Analysis Dashboard"
+description: "Interactive Chart.js MicroSim for provider network centrality analysis dashboard."
 image: /sims/provider-network-centrality-analysis-dashboard/provider-network-centrality-analysis-dashboard.png
 og:image: /sims/provider-network-centrality-analysis-dashboard/provider-network-centrality-analysis-dashboard.png
 twitter:image: /sims/provider-network-centrality-analysis-dashboard/provider-network-centrality-analysis-dashboard.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/provider-network-centrality-analysis-dashboard/main.html"
-        height="450px"
+        height="795px"
         width="100%"
         scrolling="no"></iframe>
 ```

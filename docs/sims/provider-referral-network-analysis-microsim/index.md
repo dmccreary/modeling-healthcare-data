@@ -1,6 +1,6 @@
 ---
-title: Provider Referral Network Analysis MicroSim
-description: Interactive p5.js MicroSim for provider referral network analysis microsim.
+title: "Provider Referral Network Analysis MicroSim"
+description: "Interactive p5.js MicroSim for provider referral network analysis microsim."
 image: /sims/provider-referral-network-analysis-microsim/provider-referral-network-analysis-microsim.png
 og:image: /sims/provider-referral-network-analysis-microsim/provider-referral-network-analysis-microsim.png
 twitter:image: /sims/provider-referral-network-analysis-microsim/provider-referral-network-analysis-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/provider-referral-network-analysis-microsim/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

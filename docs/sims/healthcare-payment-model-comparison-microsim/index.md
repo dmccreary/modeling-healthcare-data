@@ -1,6 +1,6 @@
 ---
-title: Healthcare Payment Model Comparison MicroSim
-description: Interactive p5.js MicroSim for healthcare payment model comparison microsim.
+title: "Healthcare Payment Model Comparison MicroSim"
+description: "Interactive p5.js MicroSim for healthcare payment model comparison microsim."
 image: /sims/healthcare-payment-model-comparison-microsim/healthcare-payment-model-comparison-microsim.png
 og:image: /sims/healthcare-payment-model-comparison-microsim/healthcare-payment-model-comparison-microsim.png
 twitter:image: /sims/healthcare-payment-model-comparison-microsim/healthcare-payment-model-comparison-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-payment-model-comparison-microsim/main.html"
-        height="450px"
+        height="616px"
         width="100%"
         scrolling="no"></iframe>
 ```

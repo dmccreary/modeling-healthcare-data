@@ -1,6 +1,6 @@
 ---
-title: Medication Safety Network Interactive Infographic
-description: Interactive p5.js MicroSim for medication safety network interactive infographic.
+title: "Medication Safety Network Interactive Infographic"
+description: "Interactive p5.js MicroSim for medication safety network interactive infographic."
 image: /sims/medication-safety-network-infographic/medication-safety-network-infographic.png
 og:image: /sims/medication-safety-network-infographic/medication-safety-network-infographic.png
 twitter:image: /sims/medication-safety-network-infographic/medication-safety-network-infographic.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/medication-safety-network-infographic/main.html"
-        height="450px"
+        height="638px"
         width="100%"
         scrolling="no"></iframe>
 ```

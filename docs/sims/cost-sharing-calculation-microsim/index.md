@@ -1,6 +1,6 @@
 ---
-title: Cost-Sharing Calculation Interactive MicroSim
-description: Interactive p5.js MicroSim for cost-sharing calculation interactive microsim.
+title: "Cost-Sharing Calculation Interactive MicroSim"
+description: "Interactive p5.js MicroSim for cost-sharing calculation interactive microsim."
 image: /sims/cost-sharing-calculation-microsim/cost-sharing-calculation-microsim.png
 og:image: /sims/cost-sharing-calculation-microsim/cost-sharing-calculation-microsim.png
 twitter:image: /sims/cost-sharing-calculation-microsim/cost-sharing-calculation-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/cost-sharing-calculation-microsim/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Healthcare Data Protection Layers Diagram
-description: Interactive p5.js MicroSim for healthcare data protection layers diagram.
+title: "Healthcare Data Protection Layers Diagram"
+description: "Interactive p5.js MicroSim for healthcare data protection layers diagram."
 image: /sims/healthcare-data-protection-layers-diagram/healthcare-data-protection-layers-diagram.png
 og:image: /sims/healthcare-data-protection-layers-diagram/healthcare-data-protection-layers-diagram.png
 twitter:image: /sims/healthcare-data-protection-layers-diagram/healthcare-data-protection-layers-diagram.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-protection-layers-diagram/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

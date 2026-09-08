@@ -1,6 +1,6 @@
 ---
-title: AI / ML / Deep Learning Taxonomy
-description: Interactive p5.js MicroSim for ai / ml / deep learning taxonomy.
+title: "AI / ML / Deep Learning Taxonomy"
+description: "Interactive p5.js MicroSim for ai / ml / deep learning taxonomy."
 image: /sims/ai-ml-taxonomy-healthcare/ai-ml-taxonomy-healthcare.png
 og:image: /sims/ai-ml-taxonomy-healthcare/ai-ml-taxonomy-healthcare.png
 twitter:image: /sims/ai-ml-taxonomy-healthcare/ai-ml-taxonomy-healthcare.png
@@ -31,7 +31,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/ai-ml-taxonomy-healthcare/main.html"
-        height="450px"
+        height="528px"
         width="100%"
         scrolling="no"></iframe>
 ```

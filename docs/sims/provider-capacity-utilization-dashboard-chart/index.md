@@ -1,6 +1,6 @@
 ---
-title: Provider Capacity Utilization Dashboard Chart
-description: Interactive Chart.js MicroSim for provider capacity utilization dashboard chart.
+title: "Provider Capacity Utilization Dashboard Chart"
+description: "Interactive Chart.js MicroSim for provider capacity utilization dashboard chart."
 image: /sims/provider-capacity-utilization-dashboard-chart/provider-capacity-utilization-dashboard-chart.png
 og:image: /sims/provider-capacity-utilization-dashboard-chart/provider-capacity-utilization-dashboard-chart.png
 twitter:image: /sims/provider-capacity-utilization-dashboard-chart/provider-capacity-utilization-dashboard-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/provider-capacity-utilization-dashboard-chart/main.html"
-        height="450px"
+        height="508px"
         width="100%"
         scrolling="no"></iframe>
 ```

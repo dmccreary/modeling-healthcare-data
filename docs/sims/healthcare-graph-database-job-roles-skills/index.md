@@ -1,6 +1,6 @@
 ---
-title: Healthcare Graph Database Job Roles and Skills Map
-description: Interactive vis-network MicroSim for healthcare graph database job roles and skills map.
+title: "Healthcare Graph Database Job Roles and Skills Map"
+description: "Interactive vis-network MicroSim for healthcare graph database job roles and skills map."
 image: /sims/healthcare-graph-database-job-roles-skills/healthcare-graph-database-job-roles-skills.png
 og:image: /sims/healthcare-graph-database-job-roles-skills/healthcare-graph-database-job-roles-skills.png
 twitter:image: /sims/healthcare-graph-database-job-roles-skills/healthcare-graph-database-job-roles-skills.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-graph-database-job-roles-skills/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

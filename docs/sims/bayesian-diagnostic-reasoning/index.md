@@ -1,6 +1,6 @@
 ---
-title: Bayesian Diagnostic Reasoning MicroSim
-description: Interactive p5.js MicroSim for bayesian diagnostic reasoning microsim.
+title: "Bayesian Diagnostic Reasoning MicroSim"
+description: "Interactive p5.js MicroSim for bayesian diagnostic reasoning microsim."
 image: /sims/bayesian-diagnostic-reasoning/bayesian-diagnostic-reasoning.png
 og:image: /sims/bayesian-diagnostic-reasoning/bayesian-diagnostic-reasoning.png
 twitter:image: /sims/bayesian-diagnostic-reasoning/bayesian-diagnostic-reasoning.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/bayesian-diagnostic-reasoning/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

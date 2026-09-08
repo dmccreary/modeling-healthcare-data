@@ -1,6 +1,6 @@
 ---
-title: Directed Acyclic Graph Example: Care Pathway
-description: Interactive p5.js MicroSim for directed acyclic graph example: care pathway.
+title: "Directed Acyclic Graph Example: Care Pathway"
+description: "Interactive p5.js MicroSim for directed acyclic graph example: care pathway."
 image: /sims/directed-acyclic-graph-care-pathway/directed-acyclic-graph-care-pathway.png
 og:image: /sims/directed-acyclic-graph-care-pathway/directed-acyclic-graph-care-pathway.png
 twitter:image: /sims/directed-acyclic-graph-care-pathway/directed-acyclic-graph-care-pathway.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/directed-acyclic-graph-care-pathway/main.html"
-        height="450px"
+        height="498px"
         width="100%"
         scrolling="no"></iframe>
 ```

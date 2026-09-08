@@ -1,6 +1,6 @@
 ---
-title: Cypher Query Components Interactive Infographic
-description: Interactive p5.js MicroSim for cypher query components interactive infographic.
+title: "Cypher Query Components Interactive Infographic"
+description: "Interactive p5.js MicroSim for cypher query components interactive infographic."
 image: /sims/cypher-query-components-infographic/cypher-query-components-infographic.png
 og:image: /sims/cypher-query-components-infographic/cypher-query-components-infographic.png
 twitter:image: /sims/cypher-query-components-infographic/cypher-query-components-infographic.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/cypher-query-components-infographic/main.html"
-        height="450px"
+        height="636px"
         width="100%"
         scrolling="no"></iframe>
 ```

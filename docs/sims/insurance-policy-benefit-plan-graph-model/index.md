@@ -1,6 +1,6 @@
 ---
-title: Insurance Policy and Benefit Plan Graph Model
-description: Interactive vis-network MicroSim for insurance policy and benefit plan graph model.
+title: "Insurance Policy and Benefit Plan Graph Model"
+description: "Interactive vis-network MicroSim for insurance policy and benefit plan graph model."
 image: /sims/insurance-policy-benefit-plan-graph-model/insurance-policy-benefit-plan-graph-model.png
 og:image: /sims/insurance-policy-benefit-plan-graph-model/insurance-policy-benefit-plan-graph-model.png
 twitter:image: /sims/insurance-policy-benefit-plan-graph-model/insurance-policy-benefit-plan-graph-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/insurance-policy-benefit-plan-graph-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

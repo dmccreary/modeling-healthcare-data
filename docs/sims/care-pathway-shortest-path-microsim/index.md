@@ -1,6 +1,6 @@
 ---
-title: Care Pathway Shortest Path Interactive MicroSim
-description: Interactive p5.js MicroSim for care pathway shortest path interactive microsim.
+title: "Care Pathway Shortest Path Interactive MicroSim"
+description: "Interactive p5.js MicroSim for care pathway shortest path interactive microsim."
 image: /sims/care-pathway-shortest-path-microsim/care-pathway-shortest-path-microsim.png
 og:image: /sims/care-pathway-shortest-path-microsim/care-pathway-shortest-path-microsim.png
 twitter:image: /sims/care-pathway-shortest-path-microsim/care-pathway-shortest-path-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/care-pathway-shortest-path-microsim/main.html"
-        height="450px"
+        height="598px"
         width="100%"
         scrolling="no"></iframe>
 ```

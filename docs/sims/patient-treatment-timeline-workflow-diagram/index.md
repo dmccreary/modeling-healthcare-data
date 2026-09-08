@@ -1,6 +1,6 @@
 ---
-title: Patient Treatment Timeline Workflow Diagram
-description: Interactive Mermaid MicroSim for patient treatment timeline workflow diagram.
+title: "Patient Treatment Timeline Workflow Diagram"
+description: "Interactive Mermaid MicroSim for patient treatment timeline workflow diagram."
 image: /sims/patient-treatment-timeline-workflow-diagram/patient-treatment-timeline-workflow-diagram.png
 og:image: /sims/patient-treatment-timeline-workflow-diagram/patient-treatment-timeline-workflow-diagram.png
 twitter:image: /sims/patient-treatment-timeline-workflow-diagram/patient-treatment-timeline-workflow-diagram.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/patient-treatment-timeline-workflow-diagram/main.html"
-        height="450px"
+        height="613px"
         width="100%"
         scrolling="no"></iframe>
 ```

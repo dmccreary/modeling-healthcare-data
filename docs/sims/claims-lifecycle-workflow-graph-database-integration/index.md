@@ -1,6 +1,6 @@
 ---
-title: Claims Lifecycle Workflow with Graph Database Integration
-description: Interactive Mermaid MicroSim for claims lifecycle workflow with graph database integration.
+title: "Claims Lifecycle Workflow with Graph Database Integration"
+description: "Interactive Mermaid MicroSim for claims lifecycle workflow with graph database integration."
 image: /sims/claims-lifecycle-workflow-graph-database-integration/claims-lifecycle-workflow-graph-database-integration.png
 og:image: /sims/claims-lifecycle-workflow-graph-database-integration/claims-lifecycle-workflow-graph-database-integration.png
 twitter:image: /sims/claims-lifecycle-workflow-graph-database-integration/claims-lifecycle-workflow-graph-database-integration.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/claims-lifecycle-workflow-graph-database-integration/main.html"
-        height="450px"
+        height="1716px"
         width="100%"
         scrolling="no"></iframe>
 ```

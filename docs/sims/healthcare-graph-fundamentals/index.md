@@ -1,5 +1,7 @@
 ---
 quality_score: 42
+title: "healthcare-graph-fundamentals"
+description: "Interactive MicroSim for healthcare-graph-fundamentals."
 ---
 
 # Healthcare Graph Fundamentals

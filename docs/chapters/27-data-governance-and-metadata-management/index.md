@@ -139,7 +139,7 @@ A governance framework only works if these pillars are backed by real organizati
 
 #### Diagram: Data Governance Framework Pillars
 
-<iframe src="../../sims/data-governance-framework-pillars/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/data-governance-framework-pillars/main.html" width="100%" height="702px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Data Governance Framework Pillars</summary>

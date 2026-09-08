@@ -1,6 +1,6 @@
 ---
-title: Provider Network Fraud Detection Dashboard
-description: Interactive Chart.js MicroSim for provider network fraud detection dashboard.
+title: "Provider Network Fraud Detection Dashboard"
+description: "Interactive Chart.js MicroSim for provider network fraud detection dashboard."
 image: /sims/provider-network-fraud-detection-dashboard/provider-network-fraud-detection-dashboard.png
 og:image: /sims/provider-network-fraud-detection-dashboard/provider-network-fraud-detection-dashboard.png
 twitter:image: /sims/provider-network-fraud-detection-dashboard/provider-network-fraud-detection-dashboard.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/provider-network-fraud-detection-dashboard/main.html"
-        height="450px"
+        height="750px"
         width="100%"
         scrolling="no"></iframe>
 ```

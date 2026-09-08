@@ -1,5 +1,7 @@
 ---
 quality_score: 72
+title: "encounter-workflow"
+description: "Interactive MicroSim for encounter-workflow."
 ---
 
 # Patient Encounter Workflow

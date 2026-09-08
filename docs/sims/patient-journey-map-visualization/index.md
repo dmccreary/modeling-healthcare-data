@@ -1,6 +1,6 @@
 ---
-title: Patient Journey Map Interactive Visualization
-description: Interactive p5.js MicroSim for patient journey map interactive visualization.
+title: "Patient Journey Map Interactive Visualization"
+description: "Interactive p5.js MicroSim for patient journey map interactive visualization."
 image: /sims/patient-journey-map-visualization/patient-journey-map-visualization.png
 og:image: /sims/patient-journey-map-visualization/patient-journey-map-visualization.png
 twitter:image: /sims/patient-journey-map-visualization/patient-journey-map-visualization.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/patient-journey-map-visualization/main.html"
-        height="450px"
+        height="578px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Graph-Based Fraud Detection Algorithm Workflow
-description: Interactive Mermaid MicroSim for graph-based fraud detection algorithm workflow.
+title: "Graph-Based Fraud Detection Algorithm Workflow"
+description: "Interactive Mermaid MicroSim for graph-based fraud detection algorithm workflow."
 image: /sims/graph-based-fraud-detection-algorithm-workflow/graph-based-fraud-detection-algorithm-workflow.png
 og:image: /sims/graph-based-fraud-detection-algorithm-workflow/graph-based-fraud-detection-algorithm-workflow.png
 twitter:image: /sims/graph-based-fraud-detection-algorithm-workflow/graph-based-fraud-detection-algorithm-workflow.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/graph-based-fraud-detection-algorithm-workflow/main.html"
-        height="450px"
+        height="582px"
         width="100%"
         scrolling="no"></iframe>
 ```

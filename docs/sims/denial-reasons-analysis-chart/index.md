@@ -1,6 +1,6 @@
 ---
-title: Denial Reasons Analysis Chart
-description: Interactive Chart.js MicroSim for denial reasons analysis chart.
+title: "Denial Reasons Analysis Chart"
+description: "Interactive Chart.js MicroSim for denial reasons analysis chart."
 image: /sims/denial-reasons-analysis-chart/denial-reasons-analysis-chart.png
 og:image: /sims/denial-reasons-analysis-chart/denial-reasons-analysis-chart.png
 twitter:image: /sims/denial-reasons-analysis-chart/denial-reasons-analysis-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/denial-reasons-analysis-chart/main.html"
-        height="450px"
+        height="513px"
         width="100%"
         scrolling="no"></iframe>
 ```

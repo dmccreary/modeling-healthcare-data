@@ -1,6 +1,6 @@
 ---
-title: Patient Outcome Metrics Dashboard Chart
-description: Interactive Chart.js MicroSim for patient outcome metrics dashboard chart.
+title: "Patient Outcome Metrics Dashboard Chart"
+description: "Interactive Chart.js MicroSim for patient outcome metrics dashboard chart."
 image: /sims/patient-outcome-metrics-dashboard-chart/patient-outcome-metrics-dashboard-chart.png
 og:image: /sims/patient-outcome-metrics-dashboard-chart/patient-outcome-metrics-dashboard-chart.png
 twitter:image: /sims/patient-outcome-metrics-dashboard-chart/patient-outcome-metrics-dashboard-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/patient-outcome-metrics-dashboard-chart/main.html"
-        height="450px"
+        height="496px"
         width="100%"
         scrolling="no"></iframe>
 ```

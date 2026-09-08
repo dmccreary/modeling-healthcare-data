@@ -1,6 +1,6 @@
 ---
-title: Healthcare Delivery Network Graph Model
-description: Interactive vis-network MicroSim for healthcare delivery network graph model.
+title: "Healthcare Delivery Network Graph Model"
+description: "Interactive vis-network MicroSim for healthcare delivery network graph model."
 image: /sims/healthcare-delivery-network-graph-model/healthcare-delivery-network-graph-model.png
 og:image: /sims/healthcare-delivery-network-graph-model/healthcare-delivery-network-graph-model.png
 twitter:image: /sims/healthcare-delivery-network-graph-model/healthcare-delivery-network-graph-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-delivery-network-graph-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

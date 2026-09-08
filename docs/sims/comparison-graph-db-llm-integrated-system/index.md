@@ -1,6 +1,6 @@
 ---
-title: Comparison: Graph DB vs LLM vs Integrated System
-description: Interactive Chart.js MicroSim for comparison: graph db vs llm vs integrated system.
+title: "Comparison: Graph DB vs LLM vs Integrated System"
+description: "Interactive Chart.js MicroSim for comparison: graph db vs llm vs integrated system."
 image: /sims/comparison-graph-db-llm-integrated-system/comparison-graph-db-llm-integrated-system.png
 og:image: /sims/comparison-graph-db-llm-integrated-system/comparison-graph-db-llm-integrated-system.png
 twitter:image: /sims/comparison-graph-db-llm-integrated-system/comparison-graph-db-llm-integrated-system.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/comparison-graph-db-llm-integrated-system/main.html"
-        height="450px"
+        height="484px"
         width="100%"
         scrolling="no"></iframe>
 ```

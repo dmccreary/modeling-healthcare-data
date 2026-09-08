@@ -68,7 +68,7 @@ A worked example makes the request-response cycle concrete: an app requesting Ma
 
 #### Diagram: FHIR RESTful API Request-Response Flow
 
-<iframe src="../../sims/fhir-restful-api-request-response-flow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/fhir-restful-api-request-response-flow/main.html" width="100%" height="977px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>FHIR RESTful API Request-Response Flow</summary>
@@ -139,7 +139,7 @@ Notice that every non-Patient resource references `Patient/maria-chen`, the Obse
 
 #### Diagram: FHIR Resource Bundle Explorer
 
-<iframe src="../../sims/fhir-resource-bundle-explorer/main.html" width="100%" height="550px" scrolling="no"></iframe>
+<iframe src="../../sims/fhir-resource-bundle-explorer/main.html" width="100%" height="850px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>FHIR Resource Bundle Explorer</summary>
@@ -192,7 +192,7 @@ A PlanDefinition rarely expresses its trigger criteria as inline structured fiel
 
 #### Diagram: PlanDefinition to ActivityDefinition Trigger Flow
 
-<iframe src="../../sims/plandefinition-activitydefinition-trigger-flow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/plandefinition-activitydefinition-trigger-flow/main.html" width="100%" height="823px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>PlanDefinition to ActivityDefinition Trigger Flow</summary>
@@ -248,7 +248,7 @@ Crossing the four levels against the tiers of functionality produces a matrix th
 
 #### Diagram: Knowledge Representation Levels by Functional Tier Matrix
 
-<iframe src="../../sims/knowledge-representation-levels-tier-matrix/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/knowledge-representation-levels-tier-matrix/main.html" width="100%" height="762px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Knowledge Representation Levels by Functional Tier Matrix</summary>

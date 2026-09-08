@@ -1,6 +1,6 @@
 ---
-title: Behavioral Health Fraud Network Interactive MicroSim
-description: Interactive p5.js MicroSim for behavioral health fraud network interactive microsim.
+title: "Behavioral Health Fraud Network Interactive MicroSim"
+description: "Interactive p5.js MicroSim for behavioral health fraud network interactive microsim."
 image: /sims/behavioral-health-fraud-network-microsim/behavioral-health-fraud-network-microsim.png
 og:image: /sims/behavioral-health-fraud-network-microsim/behavioral-health-fraud-network-microsim.png
 twitter:image: /sims/behavioral-health-fraud-network-microsim/behavioral-health-fraud-network-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/behavioral-health-fraud-network-microsim/main.html"
-        height="450px"
+        height="646px"
         width="100%"
         scrolling="no"></iframe>
 ```

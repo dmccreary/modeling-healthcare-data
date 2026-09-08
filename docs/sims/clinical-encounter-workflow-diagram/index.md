@@ -1,6 +1,6 @@
 ---
-title: Clinical Encounter Workflow
-description: Interactive Mermaid MicroSim for clinical encounter workflow.
+title: "Clinical Encounter Workflow"
+description: "Interactive Mermaid MicroSim for clinical encounter workflow."
 image: /sims/clinical-encounter-workflow-diagram/clinical-encounter-workflow-diagram.png
 og:image: /sims/clinical-encounter-workflow-diagram/clinical-encounter-workflow-diagram.png
 twitter:image: /sims/clinical-encounter-workflow-diagram/clinical-encounter-workflow-diagram.png
@@ -31,7 +31,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-encounter-workflow-diagram/main.html"
-        height="450px"
+        height="1412px"
         width="100%"
         scrolling="no"></iframe>
 ```

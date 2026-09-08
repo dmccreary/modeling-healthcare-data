@@ -1,6 +1,6 @@
 ---
-title: Healthcare Data Lineage Graph Visualization
-description: Interactive vis-network MicroSim for healthcare data lineage graph visualization.
+title: "Healthcare Data Lineage Graph Visualization"
+description: "Interactive vis-network MicroSim for healthcare data lineage graph visualization."
 image: /sims/healthcare-data-lineage-graph-visualization/healthcare-data-lineage-graph-visualization.png
 og:image: /sims/healthcare-data-lineage-graph-visualization/healthcare-data-lineage-graph-visualization.png
 twitter:image: /sims/healthcare-data-lineage-graph-visualization/healthcare-data-lineage-graph-visualization.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-data-lineage-graph-visualization/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

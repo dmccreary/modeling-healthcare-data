@@ -1,6 +1,6 @@
 ---
-title: Explainable AI Recommendation Workflow
-description: Interactive Mermaid MicroSim for explainable ai recommendation workflow.
+title: "Explainable AI Recommendation Workflow"
+description: "Interactive Mermaid MicroSim for explainable ai recommendation workflow."
 image: /sims/explainable-ai-recommendation-workflow/explainable-ai-recommendation-workflow.png
 og:image: /sims/explainable-ai-recommendation-workflow/explainable-ai-recommendation-workflow.png
 twitter:image: /sims/explainable-ai-recommendation-workflow/explainable-ai-recommendation-workflow.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/explainable-ai-recommendation-workflow/main.html"
-        height="450px"
+        height="991px"
         width="100%"
         scrolling="no"></iframe>
 ```

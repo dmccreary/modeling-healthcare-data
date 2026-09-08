@@ -1,6 +1,6 @@
 ---
-title: Evolution of Graph Query Languages Timeline
-description: Interactive vis-timeline MicroSim for evolution of graph query languages timeline.
+title: "Evolution of Graph Query Languages Timeline"
+description: "Interactive vis-timeline MicroSim for evolution of graph query languages timeline."
 image: /sims/evolution-graph-query-languages-timeline/evolution-graph-query-languages-timeline.png
 og:image: /sims/evolution-graph-query-languages-timeline/evolution-graph-query-languages-timeline.png
 twitter:image: /sims/evolution-graph-query-languages-timeline/evolution-graph-query-languages-timeline.png
@@ -36,7 +36,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/evolution-graph-query-languages-timeline/main.html"
-        height="450px"
+        height="542px"
         width="100%"
         scrolling="no"></iframe>
 ```

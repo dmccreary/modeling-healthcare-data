@@ -1,6 +1,6 @@
 ---
-title: Link Prediction Scoring MicroSim
-description: Interactive p5.js MicroSim for link prediction scoring microsim.
+title: "Link Prediction Scoring MicroSim"
+description: "Interactive p5.js MicroSim for link prediction scoring microsim."
 image: /sims/link-prediction-scoring/link-prediction-scoring.png
 og:image: /sims/link-prediction-scoring/link-prediction-scoring.png
 twitter:image: /sims/link-prediction-scoring/link-prediction-scoring.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/link-prediction-scoring/main.html"
-        height="450px"
+        height="568px"
         width="100%"
         scrolling="no"></iframe>
 ```

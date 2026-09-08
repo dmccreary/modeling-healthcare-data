@@ -1,6 +1,6 @@
 ---
-title: Vital Signs Trend Visualization MicroSim
-description: Interactive p5.js MicroSim for vital signs trend visualization microsim.
+title: "Vital Signs Trend Visualization MicroSim"
+description: "Interactive p5.js MicroSim for vital signs trend visualization microsim."
 image: /sims/vital-signs-trend-visualization-microsim/vital-signs-trend-visualization-microsim.png
 og:image: /sims/vital-signs-trend-visualization-microsim/vital-signs-trend-visualization-microsim.png
 twitter:image: /sims/vital-signs-trend-visualization-microsim/vital-signs-trend-visualization-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/vital-signs-trend-visualization-microsim/main.html"
-        height="450px"
+        height="578px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -68,7 +68,7 @@ Separating `Policy` from `BenefitPlan` as two distinct node types, rather than c
 
 #### Diagram: Insurance Policy and Benefit Plan Graph Model
 
-<iframe src="../../sims/insurance-policy-benefit-plan-graph-model/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/insurance-policy-benefit-plan-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
 
 [Run the Insurance Policy and Benefit Plan Graph Model MicroSim Fullscreen](../../sims/insurance-policy-benefit-plan-graph-model/main.html){ .md-button }
 
@@ -206,7 +206,7 @@ That steering is implemented through **formulary rules** — the conditions atta
 
 #### Diagram: Formulary Management and Step Therapy Graph Model
 
-<iframe src="../../sims/formulary-management-step-therapy-graph-model/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/formulary-management-step-therapy-graph-model/main.html" width="100%" height="488px" scrolling="no"></iframe>
 
 [Run the Formulary Management and Step Therapy Graph Model MicroSim Fullscreen](../../sims/formulary-management-step-therapy-graph-model/main.html){ .md-button }
 

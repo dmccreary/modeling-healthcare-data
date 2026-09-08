@@ -1,6 +1,6 @@
 ---
-title: Payer Mix and Contract Negotiation MicroSim
-description: Interactive Chart.js MicroSim for payer mix and contract negotiation microsim.
+title: "Payer Mix and Contract Negotiation MicroSim"
+description: "Interactive Chart.js MicroSim for payer mix and contract negotiation microsim."
 image: /sims/payer-mix-contract-negotiation/payer-mix-contract-negotiation.png
 og:image: /sims/payer-mix-contract-negotiation/payer-mix-contract-negotiation.png
 twitter:image: /sims/payer-mix-contract-negotiation/payer-mix-contract-negotiation.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/payer-mix-contract-negotiation/main.html"
-        height="450px"
+        height="643px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Basic Healthcare Graph Model
-description: Interactive vis-network MicroSim for basic healthcare graph model.
+title: "Basic Healthcare Graph Model"
+description: "Interactive vis-network MicroSim for basic healthcare graph model."
 image: /sims/basic-healthcare-graph-model-diagram/basic-healthcare-graph-model-diagram.png
 og:image: /sims/basic-healthcare-graph-model-diagram/basic-healthcare-graph-model-diagram.png
 twitter:image: /sims/basic-healthcare-graph-model-diagram/basic-healthcare-graph-model-diagram.png
@@ -31,7 +31,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/basic-healthcare-graph-model-diagram/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

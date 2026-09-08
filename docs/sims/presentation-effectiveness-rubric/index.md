@@ -1,6 +1,6 @@
 ---
-title: Presentation Effectiveness Rubric
-description: Interactive p5.js MicroSim for presentation effectiveness rubric.
+title: "Presentation Effectiveness Rubric"
+description: "Interactive p5.js MicroSim for presentation effectiveness rubric."
 image: /sims/presentation-effectiveness-rubric/presentation-effectiveness-rubric.png
 og:image: /sims/presentation-effectiveness-rubric/presentation-effectiveness-rubric.png
 twitter:image: /sims/presentation-effectiveness-rubric/presentation-effectiveness-rubric.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/presentation-effectiveness-rubric/main.html"
-        height="450px"
+        height="598px"
         width="100%"
         scrolling="no"></iframe>
 ```

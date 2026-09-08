@@ -1,6 +1,6 @@
 ---
-title: Risk Adjustment and Capitation Calculator MicroSim
-description: Interactive p5.js MicroSim for risk adjustment and capitation calculator microsim.
+title: "Risk Adjustment and Capitation Calculator MicroSim"
+description: "Interactive p5.js MicroSim for risk adjustment and capitation calculator microsim."
 image: /sims/risk-adjustment-capitation-calculator-microsim/risk-adjustment-capitation-calculator-microsim.png
 og:image: /sims/risk-adjustment-capitation-calculator-microsim/risk-adjustment-capitation-calculator-microsim.png
 twitter:image: /sims/risk-adjustment-capitation-calculator-microsim/risk-adjustment-capitation-calculator-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/risk-adjustment-capitation-calculator-microsim/main.html"
-        height="450px"
+        height="638px"
         width="100%"
         scrolling="no"></iframe>
 ```

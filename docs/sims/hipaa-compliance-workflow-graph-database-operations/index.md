@@ -1,6 +1,6 @@
 ---
-title: HIPAA Compliance Workflow for Graph Database Operations
-description: Interactive Mermaid MicroSim for hipaa compliance workflow for graph database operations.
+title: "HIPAA Compliance Workflow for Graph Database Operations"
+description: "Interactive Mermaid MicroSim for hipaa compliance workflow for graph database operations."
 image: /sims/hipaa-compliance-workflow-graph-database-operations/hipaa-compliance-workflow-graph-database-operations.png
 og:image: /sims/hipaa-compliance-workflow-graph-database-operations/hipaa-compliance-workflow-graph-database-operations.png
 twitter:image: /sims/hipaa-compliance-workflow-graph-database-operations/hipaa-compliance-workflow-graph-database-operations.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/hipaa-compliance-workflow-graph-database-operations/main.html"
-        height="450px"
+        height="1171px"
         width="100%"
         scrolling="no"></iframe>
 ```

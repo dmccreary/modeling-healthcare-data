@@ -1,6 +1,6 @@
 ---
-title: Charge Master and Billing Code Graph Model
-description: Interactive vis-network MicroSim for charge master and billing code graph model.
+title: "Charge Master and Billing Code Graph Model"
+description: "Interactive vis-network MicroSim for charge master and billing code graph model."
 image: /sims/charge-master-billing-code-graph-model/charge-master-billing-code-graph-model.png
 og:image: /sims/charge-master-billing-code-graph-model/charge-master-billing-code-graph-model.png
 twitter:image: /sims/charge-master-billing-code-graph-model/charge-master-billing-code-graph-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/charge-master-billing-code-graph-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

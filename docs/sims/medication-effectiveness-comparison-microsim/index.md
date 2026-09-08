@@ -1,6 +1,6 @@
 ---
-title: Medication Effectiveness Comparison MicroSim
-description: Interactive p5.js MicroSim for medication effectiveness comparison microsim.
+title: "Medication Effectiveness Comparison MicroSim"
+description: "Interactive p5.js MicroSim for medication effectiveness comparison microsim."
 image: /sims/medication-effectiveness-comparison-microsim/medication-effectiveness-comparison-microsim.png
 og:image: /sims/medication-effectiveness-comparison-microsim/medication-effectiveness-comparison-microsim.png
 twitter:image: /sims/medication-effectiveness-comparison-microsim/medication-effectiveness-comparison-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/medication-effectiveness-comparison-microsim/main.html"
-        height="450px"
+        height="658px"
         width="100%"
         scrolling="no"></iframe>
 ```

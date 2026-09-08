@@ -1,6 +1,6 @@
 ---
-title: Project Complexity Comparison Table
-description: Interactive Chart.js MicroSim for project complexity comparison table.
+title: "Project Complexity Comparison Table"
+description: "Interactive Chart.js MicroSim for project complexity comparison table."
 image: /sims/project-complexity-comparison-table/project-complexity-comparison-table.png
 og:image: /sims/project-complexity-comparison-table/project-complexity-comparison-table.png
 twitter:image: /sims/project-complexity-comparison-table/project-complexity-comparison-table.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/project-complexity-comparison-table/main.html"
-        height="450px"
+        height="464px"
         width="100%"
         scrolling="no"></iframe>
 ```

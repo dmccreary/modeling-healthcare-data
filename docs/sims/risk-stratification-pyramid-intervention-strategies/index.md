@@ -1,6 +1,6 @@
 ---
-title: Risk Stratification Pyramid with Intervention Strategies
-description: Interactive p5.js MicroSim for risk stratification pyramid with intervention strategies.
+title: "Risk Stratification Pyramid with Intervention Strategies"
+description: "Interactive p5.js MicroSim for risk stratification pyramid with intervention strategies."
 image: /sims/risk-stratification-pyramid-intervention-strategies/risk-stratification-pyramid-intervention-strategies.png
 og:image: /sims/risk-stratification-pyramid-intervention-strategies/risk-stratification-pyramid-intervention-strategies.png
 twitter:image: /sims/risk-stratification-pyramid-intervention-strategies/risk-stratification-pyramid-intervention-strategies.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/risk-stratification-pyramid-intervention-strategies/main.html"
-        height="450px"
+        height="578px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Symptom-Disease Diagnostic Network
-description: Interactive vis-network MicroSim for symptom-disease diagnostic network.
+title: "Symptom-Disease Diagnostic Network"
+description: "Interactive vis-network MicroSim for symptom-disease diagnostic network."
 image: /sims/symptom-disease-diagnostic-network/symptom-disease-diagnostic-network.png
 og:image: /sims/symptom-disease-diagnostic-network/symptom-disease-diagnostic-network.png
 twitter:image: /sims/symptom-disease-diagnostic-network/symptom-disease-diagnostic-network.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/symptom-disease-diagnostic-network/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

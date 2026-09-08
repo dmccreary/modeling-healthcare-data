@@ -1,6 +1,6 @@
 ---
-title: Audit Trail Analysis MicroSim
-description: Interactive p5.js MicroSim for audit trail analysis microsim.
+title: "Audit Trail Analysis MicroSim"
+description: "Interactive p5.js MicroSim for audit trail analysis microsim."
 image: /sims/audit-trail-analysis-microsim/audit-trail-analysis-microsim.png
 og:image: /sims/audit-trail-analysis-microsim/audit-trail-analysis-microsim.png
 twitter:image: /sims/audit-trail-analysis-microsim/audit-trail-analysis-microsim.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/audit-trail-analysis-microsim/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

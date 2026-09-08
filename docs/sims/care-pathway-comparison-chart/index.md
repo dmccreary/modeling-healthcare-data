@@ -1,6 +1,6 @@
 ---
-title: Care Pathway Comparison Chart
-description: Interactive Chart.js MicroSim for care pathway comparison chart.
+title: "Care Pathway Comparison Chart"
+description: "Interactive Chart.js MicroSim for care pathway comparison chart."
 image: /sims/care-pathway-comparison-chart/care-pathway-comparison-chart.png
 og:image: /sims/care-pathway-comparison-chart/care-pathway-comparison-chart.png
 twitter:image: /sims/care-pathway-comparison-chart/care-pathway-comparison-chart.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/care-pathway-comparison-chart/main.html"
-        height="450px"
+        height="469px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Centrality Measures Comparison MicroSim
-description: Interactive vis-network MicroSim for centrality measures comparison microsim.
+title: "Centrality Measures Comparison MicroSim"
+description: "Interactive vis-network MicroSim for centrality measures comparison microsim."
 image: /sims/centrality-measures-comparison/centrality-measures-comparison.png
 og:image: /sims/centrality-measures-comparison/centrality-measures-comparison.png
 twitter:image: /sims/centrality-measures-comparison/centrality-measures-comparison.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/centrality-measures-comparison/main.html"
-        height="450px"
+        height="508px"
         width="100%"
         scrolling="no"></iframe>
 ```

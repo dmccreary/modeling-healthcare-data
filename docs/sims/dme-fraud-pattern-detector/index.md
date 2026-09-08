@@ -1,6 +1,6 @@
 ---
-title: DME Fraud Pattern Detector MicroSim
-description: Interactive vis-network MicroSim for dme fraud pattern detector microsim.
+title: "DME Fraud Pattern Detector MicroSim"
+description: "Interactive vis-network MicroSim for dme fraud pattern detector microsim."
 image: /sims/dme-fraud-pattern-detector/dme-fraud-pattern-detector.png
 og:image: /sims/dme-fraud-pattern-detector/dme-fraud-pattern-detector.png
 twitter:image: /sims/dme-fraud-pattern-detector/dme-fraud-pattern-detector.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/dme-fraud-pattern-detector/main.html"
-        height="450px"
+        height="508px"
         width="100%"
         scrolling="no"></iframe>
 ```

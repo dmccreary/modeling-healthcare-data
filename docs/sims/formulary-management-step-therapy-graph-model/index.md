@@ -1,6 +1,6 @@
 ---
-title: Formulary Management and Step Therapy Graph Model
-description: Interactive vis-network MicroSim for formulary management and step therapy graph model.
+title: "Formulary Management and Step Therapy Graph Model"
+description: "Interactive vis-network MicroSim for formulary management and step therapy graph model."
 image: /sims/formulary-management-step-therapy-graph-model/formulary-management-step-therapy-graph-model.png
 og:image: /sims/formulary-management-step-therapy-graph-model/formulary-management-step-therapy-graph-model.png
 twitter:image: /sims/formulary-management-step-therapy-graph-model/formulary-management-step-therapy-graph-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/formulary-management-step-therapy-graph-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

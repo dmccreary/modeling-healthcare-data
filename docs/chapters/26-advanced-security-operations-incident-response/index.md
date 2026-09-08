@@ -122,7 +122,7 @@ When a threat is confirmed rather than merely suspected, an organization execute
 
 #### Diagram: Security Incident Response Lifecycle
 
-<iframe src="../../sims/security-incident-response-lifecycle/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/security-incident-response-lifecycle/main.html" width="100%" height="770px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Security Incident Response Lifecycle</summary>

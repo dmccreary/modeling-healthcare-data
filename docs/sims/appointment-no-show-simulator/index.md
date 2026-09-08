@@ -1,6 +1,6 @@
 ---
-title: Appointment Scheduling and No-Show Simulator MicroSim
-description: Interactive p5.js MicroSim for appointment scheduling and no-show simulator microsim.
+title: "Appointment Scheduling and No-Show Simulator MicroSim"
+description: "Interactive p5.js MicroSim for appointment scheduling and no-show simulator microsim."
 image: /sims/appointment-no-show-simulator/appointment-no-show-simulator.png
 og:image: /sims/appointment-no-show-simulator/appointment-no-show-simulator.png
 twitter:image: /sims/appointment-no-show-simulator/appointment-no-show-simulator.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/appointment-no-show-simulator/main.html"
-        height="450px"
+        height="618px"
         width="100%"
         scrolling="no"></iframe>
 ```

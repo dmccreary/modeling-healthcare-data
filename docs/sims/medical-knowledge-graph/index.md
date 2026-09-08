@@ -1,6 +1,6 @@
 ---
-title: Medical Knowledge Graph Example
-description: Interactive vis-network MicroSim for medical knowledge graph example.
+title: "Medical Knowledge Graph Example"
+description: "Interactive vis-network MicroSim for medical knowledge graph example."
 image: /sims/medical-knowledge-graph/medical-knowledge-graph.png
 og:image: /sims/medical-knowledge-graph/medical-knowledge-graph.png
 twitter:image: /sims/medical-knowledge-graph/medical-knowledge-graph.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/medical-knowledge-graph/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

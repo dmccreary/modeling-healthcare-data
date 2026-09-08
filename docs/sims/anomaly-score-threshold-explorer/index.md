@@ -1,6 +1,6 @@
 ---
-title: Anomaly Score Threshold Explorer MicroSim
-description: Interactive p5.js MicroSim for anomaly score threshold explorer microsim.
+title: "Anomaly Score Threshold Explorer MicroSim"
+description: "Interactive p5.js MicroSim for anomaly score threshold explorer microsim."
 image: /sims/anomaly-score-threshold-explorer/anomaly-score-threshold-explorer.png
 og:image: /sims/anomaly-score-threshold-explorer/anomaly-score-threshold-explorer.png
 twitter:image: /sims/anomaly-score-threshold-explorer/anomaly-score-threshold-explorer.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/anomaly-score-threshold-explorer/main.html"
-        height="450px"
+        height="603px"
         width="100%"
         scrolling="no"></iframe>
 ```

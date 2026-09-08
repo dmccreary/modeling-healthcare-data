@@ -1,6 +1,6 @@
 ---
-title: Healthcare Labeled Property Graph Visualization
-description: Interactive vis-network MicroSim for healthcare labeled property graph visualization.
+title: "Healthcare Labeled Property Graph Visualization"
+description: "Interactive vis-network MicroSim for healthcare labeled property graph visualization."
 image: /sims/healthcare-labeled-property-graph-visualization/healthcare-labeled-property-graph-visualization.png
 og:image: /sims/healthcare-labeled-property-graph-visualization/healthcare-labeled-property-graph-visualization.png
 twitter:image: /sims/healthcare-labeled-property-graph-visualization/healthcare-labeled-property-graph-visualization.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/healthcare-labeled-property-graph-visualization/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

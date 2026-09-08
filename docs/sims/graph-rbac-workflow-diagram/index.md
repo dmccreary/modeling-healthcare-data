@@ -1,6 +1,6 @@
 ---
-title: Graph RBAC Workflow Diagram
-description: Interactive Mermaid MicroSim for graph rbac workflow diagram.
+title: "Graph RBAC Workflow Diagram"
+description: "Interactive Mermaid MicroSim for graph rbac workflow diagram."
 image: /sims/graph-rbac-workflow-diagram/graph-rbac-workflow-diagram.png
 og:image: /sims/graph-rbac-workflow-diagram/graph-rbac-workflow-diagram.png
 twitter:image: /sims/graph-rbac-workflow-diagram/graph-rbac-workflow-diagram.png
@@ -39,7 +39,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/graph-rbac-workflow-diagram/main.html"
-        height="450px"
+        height="1089px"
         width="100%"
         scrolling="no"></iframe>
 ```

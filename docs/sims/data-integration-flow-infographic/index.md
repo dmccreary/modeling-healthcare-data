@@ -1,6 +1,6 @@
 ---
-title: Data Integration Flow Interactive Infographic
-description: Interactive p5.js MicroSim for data integration flow interactive infographic.
+title: "Data Integration Flow Interactive Infographic"
+description: "Interactive p5.js MicroSim for data integration flow interactive infographic."
 image: /sims/data-integration-flow-infographic/data-integration-flow-infographic.png
 og:image: /sims/data-integration-flow-infographic/data-integration-flow-infographic.png
 twitter:image: /sims/data-integration-flow-infographic/data-integration-flow-infographic.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/data-integration-flow-infographic/main.html"
-        height="450px"
+        height="636px"
         width="100%"
         scrolling="no"></iframe>
 ```

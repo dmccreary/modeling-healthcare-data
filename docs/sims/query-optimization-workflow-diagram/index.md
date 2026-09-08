@@ -1,6 +1,6 @@
 ---
-title: Query Optimization Workflow Diagram
-description: Interactive Mermaid MicroSim for query optimization workflow diagram.
+title: "Query Optimization Workflow Diagram"
+description: "Interactive Mermaid MicroSim for query optimization workflow diagram."
 image: /sims/query-optimization-workflow-diagram/query-optimization-workflow-diagram.png
 og:image: /sims/query-optimization-workflow-diagram/query-optimization-workflow-diagram.png
 twitter:image: /sims/query-optimization-workflow-diagram/query-optimization-workflow-diagram.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/query-optimization-workflow-diagram/main.html"
-        height="450px"
+        height="507px"
         width="100%"
         scrolling="no"></iframe>
 ```

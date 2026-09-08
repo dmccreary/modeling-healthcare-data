@@ -1,6 +1,6 @@
 ---
-title: Value-Based Payment Shared-Savings MicroSim
-description: Interactive p5.js MicroSim for value-based payment shared-savings microsim.
+title: "Value-Based Payment Shared-Savings MicroSim"
+description: "Interactive p5.js MicroSim for value-based payment shared-savings microsim."
 image: /sims/value-based-payment-shared-savings/value-based-payment-shared-savings.png
 og:image: /sims/value-based-payment-shared-savings/value-based-payment-shared-savings.png
 twitter:image: /sims/value-based-payment-shared-savings/value-based-payment-shared-savings.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/value-based-payment-shared-savings/main.html"
-        height="450px"
+        height="598px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Patient Identifier Graph Model
-description: Interactive vis-network MicroSim for patient identifier graph model.
+title: "Patient Identifier Graph Model"
+description: "Interactive vis-network MicroSim for patient identifier graph model."
 image: /sims/patient-identifier-graph-model/patient-identifier-graph-model.png
 og:image: /sims/patient-identifier-graph-model/patient-identifier-graph-model.png
 twitter:image: /sims/patient-identifier-graph-model/patient-identifier-graph-model.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/patient-identifier-graph-model/main.html"
-        height="450px"
+        height="488px"
         width="100%"
         scrolling="no"></iframe>
 ```

@@ -1,6 +1,6 @@
 ---
-title: Predictive Model Performance: Traditional vs Graph-Based
-description: Interactive Chart.js MicroSim for predictive model performance: traditional vs graph-based.
+title: "Predictive Model Performance: Traditional vs Graph-Based"
+description: "Interactive Chart.js MicroSim for predictive model performance: traditional vs graph-based."
 image: /sims/predictive-model-performance-traditional-graph-based/predictive-model-performance-traditional-graph-based.png
 og:image: /sims/predictive-model-performance-traditional-graph-based/predictive-model-performance-traditional-graph-based.png
 twitter:image: /sims/predictive-model-performance-traditional-graph-based/predictive-model-performance-traditional-graph-based.png
@@ -28,7 +28,7 @@ You can add this MicroSim to any web page by adding this to your HTML:
 
 ```html
 <iframe src="https://dmccreary.github.io/modeling-healthcare-data/sims/predictive-model-performance-traditional-graph-based/main.html"
-        height="450px"
+        height="504px"
         width="100%"
         scrolling="no"></iframe>
 ```
