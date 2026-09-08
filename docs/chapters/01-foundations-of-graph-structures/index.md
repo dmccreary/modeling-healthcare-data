@@ -383,3 +383,5 @@ systematically move through the result. In [Chapter 2](../02-graphs-vs-relationa
 data model directly against the relational database concepts you already
 know, going deeper into exactly why a labeled property graph outperforms
 tables and joins for the deeply interconnected data this book focuses on.
+
+[See Annotated References](./references.md)

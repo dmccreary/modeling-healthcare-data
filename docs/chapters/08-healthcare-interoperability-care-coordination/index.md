@@ -253,3 +253,5 @@ Riverside Clinic itself could plausibly sit inside all three of these dimensions
     You just mastered Clinical Workflow and the Medical Encounter it produces, the interoperability standards — HL7, HL7 V2 Messages, CCDs, RxNorm, and medical terminology — that let that data move, Health Information Exchange and Healthcare Data Exchange as the pipes that carry it, Patient Demographics and Social Determinants of Health as the context around the patient, and Population Health, Care Coordination, ACOs, and PCMHs as the structures that organize care around all of it.
 
 Every concept in this chapter answered a version of the same question: once a patient's data exists, how does it move, and who is responsible for making sure it arrives intact? [Chapter 9](../09-patient-diagnosis-treatment-medication/index.md) picks up exactly where this leaves off, moving from the interoperability plumbing into the clinical content itself — symptoms, diagnoses, and medications — that all of these standards and coordination structures ultimately exist to carry.
+
+[See Annotated References](./references.md)

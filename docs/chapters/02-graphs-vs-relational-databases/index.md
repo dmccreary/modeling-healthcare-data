@@ -408,3 +408,5 @@ becomes a short traversal instead. In
 this vocabulary to work by learning the actual query languages — Cypher,
 GQL, and GSQL — used to write the traversals this chapter has only
 described in prose.
+
+[See Annotated References](./references.md)

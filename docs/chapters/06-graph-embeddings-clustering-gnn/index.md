@@ -417,3 +417,5 @@ toolkit now in hand,
 [Chapter 7](../07-healthcare-economics-medical-coding/index.md) turns to the
 healthcare domain itself — the economics, stakeholders, and medical coding
 systems that every remaining chapter's graph models will be built from.
+
+[See Annotated References](./references.md)

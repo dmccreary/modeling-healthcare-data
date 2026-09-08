@@ -597,3 +597,5 @@ a machine-learning model can use directly. In
 [Chapter 6](../06-graph-embeddings-clustering-gnn/index.md), we build on the
 embedding concept introduced here to reach graph neural networks and the
 clustering algorithms that group similar nodes automatically at scale.
+
+[See Annotated References](./references.md)

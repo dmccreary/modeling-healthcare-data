@@ -484,3 +484,5 @@ and ETL work that gets healthcare data into a graph in the first place. In
 this same graph database and ask a different question: how do you keep it
 running, fast and available, once it holds millions of patients instead of
 four?
+
+[See Annotated References](./references.md)

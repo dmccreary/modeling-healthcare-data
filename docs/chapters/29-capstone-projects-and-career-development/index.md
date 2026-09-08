@@ -182,3 +182,5 @@ Finally, **interview preparation** turns everything in this chapter into a rehea
 This chapter turned everything the book taught into a repeatable process: scope a project tightly, gather the stakeholder requirements that keep it grounded, build it in stages from proof of concept through prototype to technical demonstration, manage risk and welcome peer review along the way, and present the result with an honest account of what real-world implementation would still require. From there, that same project becomes the anchor of a professional portfolio, pointed at a genuinely growing job market, supported by networking, open-source work, and interview preparation that turns your capstone into your career story.
 
 This is the final chapter of *Modeling Healthcare Data with Graphs*. Revisit the [course description](../../course-description.md) to see how far you have come against its original learning outcomes — and then go build your capstone project. The next graph is yours to draw.
+
+[See Annotated References](./references.md)

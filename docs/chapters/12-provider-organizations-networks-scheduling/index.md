@@ -653,3 +653,5 @@ those providers coordinate as teams and follow evidence-based guidelines and
 care pathways — along with the workforce realities of credentialing
 pipelines, staffing models, and provider attrition that keep a provider
 network actually staffed.
+
+[See Annotated References](./references.md)

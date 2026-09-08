@@ -402,3 +402,5 @@ this same longitudinal thinking into specialty care, surgical episodes, and
 remote patient monitoring, where the "dated node attached to a patient"
 pattern you just used for labs and outcomes reappears for surgical events
 and continuous device-generated data streams.
+
+[See Annotated References](./references.md)

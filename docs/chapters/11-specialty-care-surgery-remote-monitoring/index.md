@@ -414,3 +414,5 @@ careful, respectful category choices this chapter emphasized.
 the camera around, leaving the patient's point of view behind to model the
 provider organizations, networks, and scheduling systems that make all of
 this care possible in the first place.
+
+[See Annotated References](./references.md)

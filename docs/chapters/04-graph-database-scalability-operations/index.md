@@ -353,3 +353,5 @@ now covered, [Chapter 5](../05-graph-algorithms-centrality-similarity/index.md)
 turns to the analytical payoff of all this infrastructure: the graph
 algorithms that find the most important nodes, the hidden patterns, and the
 predicted connections in a healthcare graph.
+
+[See Annotated References](./references.md)

@@ -106,8 +106,9 @@ nav:
     - Ideas: stories/index.md
 
   - Appendices:
-    - List of Appendicies: appendicies/index.md
-    - Case Studies: appendicies/case-studies.md
+    - List of Appendices: appendices/index.md
+    - Case Studies: appendices/case-studies.md
+    - Toward Value-Based Care in the US: appendices/toward-vbc/index.md
   - Learning Graph:
     - Introduction: learning-graph/index.md
     - Course Description Assessment: learning-graph/course-description-assessment.md

@@ -547,3 +547,5 @@ isolated events strung into an ongoing plan that spans months or years.
 [Chapter 10](../10-patient-care-plans-chronic-disease/index.md) picks up
 exactly there, modeling care plans, goals, and the longitudinal tracking
 that turns a set of clinical facts into a coordinated course of care.
+
+[See Annotated References](./references.md)

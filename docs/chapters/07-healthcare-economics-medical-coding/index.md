@@ -466,3 +466,5 @@ systems that will populate node and edge properties from here on. In
 we pick up the interoperability thread this chapter's EHR section opened,
 examining how standards let these coded, structured facts move reliably
 between the many separate systems a real health system depends on.
+
+[See Annotated References](./references.md)
