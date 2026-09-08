@@ -196,7 +196,8 @@ nav:
     - View Healthcare Icons: sims/view-hc-icons/index.md
     - Vital Signs Trend Visualization MicroSim: sims/vital-signs-trend-visualization-microsim/index.md
     - Yin-Yang LLM vs Knowledge Graph: sims/yin-yang-llm-kg/index.md
-  - Prompts:
+  
+  - Sample Prompts:
     - Introduction: prompts/index.md
     - Icon: prompts/icon.md
     - Step 1 - Analyze Course Description: prompts/01-run-course-description-analyzer.md
@@ -220,6 +221,7 @@ nav:
     - Quiz: prompts/40-quiz.md
     - Quiz ch 10: prompts/41-ch-10-quiz.md
     - Quiz ch 4: prompts/41-ch-4-quiz.md
+  
   - Book Metrics: book-metrics.md
   - FAQ: faq.md
   - Glossary: glossary.md
@@ -229,17 +231,17 @@ nav:
   - License: license.md
   - Contact: contact.md
 
-# CoderDojo Microsite Standards from here down
+# Dan's Microsite Standards from here down
 
 theme:
   name: material
   extra_css:
     - styles/custom.css
-  logo: img/logo.png
+  logo: img/mascot/welcome.png
   favicon: img/favicon.ico
   palette:
-    primary: 'blue'
-    accent: 'orange'
+    primary: 'orange'
+    accent: 'blue'
   include_sidebar: true
   features:
     - content.code.copy
