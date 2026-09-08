@@ -1,0 +1,50 @@
+{
+  "title": "Allowed Amount and Reimbursement Breakdown Chart",
+  "description": "Split five claim lines into payer reimbursement, member coinsurance, contractual write-off, and balance bill, and price the difference network status makes.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "reimbursement",
+    "allowed amount",
+    "cost sharing",
+    "payer contracts",
+    "network status"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/allowed-amount-reimbursement-breakdown-chart/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a billed charge and a contracted allowed amount, the learner can calculate the contractual adjustment, the member's coinsurance share, and the payer's reimbursement for a set of sample claims."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerbs": [
+      "calculate",
+      "demonstrate"
+    ],
+    "duration": "12-18 minutes",
+    "prerequisites": [
+      "Payer-provider contracted rates"
+    ],
+    "concepts": [
+      "billed charge",
+      "allowed amount",
+      "contractual adjustment",
+      "coinsurance",
+      "balance billing"
+    ]
+  },
+  "technical": {
+    "library": "Chart.js",
+    "canvasHeight": 780,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "15-reimbursement-health-plans-payer-contracts"
+}

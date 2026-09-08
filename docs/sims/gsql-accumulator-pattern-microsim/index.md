@@ -6,7 +6,7 @@ og:image: /sims/gsql-accumulator-pattern-microsim/gsql-accumulator-pattern-micro
 twitter:image: /sims/gsql-accumulator-pattern-microsim/gsql-accumulator-pattern-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # GSQL Accumulator Pattern MicroSim

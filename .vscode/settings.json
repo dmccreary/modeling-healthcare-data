@@ -1,7 +1,11 @@
 {
     "cSpell.words": [
+        "Anonymization",
+        "Assortativity",
         "betweenness",
         "Causaly",
+        "Chargeback",
+        "Convolutional",
         "copayments",
         "evenodd",
         "explainability",
@@ -9,10 +13,15 @@
         "formularies",
         "GSQL",
         "HCPCS",
+        "imagegen",
         "Insilico",
+        "Jaccard",
+        "LOINC",
         "Omics",
         "pathfinding",
         "Pharma",
+        "SNOMED",
+        "Telehealth",
         "upcoding",
         "venntooltip",
         "Warshall"

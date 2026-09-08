@@ -1,0 +1,18 @@
+{
+  "sim_id": "relational-vs-graph-data-model-comparison",
+  "diagram_name": "Relational vs. Graph Data Model Side-by-Side",
+  "chapter_number": 2,
+  "chapter_title": "Data Modeling: Graphs vs. Relational Databases",
+  "chapter_dir": "02-graphs-vs-relational-databases",
+  "chapter_rel_dir": "chapters/02-graphs-vs-relational-databases",
+  "library": "p5.js",
+  "bloom_level": "Analyze<br/>",
+  "bloom_verb": "differentiate, compare<br/>",
+  "learning_objective": "Given the same four healthcare facts modeled two ways, the learner can differentiate how a relational schema and a graph data model each represent an identical relationship, and can trace the extra steps the relational version requires.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: diagram\n**sim-id:** relational-vs-graph-data-model-comparison<br/>\n**Library:** p5.js<br/>\n**Status:** Validated\n\nBloom Taxonomy: Analyze<br/>\nBloom Taxonomy Verb: differentiate, compare<br/>\nLearning objective: Given the same four healthcare facts modeled two ways, the learner can differentiate how a relational schema and a graph data model each represent an identical relationship, and can trace the extra steps the relational version requires.\n\nPurpose: Show the Maria Chen / Dr. Patel / Riverside Clinic / Type 2 Diabetes scenario rendered simultaneously as (left) four normalized tables with foreign keys and (right) a four-node labeled property graph, so learners can click a fact in either representation and watch its counterpart highlight in the other.\n\nCanvas layout:\n\n- Left half: four small table grids (Patients, Providers, Facilities, Diagnoses) with visible foreign-key columns highlighted in orange\n- Right half: the four-node graph (Patient, Provider, Facility, Condition) with labeled directed edges, matching the color scheme from Chapter 1's Healthcare Graph Anatomy Explorer\n\nData Visibility Requirements:\nStage 1: Show both representations at rest, tables on the left fully populated with sample rows, graph on the right fully drawn with all labels visible.\nStage 2: Click a foreign-key cell (e.g., `provider_id` in the Encounters row) on the left; the corresponding edge on the right graph highlights in gold, and a caption reads \"This foreign key IS this edge.\"\nStage 3: Click an edge on the right graph; the two foreign-key cells that would need to be joined to reconstruct that same fact highlight on the left, with a caption showing the SQL join clause required.\nStage 4: A \"Count the Hops\" button runs the \"which payer bills for the facility where Maria Chen's specialist works\" question on both sides simultaneously, incrementing a join counter on the left and a hop counter on the right as each step completes.\n\nInteractive controls:\n\n- Click-to-highlight on both table cells and graph edges (bidirectional)\n- \"Count the Hops\" button that animates both traversals step by step\n- Reset button\n\nInstructional Rationale: An Analyze-level objective (differentiate, compare) requires the learner to see structural correspondence, not just read a description of it. Bidirectional click-to-highlight lets the learner build the mapping in either direction \u2014 from foreign key to edge, or from edge to foreign key \u2014 which is the exact skill needed to translate between the two data models later in the course.\n\nLayout: Two-column split, responsive to window resize (stacks vertically below 700px width)\nCanvas size: responsive width, 520px height\n\nImplementation: p5.js with two side-by-side rendering regions and a shared highlight-state object",
+  "quality_score": 100,
+  "validated_date": "2026-09-07",
+  "implementation_path": "sims/relational-vs-graph-data-model-comparison/main.html"
+}

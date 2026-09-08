@@ -6,7 +6,7 @@ og:image: /sims/healthcare-ecosystem-stakeholder-diagram/healthcare-ecosystem-st
 twitter:image: /sims/healthcare-ecosystem-stakeholder-diagram/healthcare-ecosystem-stakeholder-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Healthcare Ecosystem Stakeholder Diagram

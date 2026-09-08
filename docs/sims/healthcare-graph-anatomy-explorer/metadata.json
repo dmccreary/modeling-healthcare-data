@@ -1,0 +1,44 @@
+{
+  "title": "Healthcare Graph Anatomy Explorer",
+  "description": "Given a rendered labeled property graph, the learner can identify which visual elements are nodes and which are edges, and state the label and properties of each.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "healthcare-graph-anatomy-explorer",
+  "library": "vis-network",
+  "bloomLevel": "Understand",
+  "bloomVerb": "identify, classify",
+  "completion_status": "validated",
+  "chapter_number": 1,
+  "chapter_title": "Foundations of Graph Structures",
+  "chapter_dir": "01-foundations-of-graph-structures",
+  "chapter_rel_dir": "chapters/01-foundations-of-graph-structures",
+  "educational": {
+    "gradeLevel": "Undergraduate and professional",
+    "subjectArea": "Healthcare data modeling",
+    "topic": "Healthcare Graph Anatomy Explorer",
+    "learningObjectives": [
+      "Given a rendered labeled property graph, the learner can identify which visual elements are nodes and which are edges, and state the label and properties of each."
+    ],
+    "duration": "10\u201315 minutes",
+    "prerequisites": [
+      "Nodes, edges, labels, and properties"
+    ]
+  },
+  "pedagogical": {
+    "bloomLevel": "Understand",
+    "interactionPattern": "Click-to-reveal exploration",
+    "rationale": "The Understand-level verbs identify and classify require visible labels and concrete property values. Learners control disclosure; continuous animation is unnecessary.",
+    "assessment": "Explain why Patient is a label, patient_id is a property key, and MRN-48213 is a property value. Identify the source and destination of WORKS_AT."
+  },
+  "canvasHeight": 960,
+  "quality_score": 100,
+  "validated_date": "2026-09-07"
+}

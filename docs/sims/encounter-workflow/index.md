@@ -1,3 +1,7 @@
+---
+quality_score: 72
+---
+
 # Patient Encounter Workflow
 
 ## Overview

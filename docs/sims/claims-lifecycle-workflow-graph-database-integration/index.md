@@ -6,7 +6,7 @@ og:image: /sims/claims-lifecycle-workflow-graph-database-integration/claims-life
 twitter:image: /sims/claims-lifecycle-workflow-graph-database-integration/claims-lifecycle-workflow-graph-database-integration.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Claims Lifecycle Workflow with Graph Database Integration

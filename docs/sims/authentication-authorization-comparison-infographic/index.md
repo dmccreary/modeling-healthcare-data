@@ -6,7 +6,7 @@ og:image: /sims/authentication-authorization-comparison-infographic/authenticati
 twitter:image: /sims/authentication-authorization-comparison-infographic/authentication-authorization-comparison-infographic.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Authentication vs Authorization Comparison Infographic

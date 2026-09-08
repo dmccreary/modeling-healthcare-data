@@ -6,7 +6,7 @@ og:image: /sims/capstone-project-architecture-template/capstone-project-architec
 twitter:image: /sims/capstone-project-architecture-template/capstone-project-architecture-template.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Capstone Project Architecture Template

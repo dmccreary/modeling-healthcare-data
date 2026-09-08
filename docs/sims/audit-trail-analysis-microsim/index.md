@@ -6,7 +6,7 @@ og:image: /sims/audit-trail-analysis-microsim/audit-trail-analysis-microsim.png
 twitter:image: /sims/audit-trail-analysis-microsim/audit-trail-analysis-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Audit Trail Analysis MicroSim

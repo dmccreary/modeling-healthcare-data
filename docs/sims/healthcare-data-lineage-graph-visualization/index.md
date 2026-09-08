@@ -6,7 +6,7 @@ og:image: /sims/healthcare-data-lineage-graph-visualization/healthcare-data-line
 twitter:image: /sims/healthcare-data-lineage-graph-visualization/healthcare-data-lineage-graph-visualization.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Data Lineage Graph Visualization

@@ -6,7 +6,7 @@ og:image: /sims/query-optimization-workflow-diagram/query-optimization-workflow-
 twitter:image: /sims/query-optimization-workflow-diagram/query-optimization-workflow-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Query Optimization Workflow Diagram

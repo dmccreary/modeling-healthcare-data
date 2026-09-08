@@ -1,98 +1,145 @@
-# Learning Graph Quality Analysis
+# Learning Graph Quality Metrics Report
 
-## Overall Quality Score
+## Overview
 
-**Score: 90/100**
+- **Total Concepts**: 513
+- **Foundational Concepts** (no prerequisites, other concepts depend on them): 2
+- **Terminal Nodes** (nothing depends on them, but have prerequisites): 193
+- **Orphaned Nodes** (completely disconnected, no edges): 0
+- **Concepts with Dependencies**: 511
+- **Average Dependencies per Concept**: 1.08
 
-**Rating: Excellent**
+## Graph Structure Validation
 
-✓ The learning graph meets quality standards and is ready for use.
-
-## Basic Statistics
-
-- Total concepts: 200
-- Concepts with dependencies: 196
-- Foundational concepts (no dependencies): 4
-- Total dependencies: 299
-- Average dependencies per concept: 1.50
-- Maximum dependency chain length: 11
-
-## DAG Structure Validation
-
-✓ **PASS**: The graph is a valid Directed Acyclic Graph (no cycles detected).
-
-## Self-Dependency Check
-
-✓ **PASS**: No self-dependencies detected.
+- **Valid DAG Structure**: ✅ Yes
+- **Self-Dependencies**: None detected ✅
+- **Cycles Detected**: 0
 
 ## Foundational Concepts
 
-Found 4 foundational concepts (2.0%):
+These concepts have no prerequisites:
 
-- Concept 1: Graph Theory Basics
-- Concept 13: Relational Database
-- Concept 16: Healthcare System
-- Concept 161: Artificial Intelligence
+- **1**: Graph Theory Basics
+- **106**: Healthcare System
 
-## Orphaned Nodes (Leaf Concepts)
+## Dependency Chain Analysis
 
-Found 87 orphaned concepts (43.5%):
+- **Maximum Dependency Chain Length**: 31
 
-- Concept 7: Edge Property
-- Concept 18: Per-Person Healthcare Cost
-- Concept 31: Clinical Workflow
-- Concept 32: Patient Demographics
-- Concept 35: Healthcare Data Exchange
-- Concept 37: GQL Standard
-- Concept 38: GSQL
-- Concept 42: Query Performance
-- Concept 43: Path Query
-- Concept 44: Subgraph Query
-- Concept 45: Aggregate Query
-- Concept 47: Patient ID
-- Concept 48: Patient History
-- Concept 50: Medical Condition
-- Concept 56: Dosage
-- Concept 57: Drug Interaction
-- Concept 58: Adverse Event
-- Concept 59: Allergy
-- Concept 60: Immunization
-- Concept 62: Lab Result
-- Concept 63: Vital Sign
-- Concept 66: Patient Journey
-- Concept 67: Chronic Disease Management
-- Concept 68: Preventive Care
-- Concept 70: Quality of Life Metric
-- Concept 75: Outpatient Facility
-- Concept 76: Inpatient Care
-- Concept 77: Emergency Department
-- Concept 80: Appointment
-- Concept 83: Medical License
+### Longest Learning Path:
 
-... and 57 more
+1. **Graph Theory Basics** (ID: 1)
+2. **Node Property** (ID: 6)
+3. **Directed Acyclic Graph** (ID: 11)
+4. **Graph Query** (ID: 16)
+5. **Cypher Query Language** (ID: 31)
+6. **Graph Pattern Matching** (ID: 34)
+7. **Graph Algorithm** (ID: 66)
+8. **Degree Centrality** (ID: 71)
+9. **Strongly Connected Component** (ID: 76)
+10. **Cosine Similarity** (ID: 81)
+11. **Link Prediction** (ID: 82)
+12. **Graph Embedding** (ID: 83)
+13. **Artificial Intelligence** (ID: 331)
+14. **Vector Store** (ID: 336)
+15. **Knowledge Graph** (ID: 341)
+16. **FHIR Standard** (ID: 375)
+17. **Condition Resource** (ID: 380)
+18. **PlanDefinition Resource** (ID: 385)
+19. **Structured Level** (ID: 390)
+20. **Forms/UI Tier** (ID: 395)
+21. **Clinical User Story** (ID: 400)
+22. **Terminology Binding** (ID: 405)
+23. **Clinical Quality Measure** (ID: 410)
+24. **CQL Define Statement** (ID: 413)
+25. **Clinical Reasoning Module** (ID: 414)
+26. **CDS Hooks** (ID: 415)
+27. **Care Gap Alert** (ID: 420)
+28. **CQL Runner Tool** (ID: 425)
+29. **Quality Reporting Architecture** (ID: 430)
+30. **Electronic CQM** (ID: 431)
+31. **Measure Authoring Tool** (ID: 432)
 
-## Top 10 Most Depended-Upon Concepts
+## Terminal Nodes Analysis
 
-Concepts with the highest indegree (most other concepts depend on them):
+Terminal nodes are concepts that nothing else depends on but have prerequisites. They represent natural endpoints of learning paths — culminating or specialized concepts.
+
+- **Total Terminal Nodes**: 193 (37.6% of all concepts)
+- **Healthy Range**: 5-40% of total concepts
+
+Concepts at the end of learning paths:
+
+- **3**: Edge
+- **5**: Labeled Property Graph
+- **8**: Directed Graph
+- **10**: Weighted Graph
+- **13**: Breadth-First Traversal
+- **15**: Graph Path
+- **18**: Database Schema
+- **20**: Entity-Relationship Model
+- **23**: Join Operation
+- **25**: Schema-On-Write
+- **28**: RDF Triple Store
+- **30**: Graph Serialization
+- **33**: GSQL
+- **35**: Graph Query Optimization
+- **38**: Path Query
+- **40**: Aggregate Query
+- **43**: Index-Free Adjacency
+- **45**: Bulk Import
+- **48**: Constraint Definition
+- **50**: Graph Visualization
+
+*...and 173 more*
+
+## Orphaned Nodes Analysis
+
+Orphaned nodes are completely disconnected concepts with no inbound AND no outbound edges. These indicate a quality problem — every concept should connect to the graph.
+
+- **Total Orphaned Nodes**: 0
+
+✅ No orphaned nodes detected. All concepts are connected to the graph.
+
+## Connected Components
+
+- **Number of Connected Components**: 1
+
+✅ All concepts are connected in a single graph.
+
+## Indegree Analysis
+
+Top 10 concepts that are prerequisites for the most other concepts:
 
 | Rank | Concept ID | Concept Label | Indegree |
-|------|------------|---------------|----------|
-| 1 | 22 | Healthcare Provider | 13 |
-| 2 | 16 | Healthcare System | 9 |
-| 3 | 146 | Graph Algorithm | 9 |
-| 4 | 96 | Insurance Claim | 8 |
-| 5 | 4 | Graph Database | 7 |
-| 6 | 12 | Graph Query | 7 |
-| 7 | 23 | Healthcare Patient | 7 |
-| 8 | 46 | Patient Record | 7 |
-| 9 | 1 | Graph Theory Basics | 6 |
-| 10 | 131 | Healthcare Fraud | 6 |
+|------|-----------|---------------|----------|
+| 1 | 410 | Clinical Quality Measure | 7 |
+| 2 | 341 | Knowledge Graph | 5 |
+| 3 | 11 | Directed Acyclic Graph | 4 |
+| 4 | 16 | Graph Query | 4 |
+| 5 | 106 | Healthcare System | 4 |
+| 6 | 111 | Healthcare Payer | 4 |
+| 7 | 141 | Patient Record | 4 |
+| 8 | 331 | Artificial Intelligence | 4 |
+| 9 | 346 | Clinical Decision Support | 4 |
+| 10 | 375 | FHIR Standard | 4 |
+
+## Outdegree Distribution
+
+| Dependencies | Number of Concepts |
+|--------------|--------------------|
+| 0 | 2 |
+| 1 | 479 |
+| 2 | 24 |
+| 3 | 7 |
+| 4 | 1 |
 
 ## Recommendations
 
-- High number of orphaned nodes (43.5%). Consider if capstone/final concepts should have more concepts building upon them.
-- Overall, the graph structure is good and ready for taxonomy assignment.
+- ✅ **Terminal node percentage** (37.6%): Within healthy range (5-40%)
+- ✅ **DAG structure verified**: Graph supports valid learning progressions
+- ℹ️ **Long dependency chains** (31): Ensure students can follow extended learning paths
+- ℹ️ **Consider adding cross-dependencies**: More connections could create richer learning pathways
 
 ---
 
-*Report generated by analyze-graph.py*
+*Report generated by learning-graph-reports/analyze_graph.py*

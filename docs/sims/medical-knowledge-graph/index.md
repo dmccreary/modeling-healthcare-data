@@ -6,7 +6,7 @@ og:image: /sims/medical-knowledge-graph/medical-knowledge-graph.png
 twitter:image: /sims/medical-knowledge-graph/medical-knowledge-graph.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Medical Knowledge Graph Example

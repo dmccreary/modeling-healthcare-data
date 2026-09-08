@@ -6,7 +6,7 @@ og:image: /sims/charge-master-billing-code-graph-model/charge-master-billing-cod
 twitter:image: /sims/charge-master-billing-code-graph-model/charge-master-billing-code-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Charge Master and Billing Code Graph Model

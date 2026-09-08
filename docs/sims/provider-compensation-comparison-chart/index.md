@@ -6,7 +6,7 @@ og:image: /sims/provider-compensation-comparison-chart/provider-compensation-com
 twitter:image: /sims/provider-compensation-comparison-chart/provider-compensation-comparison-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Provider Compensation Comparison Chart

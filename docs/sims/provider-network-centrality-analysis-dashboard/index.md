@@ -6,7 +6,7 @@ og:image: /sims/provider-network-centrality-analysis-dashboard/provider-network-
 twitter:image: /sims/provider-network-centrality-analysis-dashboard/provider-network-centrality-analysis-dashboard.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Provider Network Centrality Analysis Dashboard

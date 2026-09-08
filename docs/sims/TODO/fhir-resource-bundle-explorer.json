@@ -1,0 +1,18 @@
+{
+  "sim_id": "fhir-resource-bundle-explorer",
+  "diagram_name": "FHIR Resource Bundle Explorer",
+  "chapter_number": 22,
+  "chapter_title": "FHIR Resources and Levels of Knowledge Representation",
+  "chapter_dir": "22-fhir-resources-and-knowledge-representation",
+  "chapter_rel_dir": "chapters/22-fhir-resources-and-knowledge-representation",
+  "library": "vis-network",
+  "bloom_level": "Analyze<br/>",
+  "bloom_verb": "examine, differentiate<br/>",
+  "learning_objective": "Given a rendered FHIR Bundle, the learner can examine which JSON reference fields correspond to which graph edges, and differentiate the six core resource types by the fields each one carries.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: graph-model\n**sim-id:** fhir-resource-bundle-explorer<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\nBloom Taxonomy: Analyze<br/>\nBloom Taxonomy Verb: examine, differentiate<br/>\nLearning objective: Given a rendered FHIR Bundle, the learner can examine which JSON reference fields correspond to which graph edges, and differentiate the six core resource types by the fields each one carries.\n\nPurpose: Render the Maria Chen FHIR Bundle above as an interactive node-and-edge graph so the learner directly experiences a FHIR Bundle as a labeled property graph rather than as abstract JSON.\n\nNode types to show (color-coded by resourceType, exact data from the Bundle above):\n- `Patient` (pink circle) \u2014 maria-chen\n- `Encounter` (gray square) \u2014 enc-1, Annual Physical\n- `Condition` (orange diamond) \u2014 cond-1, Type 2 Diabetes (E11.9)\n- `Observation` (yellow circle) \u2014 obs-1, HbA1c 8.2%\n- `MedicationRequest` (purple hexagon) \u2014 med-1, Metformin 500mg\n- `CarePlan` (green triangle) \u2014 cp-1, Quarterly HbA1c monitoring\n\nEdge types to show (labeled by the FHIR field name they came from):\n- `subject` (Condition, Encounter, Observation, MedicationRequest, CarePlan \u2192 Patient)\n- `encounter` (Observation \u2192 Encounter)\n- `addresses` (CarePlan \u2192 Condition)\n- `requester` (MedicationRequest \u2192 Practitioner, shown as an unresolved reference badge if Practitioner is not loaded in this bundle)\n\nInteractive controls:\n- Click any node to open a side panel showing the exact raw JSON for that resource\n- Hover any edge to see a tooltip naming the FHIR field that produced it (e.g., \"this edge came from the `addresses` field\")\n- Toggle: \"JSON View\" vs \"Graph View\" that shows the same Bundle as raw formatted JSON side by side with the rendered graph, so the learner can match a specific JSON reference field to its corresponding edge\n\nInstructional Rationale: A toggle between JSON and graph views directly targets the Analyze-level objective, requiring the learner to map specific document fields onto specific graph structures rather than accepting the JSON-equals-graph claim in prose alone.\n\nImplementation: vis-network JavaScript library; responsive width, 550px height.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/fhir-resource-bundle-explorer/main.html"
+}

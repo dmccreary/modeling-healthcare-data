@@ -6,7 +6,7 @@ og:image: /sims/graph-traversal-visualization-microsim/graph-traversal-visualiza
 twitter:image: /sims/graph-traversal-visualization-microsim/graph-traversal-visualization-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Graph Traversal Visualization MicroSim

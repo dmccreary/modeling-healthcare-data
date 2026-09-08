@@ -1,10 +1,10 @@
 {
   "metadata": {
     "title": "Modeling Healthcare Data with Graphs",
-    "description": "This course teaches students to model complex healthcare data from multiple perspectives including the patient, provider and payer. Students learn how graph databases excel at modeling interconnected clinical data, and explore graph algorithms, graph data science, embeddings and graph neural networks to enable value-based care systems and reduce healthcare costs.",
+    "description": "This course teaches students to model complex healthcare data from multiple perspectives including the patient, provider and payer. Students learn how graph databases excel at modeling interconnected clinical data, and explore graph algorithms, graph data science, embeddings and graph neural networks to enable value-based care systems and reduce healthcare costs. The course also covers modeling clinical decision support systems using the HL7 FHIR standard, the Four Levels of Knowledge Representation, Tiers of Functionality, and Clinical Quality Language (CQL).",
     "creator": "Dan McCreary",
-    "date": "2025-11-06",
-    "version": "1.0",
+    "date": "2026-09-07",
+    "version": "2.0",
     "format": "Learning Graph JSON v1.0",
     "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
     "license": "CC BY-NC-SA 4.0 DEED"
@@ -19,20 +19,27 @@
     },
     "GTECH": {
       "classifierName": "Graph Technologies",
+      "color": "DarkSlateBlue",
+      "font": {
+        "color": "white"
+      }
+    },
+    "ANAL": {
+      "classifierName": "Graph Analytics and Algorithms",
       "color": "DarkGreen",
       "font": {
         "color": "white"
       }
     },
     "HCARE": {
-      "classifierName": "Healthcare Domain",
+      "classifierName": "Healthcare Domain Fundamentals",
       "color": "Teal",
       "font": {
         "color": "white"
       }
     },
     "PAT": {
-      "classifierName": "Patient Data",
+      "classifierName": "Patient Data and Clinical Concepts",
       "color": "LimeGreen",
       "font": {
         "color": "black"
@@ -46,42 +53,42 @@
       }
     },
     "PAYER": {
-      "classifierName": "Payer & Insurance",
+      "classifierName": "Payer and Insurance",
       "color": "Gold",
       "font": {
         "color": "black"
       }
     },
     "FIN": {
-      "classifierName": "Financial & Business",
+      "classifierName": "Financial and Business Operations",
       "color": "DarkGoldenrod",
       "font": {
         "color": "white"
       }
     },
     "FRAUD": {
-      "classifierName": "Fraud & Compliance",
+      "classifierName": "Fraud, Waste, and Abuse",
       "color": "DarkRed",
       "font": {
         "color": "white"
       }
     },
-    "ANAL": {
-      "classifierName": "Graph Analytics",
-      "color": "DeepPink",
-      "font": {
-        "color": "white"
-      }
-    },
     "AI": {
-      "classifierName": "AI & Machine Learning",
+      "classifierName": "AI and Machine Learning",
       "color": "Orange",
       "font": {
         "color": "black"
       }
     },
+    "CDS": {
+      "classifierName": "Clinical Decision Support, FHIR and CQL",
+      "color": "DeepPink",
+      "font": {
+        "color": "white"
+      }
+    },
     "SEC": {
-      "classifierName": "Security & Privacy",
+      "classifierName": "Security and Privacy",
       "color": "Crimson",
       "font": {
         "color": "white"
@@ -89,13 +96,13 @@
     },
     "GOV": {
       "classifierName": "Data Governance",
-      "color": "DarkSlateBlue",
+      "color": "MediumPurple",
       "font": {
         "color": "white"
       }
     },
     "CAP": {
-      "classifierName": "Capstone & Career",
+      "classifierName": "Capstone and Career",
       "color": "DimGray",
       "font": {
         "color": "white"
@@ -107,1005 +114,3081 @@
       "id": 1,
       "label": "Graph Theory Basics",
       "group": "FOUND",
-      "shape": "box"
+      "shape": "box",
+      "cis": 1680
     },
     {
       "id": 2,
       "label": "Node",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 3,
       "label": "Edge",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 4,
       "label": "Graph Database",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 707
     },
     {
       "id": 5,
       "label": "Labeled Property Graph",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 6,
       "label": "Node Property",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 970
     },
     {
       "id": 7,
       "label": "Edge Property",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 8,
       "label": "Directed Graph",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 9,
-      "label": "Directed Acyclic Graph",
-      "group": "FOUND"
+      "label": "Undirected Graph",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 10,
-      "label": "Graph Traversal",
-      "group": "FOUND"
+      "label": "Weighted Graph",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 11,
-      "label": "Graph Path",
-      "group": "FOUND"
+      "label": "Directed Acyclic Graph",
+      "group": "FOUND",
+      "cis": 965
     },
     {
       "id": 12,
-      "label": "Graph Query",
-      "group": "FOUND"
+      "label": "Graph Traversal",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 13,
-      "label": "Relational Database",
+      "label": "Breadth-First Traversal",
       "group": "FOUND",
-      "shape": "box"
+      "cis": 1
     },
     {
       "id": 14,
-      "label": "Database Schema",
-      "group": "FOUND"
+      "label": "Depth-First Traversal",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 15,
-      "label": "Data Model",
-      "group": "FOUND"
+      "label": "Graph Path",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 16,
-      "label": "Healthcare System",
-      "group": "HCARE",
-      "shape": "box"
+      "label": "Graph Query",
+      "group": "FOUND",
+      "cis": 531
     },
     {
       "id": 17,
-      "label": "Healthcare Cost",
-      "group": "HCARE"
+      "label": "Relational Database",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 18,
-      "label": "Per-Person Healthcare Cost",
-      "group": "HCARE"
+      "label": "Database Schema",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 19,
-      "label": "Fee-For-Service Model",
-      "group": "HCARE"
+      "label": "Data Model",
+      "group": "FOUND",
+      "cis": 52
     },
     {
       "id": 20,
-      "label": "Value-Based Care",
-      "group": "HCARE"
+      "label": "Entity-Relationship Model",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 21,
-      "label": "Healthcare Payer",
-      "group": "HCARE"
+      "label": "Normalization",
+      "group": "FOUND",
+      "cis": 10
     },
     {
       "id": 22,
-      "label": "Healthcare Provider",
-      "group": "HCARE"
+      "label": "Foreign Key",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 23,
-      "label": "Healthcare Patient",
-      "group": "HCARE"
+      "label": "Join Operation",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 24,
-      "label": "Electronic Health Record",
-      "group": "HCARE"
+      "label": "Schema-On-Read",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 25,
-      "label": "Medical Coding System",
-      "group": "HCARE"
+      "label": "Schema-On-Write",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 26,
-      "label": "ICD Code",
-      "group": "HCARE"
+      "label": "Graph Data Model",
+      "group": "FOUND",
+      "cis": 5
     },
     {
       "id": 27,
-      "label": "CPT Code",
-      "group": "HCARE"
+      "label": "Property Graph Model",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 28,
-      "label": "HCPCS Code",
-      "group": "HCARE"
+      "label": "RDF Triple Store",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 29,
-      "label": "Drug Code",
-      "group": "HCARE"
+      "label": "Multigraph",
+      "group": "FOUND",
+      "cis": 2
     },
     {
       "id": 30,
-      "label": "Medical Terminology",
-      "group": "HCARE"
+      "label": "Graph Serialization",
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 31,
-      "label": "Clinical Workflow",
-      "group": "HCARE"
+      "label": "Cypher Query Language",
+      "group": "GTECH",
+      "cis": 466
     },
     {
       "id": 32,
-      "label": "Patient Demographics",
-      "group": "HCARE"
+      "label": "GQL Standard",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 33,
-      "label": "Medical Encounter",
-      "group": "HCARE"
+      "label": "GSQL",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 34,
-      "label": "Healthcare Interoperability",
-      "group": "HCARE"
+      "label": "Graph Pattern Matching",
+      "group": "GTECH",
+      "cis": 431
     },
     {
       "id": 35,
-      "label": "Healthcare Data Exchange",
-      "group": "HCARE"
+      "label": "Graph Query Optimization",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 36,
-      "label": "Cypher Query Language",
-      "group": "GTECH"
+      "label": "Graph Index",
+      "group": "GTECH",
+      "cis": 32
     },
     {
       "id": 37,
-      "label": "GQL Standard",
-      "group": "GTECH"
+      "label": "Query Performance",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 38,
-      "label": "GSQL",
-      "group": "GTECH"
+      "label": "Path Query",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 39,
-      "label": "Graph Pattern Matching",
-      "group": "GTECH"
+      "label": "Subgraph Query",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 40,
-      "label": "Graph Query Optimization",
-      "group": "GTECH"
+      "label": "Aggregate Query",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 41,
-      "label": "Graph Index",
-      "group": "GTECH"
+      "label": "Graph Database Engine",
+      "group": "GTECH",
+      "cis": 27
     },
     {
       "id": 42,
-      "label": "Query Performance",
-      "group": "GTECH"
+      "label": "Native Graph Storage",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 43,
-      "label": "Path Query",
-      "group": "GTECH"
+      "label": "Index-Free Adjacency",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 44,
-      "label": "Subgraph Query",
-      "group": "GTECH"
+      "label": "Graph Data Loading",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 45,
-      "label": "Aggregate Query",
-      "group": "GTECH"
+      "label": "Bulk Import",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 46,
-      "label": "Patient Record",
-      "group": "PAT"
+      "label": "ETL Pipeline",
+      "group": "GTECH",
+      "cis": 22
     },
     {
       "id": 47,
-      "label": "Patient ID",
-      "group": "PAT"
+      "label": "Graph Schema Design",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 48,
-      "label": "Patient History",
-      "group": "PAT"
+      "label": "Constraint Definition",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 49,
-      "label": "Disease",
-      "group": "PAT"
+      "label": "Uniqueness Constraint",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 50,
-      "label": "Medical Condition",
-      "group": "PAT"
+      "label": "Graph Visualization",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 51,
-      "label": "Symptom",
-      "group": "PAT"
+      "label": "Graph Explorer Tool",
+      "group": "GTECH",
+      "cis": 17
     },
     {
       "id": 52,
-      "label": "Diagnosis",
-      "group": "PAT"
+      "label": "Query Execution Plan",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 53,
-      "label": "Treatment Plan",
-      "group": "PAT"
+      "label": "Query Profiling",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 54,
-      "label": "Prescription",
-      "group": "PAT"
+      "label": "Caching Strategy",
+      "group": "GTECH",
+      "cis": 4
     },
     {
       "id": 55,
-      "label": "Medication",
-      "group": "PAT"
+      "label": "Scalability",
+      "group": "GTECH",
+      "cis": 3
     },
     {
       "id": 56,
-      "label": "Dosage",
-      "group": "PAT"
+      "label": "Graph Sharding",
+      "group": "GTECH",
+      "cis": 10
     },
     {
       "id": 57,
-      "label": "Drug Interaction",
-      "group": "PAT"
+      "label": "Distributed Graph Database",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 58,
-      "label": "Adverse Event",
-      "group": "PAT"
+      "label": "Horizontal Scaling",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 59,
-      "label": "Allergy",
-      "group": "PAT"
+      "label": "Vertical Scaling",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 60,
-      "label": "Immunization",
-      "group": "PAT"
+      "label": "Graph Database Cluster",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 61,
-      "label": "Lab Test",
-      "group": "PAT"
+      "label": "High Availability",
+      "group": "GTECH",
+      "cis": 5
     },
     {
       "id": 62,
-      "label": "Lab Result",
-      "group": "PAT"
+      "label": "Backup And Recovery",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 63,
-      "label": "Vital Sign",
-      "group": "PAT"
+      "label": "Graph API",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 64,
-      "label": "Care Plan",
-      "group": "PAT"
+      "label": "Bolt Protocol",
+      "group": "GTECH",
+      "cis": 2
     },
     {
       "id": 65,
-      "label": "Treatment Timeline",
-      "group": "PAT"
+      "label": "Graph Driver",
+      "group": "GTECH",
+      "cis": 1
     },
     {
       "id": 66,
-      "label": "Patient Journey",
-      "group": "PAT"
+      "label": "Graph Algorithm",
+      "group": "ANAL",
+      "cis": 429
     },
     {
       "id": 67,
-      "label": "Chronic Disease Management",
-      "group": "PAT"
+      "label": "Shortest Path Algorithm",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 68,
-      "label": "Preventive Care",
-      "group": "PAT"
+      "label": "Centrality Measure",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 69,
-      "label": "Patient Outcome",
-      "group": "PAT"
+      "label": "PageRank Algorithm",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 70,
-      "label": "Quality of Life Metric",
-      "group": "PAT"
+      "label": "Betweenness Centrality",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 71,
-      "label": "Primary Care Provider",
-      "group": "PROV"
+      "label": "Degree Centrality",
+      "group": "ANAL",
+      "cis": 424
     },
     {
       "id": 72,
-      "label": "Specialist Provider",
-      "group": "PROV"
+      "label": "Closeness Centrality",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 73,
-      "label": "Hospital",
-      "group": "PROV"
+      "label": "Eigenvector Centrality",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 74,
-      "label": "Clinic",
-      "group": "PROV"
+      "label": "Clustering Coefficient",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 75,
-      "label": "Outpatient Facility",
-      "group": "PROV"
+      "label": "Connected Components",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 76,
-      "label": "Inpatient Care",
-      "group": "PROV"
+      "label": "Strongly Connected Component",
+      "group": "ANAL",
+      "cis": 419
     },
     {
       "id": 77,
-      "label": "Emergency Department",
-      "group": "PROV"
+      "label": "Cycle Detection",
+      "group": "ANAL",
+      "cis": 52
     },
     {
       "id": 78,
-      "label": "Provider Network",
-      "group": "PROV"
+      "label": "Graph Pattern Recognition",
+      "group": "ANAL",
+      "cis": 51
     },
     {
       "id": 79,
-      "label": "Provider Schedule",
-      "group": "PROV"
+      "label": "Similarity Measure",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 80,
-      "label": "Appointment",
-      "group": "PROV"
+      "label": "Jaccard Similarity",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 81,
-      "label": "Referral",
-      "group": "PROV"
+      "label": "Cosine Similarity",
+      "group": "ANAL",
+      "cis": 364
     },
     {
       "id": 82,
-      "label": "Provider Credential",
-      "group": "PROV"
+      "label": "Link Prediction",
+      "group": "ANAL",
+      "cis": 241
     },
     {
       "id": 83,
-      "label": "Medical License",
-      "group": "PROV"
+      "label": "Graph Embedding",
+      "group": "ANAL",
+      "cis": 240
     },
     {
       "id": 84,
-      "label": "Board Certification",
-      "group": "PROV"
+      "label": "Node Embedding",
+      "group": "ANAL",
+      "cis": 62
     },
     {
       "id": 85,
-      "label": "Provider Rating",
-      "group": "PROV"
+      "label": "Edge Embedding",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 86,
-      "label": "Provider Capacity",
-      "group": "PROV"
+      "label": "Graph Neural Network",
+      "group": "ANAL",
+      "cis": 60
     },
     {
       "id": 87,
-      "label": "Provider Specialization",
-      "group": "PROV"
+      "label": "Message Passing",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 88,
-      "label": "Hospital Department",
-      "group": "PROV"
+      "label": "Node Classification",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 89,
-      "label": "Care Team",
-      "group": "PROV"
+      "label": "Graph Clustering",
+      "group": "ANAL",
+      "cis": 42
     },
     {
       "id": 90,
-      "label": "Multidisciplinary Team",
-      "group": "PROV"
+      "label": "Louvain Method",
+      "group": "ANAL",
+      "cis": 21
     },
     {
       "id": 91,
-      "label": "Provider Performance",
-      "group": "PROV"
+      "label": "Label Propagation",
+      "group": "ANAL",
+      "cis": 15
     },
     {
       "id": 92,
-      "label": "Clinical Guideline",
-      "group": "PROV"
+      "label": "Minimum Spanning Tree",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 93,
-      "label": "Best Practice",
-      "group": "PROV"
+      "label": "Random Walk",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 94,
-      "label": "Evidence-Based Medicine",
-      "group": "PROV"
+      "label": "Node2Vec",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 95,
-      "label": "Clinical Protocol",
-      "group": "PROV"
+      "label": "Graph Convolutional Network",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 96,
-      "label": "Insurance Claim",
-      "group": "PAYER"
+      "label": "Temporal Graph Analysis",
+      "group": "ANAL",
+      "cis": 10
     },
     {
       "id": 97,
-      "label": "Claim Processing",
-      "group": "PAYER"
+      "label": "Dynamic Graph Update",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 98,
-      "label": "Claim Adjudication",
-      "group": "PAYER"
+      "label": "Graph Sampling",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 99,
-      "label": "Claim Denial",
-      "group": "PAYER"
+      "label": "Motif Detection",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 100,
-      "label": "Claim Dispute",
-      "group": "PAYER"
+      "label": "Triangle Count",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 101,
-      "label": "Insurance Policy",
-      "group": "PAYER"
+      "label": "Weakly Connected Component",
+      "group": "ANAL",
+      "cis": 5
     },
     {
       "id": 102,
-      "label": "Coverage",
-      "group": "PAYER"
+      "label": "Graph Density Metric",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 103,
-      "label": "Benefit Plan",
-      "group": "PAYER"
+      "label": "Assortativity",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 104,
-      "label": "Copayment",
-      "group": "PAYER"
+      "label": "Influence Propagation",
+      "group": "ANAL",
+      "cis": 2
     },
     {
       "id": 105,
-      "label": "Deductible",
-      "group": "PAYER"
+      "label": "Graph Benchmarking",
+      "group": "ANAL",
+      "cis": 1
     },
     {
       "id": 106,
-      "label": "Out-Of-Pocket Maximum",
-      "group": "PAYER"
+      "label": "Healthcare System",
+      "group": "HCARE",
+      "shape": "box",
+      "cis": 1120
     },
     {
       "id": 107,
-      "label": "Premium",
-      "group": "PAYER"
+      "label": "Healthcare Cost",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 108,
-      "label": "Formulary",
-      "group": "PAYER"
+      "label": "Per-Person Healthcare Cost",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 109,
-      "label": "Formulary Rule",
-      "group": "PAYER"
+      "label": "Fee-For-Service Model",
+      "group": "HCARE",
+      "cis": 3
     },
     {
       "id": 110,
-      "label": "Pharmacy Benefit Manager",
-      "group": "PAYER"
+      "label": "Value-Based Care",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 111,
-      "label": "Prior Authorization",
-      "group": "PAYER"
+      "label": "Healthcare Payer",
+      "group": "HCARE",
+      "cis": 924
     },
     {
       "id": 112,
-      "label": "Utilization Review",
-      "group": "PAYER"
+      "label": "Healthcare Provider",
+      "group": "HCARE",
+      "cis": 192
     },
     {
       "id": 113,
-      "label": "Medical Necessity",
-      "group": "PAYER"
+      "label": "Healthcare Patient",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 114,
-      "label": "Allowed Amount",
-      "group": "PAYER"
+      "label": "Electronic Health Record",
+      "group": "HCARE",
+      "cis": 263
     },
     {
       "id": 115,
-      "label": "Reimbursement",
-      "group": "PAYER"
+      "label": "Medical Coding System",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 116,
-      "label": "Healthcare Cost Analysis",
-      "group": "FIN"
+      "label": "ICD Code",
+      "group": "HCARE",
+      "cis": 348
     },
     {
       "id": 117,
-      "label": "Revenue Cycle",
-      "group": "FIN"
+      "label": "ICD-10-CM",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 118,
-      "label": "Billing Code",
-      "group": "FIN"
+      "label": "CPT Code",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 119,
-      "label": "Charge Master",
-      "group": "FIN"
+      "label": "HCPCS Code",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 120,
-      "label": "Cost Of Care",
-      "group": "FIN"
+      "label": "Drug Code",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 121,
-      "label": "Revenue",
-      "group": "FIN"
+      "label": "NDC Code",
+      "group": "HCARE",
+      "cis": 343
     },
     {
       "id": 122,
-      "label": "Profitability",
-      "group": "FIN"
+      "label": "LOINC Code",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 123,
-      "label": "Operating Margin",
-      "group": "FIN"
+      "label": "SNOMED CT",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 124,
-      "label": "Payer Mix",
-      "group": "FIN"
+      "label": "RxNorm",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 125,
-      "label": "Contract Negotiation",
-      "group": "FIN"
+      "label": "Medical Terminology",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 126,
-      "label": "Provider Compensation",
-      "group": "FIN"
+      "label": "Clinical Workflow",
+      "group": "HCARE",
+      "cis": 338
     },
     {
       "id": 127,
-      "label": "Capitation",
-      "group": "FIN"
+      "label": "Patient Demographics",
+      "group": "HCARE",
+      "cis": 158
     },
     {
       "id": 128,
-      "label": "Risk Adjustment",
-      "group": "FIN"
+      "label": "Medical Encounter",
+      "group": "HCARE",
+      "cis": 157
     },
     {
       "id": 129,
-      "label": "Quality Metric",
-      "group": "FIN"
+      "label": "Healthcare Interoperability",
+      "group": "HCARE",
+      "cis": 169
     },
     {
       "id": 130,
-      "label": "Value-Based Payment",
-      "group": "FIN"
+      "label": "Healthcare Data Exchange",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 131,
-      "label": "Healthcare Fraud",
-      "group": "FRAUD"
+      "label": "Health Information Exchange",
+      "group": "HCARE",
+      "cis": 10
     },
     {
       "id": 132,
-      "label": "Fraud Detection",
-      "group": "FRAUD"
+      "label": "Continuity Of Care Document",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 133,
-      "label": "Waste In Healthcare",
-      "group": "FRAUD"
+      "label": "Interoperability Standard",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 134,
-      "label": "Abuse Detection",
-      "group": "FRAUD"
+      "label": "HL7 Standard",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 135,
-      "label": "Upcoding",
-      "group": "FRAUD"
+      "label": "HL7 V2 Message",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 136,
-      "label": "Unbundling",
-      "group": "FRAUD"
+      "label": "Accountable Care Organization",
+      "group": "HCARE",
+      "cis": 5
     },
     {
       "id": 137,
-      "label": "Phantom Billing",
-      "group": "FRAUD"
+      "label": "Patient-Centered Medical Home",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 138,
-      "label": "Duplicate Claim",
-      "group": "FRAUD"
+      "label": "Social Determinants Of Health",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 139,
-      "label": "Kickback Scheme",
-      "group": "FRAUD"
+      "label": "Population Health",
+      "group": "HCARE",
+      "cis": 2
     },
     {
       "id": 140,
-      "label": "Referral Network Analysis",
-      "group": "FRAUD"
+      "label": "Care Coordination",
+      "group": "HCARE",
+      "cis": 1
     },
     {
       "id": 141,
-      "label": "Community Detection",
-      "group": "FRAUD"
+      "label": "Patient Record",
+      "group": "PAT",
+      "cis": 156
     },
     {
       "id": 142,
-      "label": "Anomaly Detection",
-      "group": "FRAUD"
+      "label": "Patient ID",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 143,
-      "label": "Behavioral Health Fraud",
-      "group": "FRAUD"
+      "label": "Patient History",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 144,
-      "label": "DME Fraud",
-      "group": "FRAUD"
+      "label": "Disease",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 145,
-      "label": "Provider Network Fraud",
-      "group": "FRAUD"
+      "label": "Medical Condition",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 146,
-      "label": "Graph Algorithm",
-      "group": "ANAL"
+      "label": "Symptom",
+      "group": "PAT",
+      "cis": 46
     },
     {
       "id": 147,
-      "label": "Shortest Path Algorithm",
-      "group": "ANAL"
+      "label": "Diagnosis",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 148,
-      "label": "Centrality Measure",
-      "group": "ANAL"
+      "label": "Differential Diagnosis",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 149,
-      "label": "Pagerank Algorithm",
-      "group": "ANAL"
+      "label": "Treatment Plan",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 150,
-      "label": "Betweenness Centrality",
-      "group": "ANAL"
+      "label": "Prescription",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 151,
-      "label": "Degree Centrality",
-      "group": "ANAL"
+      "label": "Medication",
+      "group": "PAT",
+      "cis": 41
     },
     {
       "id": 152,
-      "label": "Clustering Coefficient",
-      "group": "ANAL"
+      "label": "Dosage",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 153,
-      "label": "Connected Components",
-      "group": "ANAL"
+      "label": "Drug Interaction",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 154,
-      "label": "Cycle Detection",
-      "group": "ANAL"
+      "label": "Adverse Event",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 155,
-      "label": "Graph Pattern Recognition",
-      "group": "ANAL"
+      "label": "Allergy",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 156,
-      "label": "Similarity Measure",
-      "group": "ANAL"
+      "label": "Immunization",
+      "group": "PAT",
+      "cis": 36
     },
     {
       "id": 157,
-      "label": "Link Prediction",
-      "group": "ANAL"
+      "label": "Vaccination Schedule",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 158,
-      "label": "Graph Embedding",
-      "group": "ANAL"
+      "label": "Lab Test",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 159,
-      "label": "Node Embedding",
-      "group": "ANAL"
+      "label": "Lab Result",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 160,
-      "label": "Graph Neural Network",
-      "group": "ANAL"
+      "label": "Vital Sign",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 161,
-      "label": "Artificial Intelligence",
-      "group": "AI",
-      "shape": "box"
+      "label": "Patient Care Plan",
+      "group": "PAT",
+      "cis": 31
     },
     {
       "id": 162,
-      "label": "Machine Learning",
-      "group": "AI"
+      "label": "Treatment Timeline",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 163,
-      "label": "Large Language Model",
-      "group": "AI"
+      "label": "Patient Journey",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 164,
-      "label": "Vector Store",
-      "group": "AI"
+      "label": "Chronic Disease Management",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 165,
-      "label": "Vector Embedding",
-      "group": "AI"
+      "label": "Preventive Care",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 166,
-      "label": "Semantic Search",
-      "group": "AI"
+      "label": "Patient Outcome",
+      "group": "PAT",
+      "cis": 26
     },
     {
       "id": 167,
-      "label": "RAG Architecture",
-      "group": "AI"
+      "label": "Quality Of Life Metric",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 168,
-      "label": "Knowledge Graph",
-      "group": "AI"
+      "label": "Comorbidity",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 169,
-      "label": "Graph And LLM Integration",
-      "group": "AI"
+      "label": "Family History",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 170,
-      "label": "Clinical Decision Support",
-      "group": "AI"
+      "label": "Genetic Marker",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 171,
-      "label": "Clinical Discovery",
-      "group": "AI"
+      "label": "Biomarker",
+      "group": "PAT",
+      "cis": 21
     },
     {
       "id": 172,
-      "label": "Recommendation System",
-      "group": "AI"
+      "label": "Imaging Study",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 173,
-      "label": "Predictive Analytics",
-      "group": "AI"
+      "label": "Radiology Report",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 174,
-      "label": "Risk Stratification",
-      "group": "AI"
+      "label": "Pathology Report",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 175,
-      "label": "Population Health Analytics",
-      "group": "AI"
+      "label": "Surgical Procedure",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 176,
-      "label": "HIPAA",
-      "group": "SEC"
+      "label": "Post-Operative Care",
+      "group": "PAT",
+      "cis": 16
     },
     {
       "id": 177,
-      "label": "Protected Health Information",
-      "group": "SEC"
+      "label": "Rehabilitation Plan",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 178,
-      "label": "Data Privacy",
-      "group": "SEC"
+      "label": "Discharge Summary",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 179,
-      "label": "Data Security",
-      "group": "SEC"
+      "label": "Readmission Risk",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 180,
-      "label": "Access Control",
-      "group": "SEC"
+      "label": "Care Transition",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 181,
-      "label": "Role-Based Access Control",
-      "group": "SEC"
+      "label": "Patient Portal",
+      "group": "PAT",
+      "cis": 11
     },
     {
       "id": 182,
-      "label": "Authentication",
-      "group": "SEC"
+      "label": "Patient-Reported Outcome",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 183,
-      "label": "Authorization",
-      "group": "SEC"
+      "label": "Wearable Device Data",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 184,
-      "label": "Audit Trail",
-      "group": "SEC"
+      "label": "Remote Patient Monitoring",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 185,
-      "label": "De-Identification",
-      "group": "SEC"
+      "label": "Telehealth Visit",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 186,
-      "label": "Metadata Management",
-      "group": "GOV"
+      "label": "Behavioral Health Condition",
+      "group": "PAT",
+      "cis": 6
     },
     {
       "id": 187,
-      "label": "Data Lineage",
-      "group": "GOV"
+      "label": "Neurodiversity",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 188,
-      "label": "Data Provenance",
-      "group": "GOV"
+      "label": "Mental Health Screening",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 189,
-      "label": "Data Quality",
-      "group": "GOV"
+      "label": "Substance Use Disorder",
+      "group": "PAT",
+      "cis": 2
     },
     {
       "id": 190,
-      "label": "Data Traceability",
-      "group": "GOV"
+      "label": "Palliative Care",
+      "group": "PAT",
+      "cis": 1
     },
     {
       "id": 191,
-      "label": "Data Governance Framework",
-      "group": "GOV"
+      "label": "Primary Care Provider",
+      "group": "PROV",
+      "cis": 190
     },
     {
       "id": 192,
-      "label": "Master Data Management",
-      "group": "GOV"
+      "label": "Specialist Provider",
+      "group": "PROV",
+      "cis": 2
     },
     {
       "id": 193,
-      "label": "Data Stewardship",
-      "group": "GOV"
+      "label": "Hospital",
+      "group": "PROV",
+      "cis": 1
     },
     {
       "id": 194,
-      "label": "Explainability",
-      "group": "GOV"
+      "label": "Clinic",
+      "group": "PROV",
+      "cis": 2
     },
     {
       "id": 195,
-      "label": "Transparency",
-      "group": "GOV"
+      "label": "Outpatient Facility",
+      "group": "PROV",
+      "cis": 1
     },
     {
       "id": 196,
-      "label": "Capstone Project",
-      "group": "CAP"
+      "label": "Inpatient Care",
+      "group": "PROV",
+      "cis": 185
     },
     {
       "id": 197,
-      "label": "Project Presentation",
-      "group": "CAP"
+      "label": "Emergency Department",
+      "group": "PROV",
+      "cis": 122
     },
     {
       "id": 198,
-      "label": "Graph Career Path",
-      "group": "CAP"
+      "label": "Provider Network",
+      "group": "PROV",
+      "cis": 121
     },
     {
       "id": 199,
-      "label": "Healthcare Analytics Platform",
-      "group": "CAP"
+      "label": "Provider Schedule",
+      "group": "PROV",
+      "cis": 2
     },
     {
       "id": 200,
+      "label": "Appointment",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 201,
+      "label": "Referral",
+      "group": "PROV",
+      "cis": 60
+    },
+    {
+      "id": 202,
+      "label": "Referral Inference",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 203,
+      "label": "Provider Credential",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 204,
+      "label": "Medical License",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 205,
+      "label": "Board Certification",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 206,
+      "label": "Provider Rating",
+      "group": "PROV",
+      "cis": 55
+    },
+    {
+      "id": 207,
+      "label": "Provider Capacity",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 208,
+      "label": "Provider Specialization",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 209,
+      "label": "Hospital Department",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 210,
+      "label": "Care Team",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 211,
+      "label": "Multidisciplinary Team",
+      "group": "PROV",
+      "cis": 50
+    },
+    {
+      "id": 212,
+      "label": "Provider Performance",
+      "group": "PROV",
+      "cis": 32
+    },
+    {
+      "id": 213,
+      "label": "Clinical Guideline",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 214,
+      "label": "Best Practice",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 215,
+      "label": "Evidence-Based Medicine",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 216,
+      "label": "Clinical Protocol",
+      "group": "PROV",
+      "cis": 15
+    },
+    {
+      "id": 217,
+      "label": "Care Pathway",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 218,
+      "label": "Clinical Pathway Variance",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 219,
+      "label": "Provider Directory",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 220,
+      "label": "Credentialing Process",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 221,
+      "label": "Malpractice Risk",
+      "group": "PROV",
+      "cis": 10
+    },
+    {
+      "id": 222,
+      "label": "Locum Tenens",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 223,
+      "label": "Nurse Practitioner",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 224,
+      "label": "Physician Assistant",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 225,
+      "label": "Care Manager",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 226,
+      "label": "Case Manager",
+      "group": "PROV",
+      "cis": 5
+    },
+    {
+      "id": 227,
+      "label": "Provider Onboarding",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 228,
+      "label": "Staffing Model",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 229,
+      "label": "Shift Scheduling",
+      "group": "PROV",
+      "cis": 2
+    },
+    {
+      "id": 230,
+      "label": "Provider Attrition",
+      "group": "PROV",
+      "cis": 1
+    },
+    {
+      "id": 231,
+      "label": "Insurance Claim",
+      "group": "PAYER",
+      "cis": 120
+    },
+    {
+      "id": 232,
+      "label": "Claim Processing",
+      "group": "PAYER",
+      "cis": 52
+    },
+    {
+      "id": 233,
+      "label": "Claim Adjudication",
+      "group": "PAYER",
+      "cis": 51
+    },
+    {
+      "id": 234,
+      "label": "Claim Denial",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 235,
+      "label": "Claim Dispute",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 236,
+      "label": "Insurance Policy",
+      "group": "PAYER",
+      "cis": 65
+    },
+    {
+      "id": 237,
+      "label": "Coverage",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 238,
+      "label": "Benefit Plan",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 239,
+      "label": "Copayment",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 240,
+      "label": "Deductible",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 241,
+      "label": "Out-Of-Pocket Maximum",
+      "group": "PAYER",
+      "cis": 60
+    },
+    {
+      "id": 242,
+      "label": "Premium",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 243,
+      "label": "Formulary",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 244,
+      "label": "Formulary Rule",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 245,
+      "label": "Brand Drug",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 246,
+      "label": "Generic Drug",
+      "group": "PAYER",
+      "cis": 55
+    },
+    {
+      "id": 247,
+      "label": "Pharmacy Benefit Manager",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 248,
+      "label": "Prior Authorization",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 249,
+      "label": "Utilization Review",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 250,
+      "label": "Medical Necessity",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 251,
+      "label": "Allowed Amount",
+      "group": "PAYER",
+      "cis": 50
+    },
+    {
+      "id": 252,
+      "label": "Reimbursement",
+      "group": "PAYER",
+      "cis": 32
+    },
+    {
+      "id": 253,
+      "label": "Explanation Of Benefits",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 254,
+      "label": "Coordination Of Benefits",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 255,
+      "label": "Subrogation",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 256,
+      "label": "Health Maintenance Organization",
+      "group": "PAYER",
+      "cis": 15
+    },
+    {
+      "id": 257,
+      "label": "Preferred Provider Organization",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 258,
+      "label": "Point Of Service Plan",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 259,
+      "label": "High-Deductible Health Plan",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 260,
+      "label": "Medicare",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 261,
+      "label": "Medicaid",
+      "group": "PAYER",
+      "cis": 10
+    },
+    {
+      "id": 262,
+      "label": "Dual Eligibility",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 263,
+      "label": "Payer Contract",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 264,
+      "label": "Network Adequacy",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 265,
+      "label": "In-Network Provider",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 266,
+      "label": "Out-Of-Network Provider",
+      "group": "PAYER",
+      "cis": 5
+    },
+    {
+      "id": 267,
+      "label": "Claims Clearinghouse",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 268,
+      "label": "Electronic Remittance Advice",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 269,
+      "label": "Eligibility Verification",
+      "group": "PAYER",
+      "cis": 2
+    },
+    {
+      "id": 270,
+      "label": "Benefit Accumulator",
+      "group": "PAYER",
+      "cis": 1
+    },
+    {
+      "id": 271,
+      "label": "Healthcare Cost Analysis",
+      "group": "FIN",
+      "cis": 30
+    },
+    {
+      "id": 272,
+      "label": "Revenue Cycle",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 273,
+      "label": "Billing Code",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 274,
+      "label": "Charge Master",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 275,
+      "label": "Cost Of Care",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 276,
+      "label": "Revenue",
+      "group": "FIN",
+      "cis": 25
+    },
+    {
+      "id": 277,
+      "label": "Profitability",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 278,
+      "label": "Operating Margin",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 279,
+      "label": "Payer Mix",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 280,
+      "label": "Contract Negotiation",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 281,
+      "label": "Provider Compensation",
+      "group": "FIN",
+      "cis": 20
+    },
+    {
+      "id": 282,
+      "label": "Capitation",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 283,
+      "label": "Risk Adjustment",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 284,
+      "label": "Quality Metric",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 285,
+      "label": "Value-Based Payment",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 286,
+      "label": "Bundled Payment",
+      "group": "FIN",
+      "cis": 15
+    },
+    {
+      "id": 287,
+      "label": "Shared Savings Program",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 288,
+      "label": "Cost Per Encounter",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 289,
+      "label": "Denial Rate",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 290,
+      "label": "Days In Accounts Receivable",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 291,
+      "label": "Net Collection Rate",
+      "group": "FIN",
+      "cis": 10
+    },
+    {
+      "id": 292,
+      "label": "Financial Forecasting",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 293,
+      "label": "Budget Variance Analysis",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 294,
+      "label": "Chargeback",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 295,
+      "label": "Write-Off",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 296,
+      "label": "Cost Containment Strategy",
+      "group": "FIN",
+      "cis": 5
+    },
+    {
+      "id": 297,
+      "label": "Total Cost Of Ownership",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 298,
+      "label": "Return On Investment",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 299,
+      "label": "Break-Even Analysis",
+      "group": "FIN",
+      "cis": 2
+    },
+    {
+      "id": 300,
+      "label": "Financial Risk Pool",
+      "group": "FIN",
+      "cis": 1
+    },
+    {
+      "id": 301,
+      "label": "Healthcare Fraud",
+      "group": "FRAUD",
+      "cis": 50
+    },
+    {
+      "id": 302,
+      "label": "Fraud Detection",
+      "group": "FRAUD",
+      "cis": 22
+    },
+    {
+      "id": 303,
+      "label": "Waste In Healthcare",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 304,
+      "label": "Abuse Detection",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 305,
+      "label": "Upcoding",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 306,
+      "label": "Unbundling",
+      "group": "FRAUD",
+      "cis": 25
+    },
+    {
+      "id": 307,
+      "label": "Phantom Billing",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 308,
+      "label": "Duplicate Claim",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 309,
+      "label": "Kickback Scheme",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 310,
+      "label": "Referral Network Analysis",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 311,
+      "label": "Community Detection",
+      "group": "FRAUD",
+      "cis": 20
+    },
+    {
+      "id": 312,
+      "label": "Anomaly Detection",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 313,
+      "label": "Behavioral Health Fraud",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 314,
+      "label": "DME Fraud",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 315,
+      "label": "Durable Medical Equipment",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 316,
+      "label": "Provider Network Fraud",
+      "group": "FRAUD",
+      "cis": 15
+    },
+    {
+      "id": 317,
+      "label": "Identity Theft Fraud",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 318,
+      "label": "Pill Mill",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 319,
+      "label": "Collusion Ring",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 320,
+      "label": "Outlier Billing Pattern",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 321,
+      "label": "Fraud Risk Score",
+      "group": "FRAUD",
+      "cis": 10
+    },
+    {
+      "id": 322,
+      "label": "Fraud Investigation Workflow",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 323,
+      "label": "Suspicious Activity Report",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 324,
+      "label": "False Claims Act",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 325,
+      "label": "Recovery Audit Contractor",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 326,
+      "label": "Sanctioned Provider List",
+      "group": "FRAUD",
+      "cis": 5
+    },
+    {
+      "id": 327,
+      "label": "Exclusion List Screening",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 328,
+      "label": "Fraud Analytics Dashboard",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 329,
+      "label": "Graph-Based Fraud Ring",
+      "group": "FRAUD",
+      "cis": 2
+    },
+    {
+      "id": 330,
+      "label": "Shell Company Detection",
+      "group": "FRAUD",
+      "cis": 1
+    },
+    {
+      "id": 331,
+      "label": "Artificial Intelligence",
+      "group": "AI",
+      "cis": 239
+    },
+    {
+      "id": 332,
+      "label": "Machine Learning",
+      "group": "AI",
+      "cis": 3
+    },
+    {
+      "id": 333,
+      "label": "Supervised Learning",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 334,
+      "label": "Unsupervised Learning",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 335,
+      "label": "Large Language Model",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 336,
+      "label": "Vector Store",
+      "group": "AI",
+      "cis": 232
+    },
+    {
+      "id": 337,
+      "label": "Vector Embedding",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 338,
+      "label": "Semantic Search",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 339,
+      "label": "Token Efficiency",
+      "group": "AI",
+      "cis": 5
+    },
+    {
+      "id": 340,
+      "label": "Retrieval-Augmented Generation",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 341,
+      "label": "Knowledge Graph",
+      "group": "AI",
+      "cis": 224
+    },
+    {
+      "id": 342,
+      "label": "Context Graph",
+      "group": "AI",
+      "cis": 3
+    },
+    {
+      "id": 343,
+      "label": "Enterprise Knowledge Graph",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 344,
+      "label": "Graph And LLM Integration",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 345,
+      "label": "Enterprise Nervous System",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 346,
+      "label": "Clinical Decision Support",
+      "group": "AI",
+      "cis": 49
+    },
+    {
+      "id": 347,
+      "label": "Clinical Discovery",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 348,
+      "label": "Recommendation System",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 349,
+      "label": "Predictive Analytics",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 350,
+      "label": "Risk Stratification",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 351,
+      "label": "Population Health Analytics",
+      "group": "AI",
+      "cis": 24
+    },
+    {
+      "id": 352,
+      "label": "Prompt Engineering",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 353,
+      "label": "Fine-Tuning",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 354,
+      "label": "Model Hallucination",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 355,
+      "label": "Model Evaluation Metric",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 356,
+      "label": "Natural Language Processing",
+      "group": "AI",
+      "cis": 19
+    },
+    {
+      "id": 357,
+      "label": "Named Entity Recognition",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 358,
+      "label": "Text Classification",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 359,
+      "label": "Feature Engineering",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 360,
+      "label": "Training Dataset",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 361,
+      "label": "Model Bias",
+      "group": "AI",
+      "cis": 14
+    },
+    {
+      "id": 362,
+      "label": "Explainable AI",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 363,
+      "label": "AI Governance",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 364,
+      "label": "Agentic Workflow",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 365,
+      "label": "Multi-Agent System",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 366,
+      "label": "Tool-Using Agent",
+      "group": "AI",
+      "cis": 9
+    },
+    {
+      "id": 367,
+      "label": "Chatbot Interface",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 368,
+      "label": "Conversational AI",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 369,
+      "label": "Clinical NLP Pipeline",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 370,
+      "label": "Sentiment Analysis",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 371,
+      "label": "Time Series Forecasting",
+      "group": "AI",
+      "cis": 4
+    },
+    {
+      "id": 372,
+      "label": "Anomaly Scoring Model",
+      "group": "AI",
+      "cis": 2
+    },
+    {
+      "id": 373,
+      "label": "Model Drift Detection",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 374,
+      "label": "Human-In-The-Loop Review",
+      "group": "AI",
+      "cis": 1
+    },
+    {
+      "id": 375,
+      "label": "FHIR Standard",
+      "group": "CDS",
+      "cis": 167
+    },
+    {
+      "id": 376,
+      "label": "FHIR Resource",
+      "group": "CDS",
+      "cis": 4
+    },
+    {
+      "id": 377,
+      "label": "FHIR Server",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 378,
+      "label": "FHIR RESTful API",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 379,
+      "label": "Patient Resource",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 380,
+      "label": "Condition Resource",
+      "group": "CDS",
+      "cis": 158
+    },
+    {
+      "id": 381,
+      "label": "Observation Resource",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 382,
+      "label": "MedicationRequest Resource",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 383,
+      "label": "Encounter Resource",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 384,
+      "label": "CarePlan Resource",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 385,
+      "label": "PlanDefinition Resource",
+      "group": "CDS",
+      "cis": 153
+    },
+    {
+      "id": 386,
+      "label": "ActivityDefinition Resource",
+      "group": "CDS",
+      "cis": 3
+    },
+    {
+      "id": 387,
+      "label": "Knowledge Representation Level",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 388,
+      "label": "Narrative Level",
+      "group": "CDS",
+      "cis": 6
+    },
+    {
+      "id": 389,
+      "label": "Semi-Structured Level",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 390,
+      "label": "Structured Level",
+      "group": "CDS",
+      "cis": 143
+    },
+    {
+      "id": 391,
+      "label": "Executable Level",
+      "group": "CDS",
+      "cis": 14
+    },
+    {
+      "id": 392,
+      "label": "Tiers Of Functionality",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 393,
+      "label": "Data Tier",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 394,
+      "label": "Logic Tier",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 395,
+      "label": "Forms/UI Tier",
+      "group": "CDS",
+      "cis": 114
+    },
+    {
+      "id": 396,
+      "label": "Clinical Practice Guideline",
+      "group": "CDS",
+      "cis": 4
+    },
+    {
+      "id": 397,
+      "label": "Guideline Authoring Process",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 398,
+      "label": "Decision Table",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 399,
+      "label": "Clinical Flowchart",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 400,
+      "label": "Clinical User Story",
+      "group": "CDS",
+      "cis": 107
+    },
+    {
+      "id": 401,
+      "label": "Clinical Persona",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 402,
+      "label": "Knowledge Engineer Role",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 403,
+      "label": "CodeSystem Resource",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 404,
+      "label": "ValueSet Resource",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 405,
+      "label": "Terminology Binding",
+      "group": "CDS",
+      "cis": 102
+    },
+    {
+      "id": 406,
+      "label": "Clinical Quality Language",
+      "group": "CDS",
+      "cis": 12
+    },
+    {
+      "id": 407,
+      "label": "CQL Authoring Format",
+      "group": "CDS",
+      "cis": 10
+    },
+    {
+      "id": 408,
+      "label": "Expression Logical Model",
+      "group": "CDS",
+      "cis": 22
+    },
+    {
+      "id": 409,
+      "label": "CQL Compiler",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 410,
+      "label": "Clinical Quality Measure",
+      "group": "CDS",
+      "cis": 67
+    },
+    {
+      "id": 411,
+      "label": "CQL Library",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 412,
+      "label": "CQL Retrieve Expression",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 413,
+      "label": "CQL Define Statement",
+      "group": "CDS",
+      "cis": 21
+    },
+    {
+      "id": 414,
+      "label": "Clinical Reasoning Module",
+      "group": "CDS",
+      "cis": 20
+    },
+    {
+      "id": 415,
+      "label": "CDS Hooks",
+      "group": "CDS",
+      "cis": 19
+    },
+    {
+      "id": 416,
+      "label": "CDS Rule Engine",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 417,
+      "label": "CDS Alert",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 418,
+      "label": "Order Set",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 419,
+      "label": "Drug-Drug Interaction Check",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 420,
+      "label": "Care Gap Alert",
+      "group": "CDS",
+      "cis": 14
+    },
+    {
+      "id": 421,
+      "label": "Clinical Reminder",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 422,
+      "label": "Guideline-Based Care Pathway",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 423,
+      "label": "CQL-to-ELM Compilation",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 424,
+      "label": "MADiE Authoring Tool",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 425,
+      "label": "CQL Runner Tool",
+      "group": "CDS",
+      "cis": 9
+    },
+    {
+      "id": 426,
+      "label": "Bonnie Testing Tool",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 427,
+      "label": "Cypress Certification Tool",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 428,
+      "label": "FHIR Implementation Guide",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 429,
+      "label": "CQF Recommendations",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 430,
+      "label": "Quality Reporting Architecture",
+      "group": "CDS",
+      "cis": 4
+    },
+    {
+      "id": 431,
+      "label": "Electronic CQM",
+      "group": "CDS",
+      "cis": 2
+    },
+    {
+      "id": 432,
+      "label": "Measure Authoring Tool",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 433,
+      "label": "FHIR Questionnaire Resource",
+      "group": "CDS",
+      "cis": 1
+    },
+    {
+      "id": 434,
+      "label": "HIPAA",
+      "group": "SEC",
+      "cis": 105
+    },
+    {
+      "id": 435,
+      "label": "Protected Health Information",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 436,
+      "label": "Data Privacy",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 437,
+      "label": "Data Security",
+      "group": "SEC",
+      "cis": 77
+    },
+    {
+      "id": 438,
+      "label": "Access Control",
+      "group": "SEC",
+      "cis": 26
+    },
+    {
+      "id": 439,
+      "label": "Role-Based Access Control",
+      "group": "SEC",
+      "cis": 25
+    },
+    {
+      "id": 440,
+      "label": "Attribute-Based Access Control",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 441,
+      "label": "Authentication",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 442,
+      "label": "Authorization",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 443,
+      "label": "Multi-Factor Authentication",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 444,
+      "label": "Audit Trail",
+      "group": "SEC",
+      "cis": 20
+    },
+    {
+      "id": 445,
+      "label": "De-Identification",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 446,
+      "label": "Data Anonymization",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 447,
+      "label": "Data Encryption",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 448,
+      "label": "Encryption At Rest",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 449,
+      "label": "Encryption In Transit",
+      "group": "SEC",
+      "cis": 15
+    },
+    {
+      "id": 450,
+      "label": "Consent Management",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 451,
+      "label": "Minimum Necessary Standard",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 452,
+      "label": "Breach Notification Rule",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 453,
+      "label": "Security Risk Assessment",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 454,
+      "label": "Penetration Testing",
+      "group": "SEC",
+      "cis": 10
+    },
+    {
+      "id": 455,
+      "label": "Zero Trust Architecture",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 456,
+      "label": "Data Masking",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 457,
+      "label": "Tokenization",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 458,
+      "label": "Single Sign-On",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 459,
+      "label": "Identity And Access Management",
+      "group": "SEC",
+      "cis": 5
+    },
+    {
+      "id": 460,
+      "label": "Security Incident Response",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 461,
+      "label": "Vulnerability Management",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 462,
+      "label": "Insider Threat Detection",
+      "group": "SEC",
+      "cis": 2
+    },
+    {
+      "id": 463,
+      "label": "Secure API Gateway",
+      "group": "SEC",
+      "cis": 1
+    },
+    {
+      "id": 464,
+      "label": "Metadata Management",
+      "group": "GOV",
+      "cis": 50
+    },
+    {
+      "id": 465,
+      "label": "Data Lineage",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 466,
+      "label": "Data Provenance",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 467,
+      "label": "Data Quality",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 468,
+      "label": "Data Traceability",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 469,
+      "label": "Data Governance Framework",
+      "group": "GOV",
+      "cis": 45
+    },
+    {
+      "id": 470,
+      "label": "Master Data Management",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 471,
+      "label": "Data Stewardship",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 472,
+      "label": "Explainability",
+      "group": "GOV",
+      "cis": 22
+    },
+    {
+      "id": 473,
+      "label": "Transparency",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 474,
+      "label": "Data Catalog",
+      "group": "GOV",
+      "cis": 20
+    },
+    {
+      "id": 475,
+      "label": "Data Dictionary",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 476,
+      "label": "Reference Data Management",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 477,
+      "label": "Golden Record",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 478,
+      "label": "Entity Resolution",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 479,
+      "label": "Data Deduplication",
+      "group": "GOV",
+      "cis": 15
+    },
+    {
+      "id": 480,
+      "label": "Data Validation Rule",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 481,
+      "label": "Data Quality Score",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 482,
+      "label": "Data Ownership",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 483,
+      "label": "Data Retention Policy",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 484,
+      "label": "Data Classification",
+      "group": "GOV",
+      "cis": 10
+    },
+    {
+      "id": 485,
+      "label": "Data Steward Role",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 486,
+      "label": "Data Governance Council",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 487,
+      "label": "Business Glossary",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 488,
+      "label": "Data Sensitivity Label",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 489,
+      "label": "Change Data Capture",
+      "group": "GOV",
+      "cis": 5
+    },
+    {
+      "id": 490,
+      "label": "Data Versioning",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 491,
+      "label": "Schema Evolution",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 492,
+      "label": "Regulatory Compliance Reporting",
+      "group": "GOV",
+      "cis": 2
+    },
+    {
+      "id": 493,
+      "label": "Data Ethics Review",
+      "group": "GOV",
+      "cis": 1
+    },
+    {
+      "id": 494,
+      "label": "Capstone Project",
+      "group": "CAP",
+      "cis": 20
+    },
+    {
+      "id": 495,
+      "label": "Project Presentation",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 496,
+      "label": "Graph Career Path",
+      "group": "CAP",
+      "cis": 1
+    },
+    {
+      "id": 497,
+      "label": "Healthcare Analytics Platform",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 498,
       "label": "Real-World Implementation",
-      "group": "CAP"
+      "group": "CAP",
+      "cis": 1
+    },
+    {
+      "id": 499,
+      "label": "Project Scoping",
+      "group": "CAP",
+      "cis": 15
+    },
+    {
+      "id": 500,
+      "label": "Stakeholder Requirements",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 501,
+      "label": "Prototype Development",
+      "group": "CAP",
+      "cis": 1
+    },
+    {
+      "id": 502,
+      "label": "Proof Of Concept",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 503,
+      "label": "Technical Demonstration",
+      "group": "CAP",
+      "cis": 1
+    },
+    {
+      "id": 504,
+      "label": "Project Risk Assessment",
+      "group": "CAP",
+      "cis": 10
+    },
+    {
+      "id": 505,
+      "label": "Peer Review Process",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 506,
+      "label": "Portfolio Development",
+      "group": "CAP",
+      "cis": 1
+    },
+    {
+      "id": 507,
+      "label": "Job Market For Graph Modeling",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 508,
+      "label": "Industry Certification",
+      "group": "CAP",
+      "cis": 1
+    },
+    {
+      "id": 509,
+      "label": "Professional Networking",
+      "group": "CAP",
+      "cis": 5
+    },
+    {
+      "id": 510,
+      "label": "Open-Source Contribution",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 511,
+      "label": "Interview Preparation",
+      "group": "CAP",
+      "cis": 1
+    },
+    {
+      "id": 512,
+      "label": "Case Study Analysis",
+      "group": "CAP",
+      "cis": 2
+    },
+    {
+      "id": 513,
+      "label": "Capstone Rubric",
+      "group": "CAP",
+      "cis": 1
     }
   ],
   "edges": [
@@ -1115,23 +3198,11 @@
     },
     {
       "from": 3,
-      "to": 1
-    },
-    {
-      "from": 3,
       "to": 2
     },
     {
       "from": 4,
       "to": 1
-    },
-    {
-      "from": 4,
-      "to": 2
-    },
-    {
-      "from": 4,
-      "to": 3
     },
     {
       "from": 5,
@@ -1139,71 +3210,47 @@
     },
     {
       "from": 6,
-      "to": 2
-    },
-    {
-      "from": 6,
-      "to": 5
-    },
-    {
-      "from": 7,
-      "to": 3
-    },
-    {
-      "from": 7,
-      "to": 5
-    },
-    {
-      "from": 8,
       "to": 1
     },
     {
-      "from": 8,
-      "to": 2
+      "from": 7,
+      "to": 6
     },
     {
       "from": 8,
-      "to": 3
+      "to": 7
     },
     {
       "from": 9,
-      "to": 8
+      "to": 6
     },
     {
       "from": 10,
-      "to": 1
-    },
-    {
-      "from": 10,
-      "to": 2
-    },
-    {
-      "from": 10,
-      "to": 3
+      "to": 9
     },
     {
       "from": 11,
-      "to": 10
+      "to": 6
     },
     {
       "from": 12,
-      "to": 4
+      "to": 11
     },
     {
-      "from": 12,
-      "to": 10
+      "from": 13,
+      "to": 12
     },
     {
       "from": 14,
-      "to": 13
-    },
-    {
-      "from": 15,
-      "to": 13
+      "to": 11
     },
     {
       "from": 15,
       "to": 14
+    },
+    {
+      "from": 16,
+      "to": 11
     },
     {
       "from": 17,
@@ -1218,14 +3265,6 @@
       "to": 16
     },
     {
-      "from": 19,
-      "to": 17
-    },
-    {
-      "from": 20,
-      "to": 16
-    },
-    {
       "from": 20,
       "to": 19
     },
@@ -1235,67 +3274,59 @@
     },
     {
       "from": 22,
-      "to": 16
+      "to": 21
     },
     {
       "from": 23,
-      "to": 16
+      "to": 22
     },
     {
       "from": 24,
-      "to": 23
+      "to": 21
     },
     {
       "from": 25,
-      "to": 16
+      "to": 24
     },
     {
       "from": 26,
-      "to": 25
+      "to": 21
     },
     {
       "from": 27,
-      "to": 25
+      "to": 26
     },
     {
       "from": 28,
-      "to": 25
+      "to": 27
     },
     {
       "from": 29,
-      "to": 25
+      "to": 26
     },
     {
       "from": 30,
+      "to": 29
+    },
+    {
+      "from": 31,
+      "to": 4
+    },
+    {
+      "from": 31,
       "to": 16
     },
     {
-      "from": 31,
-      "to": 22
-    },
-    {
-      "from": 31,
-      "to": 23
-    },
-    {
       "from": 32,
-      "to": 23
+      "to": 31
     },
     {
       "from": 33,
-      "to": 22
-    },
-    {
-      "from": 33,
-      "to": 23
+      "to": 32
     },
     {
       "from": 34,
-      "to": 24
-    },
-    {
-      "from": 35,
-      "to": 24
+      "to": 31
     },
     {
       "from": 35,
@@ -1303,27 +3334,19 @@
     },
     {
       "from": 36,
-      "to": 12
+      "to": 31
     },
     {
       "from": 37,
-      "to": 12
+      "to": 36
     },
     {
       "from": 38,
-      "to": 12
-    },
-    {
-      "from": 39,
-      "to": 12
+      "to": 37
     },
     {
       "from": 39,
       "to": 36
-    },
-    {
-      "from": 40,
-      "to": 12
     },
     {
       "from": 40,
@@ -1331,15 +3354,7 @@
     },
     {
       "from": 41,
-      "to": 4
-    },
-    {
-      "from": 41,
-      "to": 40
-    },
-    {
-      "from": 42,
-      "to": 40
+      "to": 36
     },
     {
       "from": 42,
@@ -1347,39 +3362,19 @@
     },
     {
       "from": 43,
-      "to": 11
-    },
-    {
-      "from": 43,
-      "to": 36
+      "to": 42
     },
     {
       "from": 44,
-      "to": 12
-    },
-    {
-      "from": 44,
-      "to": 36
+      "to": 41
     },
     {
       "from": 45,
-      "to": 12
-    },
-    {
-      "from": 45,
-      "to": 36
+      "to": 44
     },
     {
       "from": 46,
-      "to": 23
-    },
-    {
-      "from": 46,
-      "to": 24
-    },
-    {
-      "from": 47,
-      "to": 23
+      "to": 41
     },
     {
       "from": 47,
@@ -1387,15 +3382,11 @@
     },
     {
       "from": 48,
-      "to": 46
+      "to": 47
     },
     {
       "from": 49,
-      "to": 30
-    },
-    {
-      "from": 50,
-      "to": 30
+      "to": 46
     },
     {
       "from": 50,
@@ -1403,15 +3394,7 @@
     },
     {
       "from": 51,
-      "to": 30
-    },
-    {
-      "from": 52,
-      "to": 30
-    },
-    {
-      "from": 52,
-      "to": 49
+      "to": 46
     },
     {
       "from": 52,
@@ -1423,51 +3406,35 @@
     },
     {
       "from": 54,
-      "to": 29
-    },
-    {
-      "from": 54,
-      "to": 53
+      "to": 51
     },
     {
       "from": 55,
-      "to": 29
-    },
-    {
-      "from": 56,
       "to": 54
     },
     {
       "from": 56,
-      "to": 55
+      "to": 51
     },
     {
       "from": 57,
-      "to": 55
+      "to": 56
     },
     {
       "from": 58,
-      "to": 54
-    },
-    {
-      "from": 58,
-      "to": 55
+      "to": 57
     },
     {
       "from": 59,
-      "to": 46
-    },
-    {
-      "from": 59,
-      "to": 55
+      "to": 56
     },
     {
       "from": 60,
-      "to": 46
+      "to": 59
     },
     {
       "from": 61,
-      "to": 46
+      "to": 56
     },
     {
       "from": 62,
@@ -1475,15 +3442,11 @@
     },
     {
       "from": 63,
-      "to": 46
+      "to": 62
     },
     {
       "from": 64,
-      "to": 53
-    },
-    {
-      "from": 65,
-      "to": 53
+      "to": 61
     },
     {
       "from": 65,
@@ -1491,31 +3454,23 @@
     },
     {
       "from": 66,
-      "to": 46
+      "to": 11
     },
     {
       "from": 66,
-      "to": 65
+      "to": 34
     },
     {
       "from": 67,
-      "to": 49
-    },
-    {
-      "from": 67,
-      "to": 64
+      "to": 66
     },
     {
       "from": 68,
-      "to": 23
-    },
-    {
-      "from": 68,
-      "to": 64
+      "to": 67
     },
     {
       "from": 69,
-      "to": 64
+      "to": 66
     },
     {
       "from": 70,
@@ -1523,11 +3478,7 @@
     },
     {
       "from": 71,
-      "to": 22
-    },
-    {
-      "from": 72,
-      "to": 22
+      "to": 66
     },
     {
       "from": 72,
@@ -1535,11 +3486,11 @@
     },
     {
       "from": 73,
-      "to": 22
+      "to": 72
     },
     {
       "from": 74,
-      "to": 22
+      "to": 71
     },
     {
       "from": 75,
@@ -1547,19 +3498,19 @@
     },
     {
       "from": 76,
-      "to": 73
+      "to": 71
     },
     {
       "from": 77,
-      "to": 73
+      "to": 76
     },
     {
       "from": 78,
-      "to": 22
+      "to": 77
     },
     {
       "from": 79,
-      "to": 22
+      "to": 76
     },
     {
       "from": 80,
@@ -1567,15 +3518,11 @@
     },
     {
       "from": 81,
-      "to": 71
-    },
-    {
-      "from": 81,
-      "to": 72
+      "to": 76
     },
     {
       "from": 82,
-      "to": 22
+      "to": 81
     },
     {
       "from": 83,
@@ -1583,27 +3530,31 @@
     },
     {
       "from": 84,
-      "to": 82
+      "to": 81
     },
     {
       "from": 85,
-      "to": 22
+      "to": 84
     },
     {
       "from": 86,
-      "to": 79
+      "to": 81
+    },
+    {
+      "from": 86,
+      "to": 84
     },
     {
       "from": 87,
-      "to": 72
+      "to": 86
     },
     {
       "from": 88,
-      "to": 73
+      "to": 87
     },
     {
       "from": 89,
-      "to": 22
+      "to": 86
     },
     {
       "from": 90,
@@ -1611,15 +3562,11 @@
     },
     {
       "from": 91,
-      "to": 22
-    },
-    {
-      "from": 91,
-      "to": 85
+      "to": 86
     },
     {
       "from": 92,
-      "to": 53
+      "to": 91
     },
     {
       "from": 93,
@@ -1627,23 +3574,15 @@
     },
     {
       "from": 94,
-      "to": 92
-    },
-    {
-      "from": 94,
-      "to": 93
+      "to": 91
     },
     {
       "from": 95,
-      "to": 92
+      "to": 94
     },
     {
       "from": 96,
-      "to": 21
-    },
-    {
-      "from": 96,
-      "to": 33
+      "to": 91
     },
     {
       "from": 97,
@@ -1655,7 +3594,7 @@
     },
     {
       "from": 99,
-      "to": 98
+      "to": 96
     },
     {
       "from": 100,
@@ -1663,7 +3602,7 @@
     },
     {
       "from": 101,
-      "to": 21
+      "to": 96
     },
     {
       "from": 102,
@@ -1671,63 +3610,39 @@
     },
     {
       "from": 103,
-      "to": 101
+      "to": 102
     },
     {
       "from": 104,
-      "to": 102
-    },
-    {
-      "from": 105,
-      "to": 102
-    },
-    {
-      "from": 106,
-      "to": 102
-    },
-    {
-      "from": 106,
-      "to": 104
-    },
-    {
-      "from": 106,
-      "to": 105
-    },
-    {
-      "from": 107,
       "to": 101
     },
     {
+      "from": 105,
+      "to": 104
+    },
+    {
+      "from": 107,
+      "to": 106
+    },
+    {
       "from": 108,
+      "to": 107
+    },
+    {
+      "from": 109,
+      "to": 106
+    },
+    {
+      "from": 110,
       "to": 109
     },
     {
-      "from": 109,
-      "to": 29
-    },
-    {
-      "from": 109,
-      "to": 55
-    },
-    {
-      "from": 110,
-      "to": 21
-    },
-    {
-      "from": 110,
-      "to": 108
-    },
-    {
       "from": 111,
-      "to": 97
-    },
-    {
-      "from": 111,
-      "to": 102
+      "to": 106
     },
     {
       "from": 112,
-      "to": 97
+      "to": 111
     },
     {
       "from": 113,
@@ -1735,11 +3650,7 @@
     },
     {
       "from": 114,
-      "to": 98
-    },
-    {
-      "from": 115,
-      "to": 98
+      "to": 111
     },
     {
       "from": 115,
@@ -1747,47 +3658,27 @@
     },
     {
       "from": 116,
-      "to": 17
-    },
-    {
-      "from": 116,
-      "to": 96
+      "to": 111
     },
     {
       "from": 117,
-      "to": 96
-    },
-    {
-      "from": 117,
-      "to": 115
-    },
-    {
-      "from": 118,
-      "to": 26
-    },
-    {
-      "from": 118,
-      "to": 27
-    },
-    {
-      "from": 118,
-      "to": 28
-    },
-    {
-      "from": 119,
-      "to": 118
-    },
-    {
-      "from": 120,
       "to": 116
     },
     {
-      "from": 121,
+      "from": 118,
       "to": 117
     },
     {
-      "from": 122,
-      "to": 120
+      "from": 119,
+      "to": 116
+    },
+    {
+      "from": 120,
+      "to": 119
+    },
+    {
+      "from": 121,
+      "to": 116
     },
     {
       "from": 122,
@@ -1799,31 +3690,15 @@
     },
     {
       "from": 124,
-      "to": 21
-    },
-    {
-      "from": 124,
-      "to": 122
+      "to": 121
     },
     {
       "from": 125,
-      "to": 21
-    },
-    {
-      "from": 125,
-      "to": 22
+      "to": 124
     },
     {
       "from": 126,
-      "to": 115
-    },
-    {
-      "from": 126,
-      "to": 125
-    },
-    {
-      "from": 127,
-      "to": 20
+      "to": 121
     },
     {
       "from": 127,
@@ -1831,27 +3706,11 @@
     },
     {
       "from": 128,
-      "to": 116
-    },
-    {
-      "from": 128,
       "to": 127
     },
     {
       "from": 129,
-      "to": 69
-    },
-    {
-      "from": 129,
-      "to": 91
-    },
-    {
-      "from": 130,
-      "to": 20
-    },
-    {
-      "from": 130,
-      "to": 127
+      "to": 126
     },
     {
       "from": 130,
@@ -1859,7 +3718,7 @@
     },
     {
       "from": 131,
-      "to": 96
+      "to": 126
     },
     {
       "from": 132,
@@ -1867,107 +3726,63 @@
     },
     {
       "from": 133,
-      "to": 116
+      "to": 132
     },
     {
       "from": 134,
       "to": 131
     },
     {
-      "from": 134,
-      "to": 133
-    },
-    {
       "from": 135,
-      "to": 96
-    },
-    {
-      "from": 135,
-      "to": 118
+      "to": 134
     },
     {
       "from": 136,
-      "to": 96
-    },
-    {
-      "from": 136,
-      "to": 118
+      "to": 131
     },
     {
       "from": 137,
-      "to": 96
+      "to": 136
     },
     {
       "from": 138,
-      "to": 96
+      "to": 137
     },
     {
       "from": 139,
-      "to": 81
-    },
-    {
-      "from": 139,
-      "to": 131
+      "to": 136
     },
     {
       "from": 140,
-      "to": 81
-    },
-    {
-      "from": 140,
-      "to": 132
+      "to": 139
     },
     {
       "from": 141,
-      "to": 78
+      "to": 114
     },
     {
       "from": 141,
-      "to": 140
+      "to": 128
     },
     {
       "from": 142,
-      "to": 132
+      "to": 141
     },
     {
       "from": 143,
-      "to": 131
-    },
-    {
-      "from": 143,
-      "to": 132
+      "to": 142
     },
     {
       "from": 144,
-      "to": 131
-    },
-    {
-      "from": 144,
-      "to": 132
+      "to": 141
     },
     {
       "from": 145,
-      "to": 78
-    },
-    {
-      "from": 145,
-      "to": 131
-    },
-    {
-      "from": 145,
-      "to": 140
+      "to": 144
     },
     {
       "from": 146,
-      "to": 1
-    },
-    {
-      "from": 146,
-      "to": 4
-    },
-    {
-      "from": 147,
-      "to": 11
+      "to": 141
     },
     {
       "from": 147,
@@ -1975,78 +3790,62 @@
     },
     {
       "from": 148,
-      "to": 146
+      "to": 147
     },
     {
       "from": 149,
-      "to": 148
+      "to": 146
     },
     {
       "from": 150,
-      "to": 148
+      "to": 149
     },
     {
       "from": 151,
-      "to": 148
+      "to": 146
     },
     {
       "from": 152,
-      "to": 146
+      "to": 151
     },
     {
       "from": 153,
-      "to": 146
+      "to": 152
     },
     {
       "from": 154,
-      "to": 9
-    },
-    {
-      "from": 154,
-      "to": 146
+      "to": 151
     },
     {
       "from": 155,
-      "to": 39
-    },
-    {
-      "from": 155,
-      "to": 146
+      "to": 154
     },
     {
       "from": 156,
-      "to": 146
+      "to": 151
     },
     {
       "from": 157,
-      "to": 146
+      "to": 156
     },
     {
       "from": 158,
-      "to": 146
+      "to": 157
     },
     {
       "from": 159,
-      "to": 6
-    },
-    {
-      "from": 159,
-      "to": 158
-    },
-    {
-      "from": 160,
-      "to": 158
+      "to": 156
     },
     {
       "from": 160,
       "to": 159
     },
     {
-      "from": 162,
-      "to": 161
+      "from": 161,
+      "to": 156
     },
     {
-      "from": 163,
+      "from": 162,
       "to": 161
     },
     {
@@ -2055,11 +3854,7 @@
     },
     {
       "from": 164,
-      "to": 163
-    },
-    {
-      "from": 165,
-      "to": 158
+      "to": 161
     },
     {
       "from": 165,
@@ -2067,71 +3862,39 @@
     },
     {
       "from": 166,
-      "to": 164
-    },
-    {
-      "from": 166,
-      "to": 165
+      "to": 161
     },
     {
       "from": 167,
-      "to": 163
-    },
-    {
-      "from": 167,
-      "to": 164
+      "to": 166
     },
     {
       "from": 168,
-      "to": 4
-    },
-    {
-      "from": 168,
-      "to": 5
+      "to": 167
     },
     {
       "from": 169,
-      "to": 163
-    },
-    {
-      "from": 169,
-      "to": 168
+      "to": 166
     },
     {
       "from": 170,
-      "to": 52
-    },
-    {
-      "from": 170,
-      "to": 92
-    },
-    {
-      "from": 170,
-      "to": 162
+      "to": 169
     },
     {
       "from": 171,
-      "to": 162
-    },
-    {
-      "from": 171,
-      "to": 170
+      "to": 166
     },
     {
       "from": 172,
-      "to": 162
+      "to": 171
     },
     {
       "from": 173,
-      "to": 162
+      "to": 172
     },
     {
       "from": 174,
-      "to": 173
-    },
-    {
-      "from": 175,
-      "to": 173
+      "to": 171
     },
     {
       "from": 175,
@@ -2139,18 +3902,10 @@
     },
     {
       "from": 176,
-      "to": 16
+      "to": 171
     },
     {
       "from": 177,
-      "to": 24
-    },
-    {
-      "from": 177,
-      "to": 176
-    },
-    {
-      "from": 178,
       "to": 176
     },
     {
@@ -2159,11 +3914,7 @@
     },
     {
       "from": 179,
-      "to": 177
-    },
-    {
-      "from": 179,
-      "to": 178
+      "to": 176
     },
     {
       "from": 180,
@@ -2171,15 +3922,11 @@
     },
     {
       "from": 181,
-      "to": 180
+      "to": 176
     },
     {
       "from": 182,
-      "to": 180
-    },
-    {
-      "from": 183,
-      "to": 180
+      "to": 181
     },
     {
       "from": 183,
@@ -2187,23 +3934,15 @@
     },
     {
       "from": 184,
-      "to": 179
-    },
-    {
-      "from": 184,
-      "to": 183
+      "to": 181
     },
     {
       "from": 185,
-      "to": 177
-    },
-    {
-      "from": 185,
-      "to": 178
+      "to": 184
     },
     {
       "from": 186,
-      "to": 15
+      "to": 181
     },
     {
       "from": 187,
@@ -2215,23 +3954,19 @@
     },
     {
       "from": 189,
-      "to": 15
+      "to": 186
     },
     {
       "from": 190,
-      "to": 187
-    },
-    {
-      "from": 191,
-      "to": 186
-    },
-    {
-      "from": 191,
       "to": 189
     },
     {
-      "from": 192,
-      "to": 186
+      "from": 191,
+      "to": 106
+    },
+    {
+      "from": 191,
+      "to": 112
     },
     {
       "from": 192,
@@ -2239,19 +3974,11 @@
     },
     {
       "from": 193,
+      "to": 192
+    },
+    {
+      "from": 194,
       "to": 191
-    },
-    {
-      "from": 194,
-      "to": 170
-    },
-    {
-      "from": 194,
-      "to": 187
-    },
-    {
-      "from": 195,
-      "to": 184
     },
     {
       "from": 195,
@@ -2259,19 +3986,7 @@
     },
     {
       "from": 196,
-      "to": 4
-    },
-    {
-      "from": 196,
-      "to": 5
-    },
-    {
-      "from": 196,
-      "to": 168
-    },
-    {
-      "from": 196,
-      "to": 170
+      "to": 191
     },
     {
       "from": 197,
@@ -2279,31 +3994,1411 @@
     },
     {
       "from": 198,
-      "to": 196
+      "to": 197
     },
     {
       "from": 199,
-      "to": 4
-    },
-    {
-      "from": 199,
-      "to": 162
-    },
-    {
-      "from": 199,
-      "to": 168
-    },
-    {
-      "from": 199,
-      "to": 170
-    },
-    {
-      "from": 200,
       "to": 196
     },
     {
       "from": 200,
       "to": 199
+    },
+    {
+      "from": 201,
+      "to": 196
+    },
+    {
+      "from": 202,
+      "to": 201
+    },
+    {
+      "from": 203,
+      "to": 202
+    },
+    {
+      "from": 204,
+      "to": 201
+    },
+    {
+      "from": 205,
+      "to": 204
+    },
+    {
+      "from": 206,
+      "to": 201
+    },
+    {
+      "from": 207,
+      "to": 206
+    },
+    {
+      "from": 208,
+      "to": 207
+    },
+    {
+      "from": 209,
+      "to": 206
+    },
+    {
+      "from": 210,
+      "to": 209
+    },
+    {
+      "from": 211,
+      "to": 206
+    },
+    {
+      "from": 212,
+      "to": 211
+    },
+    {
+      "from": 213,
+      "to": 212
+    },
+    {
+      "from": 214,
+      "to": 211
+    },
+    {
+      "from": 215,
+      "to": 214
+    },
+    {
+      "from": 216,
+      "to": 211
+    },
+    {
+      "from": 217,
+      "to": 216
+    },
+    {
+      "from": 218,
+      "to": 217
+    },
+    {
+      "from": 219,
+      "to": 216
+    },
+    {
+      "from": 220,
+      "to": 219
+    },
+    {
+      "from": 221,
+      "to": 216
+    },
+    {
+      "from": 222,
+      "to": 221
+    },
+    {
+      "from": 223,
+      "to": 222
+    },
+    {
+      "from": 224,
+      "to": 221
+    },
+    {
+      "from": 225,
+      "to": 224
+    },
+    {
+      "from": 226,
+      "to": 221
+    },
+    {
+      "from": 227,
+      "to": 226
+    },
+    {
+      "from": 228,
+      "to": 227
+    },
+    {
+      "from": 229,
+      "to": 226
+    },
+    {
+      "from": 230,
+      "to": 229
+    },
+    {
+      "from": 231,
+      "to": 111
+    },
+    {
+      "from": 231,
+      "to": 198
+    },
+    {
+      "from": 232,
+      "to": 231
+    },
+    {
+      "from": 233,
+      "to": 232
+    },
+    {
+      "from": 234,
+      "to": 231
+    },
+    {
+      "from": 235,
+      "to": 234
+    },
+    {
+      "from": 236,
+      "to": 231
+    },
+    {
+      "from": 237,
+      "to": 236
+    },
+    {
+      "from": 238,
+      "to": 237
+    },
+    {
+      "from": 239,
+      "to": 236
+    },
+    {
+      "from": 240,
+      "to": 239
+    },
+    {
+      "from": 241,
+      "to": 236
+    },
+    {
+      "from": 242,
+      "to": 241
+    },
+    {
+      "from": 243,
+      "to": 242
+    },
+    {
+      "from": 244,
+      "to": 241
+    },
+    {
+      "from": 245,
+      "to": 244
+    },
+    {
+      "from": 246,
+      "to": 241
+    },
+    {
+      "from": 247,
+      "to": 246
+    },
+    {
+      "from": 248,
+      "to": 247
+    },
+    {
+      "from": 249,
+      "to": 246
+    },
+    {
+      "from": 250,
+      "to": 249
+    },
+    {
+      "from": 251,
+      "to": 246
+    },
+    {
+      "from": 252,
+      "to": 251
+    },
+    {
+      "from": 253,
+      "to": 252
+    },
+    {
+      "from": 254,
+      "to": 251
+    },
+    {
+      "from": 255,
+      "to": 254
+    },
+    {
+      "from": 256,
+      "to": 251
+    },
+    {
+      "from": 257,
+      "to": 256
+    },
+    {
+      "from": 258,
+      "to": 257
+    },
+    {
+      "from": 259,
+      "to": 256
+    },
+    {
+      "from": 260,
+      "to": 259
+    },
+    {
+      "from": 261,
+      "to": 256
+    },
+    {
+      "from": 262,
+      "to": 261
+    },
+    {
+      "from": 263,
+      "to": 262
+    },
+    {
+      "from": 264,
+      "to": 261
+    },
+    {
+      "from": 265,
+      "to": 264
+    },
+    {
+      "from": 266,
+      "to": 261
+    },
+    {
+      "from": 267,
+      "to": 266
+    },
+    {
+      "from": 268,
+      "to": 267
+    },
+    {
+      "from": 269,
+      "to": 266
+    },
+    {
+      "from": 270,
+      "to": 269
+    },
+    {
+      "from": 271,
+      "to": 212
+    },
+    {
+      "from": 271,
+      "to": 252
+    },
+    {
+      "from": 272,
+      "to": 271
+    },
+    {
+      "from": 273,
+      "to": 272
+    },
+    {
+      "from": 274,
+      "to": 271
+    },
+    {
+      "from": 275,
+      "to": 274
+    },
+    {
+      "from": 276,
+      "to": 271
+    },
+    {
+      "from": 277,
+      "to": 276
+    },
+    {
+      "from": 278,
+      "to": 277
+    },
+    {
+      "from": 279,
+      "to": 276
+    },
+    {
+      "from": 280,
+      "to": 279
+    },
+    {
+      "from": 281,
+      "to": 276
+    },
+    {
+      "from": 282,
+      "to": 281
+    },
+    {
+      "from": 283,
+      "to": 282
+    },
+    {
+      "from": 284,
+      "to": 281
+    },
+    {
+      "from": 285,
+      "to": 110
+    },
+    {
+      "from": 285,
+      "to": 284
+    },
+    {
+      "from": 286,
+      "to": 281
+    },
+    {
+      "from": 287,
+      "to": 286
+    },
+    {
+      "from": 288,
+      "to": 287
+    },
+    {
+      "from": 289,
+      "to": 286
+    },
+    {
+      "from": 290,
+      "to": 289
+    },
+    {
+      "from": 291,
+      "to": 286
+    },
+    {
+      "from": 292,
+      "to": 291
+    },
+    {
+      "from": 293,
+      "to": 292
+    },
+    {
+      "from": 294,
+      "to": 291
+    },
+    {
+      "from": 295,
+      "to": 294
+    },
+    {
+      "from": 296,
+      "to": 291
+    },
+    {
+      "from": 297,
+      "to": 296
+    },
+    {
+      "from": 298,
+      "to": 297
+    },
+    {
+      "from": 299,
+      "to": 296
+    },
+    {
+      "from": 300,
+      "to": 299
+    },
+    {
+      "from": 301,
+      "to": 78
+    },
+    {
+      "from": 301,
+      "to": 233
+    },
+    {
+      "from": 302,
+      "to": 301
+    },
+    {
+      "from": 303,
+      "to": 302
+    },
+    {
+      "from": 304,
+      "to": 301
+    },
+    {
+      "from": 305,
+      "to": 304
+    },
+    {
+      "from": 306,
+      "to": 301
+    },
+    {
+      "from": 307,
+      "to": 306
+    },
+    {
+      "from": 308,
+      "to": 307
+    },
+    {
+      "from": 309,
+      "to": 306
+    },
+    {
+      "from": 310,
+      "to": 309
+    },
+    {
+      "from": 311,
+      "to": 89
+    },
+    {
+      "from": 311,
+      "to": 90
+    },
+    {
+      "from": 311,
+      "to": 306
+    },
+    {
+      "from": 312,
+      "to": 311
+    },
+    {
+      "from": 313,
+      "to": 186
+    },
+    {
+      "from": 313,
+      "to": 312
+    },
+    {
+      "from": 314,
+      "to": 311
+    },
+    {
+      "from": 315,
+      "to": 314
+    },
+    {
+      "from": 316,
+      "to": 311
+    },
+    {
+      "from": 317,
+      "to": 316
+    },
+    {
+      "from": 318,
+      "to": 317
+    },
+    {
+      "from": 319,
+      "to": 316
+    },
+    {
+      "from": 320,
+      "to": 319
+    },
+    {
+      "from": 321,
+      "to": 316
+    },
+    {
+      "from": 322,
+      "to": 321
+    },
+    {
+      "from": 323,
+      "to": 322
+    },
+    {
+      "from": 324,
+      "to": 321
+    },
+    {
+      "from": 325,
+      "to": 324
+    },
+    {
+      "from": 326,
+      "to": 321
+    },
+    {
+      "from": 327,
+      "to": 326
+    },
+    {
+      "from": 328,
+      "to": 327
+    },
+    {
+      "from": 329,
+      "to": 326
+    },
+    {
+      "from": 330,
+      "to": 329
+    },
+    {
+      "from": 331,
+      "to": 4
+    },
+    {
+      "from": 331,
+      "to": 83
+    },
+    {
+      "from": 332,
+      "to": 331
+    },
+    {
+      "from": 333,
+      "to": 332
+    },
+    {
+      "from": 334,
+      "to": 331
+    },
+    {
+      "from": 335,
+      "to": 331
+    },
+    {
+      "from": 335,
+      "to": 332
+    },
+    {
+      "from": 335,
+      "to": 334
+    },
+    {
+      "from": 336,
+      "to": 331
+    },
+    {
+      "from": 337,
+      "to": 336
+    },
+    {
+      "from": 338,
+      "to": 337
+    },
+    {
+      "from": 339,
+      "to": 336
+    },
+    {
+      "from": 340,
+      "to": 339
+    },
+    {
+      "from": 341,
+      "to": 336
+    },
+    {
+      "from": 342,
+      "to": 339
+    },
+    {
+      "from": 342,
+      "to": 341
+    },
+    {
+      "from": 343,
+      "to": 55
+    },
+    {
+      "from": 343,
+      "to": 341
+    },
+    {
+      "from": 343,
+      "to": 342
+    },
+    {
+      "from": 344,
+      "to": 341
+    },
+    {
+      "from": 345,
+      "to": 343
+    },
+    {
+      "from": 345,
+      "to": 344
+    },
+    {
+      "from": 346,
+      "to": 341
+    },
+    {
+      "from": 347,
+      "to": 346
+    },
+    {
+      "from": 348,
+      "to": 347
+    },
+    {
+      "from": 349,
+      "to": 346
+    },
+    {
+      "from": 350,
+      "to": 349
+    },
+    {
+      "from": 351,
+      "to": 346
+    },
+    {
+      "from": 352,
+      "to": 351
+    },
+    {
+      "from": 353,
+      "to": 352
+    },
+    {
+      "from": 354,
+      "to": 351
+    },
+    {
+      "from": 355,
+      "to": 354
+    },
+    {
+      "from": 356,
+      "to": 351
+    },
+    {
+      "from": 357,
+      "to": 356
+    },
+    {
+      "from": 358,
+      "to": 357
+    },
+    {
+      "from": 359,
+      "to": 356
+    },
+    {
+      "from": 360,
+      "to": 359
+    },
+    {
+      "from": 361,
+      "to": 356
+    },
+    {
+      "from": 362,
+      "to": 361
+    },
+    {
+      "from": 363,
+      "to": 362
+    },
+    {
+      "from": 364,
+      "to": 361
+    },
+    {
+      "from": 365,
+      "to": 364
+    },
+    {
+      "from": 366,
+      "to": 361
+    },
+    {
+      "from": 367,
+      "to": 366
+    },
+    {
+      "from": 368,
+      "to": 367
+    },
+    {
+      "from": 369,
+      "to": 366
+    },
+    {
+      "from": 370,
+      "to": 369
+    },
+    {
+      "from": 371,
+      "to": 366
+    },
+    {
+      "from": 372,
+      "to": 371
+    },
+    {
+      "from": 373,
+      "to": 372
+    },
+    {
+      "from": 374,
+      "to": 371
+    },
+    {
+      "from": 375,
+      "to": 129
+    },
+    {
+      "from": 375,
+      "to": 341
+    },
+    {
+      "from": 376,
+      "to": 375
+    },
+    {
+      "from": 377,
+      "to": 376
+    },
+    {
+      "from": 378,
+      "to": 375
+    },
+    {
+      "from": 379,
+      "to": 378
+    },
+    {
+      "from": 380,
+      "to": 375
+    },
+    {
+      "from": 381,
+      "to": 380
+    },
+    {
+      "from": 382,
+      "to": 381
+    },
+    {
+      "from": 383,
+      "to": 380
+    },
+    {
+      "from": 384,
+      "to": 383
+    },
+    {
+      "from": 385,
+      "to": 380
+    },
+    {
+      "from": 386,
+      "to": 385
+    },
+    {
+      "from": 387,
+      "to": 375
+    },
+    {
+      "from": 387,
+      "to": 386
+    },
+    {
+      "from": 388,
+      "to": 385
+    },
+    {
+      "from": 389,
+      "to": 388
+    },
+    {
+      "from": 390,
+      "to": 385
+    },
+    {
+      "from": 391,
+      "to": 390
+    },
+    {
+      "from": 392,
+      "to": 387
+    },
+    {
+      "from": 392,
+      "to": 391
+    },
+    {
+      "from": 393,
+      "to": 390
+    },
+    {
+      "from": 394,
+      "to": 393
+    },
+    {
+      "from": 395,
+      "to": 390
+    },
+    {
+      "from": 396,
+      "to": 388
+    },
+    {
+      "from": 396,
+      "to": 395
+    },
+    {
+      "from": 397,
+      "to": 396
+    },
+    {
+      "from": 398,
+      "to": 395
+    },
+    {
+      "from": 399,
+      "to": 398
+    },
+    {
+      "from": 400,
+      "to": 395
+    },
+    {
+      "from": 401,
+      "to": 400
+    },
+    {
+      "from": 402,
+      "to": 401
+    },
+    {
+      "from": 403,
+      "to": 376
+    },
+    {
+      "from": 403,
+      "to": 400
+    },
+    {
+      "from": 404,
+      "to": 403
+    },
+    {
+      "from": 405,
+      "to": 400
+    },
+    {
+      "from": 406,
+      "to": 390
+    },
+    {
+      "from": 406,
+      "to": 391
+    },
+    {
+      "from": 406,
+      "to": 405
+    },
+    {
+      "from": 407,
+      "to": 406
+    },
+    {
+      "from": 408,
+      "to": 405
+    },
+    {
+      "from": 409,
+      "to": 408
+    },
+    {
+      "from": 410,
+      "to": 405
+    },
+    {
+      "from": 411,
+      "to": 410
+    },
+    {
+      "from": 412,
+      "to": 411
+    },
+    {
+      "from": 413,
+      "to": 410
+    },
+    {
+      "from": 414,
+      "to": 413
+    },
+    {
+      "from": 415,
+      "to": 408
+    },
+    {
+      "from": 415,
+      "to": 410
+    },
+    {
+      "from": 415,
+      "to": 414
+    },
+    {
+      "from": 416,
+      "to": 415
+    },
+    {
+      "from": 417,
+      "to": 416
+    },
+    {
+      "from": 418,
+      "to": 415
+    },
+    {
+      "from": 419,
+      "to": 418
+    },
+    {
+      "from": 420,
+      "to": 415
+    },
+    {
+      "from": 421,
+      "to": 420
+    },
+    {
+      "from": 422,
+      "to": 421
+    },
+    {
+      "from": 423,
+      "to": 420
+    },
+    {
+      "from": 424,
+      "to": 406
+    },
+    {
+      "from": 424,
+      "to": 410
+    },
+    {
+      "from": 424,
+      "to": 423
+    },
+    {
+      "from": 425,
+      "to": 407
+    },
+    {
+      "from": 425,
+      "to": 420
+    },
+    {
+      "from": 426,
+      "to": 410
+    },
+    {
+      "from": 426,
+      "to": 425
+    },
+    {
+      "from": 427,
+      "to": 408
+    },
+    {
+      "from": 427,
+      "to": 410
+    },
+    {
+      "from": 427,
+      "to": 426
+    },
+    {
+      "from": 428,
+      "to": 396
+    },
+    {
+      "from": 428,
+      "to": 425
+    },
+    {
+      "from": 429,
+      "to": 428
+    },
+    {
+      "from": 430,
+      "to": 425
+    },
+    {
+      "from": 431,
+      "to": 430
+    },
+    {
+      "from": 432,
+      "to": 431
+    },
+    {
+      "from": 433,
+      "to": 430
+    },
+    {
+      "from": 434,
+      "to": 114
+    },
+    {
+      "from": 434,
+      "to": 141
+    },
+    {
+      "from": 435,
+      "to": 434
+    },
+    {
+      "from": 436,
+      "to": 435
+    },
+    {
+      "from": 437,
+      "to": 434
+    },
+    {
+      "from": 438,
+      "to": 437
+    },
+    {
+      "from": 439,
+      "to": 434
+    },
+    {
+      "from": 439,
+      "to": 438
+    },
+    {
+      "from": 440,
+      "to": 439
+    },
+    {
+      "from": 441,
+      "to": 440
+    },
+    {
+      "from": 442,
+      "to": 439
+    },
+    {
+      "from": 443,
+      "to": 442
+    },
+    {
+      "from": 444,
+      "to": 439
+    },
+    {
+      "from": 445,
+      "to": 444
+    },
+    {
+      "from": 446,
+      "to": 445
+    },
+    {
+      "from": 447,
+      "to": 444
+    },
+    {
+      "from": 448,
+      "to": 447
+    },
+    {
+      "from": 449,
+      "to": 444
+    },
+    {
+      "from": 450,
+      "to": 449
+    },
+    {
+      "from": 451,
+      "to": 450
+    },
+    {
+      "from": 452,
+      "to": 449
+    },
+    {
+      "from": 453,
+      "to": 452
+    },
+    {
+      "from": 454,
+      "to": 449
+    },
+    {
+      "from": 455,
+      "to": 454
+    },
+    {
+      "from": 456,
+      "to": 455
+    },
+    {
+      "from": 457,
+      "to": 454
+    },
+    {
+      "from": 458,
+      "to": 457
+    },
+    {
+      "from": 459,
+      "to": 454
+    },
+    {
+      "from": 460,
+      "to": 459
+    },
+    {
+      "from": 461,
+      "to": 460
+    },
+    {
+      "from": 462,
+      "to": 459
+    },
+    {
+      "from": 463,
+      "to": 462
+    },
+    {
+      "from": 464,
+      "to": 19
+    },
+    {
+      "from": 464,
+      "to": 437
+    },
+    {
+      "from": 465,
+      "to": 464
+    },
+    {
+      "from": 466,
+      "to": 465
+    },
+    {
+      "from": 467,
+      "to": 464
+    },
+    {
+      "from": 468,
+      "to": 467
+    },
+    {
+      "from": 469,
+      "to": 464
+    },
+    {
+      "from": 470,
+      "to": 469
+    },
+    {
+      "from": 471,
+      "to": 470
+    },
+    {
+      "from": 472,
+      "to": 469
+    },
+    {
+      "from": 473,
+      "to": 472
+    },
+    {
+      "from": 474,
+      "to": 469
+    },
+    {
+      "from": 475,
+      "to": 474
+    },
+    {
+      "from": 476,
+      "to": 475
+    },
+    {
+      "from": 477,
+      "to": 474
+    },
+    {
+      "from": 478,
+      "to": 477
+    },
+    {
+      "from": 479,
+      "to": 474
+    },
+    {
+      "from": 480,
+      "to": 479
+    },
+    {
+      "from": 481,
+      "to": 480
+    },
+    {
+      "from": 482,
+      "to": 479
+    },
+    {
+      "from": 483,
+      "to": 482
+    },
+    {
+      "from": 484,
+      "to": 479
+    },
+    {
+      "from": 485,
+      "to": 484
+    },
+    {
+      "from": 486,
+      "to": 485
+    },
+    {
+      "from": 487,
+      "to": 484
+    },
+    {
+      "from": 488,
+      "to": 487
+    },
+    {
+      "from": 489,
+      "to": 484
+    },
+    {
+      "from": 490,
+      "to": 489
+    },
+    {
+      "from": 491,
+      "to": 490
+    },
+    {
+      "from": 492,
+      "to": 489
+    },
+    {
+      "from": 493,
+      "to": 492
+    },
+    {
+      "from": 494,
+      "to": 302
+    },
+    {
+      "from": 494,
+      "to": 346
+    },
+    {
+      "from": 494,
+      "to": 410
+    },
+    {
+      "from": 494,
+      "to": 472
+    },
+    {
+      "from": 495,
+      "to": 494
+    },
+    {
+      "from": 496,
+      "to": 495
+    },
+    {
+      "from": 497,
+      "to": 494
+    },
+    {
+      "from": 498,
+      "to": 497
+    },
+    {
+      "from": 499,
+      "to": 494
+    },
+    {
+      "from": 500,
+      "to": 499
+    },
+    {
+      "from": 501,
+      "to": 500
+    },
+    {
+      "from": 502,
+      "to": 499
+    },
+    {
+      "from": 503,
+      "to": 502
+    },
+    {
+      "from": 504,
+      "to": 499
+    },
+    {
+      "from": 505,
+      "to": 504
+    },
+    {
+      "from": 506,
+      "to": 505
+    },
+    {
+      "from": 507,
+      "to": 504
+    },
+    {
+      "from": 508,
+      "to": 507
+    },
+    {
+      "from": 509,
+      "to": 504
+    },
+    {
+      "from": 510,
+      "to": 509
+    },
+    {
+      "from": 511,
+      "to": 510
+    },
+    {
+      "from": 512,
+      "to": 509
+    },
+    {
+      "from": 513,
+      "to": 512
     }
   ]
 }

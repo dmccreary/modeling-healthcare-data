@@ -6,7 +6,7 @@ og:image: /sims/formulary-management-step-therapy-graph-model/formulary-manageme
 twitter:image: /sims/formulary-management-step-therapy-graph-model/formulary-management-step-therapy-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Formulary Management and Step Therapy Graph Model

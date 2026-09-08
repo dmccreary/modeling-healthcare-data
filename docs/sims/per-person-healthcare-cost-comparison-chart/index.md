@@ -6,7 +6,7 @@ og:image: /sims/per-person-healthcare-cost-comparison-chart/per-person-healthcar
 twitter:image: /sims/per-person-healthcare-cost-comparison-chart/per-person-healthcare-cost-comparison-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Per-Person Healthcare Cost Comparison Chart

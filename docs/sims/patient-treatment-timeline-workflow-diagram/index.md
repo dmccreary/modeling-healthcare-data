@@ -6,7 +6,7 @@ og:image: /sims/patient-treatment-timeline-workflow-diagram/patient-treatment-ti
 twitter:image: /sims/patient-treatment-timeline-workflow-diagram/patient-treatment-timeline-workflow-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Patient Treatment Timeline Workflow Diagram

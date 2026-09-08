@@ -1,3 +1,7 @@
+---
+quality_score: 52
+---
+
 # Clinical Care Pathway DAG
 
 <iframe src="main.html" width="100%" height="770px" scrolling="no" style="border:1px solid #ddd;border-radius:6px;"></iframe>

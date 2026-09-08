@@ -6,7 +6,7 @@ og:image: /sims/clinical-protocol-workflow-chest-pain-evaluation/clinical-protoc
 twitter:image: /sims/clinical-protocol-workflow-chest-pain-evaluation/clinical-protocol-workflow-chest-pain-evaluation.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department

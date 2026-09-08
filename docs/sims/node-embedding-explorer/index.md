@@ -6,7 +6,7 @@ og:image: /sims/node-embedding-explorer/node-embedding-explorer.png
 twitter:image: /sims/node-embedding-explorer/node-embedding-explorer.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Node Embedding Explorer MicroSim

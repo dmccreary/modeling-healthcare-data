@@ -6,7 +6,7 @@ og:image: /sims/medication-effectiveness-comparison-microsim/medication-effectiv
 twitter:image: /sims/medication-effectiveness-comparison-microsim/medication-effectiveness-comparison-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Medication Effectiveness Comparison MicroSim

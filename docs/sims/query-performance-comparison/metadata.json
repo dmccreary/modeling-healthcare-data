@@ -45,10 +45,11 @@
     "map"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of query performance comparison: rdbms vs graph database",
-    "Apply query performance comparison: rdbms vs graph database to solve problems",
-    "Visualize and interpret query performance comparison: rdbms vs graph database relationships",
-    "Experiment with parameters to observe their effects on query performance comparison: rdbms vs graph database"
+    "Compare the exponential growth of RDBMS JOIN query times against the near-constant traversal times of a graph database as relationship hops increase",
+    "Explain how index-free adjacency lets a graph database hold query time near 3ms to 17ms from 1 to 6 hops",
+    "Interpret a logarithmic Y-axis where gridlines mark powers of ten spanning 1ms to 850,000ms",
+    "Calculate the roughly 60,000-fold performance gap between the two systems at 5 relationship hops",
+    "Evaluate which multi-hop healthcare queries, such as Patient to Diagnosis to Treatment to Medication, are impractical in an RDBMS at real-time latency"
   ],
   "pedagogical": {
     "pattern": "reference",

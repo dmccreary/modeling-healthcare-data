@@ -6,7 +6,7 @@ og:image: /sims/de-identification-techniques-comparison-table/de-identification-
 twitter:image: /sims/de-identification-techniques-comparison-table/de-identification-techniques-comparison-table.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # De-Identification Techniques Comparison Table

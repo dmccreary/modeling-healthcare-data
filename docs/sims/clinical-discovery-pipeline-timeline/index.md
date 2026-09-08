@@ -6,7 +6,7 @@ og:image: /sims/clinical-discovery-pipeline-timeline/clinical-discovery-pipeline
 twitter:image: /sims/clinical-discovery-pipeline-timeline/clinical-discovery-pipeline-timeline.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Clinical Discovery Pipeline Timeline

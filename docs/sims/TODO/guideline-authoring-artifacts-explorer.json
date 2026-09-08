@@ -1,0 +1,18 @@
+{
+  "sim_id": "guideline-authoring-artifacts-explorer",
+  "diagram_name": "Guideline Authoring Artifacts Explorer",
+  "chapter_number": 23,
+  "chapter_title": "Clinical Guideline Authoring and Clinical Quality Language",
+  "chapter_dir": "23-clinical-guideline-authoring-and-cql",
+  "chapter_rel_dir": "chapters/23-clinical-guideline-authoring-and-cql",
+  "library": "vis-network",
+  "bloom_level": "Analyze<br/>",
+  "bloom_verb": "differentiate, classify<br/>",
+  "learning_objective": "Given the same diabetes-screening guideline expressed as a narrative sentence, a decision table row, a flowchart branch, and a user story, the learner can differentiate what each artifact type captures that the others do not, and classify a new artifact example by type.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: infographic\n**sim-id:** guideline-authoring-artifacts-explorer<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\nBloom Taxonomy: Analyze<br/>\nBloom Taxonomy Verb: differentiate, classify<br/>\nLearning objective: Given the same diabetes-screening guideline expressed as a narrative sentence, a decision table row, a flowchart branch, and a user story, the learner can differentiate what each artifact type captures that the others do not, and classify a new artifact example by type.\n\nPurpose: Show the same underlying guideline content transformed into four different Forms/UI Tier artifacts side by side, so the learner sees concretely what each format adds or loses relative to the others.\n\nComponents to show (four-panel layout, one panel per artifact type):\n- Panel 1 \"Narrative\": the plain-text guideline sentence\n- Panel 2 \"Decision Table\": a two-column table (Condition | Action) with the same rule as one row\n- Panel 3 \"Clinical Flowchart\": a small branching diagram with two decision diamonds leading to the recommended action\n- Panel 4 \"Clinical User Story\": the \"As a... I want... so that...\" formatted story, tagged with its Clinical Persona (Dr. Priya Nair)\n\nInteractive controls:\n- Click any panel to expand it and highlight, in the other three panels, which words or cells correspond to the same underlying condition or action (color-linked highlighting across panels)\n- A \"Classify This\" mini-quiz mode: a new short guideline artifact is shown, and the learner clicks which of the four panel types it belongs to, with immediate feedback\n\nInstructional Rationale: Side-by-side, color-linked panels directly support the Analyze-level objective by making the same content's different representations simultaneously visible and comparable, rather than requiring the learner to hold each format in memory separately while comparing them.\n\nImplementation: vis-network or custom HTML/CSS grid with JavaScript-driven cross-panel highlighting; responsive width.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/guideline-authoring-artifacts-explorer/main.html"
+}

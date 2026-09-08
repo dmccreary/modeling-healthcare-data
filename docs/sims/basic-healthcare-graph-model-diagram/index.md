@@ -6,7 +6,7 @@ og:image: /sims/basic-healthcare-graph-model-diagram/basic-healthcare-graph-mode
 twitter:image: /sims/basic-healthcare-graph-model-diagram/basic-healthcare-graph-model-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Basic Healthcare Graph Model

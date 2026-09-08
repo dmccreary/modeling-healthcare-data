@@ -6,7 +6,7 @@ og:image: /sims/patient-outcome-metrics-dashboard-chart/patient-outcome-metrics-
 twitter:image: /sims/patient-outcome-metrics-dashboard-chart/patient-outcome-metrics-dashboard-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Patient Outcome Metrics Dashboard Chart

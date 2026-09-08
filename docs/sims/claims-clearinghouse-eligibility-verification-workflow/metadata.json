@@ -1,0 +1,51 @@
+{
+  "title": "Claims Clearinghouse and Eligibility Verification Workflow",
+  "description": "Follow the administrative plumbing around claim adjudication -- eligibility verification, clearinghouse routing, and remittance -- and the benefit accumulator both halves share.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "claims processing",
+    "eligibility verification",
+    "clearinghouse",
+    "X12 transactions",
+    "benefit accumulator"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/claims-clearinghouse-eligibility-verification-workflow/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given the administrative claims infrastructure workflow, the learner can explain the role of a clearinghouse, an ERA, and eligibility verification, and summarize how the benefit accumulator connects to each."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerbs": [
+      "explain",
+      "summarize"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Claim adjudication pipeline",
+      "Member, Policy, BenefitPlan, and Coverage graph model"
+    ],
+    "concepts": [
+      "eligibility verification",
+      "clearinghouse",
+      "electronic remittance advice",
+      "benefit accumulator",
+      "X12 270/271/837/835"
+    ]
+  },
+  "technical": {
+    "library": "Mermaid",
+    "canvasHeight": 1427,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "15-reimbursement-health-plans-payer-contracts"
+}

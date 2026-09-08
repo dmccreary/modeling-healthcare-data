@@ -6,7 +6,7 @@ og:image: /sims/clinical-encounter-workflow-diagram/clinical-encounter-workflow-
 twitter:image: /sims/clinical-encounter-workflow-diagram/clinical-encounter-workflow-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Clinical Encounter Workflow

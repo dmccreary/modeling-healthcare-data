@@ -6,7 +6,7 @@ og:image: /sims/centrality-measures-comparison/centrality-measures-comparison.pn
 twitter:image: /sims/centrality-measures-comparison/centrality-measures-comparison.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Centrality Measures Comparison MicroSim

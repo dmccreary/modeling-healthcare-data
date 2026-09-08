@@ -6,7 +6,7 @@ og:image: /sims/behavioral-health-fraud-network-microsim/behavioral-health-fraud
 twitter:image: /sims/behavioral-health-fraud-network-microsim/behavioral-health-fraud-network-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Behavioral Health Fraud Network Interactive MicroSim

@@ -6,7 +6,7 @@ og:image: /sims/healthcare-revenue-cycle-workflow-graph-analytics/healthcare-rev
 twitter:image: /sims/healthcare-revenue-cycle-workflow-graph-analytics/healthcare-revenue-cycle-workflow-graph-analytics.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Revenue Cycle Workflow with Graph Analytics

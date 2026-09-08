@@ -6,7 +6,7 @@ og:image: /sims/directed-acyclic-graph-care-pathway/directed-acyclic-graph-care-
 twitter:image: /sims/directed-acyclic-graph-care-pathway/directed-acyclic-graph-care-pathway.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Directed Acyclic Graph Example: Care Pathway

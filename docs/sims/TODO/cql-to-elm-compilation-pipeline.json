@@ -1,0 +1,18 @@
+{
+  "sim_id": "cql-to-elm-compilation-pipeline",
+  "diagram_name": "CQL-to-ELM Compilation Pipeline",
+  "chapter_number": 23,
+  "chapter_title": "Clinical Guideline Authoring and Clinical Quality Language",
+  "chapter_dir": "23-clinical-guideline-authoring-and-cql",
+  "chapter_rel_dir": "chapters/23-clinical-guideline-authoring-and-cql",
+  "library": "Mermaid",
+  "bloom_level": "Understand<br/>",
+  "bloom_verb": "explain, translate<br/>",
+  "learning_objective": "Given a CQL define statement, the learner can explain each stage of its compilation into ELM and translate between the CQL authoring format and its corresponding ELM fragment.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: workflow\n**sim-id:** cql-to-elm-compilation-pipeline<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nBloom Taxonomy: Understand<br/>\nBloom Taxonomy Verb: explain, translate<br/>\nLearning objective: Given a CQL define statement, the learner can explain each stage of its compilation into ELM and translate between the CQL authoring format and its corresponding ELM fragment.\n\nPurpose: Trace the \"Has Diabetes\" define statement from human-authored CQL text through compilation to ELM to runtime evaluation by a Clinical Reasoning Module, using the exact worked example from the surrounding prose.\n\nComponents to show (left-to-right Mermaid flowchart):\n- Node \"CQL Library (.cql file)\" (blue) \u2014 shows the DiabetesControlMeasure library text\n- Node \"CQL Compiler\" (orange) \u2014 the translation step\n- Node \"Expression Logical Model (ELM, JSON/XML)\" (green) \u2014 shows the compiled ELM fragment\n- Node \"Clinical Reasoning Module\" (purple) \u2014 the runtime engine\n- Node \"Patient FHIR Resources\" (pink, feeding into the Clinical Reasoning Module) \u2014 Maria Chen's Condition and Observation resources from Chapter 22\n- Node \"Evaluation Result\" (yellow) \u2014 true/false or measure output\n\nConnections: CQL Library \u2192 CQL Compiler \u2192 ELM \u2192 Clinical Reasoning Module (also receiving Patient FHIR Resources as a second input) \u2192 Evaluation Result\n\nInteractive controls:\n- Click \"CQL Library\" to see the full authoring-format text\n- Click \"Expression Logical Model\" to see the compiled JSON fragment\n- Click \"Clinical Reasoning Module\" to see, step by step, how it walks the ELM tree against Maria Chen's actual Condition resource (active Type 2 Diabetes) to reach a \"true\" result for \"Has Diabetes\"\n- Toggle to swap in a patient with no active diabetes Condition and see the Evaluation Result change to \"false\"\n\nInstructional Rationale: A clickable pipeline that lets the learner inspect both the CQL and ELM text for the identical logic, then watch it evaluated against two different patients, directly supports the Understand-level objective of translating between the two representations and explaining what changes (and does not change) at each stage.\n\nImplementation: Mermaid flowchart with click handlers routed to code-display infoboxes; responsive width.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/cql-to-elm-compilation-pipeline/main.html"
+}

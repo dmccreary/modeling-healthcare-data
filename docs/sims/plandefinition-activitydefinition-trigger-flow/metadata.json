@@ -1,0 +1,51 @@
+{
+  "title": "PlanDefinition to ActivityDefinition Trigger Flow",
+  "description": "Set a patient's age, BMI, and diagnosis status and watch a FHIR PlanDefinition's criteria decide whether its ActivityDefinition fires.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "FHIR",
+    "clinical decision support",
+    "PlanDefinition",
+    "ActivityDefinition",
+    "guideline execution"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/plandefinition-activitydefinition-trigger-flow/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a patient's age and BMI values, the learner can apply a PlanDefinition's trigger criteria to determine whether its referenced ActivityDefinition fires for that patient."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerbs": [
+      "apply",
+      "demonstrate"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "FHIR resources",
+      "Boolean conditions and conjunctions"
+    ],
+    "concepts": [
+      "PlanDefinition",
+      "ActivityDefinition",
+      "trigger criteria",
+      "patient-independent artifact",
+      "generated order"
+    ]
+  },
+  "technical": {
+    "library": "vis-network",
+    "canvasHeight": 823,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "22-fhir-resources-and-knowledge-representation"
+}

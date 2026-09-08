@@ -6,7 +6,7 @@ og:image: /sims/risk-stratification-pyramid-intervention-strategies/risk-stratif
 twitter:image: /sims/risk-stratification-pyramid-intervention-strategies/risk-stratification-pyramid-intervention-strategies.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Risk Stratification Pyramid with Intervention Strategies

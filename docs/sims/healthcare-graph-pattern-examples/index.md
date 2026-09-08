@@ -6,7 +6,7 @@ og:image: /sims/healthcare-graph-pattern-examples/healthcare-graph-pattern-examp
 twitter:image: /sims/healthcare-graph-pattern-examples/healthcare-graph-pattern-examples.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Healthcare Graph Pattern Examples

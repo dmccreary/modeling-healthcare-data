@@ -1,0 +1,51 @@
+{
+  "title": "Knowledge Representation Levels by Functional Tier Matrix",
+  "description": "Locate any clinical knowledge artifact by both its representation level and its functional tier in a twelve-cell reference grid.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "knowledge representation",
+    "FHIR",
+    "clinical guidelines",
+    "CQF Recommendations",
+    "clinical decision support"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/knowledge-representation-levels-tier-matrix/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a description of a clinical knowledge artifact, the learner can classify it by both its knowledge representation level (Narrative, Semi-Structured, Structured, Executable) and its functional tier (Data, Logic, Forms/UI) using the matrix."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerbs": [
+      "classify",
+      "examine"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "FHIR resources and value sets",
+      "CQL to ELM compilation"
+    ],
+    "concepts": [
+      "narrative level",
+      "semi-structured level",
+      "structured level",
+      "executable level",
+      "data, logic, and Forms/UI tiers"
+    ]
+  },
+  "technical": {
+    "library": "p5.js",
+    "canvasHeight": 762,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "22-fhir-resources-and-knowledge-representation"
+}

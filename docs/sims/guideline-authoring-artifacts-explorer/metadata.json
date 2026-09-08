@@ -1,0 +1,50 @@
+{
+  "title": "Guideline Authoring Artifacts Explorer",
+  "description": "See one diabetes-screening rule as narrative, decision table, flowchart, and user story, with color-linked highlighting across all four.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "clinical guidelines",
+    "requirements engineering",
+    "decision tables",
+    "user stories",
+    "knowledge representation"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/guideline-authoring-artifacts-explorer/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given the same diabetes-screening guideline expressed as a narrative sentence, a decision table row, a flowchart branch, and a user story, the learner can differentiate what each artifact type captures that the others do not, and classify a new artifact example by type."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerbs": [
+      "differentiate",
+      "classify"
+    ],
+    "duration": "12-18 minutes",
+    "prerequisites": [
+      "Levels of knowledge representation"
+    ],
+    "concepts": [
+      "narrative guideline",
+      "decision table",
+      "clinical flowchart",
+      "clinical user story",
+      "clinical persona"
+    ]
+  },
+  "technical": {
+    "library": "vis-network",
+    "canvasHeight": 907,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "23-clinical-guideline-authoring-and-cql"
+}

@@ -6,7 +6,7 @@ og:image: /sims/healthcare-rbac-graph-data-model/healthcare-rbac-graph-data-mode
 twitter:image: /sims/healthcare-rbac-graph-data-model/healthcare-rbac-graph-data-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare RBAC Graph Data Model

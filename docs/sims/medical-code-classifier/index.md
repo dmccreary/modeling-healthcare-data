@@ -6,7 +6,7 @@ og:image: /sims/medical-code-classifier/medical-code-classifier.png
 twitter:image: /sims/medical-code-classifier/medical-code-classifier.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Medical Code System Classifier MicroSim

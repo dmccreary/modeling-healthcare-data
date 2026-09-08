@@ -1,4 +1,5 @@
 ---
+quality_score: 80
 title: AI and ML Taxonomy in Healthcare
 description: Interactive Venn diagram showing the hierarchical relationship between Artificial Intelligence, Machine Learning, and Deep Learning in healthcare contexts
 ---

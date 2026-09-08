@@ -1,0 +1,51 @@
+{
+  "title": "Model Drift Detection Monitor",
+  "description": "Read 26 weeks of a deployed model's rolling AUROC and separate ordinary week-to-week fluctuation from a genuine drift event.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "model monitoring",
+    "model drift",
+    "AUROC",
+    "responsible AI",
+    "data pipelines"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/model-drift-detection-monitor/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a rolling-window AUROC line chart with a drift-alert threshold, the learner can examine where a deployed model's performance degrades over time and differentiate normal fluctuation from a genuine drift event."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerbs": [
+      "examine",
+      "differentiate"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "AUROC and model discrimination",
+      "Rolling windows"
+    ],
+    "concepts": [
+      "rolling metric window",
+      "baseline",
+      "alert threshold",
+      "upstream data change",
+      "fluctuation versus drift"
+    ]
+  },
+  "technical": {
+    "library": "Chart.js",
+    "canvasHeight": 780,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "21-responsible-ai-and-agentic-systems"
+}

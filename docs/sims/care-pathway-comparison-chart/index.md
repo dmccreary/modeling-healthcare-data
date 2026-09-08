@@ -6,7 +6,7 @@ og:image: /sims/care-pathway-comparison-chart/care-pathway-comparison-chart.png
 twitter:image: /sims/care-pathway-comparison-chart/care-pathway-comparison-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Care Pathway Comparison Chart

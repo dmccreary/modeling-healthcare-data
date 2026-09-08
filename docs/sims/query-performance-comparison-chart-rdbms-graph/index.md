@@ -6,7 +6,7 @@ og:image: /sims/query-performance-comparison-chart-rdbms-graph/query-performance
 twitter:image: /sims/query-performance-comparison-chart-rdbms-graph/query-performance-comparison-chart-rdbms-graph.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Query Performance: RDBMS vs Graph

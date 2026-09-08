@@ -6,7 +6,7 @@ og:image: /sims/symptom-disease-diagnostic-network/symptom-disease-diagnostic-ne
 twitter:image: /sims/symptom-disease-diagnostic-network/symptom-disease-diagnostic-network.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Symptom-Disease Diagnostic Network

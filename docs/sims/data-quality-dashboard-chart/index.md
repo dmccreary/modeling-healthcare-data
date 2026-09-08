@@ -6,7 +6,7 @@ og:image: /sims/data-quality-dashboard-chart/data-quality-dashboard-chart.png
 twitter:image: /sims/data-quality-dashboard-chart/data-quality-dashboard-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Data Quality Dashboard Chart

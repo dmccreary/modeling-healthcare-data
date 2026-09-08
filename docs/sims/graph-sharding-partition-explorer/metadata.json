@@ -1,0 +1,44 @@
+{
+  "title": "Graph Sharding Partition Explorer",
+  "description": "Given a patient graph partitioned across three shards, the learner can distinguish same-shard edges from cross-shard edges and examine why cross-shard traversal costs more.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "graph-sharding-partition-explorer",
+  "library": "vis-network",
+  "bloomLevel": "Analyze",
+  "bloomVerb": "examine, distinguish",
+  "completion_status": "validated",
+  "chapter_number": 4,
+  "chapter_title": "Graph Database Scalability and Operations",
+  "chapter_dir": "04-graph-database-scalability-operations",
+  "chapter_rel_dir": "chapters/04-graph-database-scalability-operations",
+  "educational": {
+    "gradeLevel": "Undergraduate and professional",
+    "subjectArea": "Healthcare data modeling",
+    "topic": "Graph Sharding Partition Explorer",
+    "learningObjectives": [
+      "Given a patient graph partitioned across three shards, the learner can distinguish same-shard edges from cross-shard edges and examine why cross-shard traversal costs more."
+    ],
+    "duration": "10\u201315 minutes",
+    "prerequisites": [
+      "Nodes, edges, labels, and properties"
+    ]
+  },
+  "pedagogical": {
+    "bloomLevel": "Analyze",
+    "interactionPattern": "Parameter exploration with edge classification and computed feedback",
+    "rationale": "The Analyze-level verbs examine and distinguish require learners to compare edge categories and their consequences. The slider directly changes visible referral edges and the summed cost.",
+    "assessment": "Explain why eight sequential remote traversals yield 40\u2013400 ms under the stated assumptions, and identify two real-world factors this simple model omits."
+  },
+  "canvasHeight": 1390,
+  "quality_score": 100,
+  "validated_date": "2026-09-07"
+}

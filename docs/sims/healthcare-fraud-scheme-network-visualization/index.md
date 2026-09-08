@@ -6,7 +6,7 @@ og:image: /sims/healthcare-fraud-scheme-network-visualization/healthcare-fraud-s
 twitter:image: /sims/healthcare-fraud-scheme-network-visualization/healthcare-fraud-scheme-network-visualization.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Fraud Scheme Network Visualization

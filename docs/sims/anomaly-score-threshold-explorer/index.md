@@ -6,7 +6,7 @@ og:image: /sims/anomaly-score-threshold-explorer/anomaly-score-threshold-explore
 twitter:image: /sims/anomaly-score-threshold-explorer/anomaly-score-threshold-explorer.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Anomaly Score Threshold Explorer MicroSim

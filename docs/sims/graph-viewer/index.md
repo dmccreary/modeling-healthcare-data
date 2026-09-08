@@ -1,3 +1,7 @@
+---
+quality_score: 47
+---
+
 # Learning Graph Viewer
 
 <iframe src="main.html" width="100%" height="720px" scrolling="no" style="border:1px solid #ddd;border-radius:6px;"></iframe>

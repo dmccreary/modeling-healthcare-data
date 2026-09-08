@@ -6,7 +6,7 @@ og:image: /sims/patient-clinical-context-subgraph-visualization/patient-clinical
 twitter:image: /sims/patient-clinical-context-subgraph-visualization/patient-clinical-context-subgraph-visualization.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Patient Clinical Context Subgraph Visualization

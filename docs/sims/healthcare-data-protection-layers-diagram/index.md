@@ -6,7 +6,7 @@ og:image: /sims/healthcare-data-protection-layers-diagram/healthcare-data-protec
 twitter:image: /sims/healthcare-data-protection-layers-diagram/healthcare-data-protection-layers-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Healthcare Data Protection Layers Diagram

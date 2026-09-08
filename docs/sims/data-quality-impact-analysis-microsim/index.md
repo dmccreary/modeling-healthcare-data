@@ -6,7 +6,7 @@ og:image: /sims/data-quality-impact-analysis-microsim/data-quality-impact-analys
 twitter:image: /sims/data-quality-impact-analysis-microsim/data-quality-impact-analysis-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Data Quality Impact Analysis MicroSim

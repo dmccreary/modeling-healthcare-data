@@ -6,7 +6,7 @@ og:image: /sims/query-performance-impact-indexing/query-performance-impact-index
 twitter:image: /sims/query-performance-impact-indexing/query-performance-impact-indexing.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Query Performance Impact of Indexing

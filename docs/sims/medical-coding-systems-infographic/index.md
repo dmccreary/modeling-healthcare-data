@@ -6,7 +6,7 @@ og:image: /sims/medical-coding-systems-infographic/medical-coding-systems-infogr
 twitter:image: /sims/medical-coding-systems-infographic/medical-coding-systems-infographic.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Medical Coding Systems Interactive Infographic

@@ -6,7 +6,7 @@ og:image: /sims/evolution-graph-query-languages-timeline/evolution-graph-query-l
 twitter:image: /sims/evolution-graph-query-languages-timeline/evolution-graph-query-languages-timeline.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Evolution of Graph Query Languages Timeline

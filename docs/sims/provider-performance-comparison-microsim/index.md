@@ -6,7 +6,7 @@ og:image: /sims/provider-performance-comparison-microsim/provider-performance-co
 twitter:image: /sims/provider-performance-comparison-microsim/provider-performance-comparison-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Provider Performance Comparison MicroSim

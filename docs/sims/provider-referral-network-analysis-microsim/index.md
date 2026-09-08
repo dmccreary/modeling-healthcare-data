@@ -6,7 +6,7 @@ og:image: /sims/provider-referral-network-analysis-microsim/provider-referral-ne
 twitter:image: /sims/provider-referral-network-analysis-microsim/provider-referral-network-analysis-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Provider Referral Network Analysis MicroSim

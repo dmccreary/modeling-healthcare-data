@@ -1,0 +1,107 @@
+[
+  {
+    "sim": "healthcare-graph-anatomy-explorer",
+    "width": 400,
+    "status": "PASS",
+    "max_content_height": 830,
+    "console_errors": []
+  },
+  {
+    "sim": "healthcare-graph-anatomy-explorer",
+    "width": 800,
+    "status": "PASS",
+    "max_content_height": 675,
+    "console_errors": []
+  },
+  {
+    "sim": "healthcare-graph-anatomy-explorer",
+    "width": 1200,
+    "status": "PASS",
+    "max_content_height": 675,
+    "console_errors": []
+  },
+  {
+    "sim": "relational-vs-graph-data-model-comparison",
+    "width": 400,
+    "status": "PASS",
+    "max_content_height": 1060,
+    "console_errors": []
+  },
+  {
+    "sim": "relational-vs-graph-data-model-comparison",
+    "width": 800,
+    "status": "PASS",
+    "max_content_height": 860,
+    "console_errors": []
+  },
+  {
+    "sim": "relational-vs-graph-data-model-comparison",
+    "width": 1200,
+    "status": "PASS",
+    "max_content_height": 860,
+    "console_errors": []
+  },
+  {
+    "sim": "graph-sharding-partition-explorer",
+    "width": 400,
+    "status": "PASS",
+    "max_content_height": 1308,
+    "console_errors": []
+  },
+  {
+    "sim": "graph-sharding-partition-explorer",
+    "width": 800,
+    "status": "PASS",
+    "max_content_height": 895,
+    "console_errors": []
+  },
+  {
+    "sim": "graph-sharding-partition-explorer",
+    "width": 1200,
+    "status": "PASS",
+    "max_content_height": 895,
+    "console_errors": []
+  },
+  {
+    "sim": "graph-algorithm-family-map",
+    "width": 400,
+    "status": "PASS",
+    "max_content_height": 1058,
+    "console_errors": []
+  },
+  {
+    "sim": "graph-algorithm-family-map",
+    "width": 800,
+    "status": "PASS",
+    "max_content_height": 1013,
+    "console_errors": []
+  },
+  {
+    "sim": "graph-algorithm-family-map",
+    "width": 1200,
+    "status": "PASS",
+    "max_content_height": 1013,
+    "console_errors": []
+  },
+  {
+    "sim": "patient-demographics-sdoh-profile",
+    "width": 400,
+    "status": "PASS",
+    "max_content_height": 1184,
+    "console_errors": []
+  },
+  {
+    "sim": "patient-demographics-sdoh-profile",
+    "width": 800,
+    "status": "PASS",
+    "max_content_height": 781,
+    "console_errors": []
+  },
+  {
+    "sim": "patient-demographics-sdoh-profile",
+    "width": 1200,
+    "status": "PASS",
+    "max_content_height": 743,
+    "console_errors": []
+  }
+]

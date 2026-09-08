@@ -6,7 +6,7 @@ og:image: /sims/preventive-care-gap-closure/preventive-care-gap-closure.png
 twitter:image: /sims/preventive-care-gap-closure/preventive-care-gap-closure.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Preventive Care Gap Closure MicroSim

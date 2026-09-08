@@ -6,7 +6,7 @@ og:image: /sims/healthcare-delivery-network-graph-model/healthcare-delivery-netw
 twitter:image: /sims/healthcare-delivery-network-graph-model/healthcare-delivery-network-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Delivery Network Graph Model

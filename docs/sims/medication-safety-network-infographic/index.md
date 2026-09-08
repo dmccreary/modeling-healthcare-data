@@ -6,7 +6,7 @@ og:image: /sims/medication-safety-network-infographic/medication-safety-network-
 twitter:image: /sims/medication-safety-network-infographic/medication-safety-network-infographic.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Medication Safety Network Interactive Infographic

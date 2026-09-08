@@ -6,7 +6,7 @@ og:image: /sims/value-based-payment-shared-savings/value-based-payment-shared-sa
 twitter:image: /sims/value-based-payment-shared-savings/value-based-payment-shared-savings.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Value-Based Payment Shared-Savings MicroSim

@@ -1,0 +1,18 @@
+{
+  "sim_id": "terminology-binding-explorer",
+  "diagram_name": "CodeSystem, ValueSet, and Terminology Binding Explorer",
+  "chapter_number": 23,
+  "chapter_title": "Clinical Guideline Authoring and Clinical Quality Language",
+  "chapter_dir": "23-clinical-guideline-authoring-and-cql",
+  "chapter_rel_dir": "chapters/23-clinical-guideline-authoring-and-cql",
+  "library": "vis-network",
+  "bloom_level": "Apply<br/>",
+  "bloom_verb": "apply, demonstrate<br/>",
+  "learning_objective": "Given a new clinical data element and a choice of binding strength, the learner can apply the CodeSystem-ValueSet-binding chain to determine which codes would and would not be considered valid.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: graph-model\n**sim-id:** terminology-binding-explorer<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\nBloom Taxonomy: Apply<br/>\nBloom Taxonomy Verb: apply, demonstrate<br/>\nLearning objective: Given a new clinical data element and a choice of binding strength, the learner can apply the CodeSystem-ValueSet-binding chain to determine which codes would and would not be considered valid.\n\nPurpose: Show the three-layer relationship between a full CodeSystem, a curated ValueSet drawn from it, and a terminology binding connecting a guideline data element to that ValueSet, using the LDL Cholesterol worked example.\n\nComponents to show:\n- Node \"LOINC CodeSystem\" (large gray circle) \u2014 labeled \"tens of thousands of codes,\" containing many small dimmed dots representing uncurated codes\n- Node \"LDL Cholesterol Lab Tests ValueSet\" (blue circle, subset highlighted within the CodeSystem) \u2014 containing 3-4 specific LOINC codes shown as bright dots (e.g., 2089-1, 13457-7, 18262-6)\n- Node \"Guideline Data Element: 'LDL Cholesterol'\" (orange box) \u2014 connects via a labeled \"terminology binding\" edge to the ValueSet node\n- Dropdown/selector for binding strength: required, extensible, preferred, example\n\nInteractive controls:\n- Click any of the bright LOINC code dots inside the ValueSet to see its full code and display name\n- Change the binding-strength dropdown and see a live-updated verdict panel showing, for three example incoming codes (one inside the ValueSet, one a plausible-but-different cholesterol code outside it, one an unrelated lab code), whether each would be accepted, allowed-with-caution, or rejected under the currently selected binding strength\n- Hover the CodeSystem node to see its governance body (Regenstrief Institute for LOINC) and its total code count\n\nInstructional Rationale: A live verdict panel that recomputes accept/reject outcomes as the learner changes the binding strength directly supports the Apply-level objective, letting the learner test the consequence of each binding strength choice on concrete example codes rather than only reading the four definitions.\n\nImplementation: vis-network for the CodeSystem/ValueSet/binding graph plus a JavaScript-driven verdict panel; responsive width.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/terminology-binding-explorer/main.html"
+}

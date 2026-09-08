@@ -6,7 +6,7 @@ og:image: /sims/clinical-decision-support-workflow/clinical-decision-support-wor
 twitter:image: /sims/clinical-decision-support-workflow/clinical-decision-support-workflow.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Clinical Decision Support Workflow

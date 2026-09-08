@@ -1,0 +1,51 @@
+{
+  "title": "CodeSystem, ValueSet, and Terminology Binding Explorer",
+  "description": "Change a binding strength and watch three incoming LOINC codes be accepted, flagged, or rejected against a curated LDL cholesterol value set.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "terminology",
+    "LOINC",
+    "value sets",
+    "binding strength",
+    "clinical guidelines"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/terminology-binding-explorer/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a new clinical data element and a choice of binding strength, the learner can apply the CodeSystem-ValueSet-binding chain to determine which codes would and would not be considered valid."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerbs": [
+      "apply",
+      "demonstrate"
+    ],
+    "duration": "12-18 minutes",
+    "prerequisites": [
+      "Clinical code systems",
+      "Constrained value domains"
+    ],
+    "concepts": [
+      "code system",
+      "value set",
+      "terminology binding",
+      "binding strength",
+      "required, extensible, preferred, example"
+    ]
+  },
+  "technical": {
+    "library": "vis-network",
+    "canvasHeight": 1143,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "23-clinical-guideline-authoring-and-cql"
+}

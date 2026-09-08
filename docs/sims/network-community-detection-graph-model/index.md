@@ -6,7 +6,7 @@ og:image: /sims/network-community-detection-graph-model/network-community-detect
 twitter:image: /sims/network-community-detection-graph-model/network-community-detection-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Network Community Detection Interactive Graph Model

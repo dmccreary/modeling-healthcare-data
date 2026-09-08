@@ -6,7 +6,7 @@ og:image: /sims/healthcare-data-model-implementation-workflow/healthcare-data-mo
 twitter:image: /sims/healthcare-data-model-implementation-workflow/healthcare-data-model-implementation-workflow.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Data Model Implementation Workflow

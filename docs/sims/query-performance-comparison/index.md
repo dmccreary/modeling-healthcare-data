@@ -1,3 +1,7 @@
+---
+quality_score: 62
+---
+
 # Query Performance Comparison: RDBMS vs Graph Database
 
 This interactive Chart.js visualization demonstrates the dramatic performance differences between relational databases using JOIN operations and graph databases using index-free adjacency for multi-hop relationship queries in healthcare data systems.

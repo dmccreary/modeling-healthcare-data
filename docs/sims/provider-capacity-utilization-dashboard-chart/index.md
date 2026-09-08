@@ -6,7 +6,7 @@ og:image: /sims/provider-capacity-utilization-dashboard-chart/provider-capacity-
 twitter:image: /sims/provider-capacity-utilization-dashboard-chart/provider-capacity-utilization-dashboard-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Provider Capacity Utilization Dashboard Chart

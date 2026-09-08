@@ -1,3 +1,7 @@
+---
+quality_score: 37
+---
+
 # Codes
 
 A graph data model of healthcare billing and clinical codes: an **Encounter** linked to its Diagnosis, Procedure, Medication Order, Provider, Patient, and Organization, with each tied to the relevant code system (ICD-10, CPT, HCPCS, NDC).

@@ -6,7 +6,7 @@ og:image: /sims/project-complexity-comparison-table/project-complexity-compariso
 twitter:image: /sims/project-complexity-comparison-table/project-complexity-comparison-table.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Project Complexity Comparison Table

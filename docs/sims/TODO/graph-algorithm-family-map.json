@@ -1,0 +1,18 @@
+{
+  "sim_id": "graph-algorithm-family-map",
+  "diagram_name": "Graph Algorithm Family Map",
+  "chapter_number": 5,
+  "chapter_title": "Graph Algorithms, Centrality, and Similarity Measures",
+  "chapter_dir": "05-graph-algorithms-centrality-similarity",
+  "chapter_rel_dir": "chapters/05-graph-algorithms-centrality-similarity",
+  "library": "Mermaid",
+  "bloom_level": "Understand<br/>",
+  "bloom_verb": "classify, summarize<br/>",
+  "learning_objective": "Classify a graph algorithm by the type of question it answers (distance, importance, grouping, or prediction) and summarize one example algorithm per family.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: diagram\n**sim-id:** graph-algorithm-family-map<br/>\n**Library:** Mermaid<br/>\n**Status:** Validated\n\nBloom Taxonomy: Understand<br/>\nBloom Taxonomy Verb: classify, summarize<br/>\nLearning objective: Classify a graph algorithm by the type of question it answers (distance, importance, grouping, or prediction) and summarize one example algorithm per family.\n\nPurpose: Give learners a mental map of this chapter before diving into individual algorithms, so each new algorithm they meet has an obvious \"home\" in the taxonomy.\n\nStructure: A Mermaid flowchart with a root node \"Graph Algorithm\" branching into four family nodes: \"Distance Questions\", \"Importance Questions\", \"Grouping Questions\", \"Prediction Questions\". Each family node branches to 2-3 example algorithm leaf nodes:\n\n- Distance Questions \u2192 Shortest Path Algorithm\n- Importance Questions \u2192 Degree Centrality, Betweenness Centrality, PageRank Algorithm\n- Grouping Questions \u2192 Connected Components, Strongly Connected Component, Clustering Coefficient\n- Prediction Questions \u2192 Similarity Measure, Link Prediction\n\nEvery node must have a `click` directive that opens an infobox with a one-sentence plain-language definition of that family or algorithm (e.g., clicking \"Importance Questions\" shows \"Which nodes matter most, and by what definition of 'matters'?\"; clicking \"Degree Centrality\" shows its formal one-line definition).\n\nColor scheme: root node gray, family nodes blue, leaf nodes colored by family (distance=green, importance=orange, grouping=purple, prediction=teal)\n\nInteractivity requirement: every node clickable with an infobox; the diagram title bar includes a \"this chapter's tour\" reset button that collapses back to the four family nodes.\n\nImplementation: Mermaid flowchart with `click NodeId call showInfo(\"id\")` directives wired to a small JavaScript infobox panel below the diagram, responsive to window resize.",
+  "quality_score": 100,
+  "validated_date": "2026-09-07",
+  "implementation_path": "sims/graph-algorithm-family-map/main.html"
+}

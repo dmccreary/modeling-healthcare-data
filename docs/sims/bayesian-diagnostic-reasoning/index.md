@@ -6,7 +6,7 @@ og:image: /sims/bayesian-diagnostic-reasoning/bayesian-diagnostic-reasoning.png
 twitter:image: /sims/bayesian-diagnostic-reasoning/bayesian-diagnostic-reasoning.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Bayesian Diagnostic Reasoning MicroSim

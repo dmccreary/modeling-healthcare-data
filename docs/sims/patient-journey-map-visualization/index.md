@@ -6,7 +6,7 @@ og:image: /sims/patient-journey-map-visualization/patient-journey-map-visualizat
 twitter:image: /sims/patient-journey-map-visualization/patient-journey-map-visualization.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Patient Journey Map Interactive Visualization

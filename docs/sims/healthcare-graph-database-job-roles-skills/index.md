@@ -6,7 +6,7 @@ og:image: /sims/healthcare-graph-database-job-roles-skills/healthcare-graph-data
 twitter:image: /sims/healthcare-graph-database-job-roles-skills/healthcare-graph-database-job-roles-skills.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Graph Database Job Roles and Skills Map

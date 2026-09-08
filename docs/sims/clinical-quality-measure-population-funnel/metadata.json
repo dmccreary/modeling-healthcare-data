@@ -1,0 +1,51 @@
+{
+  "title": "Clinical Quality Measure Population Funnel",
+  "description": "Compute a quality measure's reported rate from four populations, and watch the rate move when only the exclusion count changes.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "clinical quality measures",
+    "eCQM",
+    "measure populations",
+    "quality reporting",
+    "denominator exclusions"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/clinical-quality-measure-population-funnel/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given initial population, denominator exclusion, and numerator counts, the learner can calculate a Clinical Quality Measure's reported rate and demonstrate how changing an exclusion count changes the final rate."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerbs": [
+      "calculate",
+      "demonstrate"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Rates, numerators, and denominators",
+      "Patient cohort definitions"
+    ],
+    "concepts": [
+      "initial population",
+      "denominator",
+      "denominator exclusion",
+      "numerator",
+      "measure rate"
+    ]
+  },
+  "technical": {
+    "library": "Chart.js",
+    "canvasHeight": 873,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "23-clinical-guideline-authoring-and-cql"
+}

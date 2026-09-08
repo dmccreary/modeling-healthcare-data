@@ -6,7 +6,7 @@ og:image: /sims/predictive-model-performance-traditional-graph-based/predictive-
 twitter:image: /sims/predictive-model-performance-traditional-graph-based/predictive-model-performance-traditional-graph-based.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Predictive Model Performance: Traditional vs Graph-Based

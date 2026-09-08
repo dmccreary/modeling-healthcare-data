@@ -6,7 +6,7 @@ og:image: /sims/prior-authorization-decision-tree-microsim/prior-authorization-d
 twitter:image: /sims/prior-authorization-decision-tree-microsim/prior-authorization-decision-tree-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Prior Authorization Decision Tree Interactive MicroSim

@@ -6,7 +6,7 @@ og:image: /sims/cycle-detection-pattern-explorer/cycle-detection-pattern-explore
 twitter:image: /sims/cycle-detection-pattern-explorer/cycle-detection-pattern-explorer.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Cycle Detection and Pattern Explorer MicroSim

@@ -6,7 +6,7 @@ og:image: /sims/ai-ml-taxonomy-healthcare/ai-ml-taxonomy-healthcare.png
 twitter:image: /sims/ai-ml-taxonomy-healthcare/ai-ml-taxonomy-healthcare.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # AI / ML / Deep Learning Taxonomy

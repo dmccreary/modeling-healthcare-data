@@ -12,43 +12,36 @@ nav:
   - Course Description: course-description.md
 
   - Chapters:
-    - Overview: chapters/index.md
-    - Chapter 1 - Graph Theory and Database Foundations:
-      - Content: chapters/01-graph-theory-database-foundations/index.md
-      - Quiz: chapters/01-graph-theory-database-foundations/quiz.md
-    - Chapter 2 - Introduction to Healthcare Systems:
-      - Content: chapters/02-intro-to-healthcare-systems/index.md
-      - Quiz: chapters/02-intro-to-healthcare-systems/quiz.md
-    - Chapter 3 - Graph Query Languages and Technologies:
-      - Content: chapters/03-graph-query-languages/index.md
-      - Quiz: chapters/03-graph-query-languages/quiz.md
-    - Chapter 4 - Patient-Centric Data Modeling:
-      - Content: chapters/04-patient-centric-data-modeling/index.md
-      - Quiz: chapters/04-patient-centric-data-modeling/quiz.md
-    - Chapter 5 - Provider Operations and Networks:
-      - Content: chapters/05-provider-operations-networks/index.md
-      - Quiz: chapters/05-provider-operations-networks/quiz.md
-    - Chapter 6 - Payer Perspective and Insurance Claims:
-      - Content: chapters/06-payer-perspective-insurance/index.md
-      - Quiz: chapters/06-payer-perspective-insurance/quiz.md
-    - Chapter 7 - Healthcare Financial Analytics:
-      - Content: chapters/07-healthcare-financial-analytics/index.md
-      - Quiz: chapters/07-healthcare-financial-analytics/quiz.md
-    - Chapter 8 - Fraud Detection and Compliance:
-      - Content: chapters/08-fraud-detection-compliance/index.md
-      - Quiz: chapters/08-fraud-detection-compliance/quiz.md
-    - Chapter 9 - Graph Algorithms and Analytics:
-      - Content: chapters/09-graph-algorithms-analytics/index.md
-      - Quiz: chapters/09-graph-algorithms-analytics/quiz.md
-    - Chapter 10 - AI and Machine Learning Integration:
-      - Content: chapters/10-ai-machine-learning-integration/index.md
-      - Quiz: chapters/10-ai-machine-learning-integration/quiz.md
-    - Chapter 11 - Security, Privacy, and Data Governance:
-      - Content: chapters/11-security-privacy-governance/index.md
-      - Quiz: chapters/11-security-privacy-governance/quiz.md
-    - Chapter 12 - Capstone Projects and Real-World Applications:
-      - Content: chapters/12-capstone-real-world-applications/index.md
-      - Quiz: chapters/12-capstone-real-world-applications/quiz.md
+    - List of Chapters: chapters/index.md
+    - "1. Foundations of Graph Structures": chapters/01-foundations-of-graph-structures/index.md
+    - "2. Data Modeling: Graphs vs. Relational Databases": chapters/02-graphs-vs-relational-databases/index.md
+    - "3. Graph Query Languages and Pattern Matching": chapters/03-graph-query-languages-pattern-matching/index.md
+    - "4. Graph Database Scalability and Operations": chapters/04-graph-database-scalability-operations/index.md
+    - "5. Graph Algorithms, Centrality, and Similarity Measures": chapters/05-graph-algorithms-centrality-similarity/index.md
+    - "6. Graph Embeddings, Clustering, and Graph Neural Networks": chapters/06-graph-embeddings-clustering-gnn/index.md
+    - "7. Healthcare Economics and Medical Coding Systems": chapters/07-healthcare-economics-medical-coding/index.md
+    - "8. Healthcare Interoperability and Care Coordination": chapters/08-healthcare-interoperability-care-coordination/index.md
+    - "9. Patient Diagnosis, Treatment, and Medication": chapters/09-patient-diagnosis-treatment-medication/index.md
+    - "10. Patient Care Plans and Chronic Disease Management": chapters/10-patient-care-plans-chronic-disease/index.md
+    - "11. Specialty Care, Surgery, and Remote Monitoring": chapters/11-specialty-care-surgery-remote-monitoring/index.md
+    - "12. Provider Organizations, Networks, and Scheduling": chapters/12-provider-organizations-networks-scheduling/index.md
+    - "13. Clinical Guidelines, Care Pathways, and Provider Workforce": chapters/13-clinical-guidelines-care-pathways-workforce/index.md
+    - "14. Insurance Claims, Coverage, and Pharmacy Benefits": chapters/14-insurance-claims-coverage-pharmacy-benefits/index.md
+    - "15. Reimbursement, Health Plan Types, and Payer Contracts": chapters/15-reimbursement-health-plans-payer-contracts/index.md
+    - "16. Healthcare Revenue and Cost Analysis": chapters/16-healthcare-revenue-and-cost-analysis/index.md
+    - "17. Healthcare Financial Forecasting and Risk": chapters/17-healthcare-financial-forecasting-and-risk/index.md
+    - "18. Healthcare Fraud Patterns and Detection": chapters/18-healthcare-fraud-patterns-and-detection/index.md
+    - "19. Fraud Investigation and Compliance": chapters/19-fraud-investigation-and-compliance/index.md
+    - "20. AI, LLMs, and Knowledge Graphs for Healthcare": chapters/20-ai-llms-and-knowledge-graphs-for-healthcare/index.md
+    - "21. Responsible AI and Agentic Systems": chapters/21-responsible-ai-and-agentic-systems/index.md
+    - "22. FHIR Resources and Levels of Knowledge Representation": chapters/22-fhir-resources-and-knowledge-representation/index.md
+    - "23. Clinical Guideline Authoring and Clinical Quality Language": chapters/23-clinical-guideline-authoring-and-cql/index.md
+    - "24. CDS Hooks, Care Alerts, and CMS CQL Tooling": chapters/24-cds-hooks-alerts-and-cms-cql-tooling/index.md
+    - "25. Healthcare Data Security Fundamentals": chapters/25-healthcare-data-security-fundamentals/index.md
+    - "26. Advanced Security Operations and Incident Response": chapters/26-advanced-security-operations-incident-response/index.md
+    - "27. Data Governance and Metadata Management": chapters/27-data-governance-and-metadata-management/index.md
+    - "28. Data Quality, Stewardship, and Compliance": chapters/28-data-quality-stewardship-and-compliance/index.md
+    - "29. Capstone Projects and Career Development": chapters/29-capstone-projects-and-career-development/index.md
 
 
   - Stories:
@@ -71,12 +64,15 @@ nav:
     - MicroSim Coverage Report: learning-graph/microsim-coverage-report.md
     - Quiz Bank: learning-graph/quiz-bank.json
     - Additional Concepts: learning-graph/additional-concepts.md
+    - Mascot Test Page: learning-graph/mascot-test.md
 
-  
+
   - MicroSims:
     - List of MicroSims: sims/index.md
+    - Agentic Clinical Workflow Orchestrator: sims/agentic-clinical-workflow-orchestrator/index.md
     - AI / ML / Deep Learning Taxonomy: sims/ai-ml-taxonomy-healthcare/index.md
     - AI and ML Taxonomy in Healthcare: sims/ai-ml-taxonomy/index.md
+    - Allowed Amount and Reimbursement Breakdown Chart: sims/allowed-amount-reimbursement-breakdown-chart/index.md
     - Anomaly Score Threshold Explorer MicroSim: sims/anomaly-score-threshold-explorer/index.md
     - Appointment Scheduling and No-Show Simulator MicroSim: sims/appointment-no-show-simulator/index.md
     - Audit Trail Analysis MicroSim: sims/audit-trail-analysis-microsim/index.md
@@ -84,22 +80,32 @@ nav:
     - Basic Healthcare Graph Model: sims/basic-healthcare-graph-model-diagram/index.md
     - Bayesian Diagnostic Reasoning MicroSim: sims/bayesian-diagnostic-reasoning/index.md
     - Behavioral Health Fraud Network Interactive MicroSim: sims/behavioral-health-fraud-network-microsim/index.md
+    - Behavioral Health Screening Graph Model: sims/behavioral-health-screening-graph-model/index.md
     - Capstone Project Architecture Template: sims/capstone-project-architecture-template/index.md
     - Care Pathway Comparison Chart: sims/care-pathway-comparison-chart/index.md
     - Care Pathway Shortest Path Interactive MicroSim: sims/care-pathway-shortest-path-microsim/index.md
+    - Care Setting Acuity Flow Diagram: sims/care-setting-acuity-flow-diagram/index.md
+    - CDS Hooks Request-Response Cycle: sims/cds-hooks-request-response-cycle/index.md
     - Centrality Measures Comparison MicroSim: sims/centrality-measures-comparison/index.md
     - Charge Master and Billing Code Graph Model: sims/charge-master-billing-code-graph-model/index.md
+    - Claims Clearinghouse and Eligibility Verification Workflow: sims/claims-clearinghouse-eligibility-verification-workflow/index.md
     - Claims Lifecycle Workflow with Graph Database Integration: sims/claims-lifecycle-workflow-graph-database-integration/index.md
     - Clinical Care Pathway DAG: sims/clinical-care-pathway-dag/index.md
     - Clinical Decision Support Workflow: sims/clinical-decision-support-workflow/index.md
     - Clinical Discovery Pipeline Timeline: sims/clinical-discovery-pipeline-timeline/index.md
     - Clinical Encounter Workflow: sims/clinical-encounter-workflow-diagram/index.md
+    - Clinical NLP Pipeline Explorer: sims/clinical-nlp-pipeline-explorer/index.md
     - "Clinical Protocol Workflow: Chest Pain Evaluation in Emergency Department": sims/clinical-protocol-workflow-chest-pain-evaluation/index.md
+    - Clinical Quality Measure Population Funnel: sims/clinical-quality-measure-population-funnel/index.md
+    - CMS CQL Measure Development and Certification Pipeline: sims/cms-cql-measure-certification-pipeline/index.md
     - Codes: sims/codes/index.md
+    - CodeSystem, ValueSet, and Terminology Binding Explorer: sims/terminology-binding-explorer/index.md
     - "Comparison: Graph DB vs LLM vs Integrated System": sims/comparison-graph-db-llm-integrated-system/index.md
     - Cost-Sharing Calculation Interactive MicroSim: sims/cost-sharing-calculation-microsim/index.md
+    - CQL-to-ELM Compilation Pipeline: sims/cql-to-elm-compilation-pipeline/index.md
     - Cycle Detection and Pattern Explorer MicroSim: sims/cycle-detection-pattern-explorer/index.md
     - Cypher Query Components Interactive Infographic: sims/cypher-query-components-infographic/index.md
+    - Data Governance Framework Pillars: sims/data-governance-framework-pillars/index.md
     - Data Integration Flow Interactive Infographic: sims/data-integration-flow-infographic/index.md
     - Data Quality Dashboard Chart: sims/data-quality-dashboard-chart/index.md
     - Data Quality Impact Analysis MicroSim: sims/data-quality-impact-analysis-microsim/index.md
@@ -109,19 +115,26 @@ nav:
     - DME Fraud Pattern Detector MicroSim: sims/dme-fraud-pattern-detector/index.md
     - Evolution of Graph Query Languages Timeline: sims/evolution-graph-query-languages-timeline/index.md
     - Explainable AI Recommendation Workflow: sims/explainable-ai-recommendation-workflow/index.md
+    - FHIR Resource Bundle Explorer: sims/fhir-resource-bundle-explorer/index.md
+    - FHIR RESTful API Request-Response Flow: sims/fhir-restful-api-request-response-flow/index.md
     - Formulary Management and Step Therapy Graph Model: sims/formulary-management-step-therapy-graph-model/index.md
+    - Graph Algorithm Family Map: sims/graph-algorithm-family-map/index.md
     - Graph RBAC Workflow Diagram: sims/graph-rbac-workflow-diagram/index.md
+    - Graph Sharding Partition Explorer: sims/graph-sharding-partition-explorer/index.md
     - Graph Traversal Visualization MicroSim: sims/graph-traversal-visualization-microsim/index.md
     - Graph-Based Fraud Detection Algorithm Workflow: sims/graph-based-fraud-detection-algorithm-workflow/index.md
     - GSQL Accumulator Pattern MicroSim: sims/gsql-accumulator-pattern-microsim/index.md
+    - Guideline Authoring Artifacts Explorer: sims/guideline-authoring-artifacts-explorer/index.md
     - Healthcare Analytics Platform Architecture Diagram: sims/healthcare-analytics-platform-architecture-diagram/index.md
     - Healthcare Data Integration Graph Model: sims/healthcare-data-integration-graph-model/index.md
     - Healthcare Data Lineage Graph Visualization: sims/healthcare-data-lineage-graph-visualization/index.md
     - Healthcare Data Model Implementation Workflow: sims/healthcare-data-model-implementation-workflow/index.md
     - Healthcare Data Protection Layers Diagram: sims/healthcare-data-protection-layers-diagram/index.md
+    - Healthcare Data Sensitivity Classification Levels: sims/data-sensitivity-classification-levels/index.md
     - Healthcare Delivery Network Graph Model: sims/healthcare-delivery-network-graph-model/index.md
     - Healthcare Ecosystem Stakeholder Diagram: sims/healthcare-ecosystem-stakeholder-diagram/index.md
     - Healthcare Fraud Scheme Network Visualization: sims/healthcare-fraud-scheme-network-visualization/index.md
+    - Healthcare Graph Anatomy Explorer: sims/healthcare-graph-anatomy-explorer/index.md
     - Healthcare Graph Database Job Roles and Skills Map: sims/healthcare-graph-database-job-roles-skills/index.md
     - Healthcare Graph Fundamentals: sims/healthcare-graph-fundamentals/index.md
     - Healthcare Graph Pattern Examples: sims/healthcare-graph-pattern-examples/index.md
@@ -131,6 +144,7 @@ nav:
     - Healthcare Revenue Cycle Workflow with Graph Analytics: sims/healthcare-revenue-cycle-workflow-graph-analytics/index.md
     - HIPAA Compliance Workflow for Graph Database Operations: sims/hipaa-compliance-workflow-graph-database-operations/index.md
     - Insurance Policy and Benefit Plan Graph Model: sims/insurance-policy-benefit-plan-graph-model/index.md
+    - Knowledge Representation Levels by Functional Tier Matrix: sims/knowledge-representation-levels-tier-matrix/index.md
     - Learning Graph Viewer: sims/graph-viewer/index.md
     - Link Prediction Scoring MicroSim: sims/link-prediction-scoring/index.md
     - Medical Code System Classifier MicroSim: sims/medical-code-classifier/index.md
@@ -139,10 +153,12 @@ nav:
     - Medication Effectiveness Comparison MicroSim: sims/medication-effectiveness-comparison-microsim/index.md
     - Medication Safety Network Interactive Infographic: sims/medication-safety-network-infographic/index.md
     - Migration Strategy Comparison Chart: sims/migration-strategy-comparison-chart/index.md
+    - Model Drift Detection Monitor: sims/model-drift-detection-monitor/index.md
     - Multidisciplinary Care Team Graph Model: sims/multidisciplinary-care-team-graph-model/index.md
     - Network Community Detection Interactive Graph Model: sims/network-community-detection-graph-model/index.md
     - Node Embedding Explorer MicroSim: sims/node-embedding-explorer/index.md
     - Patient Clinical Context Subgraph Visualization: sims/patient-clinical-context-subgraph-visualization/index.md
+    - Patient Demographics and SDOH Profile: sims/patient-demographics-sdoh-profile/index.md
     - Patient Encounter Workflow: sims/encounter-workflow/index.md
     - Patient Identifier Graph Model: sims/patient-identifier-graph-model/index.md
     - Patient Journey Map Interactive Visualization: sims/patient-journey-map-visualization/index.md
@@ -150,6 +166,8 @@ nav:
     - Patient Treatment Timeline Workflow Diagram: sims/patient-treatment-timeline-workflow-diagram/index.md
     - Payer Mix and Contract Negotiation MicroSim: sims/payer-mix-contract-negotiation/index.md
     - Per-Person Healthcare Cost Comparison Chart: sims/per-person-healthcare-cost-comparison-chart/index.md
+    - PlanDefinition to ActivityDefinition Trigger Flow: sims/plandefinition-activitydefinition-trigger-flow/index.md
+    - Post-Surgical Care Transition Workflow: sims/post-surgical-care-transition-workflow/index.md
     - "Predictive Model Performance: Traditional vs Graph-Based": sims/predictive-model-performance-traditional-graph-based/index.md
     - Presentation Effectiveness Rubric: sims/presentation-effectiveness-rubric/index.md
     - Preventive Care Gap Closure MicroSim: sims/preventive-care-gap-closure/index.md
@@ -166,8 +184,11 @@ nav:
     - Query Performance Impact of Indexing: sims/query-performance-impact-indexing/index.md
     - "Query Performance: RDBMS vs Graph": sims/query-performance-comparison-chart-rdbms-graph/index.md
     - RAG Architecture for Clinical Decision Support: sims/rag-architecture-clinical-decision-support/index.md
+    - Relational vs. Graph Data Model Side-by-Side: sims/relational-vs-graph-data-model-comparison/index.md
+    - Remote Monitoring Data Flow Graph Model: sims/remote-monitoring-data-flow-graph-model/index.md
     - Risk Adjustment and Capitation Calculator MicroSim: sims/risk-adjustment-capitation-calculator-microsim/index.md
     - Risk Stratification Pyramid with Intervention Strategies: sims/risk-stratification-pyramid-intervention-strategies/index.md
+    - Security Incident Response Lifecycle: sims/security-incident-response-lifecycle/index.md
     - Service Line Profitability Analysis Interactive MicroSim: sims/service-line-profitability-analysis-microsim/index.md
     - Symptom-Disease Diagnostic Network: sims/symptom-disease-diagnostic-network/index.md
     - Value-Based Payment Shared-Savings MicroSim: sims/value-based-payment-shared-savings/index.md
@@ -175,20 +196,6 @@ nav:
     - View Healthcare Icons: sims/view-hc-icons/index.md
     - Vital Signs Trend Visualization MicroSim: sims/vital-signs-trend-visualization-microsim/index.md
     - Yin-Yang LLM vs Knowledge Graph: sims/yin-yang-llm-kg/index.md
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   - Prompts:
     - Introduction: prompts/index.md
     - Icon: prompts/icon.md
@@ -221,7 +228,7 @@ nav:
   - How We Built This Site: how-we-built-this-site.md
   - License: license.md
   - Contact: contact.md
- 
+
 # CoderDojo Microsite Standards from here down
 
 theme:
@@ -254,21 +261,40 @@ markdown_extensions:
   - attr_list
   - pymdownx.details
   - pymdownx.superfences
-  
+
   - pymdownx.highlight:
       linenums: true
 extra_css:
    - css/extra.css
+   - css/mascot.css
 extra_javascript:
    - js/extra.js
 #extra:
-#  analytics:
-#    provider: google
-    # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
-#    property: G-XXXX
+
 copyright: Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+
 extra:
+
+  # Do not generate the made with mkdocs info in the footer
+  generator: false
+
+  # MicroSim build-status indicators shown next to nav entries.
+  # The status value is set per-page in the index.md frontmatter:
+  status: scaffold | built | approved
+  # Colors are defined as CSS custom properties in docs/css/extra.css.
+  # Note: `theme.icon.status` is a Material Insiders feature and is silently
+  # ignored on community Material. Do not add it — the CSS-variable approach
+  # in extra.css is the load-bearing piece on the community edition.
+  status:
+    scaffold: Scaffold — placeholder, not yet implemented
+    built: Built — implementation complete, awaiting review
+    approved: Approved — tested and approved
+
+  analytics:
+    provider: google
+    # Google Analytics ID: G-Y8QRX24SGF
+    property: G-Y8QRX24SGF
+
   schema: https://dmccreary.github.io/intelligent-textbooks/ns/textbook/v1
   textbook_name: Modeling Healthcare Data with Graphs
   textbook_version: "1.0"
-  generator: false

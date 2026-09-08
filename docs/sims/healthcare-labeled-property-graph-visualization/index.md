@@ -6,7 +6,7 @@ og:image: /sims/healthcare-labeled-property-graph-visualization/healthcare-label
 twitter:image: /sims/healthcare-labeled-property-graph-visualization/healthcare-labeled-property-graph-visualization.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Labeled Property Graph Visualization

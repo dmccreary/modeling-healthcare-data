@@ -6,7 +6,7 @@ og:image: /sims/payer-mix-contract-negotiation/payer-mix-contract-negotiation.pn
 twitter:image: /sims/payer-mix-contract-negotiation/payer-mix-contract-negotiation.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Payer Mix and Contract Negotiation MicroSim

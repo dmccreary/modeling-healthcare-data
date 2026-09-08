@@ -1,0 +1,18 @@
+{
+  "sim_id": "data-governance-framework-pillars",
+  "diagram_name": "Data Governance Framework Pillars",
+  "chapter_number": 27,
+  "chapter_title": "Data Governance and Metadata Management",
+  "chapter_dir": "27-data-governance-and-metadata-management",
+  "chapter_rel_dir": "chapters/27-data-governance-and-metadata-management",
+  "library": "p5.js",
+  "bloom_level": "Analyze<br/>",
+  "bloom_verb": "differentiate, examine<br/>",
+  "learning_objective": "Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: infographic\n**sim-id:** data-governance-framework-pillars<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Taxonomy: Analyze<br/>\nBloom Taxonomy Verb: differentiate, examine<br/>\nLearning objective: Given a new-data-source scenario, the learner can differentiate which of the five governance pillars (policy, roles, quality, security, compliance) is responsible for a specific accountability question and examine how the pillars interact.\n\nPurpose: Make the five interlocking pillars of a data governance framework concrete using the wearable-device data source scenario from the preceding worked example.\n\nComponents to show: Five vertical pillar shapes arranged side by side, each labeled: Policy, Roles, Quality, Security, Compliance. A horizontal beam across the top labeled \"Trusted, Governed Data\" rests on all five pillars.\n\nData Visibility Requirements:\nStage 1: Show the five pillars unlabeled with only their names, beam resting on top.\nStage 2: On click of a pillar, show that pillar's accountability question (e.g., Policy: \"What rules govern data use, retention, and sharing?\") and the specific wearable-device-vendor decision it governs from the worked example, in a side panel.\nStage 3: On click of the \"Remove a Pillar\" toggle for any single pillar, animate that pillar sliding out and the beam visibly tilting/dropping on that side, illustrating a governance blind spot.\n\nInteractive controls:\n\n- Click each pillar to reveal its accountability question and worked-example decision\n- Toggle button per pillar: \"Remove this pillar\" to visually demonstrate what happens when that governance function is missing\n- Reset button to restore all five pillars\n\nInstructional Rationale: The Analyze-level objective (differentiate, examine) is served by letting learners actively remove a pillar and see the structural consequence, rather than just reading a labeled diagram \u2014 this mirrors the \"skip any one pillar\" claim in the preceding prose and lets the learner verify it interactively rather than take it on faith.\n\nLayout: Horizontal row of five pillars, responsive width, fixed height, reflows pillar spacing on window resize.\n\nColor scheme: Each pillar a distinct color (policy blue, roles teal, quality green, security orange, compliance purple); the beam is gray and turns red when tilted.\n\nImplementation: p5.js with simple physics-free tilt animation triggered by button state.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/data-governance-framework-pillars/main.html"
+}

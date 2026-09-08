@@ -1,0 +1,44 @@
+{
+  "title": "Graph Algorithm Family Map",
+  "description": "Classify a graph algorithm by the type of question it answers (distance, importance, grouping, or prediction) and summarize one example algorithm per family.",
+  "creator": "Modeling Healthcare Data with Graphs",
+  "author": "Dan McCreary",
+  "date": "2026-09-07",
+  "subject": [
+    "Modeling Healthcare Data with Graphs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "graph-algorithm-family-map",
+  "library": "Mermaid",
+  "bloomLevel": "Understand",
+  "bloomVerb": "classify, summarize",
+  "completion_status": "validated",
+  "chapter_number": 5,
+  "chapter_title": "Graph Algorithms, Centrality, and Similarity Measures",
+  "chapter_dir": "05-graph-algorithms-centrality-similarity",
+  "chapter_rel_dir": "chapters/05-graph-algorithms-centrality-similarity",
+  "educational": {
+    "gradeLevel": "Undergraduate and professional",
+    "subjectArea": "Healthcare data modeling",
+    "topic": "Graph Algorithm Family Map",
+    "learningObjectives": [
+      "Classify a graph algorithm by the type of question it answers (distance, importance, grouping, or prediction) and summarize one example algorithm per family."
+    ],
+    "duration": "10\u201315 minutes",
+    "prerequisites": [
+      "Nodes, edges, labels, and properties"
+    ]
+  },
+  "pedagogical": {
+    "bloomLevel": "Understand",
+    "interactionPattern": "Expandable taxonomy with definitions",
+    "rationale": "The Understand-level verbs classify and summarize are supported by question-based families and selectable definitions. A left-to-right tree keeps the leaves readable without continuous animation.",
+    "assessment": "Summarize one algorithm per family. Explain why clustering coefficient measures local cohesion rather than returning a partition, and why a similarity score is not automatically a calibrated probability."
+  },
+  "canvasHeight": 1100,
+  "quality_score": 100,
+  "validated_date": "2026-09-07"
+}

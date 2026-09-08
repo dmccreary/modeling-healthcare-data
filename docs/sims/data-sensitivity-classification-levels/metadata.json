@@ -1,0 +1,51 @@
+{
+  "title": "Healthcare Data Sensitivity Classification Levels",
+  "description": "Sort eight healthcare data elements into four sensitivity tiers by dragging, with immediate feedback and the access rule each tier carries.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "data classification",
+    "access control",
+    "healthcare privacy",
+    "data stewardship",
+    "compliance"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/data-sensitivity-classification-levels/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a sample healthcare data element, the learner can classify it into the correct sensitivity tier (Public, Internal, Confidential, Restricted) and identify the access control consequence of that classification."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerbs": [
+      "classify",
+      "demonstrate"
+    ],
+    "duration": "12-18 minutes",
+    "prerequisites": [
+      "Protected health information",
+      "Role-based access control"
+    ],
+    "concepts": [
+      "public data",
+      "internal data",
+      "confidential data",
+      "restricted data",
+      "tiered access control"
+    ]
+  },
+  "technical": {
+    "library": "p5.js",
+    "canvasHeight": 802,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "28-data-quality-stewardship-and-compliance"
+}

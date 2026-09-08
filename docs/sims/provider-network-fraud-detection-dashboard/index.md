@@ -6,7 +6,7 @@ og:image: /sims/provider-network-fraud-detection-dashboard/provider-network-frau
 twitter:image: /sims/provider-network-fraud-detection-dashboard/provider-network-fraud-detection-dashboard.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Provider Network Fraud Detection Dashboard

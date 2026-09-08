@@ -6,7 +6,7 @@ og:image: /sims/graph-based-fraud-detection-algorithm-workflow/graph-based-fraud
 twitter:image: /sims/graph-based-fraud-detection-algorithm-workflow/graph-based-fraud-detection-algorithm-workflow.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Graph-Based Fraud Detection Algorithm Workflow

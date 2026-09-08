@@ -6,7 +6,7 @@ og:image: /sims/healthcare-data-integration-graph-model/healthcare-data-integrat
 twitter:image: /sims/healthcare-data-integration-graph-model/healthcare-data-integration-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Healthcare Data Integration Graph Model

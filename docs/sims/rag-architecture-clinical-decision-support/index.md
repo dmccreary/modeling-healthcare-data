@@ -6,7 +6,7 @@ og:image: /sims/rag-architecture-clinical-decision-support/rag-architecture-clin
 twitter:image: /sims/rag-architecture-clinical-decision-support/rag-architecture-clinical-decision-support.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # RAG Architecture for Clinical Decision Support

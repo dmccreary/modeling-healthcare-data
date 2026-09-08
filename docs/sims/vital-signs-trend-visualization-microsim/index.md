@@ -6,7 +6,7 @@ og:image: /sims/vital-signs-trend-visualization-microsim/vital-signs-trend-visua
 twitter:image: /sims/vital-signs-trend-visualization-microsim/vital-signs-trend-visualization-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Vital Signs Trend Visualization MicroSim

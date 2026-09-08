@@ -6,7 +6,7 @@ og:image: /sims/comparison-graph-db-llm-integrated-system/comparison-graph-db-ll
 twitter:image: /sims/comparison-graph-db-llm-integrated-system/comparison-graph-db-llm-integrated-system.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Comparison: Graph DB vs LLM vs Integrated System

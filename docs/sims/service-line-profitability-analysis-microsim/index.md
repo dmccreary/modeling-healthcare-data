@@ -6,7 +6,7 @@ og:image: /sims/service-line-profitability-analysis-microsim/service-line-profit
 twitter:image: /sims/service-line-profitability-analysis-microsim/service-line-profitability-analysis-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Service Line Profitability Analysis Interactive MicroSim

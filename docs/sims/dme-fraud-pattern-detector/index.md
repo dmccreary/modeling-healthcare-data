@@ -6,7 +6,7 @@ og:image: /sims/dme-fraud-pattern-detector/dme-fraud-pattern-detector.png
 twitter:image: /sims/dme-fraud-pattern-detector/dme-fraud-pattern-detector.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # DME Fraud Pattern Detector MicroSim

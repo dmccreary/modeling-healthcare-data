@@ -6,7 +6,7 @@ og:image: /sims/risk-adjustment-capitation-calculator-microsim/risk-adjustment-c
 twitter:image: /sims/risk-adjustment-capitation-calculator-microsim/risk-adjustment-capitation-calculator-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Risk Adjustment and Capitation Calculator MicroSim

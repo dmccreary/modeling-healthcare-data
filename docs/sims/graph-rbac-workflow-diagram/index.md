@@ -6,7 +6,7 @@ og:image: /sims/graph-rbac-workflow-diagram/graph-rbac-workflow-diagram.png
 twitter:image: /sims/graph-rbac-workflow-diagram/graph-rbac-workflow-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Graph RBAC Workflow Diagram

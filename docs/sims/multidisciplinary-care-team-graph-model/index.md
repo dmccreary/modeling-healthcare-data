@@ -6,7 +6,7 @@ og:image: /sims/multidisciplinary-care-team-graph-model/multidisciplinary-care-t
 twitter:image: /sims/multidisciplinary-care-team-graph-model/multidisciplinary-care-team-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Multidisciplinary Care Team Graph Model

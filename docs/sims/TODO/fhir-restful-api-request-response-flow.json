@@ -1,0 +1,18 @@
+{
+  "sim_id": "fhir-restful-api-request-response-flow",
+  "diagram_name": "FHIR RESTful API Request-Response Flow",
+  "chapter_number": 22,
+  "chapter_title": "FHIR Resources and Levels of Knowledge Representation",
+  "chapter_dir": "22-fhir-resources-and-knowledge-representation",
+  "chapter_rel_dir": "chapters/22-fhir-resources-and-knowledge-representation",
+  "library": "Mermaid",
+  "bloom_level": "Understand<br/>",
+  "bloom_verb": "explain, summarize<br/>",
+  "learning_objective": "Given a client application's request for patient data, the learner can explain how the FHIR RESTful API and FHIR server together turn an HTTP request into a returned Bundle of resources.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: workflow\n**sim-id:** fhir-restful-api-request-response-flow<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nBloom Taxonomy: Understand<br/>\nBloom Taxonomy Verb: explain, summarize<br/>\nLearning objective: Given a client application's request for patient data, the learner can explain how the FHIR RESTful API and FHIR server together turn an HTTP request into a returned Bundle of resources.\n\nPurpose: Show the full request-response cycle between a client app and a FHIR server, grounding the abstract \"resources are exchanged over REST\" idea in one concrete, traceable request.\n\nComponents to show (Mermaid sequence-style flowchart):\n- Node \"Client App\" (blue) \u2014 sends the request\n- Node \"HTTP GET Request\" (gray) \u2014 shows the literal URL: `GET /Condition?patient=maria-chen&clinical-status=active`\n- Node \"FHIR Server\" (orange) \u2014 receives the request, looks up matching resources\n- Node \"Internal Data Store\" (gray, dashed border) \u2014 the EHR vendor's own database, translated into FHIR shape by the server\n- Node \"Bundle Response\" (green) \u2014 a `Bundle` resource wrapping the matched `Condition` resources as JSON\n- Node \"Client App Renders Result\" (blue) \u2014 the app displays Maria Chen's active conditions\n\nConnections: Client App \u2192 HTTP GET Request \u2192 FHIR Server \u2192 Internal Data Store \u2192 back to FHIR Server \u2192 Bundle Response \u2192 Client App Renders Result, arrows labeled with each transition's action\n\nInteractive controls:\n- Click directive on every node opening an infobox with that step's detail, including the literal JSON of the returned Bundle at the \"Bundle Response\" node\n- Dropdown to swap the CRUD operation shown (GET / POST / PUT / DELETE) and see how the flow and HTTP verb change while the overall five-step shape stays the same\n\nInstructional Rationale: A clickable sequence flowchart matches the Understand-level objective by letting the learner trace one concrete request end to end and inspect the actual returned JSON, rather than only reading an abstract description of \"REST operations.\"\n\nImplementation: Mermaid flowchart with click handlers; responsive width.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/fhir-restful-api-request-response-flow/main.html"
+}

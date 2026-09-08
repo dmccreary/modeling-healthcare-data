@@ -6,7 +6,7 @@ og:image: /sims/data-integration-flow-infographic/data-integration-flow-infograp
 twitter:image: /sims/data-integration-flow-infographic/data-integration-flow-infographic.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Data Integration Flow Interactive Infographic

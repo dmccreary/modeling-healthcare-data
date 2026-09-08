@@ -1,15 +1,16 @@
 {
   "FOUND": "SteelBlue",
-  "GTECH": "DarkGreen",
+  "GTECH": "DarkSlateBlue",
+  "ANAL": "DarkGreen",
   "HCARE": "Teal",
   "PAT": "LimeGreen",
   "PROV": "OliveDrab",
   "PAYER": "Gold",
   "FIN": "DarkGoldenrod",
   "FRAUD": "DarkRed",
-  "ANAL": "DeepPink",
   "AI": "Orange",
+  "CDS": "DeepPink",
   "SEC": "Crimson",
-  "GOV": "DarkSlateBlue",
+  "GOV": "MediumPurple",
   "CAP": "DimGray"
 }

@@ -1,0 +1,18 @@
+{
+  "sim_id": "clinical-nlp-pipeline-explorer",
+  "diagram_name": "Clinical NLP Pipeline Explorer",
+  "chapter_number": 21,
+  "chapter_title": "Responsible AI and Agentic Systems",
+  "chapter_dir": "21-responsible-ai-and-agentic-systems",
+  "chapter_rel_dir": "chapters/21-responsible-ai-and-agentic-systems",
+  "library": "Mermaid",
+  "bloom_level": "Apply<br/>",
+  "bloom_verb": "demonstrate, apply<br/>",
+  "learning_objective": "Given a raw clinical note, the learner can demonstrate how a clinical NLP pipeline applies named entity recognition, text classification, and sentiment analysis in sequence, and can apply the same sequence to a new note.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: workflow\n**sim-id:** clinical-nlp-pipeline-explorer<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nBloom Taxonomy: Apply<br/>\nBloom Taxonomy Verb: demonstrate, apply<br/>\nLearning objective: Given a raw clinical note, the learner can demonstrate how a clinical NLP pipeline applies named entity recognition, text classification, and sentiment analysis in sequence, and can apply the same sequence to a new note.\n\nPurpose: Let the learner step a sample clinical note through a three-stage NLP pipeline and see the structured output produced at each stage, reinforcing that unstructured text becomes graph-ready facts through a sequence of narrowing extraction steps.\n\nComponents to show (Mermaid flowchart, left to right):\n- Node A: \"Raw Clinical Note\" (gray) \u2014 the example sentence about shortness of breath and furosemide\n- Node B: \"Named Entity Recognition\" (blue) \u2014 extracts SYMPTOM, MEDICATION, DOSAGE, FREQUENCY spans\n- Node C: \"Text Classification\" (green) \u2014 assigns an ACUITY label to the note as a whole\n- Node D: \"Sentiment Analysis\" (orange) \u2014 assigns a tone label when the source is patient-authored text\n- Node E: \"Structured Output\" (purple) \u2014 the final extracted facts, shown as a small property list ready to become graph nodes/edges\n\nConnections: A \u2192 B \u2192 C \u2192 D \u2192 E, straight left-to-right flow with labeled arrows describing what transforms at each step (\"extracts spans\", \"labels acuity\", \"labels tone\", \"assembles facts\")\n\nData Visibility Requirements:\nStage 1: Show the full raw sentence as plain text in Node A's expanded panel.\nStage 2: On click of Node B, show the exact extracted entity list with span highlighting color-coded by entity type.\nStage 3: On click of Node C, show the acuity label and a one-sentence justification referencing which entities drove the classification.\nStage 4: On click of Node D, show the sentiment/tone label with its justification.\nStage 5: On click of Node E, show the final structured JSON-like fact list, and a callout noting these facts become new graph nodes and edges.\n\nInteractive controls:\n- Click directive on every Mermaid node (`click A call showInfo(...)` etc.) opening an infobox with that stage's detailed output\n- Dropdown to swap in a second example clinical note and re-run the same five-stage walkthrough\n\nInstructional Rationale: A step-through, click-to-reveal flowchart matches the Apply-level objective by requiring the learner to actively trigger each stage's transformation and inspect concrete extracted values, rather than watching a passive animation that would obscure exactly what each NLP stage contributes.\n\nImplementation: Mermaid flowchart with click handlers routed to a JavaScript infobox panel; responsive width, fixed step order.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/clinical-nlp-pipeline-explorer/main.html"
+}

@@ -1,0 +1,51 @@
+{
+  "title": "FHIR RESTful API Request-Response Flow",
+  "description": "Trace a client request through a FHIR server to its own database and back, switching between GET, POST, PUT, and DELETE to see what changes and what does not.",
+  "creator": "Dan McCreary",
+  "date": "2026-09-08",
+  "subject": [
+    "FHIR",
+    "REST",
+    "interoperability",
+    "health information exchange",
+    "APIs"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/modeling-healthcare-data/sims/fhir-restful-api-request-response-flow/",
+  "educational": {
+    "audience": "Undergraduate students and healthcare data practitioners",
+    "learningObjectives": [
+      "Given a client application's request for patient data, the learner can explain how the FHIR RESTful API and FHIR server together turn an HTTP request into a returned Bundle of resources."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerbs": [
+      "explain",
+      "summarize"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "FHIR resource types",
+      "HTTP verbs and status codes"
+    ],
+    "concepts": [
+      "FHIR RESTful API",
+      "Bundle resource",
+      "resource versioning",
+      "CRUD operations",
+      "vendor-neutral interface"
+    ]
+  },
+  "technical": {
+    "library": "Mermaid",
+    "canvasHeight": 977,
+    "responsive": true,
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "chapter": "22-fhir-resources-and-knowledge-representation"
+}

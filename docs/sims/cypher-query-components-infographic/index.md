@@ -6,7 +6,7 @@ og:image: /sims/cypher-query-components-infographic/cypher-query-components-info
 twitter:image: /sims/cypher-query-components-infographic/cypher-query-components-infographic.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Cypher Query Components Interactive Infographic

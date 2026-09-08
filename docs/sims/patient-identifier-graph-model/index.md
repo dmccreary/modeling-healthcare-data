@@ -6,7 +6,7 @@ og:image: /sims/patient-identifier-graph-model/patient-identifier-graph-model.pn
 twitter:image: /sims/patient-identifier-graph-model/patient-identifier-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Patient Identifier Graph Model

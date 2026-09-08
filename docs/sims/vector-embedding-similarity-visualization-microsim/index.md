@@ -6,7 +6,7 @@ og:image: /sims/vector-embedding-similarity-visualization-microsim/vector-embedd
 twitter:image: /sims/vector-embedding-similarity-visualization-microsim/vector-embedding-similarity-visualization-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Vector Embedding Similarity Visualization MicroSim

@@ -6,7 +6,7 @@ og:image: /sims/cost-sharing-calculation-microsim/cost-sharing-calculation-micro
 twitter:image: /sims/cost-sharing-calculation-microsim/cost-sharing-calculation-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Cost-Sharing Calculation Interactive MicroSim

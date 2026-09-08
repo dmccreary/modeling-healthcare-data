@@ -6,7 +6,7 @@ og:image: /sims/care-pathway-shortest-path-microsim/care-pathway-shortest-path-m
 twitter:image: /sims/care-pathway-shortest-path-microsim/care-pathway-shortest-path-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Care Pathway Shortest Path Interactive MicroSim

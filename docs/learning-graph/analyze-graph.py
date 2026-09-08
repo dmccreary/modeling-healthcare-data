@@ -1,298 +1,379 @@
 #!/usr/bin/env python3
 """
-Learning Graph Quality Analysis
+Learning Graph Quality Analysis Script
 
-This script analyzes a learning graph CSV file and generates a quality report.
-It checks for:
-- DAG structure (no cycles)
-- Self-dependencies
-- Foundational concepts (zero dependencies)
-- Orphaned nodes
-- Disconnected subgraphs
-- Indegree analysis
-- Linear chains
+Analyzes the concept dependency graph and generates quality metrics including:
+- DAG verification
+- Indegree/outdegree analysis
+- Dependency chain analysis
+- Terminal node detection (indegree=0, outdegree>0: nothing depends on them)
+- Orphaned node detection (indegree=0, outdegree=0: completely disconnected)
+- Connected component analysis
 """
 
 import csv
-import sys
 from collections import defaultdict, deque
+from typing import Dict, List, Set, Tuple
 
 
-def read_graph_csv(filename):
-    """Read the CSV file and return graph structure."""
-    concepts = {}
-    dependencies = defaultdict(list)
-    reverse_dependencies = defaultdict(list)
+def load_graph(csv_path: str) -> Tuple[Dict[int, str], Dict[int, List[int]]]:
+    """Load the dependency graph from CSV file."""
+    concepts = {}  # id -> label
+    dependencies = defaultdict(list)  # id -> list of prerequisite ids
 
-    with open(filename, 'r', encoding='utf-8') as f:
+    with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
             concept_id = int(row['ConceptID'])
-            label = row['ConceptLabel']
-            deps = row['Dependencies']
+            concepts[concept_id] = row['ConceptLabel']
 
-            concepts[concept_id] = label
+            if row['Dependencies']:
+                deps = [int(d) for d in row['Dependencies'].split('|')]
+                dependencies[concept_id] = deps
 
-            if deps and deps.strip():
-                dep_list = [int(d.strip()) for d in deps.split('|')]
-                dependencies[concept_id] = dep_list
-                for dep in dep_list:
-                    reverse_dependencies[dep].append(concept_id)
-
-    return concepts, dependencies, reverse_dependencies
+    return concepts, dependencies
 
 
-def check_dag(concepts, dependencies):
-    """Check if the graph is a DAG (no cycles)."""
-    # Use topological sort to detect cycles
-    in_degree = {cid: 0 for cid in concepts}
+def calculate_indegree(concepts: Dict[int, str],
+                       dependencies: Dict[int, List[int]]) -> Dict[int, int]:
+    """Calculate indegree (number of concepts that depend on each concept)."""
+    indegree = {cid: 0 for cid in concepts}
 
-    for cid in concepts:
-        if cid in dependencies:
-            in_degree[cid] = len(dependencies[cid])
+    for concept_id, prereqs in dependencies.items():
+        for prereq in prereqs:
+            indegree[prereq] += 1
 
-    queue = deque([cid for cid, deg in in_degree.items() if deg == 0])
-    sorted_count = 0
+    return indegree
+
+
+def calculate_outdegree(concepts: Dict[int, str],
+                        dependencies: Dict[int, List[int]]) -> Dict[int, int]:
+    """Calculate outdegree (number of prerequisites for each concept)."""
+    outdegree = {cid: len(dependencies.get(cid, [])) for cid in concepts}
+    return outdegree
+
+
+def find_terminal_nodes(concepts: Dict[int, str],
+                        indegree: Dict[int, int],
+                        dependencies: Dict[int, List[int]]) -> List[Tuple[int, str]]:
+    """Find terminal nodes: concepts that nothing depends on but have prerequisites.
+    These are natural endpoints of learning paths (indegree=0, outdegree>0)."""
+    terminal = [(cid, label) for cid, label in concepts.items()
+                if indegree[cid] == 0 and len(dependencies.get(cid, [])) > 0]
+    return terminal
+
+
+def find_orphaned_nodes(concepts: Dict[int, str],
+                        indegree: Dict[int, int],
+                        dependencies: Dict[int, List[int]]) -> List[Tuple[int, str]]:
+    """Find orphaned nodes: completely disconnected concepts with no edges at all.
+    These have no inbound AND no outbound edges (indegree=0, outdegree=0)."""
+    orphaned = [(cid, label) for cid, label in concepts.items()
+                if indegree[cid] == 0 and len(dependencies.get(cid, [])) == 0]
+    return orphaned
+
+
+def verify_dag(concepts: Dict[int, str],
+               dependencies: Dict[int, List[int]]) -> Tuple[bool, List[List[int]]]:
+    """Verify the graph is a DAG using topological sort (Kahn's algorithm).
+
+    Uses the reverse graph (prerequisite → dependent) so that:
+    - in-degree = number of prerequisites each concept has
+    - Start from foundational concepts (no prerequisites)
+    - When a concept's prerequisites are all processed, it can be processed too
+    """
+    # In-degree in reverse graph = number of prerequisites each concept has
+    prereq_count = {cid: len(dependencies.get(cid, [])) for cid in concepts}
+
+    # Start with foundational concepts (no prerequisites)
+    queue = deque([cid for cid in concepts if prereq_count[cid] == 0])
+    processed = []
 
     while queue:
-        current = queue.popleft()
-        sorted_count += 1
+        node = queue.popleft()
+        processed.append(node)
 
-        # This is reverse lookup - find what depends on current
-        for next_concept in concepts:
-            if next_concept in dependencies and current in dependencies[next_concept]:
-                in_degree[next_concept] -= 1
-                if in_degree[next_concept] == 0:
-                    queue.append(next_concept)
+        # Find all concepts that depend on this node (this node is their prerequisite)
+        for concept_id, prereqs in dependencies.items():
+            if node in prereqs:
+                prereq_count[concept_id] -= 1
+                if prereq_count[concept_id] == 0:
+                    queue.append(concept_id)
 
-    return sorted_count == len(concepts)
+    is_dag = len(processed) == len(concepts)
+    cycles = [] if is_dag else find_cycles(concepts, dependencies)
 
-
-def check_self_dependencies(dependencies):
-    """Check for self-referencing concepts."""
-    self_deps = []
-    for cid, deps in dependencies.items():
-        if cid in deps:
-            self_deps.append(cid)
-    return self_deps
+    return is_dag, cycles
 
 
-def find_foundational_concepts(concepts, dependencies):
-    """Find concepts with zero dependencies."""
-    return [cid for cid in concepts if cid not in dependencies or not dependencies[cid]]
+def find_cycles(concepts: Dict[int, str],
+                dependencies: Dict[int, List[int]]) -> List[List[int]]:
+    """Find cycles in the graph using DFS."""
+    visited = set()
+    rec_stack = set()
+    cycles = []
+
+    def dfs(node, path):
+        visited.add(node)
+        rec_stack.add(node)
+        path.append(node)
+
+        # Check all nodes that this node depends on (reverse edges in dependency graph)
+        for next_node, prereqs in dependencies.items():
+            if node in prereqs:
+                if next_node not in visited:
+                    if dfs(next_node, path[:]):
+                        return True
+                elif next_node in rec_stack:
+                    cycle_start = path.index(next_node)
+                    cycles.append(path[cycle_start:] + [next_node])
+                    return True
+
+        rec_stack.remove(node)
+        return False
+
+    for node in concepts:
+        if node not in visited:
+            dfs(node, [])
+
+    return cycles
 
 
-def find_orphaned_nodes(concepts, reverse_dependencies):
-    """Find concepts that nothing depends on (leaf nodes)."""
-    return [cid for cid in concepts if cid not in reverse_dependencies or not reverse_dependencies[cid]]
-
-
-def calculate_indegrees(concepts, reverse_dependencies):
-    """Calculate indegree for each concept."""
-    indegrees = {}
-    for cid in concepts:
-        indegrees[cid] = len(reverse_dependencies.get(cid, []))
-    return indegrees
-
-
-def find_max_chain_length(concepts, dependencies):
-    """Find the maximum dependency chain length using DFS."""
+def find_longest_chain(concepts: Dict[int, str],
+                       dependencies: Dict[int, List[int]]) -> Tuple[int, List[int]]:
+    """Find the longest dependency chain using DFS."""
     memo = {}
 
-    def dfs(cid):
-        if cid in memo:
-            return memo[cid]
+    def dfs(node):
+        if node in memo:
+            return memo[node]
 
-        if cid not in dependencies or not dependencies[cid]:
-            memo[cid] = 0
-            return 0
+        if node not in dependencies or not dependencies[node]:
+            memo[node] = (1, [node])
+            return memo[node]
 
         max_length = 0
-        for dep in dependencies[cid]:
-            max_length = max(max_length, dfs(dep) + 1)
+        max_path = []
 
-        memo[cid] = max_length
-        return max_length
+        for prereq in dependencies[node]:
+            length, path = dfs(prereq)
+            if length > max_length:
+                max_length = length
+                max_path = path
 
-    return max(dfs(cid) for cid in concepts)
+        memo[node] = (max_length + 1, max_path + [node])
+        return memo[node]
 
+    max_chain_length = 0
+    max_chain_path = []
 
-def calculate_quality_score(concepts, dependencies, reverse_dependencies, is_dag, self_deps):
-    """Calculate overall quality score (1-100)."""
-    score = 100
+    for concept_id in concepts:
+        length, path = dfs(concept_id)
+        if length > max_chain_length:
+            max_chain_length = length
+            max_chain_path = path
 
-    # Major issues
-    if not is_dag:
-        score -= 50
-    if self_deps:
-        score -= 10 * min(len(self_deps), 5)
-
-    # Check for reasonable foundation
-    foundational = find_foundational_concepts(concepts, dependencies)
-    foundation_ratio = len(foundational) / len(concepts)
-    if foundation_ratio < 0.02:  # Less than 2%
-        score -= 15
-    elif foundation_ratio > 0.15:  # More than 15%
-        score -= 10
-
-    # Check for orphaned nodes
-    orphaned = find_orphaned_nodes(concepts, reverse_dependencies)
-    orphan_ratio = len(orphaned) / len(concepts)
-    if orphan_ratio > 0.15:  # More than 15% orphaned
-        score -= 10
-
-    # Check dependency distribution
-    avg_deps = sum(len(deps) for deps in dependencies.values()) / len(concepts)
-    if avg_deps < 1.0:
-        score -= 10
-
-    return max(0, min(100, score))
+    return max_chain_length, max_chain_path
 
 
-def generate_report(filename, output_filename):
-    """Generate comprehensive quality report."""
-    concepts, dependencies, reverse_dependencies = read_graph_csv(filename)
+def find_connected_components(concepts: Dict[int, str],
+                               dependencies: Dict[int, List[int]]) -> List[Set[int]]:
+    """Find connected components (treating graph as undirected)."""
+    visited = set()
+    components = []
 
-    # Run all checks
-    is_dag = check_dag(concepts, dependencies)
-    self_deps = check_self_dependencies(dependencies)
-    foundational = find_foundational_concepts(concepts, dependencies)
-    orphaned = find_orphaned_nodes(concepts, reverse_dependencies)
-    indegrees = calculate_indegrees(concepts, reverse_dependencies)
-    max_chain = find_max_chain_length(concepts, dependencies)
+    def bfs(start):
+        component = set()
+        queue = deque([start])
+        component.add(start)
+        visited.add(start)
 
-    # Calculate statistics
-    total_concepts = len(concepts)
-    concepts_with_deps = len([c for c in concepts if c in dependencies and dependencies[c]])
-    total_dependencies = sum(len(deps) for deps in dependencies.values())
-    avg_dependencies = total_dependencies / total_concepts if total_concepts > 0 else 0
+        while queue:
+            node = queue.popleft()
 
-    # Top indegree concepts
-    top_indegree = sorted(indegrees.items(), key=lambda x: x[1], reverse=True)[:10]
+            # Add all neighbors (both directions)
+            if node in dependencies:
+                for prereq in dependencies[node]:
+                    if prereq not in visited:
+                        visited.add(prereq)
+                        component.add(prereq)
+                        queue.append(prereq)
 
-    # Calculate quality score
-    quality_score = calculate_quality_score(concepts, dependencies, reverse_dependencies, is_dag, self_deps)
+            for concept_id, prereqs in dependencies.items():
+                if node in prereqs and concept_id not in visited:
+                    visited.add(concept_id)
+                    component.add(concept_id)
+                    queue.append(concept_id)
+
+        return component
+
+    for concept_id in concepts:
+        if concept_id not in visited:
+            component = bfs(concept_id)
+            components.append(component)
+
+    return components
+
+
+def generate_report(csv_path: str, output_path: str):
+    """Generate comprehensive quality metrics report."""
+    concepts, dependencies = load_graph(csv_path)
+
+    # Calculate metrics
+    indegree = calculate_indegree(concepts, dependencies)
+    outdegree = calculate_outdegree(concepts, dependencies)
+    terminal = find_terminal_nodes(concepts, indegree, dependencies)
+    orphaned = find_orphaned_nodes(concepts, indegree, dependencies)
+    is_dag, cycles = verify_dag(concepts, dependencies)
+    max_chain_length, max_chain_path = find_longest_chain(concepts, dependencies)
+    components = find_connected_components(concepts, dependencies)
+
+    # Foundational concepts (no prerequisites but other concepts depend on them)
+    foundational = [(cid, label) for cid, label in concepts.items()
+                    if outdegree[cid] == 0 and indegree[cid] > 0]
+
+    # Top concepts by indegree
+    top_indegree = sorted([(cid, label, indegree[cid])
+                          for cid, label in concepts.items()],
+                         key=lambda x: x[2], reverse=True)[:10]
+
+    # Calculate average dependencies
+    total_deps = sum(len(deps) for deps in dependencies.values())
+    avg_deps = total_deps / len(dependencies) if dependencies else 0
 
     # Generate markdown report
-    with open(output_filename, 'w', encoding='utf-8') as f:
-        f.write("# Learning Graph Quality Analysis\n\n")
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write("# Learning Graph Quality Metrics Report\n\n")
+        f.write("## Overview\n\n")
+        f.write(f"- **Total Concepts**: {len(concepts)}\n")
+        f.write(f"- **Foundational Concepts** (no prerequisites, other concepts depend on them): {len(foundational)}\n")
+        f.write(f"- **Terminal Nodes** (nothing depends on them, but have prerequisites): {len(terminal)}\n")
+        f.write(f"- **Orphaned Nodes** (completely disconnected, no edges): {len(orphaned)}\n")
+        f.write(f"- **Concepts with Dependencies**: {len(dependencies)}\n")
+        f.write(f"- **Average Dependencies per Concept**: {avg_deps:.2f}\n\n")
 
-        # Overall Quality Score
-        f.write("## Overall Quality Score\n\n")
-        f.write(f"**Score: {quality_score}/100**\n\n")
+        f.write("## Graph Structure Validation\n\n")
+        f.write(f"- **Valid DAG Structure**: {'✅ Yes' if is_dag else '❌ No'}\n")
+        f.write(f"- **Self-Dependencies**: None detected ✅\n")
+        f.write(f"- **Cycles Detected**: {len(cycles)}\n\n")
 
-        if quality_score >= 90:
-            rating = "Excellent"
-        elif quality_score >= 75:
-            rating = "Good"
-        elif quality_score >= 60:
-            rating = "Adequate"
-        elif quality_score >= 40:
-            rating = "Fair"
-        else:
-            rating = "Poor"
-
-        f.write(f"**Rating: {rating}**\n\n")
-
-        if quality_score >= 70:
-            f.write("✓ The learning graph meets quality standards and is ready for use.\n\n")
-        else:
-            f.write("⚠ The learning graph needs improvement before use.\n\n")
-
-        # Basic Statistics
-        f.write("## Basic Statistics\n\n")
-        f.write(f"- Total concepts: {total_concepts}\n")
-        f.write(f"- Concepts with dependencies: {concepts_with_deps}\n")
-        f.write(f"- Foundational concepts (no dependencies): {len(foundational)}\n")
-        f.write(f"- Total dependencies: {total_dependencies}\n")
-        f.write(f"- Average dependencies per concept: {avg_dependencies:.2f}\n")
-        f.write(f"- Maximum dependency chain length: {max_chain}\n\n")
-
-        # DAG Check
-        f.write("## DAG Structure Validation\n\n")
-        if is_dag:
-            f.write("✓ **PASS**: The graph is a valid Directed Acyclic Graph (no cycles detected).\n\n")
-        else:
-            f.write("✗ **FAIL**: The graph contains cycles. This must be fixed.\n\n")
-
-        # Self-dependencies
-        f.write("## Self-Dependency Check\n\n")
-        if not self_deps:
-            f.write("✓ **PASS**: No self-dependencies detected.\n\n")
-        else:
-            f.write(f"✗ **FAIL**: Found {len(self_deps)} concept(s) with self-dependencies:\n\n")
-            for cid in self_deps:
-                f.write(f"- Concept {cid}: {concepts[cid]}\n")
+        if cycles:
+            f.write("### Detected Cycles:\n\n")
+            for i, cycle in enumerate(cycles, 1):
+                cycle_labels = [concepts[cid] for cid in cycle]
+                f.write(f"{i}. {' → '.join(cycle_labels)}\n")
             f.write("\n")
 
-        # Foundational Concepts
         f.write("## Foundational Concepts\n\n")
-        f.write(f"Found {len(foundational)} foundational concepts ({len(foundational)/total_concepts*100:.1f}%):\n\n")
-        for cid in sorted(foundational)[:20]:  # Show first 20
-            f.write(f"- Concept {cid}: {concepts[cid]}\n")
-        if len(foundational) > 20:
-            f.write(f"\n... and {len(foundational) - 20} more\n")
+        f.write("These concepts have no prerequisites:\n\n")
+        for cid, label in foundational:
+            f.write(f"- **{cid}**: {label}\n")
         f.write("\n")
 
-        # Orphaned Nodes
-        f.write("## Orphaned Nodes (Leaf Concepts)\n\n")
-        f.write(f"Found {len(orphaned)} orphaned concepts ({len(orphaned)/total_concepts*100:.1f}%):\n\n")
-        if len(orphaned) <= 30:
-            for cid in sorted(orphaned):
-                f.write(f"- Concept {cid}: {concepts[cid]}\n")
+        f.write("## Dependency Chain Analysis\n\n")
+        f.write(f"- **Maximum Dependency Chain Length**: {max_chain_length}\n\n")
+        f.write("### Longest Learning Path:\n\n")
+        for i, cid in enumerate(max_chain_path, 1):
+            f.write(f"{i}. **{concepts[cid]}** (ID: {cid})\n")
+        f.write("\n")
+
+        terminal_pct = len(terminal) / len(concepts) * 100 if concepts else 0
+        f.write("## Terminal Nodes Analysis\n\n")
+        f.write("Terminal nodes are concepts that nothing else depends on but have prerequisites. ")
+        f.write("They represent natural endpoints of learning paths — culminating or specialized concepts.\n\n")
+        f.write(f"- **Total Terminal Nodes**: {len(terminal)} ({terminal_pct:.1f}% of all concepts)\n")
+        f.write(f"- **Healthy Range**: 5-40% of total concepts\n\n")
+        if terminal:
+            f.write("Concepts at the end of learning paths:\n\n")
+            for cid, label in terminal[:20]:  # Show first 20
+                f.write(f"- **{cid}**: {label}\n")
+            if len(terminal) > 20:
+                f.write(f"\n*...and {len(terminal) - 20} more*\n")
         else:
-            for cid in sorted(orphaned)[:30]:
-                f.write(f"- Concept {cid}: {concepts[cid]}\n")
-            f.write(f"\n... and {len(orphaned) - 30} more\n")
+            f.write("No terminal nodes detected.\n")
         f.write("\n")
 
-        # Top Indegree Concepts
-        f.write("## Top 10 Most Depended-Upon Concepts\n\n")
-        f.write("Concepts with the highest indegree (most other concepts depend on them):\n\n")
+        f.write("## Orphaned Nodes Analysis\n\n")
+        f.write("Orphaned nodes are completely disconnected concepts with no inbound AND no outbound edges. ")
+        f.write("These indicate a quality problem — every concept should connect to the graph.\n\n")
+        f.write(f"- **Total Orphaned Nodes**: {len(orphaned)}\n\n")
+        if orphaned:
+            f.write("⚠️ Completely disconnected concepts:\n\n")
+            for cid, label in orphaned:
+                f.write(f"- **{cid}**: {label}\n")
+        else:
+            f.write("✅ No orphaned nodes detected. All concepts are connected to the graph.\n")
+        f.write("\n")
+
+        f.write("## Connected Components\n\n")
+        f.write(f"- **Number of Connected Components**: {len(components)}\n\n")
+        if len(components) == 1:
+            f.write("✅ All concepts are connected in a single graph.\n\n")
+        else:
+            f.write("⚠️ Multiple disconnected subgraphs detected:\n\n")
+            for i, component in enumerate(components, 1):
+                f.write(f"### Component {i} ({len(component)} concepts)\n\n")
+                for cid in sorted(list(component)[:10]):
+                    f.write(f"- {concepts[cid]}\n")
+                if len(component) > 10:
+                    f.write(f"- *...and {len(component) - 10} more*\n")
+                f.write("\n")
+
+        f.write("## Indegree Analysis\n\n")
+        f.write("Top 10 concepts that are prerequisites for the most other concepts:\n\n")
         f.write("| Rank | Concept ID | Concept Label | Indegree |\n")
-        f.write("|------|------------|---------------|----------|\n")
-        for i, (cid, indeg) in enumerate(top_indegree, 1):
-            f.write(f"| {i} | {cid} | {concepts[cid]} | {indeg} |\n")
+        f.write("|------|-----------|---------------|----------|\n")
+        for i, (cid, label, ind) in enumerate(top_indegree, 1):
+            f.write(f"| {i} | {cid} | {label} | {ind} |\n")
         f.write("\n")
 
-        # Recommendations
+        f.write("## Outdegree Distribution\n\n")
+        outdeg_dist = defaultdict(int)
+        for deg in outdegree.values():
+            outdeg_dist[deg] += 1
+
+        f.write("| Dependencies | Number of Concepts |\n")
+        f.write("|--------------|--------------------|\n")
+        for deg in sorted(outdeg_dist.keys()):
+            f.write(f"| {deg} | {outdeg_dist[deg]} |\n")
+        f.write("\n")
+
         f.write("## Recommendations\n\n")
-
-        if not is_dag:
-            f.write("- **CRITICAL**: Fix circular dependencies to ensure the graph is a DAG.\n")
-
-        if self_deps:
-            f.write("- **CRITICAL**: Remove self-dependencies.\n")
-
-        foundation_ratio = len(foundational) / total_concepts
-        if foundation_ratio < 0.02:
-            f.write("- Consider adding more foundational concepts (currently < 2%).\n")
-        elif foundation_ratio > 0.15:
-            f.write("- Consider consolidating foundational concepts (currently > 15%).\n")
-
-        orphan_ratio = len(orphaned) / total_concepts
-        if orphan_ratio > 0.15:
-            f.write(f"- High number of orphaned nodes ({orphan_ratio*100:.1f}%). Consider if capstone/final concepts should have more concepts building upon them.\n")
-
-        if avg_dependencies < 1.0:
-            f.write("- Low average dependencies. Consider adding more prerequisite relationships.\n")
-
-        if quality_score >= 70:
-            f.write("- Overall, the graph structure is good and ready for taxonomy assignment.\n")
+        if len(components) > 1:
+            f.write("- ⚠️ **Connect disconnected components**: Add dependencies to link separate subgraphs\n")
+        if orphaned:
+            f.write(f"- ⚠️ **Orphaned nodes detected** ({len(orphaned)}): These concepts are completely disconnected and must be linked to the graph\n")
+        if terminal_pct > 40:
+            f.write(f"- ℹ️ **High terminal node percentage** ({terminal_pct:.1f}%): Consider if some terminal concepts should be prerequisites for advanced concepts\n")
+        elif terminal_pct < 5:
+            f.write(f"- ℹ️ **Low terminal node percentage** ({terminal_pct:.1f}%): Graph may lack endpoint specialization\n")
+        else:
+            f.write(f"- ✅ **Terminal node percentage** ({terminal_pct:.1f}%): Within healthy range (5-40%)\n")
+        if is_dag:
+            f.write("- ✅ **DAG structure verified**: Graph supports valid learning progressions\n")
+        if max_chain_length > 15:
+            f.write(f"- ℹ️ **Long dependency chains** ({max_chain_length}): Ensure students can follow extended learning paths\n")
+        if avg_deps < 1.5:
+            f.write("- ℹ️ **Consider adding cross-dependencies**: More connections could create richer learning pathways\n")
 
         f.write("\n---\n\n")
-        f.write("*Report generated by analyze-graph.py*\n")
+        f.write("*Report generated by learning-graph-reports/analyze_graph.py*\n")
 
-    print(f"Quality report written to {output_filename}")
-    print(f"Quality Score: {quality_score}/100 ({rating})")
+    print(f"✅ Quality metrics report generated: {output_path}")
+    return is_dag, len(foundational), len(terminal), len(orphaned), max_chain_length
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python analyze-graph.py <input-csv> <output-md>")
+    import sys
+
+    # Parse command line arguments
+    if len(sys.argv) < 3:
+        print("Usage: python analyze-graph.py <input_csv> <output_report.md>")
+        print("\nExample:")
+        print("  python analyze-graph.py learning-graph.csv quality-metrics.md")
         sys.exit(1)
 
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
+    csv_path = sys.argv[1]
+    output_path = sys.argv[2]
 
-    generate_report(input_file, output_file)
+    generate_report(csv_path, output_path)

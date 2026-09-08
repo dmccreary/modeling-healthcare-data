@@ -6,7 +6,7 @@ og:image: /sims/migration-strategy-comparison-chart/migration-strategy-compariso
 twitter:image: /sims/migration-strategy-comparison-chart/migration-strategy-comparison-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Migration Strategy Comparison Chart

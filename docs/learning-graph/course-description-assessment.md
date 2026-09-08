@@ -1,5 +1,14 @@
 # Course Description Quality Assessment
 
+> **Update (2026-09-07)**: The course description was expanded with a new unit on
+> modeling clinical decision support systems (HL7 FHIR's Four Levels of Knowledge
+> Representation, Tiers of Functionality, Clinical Quality Language/ELM, and CMS CQL
+> tooling — MADiE, CQL Runner, Bonnie, Cypress). This only adds topic breadth and
+> outcomes across all six Bloom's levels, so the score below remains valid (still
+> 100/100) and the estimated concept-generation potential increases accordingly. The
+> learning graph was regenerated from scratch against the expanded description,
+> producing 508 concepts (see [concept-list.md](./concept-list.md)).
+
 ## Course Title
 **Modeling Healthcare Data with Graphs**
 

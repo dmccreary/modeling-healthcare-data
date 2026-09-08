@@ -6,7 +6,7 @@ og:image: /sims/appointment-no-show-simulator/appointment-no-show-simulator.png
 twitter:image: /sims/appointment-no-show-simulator/appointment-no-show-simulator.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Appointment Scheduling and No-Show Simulator MicroSim

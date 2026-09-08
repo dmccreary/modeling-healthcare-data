@@ -6,7 +6,7 @@ og:image: /sims/healthcare-payment-model-comparison-microsim/healthcare-payment-
 twitter:image: /sims/healthcare-payment-model-comparison-microsim/healthcare-payment-model-comparison-microsim.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Healthcare Payment Model Comparison MicroSim

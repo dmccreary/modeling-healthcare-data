@@ -6,7 +6,7 @@ og:image: /sims/healthcare-analytics-platform-architecture-diagram/healthcare-an
 twitter:image: /sims/healthcare-analytics-platform-architecture-diagram/healthcare-analytics-platform-architecture-diagram.png
 social:
    cards: false
-quality_score: 0
+quality_score: 70
 ---
 
 # Healthcare Analytics Platform Architecture Diagram

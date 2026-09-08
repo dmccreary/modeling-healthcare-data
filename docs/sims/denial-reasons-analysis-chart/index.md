@@ -6,7 +6,7 @@ og:image: /sims/denial-reasons-analysis-chart/denial-reasons-analysis-chart.png
 twitter:image: /sims/denial-reasons-analysis-chart/denial-reasons-analysis-chart.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Denial Reasons Analysis Chart

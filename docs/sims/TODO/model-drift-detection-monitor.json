@@ -1,0 +1,18 @@
+{
+  "sim_id": "model-drift-detection-monitor",
+  "diagram_name": "Model Drift Detection Monitor",
+  "chapter_number": 21,
+  "chapter_title": "Responsible AI and Agentic Systems",
+  "chapter_dir": "21-responsible-ai-and-agentic-systems",
+  "chapter_rel_dir": "chapters/21-responsible-ai-and-agentic-systems",
+  "library": "Chart.js",
+  "bloom_level": "Analyze<br/>",
+  "bloom_verb": "examine, differentiate<br/>",
+  "learning_objective": "Given a rolling-window AUROC line chart with a drift-alert threshold, the learner can examine where a deployed model's performance degrades over time and differentiate normal fluctuation from a genuine drift event.",
+  "completion_status": "validated",
+  "extracted_date": "2026-09-07",
+  "specification": "Type: chart\n**sim-id:** model-drift-detection-monitor<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nBloom Taxonomy: Analyze<br/>\nBloom Taxonomy Verb: examine, differentiate<br/>\nLearning objective: Given a rolling-window AUROC line chart with a drift-alert threshold, the learner can examine where a deployed model's performance degrades over time and differentiate normal fluctuation from a genuine drift event.\n\nPurpose: Show how a monitored performance metric drifts downward after a real-world data change, and how a statistical threshold triggers a timely alert.\n\nChart type: Line chart with a shaded alert-threshold band\n\nX-axis: Week number (0 to 26)\nY-axis: Rolling AUROC (0.5 to 1.0)\n\nData series:\n1. Rolling AUROC (blue line): starts at 0.88, fluctuates narrowly between 0.86-0.89 through week 16, then declines steadily to 0.79 by week 22 (simulating the lab-vendor change), staying low through week 26\n2. Baseline AUROC (dashed gray horizontal line at 0.88)\n3. Alert threshold (shaded red band below 0.84, representing two standard deviations below baseline)\n\nAnnotations:\n- Vertical marker at week 18 labeled \"Lab vendor change (unrelated to model)\"\n- Callout at week 20 where the blue line first enters the red band: \"Drift alert fires here\"\n\nInteractive features:\n- Hover any point on the blue line to see the exact week and AUROC value in a tooltip\n- Toggle button to show/hide the baseline and threshold reference lines\n- Click the week-18 marker to open an infobox explaining that model drift often originates outside the model itself (a changed upstream data source), not from a bug in the model's code\n\nInstructional Rationale: A line chart with an explicit alert band and a clickable root-cause annotation matches the Analyze-level objective, letting the learner trace cause (external data change) to effect (metric decline) to consequence (alert timing) rather than only observing that the line goes down.\n\nImplementation: Chart.js line chart with annotation plugin for threshold band and markers; responsive width.",
+  "quality_score": 100,
+  "validated_date": "2026-09-08",
+  "implementation_path": "sims/model-drift-detection-monitor/main.html"
+}

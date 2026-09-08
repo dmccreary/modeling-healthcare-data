@@ -16,7 +16,11 @@ The course starts with a patient-centric graph data model that places the patien
 
 The core of our course examines how graph databases support analytics, clinical rules engines, recommendation systems, and data quality initiatives within healthcare. We take a close look at vector stores used in conjunction with AI and large language models (LLMs).
 
-We then focus on the types of analytics used by each stakeholder perspective and discuss operational reporting, key performance indicators (KPIs), and real-time clinical discovery applications that benefit from graph databases. Finally, we conclude with advanced topics including security, HIPAA compliance, role-based access control (RBAC), metadata management, data governance, lineage tracking, traceability, explainability, and the use of machine learning and LLMs to create precise care path recommendations that combine quality with explainability.
+We then focus on the types of analytics used by each stakeholder perspective and discuss operational reporting, key performance indicators (KPIs), and real-time clinical discovery applications that benefit from graph databases.
+
+A dedicated unit examines the modeling of healthcare clinical decision support (CDS) systems using the HL7 FHIR standard. Students learn the Four Levels of Knowledge Representation in FHIR: Level 1 (Narrative), where clinical guidelines are expressed as plain narrative text authored by guideline developers for broad shareability but limited computer interpretation; Level 2 (Semi-Structured), where knowledge is organized into flowcharts, decision tables, personas, and user stories authored by clinical experts for moderate computability; Level 3 (Structured), where knowledge is expressed in computer-interpretable, coded formats using standard terminologies authored by knowledge engineers for high computability and broad shareability; and Level 4 (Executable), where knowledge is coded directly for CDS systems for direct runtime execution on specific platforms. Each of these representation levels is examined across three Tiers of Functionality: the Data Tier (concepts and data elements), the Logic Tier (business and process rules), and the Forms/UI Tier (user interface and user interactions). We also introduce Clinical Quality Language (CQL), a high-level, human-readable and machine-executable language used to author CDS rules, Clinical Quality Measures (CQMs), and health information exchange logic. Students learn how CQL separates clinical logic from data models and platforms, how CQL's human-readable authoring format compiles into the Expression Logical Model (ELM), the machine-friendly XML/JSON representation that EHR systems and execution engines actually run, and how FHIR resources supply the data structure that CQL logic reasons over to drive clinical decisions. Students also survey the CMS-sponsored tools used to author, test, and certify CQL-based measures: MADiE, the modern web-based tool that combines measure authoring and dynamic testing; CQL Runner, an interactive tool for quick ad hoc CQL testing; Bonnie, the legacy synthetic-patient testing tool; and Cypress, the open-source certification tool used to validate that EHR systems correctly execute compiled CQL/eCQM logic.
+
+Finally, we conclude with advanced topics including security, HIPAA compliance, role-based access control (RBAC), metadata management, data governance, lineage tracking, traceability, explainability, and the use of machine learning and LLMs to create precise care path recommendations that combine quality with explainability.
 
 ## Main Topics Covered
 
@@ -84,6 +88,24 @@ We then focus on the types of analytics used by each stakeholder perspective and
 - Clinical Decision
 - Clinical Decision Support
 - Clinical Discovery
+- FHIR
+- Knowledge Representation Level
+- Narrative Level
+- Semi-Structured Level
+- Structured Level
+- Executable Level
+- Tiers of Functionality
+- Data Tier
+- Logic Tier
+- Forms/UI Tier
+- Clinical Quality Language
+- Expression Logical Model
+- Clinical Quality Measure
+- CMS CQL Tooling
+- MADiE
+- CQL Runner
+- Bonnie
+- Cypress
 - Operational Reporting
 - Key Performance Indicator
 - AI
@@ -139,6 +161,8 @@ After completing this course, students will be able to:
 - Identify the main components of a labeled property graph (nodes, edges, properties).
 - List the major data entities in healthcare (patients, providers, payers, claims, treatments, encounters).
 - Recall common graph query languages (Cypher, GSQL, GQL) and their basic syntax.
+- Recall the Four Levels of Knowledge Representation in FHIR: Narrative, Semi-Structured, Structured, and Executable.
+- Identify the three Tiers of Functionality (Data, Logic, Forms/UI) used to classify clinical knowledge artifacts.
 
 ### Understand
 
@@ -149,6 +173,8 @@ After completing this course, students will be able to:
 - Summarize how graph algorithms can support clinical decision support and fraud detection.
 - Interpret how metadata, lineage, and traceability improve healthcare data governance.
 - Discuss how AI and LLMs can be integrated with vector stores and graph data for advanced analytics.
+- Explain how each FHIR knowledge representation level trades off computability against shareability and authorship expertise.
+- Describe how Clinical Quality Language (CQL) separates clinical logic from underlying data models and platforms.
 
 ### Apply
 
@@ -159,6 +185,7 @@ After completing this course, students will be able to:
 - Use graph algorithms (e.g., shortest path, community detection) to find clinical insights.
 - Apply role-based access control (RBAC) concepts to secure healthcare graph data.
 - Demonstrate integration of AI tools or vector stores to query and reason over graph data.
+- Author simple clinical logic expressions in CQL (e.g., age or condition checks) and trace how they compile into the Expression Logical Model (ELM).
 
 ### Analyze
 
@@ -169,6 +196,7 @@ After completing this course, students will be able to:
 - Examine how data from multiple systems (EHR, claims, pharmacy, behavioral health) connect through shared identifiers.
 - Evaluate trade-offs between different graph modeling strategies for scalability, query speed, and explainability.
 - Assess how data quality and completeness impact graph analytics outcomes.
+- Classify a given clinical decision support artifact by its FHIR knowledge representation level and functional tier (Data, Logic, Forms/UI).
 
 ### Evaluate
 
@@ -179,6 +207,7 @@ After completing this course, students will be able to:
 - Evaluate the ethical and privacy implications of patient graph data under HIPAA standards.
 - Compare the business value of graph-based analytics versus traditional relational approaches in healthcare.
 - Assess the explainability and transparency of AI-driven clinical recommendations derived from graph data.
+- Evaluate the trade-offs of authoring clinical decision support logic at different FHIR knowledge representation levels versus encoding it directly in CQL/ELM for runtime execution.
 
 ### Create
 
@@ -188,6 +217,7 @@ After completing this course, students will be able to:
 - Build a prototype graph application for one of the following:
     - **Fraud detection** using claims graph analytics
     - **Clinical decision support** using rule-based reasoning and embeddings
+    - **FHIR-based CDS modeling** that maps a clinical guideline across the four knowledge representation levels and expresses its core logic in CQL
     - **Provider network optimization** through community and referral graph analysis
     - **Patient journey visualization** using time-sequenced graph queries
 

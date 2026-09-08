@@ -6,7 +6,7 @@ og:image: /sims/explainable-ai-recommendation-workflow/explainable-ai-recommenda
 twitter:image: /sims/explainable-ai-recommendation-workflow/explainable-ai-recommendation-workflow.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Explainable AI Recommendation Workflow

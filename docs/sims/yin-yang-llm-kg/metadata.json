@@ -103,18 +103,16 @@
     "simulation"
   ],
   "learningObjectives": [
-    "Understand how yin-yang: llm vs knowledge graph algorithms work",
-    "Visualize yin-yang: llm vs knowledge graph data structures and operations",
-    "Analyze the efficiency and behavior of yin-yang: llm vs knowledge graph",
-    "Experiment with parameters to observe their effects on yin-yang: llm vs knowledge graph"
+    "Understand the fundamental differences between Large Language Models and Knowledge Graphs",
+    "Recognize the complementary nature of these two technologies",
+    "Identify appropriate use cases for each technology",
+    "Analyze how these technologies can work together in enterprise applications",
+    "Evaluate the strengths and limitations of each approach"
   ],
   "bloomsTaxonomy": [
-    "Remember",
     "Understand",
     "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
+    "Analyze"
   ],
   "pedagogical": {
     "pattern": "demonstration",

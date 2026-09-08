@@ -6,7 +6,7 @@ og:image: /sims/insurance-policy-benefit-plan-graph-model/insurance-policy-benef
 twitter:image: /sims/insurance-policy-benefit-plan-graph-model/insurance-policy-benefit-plan-graph-model.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # Insurance Policy and Benefit Plan Graph Model

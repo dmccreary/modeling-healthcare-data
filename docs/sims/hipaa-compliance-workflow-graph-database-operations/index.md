@@ -6,7 +6,7 @@ og:image: /sims/hipaa-compliance-workflow-graph-database-operations/hipaa-compli
 twitter:image: /sims/hipaa-compliance-workflow-graph-database-operations/hipaa-compliance-workflow-graph-database-operations.png
 social:
    cards: false
-quality_score: 0
+quality_score: 75
 ---
 
 # HIPAA Compliance Workflow for Graph Database Operations
