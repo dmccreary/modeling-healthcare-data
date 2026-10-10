@@ -1,17 +1,14 @@
 {
   "title": "Symptom-Disease Diagnostic Network",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for symptom-disease diagnostic network",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Symptom-Disease Diagnostic Network",
     "learningObjectives": [
       "TODO: Add learning objectives"

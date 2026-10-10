@@ -1,17 +1,14 @@
 {
   "title": "Query Performance Impact of Indexing",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for query performance impact of indexing",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Query Performance Impact of Indexing",
     "learningObjectives": [
       "TODO: Add learning objectives"

@@ -1,17 +1,14 @@
 {
   "title": "Authentication vs Authorization Comparison Infographic",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for authentication vs authorization comparison infographic",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Authentication vs Authorization Comparison Infographic",
     "learningObjectives": [
       "TODO: Add learning objectives"

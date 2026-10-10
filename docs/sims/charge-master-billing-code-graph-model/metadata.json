@@ -1,17 +1,14 @@
 {
   "title": "Charge Master and Billing Code Graph Model",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for charge master and billing code graph model",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Charge Master and Billing Code Graph Model",
     "learningObjectives": [
       "TODO: Add learning objectives"

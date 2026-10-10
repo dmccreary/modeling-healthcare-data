@@ -1,17 +1,14 @@
 {
   "title": "Vital Signs Trend Visualization MicroSim",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for vital signs trend visualization microsim",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Vital Signs Trend Visualization MicroSim",
     "learningObjectives": [
       "TODO: Add learning objectives"

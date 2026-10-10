@@ -1,17 +1,14 @@
 {
   "title": "Claims Lifecycle Workflow with Graph Database Integration",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for claims lifecycle workflow with graph database integration",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Claims Lifecycle Workflow with Graph Database Integration",
     "learningObjectives": [
       "TODO: Add learning objectives"

@@ -1,17 +1,14 @@
 {
   "title": "AI / ML / Deep Learning Taxonomy",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for ai / ml / deep learning taxonomy",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "AI / ML / Deep Learning Taxonomy",
     "learningObjectives": [
       "TODO: Add learning objectives"

@@ -1,17 +1,14 @@
 {
   "title": "Link Prediction Scoring MicroSim",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for link prediction scoring microsim",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Link Prediction Scoring MicroSim",
     "learningObjectives": [
       "TODO: Add learning objectives"

@@ -1,17 +1,14 @@
 {
   "title": "Risk Stratification Pyramid with Intervention Strategies",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for risk stratification pyramid with intervention strategies",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Risk Stratification Pyramid with Intervention Strategies",
     "learningObjectives": [
       "TODO: Add learning objectives"

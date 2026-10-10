@@ -1,17 +1,14 @@
 {
   "title": "Provider Capacity Utilization Dashboard Chart",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for provider capacity utilization dashboard chart",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Provider Capacity Utilization Dashboard Chart",
     "learningObjectives": [
       "TODO: Add learning objectives"

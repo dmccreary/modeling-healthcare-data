@@ -1,17 +1,14 @@
 {
   "title": "Capstone Project Architecture Template",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for capstone project architecture template",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Capstone Project Architecture Template",
     "learningObjectives": [
       "TODO: Add learning objectives"

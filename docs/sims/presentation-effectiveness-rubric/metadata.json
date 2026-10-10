@@ -1,17 +1,14 @@
 {
   "title": "Presentation Effectiveness Rubric",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for presentation effectiveness rubric",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Presentation Effectiveness Rubric",
     "learningObjectives": [
       "TODO: Add learning objectives"

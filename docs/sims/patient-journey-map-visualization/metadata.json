@@ -1,17 +1,14 @@
 {
   "title": "Patient Journey Map Interactive Visualization",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for patient journey map interactive visualization",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Patient Journey Map Interactive Visualization",
     "learningObjectives": [
       "TODO: Add learning objectives"

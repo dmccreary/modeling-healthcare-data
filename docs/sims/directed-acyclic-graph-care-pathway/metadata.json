@@ -1,17 +1,14 @@
 {
   "title": "Directed Acyclic Graph Example: Care Pathway",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for directed acyclic graph example: care pathway",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Directed Acyclic Graph Example: Care Pathway",
     "learningObjectives": [
       "TODO: Add learning objectives"

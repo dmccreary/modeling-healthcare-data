@@ -1,17 +1,14 @@
 {
   "title": "Per-Person Healthcare Cost Comparison Chart",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for per-person healthcare cost comparison chart",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Per-Person Healthcare Cost Comparison Chart",
     "learningObjectives": [
       "TODO: Add learning objectives"

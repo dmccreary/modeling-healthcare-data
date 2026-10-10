@@ -1,17 +1,14 @@
 {
   "title": "Vector Embedding Similarity Visualization MicroSim",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for vector embedding similarity visualization microsim",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Vector Embedding Similarity Visualization MicroSim",
     "learningObjectives": [
       "TODO: Add learning objectives"

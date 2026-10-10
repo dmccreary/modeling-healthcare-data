@@ -1,17 +1,14 @@
 {
   "title": "Query Performance: RDBMS vs Graph",
   "creator": "Dan McCreary",
-  "subject": "High School Geometry",
+  "subject": "Modeling Healthcare Data with Graphs",
   "description": "Interactive MicroSim for query performance: rdbms vs graph",
   "date": "2026-06-05",
   "educational": {
     "gradeLevel": [
-      "9",
-      "10",
-      "11",
-      "12"
+      "Undergraduate"
     ],
-    "subjectArea": "Mathematics",
+    "subjectArea": "Computer Science",
     "topic": "Query Performance: RDBMS vs Graph",
     "learningObjectives": [
       "TODO: Add learning objectives"
